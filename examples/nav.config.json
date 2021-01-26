@@ -1,0 +1,94 @@
+{
+  "开发指南": [
+    {
+      "name": "guide",
+      "path": "/guide",
+      "desc": "Bin UI Next"
+    },
+    {
+      "name": "start",
+      "path": "/start",
+      "desc": "快速上手"
+    },
+    {
+      "name": "theme",
+      "path": "/theme",
+      "desc": "定制主题"
+    },
+    {
+      "name": "logs",
+      "path": "/logs",
+      "desc": "更新日志"
+    }
+  ],
+  "组件": [
+    {
+      "desc": "基础",
+      "path": "/component",
+      "icon": "ios-browsers",
+      "items": [
+        {
+          "desc": "Base 基础",
+          "icon": "appstore",
+          "name": "base",
+          "path": "/base"
+        },
+        {
+          "desc": "Color 颜色",
+          "icon": "bg-colors",
+          "name": "color",
+          "path": "/color"
+        },
+        {
+          "desc": "Icon 图标",
+          "icon": "fire",
+          "name": "icon",
+          "path": "/icon"
+        },
+        {
+          "desc": "Button 按钮",
+          "icon": "Youtube",
+          "name": "button",
+          "path": "/button"
+        },
+        {
+          "desc": "Directive 指令",
+          "icon": "bulb",
+          "name": "directive",
+          "path": "/directive"
+        },
+        {
+          "desc": "Console 控制台",
+          "icon": "bug",
+          "name": "console",
+          "path": "/console"
+        },
+        {
+          "desc": "Transition 过渡",
+          "icon": "project",
+          "name": "transition",
+          "path": "/transition"
+        },
+        {
+          "desc": "Draggable 拖拽",
+          "icon": "drag",
+          "name": "sortablejs",
+          "path": "/sortablejs"
+        }
+      ]
+    },
+    {
+      "desc": "布局",
+      "path": "/component",
+      "icon": "ios-bookmarks",
+      "items": [
+        {
+          "desc": "Grid 栅格",
+          "icon": "layout",
+          "name": "grid",
+          "path": "/grid"
+        }
+      ]
+    }
+  ]
+}
