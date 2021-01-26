@@ -89,6 +89,19 @@
           "path": "/grid"
         }
       ]
+    },
+    {
+      "desc": "视图",
+      "path": "/component",
+      "icon": "ios-eye",
+      "items": [
+        {
+          "desc": "Timeline 时间线",
+          "icon": "arrowdown",
+          "name": "timeline",
+          "path": "/timeline"
+        }
+      ]
     }
   ]
 }

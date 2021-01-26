@@ -5,6 +5,10 @@ import { BinUIComponent, BinUIComponentSize } from './component'
 export { BIcon } from './icon'
 export { BButton } from './button'
 export { BButtonGroup } from './button-group'
+export { BRow } from './row'
+export { BCol } from './col'
+export { BTimeline } from './timeline'
+export { BTimelineItem } from './timeline-item'
 
 export const version: string
 

@@ -62,8 +62,9 @@
 .doc-update {
   .version {
     display: inline-block;
+    vertical-align: middle;
     padding: 0 10px;
-    font-size: 18px;
+    font-size: 22px;
     font-weight: 500;
     border: 1px solid #1890ff;
     border-radius: 5px;
@@ -73,9 +74,13 @@
   }
   .time {
     display: inline-block;
-    font-size: 14px;
-    padding-left: 20px;
-    margin: 0;
+    vertical-align: middle;
+    margin: 0 15px;
+    background: #f2f4f5;
+    padding: .1em .4em;
+    border-radius: 3px;
+    font-size: .9em;
+    border: 1px solid #eee;
   }
   .content {
     position: relative;
@@ -92,6 +97,10 @@
       border-left: 4px solid transparent;
       border-right: 4px solid transparent;
       border-bottom: 6px solid #5e6d82;
+    }
+    i {
+      font-style: normal;
+      margin-right: 12px;
     }
   }
 }
