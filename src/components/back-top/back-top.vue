@@ -78,7 +78,6 @@ export default defineComponent({
       el.value = document.documentElement
       if (props.target) {
         el.value = document.querySelector(props.target)
-        console.log(el.value)
         if (!el.value) {
           throw new Error(`target is not existed: ${props.target}`)
         }

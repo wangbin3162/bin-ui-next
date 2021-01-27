@@ -29,6 +29,7 @@
 <script lang="ts">
 import { addResizeListener, removeResizeListener } from '../../utils/resize-event'
 import { toObject } from './util'
+import { on, off } from '../../utils/dom'
 import {
   defineComponent,
   ref,
@@ -102,12 +103,18 @@ export default defineComponent({
     onMounted(() => {
       if (props.native) return
       nextTick(update)
-      !props.noresize && addResizeListener(resize.value, update)
+      if (!props.noresize) {
+        on(window, 'resize', update)
+        addResizeListener(resize.value, update)
+      }
     })
 
     onBeforeUnmount(() => {
       if (props.native) return
-      !props.noresize && removeResizeListener(resize.value, update)
+      if (!props.noresize) {
+        off(window, 'resize', update)
+        removeResizeListener(resize.value, update)
+      }
     })
     const style = computed(() => {
       let style = props.wrapStyle

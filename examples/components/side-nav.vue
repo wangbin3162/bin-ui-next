@@ -1,28 +1,32 @@
 <template>
   <div class="side-nav">
-    <div v-for="title in (Object.keys(data))" class="group-container" :key="title">
-      <p class="side-nav-title">{{ title }}</p>
-      <div class="side-nav-items" v-for="(nav,index) in data[title]" :key="index">
-        <router-link v-if="nav.name" :class="$route.name===nav.name ? 'active' : ''" :to="{name: nav.name}">
-          {{ nav.desc }}
-        </router-link>
-        <p v-else class="side-nav-group">{{ nav.desc }}</p>
-        <div v-for="item in nav.items" :key="item.name">
-          <router-link :to="{name: item.name}" :class="$route.name===item.name ? 'active' : ''"
-                       class="slid-nav-component">
-            <i :class="['b-iconfont','b-icon-'+item.icon]" v-if="item.icon"></i>
-            <span>{{ item.desc }}</span>
+    <b-scrollbar style="height: 100%;">
+      <div v-for="title in (Object.keys(data))" class="group-container" :key="title">
+        <p class="side-nav-title">{{ title }}</p>
+        <div class="side-nav-items" v-for="(nav,index) in data[title]" :key="index">
+          <router-link v-if="nav.name" :class="$route.name===nav.name ? 'active' : ''" :to="{name: nav.name}">
+            {{ nav.desc }}
           </router-link>
+          <p v-else class="side-nav-group">{{ nav.desc }}</p>
+          <div v-for="item in nav.items" :key="item.name">
+            <router-link :to="{name: item.name}" :class="$route.name===item.name ? 'active' : ''"
+                         class="slid-nav-component">
+              <i :class="['b-iconfont','b-icon-'+item.icon]" v-if="item.icon"></i>
+              <span>{{ item.desc }}</span>
+            </router-link>
+          </div>
         </div>
       </div>
-    </div>
+    </b-scrollbar>
   </div>
 </template>
 
 <script>
 import navConf from '../nav.config.json'
+import BScrollbar from '../../src/components/scrollbar/scrollbar'
 
 export default {
+  components: { BScrollbar },
   data() {
     return {
       data: navConf,
@@ -38,7 +42,6 @@ export default {
   width: 260px;
   height: calc(100vh - 80px);
   overflow: hidden;
-  padding-top: 20px
   box-sizing: border-box;
   color: #3F536E;
   background-color: #fff;
@@ -110,6 +113,9 @@ export default {
         background: #2d8cf0;
       }
     }
+  }
+  .bin-scrollbar__wrap {
+    overflow-x: hidden;
   }
 }
 </style>
