@@ -7,6 +7,8 @@
         <router-view />
         <main-footer />
       </div>
+
+      <b-back-top></b-back-top>
     </div>
   </div>
 </template>

@@ -7,6 +7,8 @@ import BCol from './components/col'
 import BCollapseTransition from './components/collapse-transition'
 import BTimeline from './components/timeline'
 import BTimelineItem from './components/timeline-item'
+import BScrollbar from './components/scrollbar'
+import BBackTop from './components/back-top'
 
 import * as util from './utils/util'
 import log from './utils/log'
@@ -18,7 +20,7 @@ import config from '../package.json'
 
 const components = [
   BIcon, BButton, BButtonGroup, BCollapseTransition, BRow, BCol,
-  BTimeline, BTimelineItem,
+  BTimeline, BTimelineItem, BScrollbar, BBackTop,
 ]
 
 const install = function(app: App) {
@@ -48,5 +50,5 @@ const install = function(app: App) {
 
 export default {
   install, BIcon, BButton, BButtonGroup, BCollapseTransition, BRow, BCol,
-  BTimeline, BTimelineItem,
+  BTimeline, BTimelineItem, BScrollbar, BBackTop,
 }

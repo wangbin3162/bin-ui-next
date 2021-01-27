@@ -156,7 +156,7 @@ function camelCase(name) {
 }
 
 // scrollTop animation
-export function scrollTop(el, from = 0, to, duration = 500, endCallback) {
+export function scrollTop(el, from = 0, to, duration = 500, endCallback?) {
   if (!window.requestAnimationFrame) {
     window.requestAnimationFrame = (
       window.webkitRequestAnimationFrame ||

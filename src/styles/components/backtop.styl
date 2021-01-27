@@ -1,0 +1,25 @@
+.bin-back-top {
+  position: fixed;
+  z-index: 10;
+  cursor: pointer;
+  .bin-back-top-inner {
+    background-color: rgba(0, 0, 0, .6);
+    border-radius: 2px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .2);
+    transition: all $animation-duration-base ease-in-out;
+    i {
+      color: #fff;
+      font-size: 18px;
+      padding: 8px 12px;
+    }
+  }
+}
+.back-top-fade-enter-active,
+.back-top-fade-leave-active {
+  transition: $animation-duration-base
+}
+.back-top-fade-enter,
+.back-top-fade-leave-to {
+  transform: translateY(-20px);
+  opacity: 0;
+}

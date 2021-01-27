@@ -87,6 +87,18 @@
           "icon": "layout",
           "name": "grid",
           "path": "/grid"
+        },
+        {
+          "desc": "Scrollbar 滚动",
+          "icon": "container",
+          "name": "scrollbar",
+          "path": "/scrollbar"
+        },
+        {
+          "desc": "BackTop 返回顶部",
+          "icon": "up",
+          "name": "backtop",
+          "path": "/backtop"
         }
       ]
     },
