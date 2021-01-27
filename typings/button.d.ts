@@ -14,7 +14,7 @@ export type ButtonType =
 /** Same as native button's type */
 export type ButtonNativeType = 'button' | 'submit' | 'reset'
 
-export type ButtonAnimatieType = 'click' | 'waves'
+export type ButtonAnimationType = 'click' | 'waves'
 
 interface _Button extends BinUIComponent {
   /** Button type */
@@ -51,7 +51,7 @@ interface _Button extends BinUIComponent {
   transparent: boolean
 
   /** button click animation type */
-  animationType: ButtonAnimatieType
+  animationType: ButtonAnimationType
 
   /** type === 'text' set color */
   textColor: string

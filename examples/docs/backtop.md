@@ -70,7 +70,8 @@
 
 | 参数      | 说明    | 类型      | 可选值       | 默认值   |
 |---------- |-------- |---------- |-------------  |-------- |
-| height    | 页面滚动高度达到该值时才显示BackTop | Number    | — | 400   |
+| visible-height    | 页面滚动高度达到该值时才显示BackTop | Number    | — | 400   |
+| target    | 目标容器标识，可设置目标的class、id标识来制定滚动监听的内容  | String    | — |  —    |
 | bottom    | 组件距离底部的距离  | Number    | — | 50   |
 | right    | 组件距离右部的距离  | Number    | — | 50   |
 | duration    | 滚动动画持续时间，单位 毫秒  | Number    | — | 1000   |
