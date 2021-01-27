@@ -1,5 +1,6 @@
 // 去除空格
 const isServer = typeof window === 'undefined'
+declare type Nullable<T> = T | null;
 
 const trim = function(string) {
   return (string || '').replace(/^[\s\uFEFF]+|[\s\uFEFF]+$/g, '')
@@ -192,4 +193,39 @@ export function scrollTop(el, from = 0, to, duration = 500, endCallback?) {
 
 export function firstUpperCase(str) {
   return str.toString()[0].toUpperCase() + str.toString().slice(1)
+}
+
+
+export const isScroll = (
+  el: HTMLElement,
+  isVertical?: Nullable<boolean>,
+): RegExpMatchArray => {
+  if (isServer) return
+  const determinedDirection = isVertical === null || isVertical === undefined
+  const overflow = determinedDirection
+    ? getStyle(el, 'overflow')
+    : isVertical
+      ? getStyle(el, 'overflow-y')
+      : getStyle(el, 'overflow-x')
+
+  return overflow.match(/(scroll|auto)/)
+}
+
+export const getScrollContainer = (
+  el: HTMLElement,
+  isVertical?: Nullable<boolean>,
+): Window | HTMLElement => {
+  if (isServer) return
+
+  let parent: HTMLElement = el
+  while (parent) {
+    if ([window, document, document.documentElement].includes(parent)) {
+      return window
+    }
+    if (isScroll(parent, isVertical)) {
+      return parent
+    }
+    parent = parent.parentNode as HTMLElement
+  }
+  return parent
 }

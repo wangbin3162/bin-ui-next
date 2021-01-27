@@ -2,11 +2,16 @@
 import { App } from 'vue'
 import { BinUIComponent, BinUIComponentSize } from './component'
 
-export { BIcon } from './icon'
+export { BAnchor } from './anchor'
+export { BAnchorLink } from './anchor-link'
+export { BBackTop } from './back-top'
 export { BButton } from './button'
 export { BButtonGroup } from './button-group'
-export { BRow } from './row'
 export { BCol } from './col'
+export { BDivider } from './divider'
+export { BIcon } from './icon'
+export { BRow } from './row'
+export { BScrollbar } from './scrollbar'
 export { BTimeline } from './timeline'
 export { BTimelineItem } from './timeline-item'
 

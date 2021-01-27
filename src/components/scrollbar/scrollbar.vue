@@ -71,7 +71,7 @@ export default defineComponent({
       default: 'div',
     },
   },
-  setup(props) {
+  setup: function(props) {
     const sizeWidth = ref('0')
     const sizeHeight = ref('0')
     const moveX = ref(0)
@@ -117,7 +117,7 @@ export default defineComponent({
       }
     })
     const style = computed(() => {
-      let style = props.wrapStyle
+      let style: string | {} = props.wrapStyle
       if (Array.isArray(props.wrapStyle)) {
         style = toObject(props.wrapStyle)
       }

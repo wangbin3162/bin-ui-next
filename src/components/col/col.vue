@@ -50,12 +50,12 @@ export default defineComponent({
         if (typeof props[size] === 'number') {
           classList.push(`${prefixCls}-span-${size}-${props[size]}`)
         } else if (typeof props[size] === 'object') {
-          let props = props[size]
-          Object.keys(props).forEach(prop => {
+          let propItem = props[size]
+          Object.keys(propItem).forEach(prop => {
             classList.push(
               prop !== 'span'
-                ? `${prefixCls}-${size}-${prop}-${props[prop]}`
-                : `${prefixCls}-span-${size}-${props[prop]}`,
+                ? `${prefixCls}-${size}-${prop}-${propItem[prop]}`
+                : `${prefixCls}-span-${size}-${propItem[prop]}`,
             )
           })
         }

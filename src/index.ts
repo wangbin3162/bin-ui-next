@@ -7,6 +7,9 @@ import BCol from './components/col'
 import BCollapseTransition from './components/collapse-transition'
 import BTimeline from './components/timeline'
 import BTimelineItem from './components/timeline-item'
+import BAffix from './components/affix'
+import BAnchor from './components/anchor'
+import BAnchorLink from './components/anchor-link'
 import BScrollbar from './components/scrollbar'
 import BBackTop from './components/back-top'
 import BDivider from './components/divider'
@@ -20,8 +23,8 @@ import { ClickAnimation, ClickOutside, Waves } from './directives'
 import config from '../package.json'
 
 const components = [
-  BIcon, BButton, BButtonGroup, BCollapseTransition, BRow, BCol,
-  BTimeline, BTimelineItem, BScrollbar, BBackTop, BDivider,
+  BIcon, BButton, BButtonGroup, BCollapseTransition, BRow, BCol, BAffix,
+  BTimeline, BTimelineItem, BScrollbar, BBackTop, BDivider, BAnchor, BAnchorLink,
 ]
 
 const install = function(app: App) {
@@ -50,6 +53,6 @@ const install = function(app: App) {
 }
 
 export default {
-  install, BIcon, BButton, BButtonGroup, BCollapseTransition, BRow, BCol,
-  BTimeline, BTimelineItem, BScrollbar, BBackTop, BDivider,
+  install, BIcon, BButton, BButtonGroup, BCollapseTransition, BRow, BCol, BAffix,
+  BTimeline, BTimelineItem, BScrollbar, BBackTop, BDivider, BAnchor, BAnchorLink,
 }

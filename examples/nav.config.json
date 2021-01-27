@@ -120,6 +120,25 @@
           "path": "/timeline"
         }
       ]
+    },
+    {
+      "desc": "导航",
+      "path": "/component",
+      "icon": "ios-navigate",
+      "items": [
+        {
+          "desc": "Affix 图钉",
+          "icon": "pushpin",
+          "name": "affix",
+          "path": "/affix"
+        },
+        {
+          "desc": "Anchor 锚点",
+          "icon": "attachment",
+          "name": "anchor",
+          "path": "/anchor"
+        }
+      ]
     }
   ]
 }

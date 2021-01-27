@@ -14,19 +14,19 @@ export default defineComponent({
   props: {
     type: {
       type: String,
-      validator(value) {
+      validator: (value: string) => {
         return ['flex'].includes(value)
       },
     },
     align: {
       type: String as PropType<'top' | 'middle' | 'bottom'>,
-      validator(value) {
+      validator: (value: string) => {
         return ['top', 'middle', 'bottom'].includes(value)
       },
     },
     justify: {
       type: String as PropType<'start' | 'end' | 'space-around' | 'space-between'>,
-      validator(value) {
+      validator: (value: string) => {
         return ['start', 'end', 'center', 'space-around', 'space-between'].includes(value)
       },
     },

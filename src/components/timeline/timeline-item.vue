@@ -25,7 +25,7 @@ export default defineComponent({
     dotTop: String,
   },
   setup() {
-    const dotEl = ref(null | HTMLElement)
+    const dotEl = ref(null)
     let dot = ref(false)
     onMounted(() => {
       dot.value = !!(dotEl.value.innerHTML.length)
