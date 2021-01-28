@@ -102,6 +102,13 @@
       "desc": "导航",
       "items": [
         {
+          "desc": "Menu 导航菜单",
+          "icon": "menu",
+          "name": "menu",
+          "path": "/menu",
+          "writing": true
+        },
+        {
           "desc": "Affix 图钉",
           "icon": "pushpin",
           "name": "affix",
@@ -114,10 +121,195 @@
           "path": "/anchor"
         },
         {
+          "desc": "Breadcrumb 面包屑",
+          "icon": "right",
+          "name": "breadcrumb",
+          "path": "/breadcrumb",
+          "writing": true
+        },
+        {
           "desc": "BackTop 返回顶部",
           "icon": "up",
           "name": "backtop",
           "path": "/backtop"
+        },
+        {
+          "desc": "Tabs 标签页",
+          "icon": "project",
+          "name": "tabs",
+          "path": "/tabs",
+          "writing": true
+        },
+        {
+          "desc": "Dropdown 下拉菜单",
+          "icon": "caret-down",
+          "name": "dropdown",
+          "path": "/dropdown",
+          "writing": true
+        },
+        {
+          "desc": "Steps 步骤条",
+          "icon": "fork",
+          "name": "steps",
+          "path": "/steps",
+          "writing": true
+        },
+        {
+          "desc": "Loading 加载",
+          "icon": "loading2",
+          "name": "loading",
+          "path": "/loading",
+          "writing": true
+        },
+        {
+          "desc": "LoadingBar 加载进度",
+          "icon": "minus",
+          "name": "loadingbar",
+          "path": "/loadingbar",
+          "writing": true
+        }
+      ]
+    },
+    {
+      "desc": "表单",
+      "items": [
+        {
+          "desc": "Input 输入框",
+          "icon": "edit-square",
+          "name": "input",
+          "path": "/input",
+          "writing": true
+        },
+        {
+          "desc": "InputNumber 数字输入",
+          "icon": "shake",
+          "name": "inputNumber",
+          "path": "/inputNumber",
+          "writing": true
+        },
+        {
+          "desc": "Radio 单选框",
+          "icon": "plus-circle",
+          "name": "radio",
+          "path": "/radio",
+          "writing": true
+        },
+        {
+          "desc": "Checkbox 多选框",
+          "icon": "check-square",
+          "name": "checkbox",
+          "path": "/checkbox",
+          "writing": true
+        },
+        {
+          "desc": "Switch 开关",
+          "icon": "build",
+          "name": "switch",
+          "path": "/switch",
+          "writing": true
+        },
+        {
+          "desc": "Select 选择器",
+          "icon": "unorderedlist",
+          "name": "select",
+          "path": "/select",
+          "writing": true
+        },
+        {
+          "desc": "DatePicker 日期选择器",
+          "icon": "calendar",
+          "name": "datePicker",
+          "path": "/datePicker",
+          "writing": true
+        },
+        {
+          "desc": "TimePicker 时间选择器",
+          "icon": "time-circle",
+          "name": "timePicker",
+          "path": "/timePicker",
+          "writing": true
+        },
+        {
+          "desc": "ColorPicker 颜色选择器",
+          "icon": "bg-colors",
+          "name": "colorPicker",
+          "path": "/colorPicker",
+          "writing": true
+        },
+        {
+          "desc": "Cascader 级联选择",
+          "icon": "pic-left",
+          "name": "cascader",
+          "path": "/cascader",
+          "writing": true
+        },
+        {
+          "desc": "Rate 评分",
+          "icon": "star",
+          "name": "rate",
+          "path": "/rate",
+          "writing": true
+        },
+        {
+          "desc": "Slider 滑块组件",
+          "icon": "sliders",
+          "name": "slider",
+          "path": "/slider",
+          "writing": true
+        },
+        {
+          "desc": "upload 上传",
+          "icon": "cloud-upload",
+          "name": "upload",
+          "path": "/upload",
+          "writing": true
+        },
+        {
+          "desc": "Form 表单",
+          "icon": "reconciliation",
+          "name": "form",
+          "path": "/form",
+          "writing": true
+        }
+      ]
+    },
+    {
+      "desc": "数据",
+      "items": [
+        {
+          "desc": "Table 表格",
+          "icon": "table",
+          "name": "table",
+          "path": "/table",
+          "writing": true
+        },
+        {
+          "desc": "Page 分页器",
+          "icon": "read",
+          "name": "page",
+          "path": "/page",
+          "writing": true
+        },
+        {
+          "desc": "Tree 树结构",
+          "icon": "branches",
+          "name": "tree",
+          "path": "/tree",
+          "writing": true
+        },
+        {
+          "desc": "Progress 进度条",
+          "icon": "hourglass",
+          "name": "progress",
+          "path": "/progress",
+          "writing": true
+        },
+        {
+          "desc": "Circle 进度环",
+          "icon": "redo",
+          "name": "circle",
+          "path": "/circle",
+          "writing": true
         }
       ]
     },
@@ -149,17 +341,10 @@
           "path": "/split"
         },
         {
-          "desc": "Timeline 时间线",
-          "icon": "arrowdown",
-          "name": "timeline",
-          "path": "/timeline"
-        },
-        {
           "desc": "Tag 标签",
           "icon": "tags",
           "name": "tag",
-          "path": "/tag",
-          "writing": true
+          "path": "/tag"
         }
       ]
     },
@@ -168,9 +353,83 @@
       "items": [
         {
           "desc": "Alert 警告提示",
-          "icon": "info-circle",
+          "icon": "error-fill",
           "name": "alert",
           "path": "/alert"
+        },
+        {
+          "desc": "Message 提示",
+          "icon": "message",
+          "name": "message",
+          "path": "/message",
+          "writing": true
+        },
+        {
+          "desc": "Notice 通知",
+          "icon": "notification",
+          "name": "notice",
+          "path": "/notice",
+          "writing": true
+        },
+        {
+          "desc": "MessageBox 弹框",
+          "icon": "mail",
+          "name": "messageBox",
+          "path": "/messageBox",
+          "writing": true
+        },
+        {
+          "desc": "Popover 气泡弹框",
+          "icon": "question-circle",
+          "name": "popover",
+          "path": "/popover",
+          "writing": true
+        },
+        {
+          "desc": "Modal 模态框",
+          "icon": "idcard",
+          "name": "modal",
+          "path": "/modal",
+          "writing": true
+        },
+        {
+          "desc": "Drawer 抽屉",
+          "icon": "build",
+          "name": "drawer",
+          "path": "/drawer",
+          "writing": true
+        },
+        {
+          "desc": "Tooltip 提示",
+          "icon": "info-circle-fill",
+          "name": "tooltip",
+          "path": "/tooltip",
+          "writing": true
+        }
+      ]
+    },
+    {
+      "desc": "其他",
+      "items": [
+        {
+          "desc": "Calendar 日历组件",
+          "icon": "calendar-fill",
+          "name": "calendar",
+          "path": "/calendar",
+          "writing": true
+        },
+        {
+          "desc": "Carousel 轮播",
+          "icon": "appstore-fill",
+          "name": "carousel",
+          "path": "/carousel",
+          "writing": true
+        },
+        {
+          "desc": "Timeline 时间线",
+          "icon": "arrowdown",
+          "name": "timeline",
+          "path": "/timeline"
         }
       ]
     }

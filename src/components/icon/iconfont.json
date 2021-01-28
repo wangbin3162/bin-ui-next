@@ -6,6 +6,216 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "4765741",
+      "name": "time-circle",
+      "font_class": "time-circle",
+      "unicode": "e7a4",
+      "unicode_decimal": 59300
+    },
+    {
+      "icon_id": "4765742",
+      "name": "time out",
+      "font_class": "timeout",
+      "unicode": "e7a5",
+      "unicode_decimal": 59301
+    },
+    {
+      "icon_id": "4765886",
+      "name": "issues close",
+      "font_class": "issuesclose",
+      "unicode": "e7a6",
+      "unicode_decimal": 59302
+    },
+    {
+      "icon_id": "4765964",
+      "name": "close-square",
+      "font_class": "close-square",
+      "unicode": "e7aa",
+      "unicode_decimal": 59306
+    },
+    {
+      "icon_id": "4765970",
+      "name": "code library",
+      "font_class": "codelibrary",
+      "unicode": "e7ac",
+      "unicode_decimal": 59308
+    },
+    {
+      "icon_id": "4766857",
+      "name": "calendar-check",
+      "font_class": "calendar-check",
+      "unicode": "e834",
+      "unicode_decimal": 59444
+    },
+    {
+      "icon_id": "4766881",
+      "name": "laptop",
+      "font_class": "laptop",
+      "unicode": "e836",
+      "unicode_decimal": 59446
+    },
+    {
+      "icon_id": "4766884",
+      "name": "cluster",
+      "font_class": "cluster",
+      "unicode": "e837",
+      "unicode_decimal": 59447
+    },
+    {
+      "icon_id": "4766973",
+      "name": "wrench",
+      "font_class": "wrench",
+      "unicode": "e838",
+      "unicode_decimal": 59448
+    },
+    {
+      "icon_id": "4936512",
+      "name": "time-circle-fill",
+      "font_class": "time-circle-fill",
+      "unicode": "e89f",
+      "unicode_decimal": 59551
+    },
+    {
+      "icon_id": "4936693",
+      "name": "shop-fill",
+      "font_class": "shop-fill",
+      "unicode": "e8a0",
+      "unicode_decimal": 59552
+    },
+    {
+      "icon_id": "4936696",
+      "name": "golden-fill",
+      "font_class": "golden-fill",
+      "unicode": "e8a1",
+      "unicode_decimal": 59553
+    },
+    {
+      "icon_id": "4936697",
+      "name": "build-fill",
+      "font_class": "build-fill",
+      "unicode": "e8a2",
+      "unicode_decimal": 59554
+    },
+    {
+      "icon_id": "4936969",
+      "name": "sketch",
+      "font_class": "sketch",
+      "unicode": "e8a3",
+      "unicode_decimal": 59555
+    },
+    {
+      "icon_id": "4936970",
+      "name": "Gitlab",
+      "font_class": "Gitlab",
+      "unicode": "e8a4",
+      "unicode_decimal": 59556
+    },
+    {
+      "icon_id": "4936977",
+      "name": "Gitlab-fill",
+      "font_class": "Gitlab-fill",
+      "unicode": "e8a5",
+      "unicode_decimal": 59557
+    },
+    {
+      "icon_id": "4936978",
+      "name": "dropbox",
+      "font_class": "dropbox",
+      "unicode": "e8a6",
+      "unicode_decimal": 59558
+    },
+    {
+      "icon_id": "4936979",
+      "name": "dingtalk",
+      "font_class": "dingtalk",
+      "unicode": "e8a7",
+      "unicode_decimal": 59559
+    },
+    {
+      "icon_id": "5756280",
+      "name": "apartment",
+      "font_class": "apartment",
+      "unicode": "e8a8",
+      "unicode_decimal": 59560
+    },
+    {
+      "icon_id": "5756283",
+      "name": "robot",
+      "font_class": "robot",
+      "unicode": "e8a9",
+      "unicode_decimal": 59561
+    },
+    {
+      "icon_id": "8094809",
+      "name": "merge-cells",
+      "font_class": "merge-cells",
+      "unicode": "e901",
+      "unicode_decimal": 59649
+    },
+    {
+      "icon_id": "8094816",
+      "name": "solit-cells",
+      "font_class": "solit-cells",
+      "unicode": "e902",
+      "unicode_decimal": 59650
+    },
+    {
+      "icon_id": "8094817",
+      "name": "format painter",
+      "font_class": "formatpainter",
+      "unicode": "e903",
+      "unicode_decimal": 59651
+    },
+    {
+      "icon_id": "8094818",
+      "name": "insert row right",
+      "font_class": "insertrowright",
+      "unicode": "e904",
+      "unicode_decimal": 59652
+    },
+    {
+      "icon_id": "8094819",
+      "name": "format painter-fill",
+      "font_class": "formatpainter-fill",
+      "unicode": "e905",
+      "unicode_decimal": 59653
+    },
+    {
+      "icon_id": "8094820",
+      "name": "insert row left",
+      "font_class": "insertrowleft",
+      "unicode": "e906",
+      "unicode_decimal": 59654
+    },
+    {
+      "icon_id": "8094821",
+      "name": "translate",
+      "font_class": "translate",
+      "unicode": "e907",
+      "unicode_decimal": 59655
+    },
+    {
+      "icon_id": "9229178",
+      "name": "Field-time",
+      "font_class": "Field-time",
+      "unicode": "e90e",
+      "unicode_decimal": 59662
+    },
+    {
+      "icon_id": "9229180",
+      "name": "Partition",
+      "font_class": "Partition",
+      "unicode": "e90f",
+      "unicode_decimal": 59663
+    },
+    {
+      "icon_id": "9230695",
+      "name": "group",
+      "font_class": "group",
+      "unicode": "e917",
+      "unicode_decimal": 59671
+    },
+    {
       "icon_id": "29934",
       "name": "loading",
       "font_class": "loading1",

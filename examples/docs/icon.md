@@ -14,6 +14,7 @@ i 标签可以直接设置样式类名为 `b-iconfont b-icon-xxx` 来使用即�
 :::demo size 和 color 可以设置字体大小和颜色
 
 ```html
+
 <div class="demo-icon">
   <i class="b-iconfont b-icon-addteam"></i>
   <b-icon name="read-fill" color="#ff53a5"></b-icon>
@@ -25,6 +26,7 @@ i 标签可以直接设置样式类名为 `b-iconfont b-icon-xxx` 来使用即�
 
 ### 图标集合
 
+<p>收录了<span style="color:red;">{{$icon.length}}</span>个图标</p>
 <ul class="icon-list">
     <li v-for="name in $icon" :key="name" class="list-complete-item">
         <span>
