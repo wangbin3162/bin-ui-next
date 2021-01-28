@@ -24,8 +24,6 @@
   "组件": [
     {
       "desc": "基础",
-      "path": "/component",
-      "icon": "ios-browsers",
       "items": [
         {
           "desc": "Base 基础",
@@ -79,8 +77,6 @@
     },
     {
       "desc": "布局",
-      "path": "/component",
-      "icon": "ios-bookmarks",
       "items": [
         {
           "desc": "Grid 栅格",
@@ -95,18 +91,6 @@
           "path": "/scrollbar"
         },
         {
-          "desc": "BackTop 返回顶部",
-          "icon": "up",
-          "name": "backtop",
-          "path": "/backtop"
-        },
-        {
-          "desc": "Card 卡片",
-          "icon": "creditcard",
-          "name": "card",
-          "path": "/card"
-        },
-        {
           "desc": "Divider 分割线",
           "icon": "line",
           "name": "divider",
@@ -115,28 +99,7 @@
       ]
     },
     {
-      "desc": "视图",
-      "path": "/component",
-      "icon": "ios-eye",
-      "items": [
-        {
-          "desc": "Alert 警告提示",
-          "icon": "info-circle",
-          "name": "alert",
-          "path": "/alert"
-        },
-        {
-          "desc": "Timeline 时间线",
-          "icon": "arrowdown",
-          "name": "timeline",
-          "path": "/timeline"
-        }
-      ]
-    },
-    {
       "desc": "导航",
-      "path": "/component",
-      "icon": "ios-navigate",
       "items": [
         {
           "desc": "Affix 图钉",
@@ -149,6 +112,46 @@
           "icon": "attachment",
           "name": "anchor",
           "path": "/anchor"
+        },
+        {
+          "desc": "BackTop 返回顶部",
+          "icon": "up",
+          "name": "backtop",
+          "path": "/backtop"
+        }
+      ]
+    },
+    {
+      "desc": "视图",
+      "items": [
+        {
+          "desc": "Card 卡片",
+          "icon": "creditcard",
+          "name": "card",
+          "path": "/card"
+        },
+        {
+          "desc": "Badge 徽标",
+          "icon": "border",
+          "name": "badge",
+          "path": "/badge"
+        },
+        {
+          "desc": "Timeline 时间线",
+          "icon": "arrowdown",
+          "name": "timeline",
+          "path": "/timeline"
+        }
+      ]
+    },
+    {
+      "desc": "反馈",
+      "items": [
+        {
+          "desc": "Alert 警告提示",
+          "icon": "info-circle",
+          "name": "alert",
+          "path": "/alert"
         }
       ]
     }
