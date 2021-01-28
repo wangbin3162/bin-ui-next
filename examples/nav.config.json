@@ -120,6 +120,12 @@
       "icon": "ios-eye",
       "items": [
         {
+          "desc": "Alert 警告提示",
+          "icon": "info-circle",
+          "name": "alert",
+          "path": "/alert"
+        },
+        {
           "desc": "Timeline 时间线",
           "icon": "arrowdown",
           "name": "timeline",

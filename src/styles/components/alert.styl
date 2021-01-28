@@ -1,0 +1,103 @@
+.bin-alert {
+  position: relative;
+  width: 100%;
+  padding: 8px 15px;
+  border-radius: $border-base-radius;
+  color: $color-text-default;
+  font-size: $base-font-size;
+  line-height: $base-line-height;
+  margin-bottom: 10px;
+  &.bin-alert-with-icon {
+    padding: 8px 48px 8px 38px;
+  }
+  &.bin-alert-with-desc {
+    &.bin-alert-with-icon {
+      padding: 8px 16px 8px 69px;
+    }
+    .bin-alert-icon {
+      top: 50%;
+      left: 24px;
+      margin-top: -18px;
+      .b-iconfont {
+        font-size: 36px;
+      }
+    }
+    .bin-alert-desc {
+      display: block;
+    }
+  }
+}
+
+.bin-alert-success {
+  border: 1px solid  $color-success-light3;
+  background-color: $color-success-light6;
+  .bin-alert-icon {
+    color: $color-success;
+  }
+}
+
+.bin-alert-info {
+  border: 1px solid  $color-primary-light3;
+  background-color: $color-primary-light6;
+  .bin-alert-icon {
+    color: $color-primary;
+  }
+}
+
+.bin-alert-warning {
+  border: 1px solid $color-warning-light3;
+  background-color: $color-warning-light6;
+  .bin-alert-icon {
+    color: $color-warning;
+  }
+}
+
+.bin-alert-error {
+  border: 1px solid $color-danger-light3;
+  background-color: $color-danger-light6;
+  .bin-alert-icon {
+    color: $color-danger;
+  }
+}
+
+.bin-alert-message {
+  font-size: $base-font-size;
+  color: $color-text-primary;
+}
+.bin-alert-with-desc .bin-alert-message {
+  display: block;
+  font-size: $header-font-size;
+  margin-bottom: 4px;
+}
+.bin-alert-desc {
+  display: none;
+  text-align: justify;
+}
+
+.bin-alert-icon {
+  top: 6px;
+  left: 14px;
+  position: absolute;
+  .b-iconfont {
+    line-height: 1;
+    font-size: 18px;
+  }
+}
+.bin-alert-close {
+  position: absolute;
+  right: 10px;
+  top: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  .b-icon-close {
+    color: $color-text-secondary;
+    transition: color $animation-duration-base ease;
+    position: relative;
+    &:hover {
+      color: $color-text-default;
+    }
+  }
+}
+.bin-alert-with-banner {
+  border-radius: 0;
+}

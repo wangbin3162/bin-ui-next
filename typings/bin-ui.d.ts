@@ -3,6 +3,7 @@ import { App } from 'vue'
 import { BinUIComponent, BinUIComponentSize } from './component'
 
 export { BAffix } from './affix'
+export { BAlert } from './alert'
 export { BAnchor } from './anchor'
 export { BAnchorLink } from './anchor-link'
 export { BBackTop } from './back-top'

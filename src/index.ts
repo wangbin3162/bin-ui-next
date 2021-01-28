@@ -1,5 +1,6 @@
 import type { App } from 'vue'
 import BAffix from './components/affix'
+import BAlert from './components/alert'
 import BAnchor from './components/anchor'
 import BAnchorLink from './components/anchor-link'
 import BBackTop from './components/back-top'
@@ -26,6 +27,7 @@ import config from '../package.json'
 
 const components = [
   BAffix,
+  BAlert,
   BAnchor,
   BAnchorLink,
   BBackTop,
@@ -71,6 +73,7 @@ const install = function(app: App) {
 export default {
   install,
   BAffix,
+  BAlert,
   BAnchor,
   BAnchorLink,
   BBackTop,
