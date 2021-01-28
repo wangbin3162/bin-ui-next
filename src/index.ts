@@ -9,6 +9,9 @@ import BButton from './components/button'
 import BButtonGroup from './components/button-group'
 import BCard from './components/card'
 import BCol from './components/col'
+import BCollapse from './components/collapse'
+import BCollapsePanel from './components/collapse-panel'
+import BCollapseWrap from './components/collapse-wrap'
 import BCollapseTransition from './components/collapse-transition'
 import BDivider from './components/divider'
 import BEmpty from './components/empty'
@@ -38,6 +41,9 @@ const components = [
   BButtonGroup,
   BCard,
   BCol,
+  BCollapse,
+  BCollapsePanel,
+  BCollapseWrap,
   BCollapseTransition,
   BDivider,
   BEmpty,
@@ -86,6 +92,9 @@ export default {
   BButtonGroup,
   BCard,
   BCol,
+  BCollapse,
+  BCollapsePanel,
+  BCollapseWrap,
   BCollapseTransition,
   BDivider,
   BEmpty,

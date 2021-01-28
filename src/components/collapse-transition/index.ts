@@ -6,6 +6,7 @@ CollapseTransition.install = (app: App): void => {
   app.component(CollapseTransition.name, CollapseTransition)
 }
 
+// @ts-ignore
 const _CollapseTransition: SFCWithInstall<typeof CollapseTransition> = CollapseTransition
 
 export default _CollapseTransition

@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { App } from 'vue'
 import { BinUIComponent, BinUIComponentSize } from './component'
+import { _CollapseWrap } from './collapse-wrap'
 
 export { BAffix } from './affix'
 export { BAlert } from './alert'
@@ -12,6 +13,9 @@ export { BButton } from './button'
 export { BButtonGroup } from './button-group'
 export { BCard } from './card'
 export { BCol } from './col'
+export { BCollapse } from './collapse'
+export { BCollapsePanel } from './collapse-panel'
+export { BCollapseWrap } from './collapse-wrap'
 export { BDivider } from './divider'
 export { BIcon } from './icon'
 export { BRow } from './row'

@@ -72,7 +72,7 @@
   <b-alert type="success" show-icon>success alert</b-alert>
   <b-alert type="warning" show-icon>warning alert</b-alert>
   <b-alert type="error" show-icon>error alert
-    <span #desc> Custom error description copywriting.</span>
+    <template #desc> Custom error description copywriting.</template>
   </b-alert>
   <b-alert show-icon>
     自定义icon
@@ -98,11 +98,11 @@
   <b-alert closable>An info prompt</b-alert>
   <b-alert type="success" show-icon closable>
     A success prompt
-    <span slot="desc">Content of prompt. Content of prompt. Content of prompt. Content of prompt. </span>
+    <template #desc>Content of prompt. Content of prompt. Content of prompt. Content of prompt. </template>
   </b-alert>
   <b-alert type="warning" closable>
     Custom closing content
-    <span slot="close">No longer prompt</span>
+    <template #close>No longer prompt</template>
   </b-alert>
 </template>
 ```

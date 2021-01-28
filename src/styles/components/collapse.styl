@@ -1,0 +1,120 @@
+.bin-collapse {
+  background-color: #fafafa;
+  border-radius: $border-base-radius;
+  border: $border-base;
+  > .bin-collapse-item {
+    border-top: $border-base;
+    &:first-child {
+      border-top: none;
+    }
+    > .bin-collapse-header {
+      line-height: $base-line-height;
+      padding: 10px 16px;
+      color: $color-text-primary;
+      cursor: pointer;
+      position: relative;
+      border-bottom: 1px solid transparent;
+      transition: all $animation-duration-base ease-in-out;
+      > i.b-icon-right {
+        transition: transform $animation-duration-base ease-in-out, -webkit-transform $animation-duration-base ease-in-out;
+        margin-right: 10px;
+        vertical-align: -1px;
+        font-size: 14px;
+      }
+    }
+    &.bin-collapse-item-active {
+      > .bin-collapse-header {
+        border-bottom: $border-base;
+        > i.b-icon-right {
+          -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+        }
+      }
+    }
+  }
+}
+.bin-collapse-content {
+  color: $color-text-default;
+  padding: 0 16px;
+  background-color: #fff;
+  > .bin-collapse-content-box {
+    padding-top: 16px;
+    padding-bottom: 16px;
+    line-height: 2em;
+    font-size: $base-font-size;
+  }
+}
+.bin-collapse-simple {
+  border-left: none;
+  border-right: none;
+  background-color: #fff;
+  border-radius: 0;
+}
+.bin-collapse-wrap {
+  background: #fff;
+  box-shadow: 0 1px 3px 1px #eeeeee;
+  .header {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    font-size: 18px;
+    color: #333333;
+    background: #fff;
+    transition: $animation-duration-base;
+    &.is-collapse {
+      cursor: pointer;
+    }
+    .label {
+      position: relative;
+      display: inline-block;
+      vertical-align: middle;
+      padding: 14px 24px;
+      &:after {
+        content: '';
+        position: absolute;
+        background-color: #1890ff;
+        left: 0;
+        top: 18px;
+        bottom: 18px;
+        width: 3px;
+      }
+    }
+    .right {
+      padding-right: 24px;
+      &.can-collapse {
+        padding-right: 50px;
+      }
+    }
+    .arrow {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      transition: $animation-duration-base;
+      .iconfont {
+        font-size: 20px;
+        vertical-align: -1px;
+      }
+    }
+  }
+  .content {
+    color: rgba(0, 0, 0, 0.65);
+    padding: 0 24px;
+    background-color: #fff;
+    &-box {
+      padding: 16px 0;
+    }
+  }
+  &-active {
+    .header {
+      box-shadow: 0 1px 3px 1px #eeeeee;
+      .arrow {
+        transform: rotate(180deg);
+      }
+    }
+  }
+  + .bin-collapse-wrap {
+    margin-top: 16px;
+  }
+}
