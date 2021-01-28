@@ -5,9 +5,11 @@ import BAnchorLink from './components/anchor-link'
 import BBackTop from './components/back-top'
 import BButton from './components/button'
 import BButtonGroup from './components/button-group'
+import BCard from './components/card'
 import BCol from './components/col'
 import BCollapseTransition from './components/collapse-transition'
 import BDivider from './components/divider'
+import BEmpty from './components/empty'
 import BIcon from './components/icon'
 import BScrollbar from './components/scrollbar'
 import BRow from './components/row'
@@ -29,9 +31,11 @@ const components = [
   BBackTop,
   BButton,
   BButtonGroup,
+  BCard,
   BCol,
   BCollapseTransition,
   BDivider,
+  BEmpty,
   BIcon,
   BRow,
   BScrollbar,
@@ -72,9 +76,11 @@ export default {
   BBackTop,
   BButton,
   BButtonGroup,
+  BCard,
   BCol,
   BCollapseTransition,
   BDivider,
+  BEmpty,
   BIcon,
   BRow,
   BScrollbar,

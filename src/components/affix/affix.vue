@@ -5,6 +5,7 @@
     </div>
   </div>
 </template>
+
 <script lang="ts">
 import { computed, defineComponent, onBeforeUnmount, onMounted, PropType, reactive, ref, watch } from 'vue'
 import { getScrollContainer, off, on } from '../../utils/dom'

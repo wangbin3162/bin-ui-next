@@ -3,6 +3,7 @@
 <div class="global-anchor">
   <b-anchor :scroll-offset="100">
     <b-anchor-link href="#ji-chu-api" title="基础api"></b-anchor-link>
+    <b-anchor-link href="#wu-shu-ju-zu-jian" title="无数据组件"></b-anchor-link>
     <b-anchor-link href="#flex.cssshi-yong" title="flex.css使用"></b-anchor-link>
     <b-anchor-link href="#flexshu-xing-da-quan" title="flex属性大全"></b-anchor-link>
     <b-anchor-link href="#flex-boxshu-xing-shuo-ming" title="flex-box属性说明"></b-anchor-link>
@@ -42,6 +43,23 @@ util方法函数
 | $typeOf | 精准判断类型   | any  |
 | $deepCopy | 深拷贝函数   | obj/arr  |
 
+### 无数据组件
+
+目前表格和tree型结构使用，也可以自己使用
+
+::: demo
+
+```html
+
+<template>
+  <div style="width: 224px;">
+    <b-empty>当前无数据</b-empty>
+  </div>
+</template>
+```
+
+:::
+
 ### flex.css使用
 
 本项目已集成normalize.css初始化样式，[flex.css](https://github.com/lzxb/flex.css)基本样式和自定义基础样式库common.css
@@ -57,24 +75,27 @@ util方法函数
 ```
 
 ::: demo
+
 ```html
+
 <template>
-   <!--
-     将dist目录下的css文件引入到你的页面中，根据你的需要引入
-     flex.css 使用flex属性匹配
-     data-flex.css 使用data-flex属性匹配（React使用）
-     如果使用了webpack打包，npm安装后，并且配置了ES6编译器的话，
-     flex 属性匹配可以直接使用：
-       import 'flex.css';
-     data-flex 属性匹配可以直接使用(react使用)
-       import 'flex.css/dist/data-flex.css';
-    -->
-   <!-- flex属性匹配，简单的子元素居中例子： -->
-     <div flex="main:center cross:center" style="height: 80px; border:1px solid #1089ff">
-       <div style="background: #fff;padding: 15px;">看看我是不是居中的</div>
-     </div>
+  <!--
+    将dist目录下的css文件引入到你的页面中，根据你的需要引入
+    flex.css 使用flex属性匹配
+    data-flex.css 使用data-flex属性匹配（React使用）
+    如果使用了webpack打包，npm安装后，并且配置了ES6编译器的话，
+    flex 属性匹配可以直接使用：
+      import 'flex.css';
+    data-flex 属性匹配可以直接使用(react使用)
+      import 'flex.css/dist/data-flex.css';
+   -->
+  <!-- flex属性匹配，简单的子元素居中例子： -->
+  <div flex="main:center cross:center" style="height: 80px; border:1px solid #1089ff">
+    <div style="background: #fff;padding: 15px;">看看我是不是居中的</div>
+  </div>
 </template>
 ```
+
 :::
 
 ### flex属性大全
@@ -86,6 +107,7 @@ dir：主轴方向
     bottom：从下到上
     left：从左到右（默认）
 ```
+
 ```
 main：主轴对齐方式
     right：从右到左
@@ -93,6 +115,7 @@ main：主轴对齐方式
     justify：两端对齐
     center：居中对齐
 ```
+
 ```
 cross：交叉轴对齐方式
     top：从上到下（默认）
@@ -101,6 +124,7 @@ cross：交叉轴对齐方式
     center：居中对齐
     stretch：高度并排铺满
 ```
+
 ```
 box：子元素设置
     mean：子元素平分空间
@@ -119,7 +143,6 @@ box：子元素设置
 ### common.css
 
 基础的css样式主要有内外边距，文字大小，链接等。具体如下
-
 
 | 外边距 | 说明 | 内边距 | 说明 | 
 |----------|--------|----------|--------|

@@ -2,11 +2,13 @@
 import { App } from 'vue'
 import { BinUIComponent, BinUIComponentSize } from './component'
 
+export { BAffix } from './affix'
 export { BAnchor } from './anchor'
 export { BAnchorLink } from './anchor-link'
 export { BBackTop } from './back-top'
 export { BButton } from './button'
 export { BButtonGroup } from './button-group'
+export { BCard } from './card'
 export { BCol } from './col'
 export { BDivider } from './divider'
 export { BIcon } from './icon'

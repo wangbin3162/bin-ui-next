@@ -101,6 +101,12 @@
           "path": "/backtop"
         },
         {
+          "desc": "Card 卡片",
+          "icon": "creditcard",
+          "name": "card",
+          "path": "/card"
+        },
+        {
           "desc": "Divider 分割线",
           "icon": "line",
           "name": "divider",
