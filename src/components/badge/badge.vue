@@ -7,7 +7,7 @@
         v-text="content"
         class="bin-badge__content"
         :class="[
-          'bin-badge-is-' + type,
+          {['bin-badge-is-' + type]:type},
           {
             'is-fixed': $slots.default,
             'is-dot': isDot

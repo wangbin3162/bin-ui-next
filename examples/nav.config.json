@@ -153,6 +153,13 @@
           "icon": "arrowdown",
           "name": "timeline",
           "path": "/timeline"
+        },
+        {
+          "desc": "Tag 标签",
+          "icon": "tags",
+          "name": "tag",
+          "path": "/tag",
+          "writing": true
         }
       ]
     },

@@ -1,0 +1,185 @@
+.bin-tag {
+  display: inline-block;
+  margin: 2px 4px 2px 0;
+  border: 1px solid #e8eaec;
+  color: #515a6e;
+  background: #f7f7f7;
+  font-size: 12px;
+  vertical-align: middle;
+  opacity: 1;
+  overflow: hidden;
+  padding: 0 8px;
+  height: $default-height - 2px;
+  line-height: $default-height - 4px;
+  border-radius: $border-base-radius;
+  box-sizing: border-box;
+  white-space: nowrap;
+  .b-icon-close {
+    position: relative;
+    right: -4px;
+    top: -1px;
+    cursor: pointer;
+    font-size: 14px;
+    color: $color-text-secondary;
+    &:hover {
+      color: $color-text-default;
+    }
+  }
+  &.is-checkable {
+    cursor: pointer;
+    user-select: none;
+  }
+  &.is-checkable:not(.is-checked) {
+    background: transparent !important;
+    border-color: transparent !important;
+    color: #515a6e !important;
+  }
+  &.is-dark {
+    line-height: $default-height - 2px;
+    color: #fff !important;
+    border-color: transparent !important;
+    &.is-checkable:not(.is-checked) {
+      background: transparent !important;
+      border-color: transparent !important;
+      color: #515a6e;
+    }
+  }
+
+  &.is-primary {
+    background-color: $color-primary-light6;
+    color: $color-primary;
+    border-color: $color-primary-light4;
+    &.is-dark {
+      background-color: $color-primary;
+    }
+  }
+  &.is-success {
+    background-color: $color-success-light6;
+    border-color: $color-success-light4;
+    color: $color-success;
+    &.is-dark {
+      background-color: $color-success;
+    }
+  }
+  &.is-info {
+    background-color: $color-info-light6;
+    border-color: $color-info-light4;
+    color: $color-info;
+    &.is-dark {
+      background-color: $color-info;
+    }
+  }
+  &.is-warning {
+    background-color: $color-warning-light6;
+    border-color: $color-warning-light4;
+    color: $color-warning;
+    &.is-dark {
+      background-color: $color-warning;
+    }
+  }
+  &.is-danger {
+    background-color: $color-danger-light6;
+    border-color: $color-danger-light4;
+    color: $color-danger;
+    &.is-dark {
+      background-color: $color-danger;
+    }
+  }
+  &.no-border {
+    border: none;
+    height: auto;
+  }
+  &.is-small {
+    height: $small-height - 2px;
+    line-height: $small-height - 4px;
+  }
+  &.is-mini {
+    height: $mini-height - 2px;
+    line-height: $mini-height - 4px;
+    font-size: 12px;
+  }
+  .bin-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    margin-right: 5px;
+    border-radius: 50%;
+    background: $border-color-base;
+    position: relative;
+    top: 0;
+  }
+
+  // 多色
+  &.is-magenta {
+    background: #fff0f6;
+    border-color: #ffadd2;
+    color: #eb2f96;
+    &.is-dark {
+      background-color: #eb2f96;
+    }
+  }
+  &.is-red {
+    background: #fff1f0;
+    border-color: #ffa39e;
+    color: #f5222d;
+    &.is-dark {
+      background-color: #f5222d;
+    }
+  }
+  &.is-volcano {
+    background: #fff2e8;
+    border-color: #ffbb96;
+    color: #fa541c;
+    &.is-dark {
+      background-color: #fa541c;
+    }
+  }
+  &.is-orange {
+    background: #fff7e6;
+    border-color: #ffd591;
+    color: #fa8c16;
+    &.is-dark {
+      background-color: #fa8c16;
+    }
+  }
+  &.is-gold {
+    background: #fffbe6;
+    border-color: #ffe58f;
+    color: #faad14;
+    &.is-dark {
+      background-color: #faad14;
+    }
+  }
+  &.is-cyan {
+    background: #e6fffb;
+    border-color: #87e8de;
+    color: #13c2c2;
+    &.is-dark {
+      background-color: #13c2c2;
+    }
+  }
+  &.is-blue {
+    background: #e6f7ff;
+    border-color: #91d5ff;
+    color: #1890ff;
+    &.is-dark {
+      background-color: #1890ff;
+    }
+  }
+  &.is-geekblue {
+    background: #f0f5ff;
+    border-color: #adc6ff;
+    color: #2f54eb;
+    &.is-dark {
+      background-color: #2f54eb;
+    }
+  }
+  &.is-purple {
+    background: #f9f0ff;
+    border-color: #d3adf7;
+    color: #722ed1;
+    &.is-dark {
+      background-color: #722ed1;
+    }
+  }
+}

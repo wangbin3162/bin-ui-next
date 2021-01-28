@@ -19,6 +19,7 @@ import BIcon from './components/icon'
 import BRow from './components/row'
 import BScrollbar from './components/scrollbar'
 import BSplit from './components/split'
+import BTag from './components/tag'
 import BTimeline from './components/timeline'
 import BTimelineItem from './components/timeline-item'
 
@@ -51,6 +52,7 @@ const components = [
   BRow,
   BScrollbar,
   BSplit,
+  BTag,
   BTimeline,
   BTimelineItem,
 ]
@@ -102,6 +104,7 @@ export default {
   BRow,
   BScrollbar,
   BSplit,
+  BTag,
   BTimeline,
   BTimelineItem,
 }
