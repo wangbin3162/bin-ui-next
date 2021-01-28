@@ -1,5 +1,15 @@
 ## 基础
 
+<div class="global-anchor">
+  <b-anchor :scroll-offset="100">
+    <b-anchor-link href="#ji-chu-api" title="基础api"></b-anchor-link>
+    <b-anchor-link href="#flex.cssshi-yong" title="flex.css使用"></b-anchor-link>
+    <b-anchor-link href="#flexshu-xing-da-quan" title="flex属性大全"></b-anchor-link>
+    <b-anchor-link href="#flex-boxshu-xing-shuo-ming" title="flex-box属性说明"></b-anchor-link>
+    <b-anchor-link href="#common.css" title="common.css"></b-anchor-link>
+  </b-anchor>
+</div>
+
 ### 基础api
 
 暴露了以下几个api用于实现常用功能，log print在专门模块中说明

@@ -1,5 +1,20 @@
 ## Button 按钮
 
+
+<div class="global-anchor">
+  <b-anchor :scroll-offset="100">
+    <b-anchor-link href="#ji-chu-yong-fa" title="基础用法"></b-anchor-link>
+    <b-anchor-link href="#dai-tu-biao-de-an-niu" title="带图标"></b-anchor-link>
+    <b-anchor-link href="#jin-yong-an-niu" title="禁用按钮"></b-anchor-link>
+    <b-anchor-link href="#wen-zi-an-niu" title="文字按钮"></b-anchor-link>
+    <b-anchor-link href="#an-niu-zu" title="按钮组"></b-anchor-link>
+    <b-anchor-link href="#bu-tong-chi-cun" title="不同尺寸"></b-anchor-link>
+    <b-anchor-link href="#jia-zai-zhuang-tai" title="加载状态"></b-anchor-link>
+    <b-anchor-link href="#dian-ji-dong-hua" title="点击动画"></b-anchor-link>
+    <b-anchor-link href="#props" title="Props"></b-anchor-link>
+  </b-anchor>
+</div>
+
 常用的操作按钮。
 
 ### 基础用法
@@ -289,9 +304,7 @@ Button 组件提供除了默认值以外的三种尺寸，可以在不同场景�
 
 :::
 
-### API
-
-### Attributes
+### Props
 
 | 参数 | 说明 | 类型 | 可选值 | 默认值 |
 | --- | --- | --- | --- | --- |

@@ -4,7 +4,7 @@
     <b-anchor :scroll-offset="100">
         <b-anchor-link href="#ji-chu-yong-fa" title="基础用法"></b-anchor-link>
         <b-anchor-link href="#gu-ding-wei-zhi" title="固定位置"></b-anchor-link>
-        <b-anchor-link href="#attributes" title="Attributes"></b-anchor-link>
+        <b-anchor-link href="#props" title="Props"></b-anchor-link>
         <b-anchor-link href="#events" title="Events"></b-anchor-link>
         <b-anchor-link href="#slot" title="Slot"></b-anchor-link>
     </b-anchor>
@@ -20,7 +20,7 @@
 
 <template>
   <b-affix :offset="80">
-    <b-button type="primary">固定在顶部80的位置</b-b>
+    <b-button type="primary">固定在顶部80的位置</b-button>
   </b-affix>
 </template>
 ```
@@ -37,14 +37,14 @@
 
 <template>
   <b-affix :offset="20" position="bottom">
-    <b-button type="primary">固定在底部20的位置</b-b>
+    <b-button type="primary">固定在底部20的位置</b-button>
   </b-affix>
 </template>
 ```
 
 :::
 
-### Attributes
+### Props
 
 | 参数      | 说明    | 类型      | 可选值       | 默认值   |
 |---------- |-------- |---------- |-------------  |-------- |

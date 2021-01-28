@@ -1,17 +1,26 @@
 ## Bin-UI-Next
 
+<div class="global-anchor">
+    <b-anchor :scroll-offset="100">
+        <b-anchor-link href="#te-xing" title="特性"></b-anchor-link>
+        <b-anchor-link href="#zhi-chi-huan-jing" title="支持环境"></b-anchor-link>
+        <b-anchor-link href="#ban-ben" title="版本"></b-anchor-link>
+        <b-anchor-link href="#xiang-guan-lian-jie" title="相关链接"></b-anchor-link>
+        <b-anchor-link href="#an-zhuang" title="安装"></b-anchor-link>
+    </b-anchor>
+</div>
+
 bin-ui-next 是bin-ui的vue3升级版，目前组件源码正在疯狂重构中...
 
 整体api设计仍然基于原有库，只会在极个别组件进行重构优化，整体组件依赖vue3，使用typescript编写代码
 
-
 ### 特性
 
-- 💪  基于 Vue 3.0 Composition API
-- 🔥  Written in TypeScript
-- 🌈  最新图标基于阿里iconfont ant-design 官方图标精简版
-- 🗑  移除了部分冗余代码
-- ⌨️  部分组件代码进行重构优化
+- 💪 基于 Vue 3.0 Composition API
+- 🔥 Written in TypeScript
+- 🌈 最新图标基于阿里iconfont ant-design 官方图标精简版
+- 🗑 移除了部分冗余代码
+- ⌨️ 部分组件代码进行重构优化
 
 ### 支持环境
 
@@ -26,7 +35,7 @@ bin-ui-next 是bin-ui的vue3升级版，目前组件源码正在疯狂重构中.
 
 [element-plus](https://element-plus.gitee.io/#/zh-CN/component/installation)
 
-[ant-design-vue](https://2x.antdv.com/docs/vue/introduce-cn/) 
+[ant-design-vue](https://2x.antdv.com/docs/vue/introduce-cn/)
 
 ### 安装
 

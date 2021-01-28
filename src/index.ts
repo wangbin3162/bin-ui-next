@@ -1,18 +1,18 @@
 import type { App } from 'vue'
-import BIcon from './components/icon'
-import BButton from './components/button'
-import BButtonGroup from './components/button-group'
-import BRow from './components/row'
-import BCol from './components/col'
-import BCollapseTransition from './components/collapse-transition'
-import BTimeline from './components/timeline'
-import BTimelineItem from './components/timeline-item'
 import BAffix from './components/affix'
 import BAnchor from './components/anchor'
 import BAnchorLink from './components/anchor-link'
-import BScrollbar from './components/scrollbar'
 import BBackTop from './components/back-top'
+import BButton from './components/button'
+import BButtonGroup from './components/button-group'
+import BCol from './components/col'
+import BCollapseTransition from './components/collapse-transition'
 import BDivider from './components/divider'
+import BIcon from './components/icon'
+import BScrollbar from './components/scrollbar'
+import BRow from './components/row'
+import BTimeline from './components/timeline'
+import BTimelineItem from './components/timeline-item'
 
 import * as util from './utils/util'
 import log from './utils/log'
@@ -23,8 +23,20 @@ import { ClickAnimation, ClickOutside, Waves } from './directives'
 import config from '../package.json'
 
 const components = [
-  BIcon, BButton, BButtonGroup, BCollapseTransition, BRow, BCol, BAffix,
-  BTimeline, BTimelineItem, BScrollbar, BBackTop, BDivider, BAnchor, BAnchorLink,
+  BAffix,
+  BAnchor,
+  BAnchorLink,
+  BBackTop,
+  BButton,
+  BButtonGroup,
+  BCol,
+  BCollapseTransition,
+  BDivider,
+  BIcon,
+  BRow,
+  BScrollbar,
+  BTimeline,
+  BTimelineItem,
 ]
 
 const install = function(app: App) {
@@ -53,6 +65,19 @@ const install = function(app: App) {
 }
 
 export default {
-  install, BIcon, BButton, BButtonGroup, BCollapseTransition, BRow, BCol, BAffix,
-  BTimeline, BTimelineItem, BScrollbar, BBackTop, BDivider, BAnchor, BAnchorLink,
+  install,
+  BAffix,
+  BAnchor,
+  BAnchorLink,
+  BBackTop,
+  BButton,
+  BButtonGroup,
+  BCol,
+  BCollapseTransition,
+  BDivider,
+  BIcon,
+  BRow,
+  BScrollbar,
+  BTimeline,
+  BTimelineItem,
 }

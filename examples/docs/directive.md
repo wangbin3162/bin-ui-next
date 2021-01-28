@@ -1,5 +1,13 @@
 ## 自定义指令
 
+<div class="global-anchor">
+  <b-anchor :scroll-offset="100">
+    <b-anchor-link href="#dian-ji-dong-hua-zhi-ling" title="点击动画指令"></b-anchor-link>
+    <b-anchor-link href="#shui-bo-wen-zhi-ling" title="水波纹指令"></b-anchor-link>
+    <b-anchor-link href="#clickoutside" title="clickoutside"></b-anchor-link>
+  </b-anchor>
+</div>
+
 ### 点击动画指令
 
 在标签中追加`v-click-animation`指令增加点击动画指令，波纹颜色根据border或background颜色创建

@@ -1,8 +1,16 @@
 ## 快速上手
 
+<div class="global-anchor">
+    <b-anchor :scroll-offset="100">
+        <b-anchor-link href="#yin-ru" title="引入"></b-anchor-link>
+        <b-anchor-link href="#wan-zheng-yin-ru" title="完整引入"></b-anchor-link>
+        <b-anchor-link href="#an-xu-yin-ru" title="按需引入"></b-anchor-link>
+    </b-anchor>
+</div>
+
 本章节介绍如何在项目中使用vue3版本的bin-ui-next
 
-### 引入 bin-ui-next
+### 引入
 
 你可以引入整个 bin-ui-next，或是根据需要仅引入部分组件。我们先介绍如何引入完整的 bin-ui。
 
@@ -42,8 +50,8 @@ module.exports = {
   ],
   plugins: [
     ["import", {
-     "libraryName": "bin-ui-next",
-     "libraryDirectory": "src/components"
+      "libraryName": "bin-ui-next",
+      "libraryDirectory": "src/components"
     }]
   ]
 }

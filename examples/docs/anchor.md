@@ -6,7 +6,7 @@
     <b-anchor-link href="#zi-ding-yi-tu-biao" title="自定义图标"></b-anchor-link>
     <b-anchor-link href="#zi-ding-yi-yan-se" title="自定义颜色"></b-anchor-link>
     <b-anchor-link href="#zhi-ding-gun-dong-rong-qi" title="指定滚动容器"></b-anchor-link>
-    <b-anchor-link href="#attributes" title="Attributes"></b-anchor-link>
+    <b-anchor-link href="#props" title="Props"></b-anchor-link>
     <b-anchor-link href="#events" title="Events"></b-anchor-link>
     <b-anchor-link href="#anchorlink-props" title="AnchorLink Props"></b-anchor-link>
   </b-anchor>
@@ -29,7 +29,7 @@
           <b-anchor-link href="#zi-ding-yi-tu-biao" title="自定义图标"></b-anchor-link>
           <b-anchor-link href="#zi-ding-yi-yan-se" title="自定义颜色"></b-anchor-link>
           <b-anchor-link href="#zhi-ding-gun-dong-rong-qi" title="指定滚动容器"></b-anchor-link>
-          <b-anchor-link href="#attributes" title="Attributes"></b-anchor-link>
+          <b-anchor-link href="#props" title="Props"></b-anchor-link>
           <b-anchor-link href="#events" title="Events"></b-anchor-link>
           <b-anchor-link href="#anchorlink-props" title="AnchorLink Props"></b-anchor-link>
         </b-anchor>
@@ -57,7 +57,7 @@
         <b-anchor-link href="#zi-ding-yi-tu-biao" title="自定义图标"></b-anchor-link>
         <b-anchor-link href="#zi-ding-yi-yan-se" title="自定义颜色"></b-anchor-link>
         <b-anchor-link href="#zhi-ding-gun-dong-rong-qi" title="指定滚动容器"></b-anchor-link>
-        <b-anchor-link href="#attributes" title="Attributes"></b-anchor-link>
+        <b-anchor-link href="#props" title="Props"></b-anchor-link>
         <b-anchor-link href="#events" title="Events"></b-anchor-link>
         <b-anchor-link href="#anchorlink-props" title="AnchorLink Props"></b-anchor-link>
       </b-anchor>
@@ -68,7 +68,7 @@
         <b-anchor-link href="#zi-ding-yi-tu-biao" title="自定义图标"></b-anchor-link>
         <b-anchor-link href="#zi-ding-yi-yan-se" title="自定义颜色"></b-anchor-link>
         <b-anchor-link href="#zhi-ding-gun-dong-rong-qi" title="指定滚动容器"></b-anchor-link>
-        <b-anchor-link href="#attributes" title="Attributes"></b-anchor-link>
+        <b-anchor-link href="#props" title="Props"></b-anchor-link>
         <b-anchor-link href="#events" title="Events"></b-anchor-link>
         <b-anchor-link href="#anchorlink-props" title="AnchorLink Props"></b-anchor-link>
       </b-anchor>
@@ -95,7 +95,7 @@
         <b-anchor-link href="#zi-ding-yi-tu-biao" title="自定义图标"></b-anchor-link>
         <b-anchor-link href="#zi-ding-yi-yan-se" title="自定义颜色"></b-anchor-link>
         <b-anchor-link href="#zhi-ding-gun-dong-rong-qi" title="指定滚动容器"></b-anchor-link>
-        <b-anchor-link href="#attributes" title="Attributes"></b-anchor-link>
+        <b-anchor-link href="#props" title="Props"></b-anchor-link>
         <b-anchor-link href="#events" title="Events"></b-anchor-link>
         <b-anchor-link href="#anchorlink-props" title="AnchorLink Props"></b-anchor-link>
       </b-anchor>
@@ -106,7 +106,7 @@
         <b-anchor-link href="#zi-ding-yi-tu-biao" title="自定义图标"></b-anchor-link>
         <b-anchor-link href="#zi-ding-yi-yan-se" title="自定义颜色"></b-anchor-link>
         <b-anchor-link href="#zhi-ding-gun-dong-rong-qi" title="指定滚动容器"></b-anchor-link>
-        <b-anchor-link href="#attributes" title="Attributes"></b-anchor-link>
+        <b-anchor-link href="#props" title="Props"></b-anchor-link>
         <b-anchor-link href="#events" title="Events"></b-anchor-link>
         <b-anchor-link href="#anchorlink-props" title="AnchorLink Props"></b-anchor-link>
       </b-anchor>
@@ -148,7 +148,7 @@
 
 :::
 
-### Attributes
+### Props
 
 | 参数      | 说明    | 类型      | 可选值       | 默认值   |
 |---------- |-------- |---------- |-------------  |-------- |
@@ -167,7 +167,7 @@
 |---------- |-------- |---------- |
 | select    | 点击锚点时触发，返回链接   | href  |
 
-### AnchorLink props
+### AnchorLink Props
 
 | 参数      | 说明    | 类型      | 可选值       | 默认值   |
 |---------- |-------- |---------- |-------------  |-------- |
