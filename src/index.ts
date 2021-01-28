@@ -13,8 +13,9 @@ import BCollapseTransition from './components/collapse-transition'
 import BDivider from './components/divider'
 import BEmpty from './components/empty'
 import BIcon from './components/icon'
-import BScrollbar from './components/scrollbar'
 import BRow from './components/row'
+import BScrollbar from './components/scrollbar'
+import BSplit from './components/split'
 import BTimeline from './components/timeline'
 import BTimelineItem from './components/timeline-item'
 
@@ -43,6 +44,7 @@ const components = [
   BIcon,
   BRow,
   BScrollbar,
+  BSplit,
   BTimeline,
   BTimelineItem,
 ]
@@ -90,6 +92,7 @@ export default {
   BIcon,
   BRow,
   BScrollbar,
+  BSplit,
   BTimeline,
   BTimelineItem,
 }

@@ -16,6 +16,7 @@ export { BDivider } from './divider'
 export { BIcon } from './icon'
 export { BRow } from './row'
 export { BScrollbar } from './scrollbar'
+export { BSplit } from './split'
 export { BTimeline } from './timeline'
 export { BTimelineItem } from './timeline-item'
 

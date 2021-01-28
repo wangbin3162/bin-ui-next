@@ -137,6 +137,18 @@
           "path": "/badge"
         },
         {
+          "desc": "Collapse 折叠面板",
+          "icon": "database",
+          "name": "collapse",
+          "path": "/collapse"
+        },
+        {
+          "desc": "Split 分割面板",
+          "icon": "block",
+          "name": "split",
+          "path": "/split"
+        },
+        {
           "desc": "Timeline 时间线",
           "icon": "arrowdown",
           "name": "timeline",
