@@ -16,6 +16,7 @@ import BCollapseTransition from './components/collapse-transition'
 import BDivider from './components/divider'
 import BEmpty from './components/empty'
 import BIcon from './components/icon'
+import BLoading from './components/loading'
 import BRow from './components/row'
 import BScrollbar from './components/scrollbar'
 import BSplit from './components/split'
@@ -49,6 +50,7 @@ const components = [
   BDivider,
   BEmpty,
   BIcon,
+  BLoading,
   BRow,
   BScrollbar,
   BSplit,
@@ -101,6 +103,7 @@ export default {
   BDivider,
   BEmpty,
   BIcon,
+  BLoading,
   BRow,
   BScrollbar,
   BSplit,
