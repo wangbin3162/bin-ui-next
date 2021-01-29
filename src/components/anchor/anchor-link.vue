@@ -9,15 +9,23 @@
 <script lang="ts">
 import { defineComponent, inject, computed } from 'vue'
 import type { Ref } from 'vue'
-import type { IAnchorProps } from './anchor'
+import type { IAnchorProps } from './anchor.vue'
 
-interface IAnchorLink {
-  href: string
-  title: string
-  scrollOffset: number
+export interface IAnchorLink {
+  href?: string
+  title?: string
+  scrollOffset?: number
 }
 
-interface IAnchorInject {
+export interface IAnchorData {
+  inkTop: number
+  currentLink: string
+  currentId: string
+  titlesOffsetArr: [number],
+}
+
+export interface IAnchorInject {
+  data: IAnchorData
   props: IAnchorProps
   linksRef: Ref<IAnchorLink[]>
 }
@@ -35,7 +43,7 @@ export default defineComponent({
   setup(props) {
     const prefix = 'bin-anchor-link'
     const parent: IAnchorInject = inject('BAnchor')
-    const selectLink = inject('chooseLink')
+    const selectLink: any = inject('chooseLink')
 
     const anchorLinkClasses = computed(() => {
       return [
@@ -46,7 +54,7 @@ export default defineComponent({
 
     const activeColor = computed(() => {
       return {
-        color: parent.data.currentLink === props.href ? parent.props.activeColorStr : null,
+        color: parent.data.currentLink === props.href ? parent.props.activeColor : null,
       }
     })
 

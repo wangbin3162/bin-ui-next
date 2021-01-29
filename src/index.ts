@@ -8,6 +8,7 @@ import BBadge from './components/badge'
 import BButton from './components/button'
 import BButtonGroup from './components/button-group'
 import BCard from './components/card'
+import BCircle from './components/circle'
 import BCol from './components/col'
 import BCollapse from './components/collapse'
 import BCollapsePanel from './components/collapse-panel'
@@ -17,6 +18,7 @@ import BDivider from './components/divider'
 import BEmpty from './components/empty'
 import BIcon from './components/icon'
 import BLoading from './components/loading'
+import BProgress from './components/progress'
 import BRow from './components/row'
 import BScrollbar from './components/scrollbar'
 import BSplit from './components/split'
@@ -42,6 +44,7 @@ const components = [
   BButton,
   BButtonGroup,
   BCard,
+  BCircle,
   BCol,
   BCollapse,
   BCollapsePanel,
@@ -51,6 +54,7 @@ const components = [
   BEmpty,
   BIcon,
   BLoading,
+  BProgress,
   BRow,
   BScrollbar,
   BSplit,
@@ -95,6 +99,7 @@ export default {
   BButton,
   BButtonGroup,
   BCard,
+  BCircle,
   BCol,
   BCollapse,
   BCollapsePanel,
@@ -104,6 +109,7 @@ export default {
   BEmpty,
   BIcon,
   BLoading,
+  BProgress,
   BRow,
   BScrollbar,
   BSplit,
