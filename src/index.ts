@@ -24,6 +24,8 @@ import BProgress from './components/progress'
 import BRow from './components/row'
 import BScrollbar from './components/scrollbar'
 import BSplit from './components/split'
+import BSteps from './components/steps'
+import BStep from './components/step'
 import BTag from './components/tag'
 import BTimeline from './components/timeline'
 import BTimelineItem from './components/timeline-item'
@@ -62,6 +64,8 @@ const components = [
   BRow,
   BScrollbar,
   BSplit,
+  BSteps,
+  BStep,
   BTag,
   BTimeline,
   BTimelineItem,
@@ -119,6 +123,8 @@ export default {
   BRow,
   BScrollbar,
   BSplit,
+  BSteps,
+  BStep,
   BTag,
   BTimeline,
   BTimelineItem,

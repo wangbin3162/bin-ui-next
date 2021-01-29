@@ -148,10 +148,9 @@
         },
         {
           "desc": "Steps 步骤条",
-          "icon": "fork",
+          "icon": "arrowright",
           "name": "steps",
-          "path": "/steps",
-          "writing": true
+          "path": "/steps"
         },
         {
           "desc": "Loading 加载",
