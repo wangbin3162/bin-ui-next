@@ -124,8 +124,7 @@
           "desc": "Breadcrumb 面包屑",
           "icon": "right",
           "name": "breadcrumb",
-          "path": "/breadcrumb",
-          "writing": true
+          "path": "/breadcrumb"
         },
         {
           "desc": "BackTop 返回顶部",

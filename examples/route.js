@@ -6,7 +6,7 @@ const navConfig = require('./nav.config.json')
 
 let routes = [
   {
-    path: '/',
+    path: '',
     redirect: 'guide',
     name: 'index',
   },

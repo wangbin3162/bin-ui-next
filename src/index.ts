@@ -5,6 +5,8 @@ import BAnchor from './components/anchor'
 import BAnchorLink from './components/anchor-link'
 import BBackTop from './components/back-top'
 import BBadge from './components/badge'
+import BBreadcrumb from './components/breadcrumb'
+import BBreadcrumbItem from './components/breadcrumb-item'
 import BButton from './components/button'
 import BButtonGroup from './components/button-group'
 import BCard from './components/card'
@@ -41,6 +43,8 @@ const components = [
   BAnchorLink,
   BBackTop,
   BBadge,
+  BBreadcrumb,
+  BBreadcrumbItem,
   BButton,
   BButtonGroup,
   BCard,
@@ -96,6 +100,8 @@ export default {
   BAnchorLink,
   BBackTop,
   BBadge,
+  BBreadcrumb,
+  BBreadcrumbItem,
   BButton,
   BButtonGroup,
   BCard,
