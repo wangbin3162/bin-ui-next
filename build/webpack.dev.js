@@ -16,7 +16,7 @@ const config = {
   },
   output: {
     path: path.resolve(__dirname, '../docs'),
-    publicPath: '/',
+    publicPath: isProd ? '/bin-ui-next/' : '/',
     filename: isProd ? '[name].[hash].js' : '[name].js',
   },
   module: {

@@ -43,7 +43,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "" + ({"0":"DOCS0","1":"DOCS1","2":"DOCS10","3":"DOCS11","4":"DOCS12","5":"DOCS13","6":"DOCS14","7":"DOCS15","8":"DOCS16","9":"DOCS17","10":"DOCS18","11":"DOCS19","12":"DOCS2","13":"DOCS20","14":"DOCS21","15":"DOCS22","16":"DOCS23","17":"DOCS24","18":"DOCS25","19":"DOCS26","20":"DOCS27","21":"DOCS28","22":"DOCS29","23":"DOCS3","24":"DOCS30","25":"DOCS31","26":"DOCS32","27":"DOCS33","28":"DOCS34","29":"DOCS35","30":"DOCS36","31":"DOCS37","32":"DOCS38","33":"DOCS39","34":"DOCS4","35":"DOCS40","36":"DOCS41","37":"DOCS42","38":"DOCS43","39":"DOCS44","40":"DOCS45","41":"DOCS46","42":"DOCS47","43":"DOCS48","44":"DOCS49","45":"DOCS5","46":"DOCS50","47":"DOCS51","48":"DOCS52","49":"DOCS53","50":"DOCS54","51":"DOCS55","52":"DOCS56","53":"DOCS57","54":"DOCS58","55":"DOCS59","56":"DOCS6","57":"DOCS60","58":"DOCS7","59":"DOCS8","60":"DOCS9"}[chunkId]||chunkId) + "." + "6e89a628d0fab8ee9553" + ".js"
+/******/ 		return __webpack_require__.p + "" + ({"0":"DOCS0","1":"DOCS1","2":"DOCS10","3":"DOCS11","4":"DOCS12","5":"DOCS13","6":"DOCS14","7":"DOCS15","8":"DOCS16","9":"DOCS17","10":"DOCS18","11":"DOCS19","12":"DOCS2","13":"DOCS20","14":"DOCS21","15":"DOCS22","16":"DOCS23","17":"DOCS24","18":"DOCS25","19":"DOCS26","20":"DOCS27","21":"DOCS28","22":"DOCS29","23":"DOCS3","24":"DOCS30","25":"DOCS31","26":"DOCS32","27":"DOCS33","28":"DOCS34","29":"DOCS35","30":"DOCS36","31":"DOCS37","32":"DOCS38","33":"DOCS39","34":"DOCS4","35":"DOCS40","36":"DOCS41","37":"DOCS42","38":"DOCS43","39":"DOCS44","40":"DOCS45","41":"DOCS46","42":"DOCS47","43":"DOCS48","44":"DOCS49","45":"DOCS5","46":"DOCS50","47":"DOCS51","48":"DOCS52","49":"DOCS53","50":"DOCS54","51":"DOCS55","52":"DOCS56","53":"DOCS57","54":"DOCS58","55":"DOCS59","56":"DOCS6","57":"DOCS60","58":"DOCS7","59":"DOCS8","60":"DOCS9"}[chunkId]||chunkId) + "." + "3ce7ed2757ad61dcf104" + ".js"
 /******/ 	}
 /******/
 /******/ 	// The require function
@@ -182,7 +182,7 @@
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "/";
+/******/ 	__webpack_require__.p = "/bin-ui-next/";
 /******/
 /******/ 	// on error function for async loading
 /******/ 	__webpack_require__.oe = function(err) { console.error(err); throw err; };
