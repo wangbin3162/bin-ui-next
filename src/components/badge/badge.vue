@@ -24,13 +24,13 @@ import { defineComponent } from 'vue'
 export default defineComponent({
   name: 'BBadge',
   props: {
-    value: {},
+    value: [String, Number],
     max: Number,
     isDot: Boolean,
     hidden: Boolean,
     type: {
       type: String,
-      validator: (val) => {
+      validator: (val: string) => {
         return ['primary', 'success', 'warning', 'info', 'danger'].includes(val)
       },
     },

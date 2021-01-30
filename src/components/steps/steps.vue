@@ -21,14 +21,14 @@ export default defineComponent({
       default: 0,
     },
     status: {
-      validator: (value) => ['wait', 'process', 'finish', 'error', 'success'].includes(value),
+      validator: (value: string) => ['wait', 'process', 'finish', 'error', 'success'].includes(value),
       default: 'process',
     },
     size: {
-      validator: (value) => ['small'].includes(value),
+      validator: (value: string) => ['small'].includes(value),
     },
     direction: {
-      validator: (value) => ['horizontal', 'vertical'].includes(value),
+      validator: (value: string) => ['horizontal', 'vertical'].includes(value),
       default: 'horizontal',
     },
   },

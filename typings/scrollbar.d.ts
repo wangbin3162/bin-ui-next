@@ -7,7 +7,7 @@ interface _Scrollbar extends BinUIComponent {
   wrapClass: string | string[]
   viewClass: string | string[]
   viewStyle: string | string[]
-  noresize: boolean,
+  noresize: boolean
   tag: string
 }
 

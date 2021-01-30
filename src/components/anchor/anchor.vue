@@ -28,17 +28,6 @@ import {
 } from 'vue'
 import { off, on, scrollTop } from '../../utils/dom'
 
-export interface IAnchorProps {
-  icon: string
-  iconSize: number
-  activeColor: string
-  offsetTop: number
-  bounds: number
-  showInk: boolean
-  scrollOffset: number
-  target: string
-}
-
 export default defineComponent({
   name: 'BAnchor',
   props: {

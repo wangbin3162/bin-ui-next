@@ -5,6 +5,16 @@
 <div class="doc-update">
     <b-timeline>
       <b-timeline-item>
+        <p class="version">0.0.3</p>
+        <p class="time">2021-01-30</p>
+        <p class="content"><i>🍀</i>新增组件`message`、`notice`</p>
+        <p class="content"><i>🍀</i>新增进度条和进度环组件`progress`、`circle`</p>
+        <p class="content"><i>🍀</i>新增步骤条组件`steps`、警告组件`alert`</p>
+        <p class="content"><i>🍀</i>新增面包屑组件`breadcrumb`、loading组件`loading`</p>
+        <p class="content"><i>🍀</i>新增卡片、徽标、分割线、标签等组件`card`、`badge`、`split`、`tag`</p>
+        <p class="content"><i>🌀</i>优化部分组件和样式实现</p>
+      </b-timeline-item>
+      <b-timeline-item>
         <p class="version">0.0.2</p>
         <p class="time">2021-01-27</p>
         <p class="content"><i>🍀</i>新增栅格组件`row`、`col`</p>

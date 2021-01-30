@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, getCurrentInstance, unref } from 'vue'
+import { defineComponent, computed, getCurrentInstance, inject } from 'vue'
 
 const prefixCls = 'bin-col'
 
@@ -26,13 +26,7 @@ export default defineComponent({
     xxl: [Number, Object],
   },
   setup(props) {
-    const gutter = computed(() => {
-      let { parent } = getCurrentInstance()
-      while (parent && parent.type.name !== 'BRow') {
-        parent = parent.parent
-      }
-      return parent ? parent.props.gutter : 0
-    })
+    const gutter = inject('BRow', 0)
     const classes = computed(() => {
       const classList = [
         `${prefixCls}`,
@@ -65,10 +59,10 @@ export default defineComponent({
     })
     const styles = computed(() => {
       let style = {}
-      if (unref(gutter) !== 0) {
+      if (gutter !== 0) {
         style = {
-          paddingLeft: unref(gutter) / 2 + 'px',
-          paddingRight: unref(gutter) / 2 + 'px',
+          paddingLeft: gutter / 2 + 'px',
+          paddingRight: gutter / 2 + 'px',
         }
       }
       return style

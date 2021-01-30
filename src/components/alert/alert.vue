@@ -18,7 +18,7 @@
 </template>
 
 <script lang="ts">
-import { computed, defineComponent, onMounted, PropType, ref } from 'vue'
+import { computed, defineComponent, onMounted, ref } from 'vue'
 
 const prefixCls = 'bin-alert'
 
@@ -40,10 +40,7 @@ export default defineComponent({
   name: 'BAlert',
   props: {
     type: {
-      type: String as PropType<'success' | 'info' | 'warning' | 'error'>,
-      validator: (value) => {
-        return ['success', 'info', 'warning', 'error'].includes(value)
-      },
+      type: String,
       default: 'info',
     },
     closable: Boolean,

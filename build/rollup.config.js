@@ -29,7 +29,13 @@ const createBaseConfig = () => {
       vuePlugin({
         css: true,
       }),
-      ts(),
+      ts({
+        tsconfigOverride: {
+          compilerOptions: {
+            module: 'ES2015',
+          },
+        },
+      }),
       babel({
         exclude: 'node_modules/**',
         extensions: ['.js', '.jsx', '.vue', '.ts'],

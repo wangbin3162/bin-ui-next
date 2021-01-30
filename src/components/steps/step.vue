@@ -36,7 +36,7 @@ export default defineComponent({
   name: 'BStep',
   props: {
     status: {
-      validator: (value) => ['wait', 'process', 'finish', 'error', 'success'].includes(value),
+      validator: (value: string) => ['wait', 'process', 'finish', 'error', 'success'].includes(value),
     },
     title: {
       type: String,

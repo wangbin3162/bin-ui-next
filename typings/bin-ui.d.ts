@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { App } from 'vue'
 import { BinUIComponent, BinUIComponentSize } from './component'
-import { _CollapseWrap } from './collapse-wrap'
 
 export { BAffix } from './affix'
 export { BAlert } from './alert'

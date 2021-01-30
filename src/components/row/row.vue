@@ -5,7 +5,7 @@
 </template>
 <script lang="ts">
 
-import { defineComponent, computed, PropType } from 'vue'
+import { defineComponent, computed, PropType, provide } from 'vue'
 
 const prefixCls = 'bin-row'
 
@@ -37,6 +37,7 @@ export default defineComponent({
     className: String,
   },
   setup(props) {
+    provide('BRow', props.gutter)
     const classes = computed(() => {
       return [
         {

@@ -32,6 +32,7 @@ export default defineComponent({
     title: String,
     name: String,
     hideArrow: Boolean,
+    disabled: Boolean
   },
   setup(props) {
     const collapse = inject<CollapseProvider>('collapse')

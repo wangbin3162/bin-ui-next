@@ -23,8 +23,8 @@
 <script lang="ts">
 import { defineComponent, reactive, toRefs } from 'vue'
 
-import Resizer from './resizer'
-import Pane from './pane'
+import Resizer from './resizer.vue'
+import Pane from './pane.vue'
 
 export default defineComponent({
   name: 'BSplit',
@@ -39,8 +39,8 @@ export default defineComponent({
       default: 20,
     },
     split: {
-      validator(value) {
-        return ['vertical', 'horizontal'].indexOf(value) >= 0
+      validator: (value: string) => {
+        return ['vertical', 'horizontal'].includes(value)
       },
       default: 'vertical',
     },

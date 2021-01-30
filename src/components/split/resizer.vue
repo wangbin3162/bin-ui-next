@@ -8,7 +8,7 @@ import { defineComponent } from 'vue'
 export default defineComponent({
   props: {
     split: {
-      validator(value) {
+      validator: (value: string) => {
         return ['vertical', 'horizontal'].includes(value)
       },
       required: true,

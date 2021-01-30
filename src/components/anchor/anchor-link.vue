@@ -9,22 +9,32 @@
 <script lang="ts">
 import { defineComponent, inject, computed } from 'vue'
 import type { Ref } from 'vue'
-import type { IAnchorProps } from './anchor.vue'
 
-export interface IAnchorLink {
+interface IAnchorProps {
+  icon: string
+  iconSize: number
+  activeColor: string
+  offsetTop: number
+  bounds: number
+  showInk: boolean
+  scrollOffset: number
+  target: string
+}
+
+interface IAnchorLink {
   href?: string
   title?: string
   scrollOffset?: number
 }
 
-export interface IAnchorData {
+interface IAnchorData {
   inkTop: number
   currentLink: string
   currentId: string
   titlesOffsetArr: [number],
 }
 
-export interface IAnchorInject {
+interface IAnchorInject {
   data: IAnchorData
   props: IAnchorProps
   linksRef: Ref<IAnchorLink[]>

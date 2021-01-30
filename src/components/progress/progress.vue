@@ -40,7 +40,7 @@ export default defineComponent({
       type: Number,
       default: 0,
       required: true,
-      validator: val => val >= 0 && val <= 100,
+      validator: (val: number) => val >= 0 && val <= 100,
     },
     status: {
       type: String,
