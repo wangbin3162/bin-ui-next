@@ -1,0 +1,94 @@
+$notice-width = 335px;
+$notice-padding = 16px;
+$notice-margin-bottom = 10px;
+
+.bin-notice {
+  position: fixed;
+  width: $notice-width;
+  padding: 16px 24px;
+  border-radius: $border-base-radius;
+  box-sizing: border-box;
+  background-color: $color-white;
+  box-shadow: 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
+  transition: opacity .3s, transform .3s, left .3s, right .3s, top .4s, bottom .3s;
+  overflow: hidden;
+  z-index: 9999;
+  &.right {
+    right: 24px;
+  }
+
+  &.left {
+    left: 24px;
+  }
+
+  .b-iconfont.b-icon-close {
+    position: absolute;
+    top: 18px;
+    right: 15px;
+    cursor: pointer;
+    color: $color-text-default;
+    font-size: 16px;
+    &:hover {
+      color: $color-text-primary;
+    }
+  }
+
+  .bin-notice__title {
+    display: inline-block;
+    color: $color-text-primary;
+    font-size: 16px;
+    line-height: 24px;
+    padding-right: 24px;
+  }
+  .bin-notice__content {
+    font-size: 14px;
+    margin-top: 6px;
+    line-height: 24px;
+    color: $color-text-default;
+    text-align: justify;
+  }
+  .bin-notice__group.is-with-icon {
+    margin-left: 40px;
+  }
+  .bin-notice__icon {
+    position: absolute;
+    top: 24;
+    font-size: 24px;
+    &.is-success {
+      color: $color-success;
+    }
+    &.is-info {
+      color: $color-primary;
+    }
+    &.is-warning {
+      color: $color-warning;
+    }
+    &.is-error {
+      color: $color-danger;
+    }
+  }
+
+}
+
+.bin-notice-fade-enter-from {
+  &.right {
+    right: 0;
+    transform: translateX(100%);
+  }
+
+  &.left {
+    left: 0;
+    transform: translateX(-100%);
+  }
+}
+
+.bin-notice-fade-leave-to {
+  opacity: 0;
+  &.right {
+    transform: translateX(100%);
+  }
+
+  &.left {
+    transform: translateX(-100%);
+  }
+}

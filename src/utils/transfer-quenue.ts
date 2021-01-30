@@ -1,7 +1,7 @@
 let transferIndex = 0
 
 function transferIncrease() {
-  transferIndex++
+  return ++transferIndex
 }
 
-export { transferIndex, transferIncrease }
+export { transferIncrease }

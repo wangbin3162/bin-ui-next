@@ -29,6 +29,8 @@ import BStep from './components/step'
 import BTag from './components/tag'
 import BTimeline from './components/timeline'
 import BTimelineItem from './components/timeline-item'
+import Message from './components/message'
+import Notice from './components/notice'
 
 import * as util from './utils/util'
 import log from './utils/log'
@@ -70,10 +72,18 @@ const components = [
   BTimeline,
   BTimelineItem,
 ]
+const plugins = [
+  Message,
+  Notice,
+]
 
 const install = function(app: App) {
   components.forEach(component => {
     app.use(component)
+  })
+
+  plugins.forEach(plugin => {
+    app.use(plugin as any)
   })
   // 注册全局指令
   app.directive('Waves', Waves)
@@ -128,4 +138,6 @@ export default {
   BTag,
   BTimeline,
   BTimelineItem,
+  Message,
+  Notice,
 }

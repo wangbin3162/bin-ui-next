@@ -363,8 +363,7 @@
           "desc": "Notice 通知",
           "icon": "notification",
           "name": "notice",
-          "path": "/notice",
-          "writing": true
+          "path": "/notice"
         },
         {
           "desc": "MessageBox 弹框",
