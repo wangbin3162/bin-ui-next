@@ -356,8 +356,7 @@
           "desc": "Message 提示",
           "icon": "message",
           "name": "message",
-          "path": "/message",
-          "writing": true
+          "path": "/message"
         },
         {
           "desc": "Notice 通知",

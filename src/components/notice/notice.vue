@@ -53,7 +53,7 @@ export default defineComponent({
   props: {
     customClass: { type: String, default: '' },
     useHTML: { type: Boolean, default: false },
-    duration: { type: Number, default: 4500 },
+    duration: { type: Number, default: 4.5 },
     iconClass: { type: String, default: '' },
     id: { type: String, default: '' },
     message: {
@@ -97,7 +97,7 @@ export default defineComponent({
     const noticeStyles = computed(() => {
       return {
         [verticalProperty.value]: `${props.offset}px`,
-        // zIndex: props.zIndex,
+        zIndex: props.zIndex,
       }
     })
 
@@ -129,7 +129,7 @@ export default defineComponent({
         if (!this.closed) {
           this.close()
         }
-      }, this.duration)
+      }, this.duration * 1000)
     }
     this.visible = true
     on(document, 'keydown', this.keydown)

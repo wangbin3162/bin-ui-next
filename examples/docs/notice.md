@@ -202,3 +202,4 @@ Notice.error(options)
 | showClose     | 是否显示关闭按钮 | Boolean	 |  true  |
 | useHTML     | 是否将message转换成HTML片段插入，此操作需谨慎 | Boolean	 |  false  |
 | offset     | 偏移量 | Number	 |  —   |
+| zIndex     | 层级，默认2000以后追加 | Number	 |  —   |

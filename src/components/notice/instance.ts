@@ -2,8 +2,7 @@ import { createVNode, render, nextTick, isVNode } from 'vue'
 import NoticeConstructor from './notice.vue'
 import type { INoticeOptions, INotice, NoticeQueue, NoticeVM } from './types'
 import { transferIncrease } from '../../utils/transfer-quenue'
-
-const isServer = typeof window === 'undefined'
+import isServer from '../../utils/isServer'
 
 let vm: NoticeVM
 const notifications: NoticeQueue = []
@@ -24,18 +23,18 @@ const Notice: INotice = function(options = {}) {
   const id = 'notification_' + seed++
   const userOnClose = options.onClose
   options = {
+    offset: verticalOffset,
+    id,
     useHTML: false,
-    duration: 4500,
+    duration: 4.5,
     position: 'top-right',
     showClose: true,
+    zIndex: 2000 + transferIncrease(),
     // default options end
     ...options,
     onClose: () => {
       close(id, userOnClose)
     },
-    offset: verticalOffset,
-    id,
-    zIndex: transferIncrease(),
   }
 
   const container = document.createElement('div')
@@ -74,13 +73,9 @@ const Notice: INotice = function(options = {}) {
     },
   })
 })
-console.log(Notice)
 
-export function close(
-  id: string,
-  // eslint-disable-next-line no-unused-vars
-  userOnClose?: (vm: NoticeVM) => void,
-): void {
+// eslint-disable-next-line no-unused-vars
+export function close(id: string, userOnClose?: (vm: NoticeVM) => void): void {
   const idx = notifications.findIndex(({ vm }) => {
     const { id: _id } = vm.component.props
     return id === _id
