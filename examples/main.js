@@ -20,7 +20,7 @@ import icon from '../src/components/icon/iconfont.json'
 const icons = icon.glyphs.map(i => i.font_class)
 
 const app = createApp(App)
-
+app.config.productionTip = false
 app.config.globalProperties.$icon = icons
 app.component('DemoBlock', DemoBlock)
 app.component('MainHeader', MainHeader)
