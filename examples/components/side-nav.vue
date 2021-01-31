@@ -12,7 +12,9 @@
             <router-link :to="{name: item.name}" :class="$route.name===item.name ? 'active' : ''"
                          class="slid-nav-component">
               <i :class="['b-iconfont','b-icon-'+item.icon]" v-if="item.icon"></i>
-              <b-badge :is-dot="item.writing"><span>{{ item.desc }}</span></b-badge>
+              <div style="position: relative;">{{ item.desc }}
+                <b-icon class="writing-icon" name="Field-time" v-if="item.writing"></b-icon>
+              </div>
             </router-link>
           </div>
         </div>
@@ -24,10 +26,10 @@
 <script>
 import navConf from '../nav.config.json'
 import BScrollbar from '../../src/components/scrollbar/scrollbar'
-import BBadge from '../../src/components/badge/badge'
+import BIcon from '../../src/components/icon/icon'
 
 export default {
-  components: { BBadge, BScrollbar },
+  components: { BIcon, BScrollbar },
   data() {
     return {
       data: navConf,
@@ -99,9 +101,13 @@ export default {
         top: 1px;
         margin-right: 8px;
       }
-      .bin-badge__content.is-dot {
-        right: 0;
-        top: 3px;
+      .writing-icon {
+        position absolute;
+        right: -14px;
+        top: -4px;
+        font-size: 12px;
+        color: red;
+        margin: 0;
       }
     }
     .active {

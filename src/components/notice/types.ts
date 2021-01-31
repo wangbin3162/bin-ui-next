@@ -6,7 +6,7 @@ export interface INoticeHandle {
 }
 
 export type MessageType = 'success' | 'warning' | 'info' | 'error' | ''
-export type TypedNoticeParams<T extends MessageType> = { type: T; } | Omit<INoticeOptions, 'type'>
+export type TypedNoticeParams<T extends MessageType> = { type: T; } | Omit<INoticeOptions, 'type'> | string
 export type NoticeParams = INoticeOptions
 
 export interface INotice {
