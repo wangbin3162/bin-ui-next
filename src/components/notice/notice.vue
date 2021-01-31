@@ -124,13 +124,7 @@ export default defineComponent({
     },
   },
   mounted() {
-    if (this.duration > 0) {
-      this.timer = setTimeout(() => {
-        if (!this.closed) {
-          this.close()
-        }
-      }, this.duration * 1000)
-    }
+    this.startTimer()
     this.visible = true
     on(document, 'keydown', this.keydown)
   },
@@ -150,7 +144,7 @@ export default defineComponent({
           if (!this.closed) {
             this.close()
           }
-        }, this.duration)
+        }, this.duration * 1000)
       }
     },
     // clear timer
