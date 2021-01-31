@@ -29,8 +29,8 @@ import BStep from './components/step'
 import BTag from './components/tag'
 import BTimeline from './components/timeline'
 import BTimelineItem from './components/timeline-item'
-import BMessage from './components/message'
-import BNotice from './components/notice'
+import Message from './components/message'
+import Notice from './components/notice'
 
 import * as util from './utils/util'
 import log from './utils/log'
@@ -73,8 +73,8 @@ const components = [
   BTimelineItem,
 ]
 const plugins = [
-  BMessage,
-  BNotice,
+  Message,
+  Notice,
 ]
 
 const install = function(app: App) {
@@ -137,8 +137,8 @@ export {
   BTag,
   BTimeline,
   BTimelineItem,
-  BMessage,
-  BNotice,
+  Message,
+  Notice,
 }
 export default {
   install,

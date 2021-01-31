@@ -196,7 +196,7 @@ Notice.error(options)
 |---------- |-------- |---------- |---------|
 | title     |  通知提醒的标题   | String  | —  |
 | message     | 通知提醒的内容，为空或不填时，自动应用仅标题模式下的样式   | String  | —  |
-| duration     | 自动关闭的延时，单位毫秒，不关闭可以写 0 | Number | 4500  |
+| duration     | 自动关闭的延时，单位秒，不关闭可以写 0 | Number | 4.5  |
 | position     | 弹出位置 可选top-right 、top-left、bottom-right、bottom-left| String | top-right  |
 | onClose     | 关闭时的回调 | Function	 |  —  |
 | showClose     | 是否显示关闭按钮 | Boolean	 |  true  |

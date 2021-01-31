@@ -107,7 +107,7 @@ Message.error(options)
 | 函数      | 说明    |  类型      | 默认值      |
 |---------- |-------- |---------- |---------|
 | message     | 通知提醒的内容，为空或不填时，自动应用仅标题模式下的样式   | String  | —  |
-| duration     | 自动关闭的延时，单位毫秒，不关闭可以写 0 | Number | 4500  |
+| duration     | 自动关闭的延时，单位秒，不关闭可以写 0 | Number | 3  |
 | onClose     | 关闭时的回调 | Function	 |  —  |
 | showClose     | 是否显示关闭按钮 | Boolean	 |  true  |
 | useHTML     | 是否将message转换成HTML片段插入，此操作需谨慎 | Boolean	 |  false  |

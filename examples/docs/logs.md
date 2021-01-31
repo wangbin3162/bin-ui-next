@@ -5,6 +5,17 @@
 <div class="doc-update">
     <b-timeline>
       <b-timeline-item>
+        <p class="version">0.1.0</p>
+        <p class="time">2021-01-30</p>
+        <p class="content"><i>🍀</i>正式发布第一版编译文件</p>
+        <p class="content"><i>🍀</i>正式更新文档版本</p>
+      </b-timeline-item>
+      <b-timeline-item>
+        <p class="version">0.0.4 ~ 0.0.11</p>
+        <p class="time">2021-01-31</p>
+        <p class="content"><i>🐞</i>主要优化调试打包部署声明文件以及代码优化</p>
+      </b-timeline-item>
+      <b-timeline-item>
         <p class="version">0.0.3</p>
         <p class="time">2021-01-30</p>
         <p class="content"><i>🍀</i>新增组件`message`、`notice`</p>

@@ -1,6 +1,6 @@
 import { createVNode, isVNode, nextTick, render } from 'vue'
 import NoticeConstructor from './notice.vue'
-import type { INotice, INoticeOptions, NoticeQueue, NoticeVM, INoticeHandle } from './types'
+import type { INotice, INoticeOptions, NoticeQueue, NoticeVM, INoticeHandle, NoticeParams } from './types'
 import { transferIncrease } from '../../utils/transfer-quenue'
 import isServer from '../../utils/isServer'
 
@@ -9,7 +9,7 @@ const notifications: NoticeQueue = []
 let seed = 1
 
 const Notice: INotice = function(
-  options: INoticeOptions = {} as INoticeOptions,
+  options: NoticeParams = {} as NoticeParams,
 ): INoticeHandle {
   if (isServer) return
   const position = options.position || 'top-right'
@@ -60,7 +60,7 @@ const Notice: INotice = function(
   return {
     close: options.onClose,
   }
-};
+} as any;
 
 (['success', 'warning', 'info', 'error'] as const).forEach(type => {
   Object.assign(Notice, {

@@ -1,11 +1,24 @@
+/* eslint-disable no-unused-vars */
 import type { VNode } from 'vue'
 
 export interface INoticeHandle {
   close: () => void
 }
 
-// eslint-disable-next-line no-unused-vars
-export type INotice = (options?: INoticeOptions) => INoticeHandle
+export type MessageType = 'success' | 'warning' | 'info' | 'error' | ''
+export type TypedNoticeParams<T extends MessageType> = { type: T; } | Omit<INoticeOptions, 'type'>
+export type NoticeParams = INoticeOptions
+
+export interface INotice {
+  (options?: INoticeOptions): INoticeHandle
+
+  success: (options?: TypedNoticeParams<'success'>) => INoticeHandle
+  warning: (options?: TypedNoticeParams<'warning'>) => INoticeHandle
+  info: (options?: TypedNoticeParams<'info'>) => INoticeHandle
+  error: (options?: TypedNoticeParams<'error'>) => INoticeHandle
+
+  closeAll(): void
+}
 
 export type INoticeOptions = {
   customClass?: string
