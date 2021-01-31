@@ -106,8 +106,7 @@ const install = function(app: App) {
   return app
 }
 
-export default {
-  install,
+export {
   BAffix,
   BAlert,
   BAnchor,
@@ -140,4 +139,7 @@ export default {
   BTimelineItem,
   Message,
   Notice,
+}
+export default {
+  install,
 }

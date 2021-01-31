@@ -37,7 +37,6 @@ export interface IMessage {
   closeAll(): void
 }
 
-
 export type MessageVM = VNode
 
 type MessageQueueItem = {
@@ -46,3 +45,10 @@ type MessageQueueItem = {
 }
 
 export type MessageQueue = Array<MessageQueueItem>
+
+declare module '@vue/runtime-core' {
+  export interface ComponentCustomProperties {
+    /** Used to show feedback after an activity. The difference with Notification is that the latter is often used to show a system level passive notification. */
+    $message: IMessage
+  }
+}

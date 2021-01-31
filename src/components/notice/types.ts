@@ -1,4 +1,5 @@
 import type { VNode } from 'vue'
+import Notice from './instance'
 
 export interface INoticeHandle {
   close: () => void
@@ -30,5 +31,10 @@ type NoticeQueueItem = {
   vm: NoticeVM
   $el: HTMLElement
 }
-
+declare module '@vue/runtime-core' {
+  export interface ComponentCustomProperties {
+    /** Displays a global notification message at the upper right corner of the page */
+    $notify: INotice
+  }
+}
 export type NoticeQueue = Array<NoticeQueueItem>

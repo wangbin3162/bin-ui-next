@@ -1,6 +1,6 @@
 {
   "name": "bin-ui-next",
-  "version": "0.0.3",
+  "version": "0.0.9",
   "keywords": [
     "bin-ui",
     "bin",
@@ -12,14 +12,13 @@
   "author": "wangbin",
   "files": [
     "lib",
-    "src",
-    "typings"
+    "src"
   ],
   "main": "lib/bin-ui.common.js",
   "module": "lib/bin-ui.esm.js",
   "unpkg": "lib/bin-ui.global.js",
   "style": "lib/styles/index.css",
-  "typings": "typings/index.d.ts",
+  "typings": "lib/index.d.ts",
   "homepage": "https://wangbin3162.gitee.io/bin-ui-next/",
   "private": false,
   "license": "MIT",
@@ -28,6 +27,7 @@
     "build:demo": "rimraf docs && cross-env NODE_ENV=production webpack --config build/webpack.dev.js",
     "build": "yarn clean-lib && yarn build:lib && yarn build:style",
     "clean-lib": "rimraf lib",
+    "build:type": "tsc",
     "build:lib": "rollup --config ./build/rollup.config.js",
     "build:style": "gulp --gulpfile ./build/gulpfile.js",
     "lint": "eslint ./src --ext .vue,.js,.ts",

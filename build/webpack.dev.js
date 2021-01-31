@@ -72,7 +72,7 @@ const config = {
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.vue', '.json'],
     alias: {
-      vue: 'vue/dist/vue.esm-browser.js',
+      vue: 'vue',
       'bin-ui-next': '../src/index.ts',
       examples: path.resolve(__dirname),
     },
