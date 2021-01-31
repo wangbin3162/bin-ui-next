@@ -1,6 +1,6 @@
-import { createVNode, render, nextTick, isVNode } from 'vue'
+import { createVNode, isVNode, nextTick, render } from 'vue'
 import NoticeConstructor from './notice.vue'
-import type { INoticeOptions, INotice, NoticeQueue, NoticeVM } from './types'
+import type { INotice, INoticeOptions, NoticeQueue, NoticeVM, INoticeHandle } from './types'
 import { transferIncrease } from '../../utils/transfer-quenue'
 import isServer from '../../utils/isServer'
 
@@ -8,7 +8,9 @@ let vm: NoticeVM
 const notifications: NoticeQueue = []
 let seed = 1
 
-const Notice: INotice = function(options = {}) {
+const Notice: INotice = function(
+  options: INoticeOptions = {} as INoticeOptions,
+): INoticeHandle {
   if (isServer) return
   const position = options.position || 'top-right'
 
@@ -101,14 +103,12 @@ export function close(id: string, userOnClose?: (vm: NoticeVM) => void): void {
   for (let i = idx; i < len; i++) {
     if (notifications[i].vm.component.props.position === position) {
       const verticalPos = vm.props.position.split('-')[0]
-      const pos = parseInt(
+      notifications[i].vm.component.props.offset = parseInt(
         notifications[i].vm.el.style[verticalPos],
         10,
         ) -
         removedHeight -
         16
-
-      notifications[i].vm.component.props.offset = pos
       requestAnimationFrame(() => {
         render(notifications[i].vm, notifications[i].$el)
       })
