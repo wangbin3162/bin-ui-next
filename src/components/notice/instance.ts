@@ -1,7 +1,7 @@
 import { createVNode, isVNode, nextTick, render } from 'vue'
 import NoticeConstructor from './notice.vue'
 import type { INotice, INoticeOptions, NoticeQueue, NoticeVM, INoticeHandle, NoticeParams } from './types'
-import { transferIncrease } from '../../utils/transfer-quenue'
+import { transferIncrease } from '../../utils/config'
 import isServer from '../../utils/isServer'
 
 let vm: NoticeVM
@@ -31,7 +31,7 @@ const Notice: INotice = function(
     duration: 4.5,
     position: 'top-right',
     showClose: true,
-    zIndex: 2000 + transferIncrease(),
+    zIndex: transferIncrease(),
     // default options end
     ...options,
     onClose: () => {

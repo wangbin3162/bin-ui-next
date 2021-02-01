@@ -899,6 +899,11 @@
     mkdirp "^1.0.4"
     rimraf "^2.7.1"
 
+"@popperjs/core@^2.6.0":
+  version "2.6.0"
+  resolved "https://registry.npmjs.org/@popperjs/core/-/core-2.6.0.tgz#f022195afdfc942e088ee2101285a1d31c7d727f"
+  integrity sha512-cPqjjzuFWNK3BSKLm0abspP0sp/IGOli4p5I5fKFAzdS8fvjdOwDCfZqAaIiXd9lPkOWi3SUUfZof3hEb7J/uw==
+
 "@rollup/plugin-babel@^5.2.2":
   version "5.2.2"
   resolved "https://registry.npmjs.org/@rollup/plugin-babel/-/plugin-babel-5.2.2.tgz#e5623a01dd8e37e004ba87f2de218c611727d9b2"
@@ -6844,11 +6849,6 @@ plugin-error@^1.0.1:
     arr-diff "^4.0.0"
     arr-union "^3.1.0"
     extend-shallow "^3.0.2"
-
-popper.js@^1.16.1:
-  version "1.16.1"
-  resolved "https://registry.npmjs.org/popper.js/-/popper.js-1.16.1.tgz#2a223cb3dc7b6213d740e40372be40de43e65b1b"
-  integrity sha512-Wb4p1J4zyFTbM+u6WuO4XstYx4Ky9Cewe4DWrel7B0w6VVICvPwdOpotjzcf6eD8TsckVnIMNONQyPIUFOUbCQ==
 
 portfinder@^1.0.26:
   version "1.0.28"

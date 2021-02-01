@@ -1,7 +1,7 @@
 //fade-in
 .fade-in-enter-active,
 .fade-in-leave-active {
-  transition: all $animation-duration-slow cubic-bezier(.55, 0, .1, 1);
+  transition: opacity $animation-duration-base cubic-bezier(.55, 0, .1, 1);
 }
 .fade-in-enter-from,
 .fade-in-leave-to {
@@ -10,7 +10,7 @@
 //  fade-in-linear
 .fade-in-linear-enter-active,
 .fade-in-linear-leave-active {
-  transition: all $animation-duration-slow;
+  transition: opacity 200ms linear;
 }
 .fade-in-linear-enter-from,
 .fade-in-linear-leave-to {
@@ -19,7 +19,7 @@
 // move-left
 .move-left-enter-active,
 .move-left-leave-active {
-  transition: all $animation-duration-slow ease-in-out
+  transition: opacity $animation-duration-slow ease-in-out, transform $animation-duration-slow ease-in-out
   transform-origin: 0 0;
 }
 .move-left-enter-from,
@@ -30,7 +30,7 @@
 // move-right
 .move-right-enter-active,
 .move-right-leave-active {
-  transition: all $animation-duration-slow ease-in-out
+  transition: opacity $animation-duration-slow ease-in-out, transform $animation-duration-slow ease-in-out
 }
 .move-right-enter-from,
 .move-right-leave-to {
@@ -40,7 +40,7 @@
 //  中间缩放zoom-in-center
 .zoom-in-center-enter-active,
 .zoom-in-center-leave-active {
-  transition: all $animation-duration-slow cubic-bezier(.55, 0, .1, 1);
+  transition: opacity $animation-duration-slow cubic-bezier(.55, 0, .1, 1), transform $animation-duration-slow cubic-bezier(.55, 0, .1, 1)
 }
 .zoom-in-center-enter-from,
 .zoom-in-center-leave-to {
@@ -97,7 +97,7 @@
 
 .list-enter-active,
 .list-leave-active {
-  transition: all 1s;
+  transition: opacity 1s cubic-bezier(.55, 0, .1, 1), transform 1s cubic-bezier(.55, 0, .1, 1);
 }
 .list-enter-from,
 .list-leave-to {
@@ -111,7 +111,7 @@
 // 过渡动画 横向渐变
 .fade-transverse-leave-active,
 .fade-transverse-enter-active {
-  transition: all $animation-duration-slow;
+  transition: opacity $animation-duration-slow, transform $animation-duration-slow;
 }
 .fade-transverse-enter-from {
   opacity: 0;
@@ -125,7 +125,7 @@
 // 过渡动画 缩放渐变
 .fade-scale-leave-active,
 .fade-scale-enter-active {
-  transition: all $animation-duration-slow;
+  transition: opacity $animation-duration-slow, transform $animation-duration-slow;
 }
 .fade-scale-enter-from {
   opacity: 0;
@@ -139,7 +139,7 @@
 // 过渡动画 缩放渐变
 .fade-scale-move-leave-active,
 .fade-scale-move-enter-active {
-  transition: all $animation-duration-slow;
+  transition: opacity $animation-duration-slow, transform $animation-duration-slow;
 }
 .fade-scale-move-enter-from,
 .fade-scale-move-leave-to {
@@ -149,7 +149,7 @@
 
 .fade-down-leave-active,
 .fade-down-enter-active {
-  transition: all $animation-duration-slow;
+  transition: opacity $animation-duration-slow, transform $animation-duration-slow;
 }
 .fade-down-enter-from,
 .fade-down-leave-to {

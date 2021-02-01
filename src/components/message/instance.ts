@@ -8,7 +8,7 @@ import type {
   IMessageHandle,
   MessageParams,
 } from './types'
-import { transferIncrease } from '../../utils/transfer-quenue'
+import { transferIncrease } from '../../utils/config'
 import MessageConstructor from './message.vue'
 
 
@@ -41,7 +41,7 @@ const Message: IMessage = function(
   options = {
     offset: verticalOffset,
     id,
-    zIndex: 2000 + transferIncrease(),
+    zIndex: transferIncrease(),
     ...options,
     onClose: () => {
       close(id, userOnClose)

@@ -396,8 +396,7 @@
           "desc": "Tooltip 提示",
           "icon": "info-circle-fill",
           "name": "tooltip",
-          "path": "/tooltip",
-          "writing": true
+          "path": "/tooltip"
         }
       ]
     },

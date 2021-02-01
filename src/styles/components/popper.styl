@@ -1,0 +1,81 @@
+$arrow-width = 5px;
+$arrow-distance = $arrow-width - 1 + 4;
+$bg-black = #303133
+$bg-light = #FFFFFF
+$border-color = #E4E7ED
+
+.bin-popper {
+  position: absolute;
+  border-radius: $border-base-radius;
+  padding: 10px;
+  z-index: 2000;
+  font-size: $base-font-size;
+  line-height: 1.2;
+  min-width: 10px;
+  word-wrap: break-word;
+  visibility: visible;
+  &.is-dark {
+    color: $bg-light;
+    background: $bg-black;
+    .bin-popper__arrow::before {
+      background: $bg-black;
+      right: 0;
+    }
+  }
+  &.is-light {
+    background: $bg-light;
+    border: 1px solid $border-color;
+    .bin-popper__arrow::before {
+      border: 1px solid $border-color;
+      background: $bg-light;
+      right: 0;
+    }
+  }
+}
+
+.bin-popper__arrow {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  z-index: -1;
+  &::before {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    z-index: -1;
+    content: ' ';
+    transform: rotate(45deg);
+    background: $bg-black;
+    box-sizing: border-box;
+  }
+}
+
+.bin-popper[data-popper-placement^=top] > .bin-popper__arrow {
+  bottom: -5px
+}
+.bin-popper[data-popper-placement^=bottom] > .bin-popper__arrow {
+  top: -5px
+}
+.bin-popper[data-popper-placement^=left] > .bin-popper__arrow {
+  right: -5px
+}
+.bin-popper[data-popper-placement^=right] > .bin-popper__arrow {
+  left: -5px
+}
+.bin-popper.is-light[data-popper-placement^=top] .bin-popper__arrow::before {
+  border-top-color: transparent;
+  border-left-color: transparent
+}
+.bin-popper.is-light[data-popper-placement^=bottom] .bin-popper__arrow::before {
+  border-bottom-color: transparent;
+  border-right-color: transparent
+}
+.bin-popper.is-light[data-popper-placement^=left] .bin-popper__arrow::before {
+  border-left-color: transparent;
+  border-bottom-color: transparent
+}
+.bin-popper.is-light[data-popper-placement^=right] .bin-popper__arrow::before {
+  border-right-color: transparent;
+  border-top-color: transparent
+}
+

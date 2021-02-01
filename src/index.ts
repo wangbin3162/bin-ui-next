@@ -20,6 +20,7 @@ import BDivider from './components/divider'
 import BEmpty from './components/empty'
 import BIcon from './components/icon'
 import BLoading from './components/loading'
+import BPopper from './components/popper'
 import BProgress from './components/progress'
 import BRow from './components/row'
 import BScrollbar from './components/scrollbar'
@@ -29,10 +30,12 @@ import BStep from './components/step'
 import BTag from './components/tag'
 import BTimeline from './components/timeline'
 import BTimelineItem from './components/timeline-item'
+import BTooltip from './components/tooltip'
 import Message from './components/message'
 import Notice from './components/notice'
 
 import * as util from './utils/util'
+import { setConfig } from './utils/config'
 import log from './utils/log'
 import { scrollTop } from './utils/dom'
 
@@ -62,6 +65,7 @@ const components = [
   BEmpty,
   BIcon,
   BLoading,
+  BPopper,
   BProgress,
   BRow,
   BScrollbar,
@@ -71,12 +75,15 @@ const components = [
   BTag,
   BTimeline,
   BTimelineItem,
+  BTooltip,
 ]
 const plugins = [
   Message,
   Notice,
 ]
-
+const defaultInstallOpt = {
+  zIndex: 2000,
+}
 const install = function(app: App) {
   components.forEach(component => {
     app.use(component)
@@ -90,7 +97,8 @@ const install = function(app: App) {
   app.directive('ClickAnimation', ClickAnimation)
   app.directive('ClickOutSide', ClickOutside)
   // 注册全局函数和属性
-  app.config.globalProperties.$global = { zIndex: 2000 }
+  app.config.globalProperties.$global = defaultInstallOpt
+  setConfig(defaultInstallOpt)
   app.config.globalProperties.$title = util.title
   app.config.globalProperties.$open = util.open
   app.config.globalProperties.$copy = util.copy
@@ -128,6 +136,7 @@ export {
   BEmpty,
   BIcon,
   BLoading,
+  BPopper,
   BProgress,
   BRow,
   BScrollbar,
@@ -139,6 +148,7 @@ export {
   BTimelineItem,
   Message,
   Notice,
+  BTooltip,
 }
 export default {
   install,

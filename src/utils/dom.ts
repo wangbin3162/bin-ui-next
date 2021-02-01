@@ -229,3 +229,5 @@ export const getScrollContainer = (
   }
   return parent
 }
+
+export const stop = (e: Event) => e.stopPropagation()
