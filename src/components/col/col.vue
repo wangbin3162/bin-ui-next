@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, getCurrentInstance, inject } from 'vue'
+import { defineComponent, computed, inject } from 'vue'
 
 const prefixCls = 'bin-col'
 

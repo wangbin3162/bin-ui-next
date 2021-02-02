@@ -3,13 +3,11 @@
 <div class="global-anchor">
   <b-anchor :scroll-offset="100">
     <b-anchor-link href="#ji-chu-yong-fa" title="基础用法"></b-anchor-link>
-    <b-anchor-link href="#duo-chong-xuan-ting-wei-zhi" title="多种悬停位置"></b-anchor-link>
-    <b-anchor-link href="#bu-tong-zhu-ti" title="不同主题"></b-anchor-link>
-    <b-anchor-link href="#duo-xing" title="多行"></b-anchor-link>
-    <b-anchor-link href="#chang-wen-ben" title="长文本"></b-anchor-link>
-    <b-anchor-link href="#ke-yi-yan-shi-he-guan-bi-ti-shi" title="可以延时和关闭提示"></b-anchor-link>
-    <b-anchor-link href="#attributes" title="Attributes"></b-anchor-link>
-    <b-anchor-link href="#events" title="Events"></b-anchor-link>
+    <b-anchor-link href="#duo-zhong-xuan-ting-wei-zhi" title="多种悬停位置"></b-anchor-link>
+    <b-anchor-link href="#fu-ceng-nei-guan-bi" title="浮层内关闭"></b-anchor-link>
+    <b-anchor-link href="#geng-duo-nei-rong" title="更多内容"></b-anchor-link>
+    <b-anchor-link href="#que-ren-qi-pao-kuang" title="确认气泡框"></b-anchor-link>
+    <b-anchor-link href="#props" title="Props"></b-anchor-link>
     <b-anchor-link href="#slot" title="Slot"></b-anchor-link>
   </b-anchor>
 </div>
@@ -142,7 +140,7 @@
 
 <template>
   <div>
-    <b-popover placement="top" width="200px" word-wrap>
+    <b-popover placement="top" width="200px">
       <b-button>长文本</b-button>
       <template #content>
         <div>这是一段很长很长很长很长很长很长很长很长很长很长很长很长很长很长的描述</div>
@@ -209,7 +207,7 @@
 
 :::
 
-### Attributes
+### Props
 
 | 参数      | 说明    | 类型      | 可选值       | 默认值   |
 |---------- |-------- |---------- |-------------  |-------- |

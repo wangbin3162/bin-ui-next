@@ -14,7 +14,6 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import button from '../button/button.vue'
 
 // eslint-disable-next-line no-unused-vars
 interface ICardProps {

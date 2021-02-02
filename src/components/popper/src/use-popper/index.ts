@@ -21,14 +21,16 @@ import { transferIncrease } from '../../../../utils/config'
 type TimeoutHandle = ReturnType<typeof global.setTimeout>
 type Nullable<T> = T | null;
 type ElementType = ComponentPublicInstance | HTMLElement
-type EmitType = 'update:visible' | 'after-enter' | 'after-leave' | 'before-enter' | 'before-leave'
+export type EmitType =
+  'update:visible'
+  | 'after-enter'
+  | 'after-leave'
+  | 'before-enter'
+  | 'before-leave'
 
 export const DEFAULT_TRIGGER = ['hover']
 export const UPDATE_VISIBLE_EVENT = 'update:visible'
-export default function(
-  props: IPopperOptions,
-  { emit }: SetupContext<EmitType[]>,
-) {
+export default function(props: IPopperOptions, ctx) {
   const arrowRef = ref<RefElement>(null)
   const triggerRef = ref(null) as Ref<ElementType>
   const popperRef = ref<RefElement>(null)
@@ -63,7 +65,7 @@ export default function(
     set(val) {
       if (isManualMode()) return
       isBool(props.visible)
-        ? emit(UPDATE_VISIBLE_EVENT, val)
+        ? ctx.emit(UPDATE_VISIBLE_EVENT, val)
         : (state.visible = val)
     },
   })
@@ -276,17 +278,17 @@ export default function(
     onPopperMouseEnter,
     onPopperMouseLeave,
     onAfterEnter: () => {
-      emit('after-enter')
+      ctx.emit('after-enter')
     },
     onAfterLeave: () => {
       detachPopper()
-      emit('after-leave')
+      ctx.emit('after-leave')
     },
     onBeforeEnter: () => {
-      emit('before-enter')
+      ctx.emit('before-enter')
     },
     onBeforeLeave: () => {
-      emit('before-leave')
+      ctx.emit('before-leave')
     },
     initializePopper,
     isManualMode,
