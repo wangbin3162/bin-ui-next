@@ -20,6 +20,7 @@ import BDivider from './components/divider'
 import BEmpty from './components/empty'
 import BIcon from './components/icon'
 import BLoading from './components/loading'
+import BPopover from './components/popover'
 import BPopper from './components/popper'
 import BProgress from './components/progress'
 import BRow from './components/row'
@@ -65,6 +66,7 @@ const components = [
   BEmpty,
   BIcon,
   BLoading,
+  BPopover,
   BPopper,
   BProgress,
   BRow,
@@ -136,6 +138,7 @@ export {
   BEmpty,
   BIcon,
   BLoading,
+  BPopover,
   BPopper,
   BProgress,
   BRow,

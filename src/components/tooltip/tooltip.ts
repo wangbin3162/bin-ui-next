@@ -54,7 +54,7 @@ export default defineComponent({
     },
     placement: {
       type: String as PropType<Placement>,
-      default: 'bottom' as Placement,
+      default: 'top' as Placement,
     },
     // Once this option were given, the entire popper is under the users' control, top priority
     popperOptions: {

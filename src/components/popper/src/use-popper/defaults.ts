@@ -104,7 +104,7 @@ export default {
   },
   placement: {
     type: String as PropType<Placement>,
-    default: 'bottom' as Placement,
+    default: 'top' as Placement,
   },
   popperClass: {
     type: String,

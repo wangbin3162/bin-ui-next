@@ -76,6 +76,7 @@ $border-base := 1px solid $border-color-base;
 $border-base-light := 1px solid $border-color-light;
 $border-table := 1px solid #e8eaec;
 $border-table-color := #e8eaec;
+$border-popper-color := #EBEEF5;
 
 /* radius font-size
 -------------------------- */
@@ -94,3 +95,28 @@ $base-line-height := 1.5715;
 $animation-duration-slow := 0.3s;
 $animation-duration-base := 0.2s;
 $animation-duration-fast := 0.1s;
+
+// 阴影
+//阴影向下：主要应用于组件内部或组件本身，是比较常规场景的用法
+//阴影向上：主要应用于底部导航或工具栏等
+//阴影向左：主要应用于右边导航栏、抽屉组件或固定表格栏
+//阴影向右：主要应用于左边导航栏、抽屉组件或固定表格栏
+//第 1 层: 物体位于低层级，此时物体被操作(悬停、点击等)触发为悬浮状态，当操作完成或取消时，悬停状态反馈也跟随消失，物体回归到原有的层级中，如：卡片 hover 等；
+$shadow-1-up := 0 -1px 2px -2px rgba(0, 0, 0, .16), 0 -3px 6px 0px rgba(0, 0, 0, 0.12), 0 -5px 12px 4px rgba(0, 0, 0, 0.09)
+$shadow-1-down := 0px 1px 2px -2px rgba(0, 0, 0, .16), 0 3px 6px 0px rgba(0, 0, 0, 0.12), 0 5px 12px 4px rgba(0, 0, 0, 0.09)
+$shadow-1-left := -1px 0 2px -2px rgba(0, 0, 0, .16), -3px 0px 6px 0px rgba(0, 0, 0, 0.12), 5px 0px 12px 4px rgba(0, 0, 0, 0.09)
+$shadow-1-right := 1px 0 2px -2px rgba(0, 0, 0, .16), 3px 0px 6px 0px rgba(0, 0, 0, 0.12), 5px, 0px 12px 4px rgba(0, 0, 0, 0.09)
+
+// 第二层 物体位于中层级，此时物体与基准面的关系是展开并跟随，物体由地面上的元素展开产生，会跟随元素所在层级的移动而移动，如：下拉面板等；
+$shadow-2-up := 0 -3px 6px -4px rgba(0, 0, 0, .12), 0 -6px 16px 0px rgba(0, 0, 0, 0.08), 0 -9px 28px 8px rgba(0, 0, 0, 0.05)
+$shadow-2-down := 0px 3px 6px -4px rgba(0, 0, 0, .12), 0 6px 16px 0px rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05)
+$shadow-2-left := -3px 0 6px -4px rgba(0, 0, 0, .12), -6px 0px 16px 0px rgba(0, 0, 0, 0.08), -9px 0px 28px 8px rgba(0, 0, 0, 0.05)
+$shadow-2-right := 3px 0 6px -4px rgba(0, 0, 0, .12), 6px 0px 16px 0px rgba(0, 0, 0, 0.08), 9px, 0px 28px 8px rgba(0, 0, 0, 0.05)
+
+//第 3 层：物体位于高层级，该物体的运动和其他层级没有关联，如：对话框等。
+$shadow-3-up := 0 -6px 16px -8px rgba(0, 0, 0, .08), 0 -9px 28px 0px rgba(0, 0, 0, 0.05), 0 -12px 48px 16px rgba(0, 0, 0, 0.03)
+$shadow-3-down := 0 6px 16px -8px rgba(0, 0, 0, .08), 0 9px 28px 0px rgba(0, 0, 0, 0.05), 0 12px 48px 16px rgba(0, 0, 0, 0.03)
+$shadow-3-left := -6px 0 16px -8px rgba(0, 0, 0, .08), -9px 0 28px 0px rgba(0, 0, 0, 0.05), -12px 0 48px 16px rgba(0, 0, 0, 0.03)
+$shadow-3-right := 6px 0 16px -8px rgba(0, 0, 0, .08), 9px 0 28px 0px rgba(0, 0, 0, 0.05), 12px 0 48px 16px rgba(0, 0, 0, 0.03)
+
+$shadow-popper := 0 2px 12px 0 rgba(0, 0, 0, .1);

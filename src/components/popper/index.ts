@@ -6,6 +6,7 @@ Popper.install = (app: App): void => {
   app.component(Popper.name, Popper)
 }
 
+// @ts-ignore
 const _Popper: SFCWithInstall<typeof Popper> = Popper
 
 export default _Popper

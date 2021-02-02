@@ -353,6 +353,13 @@
           "path": "/alert"
         },
         {
+          "desc": "Modal 模态框",
+          "icon": "idcard",
+          "name": "modal",
+          "path": "/modal",
+          "writing": true
+        },
+        {
           "desc": "Message 提示",
           "icon": "message",
           "name": "message",
@@ -372,18 +379,16 @@
           "writing": true
         },
         {
+          "desc": "Tooltip 提示",
+          "icon": "info-circle-fill",
+          "name": "tooltip",
+          "path": "/tooltip"
+        },
+        {
           "desc": "Popover 气泡弹框",
           "icon": "question-circle",
           "name": "popover",
-          "path": "/popover",
-          "writing": true
-        },
-        {
-          "desc": "Modal 模态框",
-          "icon": "idcard",
-          "name": "modal",
-          "path": "/modal",
-          "writing": true
+          "path": "/popover"
         },
         {
           "desc": "Drawer 抽屉",
@@ -391,12 +396,6 @@
           "name": "drawer",
           "path": "/drawer",
           "writing": true
-        },
-        {
-          "desc": "Tooltip 提示",
-          "icon": "info-circle-fill",
-          "name": "tooltip",
-          "path": "/tooltip"
         }
       ]
     },

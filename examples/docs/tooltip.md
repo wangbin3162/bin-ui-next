@@ -152,11 +152,11 @@
 
 :::
 
-### Attributes
+### Props
 
 | 参数      | 说明    | 类型      | 可选值       | 默认值   |
 |---------- |-------- |---------- |-------------  |-------- |
-| v-model     | 状态是否可见   | Boolean  |  —   |  false   |
+| v-model:visible     | 状态是否可见   | Boolean  |  —   |  false   |
 | content     | 显示的内容   | string  |  —   |   —   |
 | placement     | 提示框出现的位置   | string  |  top/top-start/top-end/bottom/bottom-start/bottom-end/left/left-start/left-end/right/right-start/right-end   |   —   |
 | disabled     | 是否禁用提示框   | Boolean  |  —   |   false   |
