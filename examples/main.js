@@ -12,7 +12,7 @@ import DraggableDemo from './components/draggable-demo'
 import './assets/styles/color-brewer.css'
 import './assets/styles/index.styl'
 
-import lib from '../src/index'
+import BinUI from 'bin-ui-next'
 import '../src/styles/index.styl'
 
 import icon from '../src/components/icon/iconfont.json'
@@ -28,7 +28,7 @@ app.component('MainFooter', MainFooter)
 app.component('SideNav', SideNav)
 app.component('ColorBase', ColorBase)
 app.component('DraggableDemo', DraggableDemo)
-app.use(lib)
+app.use(BinUI)
 app.use(router)
 // Mount when the route is ready
 router.isReady().then(() => {

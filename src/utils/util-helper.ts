@@ -11,6 +11,7 @@ import {
 } from '@vue/shared'
 import type { Ref } from 'vue'
 
+type TimeoutHandle = ReturnType<typeof global.setTimeout>
 
 /**
  * Generate random number in range [0, 1000]
@@ -20,6 +21,10 @@ export const generateId = (): number => Math.floor(Math.random() * 10000)
 export const isBool = (val: unknown) => typeof val === 'boolean'
 export const isNumber = (val: unknown) => typeof val === 'number'
 export const isHTMLElement = (val: unknown) => toRawType(val).startsWith('HTML')
+export const clearTimer = (timer: Ref<TimeoutHandle>) => {
+  clearTimeout(timer.value)
+  timer.value = null
+}
 
 /**
  * Unwraps refed value

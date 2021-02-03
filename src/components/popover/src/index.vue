@@ -15,7 +15,7 @@ import type { TriggerType } from '../../popper'
 import BPopper, { defaultProps, Theme } from '../../popper'
 import { renderArrow, renderPopper, renderTrigger } from '../..//popper'
 import { ClickOutside } from '../../../directives'
-import log from '../../../utils/log'
+import { throwWarn } from '../../../utils/log'
 import { PatchFlags, renderBlock, renderIf } from '../../../utils/vnode'
 import usePopover, { HIDE_EVENT, SHOW_EVENT } from './usePopover'
 
@@ -54,7 +54,7 @@ export default defineComponent({
   emits: ['update:visible', 'after-enter', 'after-leave', SHOW_EVENT, HIDE_EVENT],
   setup(props, ctx) {
     if (process.env.NODE_ENV !== 'production' && props.visible && !ctx.slots.reference) {
-      log.pretty('BPopover', ' You cannot init popover without given reference', 'warning')
+      throwWarn('BPopover', ' You cannot init popover without given reference')
     }
     return usePopover(props, ctx)
   },

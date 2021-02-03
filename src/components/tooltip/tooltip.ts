@@ -1,6 +1,6 @@
 import type { Theme, Options, Placement } from '../popper'
 import BPopper from '../popper'
-import log from '../../utils/log'
+import { throwError } from '../../utils/log'
 import type { PropType } from 'vue'
 import { defineComponent, h, ref } from 'vue'
 
@@ -91,7 +91,7 @@ export default defineComponent({
   setup(props, ctx) {
     // when manual mode is true, v-model must be passed down
     if (props.manual && typeof props.modelValue === 'undefined') {
-      log.pretty('[ElTooltip]', 'You need to pass a v-model to b-tooltip when `manual` is true', 'danger')
+      throwError('BTooltip', 'You need to pass a v-model to b-tooltip when `manual` is true')
     }
 
     const popper = ref(null)

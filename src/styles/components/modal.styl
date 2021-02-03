@@ -1,0 +1,151 @@
+.bin-popup-parent--hidden {
+  overflow: hidden;
+}
+
+.bin-modal {
+  position: relative;
+  margin: 0 auto;
+  background: #FFF;
+  border-radius: $border-base-radius;
+  box-shadow: $shadow-2-down;
+  box-sizing: border-box;
+  width: 50%
+  &-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: $border-base-light;
+    padding: 16px 24px;
+    height: 55px;
+  }
+  &-title {
+    flex: auto;
+    flex-shrink: 0;
+    font-size: $header-font-size;
+    color: $color-text-primary;
+    font-weight: 500;
+    line-height: 22px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  &-body {
+    padding: 24px;
+    font-size: $base-font-size;
+    line-height: $base-line-height;
+    word-wrap: break-word;
+  }
+  &-footer {
+    border-top: $border-base-light;
+    padding: 10px 16px;
+    text-align: right;
+  }
+
+  &-close {
+    position: absolute;
+    top: 0;
+    right: 16px;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    z-index: 10;
+    padding: 0;
+    color: $color-text-secondary;
+    line-height: 1;
+    text-decoration: none;
+    background: transparent;
+    border: 0;
+    outline: 0;
+    .b-iconfont {
+      cursor: pointer;
+      font-size: 20px;
+      color: $color-text-secondary;
+      transition: color $animation-duration-base;
+      + .b-iconfont {
+        margin-left: 8px;
+      }
+      &:hover {
+        color: $color-text-default;
+      }
+    }
+  }
+  &.is-fullscreen {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 0;
+    margin-bottom: 0;
+    height: 100%;
+    > .bin-modal-body {
+      flex: auto;
+      flex-shrink: 1;
+      overflow: auto;
+    }
+  }
+}
+
+.bin-mask {
+  z-index: 2000;
+  background-color: rgba(0, 0, 0, .5)
+}
+.bin-mask .bin-mask-root {
+  height: 0
+}
+
+.modal-fade-enter-active {
+  animation: modal-fade-in $animation-duration-slow;
+  .bin-modal {
+    animation: dialog-fade-in $animation-duration-slow;
+  }
+}
+
+.modal-fade-leave-active {
+  animation: modal-fade-out $animation-duration-slow;
+  .bin-modal {
+    animation: dialog-fade-out $animation-duration-slow;
+  }
+}
+
+@keyframes dialog-fade-in {
+  0% {
+    transform: none;
+    opacity: 0;
+  }
+  5% {
+    transform: scale(0.2);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes dialog-fade-out {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0.2);
+    opacity: 0;
+  }
+}
+
+@keyframes modal-fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes modal-fade-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

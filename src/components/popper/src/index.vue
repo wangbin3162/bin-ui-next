@@ -20,7 +20,7 @@ import defaultProps from './use-popper/defaults'
 
 import { renderPopper, renderTrigger, renderArrow } from './renderers'
 import { ClickOutside } from '../../../directives'
-import log from '../../../utils/log'
+import { throwError } from '../../../utils/log'
 
 const compName = 'BPopper'
 const UPDATE_VISIBLE_EVENT = 'update:visible'
@@ -31,7 +31,7 @@ export default defineComponent({
   emits: [UPDATE_VISIBLE_EVENT, 'after-enter', 'after-leave', 'before-enter', 'before-leave'],
   setup(props, ctx) {
     if (!ctx.slots.trigger) {
-      log.pretty(compName, 'Trigger must be provided', 'danger')
+      throwError(compName, 'Trigger must be provided')
     }
     // this is a reference that we need to pass down to child component
     // to obtain the child instance
