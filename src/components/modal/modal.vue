@@ -113,7 +113,7 @@ function offset(el) {
   }
   const doc = el.ownerDocument
   const w = doc.defaultView || doc.parentWindow
-  pos.left += getScroll(w)
+  pos.left += getScroll(w, false)
   pos.top += getScroll(w, true)
   return pos
 }

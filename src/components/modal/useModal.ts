@@ -44,7 +44,7 @@ export default function(props: UseDialogProps, ctx: SetupContext, targetRef: Ref
   const style = computed(() => {
     const style = {} as CSSProperties
     if (!props.fullscreen) {
-      style.top = props.top
+      style.marginTop = props.top
       if (props.width) {
         style.width = props.width
       }
