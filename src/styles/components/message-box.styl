@@ -1,0 +1,87 @@
+.bin-message-box {
+  position: relative;
+  width: 420px;
+  padding: 24px;
+  vertical-align: middle;
+  font-size: 18px;
+  text-align: left;
+  overflow: hidden;
+  backface-visibility: hidden;
+  margin: 100px auto 0;
+  background: #FFF;
+  border-radius: $border-base-radius;
+  box-shadow: $shadow-2-down;
+  box-sizing: border-box;
+  &__header {
+    position: relative;
+    margin-bottom: 8px;
+  }
+  &__title {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 12px;
+    font-size: 16px;
+    color: $color-text-primary;
+    font-weight: 600;
+  }
+  &__status {
+    display: inline-block;
+    font-size: 28px;
+    vertical-align: middle;
+    position: relative;
+    &.is-info {
+      color: $color-primary;
+    }
+    &.is-success {
+      color: $color-success;
+    }
+    &.is-warning {
+      color: $color-warning;
+    }
+    &.is-error {
+      color: $color-danger;
+    }
+  }
+  &__message {
+    padding-left: 42px;
+    font-size: 14px;
+    color: rgba(0, 0, 0, 0.65);
+    position: relative;
+  }
+  &__footer {
+    margin-top: 10px;
+    text-align: right;
+  }
+}
+
+.fade-in-linear-enter-active .bin-message-box {
+  -webkit-animation: msgbox-fade-in .3s;
+  animation: msgbox-fade-in .3s
+}
+.fade-in-linear-leave-active .bin-message-box {
+  animation: msgbox-fade-in .3s reverse
+}
+@keyframes msgbox-fade-in {
+  0% {
+    -webkit-transform: translate3d(0, -20px, 0);
+    transform: translate3d(0, -20px, 0);
+    opacity: 0
+  }
+  100% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    opacity: 1
+  }
+}
+@keyframes msgbox-fade-out {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    opacity: 1
+  }
+  100% {
+    -webkit-transform: translate3d(0, -20px, 0);
+    transform: translate3d(0, -20px, 0);
+    opacity: 0
+  }
+}

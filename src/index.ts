@@ -34,6 +34,7 @@ import BTimeline from './components/timeline'
 import BTimelineItem from './components/timeline-item'
 import BTooltip from './components/tooltip'
 import Message from './components/message'
+import MessageBox from './components/message-box'
 import Notice from './components/notice'
 
 import * as util from './utils/util'
@@ -83,6 +84,7 @@ const components = [
 ]
 const plugins = [
   Message,
+  MessageBox,
   Notice,
 ]
 const defaultInstallOpt = {
@@ -152,9 +154,10 @@ export {
   BTag,
   BTimeline,
   BTimelineItem,
+  BTooltip,
   Message,
   Notice,
-  BTooltip,
+  MessageBox,
 }
 export default {
   install,

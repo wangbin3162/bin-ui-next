@@ -1,5 +1,19 @@
 ## Modal 模态框
 
+ <div class="global-anchor">
+  <b-anchor :scroll-offset="100">
+    <b-anchor-link href="#ji-chu-yong-fa" title="基础用法"></b-anchor-link>
+    <b-anchor-link href="#zi-ding-yi-yang-shi" title="自定义样式"></b-anchor-link>
+    <b-anchor-link href="#jin-yong-guan-bi" title="禁用关闭"></b-anchor-link>
+    <b-anchor-link href="#qian-tao" title="嵌套"></b-anchor-link>
+    <b-anchor-link href="#quan-ping" title="全屏"></b-anchor-link>
+    <b-anchor-link href="#ke-tuo-zhuai" title="可拖拽"></b-anchor-link>
+    <b-anchor-link href="#props" title="Props"></b-anchor-link>
+    <b-anchor-link href="#events" title="Events"></b-anchor-link>
+    <b-anchor-link href="#slot" title="Slot"></b-anchor-link>
+  </b-anchor>
+</div>
+
 对话框/弹窗，在浮层中显示，引导用户进行相关操作。
 
 ### 基础用法
@@ -248,3 +262,43 @@ Modal 组件提供了灵活的自定义样式 API 和 Slot，可以自由控制�
 ```
 
 :::
+
+### Props
+
+| 参数      | 说明    | 类型      | 可选值       | 默认值   |
+|---------- |-------- |---------- |-------------  |-------- |
+| v-model   | 是否显示   | Boolean  |    —       |    false    |
+| title     | 标题，如果使用 slot 自定义了页头，则 title 无效   | String  |    —    |     —     |
+| width     | 对话框宽度 |  String  |      —      | 520px |
+| top     | 对话框距离顶部高度 |  String  |      —      | 100px |
+| show-close | 右上角的关闭按钮 | Boolean  |      —      | true |
+| mask-closable     | 是否允许点击遮罩层关闭 | Boolean  |      —      | true |
+| esc-closable     | 是否允许esc键盘关闭 | Boolean  |      —      | true |
+| fullscreen     | 是否全屏显示 | Boolean  |      —      | false |
+| draggable     | 是否可以拖拽移动 | Boolean  |      —      | false |
+| mask     | 是否显示遮罩层 | Boolean  |      —      | true |
+| custom-name    | 自定义类名 | String  |      —      |  —  |
+| z-index    | 层级 | Number  |      —      |  2000  |
+| append-to-body    | 是否将对话框放置于 body 内 | Boolean  |      —      |  false  |
+| lock-scroll | 出现modal时锁定滚动 | Boolean  |      —      |  true  |
+| open-delay    | 打开延时（毫秒） | Number  |      —      | 0 |
+| close-delay    | 关闭延时（毫秒） | Number  |      —      | 0 |
+| before-close     | 关闭前回调，会暂停关闭 | Function(done) done用于关闭  |      —      |   —     |
+| destroy-on-close    | 关闭时销毁内部元素，多用于内部元素需要初始化 | Boolean  |      —      | false |
+
+### Events
+
+| 事件名      | 说明    | 返回值      |
+|---------- |-------- |---------- |
+| open    | modal打开回调   | 无  |
+| opened  | 打开动画完成回调   | 无  |
+| close   | modal关闭回调    | 无  |
+| closed  | 关闭动画结束回调    | 无  |
+
+### Slot
+
+| 名称      | 说明    |
+|---------- |-------- |
+| title     | 自定义标题   |
+| ctrl     | 关闭按钮左侧控制槽   |
+| footer     | 自定义页脚内容   |

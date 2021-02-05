@@ -19,9 +19,8 @@
     @click="handleClick"
     v-click-animation
   >
-    <b-icon
-      class="button-loading icon-is-rotating"
-      :name="loadingIcon ? loadingIcon : 'loading'"
+    <i
+      :class="`b-iconfont b-icon-${loadingIcon ? loadingIcon : 'loading'} button-loading icon-is-rotating`"
       v-if="loading"
       :style="iconStyles"
     />
@@ -52,9 +51,8 @@
     @click="handleClick"
     v-waves="waveColor"
   >
-    <b-icon
-      class="button-loading icon-is-rotating"
-      :name="loadingIcon ? loadingIcon : 'loading'"
+    <i
+      :class="`b-iconfont b-icon-${loadingIcon ? loadingIcon : 'loading'} button-loading icon-is-rotating`"
       v-if="loading"
       :style="iconStyles"
     />
@@ -88,6 +86,8 @@
 <script lang="ts">
 import { defineComponent, PropType, computed } from 'vue'
 import { ComponentSize } from '../../utils/types'
+import clickAnimation from '../../directives/click-animation'
+import waves from '../../directives/waves'
 
 type IButtonType = PropType<'primary'
   | 'success'
@@ -101,6 +101,7 @@ type IButtonNativeType = PropType<'button' | 'submit' | 'reset'>
 type IAnimationType = PropType<'click' | 'waves'>
 export default defineComponent({
   name: 'BButton',
+  directives: { clickAnimation, waves },
   props: {
     type: {
       type: String as IButtonType,
