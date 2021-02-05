@@ -374,8 +374,7 @@
           "desc": "MessageBox 弹框",
           "icon": "mail",
           "name": "messageBox",
-          "path": "/messageBox",
-          "writing": true
+          "path": "/messageBox"
         },
         {
           "desc": "Tooltip 提示",

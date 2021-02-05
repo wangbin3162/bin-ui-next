@@ -5,6 +5,13 @@
 <div class="doc-update">
     <b-timeline>
       <b-timeline-item>
+        <p class="version">0.1.5</p>
+        <p class="time">2021-02-05</p>
+        <p class="content"><i>🍀</i>新增modal窗口组件</p>
+        <p class="content"><i>🍀</i>新增messageBox消息弹窗组件</p>
+        <p class="content"><i>🐞</i>修改部分代码样式</p>
+      </b-timeline-item>
+      <b-timeline-item>
         <p class="version">0.1.4</p>
         <p class="time">2021-02-02</p>
         <p class="content"><i>🍀</i>新增tooltip组件和popover气泡弹窗</p>
