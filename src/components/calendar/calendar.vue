@@ -43,7 +43,7 @@ import { defineComponent, ref } from 'vue'
 import BButton from '../button'
 import BButtonGroup from '../button-group'
 
-function getNewDate(date) {
+function getNewDate(date): { year: number, month: number, day: number } {
   let year = date.getFullYear()
   let month = date.getMonth()
   let day = date.getDate()
@@ -56,14 +56,11 @@ function getDate(year, month, day) {
 }
 
 function isPrevOrNextMonth(date, time) {
-  let {
-    year: currentYear,
-    month: currentMonth,
-  } = getNewDate(getDate(time.year, time.month, 1))
+  let newDate = getNewDate(getDate(time.year, time.month, 1))
+  let currentYear: number = newDate.year as number
+  let currentMonth: number = newDate.month as number
   let { year, month } = getNewDate(date)
-  if (currentYear === year && currentMonth === month) {
-    return null
-  }
+  if (currentYear === year && currentMonth === month) return null
   if (currentMonth === 0 && month === 11) return 'prev'
   if (currentMonth === 11 && month === 0) return 'next'
   if (currentMonth > month) return 'prev'
@@ -72,7 +69,10 @@ function isPrevOrNextMonth(date, time) {
 }
 
 function isCurrent(date) {
-  let { year: currentYear, month: currentMonth, day: currentDay } = getNewDate(new Date())
+  let newDate = getNewDate(new Date())
+  let currentYear: number = newDate.year as number
+  let currentMonth: number = newDate.month as number
+  let currentDay: number = newDate.day as number
   let { year, month, day } = getNewDate(date)
   return currentYear === year && currentMonth === month && currentDay === day
 }
@@ -97,7 +97,10 @@ export default defineComponent({
     const initVisibleCalendar = () => {
       let calendarArr = []
       let { year, month } = getNewDate(getDate(time.value.year, time.value.month, 1))
-      let { year: currentYear, month: currentMonth } = getNewDate(new Date())
+      let newDate = getNewDate(new Date())
+
+      let currentYear: number = newDate.year as number
+      let currentMonth: number = newDate.month as number
       // 获取当月的第一天
       let currentFirstDay = getDate(year, month, 1)
       // 获取第一天是星期几
@@ -106,7 +109,7 @@ export default defineComponent({
         weekDay = 7
       }
       let isCurrentMonth = currentYear === year && currentMonth === month
-      let startTime = currentFirstDay - (weekDay - 1) * 24 * 60 * 60 * 1000
+      let startTime = currentFirstDay.getTime() - (weekDay - 1) * 24 * 60 * 60 * 1000
       for (let i = 0; i < 42; i++) {
         const tempDate = new Date(startTime + i * 24 * 60 * 60 * 1000)
         let monthFlag = isPrevOrNextMonth(tempDate, time.value)

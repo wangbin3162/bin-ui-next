@@ -2,9 +2,20 @@
   <teleport to="body" :disabled="!appendToBody">
     <div class="bin-drawer-root">
       <transition name="fade-in">
-        <div :class="maskClasses" :style="wrapStyles" v-show="visible" v-if="mask" @click="handleMask"></div>
+        <div
+          :class="maskClasses"
+          :style="wrapStyles"
+          v-show="visible"
+          v-if="mask"
+          @click="handleMask"
+        ></div>
       </transition>
-      <div :class="wrapClasses" :style="wrapStyles" ref="wrapRef" @click="handleWrapClick">
+      <div
+        :class="wrapClasses"
+        :style="wrapStyles"
+        ref="wrapRef"
+        @click="handleWrapClick"
+      >
         <transition :name="'move-' + placement" @after-leave="wrapShow = false">
           <div :class="classes" :style="mainStyles" v-show="visible">
             <div :class="contentClasses" ref="content">
@@ -13,7 +24,7 @@
                   <i class="b-iconfont b-icon-close"></i>
                 </slot>
               </a>
-              <div class="bin-drawer-header" v-if="$slots.header|| title">
+              <div class="bin-drawer-header" v-if="$slots.header || title">
                 <slot name="header">
                   <div class="bin-drawer-header-inner">{{ title }}</div>
                 </slot>
@@ -23,13 +34,16 @@
               </div>
               <div class="bin-drawer-footer" v-if="$slots.footer">
                 <div style="text-align: right">
-                  <slot name="footer">
-                  </slot>
+                  <slot name="footer"> </slot>
                 </div>
               </div>
             </div>
-            <div class="bin-drawer-drag" :class="{ 'bin-drawer-drag-left': placement === 'left' }" v-if="draggable"
-                 @mousedown="handleTriggerMousedown">
+            <div
+              class="bin-drawer-drag"
+              :class="{ 'bin-drawer-drag-left': placement === 'left' }"
+              v-if="draggable"
+              @mousedown="handleTriggerMousedown"
+            >
               <slot name="trigger">
                 <div class="bin-drawer-drag-move-trigger">
                   <div class="bin-drawer-drag-move-trigger-point">
@@ -102,7 +116,7 @@ export default defineComponent({
     beforeClose: Function,
   },
   setup(props) {
-    const visible = ref(props.modalValue)
+    const visible = ref(props.modelValue)
     const wrapShow = ref(false)
     const wrapRef = ref<HTMLElement | null>(null)
     const canMove = ref(false)
@@ -114,10 +128,13 @@ export default defineComponent({
     if (props.lockScroll) {
       useLockScreen(visible)
     }
-    watch(() => props.modelValue, val => {
-      visible.value = val
-      if (val) wrapShow.value = true
-    })
+    watch(
+      () => props.modelValue,
+      (val) => {
+        visible.value = val
+        if (val) wrapShow.value = true
+      },
+    )
     return {
       wrapRef,
       wrapShow,
@@ -211,7 +228,8 @@ export default defineComponent({
     handleWrapClick(event) {
       // use indexOf,do not use === ,because bin-modal-wrap can have other custom className
       const className = event.target.getAttribute('class')
-      if (className && className.indexOf(`${prefixCls}-wrap`) > -1) this.handleMask()
+      if (className && className.indexOf(`${prefixCls}-wrap`) > -1)
+        this.handleMask()
     },
     handleMousemove(event) {
       if (!this.canMove || !this.draggable) return
