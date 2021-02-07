@@ -1,0 +1,178 @@
+.bin-carousel {
+  position: relative;
+  .bin-carousel__container {
+    position: relative;
+    height: 200px
+  }
+  .bin-carousel__arrow {
+    border: none;
+    outline: 0;
+    padding: 0;
+    margin: 0;
+    height: 36px;
+    width: 36px;
+    cursor: pointer;
+    -webkit-transition: .3s;
+    transition: .3s;
+    border-radius: 50%;
+    background-color: rgba(31, 45, 61, .11);
+    color: #FFF;
+    position: absolute;
+    top: 50%;
+    z-index: 10;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    text-align: center;
+    font-size: 12px
+  }
+  .bin-carousel__arrow--left {
+    left: 16px
+  }
+  .bin-carousel__arrow--right {
+    right: 16px
+  }
+  .bin-carousel__arrow:hover {
+    background-color: rgba(31, 45, 61, .23)
+  }
+  .bin-carousel__arrow i {
+    cursor: pointer
+  }
+  .bin-carousel__indicators {
+    position: absolute;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    z-index: 2;
+  }
+  .bin-carousel__indicators--horizontal {
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%)
+  }
+  .bin-carousel__indicators--vertical {
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%)
+  }
+  .bin-carousel__indicators--outside {
+    bottom: 26px;
+    text-align: center;
+    position: static;
+    -webkit-transform: none;
+    transform: none
+  }
+  .bin-carousel__indicators--outside .bin-carousel__indicator:hover button {
+    opacity: .64
+  }
+  .bin-carousel__indicators--outside button {
+    background-color: #C0C4CC;
+    opacity: .24
+  }
+  .bin-carousel__indicators--labels {
+    left: 0;
+    right: 0;
+    -webkit-transform: none;
+    transform: none;
+    text-align: center
+  }
+  .bin-carousel__indicators--labels .bin-carousel__button {
+    height: auto;
+    width: auto;
+    padding: 2px 18px;
+    font-size: 12px
+  }
+  .bin-carousel__indicators--labels .bin-carousel__indicator {
+    padding: 6px 4px
+  }
+  .bin-carousel__indicator {
+    background-color: transparent;
+    cursor: pointer
+    margin: 0;
+    list-style: none;
+  }
+  .bin-carousel__indicator:hover button {
+    opacity: .72
+  }
+  .bin-carousel__indicator--horizontal {
+    display: inline-block;
+    padding: 12px 4px
+  }
+  .bin-carousel__indicator--vertical {
+    padding: 4px 12px
+  }
+  .bin-carousel__indicator--vertical .bin-carousel__button {
+    width: 2px;
+    height: 15px
+  }
+  .bin-carousel__indicator.is-active button {
+    opacity: 1
+  }
+  .bin-carousel__button {
+    display: block;
+    opacity: .48;
+    width: 30px;
+    height: 2px;
+    background-color: #FFF;
+    border: none;
+    outline: 0;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    transition: .3s
+  }
+  .carousel-arrow-left-enter, .carousel-arrow-left-leave-active {
+    transform: translateY(-50%) translateX(-10px);
+    opacity: 0
+  }
+  .carousel-arrow-right-enter, .carousel-arrow-right-leave-active {
+    transform: translateY(-50%) translateX(10px);
+    opacity: 0
+  }
+
+}
+.bin-carousel--horizontal {
+  overflow-x: hidden
+}
+.bin-carousel--vertical {
+  overflow-y: hidden
+}
+.bin-carousel__item, .bin-carousel__mask {
+  position: absolute;
+  height: 100%;
+  top: 0;
+  left: 0
+}
+.bin-carousel__item {
+  width: 100%;
+  display: inline-block;
+  overflow: hidden;
+  z-index: 0
+}
+.bin-carousel__item.is-active {
+  z-index: 2
+}
+.bin-carousel__item.is-animating {
+  transition: transform .4s ease-in-out;
+}
+.bin-carousel__item--card {
+  width: 50%;
+  transition: transform .4s ease-in-out;
+}
+.bin-carousel__item--card.is-in-stage {
+  cursor: pointer;
+  z-index: 1
+}
+.bin-carousel__item--card.is-in-stage.is-hover .bin-carousel__mask,
+.bin-carousel__item--card.is-in-stage:hover .bin-carousel__mask {
+  opacity: .12
+}
+.bin-carousel__item--card.is-active {
+  z-index: 2
+}
+.bin-carousel__mask {
+  width: 100%;
+  background-color: #FFF;
+  opacity: .24;
+  -webkit-transition: .2s;
+  transition: .2s
+}

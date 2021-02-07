@@ -11,6 +11,8 @@ import BButton from './components/button'
 import BButtonGroup from './components/button-group'
 import BCalendar from './components/calendar'
 import BCard from './components/card'
+import BCarousel from './components/carousel'
+import BCarouselItem from './components/carousel-item'
 import BCircle from './components/circle'
 import BCol from './components/col'
 import BCollapse from './components/collapse'
@@ -61,6 +63,8 @@ const components = [
   BButtonGroup,
   BCalendar,
   BCard,
+  BCarousel,
+  BCarouselItem,
   BCircle,
   BCol,
   BCollapse,
@@ -136,6 +140,8 @@ export {
   BButton,
   BButtonGroup,
   BCalendar,
+  BCarousel,
+  BCarouselItem,
   BCard,
   BCircle,
   BCol,

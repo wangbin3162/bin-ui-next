@@ -11,6 +11,8 @@ import {
 } from '@vue/shared'
 import type { Ref } from 'vue'
 
+export type PartialCSSStyleDeclaration = Partial<Pick<CSSStyleDeclaration, 'transform' | 'transition' | 'animation'>>
+
 type TimeoutHandle = ReturnType<typeof global.setTimeout>
 
 /**
@@ -24,6 +26,21 @@ export const isHTMLElement = (val: unknown) => toRawType(val).startsWith('HTML')
 export const clearTimer = (timer: Ref<TimeoutHandle>) => {
   clearTimeout(timer.value)
   timer.value = null
+}
+export const autoprefixer = function(
+  style: PartialCSSStyleDeclaration,
+): PartialCSSStyleDeclaration {
+  const rules = ['transform', 'transition', 'animation']
+  const prefixes = ['ms-', 'webkit-']
+  rules.forEach(rule => {
+    const value = style[rule]
+    if (rule && value) {
+      prefixes.forEach(prefix => {
+        style[prefix + rule] = value
+      })
+    }
+  })
+  return style
 }
 
 /**

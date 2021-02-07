@@ -385,8 +385,7 @@
           "desc": "Drawer 抽屉",
           "icon": "build",
           "name": "drawer",
-          "path": "/drawer",
-          "writing": true
+          "path": "/drawer"
         }
       ]
     },
@@ -397,15 +396,13 @@
           "desc": "Calendar 日历组件",
           "icon": "calendar-fill",
           "name": "calendar",
-          "path": "/calendar",
-          "writing": true
+          "path": "/calendar"
         },
         {
           "desc": "Carousel 轮播",
           "icon": "appstore-fill",
           "name": "carousel",
-          "path": "/carousel",
-          "writing": true
+          "path": "/carousel"
         },
         {
           "desc": "Timeline 时间线",
