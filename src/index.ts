@@ -9,6 +9,7 @@ import BBreadcrumb from './components/breadcrumb'
 import BBreadcrumbItem from './components/breadcrumb-item'
 import BButton from './components/button'
 import BButtonGroup from './components/button-group'
+import BCalendar from './components/calendar'
 import BCard from './components/card'
 import BCircle from './components/circle'
 import BCol from './components/col'
@@ -58,6 +59,7 @@ const components = [
   BBreadcrumbItem,
   BButton,
   BButtonGroup,
+  BCalendar,
   BCard,
   BCircle,
   BCol,
@@ -133,6 +135,7 @@ export {
   BBreadcrumbItem,
   BButton,
   BButtonGroup,
+  BCalendar,
   BCard,
   BCircle,
   BCol,
