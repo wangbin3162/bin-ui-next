@@ -136,8 +136,7 @@
           "desc": "Tabs 标签页",
           "icon": "project",
           "name": "tabs",
-          "path": "/tabs",
-          "writing": true
+          "path": "/tabs"
         },
         {
           "desc": "Dropdown 下拉菜单",
