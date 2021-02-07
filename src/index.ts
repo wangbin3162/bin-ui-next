@@ -17,6 +17,7 @@ import BCollapsePanel from './components/collapse-panel'
 import BCollapseWrap from './components/collapse-wrap'
 import BCollapseTransition from './components/collapse-transition'
 import BDivider from './components/divider'
+import BDrawer from './components/drawer'
 import BEmpty from './components/empty'
 import BIcon from './components/icon'
 import BLoading from './components/loading'
@@ -65,6 +66,7 @@ const components = [
   BCollapseWrap,
   BCollapseTransition,
   BDivider,
+  BDrawer,
   BEmpty,
   BIcon,
   BLoading,
@@ -139,6 +141,7 @@ export {
   BCollapseWrap,
   BCollapseTransition,
   BDivider,
+  BDrawer,
   BEmpty,
   BIcon,
   BLoading,

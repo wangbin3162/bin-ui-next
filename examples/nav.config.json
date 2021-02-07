@@ -157,13 +157,6 @@
           "icon": "loading2",
           "name": "loading",
           "path": "/loading"
-        },
-        {
-          "desc": "LoadingBar 加载进度",
-          "icon": "minus",
-          "name": "loadingbar",
-          "path": "/loadingbar",
-          "writing": true
         }
       ]
     },
