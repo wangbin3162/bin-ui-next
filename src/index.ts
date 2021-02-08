@@ -21,6 +21,9 @@ import BCollapseWrap from './components/collapse-wrap'
 import BCollapseTransition from './components/collapse-transition'
 import BDivider from './components/divider'
 import BDrawer from './components/drawer'
+import BDropdown from './components/dropdown'
+import BDropdownItem from './components/dropdown-item'
+import BDropdownMenu from './components/dropdown-menu'
 import BEmpty from './components/empty'
 import BIcon from './components/icon'
 import BLoading from './components/loading'
@@ -74,6 +77,9 @@ const components = [
   BCollapseTransition,
   BDivider,
   BDrawer,
+  BDropdown,
+  BDropdownItem,
+  BDropdownMenu,
   BEmpty,
   BIcon,
   BLoading,
@@ -111,7 +117,7 @@ const install = function(app: App) {
   // 注册全局指令
   app.directive('Waves', Waves)
   app.directive('ClickAnimation', ClickAnimation)
-  app.directive('ClickOutSide', ClickOutside)
+  app.directive('ClickOutside', ClickOutside)
   // 注册全局函数和属性
   app.config.globalProperties.$global = defaultInstallOpt
   setConfig(defaultInstallOpt)
@@ -153,6 +159,9 @@ export {
   BCollapseTransition,
   BDivider,
   BDrawer,
+  BDropdown,
+  BDropdownItem,
+  BDropdownMenu,
   BEmpty,
   BIcon,
   BLoading,

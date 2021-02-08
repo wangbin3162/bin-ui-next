@@ -67,6 +67,9 @@
   transform: scaleY(1);
   transition: transform $animation-duration-slow cubic-bezier(0.23, 1, 0.32, 1), opacity $animation-duration-slow cubic-bezier(0.23, 1, 0.32, 1);
   transform-origin: center top;
+  &[data-popper-placement^="top"] {
+    transform-origin: center bottom;
+  }
 }
 .zoom-in-top-enter-from,
 .zoom-in-top-leave-to {

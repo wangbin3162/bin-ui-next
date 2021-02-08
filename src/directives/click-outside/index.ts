@@ -1,21 +1,97 @@
-import { ObjectDirective } from 'vue'
+import { on } from '../../utils/dom'
+import isServer from '../../utils/isServer'
+import type { ComponentPublicInstance, DirectiveBinding, ObjectDirective } from 'vue'
 
-export default {
-  beforeMount(el, binding) {
-    function documentHandler(e) {
-      if (el.contains(e.target)) {
-        return false
-      }
-      if (binding.value) {
-        binding.value(e)
-      }
+
+// eslint-disable-next-line no-unused-vars
+type DocumentHandler = <T extends MouseEvent>(mouseup: T, mousedown: T) => void;
+
+type FlushList = Map<HTMLElement,
+  {
+    documentHandler: DocumentHandler
+    // eslint-disable-next-line no-unused-vars
+    bindingFn: (...args: unknown[]) => unknown
+  }>;
+
+const nodeList: FlushList = new Map()
+
+let startClick: MouseEvent
+
+if (!isServer) {
+  on(document, 'mousedown', (e: MouseEvent) => (startClick = e))
+  on(document, 'mouseup', (e: MouseEvent) => {
+    for (const { documentHandler } of nodeList.values()) {
+      documentHandler(e, startClick)
     }
+  })
+}
+type Nullable<T> = T | null;
 
-    el.__vueClickOutside__ = documentHandler
-    document.addEventListener('click', documentHandler)
+function createDocumentHandler(
+  el: HTMLElement,
+  binding: DirectiveBinding,
+): DocumentHandler {
+  let excludes: HTMLElement[] = []
+  if (Array.isArray(binding.arg)) {
+    excludes = binding.arg
+  } else {
+    // due to current implementation on binding type is wrong the type casting is necessary here
+    excludes.push(binding.arg as unknown as HTMLElement)
+  }
+  return function(mouseup, mousedown) {
+    const popperRef = (binding.instance as ComponentPublicInstance<{
+      popperRef: Nullable<HTMLElement>
+    }>).popperRef
+    const mouseUpTarget = mouseup.target as Node
+    const mouseDownTarget = mousedown.target as Node
+    const isBound = !binding || !binding.instance
+    const isTargetExists = !mouseUpTarget || !mouseDownTarget
+    const isContainedByEl = el.contains(mouseUpTarget) || el.contains(mouseDownTarget)
+    const isSelf = el === mouseUpTarget
+
+    const isTargetExcluded =
+      (excludes.length &&
+        excludes.some(item => item?.contains(mouseUpTarget))
+      ) || (
+        excludes.length && excludes.includes(mouseDownTarget as HTMLElement)
+      )
+    const isContainedByPopper = (
+      popperRef &&
+      (
+        popperRef.contains(mouseUpTarget) ||
+        popperRef.contains(mouseDownTarget)
+      )
+    )
+    if (
+      isBound ||
+      isTargetExists ||
+      isContainedByEl ||
+      isSelf ||
+      isTargetExcluded ||
+      isContainedByPopper
+    ) {
+      return
+    }
+    binding.value()
+  }
+}
+
+const ClickOutside: ObjectDirective = {
+  beforeMount(el, binding) {
+    nodeList.set(el, {
+      documentHandler: createDocumentHandler(el, binding),
+      bindingFn: binding.value,
+    })
+  },
+  updated(el, binding) {
+    nodeList.set(el, {
+      documentHandler: createDocumentHandler(el, binding),
+      bindingFn: binding.value,
+    })
   },
   unmounted(el) {
-    document.removeEventListener('click', el.__vueClickOutside__)
-    delete el.__vueClickOutside__
+    nodeList.delete(el)
   },
-} as ObjectDirective
+}
+
+export default ClickOutside

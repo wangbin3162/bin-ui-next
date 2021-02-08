@@ -1,0 +1,95 @@
+.bin-dropdown {
+  display: inline-block;
+  position: relative;
+  color: $color-text-default;
+  font-size: $base-font-size;
+  i.b-iconfont {
+    font-size: 14px;
+  }
+}
+
+.bin-dropdown__popper {
+  &.bin-popper[role=tooltip] {
+    padding: 5px 0;
+    background-color: #fff;
+    max-height: none;
+    box-shadow: $shadow-2-down;
+    border: none;
+    &.is-dark {
+      background-color: $dark-bg
+      .bin-dropdown-menu .bin-dropdown-item {
+        color: rgba(255, 255, 255, .65);
+        &:hover, &:focus {
+          outline: none;
+          color: #fff;
+          background-color: transparent;
+        }
+        &-selected {
+          background-color: $color-primary;
+          color: #fff;
+        }
+        &-disabled {
+          color: rgba(255, 255, 255, .35) !important;
+          cursor: not-allowed;
+        }
+        &-divided {
+          border-top: 1px solid #a0a0a0;
+        }
+      }
+    }
+  }
+  .bin-dropdown__popper-selfdefine {
+    outline: 0
+  }
+}
+
+.bin-dropdown-menu {
+  min-width: 100px;
+  .bin-dropdown {
+    width: 100%;
+  }
+  .bin-dropdown-item {
+    margin: 0;
+    padding: 5px 12px;
+    line-height: 22px;
+    width: 100%;
+    clear: both;
+    color: $color-text-default;
+    font-size: $base-font-size !important;
+    white-space: nowrap;
+    list-style: none;
+    cursor: pointer;
+    transition: background $animation-duration-base ease-in-out;
+    &:hover, &:focus {
+      background: #f3f3f3;
+      outline: none;
+    }
+
+    &-selected {
+      background: $color-primary-light5;
+    }
+    &-disabled {
+      color: $btn-disable-color !important;
+      cursor: not-allowed;
+      &:hover {
+        color: $btn-disable-color !important;
+        background-color: #fff;
+        cursor: not-allowed;
+      }
+    }
+    &-divided {
+      margin-top: 5px;
+      border-top: 1px solid #e8eaec;
+    }
+    > .b-iconfont {
+      position: relative;
+      top: -1px;
+      margin-right: 4px;
+    }
+    .b-icon-right {
+      position: relative;
+      right: -6px;
+    }
+  }
+
+}
