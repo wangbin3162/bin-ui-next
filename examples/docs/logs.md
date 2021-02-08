@@ -12,6 +12,7 @@
         <p class="content"><i>🍀</i>新增轮播组件carousel</p>
         <p class="content"><i>🍀</i>新增标签页组件tabs</p>
         <p class="content"><i>🍀</i>新增下拉菜单组件dropdown</p>
+        <p class="content"><i>🍀</i>增加开关和评分组件，switch，rate</p>
         <p class="content"><i>🐞</i>修改部分代码样式</p>
       </b-timeline-item>
       <b-timeline-item>

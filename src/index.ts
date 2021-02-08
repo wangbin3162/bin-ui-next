@@ -31,6 +31,7 @@ import BModal from './components/modal'
 import BPopover from './components/popover'
 import BPopper from './components/popper'
 import BProgress from './components/progress'
+import BRate from './components/rate'
 import BRow from './components/row'
 import BScrollbar from './components/scrollbar'
 import BSplit from './components/split'
@@ -88,6 +89,7 @@ const components = [
   BPopover,
   BPopper,
   BProgress,
+  BRate,
   BRow,
   BScrollbar,
   BSplit,
@@ -171,6 +173,7 @@ export {
   BPopover,
   BPopper,
   BProgress,
+  BRate,
   BRow,
   BScrollbar,
   BSplit,
