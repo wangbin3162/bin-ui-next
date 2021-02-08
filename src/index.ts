@@ -36,6 +36,7 @@ import BScrollbar from './components/scrollbar'
 import BSplit from './components/split'
 import BSteps from './components/steps'
 import BStep from './components/step'
+import BSwitch from './components/switch'
 import BTabs from './components/tabs'
 import BTag from './components/tag'
 import BTimeline from './components/timeline'
@@ -92,6 +93,7 @@ const components = [
   BSplit,
   BSteps,
   BStep,
+  BSwitch,
   BTabs,
   BTag,
   BTimeline,
@@ -174,6 +176,7 @@ export {
   BSplit,
   BSteps,
   BStep,
+  BSwitch,
   BTabs,
   BTag,
   BTimeline,

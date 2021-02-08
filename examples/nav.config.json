@@ -142,8 +142,7 @@
           "desc": "Dropdown 下拉菜单",
           "icon": "caret-down",
           "name": "dropdown",
-          "path": "/dropdown",
-          "writing": true
+          "path": "/dropdown"
         },
         {
           "desc": "Steps 步骤条",
@@ -194,8 +193,7 @@
           "desc": "Switch 开关",
           "icon": "build",
           "name": "switch",
-          "path": "/switch",
-          "writing": true
+          "path": "/switch"
         },
         {
           "desc": "Select 选择器",

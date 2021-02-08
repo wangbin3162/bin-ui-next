@@ -1,4 +1,4 @@
-import { inject,  ref } from 'vue'
+import { inject, ref } from 'vue'
 import { generateId } from '../../utils/util-helper'
 import { EVENT_CODE } from '../../utils/aria'
 import { on, addClass } from '../../utils/dom'
@@ -79,11 +79,6 @@ export const initDropdownDomEvent = (dropdownChildren, triggerElm, _instance) =>
     dropdownElm.value.setAttribute('id', listId.value)
     triggerElm.setAttribute('aria-haspopup', 'list')
     triggerElm.setAttribute('aria-controls', listId.value)
-    if (!_instance.props.splitButton) {
-      triggerElm.setAttribute('role', 'button')
-      triggerElm.setAttribute('tabindex', _instance.props.tabindex)
-      addClass(triggerElm, 'bin-dropdown-selfdefine')
-    }
   }
 
   function initEvent() {

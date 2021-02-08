@@ -189,17 +189,6 @@ export default defineComponent({
     })
 
     onMounted(() => {
-      if (!props.splitButton) {
-        on(triggerElm.value, 'focus', () => {
-          focusing.value = true
-        })
-        on(triggerElm.value, 'blur', () => {
-          focusing.value = false
-        })
-        on(triggerElm.value, 'click', () => {
-          focusing.value = false
-        })
-      }
       if (props.trigger === 'hover') {
         on(triggerElm.value, 'mouseenter', show)
         on(triggerElm.value, 'mouseleave', hide)
