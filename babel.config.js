@@ -11,6 +11,7 @@ module.exports = {
   ],
   plugins: [
     '@vue/babel-plugin-jsx',
+    'transform-class-properties'
   ],
   overrides: [
     {

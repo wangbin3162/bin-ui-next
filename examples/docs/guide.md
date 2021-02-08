@@ -16,16 +16,19 @@ bin-ui-next 是bin-ui的vue3升级版，目前组件源码正在疯狂重构中.
 
 ### 特性
 
-- 💪 基于 Vue 3.0 Composition API
-- 🔥 Written in TypeScript
-- 🌈 最新图标基于阿里iconfont ant-design 官方图标精简版
-- 🗑 移除了部分冗余代码
-- ⌨️ 部分组件代码进行重构优化
+<ul class="doc-li">
+    <li>💪 基于 Vue 3.0 Composition API</li>
+    <li>🔥 Written in TypeScript</li>
+    <li>🌈 最新图标基于阿里iconfont ant-design 官方图标精简版</li>
+    <li>🗑 移除了部分冗余代码</li>
+    <li>⌨️ 部分组件代码进行重构优化</li>
+</ul>
 
 ### 支持环境
-
-- 支持ie11以上
-- 支持服务端渲染
+<ul class="doc-li">
+    <li>支持ie11以上</li>
+    <li>支持服务端渲染</li>
+</ul>
 
 ### 版本
 

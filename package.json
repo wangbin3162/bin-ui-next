@@ -59,6 +59,7 @@
     "@vue/babel-plugin-jsx": "^1.0.0",
     "@vue/compiler-sfc": "^3.0.5",
     "babel-loader": "^8.2.2",
+    "babel-plugin-transform-class-properties": "^6.24.1",
     "cross-env": "^7.0.2",
     "css-loader": "^4.2.2",
     "css-minimizer-webpack-plugin": "^1.1.5",

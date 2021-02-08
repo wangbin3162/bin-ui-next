@@ -26,6 +26,10 @@ import BDropdownItem from './components/dropdown-item'
 import BDropdownMenu from './components/dropdown-menu'
 import BEmpty from './components/empty'
 import BIcon from './components/icon'
+import BMenu from './components/menu'
+import BMenuItem from './components/menu-item'
+import BMenuItemGroup from './components/menu-item-group'
+import BSubmenu from './components/submenu'
 import BLoading from './components/loading'
 import BModal from './components/modal'
 import BPopover from './components/popover'
@@ -84,6 +88,10 @@ const components = [
   BDropdownMenu,
   BEmpty,
   BIcon,
+  BMenu,
+  BMenuItem,
+  BMenuItemGroup,
+  BSubmenu,
   BLoading,
   BModal,
   BPopover,
@@ -168,6 +176,10 @@ export {
   BDropdownMenu,
   BEmpty,
   BIcon,
+  BMenu,
+  BMenuItem,
+  BMenuItemGroup,
+  BSubmenu,
   BLoading,
   BModal,
   BPopover,
