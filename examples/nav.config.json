@@ -234,8 +234,7 @@
           "desc": "Rate 评分",
           "icon": "star",
           "name": "rate",
-          "path": "/rate",
-          "writing": true
+          "path": "/rate"
         },
         {
           "desc": "Slider 滑块组件",

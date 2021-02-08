@@ -1,25 +1,30 @@
 <template>
   <b-popover v-model:visible="visible" :width="200" :disabled="!confirm">
-  <span tabindex="0"
-        :class="wrapClasses"
-        :style="wrapStyle"
-        @click="toggle"
-        @keydown.space="toggle"
-  >
-      <input type="hidden" :name="name" :value="currentValue">
+    <span
+      tabindex="0"
+      :class="wrapClasses"
+      :style="wrapStyle"
+      @click="toggle"
+      @keydown.space="toggle"
+    >
+      <input type="hidden" :name="name" :value="currentValue" />
       <span class="bin-switch-inner">
-          <slot name="open" v-if="currentValue === trueValue"></slot>
-          <slot name="close" v-if="currentValue === falseValue"></slot>
+        <slot name="open" v-if="currentValue === trueValue"></slot>
+        <slot name="close" v-if="currentValue === falseValue"></slot>
       </span>
-  </span>
+    </span>
     <template #content>
       <p>
-        <i class="b-iconfont b-icon-question-circle" style="color:#f5222d;"></i>
+        <i class="b-iconfont b-icon-question-circle" style="color: #f5222d"></i>
         {{ confirmTxt || '确定切换吗？' }}
       </p>
       <div style="text-align: right; margin: 0">
-        <b-button size="mini" type="text" @click="visible = false">取消</b-button>
-        <b-button type="primary" size="mini" @click="confirmFun($event)">确定</b-button>
+        <b-button size="mini" type="text" @click="visible = false"
+          >取消</b-button
+        >
+        <b-button type="primary" size="mini" @click="confirmFun($event)"
+          >确定</b-button
+        >
       </div>
     </template>
   </b-popover>
@@ -68,10 +73,13 @@ export default defineComponent({
 
     const handleToggle = (e) => {
       e.preventDefault()
-      if (props.disabled || props.loading) {
+      if (props.disabled) {
         return false
       }
-      const checked = currentValue.value === props.trueValue ? props.falseValue : props.trueValue
+      const checked =
+        currentValue.value === props.trueValue
+          ? props.falseValue
+          : props.trueValue
       currentValue.value = checked
       emit('update:modelValue', checked)
       emit('change', checked)
@@ -79,8 +87,7 @@ export default defineComponent({
       // this.dispatch('BFormItem', 'form-change', checked)
     }
     const toggle = (e) => {
-      if (!props.confirm)
-        handleToggle(e)
+      if (!props.confirm) handleToggle(e)
     }
     const confirmFun = (e) => {
       visible.value = false
@@ -88,7 +95,7 @@ export default defineComponent({
     }
     watch(
       () => props.modelValue,
-      val => {
+      (val) => {
         if (val !== props.trueValue && val !== props.falseValue) {
           console.log('Value should be true or false.')
         }
@@ -99,7 +106,7 @@ export default defineComponent({
       visible,
       currentValue,
       toggle,
-      confirmFun
+      confirmFun,
     }
   },
   computed: {

@@ -7,7 +7,8 @@
     :aria-valuetext="text"
     aria-valuemin="0"
     :aria-valuemax="max"
-    tabindex="0">
+    tabindex="0"
+  >
     <span
       v-for="(item, key) in max"
       class="bin-rate__item"
@@ -15,25 +16,33 @@
       @mouseleave="resetCurrentValue"
       @click="selectValue(item)"
       :style="{ cursor: rateDisabled ? 'auto' : 'pointer' }"
-      :key="key">
+      :key="key"
+    >
       <i
         class="bin-rate__icon b-iconfont"
-        :class="[`b-icon-${classes[item - 1]}`, { 'hover': hoverIndex === item }]"
-        :style="getIconStyle(item)">
+        :class="[`b-icon-${classes[item - 1]}`, { hover: hoverIndex === item }]"
+        :style="getIconStyle(item)"
+      >
         <i
           class="bin-rate__decimal b-iconfont"
           v-if="showDecimalIcon(item)"
           :class="`b-icon-${decimalIconClass}`"
-          :style="decimalStyle">
+          :style="decimalStyle"
+        >
         </i>
       </i>
     </span>
-    <span v-if="showText || showScore" class="bin-rate__text" :style="{ color: textColor }">{{ text }}</span>
+    <span
+      v-if="showText || showScore"
+      class="bin-rate__text"
+      :style="{ color: textColor }"
+      >{{ text }}</span
+    >
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, computed, watch } from 'vue'
+import { defineComponent, ref, computed, watch, PropType } from 'vue'
 import { hasClass } from '../../utils/dom'
 import { isObject, isArray } from '@vue/shared'
 import { EVENT_CODE } from '../../utils/aria'
@@ -59,7 +68,7 @@ export default defineComponent({
     },
     colors: {
       type: Array,
-      default() {
+      default: () => {
         return ['#F7BA2A', '#F7BA2A', '#F7BA2A']
       },
     },
@@ -73,7 +82,7 @@ export default defineComponent({
     },
     iconClasses: {
       type: Array,
-      default() {
+      default: () => {
         return ['star-fill', 'star-fill', 'star-fill']
       },
     },
@@ -106,8 +115,8 @@ export default defineComponent({
       default: 'rgba(0,0,0,.65)',
     },
     texts: {
-      type: Array,
-      default() {
+      type: Array as PropType<string[]>,
+      default: () => {
         return ['极差', '失望', '一般', '满意', '惊喜']
       },
     },
@@ -118,19 +127,16 @@ export default defineComponent({
   },
   emits: ['update:modelValue', 'change'],
   setup(props, { emit }) {
-
     const currentValue = ref(props.modelValue)
 
     const rateDisabled = computed(() => props.disabled)
 
     const text = computed(() => {
-      let result = ''
+      let result: string = ''
       if (props.showScore) {
         result = props.scoreTemplate.replace(
           /\{\s*value\s*\}/,
-          rateDisabled.value
-            ? `${props.modelValue}`
-            : `${currentValue.value}`,
+          rateDisabled.value ? `${props.modelValue}` : `${currentValue.value}`,
         )
       } else if (props.showText) {
         result = props.texts[Math.ceil(currentValue.value) - 1]
@@ -140,25 +146,31 @@ export default defineComponent({
 
     function getValueFromMap(value: unknown, map: Record<string, unknown>) {
       const matchedKeys = Object.keys(map)
-        .filter(key => {
+        .filter((key) => {
           const val = map[key]
           const excluded = isObject(val) ? val.excluded : false
           return excluded ? value < key : value <= key
         })
         .sort((a: never, b: never) => a - b)
       const matchedValue = map[matchedKeys[0]]
-      return isObject(matchedValue) ? matchedValue.value : (matchedValue || '')
+      return isObject(matchedValue) ? matchedValue.value : matchedValue || ''
     }
 
-    const valueDecimal = computed(() => props.modelValue * 100 - Math.floor(props.modelValue) * 100)
-    const colorMap = computed(() => isArray(props.colors)
-      ? {
-        [props.lowThreshold]: props.colors[0],
-        [props.highThreshold]: { value: props.colors[1], excluded: true },
-        [props.max]: props.colors[2],
-      } : props.colors,
+    const valueDecimal = computed(
+      () => props.modelValue * 100 - Math.floor(props.modelValue) * 100,
     )
-    const activeColor = computed(() => getValueFromMap(currentValue.value, colorMap.value))
+    const colorMap = computed(() =>
+      isArray(props.colors)
+        ? {
+            [props.lowThreshold]: props.colors[0],
+            [props.highThreshold]: { value: props.colors[1], excluded: true },
+            [props.max]: props.colors[2],
+          }
+        : props.colors,
+    )
+    const activeColor = computed(() =>
+      getValueFromMap(currentValue.value, colorMap.value),
+    )
     const decimalStyle = computed(() => {
       let width = ''
       if (rateDisabled.value) {
@@ -172,16 +184,27 @@ export default defineComponent({
       }
     })
 
-    const classMap = computed(() => isArray(props.iconClasses)
-      ? {
-        [props.lowThreshold]: props.iconClasses[0],
-        [props.highThreshold]: { value: props.iconClasses[1], excluded: true },
-        [props.max]: props.iconClasses[2],
-      } : props.iconClasses,
+    const classMap = computed(() =>
+      isArray(props.iconClasses)
+        ? {
+            [props.lowThreshold]: props.iconClasses[0],
+            [props.highThreshold]: {
+              value: props.iconClasses[1],
+              excluded: true,
+            },
+            [props.max]: props.iconClasses[2],
+          }
+        : props.iconClasses,
     )
-    const decimalIconClass = computed(() => getValueFromMap(props.modelValue, classMap.value))
-    const voidClass = computed(() => rateDisabled.value ? props.disabledVoidIconClass : props.voidIconClass)
-    const activeClass = computed(() => getValueFromMap(currentValue.value, classMap.value))
+    const decimalIconClass = computed(() =>
+      getValueFromMap(props.modelValue, classMap.value),
+    )
+    const voidClass = computed(() =>
+      rateDisabled.value ? props.disabledVoidIconClass : props.voidIconClass,
+    )
+    const activeClass = computed(() =>
+      getValueFromMap(currentValue.value, classMap.value),
+    )
     const classes = computed(() => {
       let result = Array(props.max)
       let threshold = currentValue.value
@@ -194,15 +217,24 @@ export default defineComponent({
     })
 
     const pointerAtLeftHalf = ref(true)
-    watch(() => props.modelValue, val => {
-      currentValue.value = val
-      pointerAtLeftHalf.value = props.modelValue !== Math.floor(props.modelValue)
-    })
+    watch(
+      () => props.modelValue,
+      (val) => {
+        currentValue.value = val
+        pointerAtLeftHalf.value =
+          props.modelValue !== Math.floor(props.modelValue)
+      },
+    )
 
     function showDecimalIcon(item: number) {
-      let showWhenDisabled = rateDisabled.value && valueDecimal.value > 0 && item - 1 < props.modelValue && item > props.modelValue
+      let showWhenDisabled =
+        rateDisabled.value &&
+        valueDecimal.value > 0 &&
+        item - 1 < props.modelValue &&
+        item > props.modelValue
       /* istanbul ignore next */
-      let showWhenAllowHalf = props.allowHalf &&
+      let showWhenAllowHalf =
+        props.allowHalf &&
         pointerAtLeftHalf.value &&
         item - 0.5 <= currentValue.value &&
         item > currentValue.value
@@ -210,7 +242,9 @@ export default defineComponent({
     }
 
     function getIconStyle(item: number) {
-      const voidColor = rateDisabled.value ? props.disabledVoidColor : props.voidColor
+      const voidColor = rateDisabled.value
+        ? props.disabledVoidColor
+        : props.voidColor
       return {
         color: item <= currentValue.value ? activeColor.value : voidColor,
       }
@@ -287,7 +321,8 @@ export default defineComponent({
         return
       }
       if (props.allowHalf) {
-        pointerAtLeftHalf.value = props.modelValue !== Math.floor(props.modelValue)
+        pointerAtLeftHalf.value =
+          props.modelValue !== Math.floor(props.modelValue)
       }
       currentValue.value = props.modelValue
       hoverIndex.value = -1
