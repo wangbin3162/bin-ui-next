@@ -26,6 +26,7 @@ import BDropdownItem from './components/dropdown-item'
 import BDropdownMenu from './components/dropdown-menu'
 import BEmpty from './components/empty'
 import BIcon from './components/icon'
+import BInput from './components/input'
 import BMenu from './components/menu'
 import BMenuItem from './components/menu-item'
 import BMenuItemGroup from './components/menu-item-group'
@@ -88,6 +89,7 @@ const components = [
   BDropdownMenu,
   BEmpty,
   BIcon,
+  BInput,
   BMenu,
   BMenuItem,
   BMenuItemGroup,
@@ -176,6 +178,7 @@ export {
   BDropdownMenu,
   BEmpty,
   BIcon,
+  BInput,
   BMenu,
   BMenuItem,
   BMenuItemGroup,

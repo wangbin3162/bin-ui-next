@@ -1,0 +1,241 @@
+placeholder() {
+  // Firefox
+  &::-moz-placeholder {
+    color: $color-text-placeholder;
+    opacity: 1; // Override Firefox's unusual default opacity; see https://github.com/twbs/bootstrap/pull/11526
+  }
+  // Internet Explorer 10+
+  &:-ms-input-placeholder {
+    color: $color-text-placeholder
+  }
+  // Safari and Chrome
+  &::-webkit-input-placeholder {
+    color: $color-text-placeholder
+  }
+}
+.bin-input-wrapper {
+  display: inline-block;
+  width: 100%;
+  position: relative;
+  vertical-align: middle;
+  line-height: $base-line-height;
+  label {
+    display: inline-block;
+    width: 100%;
+    height: auto;
+  }
+  &:hover {
+    .bin-input-icon-clear {
+      display: block;
+    }
+  }
+  .bin-input-icon-clear .b-icon-close-circle-fill {
+    vertical-align: baseline;
+    cursor: pointer;
+  }
+  &.bin-input-group-with-prepend, &.bin-input-group-with-append {
+    display: inline-flex;
+  }
+  .bin-input-group-prepend, .bin-input-group-append {
+    position relative;
+  }
+  .bin-input-group-prepend {
+    z-index: 1;
+    right: -1px;
+  }
+
+  .bin-input-group-append {
+    z-index: 0;
+    left: -1px;
+  }
+}
+// 大小设置
+.bin-input-wrapper-large {
+  .bin-input-with-prefix {
+    padding-left: $large-height;
+  }
+  .bin-input-prefix, .bin-input-suffix {
+    width: $large-height;
+    i {
+      font-size: 18px;
+      line-height: $large-height;
+      height: $large-height;
+    }
+  }
+  .bin-input-icon {
+    line-height: $large-height;
+    height: $large-height;
+  }
+}
+.bin-input-wrapper-small {
+  .bin-input-with-prefix {
+    padding-left: $small-height;
+  }
+  .bin-input-prefix, .bin-input-suffix {
+    width: $small-height;
+    i {
+      line-height: $small-height;
+      height: $small-height;
+    }
+  }
+  .bin-input-icon {
+    line-height: $small-height;
+    height: $small-height;
+  }
+}
+.bin-input-wrapper-mini {
+  .bin-input-with-prefix {
+    padding-left: $mini-height;
+  }
+  .bin-input-prefix, .bin-input-suffix {
+    width: $mini-height;
+    i {
+      line-height: $mini-height;
+      height: $mini-height;
+    }
+  }
+  .bin-input-icon {
+    line-height: $mini-height;
+    height: $mini-height;
+  }
+}
+
+.bin-input {
+  display: inline-block;
+  width: 100%;
+  height: $default-height;
+  line-height: $base-line-height;
+  padding: 0 11px;
+  font-size: $base-font-size;
+  border: $border-base;
+  border-radius: $border-base-radius;
+  color: $color-text-default;
+  background-color: $color-white;
+  background-image: none;
+  position: relative;
+  cursor: text;
+  transition: border $animation-duration-base ease-in-out, background $animation-duration-base ease-in-out, box-shadow $animation-duration-base ease;
+  placeholder()
+  &:focus, &:hover {
+    border-color: $color-primary;
+    z-index: 1;
+  }
+  &:focus {
+    outline: 0;
+    box-shadow: 0 0 0 2px $color-input-shadow;
+  }
+}
+// 大小设置
+.bin-input-large {
+  height: $large-height;
+  font-size: $header-font-size;
+}
+
+.bin-input-small {
+  height: $small-height;
+}
+
+.bin-input-mini {
+  height: $mini-height;
+}
+//  图标部分
+.bin-input-hide-icon .bin-input-icon, .bin-input-icon-clear, .bin-input-icon-validate {
+  display: none;
+}
+.bin-input-icon {
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 3;
+  width: $default-height;
+  height: $default-height;
+  line-height: $default-height;
+  font-size: 16px;
+  text-align: center;
+  color: $color-text-secondary;
+}
+.bin-input-icon-normal + .bin-input {
+  padding-right: 36px;
+}
+.bin-input-with-prefix {
+  padding-left: 36px;
+}
+
+.bin-input-prefix, .bin-input-suffix {
+  width: 36px;
+  height: 100%;
+  text-align: center;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  i {
+    font-size: 16px;
+    line-height: $default-height;
+    color: $color-text-default;
+  }
+}
+.bin-input-suffix {
+  left: auto;
+  right: 0;
+}
+//  搜索
+.bin-input-search-icon {
+  cursor: pointer;
+  transition: color $animation-duration-base ease-in-out;
+}
+.bin-input-search {
+  cursor: pointer;
+  padding: 0 16px !important;
+  background: $color-primary !important;
+  color: #fff !important;
+  border-color: $color-primary !important;
+  transition: all $animation-duration-base ease-in-out;
+  position: relative;
+  z-index: 2;
+}
+textarea.bin-input {
+  max-width: 100%;
+  height: auto;
+  min-height: 32px;
+  vertical-align: bottom;
+  font-size: $base-font-size;
+  padding: 4px 7px;
+  resize: vertical;
+}
+.bin-input[disabled], fieldset[disabled] .bin-input {
+  opacity: 1;
+  cursor: not-allowed;
+  background-color: #f9f9f9;
+  color: $color-text-placeholder;
+}
+
+.bin-input-word-count {
+  text-align: center;
+  position: absolute;
+  right: 7px;
+  top: 2px;
+  bottom: 2px;
+  padding-left: 7px;
+  background: #fff;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  color: #808695;
+  font-size: 12px;
+}
+
+.bin-input-type-text.bin-input-with-word-count .bin-input {
+  padding-right: 40px;
+}
+.bin-input-type-textarea.bin-input-with-word-count .bin-input {
+  padding-bottom: 16px;
+}
+.bin-input-type-textarea .bin-input-word-count {
+  -webkit-box-align: end;
+  -ms-flex-align: end;
+  align-items: flex-end;
+  top: auto;
+  right: 17px;
+}
+
