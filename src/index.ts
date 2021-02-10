@@ -39,6 +39,9 @@ import BProgress from './components/progress'
 import BRate from './components/rate'
 import BRow from './components/row'
 import BScrollbar from './components/scrollbar'
+import BSelect from './components/select'
+import BOption from './components/option'
+import BOptionGroup from './components/option-group'
 import BSplit from './components/split'
 import BSteps from './components/steps'
 import BStep from './components/step'
@@ -102,6 +105,9 @@ const components = [
   BRate,
   BRow,
   BScrollbar,
+  BSelect,
+  BOption,
+  BOptionGroup,
   BSplit,
   BSteps,
   BStep,
@@ -191,6 +197,9 @@ export {
   BRate,
   BRow,
   BScrollbar,
+  BSelect,
+  BOption,
+  BOptionGroup,
   BSplit,
   BSteps,
   BStep,

@@ -164,8 +164,7 @@
           "desc": "Input 输入框",
           "icon": "edit-square",
           "name": "input",
-          "path": "/input",
-          "writing": true
+          "path": "/input"
         },
         {
           "desc": "InputNumber 数字输入",
@@ -198,8 +197,7 @@
           "desc": "Select 选择器",
           "icon": "unorderedlist",
           "name": "select",
-          "path": "/select",
-          "writing": true
+          "path": "/select"
         },
         {
           "desc": "DatePicker 日期选择器",
