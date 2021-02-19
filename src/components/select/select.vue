@@ -73,7 +73,7 @@
           <li>{{ notFoundText }}</li>
         </ul>
         <ul class="bin-select-dropdown-list" ref="dropdownRef">
-          <template v-if="(!remote) || (remote && !loading)">
+          <template v-if="!remote || (remote && !loading)">
             <slot></slot>
           </template>
         </ul>
@@ -85,15 +85,15 @@
 
 <script lang="ts">
 import {
+  ComponentPublicInstance,
   computed,
   defineComponent,
-  reactive,
-  toRefs,
-  ref,
-  ComponentPublicInstance,
+  nextTick,
   onUnmounted,
   provide,
-  nextTick,
+  reactive,
+  ref,
+  toRefs,
   watch,
 } from 'vue'
 import ClickOutside from '../../directives/click-outside'
@@ -106,9 +106,11 @@ import { CHANGE_EVENT, UPDATE_MODEL_EVENT } from '../../utils/constants'
 const checkValuesNotEqual = (value, publicValue, values) => {
   const strValue = JSON.stringify(value)
   const strPublic = JSON.stringify(publicValue)
-  const strValues = JSON.stringify(values.map(item => {
-    return item.value
-  }))
+  const strValues = JSON.stringify(
+    values.map((item) => {
+      return item.value
+    }),
+  )
   return strValue !== strPublic || strValue !== strValues || strValues !== strPublic
 }
 type Nullable<T> = T | null
@@ -214,9 +216,13 @@ export default defineComponent({
       return uiStateMatch && qualifiesForClear && reset // we return a function
     })
     const remote = computed(() => typeof props.remoteMethod === 'function')
-    const selectOptions = computed(() => optionsChild.value)
+    const selectOptions = computed(() => (optionsChild.value || []))
     const showNotFoundLabel = computed(() => {
-      return selectOptions.value && selectOptions.value.length === 0 && (!remote.value || (remote.value && !props.loading))
+      return (
+        selectOptions.value &&
+        selectOptions.value.length === 0 &&
+        (!remote.value || (remote.value && !props.loading))
+      ) || selectOptions.value.every(i => !i.visible)
     })
 
     // ====methods====
@@ -224,7 +230,6 @@ export default defineComponent({
       if (props.disabled) {
         return false
       }
-
       states.visible = typeof force !== 'undefined' ? force : !states.visible
     }
 
@@ -234,7 +239,15 @@ export default defineComponent({
     }
 
     const handleClose = () => {
-      states.visible = false
+      if (states.visible) {
+        if (props.filterable) {
+          reset()
+        }
+        hideMenu()
+        states.isFocused = true
+      } else {
+        states.isFocused = false
+      }
     }
 
     const onQueryChange = (query) => {
@@ -244,10 +257,14 @@ export default defineComponent({
       states.query = query
       states.unchangedQuery = states.visible
       states.filterQueryChange = true
-      console.log(query)
+
+      for (let option of selectOptions.value) {
+        option.visible = props.filterable && states.filterQueryChange && validateOption(option.props)
+      }
     }
 
-    const clearSingleSelect = () => { // PUBLIC API
+    const clearSingleSelect = () => {
+      // PUBLIC API
       ctx.emit('clear')
       hideMenu()
       if (props.clearable) reset()
@@ -301,6 +318,9 @@ export default defineComponent({
       }
       setTimeout(() => {
         states.filterQueryChange = false
+        for (let option of selectOptions.value) {
+          option.visible = true
+        }
       }, 300)
     }
 
@@ -317,7 +337,12 @@ export default defineComponent({
       const multiple = props.multiple
       const value = props.modelValue
       let initialValue = Array.isArray(value) ? value : [value]
-      if (!multiple && (typeof initialValue[0] === 'undefined' || (String(initialValue[0]).trim() === '' && !Number.isFinite(initialValue[0])))) initialValue = []
+      if (
+        !multiple &&
+        (typeof initialValue[0] === 'undefined' ||
+          (String(initialValue[0]).trim() === '' && !Number.isFinite(initialValue[0])))
+      )
+        initialValue = []
       if (remote.value && !multiple && value) {
         const data = getOptionData(value)
         states.query = data ? data.label : String(value)
@@ -333,6 +358,14 @@ export default defineComponent({
       }
     }
 
+    function validateOption(propsData) {
+      const value = propsData.value
+      const label = propsData.label || ''
+      const stringValues = JSON.stringify([value, label])
+      const query = states.query.toLowerCase().trim()
+      return stringValues.toLowerCase().includes(query)
+    }
+
     // 事件监听
     selectEmitter.on(selectEvents.selected, onOptionClick)
     provide(selectKey, { props, states, optionsChild, selectEmitter })
@@ -340,91 +373,119 @@ export default defineComponent({
     onUnmounted(() => {
       selectEmitter.all.clear()
     })
-    watch(() => props.modelValue, (value) => {
-      checkUpdateStatus()
-      if (value === '') {
-        states.values = []
-      } else if (checkValuesNotEqual(value, publicValue.value, states.values)) {
-        nextTick(() => {
-          states.values = getInitialValue().map(getOptionData).filter(Boolean)
-        })
-        // this.dispatch('BFormItem', 'form-change', this.publicValue)
-      }
-    })
-    watch(() => states.values, (now, before) => {
-      const newValue = JSON.stringify(now)
-      const oldValue = JSON.stringify(before)
-      // v-model is always just the value, event with labelInValue === true
-      states.vModelValue = (publicValue.value && props.labelInValue)
-        ? (props.multiple ? publicValue.value.map(({ value }) => value) : publicValue.value.value)
-        : publicValue.value
-      const shouldEmitInput = newValue !== oldValue && states.vModelValue !== props.modelValue
-      if (shouldEmitInput) {
-        ctx.emit(UPDATE_MODEL_EVENT, states.vModelValue) // to update v-model
-        ctx.emit(CHANGE_EVENT, publicValue.value)
-        // this.dispatch('BFormItem', 'form-change', this.publicValue)
-      }
-    })
-    watch(() => states.query, (query) => {
-      ctx.emit('query-change', query)
-      const hasValidQuery = query !== '' && (query !== states.lastRemoteQuery || !states.lastRemoteQuery)
-      const shouldCallRemoteMethod = props.remoteMethod && hasValidQuery && !states.preventRemoteCall
-      states.preventRemoteCall = false // remove the flag
-
-      if (shouldCallRemoteMethod) {
-        states.focusIndex = -1
-        const promise = props.remoteMethod(query)
-        states.initialLabel = ''
-        if (promise && promise.then) {
-          promise.then(options => {
-            if (options) states.options = options
+    watch(
+      () => props.modelValue,
+      (value) => {
+        checkUpdateStatus()
+        if (value === '') {
+          states.values = []
+        } else if (checkValuesNotEqual(value, publicValue.value, states.values)) {
+          nextTick(() => {
+            states.values = getInitialValue().map(getOptionData).filter(Boolean)
           })
+          // this.dispatch('BFormItem', 'form-change', this.publicValue)
         }
-      } else {
-      }
-      if (query !== '' && remote.value) states.lastRemoteQuery = query
-    })
-    watch(() => states.isFocused, (focused) => {
-      const el = props.filterable ? selectWrapper?.value.querySelector('input[type="text"]') : selectWrapper?.value
-      el[states.isFocused ? 'focus' : 'blur']()
-
-      // restore query value in filterable single selects
-      const [selectedOption] = states.values
-      if (selectedOption && props.filterable && !props.multiple && !focused) {
-        const selectedLabel = String(selectedOption.label || selectedOption.value).trim()
-        if (selectedLabel && states.query !== selectedLabel) {
-          states.preventRemoteCall = true
-          states.query = selectedLabel
+      },
+    )
+    watch(
+      () => states.values,
+      (now, before) => {
+        const newValue = JSON.stringify(now)
+        const oldValue = JSON.stringify(before)
+        // v-model is always just the value, event with labelInValue === true
+        states.vModelValue =
+          publicValue.value && props.labelInValue
+            ? props.multiple
+            ? publicValue.value.map(({ value }) => value)
+            : publicValue.value.value
+            : publicValue.value
+        const shouldEmitInput = newValue !== oldValue && states.vModelValue !== props.modelValue
+        if (shouldEmitInput) {
+          ctx.emit(UPDATE_MODEL_EVENT, states.vModelValue) // to update v-model
+          ctx.emit(CHANGE_EVENT, publicValue.value)
+          // this.dispatch('BFormItem', 'form-change', this.publicValue)
         }
-      }
-    })
-    watch(() => states.focusIndex, (index) => {
-      if (index < 0 || props.autoComplete) return
-      // update scroll
-      const optionInstance = selectOptions.value[index].vm
+      },
+    )
+    watch(
+      () => states.query,
+      (query) => {
+        ctx.emit('query-change', query)
+        const hasValidQuery =
+          query !== '' && (query !== states.lastRemoteQuery || !states.lastRemoteQuery)
+        const shouldCallRemoteMethod =
+          props.remoteMethod && hasValidQuery && !states.preventRemoteCall
+        states.preventRemoteCall = false // remove the flag
 
-      let bottomOverflowDistance = optionInstance.$el.getBoundingClientRect().bottom - dropdownRef.value.getBoundingClientRect().bottom
-      let topOverflowDistance = optionInstance.$el.getBoundingClientRect().top - dropdownRef.value.getBoundingClientRect().top
-      if (bottomOverflowDistance > 0) {
-        dropdownRef.value.scrollTop += bottomOverflowDistance
-      }
-      if (topOverflowDistance < 0) {
-        dropdownRef.value.scrollTop += topOverflowDistance
-      }
-    })
-    watch(() => selectOptions.value, (value) => {
-      if (states.hasExpectedValue && value.length > 0) {
-        if (states.values.length === 0) {
-          states.values = getInitialValue()
+        if (shouldCallRemoteMethod) {
+          states.focusIndex = -1
+          const promise = props.remoteMethod(query)
+          states.initialLabel = ''
+          if (promise && promise.then) {
+            promise.then((options) => {
+              if (options) states.options = options
+            })
+          }
         }
-        states.values = states.values.map(getOptionData).filter(Boolean)
-        states.hasExpectedValue = false
-      }
+        if (query !== '' && remote.value) states.lastRemoteQuery = query
+      },
+    )
+    watch(
+      () => states.isFocused,
+      (focused) => {
+        const el = props.filterable
+          ? selectWrapper?.value.querySelector('input[type="text"]')
+          : selectWrapper?.value
+        el[states.isFocused ? 'focus' : 'blur']()
 
-      if (states.options && states.options.length === 0) {
-        states.query = ''
-      }
-    })
+        // restore query value in filterable single selects
+        const [selectedOption] = states.values
+        if (selectedOption && props.filterable && !props.multiple && !focused) {
+          const selectedLabel = String(selectedOption.label || selectedOption.value).trim()
+          if (selectedLabel && states.query !== selectedLabel) {
+            states.preventRemoteCall = true
+            states.query = selectedLabel
+          }
+        }
+      },
+    )
+    watch(
+      () => states.focusIndex,
+      (index) => {
+        if (index < 0 || props.autoComplete) return
+        // update scroll
+        const optionInstance = selectOptions.value[index].vm
+
+        let bottomOverflowDistance =
+          optionInstance.$el.getBoundingClientRect().bottom -
+          dropdownRef.value.getBoundingClientRect().bottom
+        let topOverflowDistance =
+          optionInstance.$el.getBoundingClientRect().top -
+          dropdownRef.value.getBoundingClientRect().top
+        if (bottomOverflowDistance > 0) {
+          dropdownRef.value.scrollTop += bottomOverflowDistance
+        }
+        if (topOverflowDistance < 0) {
+          dropdownRef.value.scrollTop += topOverflowDistance
+        }
+      },
+    )
+    watch(
+      () => selectOptions.value,
+      (value) => {
+        if (states.hasExpectedValue && value.length > 0) {
+          if (states.values.length === 0) {
+            states.values = getInitialValue()
+          }
+          states.values = states.values.map(getOptionData).filter(Boolean)
+          states.hasExpectedValue = false
+        }
+
+        if (states.options && states.options.length === 0) {
+          states.query = ''
+        }
+      },
+    )
     return {
       ...toRefs(states),
       selectWrapper,

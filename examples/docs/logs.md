@@ -5,6 +5,16 @@
 <div class="doc-update">
     <b-timeline>
       <b-timeline-item>
+        <p class="version">0.1.8</p>
+        <p class="time">2021-02-19</p>
+        <p class="content"><i>🐞</i>修复下拉选择器搜索</p>
+      </b-timeline-item>
+      <b-timeline-item>
+        <p class="version">0.1.7</p>
+        <p class="time">2021-02-10</p>
+        <p class="content"><i>🍀</i>新增下拉选择器select</p>
+      </b-timeline-item>
+      <b-timeline-item>
         <p class="version">0.1.6</p>
         <p class="time">2021-02-08</p>
         <p class="content"><i>🍀</i>新增抽屉组件drawer</p>

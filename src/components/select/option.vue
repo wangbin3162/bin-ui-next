@@ -35,7 +35,7 @@ export default defineComponent({
   },
   setup(props, ctx) {
     const select = inject(selectKey)
-    const visible = ref(true)
+    const visible = ref<boolean>(true)
     const autoComplete = ref(select?.props.autoComplete || false)
     // computed
     const isObject = computed(() => {
