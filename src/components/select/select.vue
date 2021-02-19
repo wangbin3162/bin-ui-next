@@ -88,7 +88,7 @@ import {
   ComponentPublicInstance,
   computed,
   defineComponent,
-  nextTick,
+  nextTick, onMounted,
   onUnmounted,
   provide,
   reactive,
@@ -369,6 +369,17 @@ export default defineComponent({
     // 事件监听
     selectEmitter.on(selectEvents.selected, onOptionClick)
     provide(selectKey, { props, states, optionsChild, selectEmitter })
+
+    onMounted(() => {
+      // set the initial values if there are any
+      if (!remote.value && selectOptions.value.length > 0) {
+        states.values = getInitialValue().map(value => {
+          if (typeof value !== 'number' && !value) return null
+          return getOptionData(value)
+        }).filter(Boolean)
+      }
+      checkUpdateStatus()
+    })
 
     onUnmounted(() => {
       selectEmitter.all.clear()

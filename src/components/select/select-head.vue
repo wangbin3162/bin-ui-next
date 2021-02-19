@@ -54,7 +54,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, toRefs, computed, reactive, PropType, inject, ref, watch } from 'vue'
+import { defineComponent, toRefs, computed, reactive, PropType, inject, ref } from 'vue'
 import { selectKey, selectEvents } from './token'
 
 interface IItem {
@@ -231,6 +231,6 @@ export default defineComponent({
       if (query !== this.query) this.query = query
     },
   },
-  emits: ['input-focus', 'input-blur', 'keydown', 'clear','query-change'],
+  emits: ['input-focus', 'input-blur', 'keydown', 'clear', 'query-change'],
 })
 </script>

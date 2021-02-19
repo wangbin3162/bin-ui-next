@@ -200,6 +200,12 @@
           "path": "/select"
         },
         {
+          "desc": "Cascader 级联选择",
+          "icon": "pic-left",
+          "name": "cascader",
+          "path": "/cascader"
+        },
+        {
           "desc": "DatePicker 日期选择器",
           "icon": "calendar",
           "name": "datePicker",
@@ -218,13 +224,6 @@
           "icon": "bg-colors",
           "name": "colorPicker",
           "path": "/colorPicker",
-          "writing": true
-        },
-        {
-          "desc": "Cascader 级联选择",
-          "icon": "pic-left",
-          "name": "cascader",
-          "path": "/cascader",
           "writing": true
         },
         {
