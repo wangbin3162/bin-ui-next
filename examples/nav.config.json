@@ -177,15 +177,13 @@
           "desc": "Radio 单选框",
           "icon": "plus-circle",
           "name": "radio",
-          "path": "/radio",
-          "writing": true
+          "path": "/radio"
         },
         {
           "desc": "Checkbox 多选框",
           "icon": "check-square",
           "name": "checkbox",
-          "path": "/checkbox",
-          "writing": true
+          "path": "/checkbox"
         },
         {
           "desc": "Switch 开关",
@@ -203,7 +201,8 @@
           "desc": "Cascader 级联选择",
           "icon": "pic-left",
           "name": "cascader",
-          "path": "/cascader"
+          "path": "/cascader",
+          "writing": true
         },
         {
           "desc": "DatePicker 日期选择器",

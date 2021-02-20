@@ -13,6 +13,8 @@ import BCalendar from './components/calendar'
 import BCard from './components/card'
 import BCarousel from './components/carousel'
 import BCarouselItem from './components/carousel-item'
+import BCheckbox from './components/checkbox'
+import BCheckboxGroup from './components/checkbox-group'
 import BCircle from './components/circle'
 import BCol from './components/col'
 import BCollapse from './components/collapse'
@@ -79,6 +81,8 @@ const components = [
   BCard,
   BCarousel,
   BCarouselItem,
+  BCheckbox,
+  BCheckboxGroup,
   BCircle,
   BCol,
   BCollapse,
@@ -171,6 +175,8 @@ export {
   BCarousel,
   BCarouselItem,
   BCard,
+  BCheckbox,
+  BCheckboxGroup,
   BCircle,
   BCol,
   BCollapse,
