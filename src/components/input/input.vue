@@ -8,13 +8,22 @@
       <span :class="closeClasses" v-if="clearable && currentValue && !disabled">
         <i class="b-iconfont b-icon-close-circle-fill" @click="handleClear"></i>
       </span>
-      <i class="b-iconfont" :class="['b-icon-' + icon,  'bin-input-icon', 'bin-input-icon-normal']"
-         v-else-if="icon" @click="handleIconClick"></i>
-      <i class="b-iconfont b-icon-search"
-         :class="['bin-input-icon', 'bin-input-icon-normal' , 'bin-input--search-icon']"
-         v-else-if="search" @click="handleSearch"></i>
+      <i
+        class="b-iconfont"
+        :class="['b-icon-' + icon, 'bin-input-icon', 'bin-input-icon-normal']"
+        v-else-if="icon"
+        @click="handleIconClick"
+      ></i>
+      <i
+        class="b-iconfont b-icon-search"
+        :class="['bin-input-icon', 'bin-input-icon-normal', 'bin-input--search-icon']"
+        v-else-if="search"
+        @click="handleSearch"
+      ></i>
       <span class="bin-input-suffix" v-else-if="showSuffix">
-        <slot name="suffix"><i class="b-iconfont" :class="['b-icon-' + suffix]" v-if="suffix"></i></slot></span>
+        <slot name="suffix"
+          ><i class="b-iconfont" :class="['b-icon-' + suffix]" v-if="suffix"></i></slot
+      ></span>
       <input
         :id="elementId"
         :autocomplete="autocomplete"
@@ -39,9 +48,12 @@
         @compositionupdate="handleComposition"
         @compositionend="handleComposition"
         @input="handleInput"
-        @change="handleChange">
+        @change="handleChange"
+      />
       <span class="bin-input-prefix" v-if="showPrefix">
-        <slot name="prefix"><i class="b-iconfont" :class="['b-icon-' + prefix]" v-if="prefix"></i></slot>
+        <slot name="prefix"
+          ><i class="b-iconfont" :class="['b-icon-' + prefix]" v-if="prefix"></i
+        ></slot>
       </span>
       <span class="bin-input-word-count" v-if="showWordCount">{{ wordCount }}</span>
 
@@ -50,30 +62,32 @@
       </span>
     </template>
     <template v-else>
-      <textarea :id="elementId"
-                :wrap="wrap"
-                :autocomplete="autocomplete"
-                ref="textareaRef"
-                :class="textareaClasses"
-                :style="textareaStyle"
-                :placeholder="placeholder"
-                :disabled="disabled"
-                :rows="rows"
-                :maxlength="maxlength"
-                :readonly="readonly"
-                :name="name"
-                :value="currentValue"
-                :autofocus="autofocus"
-                @keyup.enter="handleEnter"
-                @keyup="handleKeyup"
-                @keypress="handleKeypress"
-                @keydown="handleKeydown"
-                @focus="handleFocus"
-                @blur="handleBlur"
-                @compositionstart="handleComposition"
-                @compositionupdate="handleComposition"
-                @compositionend="handleComposition"
-                @input="handleInput"></textarea>
+      <textarea
+        :id="elementId"
+        :wrap="wrap"
+        :autocomplete="autocomplete"
+        ref="textareaRef"
+        :class="textareaClasses"
+        :style="textareaStyle"
+        :placeholder="placeholder"
+        :disabled="disabled"
+        :rows="rows"
+        :maxlength="maxlength"
+        :readonly="readonly"
+        :name="name"
+        :value="currentValue"
+        :autofocus="autofocus"
+        @keyup.enter="handleEnter"
+        @keyup="handleKeyup"
+        @keypress="handleKeypress"
+        @keydown="handleKeydown"
+        @focus="handleFocus"
+        @blur="handleBlur"
+        @compositionstart="handleComposition"
+        @compositionupdate="handleComposition"
+        @compositionend="handleComposition"
+        @input="handleInput"
+      ></textarea>
       <span class="bin-input-word-count" v-if="showWordCount">{{ wordCount }}</span>
     </template>
   </div>
@@ -85,13 +99,19 @@ import { defineComponent, computed, ref, watch, onMounted, reactive, toRefs, nex
 import { CHANGE_EVENT, UPDATE_MODEL_EVENT } from '../../utils/constants'
 
 const prefixCls = 'bin-input'
+type SizeProp = {
+  minRows?: number
+  maxRows?: number
+}
 
 export default defineComponent({
   name: 'BInput',
   props: {
     type: {
       validator: (value: string) => {
-        return ['text', 'textarea', 'password', 'url', 'email', 'date', 'number', 'tel'].includes(value)
+        return ['text', 'textarea', 'password', 'url', 'email', 'date', 'number', 'tel'].includes(
+          value,
+        )
       },
       default: 'text',
     },
@@ -115,8 +135,10 @@ export default defineComponent({
     disabled: Boolean,
     icon: String,
     autosize: {
-      type: [Boolean, Object],
-      default: false,
+      type: Object,
+      default: (): SizeProp => {
+        return {}
+      },
     },
     rows: {
       type: Number,
@@ -156,8 +178,20 @@ export default defineComponent({
       default: true,
     },
   },
-  emits: [UPDATE_MODEL_EVENT, CHANGE_EVENT, 'enter', 'search', 'keydown', 'keyup', 'keypress',
-    'click', 'blur', 'focus', 'input-change', 'clear'],
+  emits: [
+    UPDATE_MODEL_EVENT,
+    CHANGE_EVENT,
+    'enter',
+    'search',
+    'keydown',
+    'keyup',
+    'keypress',
+    'click',
+    'blur',
+    'focus',
+    'input-change',
+    'clear',
+  ],
   setup(props, ctx) {
     // data
     const data = reactive({
@@ -168,9 +202,12 @@ export default defineComponent({
     const inputRef = ref(null)
     const textareaRef = ref(null)
     // watch
-    watch(() => props.modelValue, (val) => {
-      setCurrentValue(val)
-    })
+    watch(
+      () => props.modelValue,
+      (val) => {
+        setCurrentValue(val)
+      },
+    )
     // computed
     const wrapClasses = computed(() => {
       return [
@@ -180,7 +217,7 @@ export default defineComponent({
           [`${prefixCls}-type-${props.type}`]: props.type,
           [`${prefixCls}-group-with-prepend`]: ctx.slots.prepend,
           [`${prefixCls}-group-with-append`]: ctx.slots.append || props.search,
-          [`${prefixCls}-hide-icon`]: props.append, // #554
+          [`${prefixCls}-hide-icon`]: ctx.slots.append, // #554
           [`${prefixCls}-with-search`]: props.search,
           [`${prefixCls}-with-word-count`]: props.showWordCount,
         },
@@ -199,11 +236,15 @@ export default defineComponent({
         },
       ]
     })
-    const closeClasses = computed(() => [prefixCls + '-icon', prefixCls + '-icon-clear', prefixCls + '-icon-normal'])
+    const closeClasses = computed(() => [
+      prefixCls + '-icon',
+      prefixCls + '-icon-clear',
+      prefixCls + '-icon-normal',
+    ])
     const textareaStyle = computed(() => {
       return {
         resize: props.noResize ? 'none' : null,
-        ...props.textareaStyles,
+        ...data.textareaStyles,
       }
     })
     const textareaClasses = computed(() => {
@@ -215,7 +256,7 @@ export default defineComponent({
       ]
     })
     const wordCount = computed(() => {
-      return data.currentValue.length + (props.maxlength ? `/${props.maxlength}` : '')
+      return data.currentValue.toString().length + (props.maxlength ? `/${props.maxlength}` : '')
     })
 
     // self methods
@@ -269,7 +310,7 @@ export default defineComponent({
       // }
     }
 
-    const handleComposition = e => {
+    const handleComposition = (e) => {
       if (e.type === 'compositionstart') {
         data.isOnComposition = true
       }
@@ -278,7 +319,7 @@ export default defineComponent({
         handleInput(e)
       }
     }
-    const handleInput = e => {
+    const handleInput = (e) => {
       if (data.isOnComposition) return
 
       let value = e.target.value
@@ -287,7 +328,7 @@ export default defineComponent({
       ctx.emit(UPDATE_MODEL_EVENT, value)
       ctx.emit(CHANGE_EVENT, e)
     }
-    const handleChange = e => {
+    const handleChange = (e) => {
       ctx.emit('input-change', e)
     }
 
