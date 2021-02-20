@@ -170,8 +170,7 @@
           "desc": "InputNumber 数字输入",
           "icon": "shake",
           "name": "inputNumber",
-          "path": "/inputNumber",
-          "writing": true
+          "path": "/inputNumber"
         },
         {
           "desc": "Radio 单选框",

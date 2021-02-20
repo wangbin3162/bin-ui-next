@@ -6,7 +6,9 @@
     <b-timeline>
       <b-timeline-item>
         <p class="version">0.1.8</p>
-        <p class="time">2021-02-19</p>
+        <p class="time">2021-02-20</p>
+        <p class="content"><i>🍀</i>新增数字输入框</p>
+        <p class="content"><i>🍀</i>新增单选多选</p>
         <p class="content"><i>🐞</i>修复下拉选择器搜索</p>
       </b-timeline-item>
       <b-timeline-item>
