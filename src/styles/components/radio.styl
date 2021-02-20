@@ -1,0 +1,127 @@
+.bin-radio {
+  cursor: pointer;
+  white-space: nowrap;
+  display: inline-block;
+  margin-right: 8px;
+  user-select: none;
+  font-size: $base-font-size;
+  line-height: $base-line-height;
+  outline: none;
+  &.is-focus .bin-radio__inner {
+    box-shadow: 0 0 0 3px $color-effect-shadow;
+  }
+  &-group {
+    font-size: 0;
+  }
+  &__label {
+    padding: 0 8px;
+    vertical-align: middle;
+  }
+  &__input {
+    white-space: nowrap;
+    cursor: pointer;
+    outline: none;
+    display: inline-block;
+    line-height: 1;
+    position: relative;
+    vertical-align: middle;
+    width: 16px;
+    height: 16px;
+    &:hover {
+      .bin-radio__inner {
+        border-color: $color-primary-light1;
+      }
+    }
+    &.is-checked {
+      .bin-radio__inner {
+        border-color: $color-primary
+        &:after {
+          opacity: 1;
+          -webkit-transform: scale(1);
+          transform: scale(1);
+          transition: all $animation-duration-base ease-in-out;
+        }
+      }
+      &:after {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 1px solid $color-primary;
+        border-radius: 50%;
+        animation: radioEffect $animation-duration-slow ease-in-out;
+        animation-fill-mode: both;
+        content: '';
+      }
+    }
+    &.is-disabled {
+      .bin-radio__inner {
+        cursor: not-allowed;
+        border-color: #dcdee2;
+        background-color: #f3f3f3;
+        &:after {
+          background-color: #ccc;
+        }
+      }
+    }
+  }
+  &__inner {
+    position: relative;
+    top: 0;
+    left: 0;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background-color: #fff;
+    border: $border-base;
+    border-radius: 50%;
+    transition: all $animation-duration-base ease-in-out;
+    &:after {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      left: 2px;
+      top: 2px;
+      border-radius: 6px;
+      display: table;
+      border-top: 0;
+      border-left: 0;
+      content: " ";
+      background-color: $color-primary;
+      opacity: 0;
+      transition: all $animation-duration-base ease-in-out;
+      -webkit-transform: scale(0);
+      transform: scale(0);
+    }
+  }
+  &__original {
+    position: absolute;
+    opacity: 0;
+    outline: none;
+    margin: 0;
+    width: 0;
+    height: 0;
+    z-index: -1;
+    &[disabled] {
+      cursor: not-allowed;
+    }
+  }
+  &.is-disabled {
+    .bin-radio__label {
+      color: #ccc;
+      cursor: not-allowed;
+    }
+  }
+}
+
+@keyframes radioEffect {
+  0% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}

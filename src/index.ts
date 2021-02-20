@@ -38,6 +38,8 @@ import BModal from './components/modal'
 import BPopover from './components/popover'
 import BPopper from './components/popper'
 import BProgress from './components/progress'
+import BRadio from './components/radio'
+import BRadioGroup from './components/radio-group'
 import BRate from './components/rate'
 import BRow from './components/row'
 import BScrollbar from './components/scrollbar'
@@ -106,6 +108,8 @@ const components = [
   BPopover,
   BPopper,
   BProgress,
+  BRadio,
+  BRadioGroup,
   BRate,
   BRow,
   BScrollbar,
@@ -200,6 +204,8 @@ export {
   BPopover,
   BPopper,
   BProgress,
+  BRadio,
+  BRadioGroup,
   BRate,
   BRow,
   BScrollbar,
