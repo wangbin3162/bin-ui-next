@@ -36,6 +36,7 @@ import BMenuItemGroup from './components/menu-item-group'
 import BSubmenu from './components/submenu'
 import BLoading from './components/loading'
 import BModal from './components/modal'
+import BPage from './components/page'
 import BPopover from './components/popover'
 import BPopper from './components/popper'
 import BProgress from './components/progress'
@@ -107,6 +108,7 @@ const components = [
   BSubmenu,
   BLoading,
   BModal,
+  BPage,
   BPopover,
   BPopper,
   BProgress,
@@ -204,6 +206,7 @@ export {
   BSubmenu,
   BLoading,
   BModal,
+  BPage,
   BPopover,
   BPopper,
   BProgress,

@@ -267,8 +267,7 @@
           "desc": "Page 分页器",
           "icon": "read",
           "name": "page",
-          "path": "/page",
-          "writing": true
+          "path": "/page"
         },
         {
           "desc": "Tree 树结构",
