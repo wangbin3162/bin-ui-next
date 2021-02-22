@@ -1,0 +1,141 @@
+.bin-tree {
+  font-size: $base-font-size;
+  color: $color-text-default;
+  &-wrapper {
+    margin-right: 4px;
+    margin-left: 4px;
+  }
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    &.bin-dropdown-menu {
+      padding: 0;
+    }
+    li {
+      display: flex;
+      flex-direction: column;
+      list-style: none;
+      padding: 0;
+      outline: none;
+      margin: 0;
+      &.bin-dropdown-item {
+        margin: 0;
+        padding: 7px 16px;
+        white-space: nowrap;
+      }
+    }
+  }
+  li {
+    ul {
+      margin: 0;
+      padding: 0 0 0 16px;
+    }
+  }
+
+  &-node {
+    display: flex;
+    align-items: flex-start;
+    padding: 0 0 4px 0;
+    white-space: nowrap;
+  }
+  &-title {
+    margin: 0;
+    padding: 0 6px;
+    line-height: 24px;
+    border-radius: $border-base-radius;
+    cursor: pointer;
+    transition: background-color $animation-duration-base ease-in-out;
+    span {
+      color: $color-danger;
+    }
+    &:hover {
+      background-color: $color-primary-light5;
+    }
+    &-selected, &-selected:hover {
+      background-color: $color-primary-light4;
+    }
+  }
+
+  &-render-title {
+    width: 100%;
+    margin: 0;
+    padding: 0 6px;
+    line-height: 24px;
+    border-radius: $border-base-radius;
+    cursor: pointer;
+    transition: background-color $animation-duration-base ease-in-out;
+    &:hover {
+      background-color: $color-primary-light5;
+    }
+    &-selected, &-selected:hover {
+      background-color: $color-primary-light4;
+    }
+  }
+  &-arrow {
+    flex: none;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    cursor: pointer;
+    text-align: center;
+    .b-icon-caret-right {
+      position: relative;
+      top: -1px;
+      transition: transform $animation-duration-base ease-in-out;
+      font-size: 12px;
+      vertical-align: middle;
+    }
+    .b-icon-loading {
+      position: relative;
+      top: -1px;
+      transition: transform $animation-duration-base ease-in-out;
+      font-size: 14px;
+      vertical-align: middle;
+      color: $color-primary;
+    }
+    &-open {
+      .b-icon-caret-right {
+        transform: rotateZ(90deg) translateZ(0);
+      }
+    }
+    &-disabled {
+      cursor: not-allowed;
+    }
+    &-noop {
+      cursor: default;
+    }
+  }
+  .bin-checkbox-wrapper {
+    margin-right: 4px;
+    line-height: $base-line-height;
+    vertical-align: baseline;
+  }
+  &-phantom {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    z-index: -1;
+  }
+
+  &-content {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    min-height: 100px;
+  }
+}
+.b-icon-loading {
+  animation: rotating 2s linear infinite;
+}
+
+@keyframes rotating {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  100% {
+    transform: rotateZ(360deg);
+  }
+}

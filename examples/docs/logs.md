@@ -5,6 +5,12 @@
 <div class="doc-update">
     <b-timeline>
       <b-timeline-item>
+        <p class="version">0.1.9</p>
+        <p class="time">2021-02-22</p>
+        <p class="content"><i>🍀</i>新增page分页器</p>
+        <p class="content"><i>🍀</i>新增tree树形选择</p>
+      </b-timeline-item>
+      <b-timeline-item>
         <p class="version">0.1.8</p>
         <p class="time">2021-02-20</p>
         <p class="content"><i>🍀</i>新增数字输入框</p>

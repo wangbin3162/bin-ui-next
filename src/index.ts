@@ -57,6 +57,8 @@ import BTag from './components/tag'
 import BTimeline from './components/timeline'
 import BTimelineItem from './components/timeline-item'
 import BTooltip from './components/tooltip'
+import BTree from './components/tree'
+import BBigTree from './components/tree-big'
 import Message from './components/message'
 import MessageBox from './components/message-box'
 import Notice from './components/notice'
@@ -129,6 +131,8 @@ const components = [
   BTimeline,
   BTimelineItem,
   BTooltip,
+  BTree,
+  BBigTree,
 ]
 const plugins = [
   Message,
@@ -227,6 +231,8 @@ export {
   BTimeline,
   BTimelineItem,
   BTooltip,
+  BTree,
+  BBigTree,
   Message,
   Notice,
   MessageBox,
