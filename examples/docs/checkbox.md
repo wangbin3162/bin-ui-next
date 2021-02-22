@@ -178,7 +178,7 @@
 
 <template>
   <div>
-    <b-checkbox-group v-model="checkAllGroup" @change="checkAllGroupChange" :min="1" :max="2">
+    <b-checkbox-group v-model="checkAllGroup" :min="1" :max="2">
       <b-checkbox label="香蕉"></b-checkbox>
       <b-checkbox label="苹果"></b-checkbox>
       <b-checkbox label="西瓜"></b-checkbox>

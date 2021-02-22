@@ -21,21 +21,7 @@
 import TreeNode from './node.vue'
 import BEmpty from '../empty'
 import { defineComponent, provide, reactive, toRefs, watch } from 'vue'
-
-export interface RootTreeType {
-  // eslint-disable-next-line no-unused-vars
-  loadData: (item, callback) => void
-  showCheckbox: boolean
-  checkDirectly: boolean
-  flatState: any[]
-  // eslint-disable-next-line no-unused-vars
-  handleToggle: (node) => void
-  // eslint-disable-next-line no-unused-vars
-  handleSelect: (nodeKey) => void
-  // eslint-disable-next-line no-unused-vars
-  handleCheck: ({ checked, nodeKey }) => void
-  updateTreeState: () => void
-}
+import { RootTreeType } from './types'
 
 export default defineComponent({
   name: 'BTree',

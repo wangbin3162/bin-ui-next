@@ -43,21 +43,9 @@
 import CollapseTransition from '../collapse-transition'
 import { defineComponent, inject, nextTick, getCurrentInstance, provide } from 'vue'
 import BCheckbox from '../checkbox'
-import { RootTreeType } from './tree.vue'
+import { RootTreeType, DataProp } from './types'
 
 const prefixCls = 'bin-tree'
-export type DataProp = {
-  title?: string
-  expand?: boolean
-  disabled?: boolean
-  selected?: boolean
-  checked?: boolean
-  visible?: boolean
-  loading?: boolean
-  isLeaf?: boolean
-  disableCheckbox?: boolean
-  children?: DataProp[]
-}
 
 export default defineComponent({
   name: 'TreeNode',

@@ -273,8 +273,7 @@
           "desc": "Tree 树结构",
           "icon": "branches",
           "name": "tree",
-          "path": "/tree",
-          "writing": true
+          "path": "/tree"
         },
         {
           "desc": "Progress 进度条",
