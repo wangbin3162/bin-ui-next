@@ -276,6 +276,12 @@
           "path": "/tree"
         },
         {
+          "desc": "Desc 描述列表",
+          "icon": "unorderedlist",
+          "name": "desc",
+          "path": "/desc"
+        },
+        {
           "desc": "Progress 进度条",
           "icon": "hourglass",
           "name": "progress",

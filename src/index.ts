@@ -28,6 +28,8 @@ import BDropdown from './components/dropdown'
 import BDropdownItem from './components/dropdown-item'
 import BDropdownMenu from './components/dropdown-menu'
 import BEmpty from './components/empty'
+import BDesc from './components/desc'
+import BDescItem from './components/desc-item'
 import BIcon from './components/icon'
 import BInput from './components/input'
 import BInputNumber from './components/input-number'
@@ -104,6 +106,8 @@ const components = [
   BDropdownItem,
   BDropdownMenu,
   BEmpty,
+  BDesc,
+  BDescItem,
   BIcon,
   BInput,
   BInputNumber,
@@ -208,6 +212,8 @@ export {
   BDropdownItem,
   BDropdownMenu,
   BEmpty,
+  BDesc,
+  BDescItem,
   BIcon,
   BInput,
   BInputNumber,
