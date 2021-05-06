@@ -70,7 +70,7 @@ import { setConfig } from './utils/config'
 import log from './utils/log'
 import { scrollTop } from './utils/dom'
 
-import { ClickAnimation, ClickOutside, Waves } from './directives'
+import { ClickAnimation, ClickOutside, Waves, NoData, Loading } from './directives'
 // @ts-ignore
 import config from '../package.json'
 
@@ -157,6 +157,8 @@ const install = function(app: App) {
   app.directive('Waves', Waves)
   app.directive('ClickAnimation', ClickAnimation)
   app.directive('ClickOutside', ClickOutside)
+  app.directive('NoData', NoData)
+  app.directive('Loading', Loading)
   // 注册全局函数和属性
   app.config.globalProperties.$global = defaultInstallOpt
   setConfig(defaultInstallOpt)

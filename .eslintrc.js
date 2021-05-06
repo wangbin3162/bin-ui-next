@@ -23,6 +23,7 @@ module.exports = {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-trailing-spaces': 'error',
+    'no-unused-vars': 'off',
     'vue/no-v-html': 'off',
     'vue/no-deprecated-v-on-native-modifier': 'off',
     '@typescript-eslint/no-var-requires': 'off',

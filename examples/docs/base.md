@@ -47,7 +47,7 @@ util方法函数
 
 ### 无数据组件
 
-目前表格和tree型结构使用，也可以自己使用
+目前表格和tree型结构使用，可以自定义标签使用，也可以使用指令使用
 
 ::: demo
 
@@ -56,8 +56,18 @@ util方法函数
 <template>
   <div style="width: 224px;">
     <b-empty>当前无数据</b-empty>
+    <div style="border: 1px solid red;height: 150px;" v-no-data:[dataText]="true"></div>
   </div>
 </template>
+<script>
+  export default {
+    data() {
+      return {
+        dataText: '抱歉没有数据'
+      }
+    }
+  }
+</script>
 ```
 
 :::

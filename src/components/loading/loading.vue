@@ -11,7 +11,7 @@
           <b-icon v-else :name="showIcon" class="loading-icon icon-is-rotating"></b-icon>
         </slot>
         <slot name="text">
-          <div v-if="showText" class="loading-text" :style="textStyle">{{ showText }}</div>
+          <div v-if="text" class="loading-text" :style="textStyle">{{ text }}</div>
         </slot>
       </div>
     </div>
@@ -27,7 +27,10 @@ export default defineComponent({
   props: {
     showIcon: String,
     showText: String,
-    fix: Boolean,
+    fix: {
+      type: Boolean,
+      default: true,
+    },
     size: String,
   },
   computed: {
@@ -44,6 +47,16 @@ export default defineComponent({
       return {
         fontSize: `${this.size}px`,
       }
+    },
+  },
+  data() {
+    return {
+      text: this.showText,
+    }
+  },
+  methods: {
+    setTitle(title) {
+      this.text = title
     },
   },
 })

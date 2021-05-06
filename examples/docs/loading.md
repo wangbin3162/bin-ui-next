@@ -21,7 +21,9 @@
 ```html
 
 <template>
-  <b-loading></b-loading>
+  <div class="demo-loading">
+    <b-loading></b-loading>
+  </div>
 </template>
 ```
 
@@ -29,7 +31,7 @@
 
 ### 居中固定
 
-可以在父级元素中居中固定
+可以在父级元素中居中固定 默认是剧中固定的，fix设置为false后用于加载类似下拉加载的功能
 
 :::demo
 
@@ -77,20 +79,37 @@
 ```html
 
 <template>
-  <div class="demo-loading">
-    <div>我是后面的段落我是后面的段落我是后面的段落我是后面的段落</div>
-    <b-loading fix v-if="spinShow"></b-loading>
-  </div>
-  <div>
-    <b-button @click="spinShow=true">加载</b-button>
-    <b-button type="danger" @click="spinShow=false">停止</b-button>
+  <div flex>
+    <div>
+      <p>普通使用</p>
+      <div class="demo-loading">
+        <div>我是后面的段落我是后面的段落我是后面的段落我是后面的段落</div>
+        <b-loading fix v-if="loading1"></b-loading>
+      </div>
+      <div>
+        <b-button @click="loading1=true">加载</b-button>
+        <b-button type="danger" @click="loading1=false">停止</b-button>
+      </div>
+    </div>
+    <div>
+      <p>指令调用</p>
+      <div class="demo-loading" v-loading:[loadingText]="loading2">
+        <div>我是后面的段落我是后面的段落我是后面的段落我是后面的段落</div>
+      </div>
+      <div>
+        <b-button @click="loading2=true">加载</b-button>
+        <b-button type="danger" @click="loading2=false">停止</b-button>
+      </div>
+    </div>
   </div>
 </template>
 <script>
   export default {
     data() {
       return {
-        spinShow: true
+        loading1: true,
+        loading2: true,
+        loadingText: '正在努力加载中'
       }
     }
   }
