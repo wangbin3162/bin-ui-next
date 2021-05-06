@@ -26,12 +26,5 @@ i 标签可以直接设置样式类名为 `b-iconfont b-icon-xxx` 来使用即�
 
 ### 图标集合
 
-<p>收录了<span style="color:red;">{{$icon.length}}</span>个图标</p>
-<ul class="icon-list">
-    <li v-for="name in $icon" :key="name" class="list-complete-item">
-        <span>
-            <i :class="['b-iconfont' ,'b-icon-'+ name]"></i>
-            <span class="icon-name">{{ name }}</span>
-        </span>
-    </li>
-</ul>
+<icon-pane/>
+

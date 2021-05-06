@@ -31,7 +31,7 @@
 <script lang="ts">
 import { defineComponent, nextTick, onBeforeUnmount, onMounted, ref, PropType, reactive, toRefs, watch } from 'vue'
 import ScrollPane from './scroll-pane.vue'
-import { debounce, deepCopy } from '../../utils/util'
+import { throttle, deepCopy } from '../../utils/util'
 import { on, off } from '../../utils/dom'
 import { addResizeListener, removeResizeListener } from '../../utils/resize-event'
 
@@ -171,7 +171,7 @@ export default defineComponent({
     const closeMenu = () => {
       data.visible = false
     }
-    const calcEvent = debounce(calcScrollWidth, 10)
+    const calcEvent = throttle(calcScrollWidth, 10)
     onMounted(() => {
       calcBar()
       addResizeListener(rootRef.value, calcEvent)

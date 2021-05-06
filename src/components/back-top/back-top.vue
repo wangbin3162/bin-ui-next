@@ -20,7 +20,7 @@
 
 <script lang="ts">
 import { defineComponent, ref, computed, onMounted, onBeforeUnmount } from 'vue'
-import { debounce } from '../../utils/util'
+import { throttle } from '../../utils/util'
 import { scrollTop, on, off } from '../../utils/dom'
 
 interface BackTopProps {
@@ -71,7 +71,7 @@ export default defineComponent({
       ctx.emit('click', event)
     }
 
-    const throttledScrollHandler = debounce(onScroll, 50, false)
+    const throttledScrollHandler = throttle(onScroll, 50)
 
     onMounted(() => {
       container.value = document

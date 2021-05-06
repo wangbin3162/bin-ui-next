@@ -75,7 +75,7 @@ import {
   removeResizeListener,
 } from '../../utils/resize-event'
 import { ICarouselProps, CarouselItem, InjectCarouselScope } from './carousel'
-import { debounce } from '../../utils/util'
+import { throttle } from '../../utils/util'
 
 export default defineComponent({
   name: 'BCarousel',
@@ -175,7 +175,7 @@ export default defineComponent({
     })
 
     // methods
-    const throttledArrowClick = debounce(
+    const throttledArrowClick = throttle(
       index => {
         setActiveItem(index)
       },
@@ -183,7 +183,7 @@ export default defineComponent({
       true,
     )
 
-    const throttledIndicatorHover = debounce(index => {
+    const throttledIndicatorHover = throttle(index => {
       handleIndicatorHover(index)
     }, 300)
 

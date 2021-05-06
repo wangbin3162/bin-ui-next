@@ -109,7 +109,7 @@ export default defineComponent({
     const itemStyle = computed(() => {
       const style = {
         color: active.value ? activeTextColor.value : textColor.value,
-        borderBottomColor: '',
+        borderBottomColor: active.value ? activeTextColor.value : '',
       }
       if (mode.value === 'horizontal' && !isNested.value) {
         style.borderBottomColor = active.value

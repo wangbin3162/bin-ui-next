@@ -11,7 +11,7 @@
 <script lang="ts">
 import { defineComponent, onMounted, onUnmounted, provide, ref } from 'vue'
 import mitt, { Emitter } from 'mitt'
-import { debounce } from '../../utils/util'
+import { throttle } from '../../utils/util'
 
 export default defineComponent({
   name: 'BSteps',
@@ -94,7 +94,7 @@ export default defineComponent({
       setNextError()
       updateCurrent(true)
     }
-    const debouncedAppendRemove = debounce(updateSteps, 50, false)
+    const debouncedAppendRemove = throttle(updateSteps, 50, false)
 
     stepsMitt.on('append', debouncedAppendRemove)
     stepsMitt.on('remove', debouncedAppendRemove)

@@ -13,6 +13,7 @@ import BCalendar from './components/calendar'
 import BCard from './components/card'
 import BCarousel from './components/carousel'
 import BCarouselItem from './components/carousel-item'
+import BCascader from './components/cascader'
 import BCheckbox from './components/checkbox'
 import BCheckboxGroup from './components/checkbox-group'
 import BCircle from './components/circle'
@@ -64,6 +65,7 @@ import MessageBox from './components/message-box'
 import Notice from './components/notice'
 
 import * as util from './utils/util'
+
 import { setConfig } from './utils/config'
 import log from './utils/log'
 import { scrollTop } from './utils/dom'
@@ -87,6 +89,7 @@ const components = [
   BCard,
   BCarousel,
   BCarouselItem,
+  BCascader,
   BCheckbox,
   BCheckboxGroup,
   BCircle,
@@ -165,6 +168,7 @@ const install = function(app: App) {
   app.config.globalProperties.$typeOf = util.typeOf
   app.config.globalProperties.$deepCopy = util.deepCopy
   app.config.globalProperties.$getRandomInt = util.getRandomInt
+  app.config.globalProperties.$throttle = util.throttle
   app.config.globalProperties.$debounce = util.debounce
   app.config.globalProperties.$scrollTop = scrollTop
   app.config.globalProperties.$log = log
@@ -187,6 +191,7 @@ export {
   BCarousel,
   BCarouselItem,
   BCard,
+  BCascader,
   BCheckbox,
   BCheckboxGroup,
   BCircle,

@@ -25,6 +25,7 @@ this.$rangeTime = util.rangeTime
 this.$typeOf = util.typeOf
 this.$deepCopy = util.deepCopy
 this.$getRandomInt = util.getRandomInt
+this.$throttle = util.throttle
 this.$debounce = util.debounce
 this.$log = log
 ```
@@ -38,7 +39,8 @@ util方法函数
 | $copy | 复制内容至剪切板 ,返回一个promise用于判断是否复制成功 | content  |
 | $parseTime | 时间格式化   | time,cFormat('{y}-{m}-{d} {h}:{i}:{s}'),weekArray：长度为7的显示数组 |
 | $rangeTime | 获取日期区间，如如近一周，近三个月，后一个月等   | days, mode='{y}-{m}-{d}' days为负往前追加，为正时表示之后的天数 |
-| $debounce | 防抖函数   | func, wait = 50, immediate = true  |
+| $throttle | 节流函数（时间间隔内执行多次）   | func, wait , immediate   |
+| $debounce | 防抖函数（只执行一次）   | func, wait  |
 | $getRandomInt | 在某个区间随机一个整数   | min, max  |
 | $typeOf | 精准判断类型   | any  |
 | $deepCopy | 深拷贝函数   | obj/arr  |

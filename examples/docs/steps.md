@@ -87,9 +87,9 @@
 
 <template>
   <b-steps :current="1">
-    <b-step title="已完成" icon="ios-ribbon"></b-step>
-    <b-step title="进行中" icon="ios-snow"></b-step>
-    <b-step title="待进行" icon="ios-body"></b-step>
+    <b-step title="已完成" icon="sketch"></b-step>
+    <b-step title="进行中" icon="block"></b-step>
+    <b-step title="待进行" icon="Gitlab"></b-step>
   </b-steps>
 </template>
 <script>
