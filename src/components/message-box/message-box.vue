@@ -56,9 +56,8 @@
   </transition>
 </template>
 
-<script lang="ts">
+<script>
 import {
-  defineComponent,
   nextTick,
   onMounted,
   onBeforeUnmount,
@@ -73,9 +72,6 @@ import { useModal, useLockScreen, useRestoreActive } from '../../hooks'
 import { transferIncrease } from '../../utils/config'
 import { on, off } from '../../utils/dom'
 
-import type { ComponentPublicInstance, PropType } from 'vue'
-import type { Action, MessageBoxState } from './message-box.type'
-
 const TypeMap = {
   'info': 'info-circle',
   'success': 'check-circle',
@@ -83,7 +79,7 @@ const TypeMap = {
   'error': 'close-circle',
 }
 
-export default defineComponent({
+export default {
   name: 'BMessageBox',
   components: {
     BMask,
@@ -91,8 +87,7 @@ export default defineComponent({
   },
   props: {
     beforeClose: {
-      // eslint-disable-next-line no-unused-vars
-      type: Function as PropType<(action: Action, state: MessageBoxState, doClose: () => void) => any>,
+      type: Function,
       default: undefined,
     },
     callback: Function,
@@ -129,7 +124,7 @@ export default defineComponent({
       type: Boolean,
       default: true,
     },
-    message: String,
+    message: [String, Object],
     modalFade: { // implement this feature
       type: Boolean,
       default: true,
@@ -154,7 +149,7 @@ export default defineComponent({
     const visible = ref(false)
     // s represents state
     const state = reactive({
-      action: '' as Action,
+      action: '',
       confirmButtonLoading: false,
       cancelButtonLoading: false,
       cancelText: props.cancelText,
@@ -164,7 +159,7 @@ export default defineComponent({
     })
     const icon = computed(() => props.iconClass || (props.type && TypeMap[props.type] ? TypeMap[props.type] : ''))
     const hasMessage = computed(() => !!props.message)
-    const confirmRef = ref<ComponentPublicInstance>(null)
+    const confirmRef = ref(null)
 
     const confirmButtonClasses = computed(() => `b-button--primary ${props.confirmButtonClass}`)
 
@@ -206,7 +201,7 @@ export default defineComponent({
       }
     }
 
-    const handleAction = (action: Action) => {
+    const handleAction = (action) => {
       state.action = action
 
       if (props.beforeClose) {
@@ -247,5 +242,5 @@ export default defineComponent({
       handleAction,
     }
   },
-})
+}
 </script>

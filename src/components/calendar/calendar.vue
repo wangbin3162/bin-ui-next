@@ -38,12 +38,12 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref } from 'vue'
+<script>
+import { ref } from 'vue'
 import BButton from '../button'
 import BButtonGroup from '../button-group'
 
-function getNewDate(date): { year: number, month: number, day: number } {
+function getNewDate(date) {
   let year = date.getFullYear()
   let month = date.getMonth()
   let day = date.getDate()
@@ -57,8 +57,8 @@ function getDate(year, month, day) {
 
 function isPrevOrNextMonth(date, time) {
   let newDate = getNewDate(getDate(time.year, time.month, 1))
-  let currentYear: number = newDate.year as number
-  let currentMonth: number = newDate.month as number
+  let currentYear = newDate.year
+  let currentMonth = newDate.month
   let { year, month } = getNewDate(date)
   if (currentYear === year && currentMonth === month) return null
   if (currentMonth === 0 && month === 11) return 'prev'
@@ -70,14 +70,14 @@ function isPrevOrNextMonth(date, time) {
 
 function isCurrent(date) {
   let newDate = getNewDate(new Date())
-  let currentYear: number = newDate.year as number
-  let currentMonth: number = newDate.month as number
-  let currentDay: number = newDate.day as number
+  let currentYear = newDate.year
+  let currentMonth = newDate.month
+  let currentDay = newDate.day
   let { year, month, day } = getNewDate(date)
   return currentYear === year && currentMonth === month && currentDay === day
 }
 
-export default defineComponent({
+export default {
   name: 'BCalendar',
   components: { BButton, BButtonGroup },
   props: {
@@ -99,8 +99,8 @@ export default defineComponent({
       let { year, month } = getNewDate(getDate(time.value.year, time.value.month, 1))
       let newDate = getNewDate(new Date())
 
-      let currentYear: number = newDate.year as number
-      let currentMonth: number = newDate.month as number
+      let currentYear = newDate.year
+      let currentMonth = newDate.month
       // 获取当月的第一天
       let currentFirstDay = getDate(year, month, 1)
       // 获取第一天是星期几
@@ -215,5 +215,5 @@ export default defineComponent({
       return this.time ? `${this.time.year} 年 ${this.time.month + 1} 月` : ''
     },
   },
-})
+}
 </script>

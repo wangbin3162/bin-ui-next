@@ -18,10 +18,8 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
-
-export default defineComponent({
+<script>
+export default {
   name: 'BBadge',
   props: {
     value: [String, Number],
@@ -30,7 +28,7 @@ export default defineComponent({
     hidden: Boolean,
     type: {
       type: String,
-      validator: (val: string) => {
+      validator: (val) => {
         return ['primary', 'success', 'warning', 'info', 'danger'].includes(val)
       },
     },
@@ -46,5 +44,5 @@ export default defineComponent({
       return value
     },
   },
-})
+}
 </script>

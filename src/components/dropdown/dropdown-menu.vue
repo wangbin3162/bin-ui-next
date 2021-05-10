@@ -8,12 +8,12 @@
     <slot></slot>
   </ul>
 </template>
-<script lang="ts">
-import { defineComponent, getCurrentInstance, onMounted } from 'vue'
+<script>
+import { getCurrentInstance, onMounted } from 'vue'
 import ClickOutside from '../../directives/click-outside'
 import { useDropdown, initDropdownDomEvent } from './useDropdown'
 
-export default defineComponent({
+export default {
   name: 'BDropdownMenu',
   directives: { ClickOutside },
   setup() {
@@ -44,6 +44,6 @@ export default defineComponent({
       triggerElm: bDropdown.triggerElm,
     }
   },
-})
+}
 </script>
 

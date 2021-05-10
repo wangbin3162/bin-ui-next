@@ -27,8 +27,8 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref, watch } from 'vue'
+<script>
+import { ref, watch } from 'vue'
 import BSelect from '../select'
 import BOption from '../option'
 
@@ -36,7 +36,7 @@ function isValueNumber(value) {
   return (/^[1-9][0-9]*$/).test(value + '')
 }
 
-export default defineComponent({
+export default {
   name: 'PageOption',
   components: { BSelect, BOption },
   props: {
@@ -90,5 +90,5 @@ export default defineComponent({
       changePage,
     }
   },
-})
+}
 </script>

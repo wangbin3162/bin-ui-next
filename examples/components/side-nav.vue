@@ -1,6 +1,6 @@
 <template>
   <div class="side-nav">
-    <b-scrollbar style="height: 100%;">
+    <b-scrollbar>
       <div v-for="title in (Object.keys(data))" class="group-container" :key="title">
         <p class="side-nav-title">{{ title }}</p>
         <div class="side-nav-items" v-for="(nav,index) in data[title]" :key="index">

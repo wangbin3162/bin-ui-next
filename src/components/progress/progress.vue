@@ -30,21 +30,22 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
+<script>
+import BIcon from '../icon/icon'
 
-export default defineComponent({
+export default {
   name: 'BProgress',
+  components: { BIcon },
   props: {
     percent: {
       type: Number,
       default: 0,
       required: true,
-      validator: (val: number) => val >= 0 && val <= 100,
+      validator: (val) => val >= 0 && val <= 100,
     },
     status: {
       type: String,
-      validator: (value: string) => ['text', 'success', 'exception'].includes(value),
+      validator: (value) => ['text', 'success', 'exception'].includes(value),
     },
     strokeWidth: Number,
     textInside: Boolean,
@@ -86,5 +87,5 @@ export default defineComponent({
       return size > 16 ? 16 : size
     },
   },
-})
+}
 </script>

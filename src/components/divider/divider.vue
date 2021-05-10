@@ -14,23 +14,21 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
-
-export default defineComponent({
+<script>
+export default {
   name: 'BDivider',
   props: {
     type: {
       type: String,
       default: 'horizontal',// 'horizontal', 'vertical'
-      validator(val: string): boolean {
+      validator(val) {
         return ['horizontal', 'vertical'].includes(val)
       },
     },
     align: {
       type: String,
       default: 'center', // 'left', 'right', 'center'
-      validator(val: string): boolean {
+      validator(val) {
         return ['left', 'center', 'right'].includes(val)
       },
     },
@@ -39,5 +37,5 @@ export default defineComponent({
       default: false,
     },
   },
-})
+}
 </script>

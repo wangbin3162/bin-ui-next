@@ -59,8 +59,8 @@
   </teleport>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref, watch } from 'vue'
+<script>
+import { ref, watch } from 'vue'
 
 import { on, off } from '../../utils/dom'
 import { useLockScreen } from '../../hooks'
@@ -68,7 +68,7 @@ import { transferIncrease } from '../../utils/config'
 
 const prefixCls = 'bin-drawer'
 
-export default defineComponent({
+export default {
   name: 'BDrawer',
   props: {
     modelValue: Boolean,
@@ -95,7 +95,7 @@ export default defineComponent({
     },
     styles: Object,
     placement: {
-      validator: (value: string) => {
+      validator: (value) => {
         return ['left', 'right'].includes(value)
       },
       default: 'right',
@@ -118,7 +118,7 @@ export default defineComponent({
   setup(props) {
     const visible = ref(props.modelValue)
     const wrapShow = ref(false)
-    const wrapRef = ref<HTMLElement | null>(null)
+    const wrapRef = ref(null)
     const canMove = ref(false)
     const dragWidth = ref(props.width)
     const wrapperWidth = ref(props.width)
@@ -271,5 +271,5 @@ export default defineComponent({
     off(document, 'mousemove', this.handleMousemove)
     off(document, 'mouseup', this.handleMouseup)
   },
-})
+}
 </script>

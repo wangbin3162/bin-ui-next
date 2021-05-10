@@ -4,12 +4,12 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, computed, inject } from 'vue'
+<script>
+import { computed, inject } from 'vue'
 
 const prefixCls = 'bin-col'
 
-export default defineComponent({
+export default {
   name: 'BCol',
   props: {
     span: [Number, String],
@@ -73,5 +73,5 @@ export default defineComponent({
       gutter, classes, styles,
     }
   },
-})
+}
 </script>

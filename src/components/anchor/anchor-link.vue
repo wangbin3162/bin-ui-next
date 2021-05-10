@@ -6,41 +6,10 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, inject, computed } from 'vue'
-import type { Ref } from 'vue'
+<script>
+import { inject, computed } from 'vue'
 
-interface IAnchorProps {
-  icon: string
-  iconSize: number
-  activeColor: string
-  offsetTop: number
-  bounds: number
-  showInk: boolean
-  scrollOffset: number
-  target: string
-}
-
-interface IAnchorLink {
-  href?: string
-  title?: string
-  scrollOffset?: number
-}
-
-interface IAnchorData {
-  inkTop: number
-  currentLink: string
-  currentId: string
-  titlesOffsetArr: [number],
-}
-
-interface IAnchorInject {
-  data: IAnchorData
-  props: IAnchorProps
-  linksRef: Ref<IAnchorLink[]>
-}
-
-export default defineComponent({
+export default {
   name: 'BAnchorLink',
   props: {
     href: String,
@@ -52,8 +21,8 @@ export default defineComponent({
   },
   setup(props) {
     const prefix = 'bin-anchor-link'
-    const parent: IAnchorInject = inject('BAnchor')
-    const selectLink: any = inject('chooseLink')
+    const parent = inject('BAnchor')
+    const selectLink = inject('chooseLink')
 
     const anchorLinkClasses = computed(() => {
       return [
@@ -80,5 +49,5 @@ export default defineComponent({
       goAnchor,
     }
   },
-})
+}
 </script>

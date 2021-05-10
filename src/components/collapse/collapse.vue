@@ -4,18 +4,18 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, PropType, onUnmounted, provide, ref, watch} from 'vue'
+<script>
+import {  onUnmounted, provide, ref, watch} from 'vue'
 
-import mitt, { Emitter } from 'mitt'
+import mitt from 'mitt'
 import { UPDATE_MODEL_EVENT, CHANGE_EVENT } from '../../utils/constants'
 
-export default defineComponent({
+export default {
   name: 'BCollapse',
   props: {
     accordion: Boolean,
     modelValue: {
-      type: [Array, String, Number] as PropType<string | number | Array<string | number>>,
+      type: [Array, String, Number],
       default: () => [],
     },
     simple: Boolean,
@@ -23,7 +23,7 @@ export default defineComponent({
   emits: [UPDATE_MODEL_EVENT, CHANGE_EVENT],
   setup(props, { emit }) {
     const activeNames = ref([].concat(props.modelValue))
-    const collapseMitt: Emitter = mitt()
+    const collapseMitt = mitt()
 
     const setActiveNames = _activeNames => {
       activeNames.value = [].concat(_activeNames)
@@ -74,5 +74,5 @@ export default defineComponent({
       handleItemClick,
     }
   },
-})
+}
 </script>

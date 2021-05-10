@@ -51,12 +51,14 @@
 
 ```html
 
-<b-rate
-  v-model="value"
-  :icon-classes="iconClasses"
-  void-icon-class="heart"
-  :colors="['#99A9BF', '#F7BA2A', '#fa8c16']">
-</b-rate>
+<template>
+  <b-rate
+    v-model="value"
+    :icon-classes="iconClasses"
+    void-icon-class="heart"
+    :colors="['#99A9BF', '#F7BA2A', '#fa8c16']">
+  </b-rate>
+</template>
 
 <script>
   export default {
@@ -78,13 +80,15 @@
 
 ```html
 
-<b-rate
-  :value="3.7"
-  disabled
-  show-score
-  text-color="#fa8c16"
-  score-template="3.7">
-</b-rate>
+<template>
+  <b-rate
+    :model-value="3.7"
+    disabled
+    show-score
+    text-color="#fa8c16"
+    score-template="3.7">
+  </b-rate>
+</template>
 ```
 
 :::

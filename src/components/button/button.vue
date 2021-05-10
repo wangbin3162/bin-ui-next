@@ -20,10 +20,11 @@
     v-click-animation
   >
     <i
-      :class="`b-iconfont b-icon-${loadingIcon ? loadingIcon : 'loading'} button-loading icon-is-rotating`"
+      class="button-loading icon-is-rotating"
+      :class="['b-iconfont', 'b-icon-' + loadingIcon ? loadingIcon : 'loading']"
       v-if="loading"
       :style="iconStyles"
-    />
+    ></i>
     <i
       :class="['b-iconfont', 'b-icon-' + icon]"
       v-if="icon && !loading"
@@ -52,10 +53,11 @@
     v-waves="waveColor"
   >
     <i
-      :class="`b-iconfont b-icon-${loadingIcon ? loadingIcon : 'loading'} button-loading icon-is-rotating`"
+      class="button-loading icon-is-rotating"
+      :class="['b-iconfont', 'b-icon-' + loadingIcon ? loadingIcon : 'loading']"
       v-if="loading"
       :style="iconStyles"
-    />
+    ></i>
     <i
       :class="['b-iconfont', 'b-icon-' + icon]"
       v-if="icon && !loading"
@@ -75,6 +77,12 @@
     @click="handleClick"
   >
     <i
+      class="button-loading icon-is-rotating"
+      :class="['b-iconfont', 'b-icon-' + loadingIcon ? loadingIcon : 'loading']"
+      v-if="loading"
+      :style="iconStyles"
+    ></i>
+    <i
       :class="['b-iconfont', 'b-icon-' + icon]"
       v-if="icon && !loading"
       :style="iconStyles"
@@ -83,30 +91,19 @@
   </button>
 </template>
 
-<script lang="ts">
-import { defineComponent, PropType, computed } from 'vue'
-import { ComponentSize } from '../../utils/types'
+<script>
+import { validSize } from '../../utils/validator-size'
 import clickAnimation from '../../directives/click-animation'
 import waves from '../../directives/waves'
 
-type IButtonType = PropType<'primary'
-  | 'success'
-  | 'warning'
-  | 'danger'
-  | 'info'
-  | 'text'
-  | 'dashed'
-  | 'default'>
-type IButtonNativeType = PropType<'button' | 'submit' | 'reset'>
-type IAnimationType = PropType<'click' | 'waves'>
-export default defineComponent({
+export default {
   name: 'BButton',
   directives: { clickAnimation, waves },
   props: {
     type: {
-      type: String as IButtonType,
+      type: String,
       default: 'default',
-      validator: (val: string) =>
+      validator: (val) =>
         [
           'default',
           'primary',
@@ -119,9 +116,8 @@ export default defineComponent({
         ].includes(val),
     },
     size: {
-      type: String as ComponentSize,
-      validator: (val: string) =>
-        ['default', 'large', 'small', 'mini'].includes(val),
+      type: String,
+      validator: validSize,
       default: 'default',
     },
     icon: String,
@@ -134,25 +130,24 @@ export default defineComponent({
     dashed: Boolean,
     transparent: Boolean,
     animationType: {
-      type: String as IAnimationType,
-      validator: (val: string) => ['click', 'waves'].includes(val),
+      type: String,
+      validator: (val) => ['click', 'waves'].includes(val),
       default: 'click',
     },
     textColor: String,
     nativeType: {
-      type: String as IButtonNativeType,
+      type: String,
       default: 'button',
-      validator: (val: string) => ['button', 'submit', 'reset'].includes(val),
+      validator: (val) => ['button', 'submit', 'reset'].includes(val),
     },
   },
   emits: ['click'],
-  setup(props, ctx) {
-    const waveColor = computed(() => {
-      let { type, plain, transparent, dashed } = props
-      return (type === 'default' || type === 'dashed' || plain || transparent || dashed)
+  computed: {
+    waveColor() {
+      return (this.type === 'default' || this.type === 'dashed' || this.plain || this.transparent || this.dashed)
         ? 'rgba(0, 0, 0, 0.25)' : 'rgba(255, 255, 255, 0.3)'
-    })
-    const textStyle = computed(() => {
+    },
+    textStyle() {
       const colorMap = {
         primary: '#1089ff',
         success: '#52c41a',
@@ -160,32 +155,17 @@ export default defineComponent({
         warning: '#fea638',
         danger: '#ff4d4f',
       }
-      let color = props.textColor ? (colorMap[props.textColor] ? colorMap[props.textColor] : props.textColor) : null
-      if (color) {
-        return {
-          color,
-        }
-      }
-      return null
-    })
-    const iconStyles = computed(() => {
-      return {
-        ...(textStyle as Object),
-        ...props.iconStyle,
-      }
-    })
-
-    //methods
-    const handleClick = (evt: any) => {
-      ctx.emit('click', evt)
-    }
-
-    return {
-      iconStyles,
-      waveColor,
-      textStyle,
-      handleClick,
-    }
+      let color = this.textColor ? (colorMap[this.textColor] ? colorMap[this.textColor] : this.textColor) : null
+      return color ? { color } : null
+    },
+    iconStyles() {
+      return { ...this.textStyle, ...this.iconStyle }
+    },
   },
-})
+  methods: {
+    handleClick(e) {
+      this.$emit('click', e)
+    },
+  },
+}
 </script>

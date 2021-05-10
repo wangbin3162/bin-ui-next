@@ -29,9 +29,8 @@
     </div>
   </transition>
 </template>
-<script lang="ts">
-import { defineComponent, computed, ref, PropType } from 'vue'
-import type { MessageVM } from './types'
+<script>
+import { computed, ref } from 'vue'
 import { EVENT_CODE } from '../../utils/aria'
 import { on, off } from '../../utils/dom'
 
@@ -42,8 +41,8 @@ const TypeMap = {
   'error': 'close-circle-fill',
 }
 
-export default defineComponent({
-  name: 'ElMessage',
+export default {
+  name: 'BMessage',
   props: {
     customClass: { type: String, default: '' },
     useHTML: { type: Boolean, default: false },
@@ -51,11 +50,11 @@ export default defineComponent({
     iconClass: { type: String, default: '' },
     id: { type: String, default: '' },
     message: {
-      type: [String, Object] as PropType<string | MessageVM>,
+      type: [String, Object],
       default: '',
     },
     onClose: {
-      type: Function as PropType<() => void>,
+      type: Function,
       required: true,
     },
     showClose: { type: Boolean, default: false },
@@ -63,35 +62,26 @@ export default defineComponent({
     offset: { type: Number, default: 20 },
     zIndex: { type: Number, default: 0 },
   },
-  setup(props) {
-    const typeClass = computed(() => {
-      const type = props.type
-      return type && TypeMap[type]
-        ? `bin-message__icon b-iconfont b-icon-${TypeMap[type]} is-${type}`
-        : ''
-    })
-
-    const customStyle = computed(() => {
-      return {
-        top: `${props.offset}px`,
-        zIndex: props.zIndex,
-      }
-    })
-
-    const visible = ref(false)
-    const closed = ref(false)
-    const timer = ref(null)
-
+  data() {
     return {
-      typeClass,
-      customStyle,
-      visible,
-      closed,
-      timer,
+      visible: false,
+      closed: false,
     }
   },
+  computed: {
+    typeClass() {
+      const type = this.type
+      return type && TypeMap[type] ? `bin-message__icon b-iconfont b-icon-${TypeMap[type]} is-${type}` : ''
+    },
+    customStyle() {
+      return {
+        top: `${this.offset}px`,
+        zIndex: this.zIndex,
+      }
+    },
+  },
   watch: {
-    closed(newVal: boolean) {
+    closed(newVal) {
       if (newVal) {
         this.visible = false
         on(this.$el, 'transitionend', this.destroyElement)
@@ -132,7 +122,7 @@ export default defineComponent({
       this.closed = true
       this.timer = null
     },
-    keydown({ code }: KeyboardEvent) {
+    keydown({ code }) {
       if (code === EVENT_CODE.esc) {
         // press esc to close the message
         if (!this.closed) {
@@ -143,5 +133,5 @@ export default defineComponent({
       }
     },
   },
-})
+}
 </script>

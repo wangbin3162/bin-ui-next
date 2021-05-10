@@ -63,7 +63,7 @@
     <b-loading fix show-text="loading"></b-loading>
   </div>
   <div class="demo-loading">
-    <b-loading fix show-text="loading" show-icon="loading"></b-loading>
+    <b-loading fix show-text="loading" show-icon="loading2"></b-loading>
   </div>
 </template>
 ```

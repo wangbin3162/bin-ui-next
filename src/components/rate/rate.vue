@@ -36,18 +36,18 @@
       v-if="showText || showScore"
       class="bin-rate__text"
       :style="{ color: textColor }"
-      >{{ text }}</span
+    >{{ text }}</span
     >
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref, computed, watch, PropType } from 'vue'
+<script>
+import { ref, computed, watch } from 'vue'
 import { hasClass } from '../../utils/dom'
 import { isObject, isArray } from '@vue/shared'
 import { EVENT_CODE } from '../../utils/aria'
 
-export default defineComponent({
+export default {
   name: 'BRate',
   props: {
     modelValue: {
@@ -115,7 +115,7 @@ export default defineComponent({
       default: 'rgba(0,0,0,.65)',
     },
     texts: {
-      type: Array as PropType<string[]>,
+      type: Array,
       default: () => {
         return ['极差', '失望', '一般', '满意', '惊喜']
       },
@@ -132,7 +132,7 @@ export default defineComponent({
     const rateDisabled = computed(() => props.disabled)
 
     const text = computed(() => {
-      let result: string = ''
+      let result = ''
       if (props.showScore) {
         result = props.scoreTemplate.replace(
           /\{\s*value\s*\}/,
@@ -144,14 +144,14 @@ export default defineComponent({
       return result
     })
 
-    function getValueFromMap(value: unknown, map: Record<string, unknown>) {
+    function getValueFromMap(value, map) {
       const matchedKeys = Object.keys(map)
         .filter((key) => {
           const val = map[key]
           const excluded = isObject(val) ? val.excluded : false
           return excluded ? value < key : value <= key
         })
-        .sort((a: never, b: never) => a - b)
+        .sort((a, b) => a - b)
       const matchedValue = map[matchedKeys[0]]
       return isObject(matchedValue) ? matchedValue.value : matchedValue || ''
     }
@@ -162,10 +162,10 @@ export default defineComponent({
     const colorMap = computed(() =>
       isArray(props.colors)
         ? {
-            [props.lowThreshold]: props.colors[0],
-            [props.highThreshold]: { value: props.colors[1], excluded: true },
-            [props.max]: props.colors[2],
-          }
+          [props.lowThreshold]: props.colors[0],
+          [props.highThreshold]: { value: props.colors[1], excluded: true },
+          [props.max]: props.colors[2],
+        }
         : props.colors,
     )
     const activeColor = computed(() =>
@@ -187,13 +187,13 @@ export default defineComponent({
     const classMap = computed(() =>
       isArray(props.iconClasses)
         ? {
-            [props.lowThreshold]: props.iconClasses[0],
-            [props.highThreshold]: {
-              value: props.iconClasses[1],
-              excluded: true,
-            },
-            [props.max]: props.iconClasses[2],
-          }
+          [props.lowThreshold]: props.iconClasses[0],
+          [props.highThreshold]: {
+            value: props.iconClasses[1],
+            excluded: true,
+          },
+          [props.max]: props.iconClasses[2],
+        }
         : props.iconClasses,
     )
     const decimalIconClass = computed(() =>
@@ -226,7 +226,7 @@ export default defineComponent({
       },
     )
 
-    function showDecimalIcon(item: number) {
+    function showDecimalIcon(item) {
       let showWhenDisabled =
         rateDisabled.value &&
         valueDecimal.value > 0 &&
@@ -241,7 +241,7 @@ export default defineComponent({
       return showWhenDisabled || showWhenAllowHalf
     }
 
-    function getIconStyle(item: number) {
+    function getIconStyle(item) {
       const voidColor = rateDisabled.value
         ? props.disabledVoidColor
         : props.voidColor
@@ -250,7 +250,7 @@ export default defineComponent({
       }
     }
 
-    function selectValue(value: number) {
+    function selectValue(value) {
       if (rateDisabled.value) {
         return
       }
@@ -263,7 +263,7 @@ export default defineComponent({
       }
     }
 
-    function handleKey(e: KeyboardEvent) {
+    function handleKey(e) {
       if (rateDisabled.value) {
         return
       }
@@ -295,18 +295,18 @@ export default defineComponent({
 
     const hoverIndex = ref(-1)
 
-    function setCurrentValue(value: number, event: MouseEvent) {
+    function setCurrentValue(value, event) {
       if (rateDisabled.value) {
         return
       }
       /* istanbul ignore if */
       if (props.allowHalf) {
-        let target = event.target as HTMLElement
+        let target = event.target
         if (hasClass(target, 'el-rate__item')) {
           target = target.querySelector('.el-rate__icon')
         }
         if (hasClass(target, 'el-rate__decimal')) {
-          target = target.parentNode as HTMLElement
+          target = target.parentNode
         }
         pointerAtLeftHalf.value = event.offsetX * 2 <= target.clientWidth
         currentValue.value = pointerAtLeftHalf.value ? value - 0.5 : value
@@ -333,14 +333,12 @@ export default defineComponent({
     }
     return {
       hoverIndex,
-
       currentValue,
       rateDisabled,
       text,
       decimalStyle,
       decimalIconClass,
       classes,
-
       showDecimalIcon,
       getIconStyle,
       selectValue,
@@ -349,5 +347,5 @@ export default defineComponent({
       resetCurrentValue,
     }
   },
-})
+}
 </script>

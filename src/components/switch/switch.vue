@@ -30,14 +30,14 @@
   </b-popover>
 </template>
 
-<script lang="ts">
+<script>
 import BPopover from '../popover'
 import BButton from '../button'
-import { defineComponent, ref, watch } from 'vue'
+import { ref, watch } from 'vue'
 
 const prefixCls = 'bin-switch'
 
-export default defineComponent({
+export default {
   name: 'BSwitch',
   components: { BPopover, BButton },
   props: {
@@ -55,7 +55,7 @@ export default defineComponent({
     },
     disabled: Boolean,
     size: {
-      validator: (value: string) => {
+      validator: (value) => {
         return ['large', 'small', 'default', 'mini'].includes(value)
       },
       default: 'default',
@@ -128,5 +128,5 @@ export default defineComponent({
       }
     },
   },
-})
+}
 </script>

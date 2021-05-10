@@ -12,7 +12,7 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import { watch } from 'vue'
 import { useRoute } from 'vue-router'
 

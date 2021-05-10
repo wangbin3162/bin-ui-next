@@ -32,14 +32,14 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, onBeforeUnmount, onMounted, reactive, ref, toRefs, unref, watch } from 'vue'
+<script>
+import { onBeforeUnmount, onMounted, reactive, ref, toRefs, watch } from 'vue'
 import BEmpty from '../empty'
 import BCheckbox from '../checkbox'
 
 const prefixCls = 'bin-tree'
 let lastTime = 0
-export default defineComponent({
+export default {
   name: 'BBigTree',
   components: { BEmpty, BCheckbox },
   props: {
@@ -99,7 +99,7 @@ export default defineComponent({
   },
   emits: ['update', 'select-change', 'check-change'],
   setup(props, ctx) {
-    const scrollerRef = ref<HTMLElement | null>(null)
+    const scrollerRef = ref(null)
     const states = reactive({
       offset: 0, // translateY偏移量
       contentHeight: '0px',
@@ -405,5 +405,5 @@ export default defineComponent({
       return this.visibleData.length === 0
     },
   },
-})
+}
 </script>

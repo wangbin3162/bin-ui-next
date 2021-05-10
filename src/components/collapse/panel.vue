@@ -16,26 +16,23 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref, inject, computed, Ref } from 'vue'
-import { Emitter } from 'mitt'
+<script>
+import { ref, inject, computed } from 'vue'
+import BIcon from '../icon'
+import BCollapseTransition from '../collapse-transition'
 
-export interface CollapseProvider {
-  activeNames: Ref
-  collapseMitt: Emitter
-}
-
-export const generateId = (): number => Math.floor(Math.random() * 10000)
-export default defineComponent({
+export const generateId = () => Math.floor(Math.random() * 10000)
+export default {
   name: 'BCollapsePanel',
+  components: { BCollapseTransition, BIcon },
   props: {
     title: String,
     name: String,
     hideArrow: Boolean,
-    disabled: Boolean
+    disabled: Boolean,
   },
   setup(props) {
-    const collapse = inject<CollapseProvider>('collapse')
+    const collapse = inject('collapse')
     const collapseMitt = collapse?.collapseMitt
 
     const contentWrapStyle = ref({
@@ -66,5 +63,5 @@ export default defineComponent({
       collapse,
     }
   },
-})
+}
 </script>

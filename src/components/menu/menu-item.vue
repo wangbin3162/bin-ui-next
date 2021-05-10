@@ -47,20 +47,18 @@
     </template>
   </li>
 </template>
-<script lang="ts">
+<script>
 import {
-  defineComponent,
   computed,
   onMounted,
   onBeforeUnmount,
   inject,
   getCurrentInstance,
 } from 'vue'
-import { IMenuItemProps, RootMenuProvider, SubMenuProvider } from './menu'
 import useMenu from './useMenu'
 import BTooltip from '../tooltip'
 
-export default defineComponent({
+export default {
   name: 'BMenuItem',
   componentName: 'BMenuItem',
   components: { BTooltip },
@@ -73,14 +71,14 @@ export default defineComponent({
     disabled: Boolean,
   },
   emits: ['click'],
-  setup(props: IMenuItemProps, { emit, slots }) {
+  setup(props, { emit, slots }) {
     const instance = getCurrentInstance()
-    const rootMenu = inject<RootMenuProvider>('rootMenu')
+    const rootMenu = inject('rootMenu')
     const { parentMenu, paddingStyle, indexPath } = useMenu(
       instance,
       props.index,
     )
-    const { addSubMenu, removeSubMenu } = inject<SubMenuProvider>(
+    const { addSubMenu, removeSubMenu } = inject(
       `subMenu:${parentMenu.value.uid}`,
     )
 
@@ -167,5 +165,5 @@ export default defineComponent({
       onMouseLeave,
     }
   },
-})
+}
 </script>

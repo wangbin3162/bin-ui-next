@@ -39,21 +39,21 @@
     </li>
   </ul>
 </template>
-<script lang="ts">
+
+<script>
 import CollapseTransition from '../collapse-transition'
-import { defineComponent, inject, nextTick, getCurrentInstance, provide } from 'vue'
+import { inject, nextTick, getCurrentInstance, provide } from 'vue'
 import BCheckbox from '../checkbox'
-import { RootTreeType, DataProp } from './types'
 
 const prefixCls = 'bin-tree'
 
-export default defineComponent({
+export default {
   name: 'TreeNode',
   components: { CollapseTransition, BCheckbox },
   props: {
     data: {
       type: Object,
-      default: (): DataProp => {
+      default: () => {
         return {}
       },
     },
@@ -65,7 +65,7 @@ export default defineComponent({
     showCheckbox: Boolean,
   },
   setup(props) {
-    const TreeInstance = inject<RootTreeType>('BTreeRoot')
+    const TreeInstance = inject('BTreeRoot')
 
     const instance = getCurrentInstance()
 
@@ -79,13 +79,10 @@ export default defineComponent({
       if (item[props.childrenKey].length === 0) {
         const tree = TreeInstance
         if (tree && tree.loadData) {
-          // eslint-disable-next-line vue/no-mutating-props
           props.data.loading = true
           tree.loadData(item, (children) => {
-            // eslint-disable-next-line vue/no-mutating-props
             props.data.loading = false
             if (children.length) {
-              // eslint-disable-next-line vue/no-mutating-props
               props.data[props.childrenKey] = children
               tree.updateTreeState()
               nextTick(() => handleExpand())
@@ -96,7 +93,6 @@ export default defineComponent({
       }
 
       if (item[props.childrenKey] && item[props.childrenKey].length) {
-        // eslint-disable-next-line vue/no-mutating-props
         props.data.expand = !props.data.expand
         TreeInstance.handleToggle(props.data)
       }
@@ -170,5 +166,5 @@ export default defineComponent({
       return this.data[this.childrenKey]
     },
   },
-})
+}
 </script>

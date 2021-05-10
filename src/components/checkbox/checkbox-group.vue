@@ -4,11 +4,11 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, computed, provide, nextTick, toRefs } from 'vue'
-import { UPDATE_MODEL_EVENT } from '../../utils/constants'
+<script>
+import { computed, provide, nextTick, toRefs } from 'vue'
+import { UPDATE_MODEL_EVENT, CHANGE_EVENT } from '../../utils/constants'
 
-export default defineComponent({
+export default {
   name: 'BCheckboxGroup',
   props: {
     modelValue: {
@@ -25,16 +25,14 @@ export default defineComponent({
       default: undefined,
     },
   },
-
-  emits: [UPDATE_MODEL_EVENT, 'change'],
-
+  emits: [UPDATE_MODEL_EVENT, CHANGE_EVENT],
   setup(props, ctx) {
     // const { elFormItem, elFormItemSize, ELEMENT } = useCheckboxGroup()
 
     const changeEvent = value => {
       ctx.emit(UPDATE_MODEL_EVENT, value)
       nextTick(() => {
-        ctx.emit('change', value)
+        ctx.emit(CHANGE_EVENT, value)
       })
     }
 
@@ -58,5 +56,5 @@ export default defineComponent({
     //   elFormItem.formItemMitt?.emit('el.form.change', [val])
     // })
   },
-})
+}
 </script>

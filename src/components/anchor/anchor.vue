@@ -14,9 +14,8 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import {
-  defineComponent,
   provide,
   ref,
   toRefs,
@@ -28,7 +27,7 @@ import {
 } from 'vue'
 import { off, on, scrollTop } from '../../utils/dom'
 
-export default defineComponent({
+export default {
   name: 'BAnchor',
   props: {
     icon: String,
@@ -183,5 +182,5 @@ export default defineComponent({
       activeColorStr,
     }
   },
-})
+}
 </script>

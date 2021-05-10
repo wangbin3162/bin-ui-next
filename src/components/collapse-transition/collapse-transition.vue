@@ -3,11 +3,10 @@
     <slot></slot>
   </transition>
 </template>
-<script lang="ts">
-import { defineComponent } from 'vue'
+<script>
 import { addClass, removeClass } from '../../utils/dom'
 
-export default defineComponent({
+export default {
   name: 'BCollapseTransition',
   setup() {
     return {
@@ -20,8 +19,8 @@ export default defineComponent({
           el.dataset.oldPaddingBottom = el.style.paddingBottom
 
           el.style.height = '0'
-          el.style.paddingTop = 0
-          el.style.paddingBottom = 0
+          el.style.paddingTop = '0'
+          el.style.paddingBottom = '0'
         },
 
         enter(el) {
@@ -60,9 +59,9 @@ export default defineComponent({
           if (el.scrollHeight !== 0) {
             // for safari: add class after set height, or it will jump to zero height suddenly, weired
             addClass(el, 'collapse-transition')
-            el.style.height = 0
-            el.style.paddingTop = 0
-            el.style.paddingBottom = 0
+            el.style.height = '0'
+            el.style.paddingTop = '0'
+            el.style.paddingBottom = '0'
           }
         },
 
@@ -76,5 +75,5 @@ export default defineComponent({
       },
     }
   },
-})
+}
 </script>

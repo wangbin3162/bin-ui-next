@@ -12,23 +12,8 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
-
-// eslint-disable-next-line no-unused-vars
-interface ICardProps {
-  header: object
-  bodyStyle: object
-  shadow: string
-  bordered: boolean
-  width: string
-  radius: string
-  bgColor: string
-  divider: string
-  headTip: boolean
-}
-
-export default defineComponent({
+<script>
+export default {
   name: 'BCard',
   props: {
     header: {},
@@ -53,5 +38,5 @@ export default defineComponent({
       }
     },
   },
-})
+}
 </script>

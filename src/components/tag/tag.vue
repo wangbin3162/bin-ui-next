@@ -17,12 +17,12 @@
     </span>
 </template>
 
-<script lang="ts">
-import { computed, defineComponent, ref, watch, PropType } from 'vue'
+<script>
+import { computed, ref, watch } from 'vue'
 import { UPDATE_MODEL_EVENT, CHANGE_EVENT } from '../../utils/constants'
 import { typeColor } from '../../utils/log'
 
-export default defineComponent({
+export default {
   name: 'BTag',
   props: {
     name: String,
@@ -32,7 +32,7 @@ export default defineComponent({
     noBorder: Boolean,
     color: String,
     tagStyle: {},
-    size: String as PropType<'default' | 'small' | 'mini'>,
+    size: String,
     fontSize: String,
     dark: Boolean,
     checkable: Boolean,
@@ -86,5 +86,5 @@ export default defineComponent({
       handleClick,
     }
   },
-})
+}
 </script>

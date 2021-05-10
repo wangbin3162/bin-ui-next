@@ -26,12 +26,11 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import { addResizeListener, removeResizeListener } from '../../utils/resize-event'
 import { toObject } from './util'
 import { on, off } from '../../utils/dom'
 import {
-  defineComponent,
   ref,
   onMounted,
   onBeforeUnmount,
@@ -41,7 +40,7 @@ import {
 } from 'vue'
 import Bar from './bar'
 
-export default defineComponent({
+export default {
   name: 'BScrollbar',
   components: { Bar },
   props: {
@@ -71,7 +70,7 @@ export default defineComponent({
       default: 'div',
     },
   },
-  setup: function(props) {
+  setup(props) {
     const sizeWidth = ref('0')
     const sizeHeight = ref('0')
     const moveX = ref(0)
@@ -117,7 +116,7 @@ export default defineComponent({
       }
     })
     const style = computed(() => {
-      let style: string | {} = props.wrapStyle
+      let style = props.wrapStyle
       if (Array.isArray(props.wrapStyle)) {
         style = toObject(props.wrapStyle)
       }
@@ -135,5 +134,5 @@ export default defineComponent({
       handleScroll,
     }
   },
-})
+}
 </script>

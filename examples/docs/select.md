@@ -3,12 +3,13 @@
 <div class="global-anchor">
   <b-anchor :scroll-offset="100">
     <b-anchor-link href="#ji-chu-yong-fa" title="基础用法"></b-anchor-link>
-    <b-anchor-link href="#bu-tong-de-da-xiao" title="不同的大小"></b-anchor-link>
-    <b-anchor-link href="#qi-yong-jin-yong" title="启用禁用"></b-anchor-link>
+    <b-anchor-link href="#jin-yong-xuan-xiang-he-jin-yong-zhuang-tai" title="禁用选项和禁用状态"></b-anchor-link>
     <b-anchor-link href="#ke-yi-qing-kong-fen-zu-huo-zhe-zi-ding-yi-mo-ban" title="可以清空、分组或者自定义模板"></b-anchor-link>
+    <b-anchor-link href="#sou-suo-mo-shi" title="搜索模式"></b-anchor-link>
     <b-anchor-link href="#duo-xuan-he-zhe-die" title="多选和折叠"></b-anchor-link>
     <b-anchor-link href="#qian-zhui-mo-shi" title="前缀模式"></b-anchor-link>
-    <b-anchor-link href="#sou-suo-mo-shi" title="搜索模式"></b-anchor-link>
+    <b-anchor-link href="#chuang-jian-xin-xiang" title="创建新项"></b-anchor-link>
+    <b-anchor-link href="#bu-tong-da-xiao" title="不同大小"></b-anchor-link>
     <b-anchor-link href="#select-props" title="Select props"></b-anchor-link>
     <b-anchor-link href="#select-events" title="Select events"></b-anchor-link>
     <b-anchor-link href="#select-slot" title="Select slot"></b-anchor-link>
@@ -31,10 +32,8 @@
 
 <template>
   <div>
-    <b-select style="width:200px" v-model="select">
-      <b-option v-for="item in cityList" :key="item.value" :value="item.value">
-        {{ item.label }}
-      </b-option>
+    <b-select style="width:200px" v-model="select" clearable>
+      <b-option v-for="item in cityList" :key="item.value" :label="item.label" :value="item.value"></b-option>
     </b-select>
     <span>{{ select }}</span>
   </div>
@@ -44,30 +43,12 @@
     data() {
       return {
         cityList: [
-          {
-            value: 'New York',
-            label: 'New York',
-          },
-          {
-            value: 'London',
-            label: 'London',
-          },
-          {
-            value: 'Sydney',
-            label: 'Sydney',
-          },
-          {
-            value: 'Ottawa',
-            label: 'Ottawa',
-          },
-          {
-            value: 'Paris',
-            label: 'Paris',
-          },
-          {
-            value: 'Canberra',
-            label: 'Canberra',
-          },
+          { value: 'beijing', label: '北京', },
+          { value: 'nanjing', label: '南京', },
+          { value: 'shanghai', label: '上海', },
+          { value: 'xuzhou', label: '徐州', },
+          { value: 'guangzhou', label: '广州', },
+          { value: 'shenzhen', label: '深圳', },
         ],
         select: '',
       }
@@ -78,98 +59,9 @@
 
 :::
 
-### 不同的大小
+### 禁用选项和禁用状态
 
-::: demo
-
-```html
-
-<template>
-  <div>
-    <b-select style="width:100px" v-model="select" size="mini" clearable>
-      <b-option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}</b-option>
-    </b-select>
-    <b-select style="width:100px;margin-left: 20px;" v-model="select" size="small" clearable>
-      <b-option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}</b-option>
-    </b-select>
-    <b-select style="width:100px;margin-left: 20px;" v-model="select" clearable>
-      <b-option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}</b-option>
-    </b-select>
-    <b-select style="width:100px;margin-left: 20px;" v-model="select" size="large" clearable>
-      <b-option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}</b-option>
-    </b-select>
-  </div>
-</template>
-<script>
-  export default {
-    data() {
-      return {
-        cityList: [
-          {
-            value: 'New York',
-            label: 'New York'
-          },
-          {
-            value: 'London',
-            label: 'London'
-          },
-          {
-            value: 'Sydney',
-            label: 'Sydney'
-          },
-          {
-            value: 'Ottawa',
-            label: 'Ottawa'
-          },
-          {
-            value: 'Paris',
-            label: 'Paris'
-          },
-          {
-            value: 'Canberra',
-            label: 'Canberra'
-          }
-        ],
-        select: ''
-      }
-    }
-  }
-</script>
-```
-
-:::
-
-### 启用禁用
-
-::: demo
-
-```html
-
-<template>
-  <div>
-    <b-select style="width:200px" disabled>
-      <b-option value="beijing" label="北京"></b-option>
-      <b-option value="shanghai" label="上海"></b-option>
-      <b-option value="xuzhou" label="徐州"></b-option>
-    </b-select>
-    <b-select style="width:200px;margin-left: 20px;">
-      <b-option value="beijing" label="北京"></b-option>
-      <b-option value="shanghai" label="上海" disabled></b-option>
-      <b-option value="xuzhou" label="徐州"></b-option>
-    </b-select>
-  </div>
-</template>
-```
-
-:::
-
-### 可以清空、分组或者自定义模板
-
-通过设置属性`clearable`可以清空已选项，仅适用于单选模式。
-
-使用`OptionGroup`可将选项进行分组
-
-对于选项显示内容的逻辑：优先显示 slot 内容，如果没有定义 slot，则显示label的值，如果没有设置 label，则显示value的值。
+可以设置禁用状态和选项禁用
 
 ::: demo
 
@@ -178,9 +70,58 @@
 <template>
   <div>
     <b-select style="width:200px" v-model="select" clearable>
-      <b-option value="beijing" label="北京"></b-option>
-      <b-option value="shanghai" label="上海"></b-option>
-      <b-option value="xuzhou" label="徐州"></b-option>
+      <b-option
+        v-for="item in cityList"
+        :key="item.value"
+        :label="item.label"
+        :value="item.value"
+        :disabled="item.disabled"
+      ></b-option>
+    </b-select>
+    &nbsp;
+    <b-select style="width:200px" v-model="select" disabled>
+      <b-option
+        v-for="item in cityList"
+        :key="item.value"
+        :label="item.label"
+        :value="item.value"
+      ></b-option>
+    </b-select>
+  </div>
+</template>
+<script>
+  export default {
+    data() {
+      return {
+        cityList: [
+          { value: 'beijing', label: '北京', },
+          { value: 'nanjing', label: '南京', },
+          { value: 'shanghai', label: '上海', disabled: true },
+          { value: 'xuzhou', label: '徐州', },
+          { value: 'guangzhou', label: '广州', },
+          { value: 'shenzhen', label: '深圳', },
+        ],
+        select: '',
+      }
+    },
+  }
+</script>
+```
+
+:::
+
+### 可以清空、分组或者自定义模板
+
+可以清空，分组或者是自定义选项模板
+
+::: demo
+
+```html
+
+<template>
+  <div>
+    <b-select style="width:200px" v-model="select" clearable>
+      <b-option v-for="item in cityList" :key="item.value" :label="item.label" :value="item.value"></b-option>
     </b-select>
     <b-select style="width:200px;margin-left: 20px;" v-model="select">
       <b-option-group label="直辖市">
@@ -190,6 +131,8 @@
       <b-option-group label="热门城市">
         <b-option value="xuzhou" label="徐州"></b-option>
         <b-option value="nanjing" label="南京"></b-option>
+        <b-option value="suzhou" label="广州"></b-option>
+        <b-option value="shenzhen" label="深圳"></b-option>
       </b-option-group>
     </b-select>
     <b-select style="width:200px;margin-left: 20px;" v-model="select">
@@ -206,7 +149,42 @@
         <span style="float:right;color:#ccc">xuzhou</span>
       </b-option>
     </b-select>
-    &nbsp;&nbsp;
+  </div>
+</template>
+<script>
+  export default {
+    data() {
+      return {
+        cityList: [
+          { value: 'beijing', label: '北京', },
+          { value: 'nanjing', label: '南京', },
+          { value: 'shanghai', label: '上海', },
+          { value: 'xuzhou', label: '徐州', },
+          { value: 'guangzhou', label: '广州', },
+          { value: 'shenzhen', label: '深圳', },
+        ],
+        select: '',
+      }
+    },
+  }
+</script>
+```
+
+:::
+
+### 搜索模式
+
+可以进行搜索查询
+
+::: demo
+
+```html
+
+<template>
+  <div>
+    <b-select style="width:200px" v-model="select" filterable>
+      <b-option v-for="item in cityList" :key="item.value" :label="item.label" :value="item.value"></b-option>
+    </b-select>
     <span>{{ select }}</span>
   </div>
 </template>
@@ -214,9 +192,17 @@
   export default {
     data() {
       return {
-        select: ''
+        cityList: [
+          { value: 'beijing', label: '北京', },
+          { value: 'nanjing', label: '南京', },
+          { value: 'shanghai', label: '上海', },
+          { value: 'xuzhou', label: '徐州', },
+          { value: 'guangzhou', label: '广州', },
+          { value: 'shenzhen', label: '深圳', },
+        ],
+        select: '',
       }
-    }
+    },
   }
 </script>
 ```
@@ -225,50 +211,38 @@
 
 ### 多选和折叠
 
-可以开启属性`multiple`开启多选模式 `max-tag-count` `max-tag-placeholder` 可以对超出的部分做折叠显示
+可以进行多选
 
-::: demo 注意，多选的尺寸，mini型和small一样大小
+::: demo
 
 ```html
 
 <template>
   <div>
-    <div>
-      <b-select style="width:200px" v-model="cites" multiple>
-        <b-option value="beijing" label="北京"></b-option>
-        <b-option value="shanghai" label="上海"></b-option>
-        <b-option value="xuzhou" label="徐州"></b-option>
-        <b-option value="nanjing" label="南京"></b-option>
-      </b-select>
-      <b-select style="width:300px" v-model="cites" multiple :max-tag-count="1">
-        <b-option value="beijing" label="北京"></b-option>
-        <b-option value="shanghai" label="上海"></b-option>
-        <b-option value="xuzhou" label="徐州"></b-option>
-        <b-option value="nanjing" label="南京"></b-option>
-      </b-select>
-      <b-select style="width:300px;margin-left: 20px;" v-model="cites" multiple :max-tag-count="2"
-                :max-tag-placeholder="maxTagPlaceholder">
-        <b-option value="beijing" label="北京"></b-option>
-        <b-option value="shanghai" label="上海"></b-option>
-        <b-option value="xuzhou" label="徐州"></b-option>
-        <b-option value="nanjing" label="南京"></b-option>
-      </b-select>
-    </div>
-    <div class="mt-5">{{ cites }}</div>
+    <b-select style="width:300px" v-model="select" multiple>
+      <b-option v-for="item in cityList" :key="item.value" :label="item.label" :value="item.value"></b-option>
+    </b-select>
+    <b-select style="width:300px;margin-left: 20px;" v-model="select" multiple collapse-tags>
+      <b-option v-for="item in cityList" :key="item.value" :label="item.label" :value="item.value"></b-option>
+    </b-select>
+    <span>{{ select }}</span>
   </div>
 </template>
 <script>
   export default {
     data() {
       return {
-        cites: []
+        cityList: [
+          { value: 'beijing', label: '北京', },
+          { value: 'nanjing', label: '南京', },
+          { value: 'shanghai', label: '上海', },
+          { value: 'xuzhou', label: '徐州', },
+          { value: 'guangzhou', label: '广州', },
+          { value: 'shenzhen', label: '深圳', },
+        ],
+        select: [],
       }
     },
-    methods: {
-      maxTagPlaceholder(num) {
-        return 'more ' + num;
-      }
-    }
   }
 </script>
 ```
@@ -277,15 +251,18 @@
 
 ### 前缀模式
 
-可以开启属性 `prefix` 开启前缀模式
+可以设置下拉框前缀
 
 ::: demo
 
 ```html
 
 <template>
-  <div>
-    <b-select style="width:200px" prefix="home">
+  <div style="width:200px">
+    <b-select v-model="selected">
+      <template #prefix>
+        <i class="b-iconfont b-icon-alert"></i>
+      </template>
       <b-option value="beijing" label="北京"></b-option>
       <b-option value="shanghai" label="上海"></b-option>
       <b-option value="xuzhou" label="徐州"></b-option>
@@ -293,61 +270,113 @@
     </b-select>
   </div>
 </template>
+<script>
+  export default {
+    data() {
+      return {
+        selected: ''
+      }
+    },
+  }
+</script>
 ```
 
 :::
 
-### 搜索模式
+### 创建新项
 
-通过设置属性`filterable`可以开启搜索模式。单选和多选都支持搜索模式
+可以允许创建列表中不存在的条目，使用allow-create可以输入并创建，此时filterable必需为true，
 
 ::: demo
 
 ```html
 
 <template>
-  <div>
-    <b-select style="width:200px" filterable>
-      <b-option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}</b-option>
-    </b-select>
-    <b-select style="width:300px;margin-left: 20px;" v-model="cites" filterable multiple>
-      <b-option v-for="item in cityList" :value="item.value" :key="item.value">{{ item.label }}</b-option>
-    </b-select>
-  </div>
+  <b-row :gutter="20">
+    <b-col :span="8">
+      <b-select
+        v-model="selected"
+        multiple
+        filterable
+        allow-create
+        default-first-option
+        placeholder="请选择城市">
+        <b-option v-for="item in cityList" :key="item.value" :label="item.label" :value="item.value"></b-option>
+      </b-select>
+    </b-col>
+    <b-col :span="16">
+      <div style="height: 32px;line-height: 32px;">{{selected}}</div>
+    </b-col>
+  </b-row>
 </template>
 <script>
   export default {
     data() {
       return {
         cityList: [
-          {
-            value: 'New York',
-            label: 'New York'
-          },
-          {
-            value: 'London',
-            label: 'London'
-          },
-          {
-            value: 'Sydney',
-            label: 'Sydney'
-          },
-          {
-            value: 'Ottawa',
-            label: 'Ottawa'
-          },
-          {
-            value: 'Paris',
-            label: 'Paris'
-          },
-          {
-            value: 'Canberra',
-            label: 'Canberra'
-          }
+          { value: 'beijing', label: '北京', },
+          { value: 'nanjing', label: '南京', },
+          { value: 'shanghai', label: '上海', },
+          { value: 'xuzhou', label: '徐州', },
+          { value: 'guangzhou', label: '广州', },
+          { value: 'shenzhen', label: '深圳', },
         ],
-        cites: []
+        selected: []
       }
-    }
+    },
+  }
+</script>
+```
+
+:::
+
+### 不同大小
+
+四种默认大小
+
+::: demo
+
+```html
+
+<template>
+  <b-row :gutter="20">
+    <b-col :span="6">
+      <b-select v-model="select" clearable size="large">
+        <b-option v-for="item in cityList" :key="item.value" :label="item.label" :value="item.value"></b-option>
+      </b-select>
+    </b-col>
+    <b-col :span="6">
+      <b-select v-model="select" clearable>
+        <b-option v-for="item in cityList" :key="item.value" :label="item.label" :value="item.value"></b-option>
+      </b-select>
+    </b-col>
+    <b-col :span="6">
+      <b-select v-model="select" clearable size="small">
+        <b-option v-for="item in cityList" :key="item.value" :label="item.label" :value="item.value"></b-option>
+      </b-select>
+    </b-col>
+    <b-col :span="6">
+      <b-select v-model="select" clearable size="mini">
+        <b-option v-for="item in cityList" :key="item.value" :label="item.label" :value="item.value"></b-option>
+      </b-select>
+    </b-col>
+  </b-row>
+</template>
+<script>
+  export default {
+    data() {
+      return {
+        cityList: [
+          { value: 'beijing', label: '北京', },
+          { value: 'nanjing', label: '南京', },
+          { value: 'shanghai', label: '上海', },
+          { value: 'xuzhou', label: '徐州', },
+          { value: 'guangzhou', label: '广州', },
+          { value: 'shenzhen', label: '深圳', },
+        ],
+        select: '',
+      }
+    },
   }
 </script>
 ```
@@ -358,34 +387,46 @@
 
 | 参数      | 说明    | 类型      | 可选值       | 默认值   |
 |---------- |-------- |---------- |-------------  |-------- |
-| value     | 指定选中项目的 value 值，可以使用 v-model 双向绑定数据。   | string/number  |  —   |   无   |
+| v-model     | 指定选中项目的 modelValue 值，可以使用 v-model 双向绑定数据。   | String / Number / Boolean / Object |  —   |   无   |
 | multiple | 多选|  Boolean |  —   |  false  |
 | disabled | 是否禁用|  Boolean |  —   |  false  |
 | clearable | 清空选项，只在单选时有效|  Boolean |  —   |  false  |
 | filterable | 是否支持搜索 |  Boolean |  —   |  false  |
-| size | 选择框大小 |  string  | large、small、default  |  default  |
+| size | 选择框大小 |  String  | large、small、default、mini  |  default  |
 | placeholder | 选择框默认文字 |  String  |  —   |  请选择  |
-| not-found-text | 没有数据显示 |  String  |  —   |  没有数据  |
-| label-in-value | 在返回选项时，是否将 label 和 value 一并返回,默认只返回 value |  Boolean  |  —   |  false  |
+| value-key | 作为 value 唯一标识的键名，绑定值为对象类型时必填|  string |  —   |  value  |
+| no-match-text | 搜索条件无匹配时显示的文字，也可以使用#empty设置 |  String  |  —   |  暂无匹配数据  |
+| no-data-tex | 选项为空时显示的文字 |  String  |  —   |  暂无数据  |
+| allow-create | 是否允许创建没有的项，需配合 filterable 使用 |  Boolean  |  —   |  false  |
+| filter-method | 自定义搜索方法 |  Function  |  —   |  —    |
+| remote | 是否启用远程搜索 |  boolean  |  —   | false   |
+| loading | 是否正在从远程获取数据 |  boolean  |  —   | false   |
+| loading-text | 远程加载文字 |  boolean  |  —   | 加载中   |
 | placement | 弹窗的展开方向 |  String  |  top、bottom、top-start、bottom-start、top-end、bottom-end  |  bottom-start  |
-| appendToBody | 是否将弹层放置于 body 内 |  Boolean  |  —   |  false  |
-| max-tag-count | 多选时最多显示多少个 tag |  Number  |  —   | —    |
-| max-tag-placeholder  | 隐藏 tag 时显示的内容，参数是剩余项数量 |  Function  |  —   | —    |
+| append-to-body | 是否将弹层放置于 body 内 |  Boolean  |  —   |  false  |
+| multiple-limit | 多选时最多允许选择几个|  Number  |  —   | —    |
+| collapse-tags  | 多选时是否折叠标签 |  Boolean  |  —   | false   |
+| popper-class  | 自定义弹出层类名 |  String  |  —   | —    |
+| default-first-option  | 在输入框按下回车，选择第一个匹配项。需配合 filterable 或 remote 使用 |  Boolean  |  —   | false   |
+| clear-icon  | 清空图标的类名 |  String  |  —   |  close-circle-fill  |
 
 ### Select events
 
 | 事件名     | 说明    | 返回值      |
 |---------- |-------- |---------- |
-| change  | 选中的Option变化时触发，默认返回 value，如需返回 label，详见 label-in-value 属性   | 当前选中项  |
+| change  | 选中的Option变化时触发，默认返回 value  | 当前选中项  |
 | clear   | 点击清空按钮时触发  | 无  |
-| query-change   | 搜索词改变时触发   | query  |
-| open-change    | 下拉框展开或收起时触发   | true / false  |
+| visible-change   | 下拉框出现/隐藏时触发   | 出现则为 true，隐藏则为 false  |
+| remove-tag  | 多选模式下移除tag时触发  | 移除的tag值 |
+| blur  | 失去焦点触发 | (event: Event) |
+| focus | 获取焦点触发  | (event: Event) |
 
 ### Select slot
 
 | 名称      | 说明    |
 |---------- |-------- |
 | prefix      | 自定义 Select 内头部图标   |
+| empty      | 无选项时的列表  |
 
 ### Option props
 
@@ -400,3 +441,4 @@
 | 参数      | 说明    | 类型      | 可选值       | 默认值   |
 |---------- |-------- |---------- |-------------  |-------- |
 | label | 分组组名|  String     |  —   |  —    |
+| disabled | 该分组下所有选项置为禁用|  Boolean     |  —   |  false    |

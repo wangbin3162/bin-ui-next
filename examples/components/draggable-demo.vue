@@ -1,7 +1,7 @@
 <template>
   <div class="draggable-wrap">
     <div flex="box:mean">
-      <div style="margin-right: 20px; width: 50%;">sortable
+      <div style="margin-right: 20px; width: 50%;">normal
         <div id="example1" class="list-group col">
           <div class="list-group-item">Item 1</div>
           <div class="list-group-item">Item 2</div>
@@ -9,6 +9,16 @@
           <div class="list-group-item">Item 4</div>
           <div class="list-group-item">Item 5</div>
           <div class="list-group-item">Item 6</div>
+        </div>
+      </div>
+      <div style="margin-right: 20px; width: 50%;">handle
+        <div id="example2" class="list-group col">
+          <div class="list-group-item"><i class="b-iconfont b-icon-drag handle"></i>Item 1</div>
+          <div class="list-group-item"><i class="b-iconfont b-icon-drag handle"></i>Item 2</div>
+          <div class="list-group-item"><i class="b-iconfont b-icon-drag handle"></i>Item 3</div>
+          <div class="list-group-item"><i class="b-iconfont b-icon-drag handle"></i>Item 4</div>
+          <div class="list-group-item"><i class="b-iconfont b-icon-drag handle"></i>Item 5</div>
+          <div class="list-group-item"><i class="b-iconfont b-icon-drag handle"></i>Item 6</div>
         </div>
       </div>
     </div>
@@ -46,6 +56,11 @@ export default {
       animation: 150,
       ghostClass: 'blue-background-class',
     })
+    Sortable.create(document.getElementById('example2'), {
+      animation: 150,
+      handle: '.handle',
+      ghostClass: 'blue-background-class',
+    })
   },
 }
 </script>
@@ -77,11 +92,13 @@ export default {
   display: block;
   padding: 0 1.25rem;
   line-height: 45px;
+  height: 45px;
   margin-bottom: -1px;
   background-color: #fff;
   border: 1px solid rgba(0, 0, 0, .125);
   .handle {
     cursor: grabbing;
+    margin-right: 20px;
   }
 }
 .blue-background-class {

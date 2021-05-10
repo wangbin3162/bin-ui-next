@@ -28,31 +28,24 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, nextTick, onBeforeUnmount, onMounted, ref, PropType, reactive, toRefs, watch } from 'vue'
+<script>
+import { nextTick, onBeforeUnmount, onMounted, ref, reactive, toRefs, watch } from 'vue'
 import ScrollPane from './scroll-pane.vue'
 import { throttle, deepCopy } from '../../utils/util'
 import { on, off } from '../../utils/dom'
 import { addResizeListener, removeResizeListener } from '../../utils/resize-event'
 
-interface IItem {
-  key: string
-  title?: string
-  noClose?: boolean
-  icon?: string
-}
-
-export default defineComponent({
+export default {
   name: 'BTabs',
   components: { ScrollPane },
   props: {
     modelValue: String,
     data: {
-      type: Array as PropType<IItem[]>,
+      type: Array,
       required: true,
     },
     type: {
-      validator: (value: string) => {
+      validator: (value) => {
         return ['default', 'card', 'tag'].includes(value)
       },
       default: 'default',
@@ -68,7 +61,7 @@ export default defineComponent({
       visible: false, // 选中面板弹出
       top: 0, // 选中面板top
       left: 0, // 选中面板left
-      selectedTag: {} as IItem, // 选中的tag
+      selectedTag: {}, // 选中的tag
       activeBarStyle: {},
     })
 
@@ -122,7 +115,7 @@ export default defineComponent({
       emit('change', data.selectedTag)
     }
     // 选择当前tab
-    const handleSelectTab = (tab: IItem) => {
+    const handleSelectTab = (tab) => {
       data.selectedTag = { ...tab }
       emitInput()
       nextTick(() => {
@@ -151,7 +144,7 @@ export default defineComponent({
       emitInput()
     }
     // 关闭当前的tab页签
-    const closeSelectedTab = (tab: IItem) => {
+    const closeSelectedTab = (tab) => {
       // 缓存tabs
       let visitedViews = deepCopy(props.data)
       if (tab.key === props.modelValue) {
@@ -220,5 +213,5 @@ export default defineComponent({
       closeSelectedTab,
     }
   },
-})
+}
 </script>

@@ -17,13 +17,12 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import TreeNode from './node.vue'
 import BEmpty from '../empty'
-import { defineComponent, provide, reactive, toRefs, watch } from 'vue'
-import { RootTreeType } from './types'
+import { provide, reactive, toRefs, unref, watch } from 'vue'
 
-export default defineComponent({
+export default {
   name: 'BTree',
   components: { TreeNode, BEmpty },
   props: {
@@ -66,7 +65,7 @@ export default defineComponent({
       let defaultExpand = props.defaultExpand
       const flatTree = []
 
-      const flattenChildren = (node, parent?) => {
+      const flattenChildren = (node, parent) => {
         node['nodeKey'] = keyCounter++
         if (typeof node.expand === 'undefined') {
           node['expand'] = defaultExpand
@@ -269,7 +268,7 @@ export default defineComponent({
       handleSelect,
       handleCheck,
       updateTreeState,
-    } as RootTreeType)
+    })
     rebuildTree()
     return {
       ...toRefs(states),
@@ -293,5 +292,5 @@ export default defineComponent({
       return !stateTree || stateTree.length === 0 || stateTree.every(({ visible }) => !visible)
     },
   },
-})
+}
 </script>

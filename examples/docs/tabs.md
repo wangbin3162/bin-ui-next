@@ -26,6 +26,7 @@
 
 <template>
   <b-tabs v-model="activeTab" :data="tabs"></b-tabs>
+  <p v-show="activeTab==='tab0'">首页</p>
   <p v-show="activeTab==='tab1'">用户管理</p>
   <p v-show="activeTab==='tab2'">组织管理</p>
   <p v-show="activeTab==='tab3'">系统管理</p>
@@ -64,6 +65,7 @@
 
 <template>
   <b-tabs v-model="activeTab" :data="tabs" type="card"></b-tabs>
+  <p v-show="activeTab==='tab0'">首页</p>
   <p v-show="activeTab==='tab1'">用户管理</p>
   <p v-show="activeTab==='tab2'">组织管理</p>
   <p v-show="activeTab==='tab3'">系统管理</p>
@@ -234,7 +236,7 @@ export default {
     return {
       tabs:[
         {key:'tab0',title:'首页',noClose:true},
-        {key:'tab1',title:'用户管理',icon:'ios-contact'},
+        {key:'tab1',title:'用户管理',icon:'user'},
         {key:'tab2',title:'组织管理'},
         {key:'tab3',title:'系统管理'},
         {key:'tab4',title:'目录模块配置'}

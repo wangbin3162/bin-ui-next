@@ -4,10 +4,10 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, onMounted, provide, ref } from 'vue'
+<script>
+import { onMounted, provide, ref } from 'vue'
 
-export default defineComponent({
+export default {
   name: 'BBreadcrumb',
   props: {
     separator: {
@@ -30,5 +30,5 @@ export default defineComponent({
     })
     return { el }
   },
-})
+}
 </script>

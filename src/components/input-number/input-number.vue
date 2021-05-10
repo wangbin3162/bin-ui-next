@@ -50,15 +50,8 @@
   </div>
 </template>
 
-<script lang="ts">
-import {
-  defineComponent,
-  reactive,
-  watch,
-  // inject,
-  toRefs,
-  PropType,
-} from 'vue'
+<script >
+import { reactive, watch, toRefs, } from 'vue'
 
 // import { elFormKey, elFormItemKey } from '../form'
 
@@ -80,15 +73,9 @@ function addNum(num1, num2) {
 
 // import type { ElFormContext, ElFormItemContext } from '../form'
 
-interface IData {
-  currentValue: number | string
-  focused: boolean
-  upDisabled: boolean
-  downDisabled: boolean
-}
-
 const prefixCls = 'bin-input-number'
-export default defineComponent({
+
+export default {
   name: 'BInputNumber',
   props: {
     max: {
@@ -112,8 +99,8 @@ export default defineComponent({
       default: 1,
     },
     size: {
-      type: String as PropType<'large' | 'default' | 'small' | 'mini'>,
-      validator: (val: string) => ['', 'large', 'default', 'small', 'mini'].includes(val),
+      type: String,
+      validator: (val) => ['', 'large', 'default', 'small', 'mini'].includes(val),
       default: 'default',
     },
     disabled: {
@@ -160,7 +147,7 @@ export default defineComponent({
     // const elForm = inject(elFormKey, {} as ElFormContext)
     // const elFormItem = inject(elFormItemKey, {} as ElFormItemContext)
 
-    const data = reactive<IData>({
+    const data = reactive({
       currentValue: props.modelValue,
       focused: false,
       upDisabled: false,
@@ -396,5 +383,5 @@ export default defineComponent({
       }
     },
   },
-})
+}
 </script>

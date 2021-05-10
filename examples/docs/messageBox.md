@@ -131,6 +131,8 @@
             type: 'info',
             message: 'action: ' + action
           });
+        }).catch(() => {
+          this.$message({ type: 'info', message: 'Cancel' });
         });
       }
     }

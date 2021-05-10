@@ -18,7 +18,7 @@ const config = {
     path: path.resolve(__dirname, '../docs'),
     publicPath: isProd ? '' : '/',
     filename: 'js/[name].js',
-    chunkFilename: 'js/[name].[hash:7].js'
+    chunkFilename: 'js/[name].[hash:7].js',
   },
   module: {
     rules: [
@@ -27,7 +27,7 @@ const config = {
         use: 'vue-loader',
       },
       {
-        test: /\.(ts|js)x?$/,
+        test: /\.(js)x?$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
       },
@@ -70,10 +70,10 @@ const config = {
     ],
   },
   resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.vue', '.json'],
+    extensions: ['.js', '.vue', '.json'],
     alias: {
       vue: 'vue',
-      'bin-ui-next': '../src/index.ts',
+      'bin-ui-next': '../src/index.js',
       examples: path.resolve(__dirname),
     },
   },

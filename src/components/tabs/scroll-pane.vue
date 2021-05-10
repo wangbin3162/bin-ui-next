@@ -24,18 +24,18 @@
   </div>
 </template>
 
-<script lang="ts">
-import { computed, defineComponent, onMounted, reactive, ref, toRefs } from 'vue'
+<script>
+import { computed, onMounted, reactive, ref, toRefs } from 'vue'
 
 const padding = 16 // tag's padding
-export default defineComponent({
+export default {
   name: 'ScrollPane',
   props: {
     hideArrow: Boolean,
   },
   setup() {
-    const scrollContainerRef = ref<HTMLElement | null>(null)
-    const scrollWrapperRef = ref<HTMLElement | null>(null)
+    const scrollContainerRef = ref(null)
+    const scrollWrapperRef = ref(null)
     const data = reactive({
       left: 0,
       isScrollable: false,
@@ -132,5 +132,5 @@ export default defineComponent({
       moveToTarget,
     }
   },
-})
+}
 </script>

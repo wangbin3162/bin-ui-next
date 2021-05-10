@@ -20,13 +20,13 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, reactive, toRefs } from 'vue'
+<script>
+import { reactive, toRefs } from 'vue'
 
 import Resizer from './resizer.vue'
 import Pane from './pane.vue'
 
-export default defineComponent({
+export default {
   name: 'BSplit',
   components: { Resizer, Pane },
   props: {
@@ -39,7 +39,7 @@ export default defineComponent({
       default: 20,
     },
     split: {
-      validator: (value: string) => {
+      validator: (value) => {
         return ['vertical', 'horizontal'].includes(value)
       },
       default: 'vertical',
@@ -105,5 +105,5 @@ export default defineComponent({
       onMouseMove,
     }
   },
-})
+}
 </script>

@@ -42,12 +42,12 @@
   </label>
 </template>
 
-<script lang="ts">
-import { defineComponent, computed, nextTick, ref } from 'vue'
+<script>
+import { computed, nextTick, ref } from 'vue'
 import { UPDATE_MODEL_EVENT } from '../../utils/constants'
 import { useRadio, useRadioAttrs } from './useRadio'
 
-export default defineComponent({
+export default {
   name: 'BRadio',
   componentName: 'BRadio',
   props: {
@@ -69,8 +69,8 @@ export default defineComponent({
   setup(props, ctx) {
     const { isGroup, radioGroup, focus } = useRadio()
 
-    const radioRef = ref<HTMLInputElement>()
-    const model = computed<string | number | boolean>({
+    const radioRef = ref()
+    const model = computed({
       get() {
         return isGroup.value ? radioGroup.modelValue : props.modelValue
       },
@@ -106,7 +106,7 @@ export default defineComponent({
       radioRef,
     }
   },
-})
+}
 </script>
 
 

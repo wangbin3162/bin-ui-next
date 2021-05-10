@@ -6,14 +6,12 @@
   </div>
 </template>
 
-<script lang="ts">
-import { computed, defineComponent, onBeforeUnmount, onMounted, PropType, reactive, ref, watch } from 'vue'
+<script>
+import { computed, onBeforeUnmount, onMounted, reactive, ref, watch } from 'vue'
 import { getScrollContainer, off, on } from '../../utils/dom'
 import { addResizeListener, removeResizeListener } from '../../utils/resize-event'
 
-type Position = 'top' | 'bottom'
-
-export default defineComponent({
+export default {
   name: 'BAffix',
   props: {
     zIndex: {
@@ -29,7 +27,7 @@ export default defineComponent({
       default: 0,
     },
     position: {
-      type: String as PropType<Position>,
+      type: String,
       default: 'top',
     },
   },
@@ -140,5 +138,5 @@ export default defineComponent({
       affixStyle,
     }
   },
-})
+}
 </script>

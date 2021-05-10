@@ -7,363 +7,157 @@
   color: $color-text-default;
   font-size: $base-font-size;
   line-height: $base-line-height;
-  .head-multiple-wrap {
-    white-space: nowrap;
-    overflow: hidden;
-  }
-  &-selection {
-    display: block;
-    box-sizing: border-box;
-    outline: 0;
-    user-select: none;
-    cursor: pointer;
-    position: relative;
-    background-color: $color-white;
-    border-radius: $border-base-radius;
-    border: $border-base;
-    transition: all $animation-duration-base ease-in-out;
-    &:hover, &-focused {
-      border-color: $color-primary-light1;
-      .bin-select-arrow {
-        display: inline-block;
+  &__caret {
+    &.b-iconfont.b-icon-down {
+      color: $color-icon-default;
+      font-size: 14px;
+      transition: transform .3s;
+      cursor: pointer;
+      &.is-reverse {
+        transform: rotateZ(180deg);
       }
     }
+    &.is-show-close {
+      color: $color-icon-hover;
+      font-size: 14px;
+      transition: transform .3s;
+      cursor: pointer;
+      border-radius: 100%;
+    }
   }
-  &-arrow, .b-icon-close-circle-fill {
+  .bin-select__tags {
     position: absolute;
+    line-height: normal;
+    white-space: normal;
+    z-index: 10;
     top: 50%;
-    right: 8px;
-    line-height: 1;
-    -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
-    font-size: 12px;
-    transform-origin: center center;
-    color: $color-text-secondary;
-    transition: all $animation-duration-base ease-in-out;
-  }
-  &-visible {
-    .bin-select-selection {
-      border-color: $color-primary;
-      outline: 0;
-      box-shadow: 0 0 0 2px $color-input-shadow;
-    }
-    .bin-select-arrow {
-      transform: translateY(-50%) rotate(180deg);
-      display: inline-block;
-    }
-  }
-  &-disabled {
-    .bin-select-selection {
-      background-color: $color-select-hover;
-      opacity: 1;
-      cursor: not-allowed;
-      color: $color-text-disabled;
-      &:hover {
-        border-color: $border-color-base;
-        box-shadow: none;
-      }
-    }
-    .bin-select-arrow {
-      color: #ccc;
-    }
-  }
-  &-single &-selection {
-    height: $default-height;
-    position: relative;
-    .bin-select-placeholder {
-      color: $color-text-placeholder;
-    }
-    .bin-select-placeholder, .bin-select-selected-value {
-      display: block;
-      height: $default-height - 2;
-      line-height: $default-height - 2;
-      font-size: $base-font-size;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      padding-left: 8px;
-      padding-right: 24px;
-    }
-  }
-  &-mini&-single &-selection {
-    height: $mini-height;
-    border-radius: $border-base-radius;
-    .bin-select-placeholder, .bin-select-selected-value {
-      height: $mini-height - 2;
-      line-height: $mini-height - 2;
-    }
-  }
-  &-mini&-multiple &-selection {
-    height: $small-height;
-    border-radius: $border-base-radius;
-    .bin-select-placeholder, .bin-select-selected-value {
-      height: $small-height - 2;
-      line-height: $small-height - 2;
-    }
-    .bin-tag {
-      height: $small-height - 8;
-      line-height: $small-height - 10;
-    }
-  }
-  &-small&-single &-selection {
-    height: $small-height;
-    .bin-select-placeholder, .bin-select-selected-value {
-      height: $small-height - 2;
-      line-height: $small-height - 2;
-    }
-  }
-  &-small&-multiple &-selection {
-    height: $small-height;
-    .bin-select-placeholder, .bin-select-selected-value {
-      height: $small-height - 2;
-      line-height: $small-height - 2;
-    }
-    .bin-tag {
-      height: $small-height - 8;
-      line-height: $small-height - 10;
-    }
-  }
-  &-large&-single &-selection {
-    height: $large-height;
-    .bin-select-placeholder, .bin-select-selected-value {
-      height: $large-height - 2;
-      line-height: $large-height - 2;
-      font-size: $header-font-size;
-    }
-  }
-  &-large&-multiple &-selection {
-    height: $large-height;
-    .bin-select-placeholder, .bin-select-selected-value {
-      height: $large-height - 2;
-      line-height: $large-height - 2;
-      font-size: $header-font-size;
-    }
-    .bin-tag {
-      height: $large-height - 8;
-      line-height: $large-height - 10;
-    }
-  }
-  &-multiple &-selection {
-    height: $default-height;
-    padding: 0 24px 0 4px;
-    .bin-select-placeholder {
-      display: block;
-      height: $default-height - 2;
-      line-height: $default-height - 2;
-      color: $btn-disable-color;
-      font-size: $base-font-size;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      padding-left: 4px;
-      padding-right: 22px;
-    }
-  }
-  &-multiple .bin-tag {
-    height: $default-height - 8;
-    line-height: $default-height - 10;
-    margin: 3px 4px 3px 0;
-    max-width: 99%;
-    position: relative;
-    span:not(.bin-select-max-tag) {
-      display: block;
-      margin-right: 14px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-    i {
-      position: absolute;
-      right: 2px;
-      top: 50%;
-      font-size: 12px;
-      transform: translateY(-50%);
-    }
-  }
-  &-prefix {
-    display: inline-block;
-    i {
-      vertical-align: -1px;
-      font-size: 16px;
-    }
-  }
-  &-head-with-prefix {
-    display: flex !important;
+    display: flex;
     align-items: center;
+    flex-wrap: wrap;
+    .bin-tag {
+      box-sizing: border-box;
+      border-color: transparent;
+      margin: 2px 0 2px 6px;
+      background-color: #f0f2f5;
+    }
   }
-  &-single &-prefix {
-    padding-left: 8px;
-  }
-  &-single &-head-with-prefix, &-multiple &-head-with-prefix {
-    padding-left: 0 !important;
-  }
-  // input
-  &-input {
-    display: inline-block;
-    height: $default-height - 2;
-    line-height: $default-height - 2;
-    padding: 0 24px 0 8px;
-    font-size: $base-font-size;
-    outline: none;
+  &__input {
     border: none;
-    box-sizing: border-box;
-    color: $color-text-default;
+    outline: none;
+    padding: 0;
+    margin-left: 15px;
+    color: #666;
+    font-size: 14px;
+    appearance: none;
+    height: 28px;
     background-color: transparent;
-    position: relative;
-    cursor: pointer;
-    &::-moz-placeholder {
-      color: $color-text-placeholder;
-      opacity: 1; // Override Firefox's unusual default opacity; see https://github.com/twbs/bootstrap/pull/11526
-    }
-    // Internet Explorer 10+
-    &:-ms-input-placeholder {
-      color: $color-text-placeholder;
-    }
-    // Safari and Chrome
-    &::-webkit-input-placeholder {
-      color: $color-text-placeholder;
-    }
-    &[disabled] {
-      cursor: not-allowed;
-      color: #ccc;
-      -webkit-text-fill-color: #ccc; // #5249
-    }
-  }
-  &-single &-input {
-    width: 100%;
-  }
-  &-large &-input {
-    height: $large-height - 2;
-    line-height: $large-height - 2;
-  }
-  &-large {
-    font-size: $header-font-size;
-  }
-  &-small &-input {
-    height: $small-height - 2;
-    line-height: $small-height - 2;
-  }
-  &-mini &-input {
-    height: $mini-height - 2;
-    line-height: $mini-height - 2;
-  }
-  &-multiple &-input {
-    height: $default-height - 2;
-    line-height: $default-height - 2;
-    padding: 0 0 0 4px;
-  }
-  &-not-found {
-    padding: 24px 0;
-    text-align: center;
-    color: $color-text-placeholder;
-  }
-  &-loading {
-    text-align: center;
-    color: $color-text-placeholder;
   }
 }
 // 下拉框样式
 .bin-select__popper {
-  width: inherit;
-  max-height: 200px;
-  overflow: auto;
-  padding: 5px 0;
-  background-color: $color-white;
-  box-sizing: border-box;
-  border-radius: $border-base-radius;
-  box-shadow: $shadow-2-down;
-  position: absolute;
-  z-index: 900;
-  &.bin-popper.is-light {
-    border: none;
-  }
-}
-// 下拉框item样式
-.bin-select-item {
-  margin: 0;
-  line-height: $base-line-height;
-  min-height: $small-height;
-  padding: 5px 12px;
-  clear: both;
-  color: $color-text-default;
-  font-size: $base-font-size !important;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  list-style: none;
-  cursor: pointer;
-  transition: background $animation-duration-base ease-in-out;
-  &:hover {
-    background: $color-select-hover;
-  }
-  &-selected, &-item &-selected:hover {
-    background: $color-primary-light5;
-    font-weight: bold;
-  }
-  &-disabled {
-    color: $color-text-placeholder !important;
-    cursor: not-allowed;
-    &:hover {
-      color: $color-text-placeholder !important;
-      background-color: $color-white;
-      cursor: not-allowed;
+  &.bin-popper {
+    width: inherit;
+    overflow: auto;
+    padding: 5px 0;
+    background-color: $color-white;
+    box-sizing: border-box;
+    border-radius: $border-base-radius;
+    box-shadow: $shadow-2-down;
+    position: absolute;
+    z-index: 900;
+    &.is-light {
+      border: none;
     }
   }
-}
-// 分组样式
-.bin-select-group {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  &-title {
+  .is-multiple {
+    .bin-select-dropdown__item {
+      &.selected {
+        background-color: #fff;
+        &::after {
+          font-family: "b-iconfont" !important;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 14px;
+          content: '\e829';
+          color: $color-primary-light1;
+          position: absolute;
+          top: 2px;
+          right: 8px;
+        }
+      }
+    }
+  }
+  .bin-select-dropdown__empty {
+    padding: 10px 0;
+    margin: 0;
+    text-align: center;
+    color: #999;
+    font-size: 14px
+  }
+  .bin-select-dropdown__wrap {
+    max-height: 274px;
+  }
+  .bin-select-dropdown__list {
+    padding: 0;
+  }
+  .bin-select-dropdown__item {
+    position: relative;
+    margin: 0;
+    padding: 5px 12px;
+    line-height: 22px;
+    width: 100%;
+    clear: both;
+    color: $color-text-default;
+    font-size: $base-font-size !important;
+    white-space: nowrap;
+    list-style: none;
+    cursor: pointer;
+    transition: background $animation-duration-base ease-in-out;
+    &:hover, &:focus, &.hover {
+      background: #f3f3f3;
+      outline: none;
+    }
+    &.selected {
+      color: $color-primary;
+      font-weight: 600;
+      background: $color-primary-light5;
+    }
+    &.is-disabled {
+      color: $btn-disable-color !important;
+      cursor: not-allowed;
+      &:hover {
+        color: $btn-disable-color !important;
+        background-color: #fff;
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  .bin-select-group__wrap {
+    position: relative;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    &:not(:last-of-type) {
+      padding-bottom: 24px;
+      &:after {
+        content: "";
+        position: absolute;
+        display: block;
+        left: 10px;
+        right: 10px;
+        bottom: 12px;
+        height: 1px;
+        background: #e4e7ed;
+      }
+    }
+  }
+  .bin-select-group__title {
     padding-left: 8px;
     font-size: $base-font-size;
     color: $color-text-secondary;
     height: 30px;
     line-height: 30px;
-  }
-}
-// 多选状态下的下拉item样式
-.bin-select-multiple .bin-select-item {
-  position: relative;
-  &-selected {
-    color: $color-primary-light1 !important;
-    background: $color-white;
-  }
-  &-focus, &-selected:hover {
-    background: $color-select-hover;
-  }
-  &-selected&-focus {
-    color: $color-primary-light4;
-    background: $color-white;
-  }
-  &-selected:after {
-    font-family: 'b-iconfont' !important;
-    font-style: normal;
-    font-weight: normal;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    font-size: 14px;
-    content: '\e829';
-    color: $color-primary-light1;
-    position: absolute;
-    top: 4px;
-    right: 8px;
-  }
-}
-// form-item error 样式
-.bin-form-item-error {
-  .bin-select {
-    &-selection {
-      border: 1px solid $color-danger;
-    }
-    &-arrow {
-      color: $color-danger;
-    }
-    &-visible .bin-select-selection {
-      border-color: $color-danger;
-      outline: 0;
-      box-shadow: 0 0 0 2px $color-input-error-shadow;
-    }
   }
 }

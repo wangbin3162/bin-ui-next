@@ -1,7 +1,6 @@
-<script lang="ts">
+<script>
 import mitt from 'mitt'
 import {
-  defineComponent,
   computed,
   ref,
   provide,
@@ -18,11 +17,10 @@ import {
   h,
 } from 'vue'
 import BCollapseTransition from '../collapse-transition'
-import { ISubmenuProps, RootMenuProvider, SubMenuProvider } from './menu'
 import useMenu from './useMenu'
 import BPopper from '../popper'
 
-export default defineComponent({
+export default {
   name: 'BSubmenu',
   componentName: 'BSubmenu',
   props: {
@@ -44,7 +42,7 @@ export default defineComponent({
       default: undefined,
     },
   },
-  setup(props: ISubmenuProps) {
+  setup(props) {
     const data = reactive({
       popperJS: null,
       timeout: null,
@@ -54,7 +52,7 @@ export default defineComponent({
       mouseInChild: false,
       opened: false,
     })
-    const verticalTitleRef = ref<HTMLElement>(null)
+    const verticalTitleRef = ref(null)
     const popperVnode = ref(null)
 
     // instance
@@ -74,13 +72,13 @@ export default defineComponent({
       methods: { closeMenu },
       rootMenuOn,
       rootMenuEmit,
-    } = inject<RootMenuProvider>('rootMenu')
+    } = inject('rootMenu')
 
     const {
       addSubMenu: parentAddSubmenu,
       removeSubMenu: parentRemoveSubmenu,
       handleMouseleave: parentHandleMouseleave,
-    } = inject<SubMenuProvider>(`subMenu:${parentMenu.value.uid}`)
+    } = inject(`subMenu:${parentMenu.value.uid}`)
 
     // computed
     const submenuTitleIcon = computed(() => {
@@ -266,7 +264,7 @@ export default defineComponent({
     }
 
     // provide
-    provide<SubMenuProvider>(`subMenu:${instance.uid}`, {
+    provide(`subMenu:${instance.uid}`, {
       addSubMenu,
       removeSubMenu,
       handleMouseleave,
@@ -274,7 +272,7 @@ export default defineComponent({
 
     // lifecycle
     onBeforeMount(() => {
-      rootMenuOn('rootMenu:toggle-collapse', (val: boolean) => {
+      rootMenuOn('rootMenu:toggle-collapse', (val) => {
         handleCollapseToggle(val)
       })
       subMenuEmitter.on('submenu:mouse-enter-child', () => {
@@ -357,17 +355,14 @@ export default defineComponent({
     const ulStyle = {
       backgroundColor: this.rootProps.backgroundColor || '',
     }
-    // this render function is only used for bypass `Vue`'s compiler caused patching issue.
-    // temporaryly mark BPopper as any due to type inconsistency.
-    // TODO: correct popper's type.
     const child = this.isMenuPopup
       ? h(
-        BPopper as any,
+        BPopper,
         {
           ref: 'popperVNode',
           manualMode: true,
           visible: this.opened,
-          'onUpdate:visible': (val: boolean) => (this.opened = val),
+          'onUpdate:visible': (val) => (this.opened = val),
           theme: 'light',
           pure: true,
           offset: 6,
@@ -392,10 +387,10 @@ export default defineComponent({
                       {
                         ref: 'menu',
                         class: [`bin-menu--${this.mode}`, 'bin-submenu-popper'],
-                        onMouseenter: ($event: Event) =>
+                        onMouseenter: ($event) =>
                           this.handleMouseenter($event, 100),
                         onMouseleave: () => this.handleMouseleave(true),
-                        onFocus: ($event: Event) =>
+                        onFocus: ($event) =>
                           this.handleMouseenter($event, 100),
                       },
                       [
@@ -493,5 +488,5 @@ export default defineComponent({
       [child],
     )
   },
-})
+}
 </script>

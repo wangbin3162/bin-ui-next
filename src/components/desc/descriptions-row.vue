@@ -27,17 +27,14 @@
   </tr>
 </template>
 
-<script lang="ts">
-import { defineComponent, inject } from 'vue'
-import DescriptionsCell from './descriptions-cell'
-import { DescKey, IDescriptionsInject } from './descriptions.type'
+<script>
+import { inject } from 'vue'
 import BDescCell from './descriptions-cell'
 
-export default defineComponent({
+export default {
   name: 'BDescRow',
   components: {
     BDescCell,
-    [DescriptionsCell.name]: DescriptionsCell,
   },
   props: {
     row: {
@@ -45,11 +42,11 @@ export default defineComponent({
     },
   },
   setup() {
-    const descriptions = inject(DescKey, {} as IDescriptionsInject)
+    const descriptions = inject('BDesc', {})
 
     return {
       descriptions,
     }
   },
-})
+}
 </script>

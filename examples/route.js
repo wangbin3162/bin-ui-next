@@ -15,7 +15,7 @@ let routes = [
 Object.keys(navConfig).forEach((header) => {
   routes = routes.concat(navConfig[header])
 })
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+
 const addComponent = router => {
   router.forEach((route) => {
     if (route.items) {

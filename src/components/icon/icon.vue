@@ -1,11 +1,9 @@
 <template>
-  <i :class="['b-iconfont', 'b-icon-' + name]" :style="getStyle"></i>
+  <i :class="['b-iconfont', 'b-icon-' + name]" :style="iconStyle"></i>
 </template>
 
-<script lang="ts">
-import { defineComponent, computed } from 'vue'
-
-export default defineComponent({
+<script>
+export default {
   name: 'BIcon',
   props: {
     name: {
@@ -15,14 +13,13 @@ export default defineComponent({
     size: [Number, String],
     color: String,
   },
-  setup(props) {
-    const getStyle = computed(() => {
+  computed: {
+    iconStyle() {
       return {
-        fontSize: props.size ? `${props.size}px` : null,
-        color: props.color,
+        fontSize: this.size ? `${this.size}px` : null,
+        color: this.color,
       }
-    })
-    return { getStyle }
+    },
   },
-})
+}
 </script>

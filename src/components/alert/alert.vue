@@ -17,8 +17,8 @@
   </transition>
 </template>
 
-<script lang="ts">
-import { computed, defineComponent, onMounted, ref } from 'vue'
+<script>
+import { computed, onMounted, ref } from 'vue'
 
 const prefixCls = 'bin-alert'
 
@@ -29,14 +29,7 @@ const TYPE_CLASSES_MAP = {
   'error': 'error',
 }
 
-interface IAlertProps {
-  type: 'success' | 'info' | 'warning' | 'error'
-  closable: boolean
-  showIcon: boolean
-  banner: boolean
-}
-
-export default defineComponent({
+export default {
   name: 'BAlert',
   props: {
     type: {
@@ -48,7 +41,7 @@ export default defineComponent({
     banner: Boolean,
   },
   emits: ['close'],
-  setup(props: IAlertProps, { emit, slots }) {
+  setup(props, { emit, slots }) {
     const closed = ref(false)
     const desc = ref(false)
     const iconType = computed(() => TYPE_CLASSES_MAP[props.type])
@@ -78,5 +71,5 @@ export default defineComponent({
       close,
     }
   },
-})
+}
 </script>

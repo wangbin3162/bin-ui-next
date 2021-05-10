@@ -18,20 +18,12 @@
   </transition>
 </template>
 
-<script lang="ts">
-import { defineComponent, ref, computed, onMounted, onBeforeUnmount } from 'vue'
+<script>
+import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
 import { throttle } from '../../utils/util'
 import { scrollTop, on, off } from '../../utils/dom'
 
-interface BackTopProps {
-  visibilityHeight: number
-  target: string
-  right: number
-  bottom: number
-  duration: number
-}
-
-export default defineComponent({
+export default {
   name: 'BBackTop',
   props: {
     visibilityHeight: {
@@ -56,7 +48,7 @@ export default defineComponent({
     },
   },
   emits: ['click'],
-  setup(props: BackTopProps, ctx) {
+  setup(props, ctx) {
     const el = ref(null)
     const container = ref(null)
     const visible = ref(false)
@@ -98,5 +90,5 @@ export default defineComponent({
       handleClick,
     }
   },
-})
+}
 </script>

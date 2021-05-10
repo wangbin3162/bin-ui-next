@@ -91,13 +91,13 @@
   </ul>
 </template>
 
-<script lang="ts">
-import { computed, defineComponent, reactive, toRefs } from 'vue'
+<script>
+import { computed, reactive, toRefs } from 'vue'
 import Options from './options.vue'
 
 const prefixCls = 'bin-page'
 
-export default defineComponent({
+export default {
   name: 'BPage',
   components: { Options },
   props: {
@@ -115,17 +115,17 @@ export default defineComponent({
     },
     pageSizeOpts: {
       type: Array,
-      default: (): number[] => {
+      default: () => {
         return [10, 20, 30, 40]
       },
     },
     placement: {
-      validator: (value: string) => ['top', 'bottom'].includes(value),
+      validator: (value) => ['top', 'bottom'].includes(value),
       default: 'bottom',
     },
     appendToBody: Boolean,
     size: {
-      validator: (value: string) => ['', 'small'].includes(value),
+      validator: (value) => ['', 'small'].includes(value),
     },
     simple: Boolean,
     showTotal: Boolean,
@@ -318,5 +318,5 @@ export default defineComponent({
       this.currentPageSize = val
     },
   },
-})
+}
 </script>

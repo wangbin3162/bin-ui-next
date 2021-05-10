@@ -10,9 +10,7 @@
     </b-anchor>
 </div>
 
-bin-ui-next 是bin-ui的vue3升级版，目前组件源码正在疯狂重构中...
-
-整体api设计仍然基于原有库，只会在极个别组件进行重构优化，整体组件依赖vue3，使用typescript编写代码
+bin-ui-next 是bin-ui的vue3升级版，目前组件源码正在疯狂重构中，整体组件依赖vue3
 
 ### 特性
 

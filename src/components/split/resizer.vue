@@ -2,18 +2,17 @@
   <div :class="['bin-splitter-pane-resizer', split, className]"></div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
+<script>
 
-export default defineComponent({
+export default {
   props: {
     split: {
-      validator: (value: string) => {
+      validator: (value) => {
         return ['vertical', 'horizontal'].includes(value)
       },
       required: true,
     },
     className: String,
   },
-})
+}
 </script>

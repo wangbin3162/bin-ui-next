@@ -4,10 +4,9 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
+<script>
 
-export default defineComponent({
+export default {
   name: 'Pane',
   props: {
     className: String,
@@ -19,5 +18,5 @@ export default defineComponent({
       percent: 50,
     }
   },
-})
+}
 </script>

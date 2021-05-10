@@ -76,7 +76,7 @@
     data() {
       return {
         size: 'default'
-      };
+      }
     }
   }
 </script>
@@ -93,7 +93,7 @@
 ```html
 
 <template>
-  <b-desc title="带边框列表" :column="3" :size="size" border direction="vertical">
+  <b-desc title="带边框列表" :column="3" border direction="vertical">
     <b-desc-item label="用户名">韩梅梅</b-desc-item>
     <b-desc-item label="手机号">1769239****</b-desc-item>
     <b-desc-item label="居住地">徐州市</b-desc-item>
@@ -103,7 +103,7 @@
     <b-desc-item label="联系地址">江苏省xx市吴中区吴中大道 1245 号</b-desc-item>
   </b-desc>
   <b-divider />
-  <b-desc title="无边框列表" :column="3" :size="size" direction="vertical">
+  <b-desc title="无边框列表" :column="3" direction="vertical">
     <b-desc-item label="用户名">韩梅梅</b-desc-item>
     <b-desc-item label="手机号">1769239****</b-desc-item>
     <b-desc-item label="居住地">徐州市</b-desc-item>

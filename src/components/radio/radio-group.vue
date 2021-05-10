@@ -4,16 +4,14 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, nextTick, provide, onMounted, ref, reactive, toRefs } from 'vue'
+<script>
+import {  nextTick, provide, onMounted, ref, reactive, toRefs } from 'vue'
 import { EVENT_CODE } from '../../utils/aria'
 import { UPDATE_MODEL_EVENT } from '../../utils/constants'
 // import { elFormItemKey } from '@element-plus/form'
-import radioGroupKey from './token'
-
 // import type { ElFormItemContext } from '@element-plus/form'
 
-export default defineComponent({
+export default {
   name: 'BRadioGroup',
   componentName: 'BRadioGroup',
   props: {
@@ -40,7 +38,7 @@ export default defineComponent({
     }
 
     provide(
-      radioGroupKey,
+      'RadioGroup',
       reactive({
         name: 'BRadioGroup',
         ...toRefs(props),
@@ -85,7 +83,7 @@ export default defineComponent({
     onMounted(() => {
       const radios = radioGroup.value.querySelectorAll('[type=radio]')
       const firstLabel = radios[0]
-      if (!Array.from(radios).some((radio: HTMLInputElement) => radio.checked) && firstLabel) {
+      if (!Array.from(radios).some((radio) => radio.checked) && firstLabel) {
         firstLabel.tabIndex = 0
       }
     })
@@ -94,6 +92,6 @@ export default defineComponent({
       radioGroup,
     }
   },
-})
+}
 </script>
 

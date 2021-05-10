@@ -7,7 +7,6 @@ import commonjs from '@rollup/plugin-commonjs'
 import json from '@rollup/plugin-json'
 import replace from '@rollup/plugin-replace'
 import babel from '@rollup/plugin-babel'
-import ts from 'rollup-plugin-typescript2'
 import { terser } from 'rollup-plugin-terser'
 
 const name = 'BinUI'
@@ -22,21 +21,20 @@ const createBanner = () => {
 
 const createBaseConfig = () => {
   return {
-    input: path.resolve(__dirname, '../src/index.ts'),
+    input: path.resolve(__dirname, '../src/index.js'),
     external: ['vue'],
     plugins: [
       peerDepsExternal(),
       vuePlugin({
         css: true,
       }),
-      ts(),
       babel({
         exclude: 'node_modules/**',
-        extensions: ['.js', '.jsx', '.vue', '.ts'],
+        extensions: ['.js', '.jsx', '.vue'],
         babelHelpers: 'bundled',
       }),
       resolve({
-        extensions: ['.vue', '.jsx', '.js', '.ts'],
+        extensions: ['.vue', '.jsx', '.js'],
       }),
       commonjs(),
       json(),

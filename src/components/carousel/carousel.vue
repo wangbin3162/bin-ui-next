@@ -58,9 +58,8 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import {
-  defineComponent,
   reactive,
   computed,
   ref,
@@ -74,10 +73,9 @@ import {
   addResizeListener,
   removeResizeListener,
 } from '../../utils/resize-event'
-import { ICarouselProps, CarouselItem, InjectCarouselScope } from './carousel'
 import { throttle } from '../../utils/util'
 
-export default defineComponent({
+export default {
   name: 'BCarousel',
   props: {
     initialIndex: {
@@ -117,20 +115,15 @@ export default defineComponent({
     direction: {
       type: String,
       default: 'horizontal',
-      validator(val: string) {
+      validator(val) {
         return ['horizontal', 'vertical'].includes(val)
       },
     },
   },
   emits: ['change'],
-  setup(props: ICarouselProps, { emit }) {
+  setup(props, { emit }) {
     // data
-    const data = reactive<{
-      activeIndex: number
-      containerWidth: number
-      timer: null | ReturnType<typeof setInterval>
-      hover: boolean
-    }>({
+    const data = reactive({
       activeIndex: -1,
       containerWidth: 0,
       timer: null,
@@ -139,7 +132,7 @@ export default defineComponent({
 
     // refs
     const root = ref(null)
-    const items = ref<CarouselItem[]>([])
+    const items = ref([])
     const offsetWidth = ref(0)
     const offsetHeight = ref(0)
 
@@ -354,7 +347,7 @@ export default defineComponent({
     })
 
     // provide
-    provide<InjectCarouselScope>('injectCarouselScope', {
+    provide('injectCarouselScope', {
       direction: props.direction,
       offsetWidth,
       offsetHeight,
@@ -390,5 +383,5 @@ export default defineComponent({
       root,
     }
   },
-})
+}
 </script>

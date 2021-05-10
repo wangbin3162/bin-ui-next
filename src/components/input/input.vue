@@ -22,8 +22,8 @@
       ></i>
       <span class="bin-input-suffix" v-else-if="showSuffix">
         <slot name="suffix"
-          ><i class="b-iconfont" :class="['b-icon-' + suffix]" v-if="suffix"></i></slot
-      ></span>
+        ><i class="b-iconfont" :class="['b-icon-' + suffix]" v-if="suffix"></i></slot
+        ></span>
       <input
         :id="elementId"
         :autocomplete="autocomplete"
@@ -52,7 +52,7 @@
       />
       <span class="bin-input-prefix" v-if="showPrefix">
         <slot name="prefix"
-          ><i class="b-iconfont" :class="['b-icon-' + prefix]" v-if="prefix"></i
+        ><i class="b-iconfont" :class="['b-icon-' + prefix]" v-if="prefix"></i
         ></slot>
       </span>
       <span class="bin-input-word-count" v-if="showWordCount">{{ wordCount }}</span>
@@ -93,22 +93,18 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import calcTextareaHeight from './calcTextareaHeight'
-import { defineComponent, computed, ref, watch, onMounted, reactive, toRefs, nextTick } from 'vue'
+import { computed, ref, watch, onMounted, reactive, toRefs, nextTick } from 'vue'
 import { CHANGE_EVENT, UPDATE_MODEL_EVENT } from '../../utils/constants'
 
 const prefixCls = 'bin-input'
-type SizeProp = {
-  minRows?: number
-  maxRows?: number
-}
 
-export default defineComponent({
+export default {
   name: 'BInput',
   props: {
     type: {
-      validator: (value: string) => {
+      validator: (value) => {
         return ['text', 'textarea', 'password', 'url', 'email', 'date', 'number', 'tel'].includes(
           value,
         )
@@ -120,7 +116,7 @@ export default defineComponent({
       default: '',
     },
     size: {
-      validator: (value: string) => {
+      validator: (value) => {
         return ['small', 'large', 'default', 'mini'].includes(value)
       },
       default: 'default',
@@ -136,7 +132,7 @@ export default defineComponent({
     icon: String,
     autosize: {
       type: Object,
-      default: (): SizeProp => {
+      default: () => {
         return {}
       },
     },
@@ -149,7 +145,7 @@ export default defineComponent({
     number: Boolean,
     autofocus: Boolean,
     autocomplete: {
-      validator: (value: string) => {
+      validator: (value) => {
         return ['on', 'off'].includes(value)
       },
       default: 'off',
@@ -157,7 +153,7 @@ export default defineComponent({
     clearable: Boolean,
     elementId: String,
     wrap: {
-      validator: (value: string) => {
+      validator: (value) => {
         return ['hard', 'soft'].includes(value)
       },
       default: 'soft',
@@ -189,6 +185,7 @@ export default defineComponent({
     'click',
     'blur',
     'focus',
+    'input',
     'input-change',
     'clear',
   ],
@@ -277,8 +274,8 @@ export default defineComponent({
         return false
       }
 
-      const minRows = autosize.minRows
-      const maxRows = autosize.maxRows
+      const minRows = autosize.minRows || props.rows
+      const maxRows = autosize.maxRows || props.rows
 
       data.textareaStyles = calcTextareaHeight(textareaRef.value, minRows, maxRows)
     }
@@ -327,6 +324,7 @@ export default defineComponent({
       setCurrentValue(value)
       ctx.emit(UPDATE_MODEL_EVENT, value)
       ctx.emit(CHANGE_EVENT, e)
+      ctx.emit('input', e)
     }
     const handleChange = (e) => {
       ctx.emit('input-change', e)
@@ -395,5 +393,5 @@ export default defineComponent({
       wordCount,
     }
   },
-})
+}
 </script>

@@ -8,7 +8,7 @@
               <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="5" stroke-miterlimit="10"></circle>
             </svg>
           </div>
-          <b-icon v-else :name="showIcon" class="loading-icon icon-is-rotating"></b-icon>
+          <i v-else class="b-iconfont loading-icon icon-is-rotating" :class="`b-icon-${showIcon}`"></i>
         </slot>
         <slot name="text">
           <div v-if="text" class="loading-text" :style="textStyle">{{ text }}</div>
@@ -18,11 +18,10 @@
   </transition>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
+<script>
 
 const prefixCls = 'bin-loading'
-export default defineComponent({
+export default {
   name: 'BLoading',
   props: {
     showIcon: String,
@@ -59,5 +58,5 @@ export default defineComponent({
       this.text = title
     },
   },
-})
+}
 </script>

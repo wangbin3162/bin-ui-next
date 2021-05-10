@@ -4,28 +4,23 @@
   </ul>
 </template>
 
-<script lang="ts">
-import { defineComponent, computed } from 'vue'
-
+<script>
 const prefixCls = 'bin-timeline'
 
-export default defineComponent({
+export default {
   name: 'BTimeline',
   props: {
     pending: Boolean,
   },
-  setup(props) {
-    const cpClasses = computed(() => {
+  computed: {
+    cpClasses() {
       return [
         `${prefixCls}`,
         {
-          [`${prefixCls}-pending`]: props.pending,
+          [`${prefixCls}-pending`]: this.pending,
         },
       ]
-    })
-    return {
-      cpClasses,
-    }
+    },
   },
-})
+}
 </script>

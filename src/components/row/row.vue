@@ -3,30 +3,30 @@
     <slot></slot>
   </div>
 </template>
-<script lang="ts">
+<script>
 
-import { defineComponent, computed, PropType, provide } from 'vue'
+import { computed, provide } from 'vue'
 
 const prefixCls = 'bin-row'
 
-export default defineComponent({
+export default {
   name: 'BRow',
   props: {
     type: {
       type: String,
-      validator: (value: string) => {
+      validator: (value) => {
         return ['flex'].includes(value)
       },
     },
     align: {
-      type: String as PropType<'top' | 'middle' | 'bottom'>,
-      validator: (value: string) => {
+      type: String,
+      validator: (value) => {
         return ['top', 'middle', 'bottom'].includes(value)
       },
     },
     justify: {
-      type: String as PropType<'start' | 'end' | 'space-around' | 'space-between'>,
-      validator: (value: string) => {
+      type: String,
+      validator: (value) => {
         return ['start', 'end', 'center', 'space-around', 'space-between'].includes(value)
       },
     },
@@ -63,5 +63,5 @@ export default defineComponent({
       classes, styles,
     }
   },
-})
+}
 </script>

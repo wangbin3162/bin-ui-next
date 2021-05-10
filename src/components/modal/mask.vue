@@ -11,10 +11,9 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
+<script>
 
-export default defineComponent({
+export default {
   name: 'BMask',
   props: {
     mask: {
@@ -32,20 +31,20 @@ export default defineComponent({
     // events fired in the order: mousedown -> mouseup -> click
     // we need to set the mousedown handle to false after click
     // fired.
-    const onMaskClick = (e: MouseEvent) => {
+    const onMaskClick = (e) => {
       if (mousedownTarget && mouseupTarget) {
         emit('click', e)
       }
       mousedownTarget = mouseupTarget = false
     }
 
-    const onMousedown = (e: MouseEvent) => {
+    const onMousedown = (e) => {
       // marking current mousedown target.
       if (props.mask) {
         mousedownTarget = e.target === e.currentTarget
       }
     }
-    const onMouseup = (e: MouseEvent) => {
+    const onMouseup = (e) => {
       if (props.mask) {
         mouseupTarget = e.target === e.currentTarget
       }
@@ -56,5 +55,5 @@ export default defineComponent({
       onMouseup,
     }
   },
-})
+}
 </script>

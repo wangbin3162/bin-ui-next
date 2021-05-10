@@ -20,9 +20,8 @@
     <slot></slot>
   </div>
 </template>
-<script lang="ts">
+<script>
 import {
-  defineComponent,
   reactive,
   onMounted,
   inject,
@@ -30,11 +29,10 @@ import {
   toRefs,
   getCurrentInstance,
 } from 'vue'
-import { autoprefixer, PartialCSSStyleDeclaration } from '../../utils/util-helper'
-import { InjectCarouselScope, ICarouselItemProps } from './carousel'
+import { autoprefixer } from '../../utils/util-helper'
 
 const CARD_SCALE = 0.83
-export default defineComponent({
+export default {
   name: 'BCarouselItem',
   props: {
     name: { type: String, default: '' },
@@ -43,7 +41,7 @@ export default defineComponent({
       default: '',
     },
   },
-  setup(props: ICarouselItemProps) {
+  setup(props) {
     // instance
     const instance = getCurrentInstance()
     instance.uid
@@ -60,7 +58,7 @@ export default defineComponent({
     })
 
     // inject
-    const injectCarouselScope: InjectCarouselScope = inject(
+    const injectCarouselScope = inject(
       'injectCarouselScope',
     )
 
@@ -73,7 +71,7 @@ export default defineComponent({
       const translateType =
         parentDirection.value === 'vertical' ? 'translateY' : 'translateX'
       const value = `${translateType}(${data.translate}px) scale(${data.scale})`
-      const style: PartialCSSStyleDeclaration = {
+      const style = {
         transform: value,
       }
       return autoprefixer(style)
@@ -113,11 +111,7 @@ export default defineComponent({
       return distance * (index - activeIndex)
     }
 
-    const translateItem = (
-      index: number,
-      activeIndex: number,
-      oldIndex: number,
-    ) => {
+    const translateItem = (index, activeIndex, oldIndex) => {
       const parentType = injectCarouselScope.type
       const length = injectCarouselScope.items.value.length
       if (parentType !== 'card' && oldIndex !== undefined) {
@@ -172,5 +166,5 @@ export default defineComponent({
       handleItemClick,
     }
   },
-})
+}
 </script>

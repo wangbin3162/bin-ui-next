@@ -21,22 +21,16 @@
   </div>
 </template>
 
-<script lang="ts">
-import { inject, defineComponent, toRefs, Ref, reactive, onMounted, onBeforeUnmount } from 'vue'
-import { Emitter } from 'mitt'
-
-export interface StepsProvider {
-  stepChild: Ref
-  stepsMitt: Emitter
-}
+<script>
+import { inject,  toRefs,  reactive, onMounted, onBeforeUnmount } from 'vue'
 
 const prefixCls = 'bin-steps'
 
-export default defineComponent({
+export default {
   name: 'BStep',
   props: {
     status: {
-      validator: (value: string) => ['wait', 'process', 'finish', 'error', 'success'].includes(value),
+      validator: (value) => ['wait', 'process', 'finish', 'error', 'success'].includes(value),
     },
     title: {
       type: String,
@@ -46,7 +40,7 @@ export default defineComponent({
     icon: String,
   },
   setup(props) {
-    const stepsParent = inject<StepsProvider>('Steps')
+    const stepsParent = inject('Steps')
     const stepsMitt = stepsParent?.stepsMitt
     const data = reactive({
       stepNumber: '',
@@ -109,5 +103,5 @@ export default defineComponent({
       }
     },
   },
-})
+}
 </script>

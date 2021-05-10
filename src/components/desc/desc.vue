@@ -21,20 +21,16 @@
   </div>
 </template>
 
-<script lang="ts">
-import { computed, defineComponent, PropType, provide } from 'vue'
+<script>
+import { computed, provide } from 'vue'
 import DescItem from './description-item'
-import DescRow from './descriptions-row.vue'
-import { DescKey } from './descriptions.type'
-import type { ComponentSize } from '../../utils/types'
 import BDescRow from './descriptions-row.vue'
 
-export default defineComponent({
+export default {
   name: 'BDesc',
   components: {
     BDescRow,
     [DescItem.name]: DescItem,
-    [DescRow.name]: DescRow,
   },
   props: {
     border: {
@@ -46,12 +42,13 @@ export default defineComponent({
       default: 3,
     },
     direction: {
-      type: String as PropType<'horizontal' | 'vertical'>,
+      type: String,
       default: 'horizontal',
     },
     size: {
-      type: String as PropType<ComponentSize>,
-      validator: (val: string) => ['large', 'default', 'small', 'mini'].includes(val),
+      type: String,
+      validator: (val) => ['large', 'default', 'small', 'mini'].includes(val),
+      default: 'default',
     },
     title: {
       type: String,
@@ -63,7 +60,7 @@ export default defineComponent({
     },
   },
   setup(props, { slots }) {
-    provide(DescKey, props)
+    provide('BDesc', props)
 
     const flattedChildren = children => {
       const temp = Array.isArray(children) ? children : [children]
@@ -125,5 +122,5 @@ export default defineComponent({
       rows,
     }
   },
-})
+}
 </script>

@@ -10,12 +10,12 @@
   </li>
 </template>
 
-<script lang="ts">
-import { defineComponent, onMounted, ref } from 'vue'
+<script>
+import { onMounted, ref } from 'vue'
 
 const prefixCls = 'bin-timeline'
 
-export default defineComponent({
+export default {
   name: 'BTimelineItem',
   props: {
     color: {
@@ -73,5 +73,5 @@ export default defineComponent({
       return `${prefixCls}-item-content`
     },
   },
-})
+}
 </script>

@@ -8,12 +8,12 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, onMounted, onUnmounted, provide, ref } from 'vue'
-import mitt, { Emitter } from 'mitt'
+<script>
+import {  onMounted, onUnmounted, provide, ref } from 'vue'
+import mitt from 'mitt'
 import { throttle } from '../../utils/util'
 
-export default defineComponent({
+export default {
   name: 'BSteps',
   props: {
     current: {
@@ -21,19 +21,19 @@ export default defineComponent({
       default: 0,
     },
     status: {
-      validator: (value: string) => ['wait', 'process', 'finish', 'error', 'success'].includes(value),
+      validator: (value) => ['wait', 'process', 'finish', 'error', 'success'].includes(value),
       default: 'process',
     },
     size: {
-      validator: (value: string) => ['small'].includes(value),
+      validator: (value) => ['small'].includes(value),
     },
     direction: {
-      validator: (value: string) => ['horizontal', 'vertical'].includes(value),
+      validator: (value) => ['horizontal', 'vertical'].includes(value),
       default: 'horizontal',
     },
   },
   setup(props) {
-    const stepsMitt: Emitter = mitt()
+    const stepsMitt = mitt()
     const stepChild = ref([]) // 用于获取所有子组件示例
 
     const updateChildProps = (isInit) => {
@@ -118,5 +118,5 @@ export default defineComponent({
       this.updateCurrent()
     },
   },
-})
+}
 </script>

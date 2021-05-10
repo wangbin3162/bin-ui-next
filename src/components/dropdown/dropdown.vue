@@ -25,22 +25,19 @@
     </template>
   </b-popper>
 </template>
-<script lang="ts">
+<script>
 import {
-  defineComponent,
   provide,
   getCurrentInstance,
   ref,
   computed,
   watch,
   onMounted,
-  ComponentPublicInstance,
 } from 'vue'
 import { on, addClass, removeClass } from '../../utils/dom'
 import BPopper from '../popper'
 
-type Nullable<T> = T | null;
-export default defineComponent({
+export default {
   name: 'BDropdown',
   components: { BPopper },
   props: {
@@ -78,9 +75,7 @@ export default defineComponent({
   emits: ['visible-change', 'command'],
   setup(props, { emit }) {
     const _instance = getCurrentInstance()
-
-    const timeout = ref<Nullable<number>>(null)
-
+    const timeout = ref(null)
     const visible = ref(false)
     watch(
       () => visible.value,
@@ -106,11 +101,9 @@ export default defineComponent({
       },
     )
 
-    const triggerVNode = ref<Nullable<ComponentPublicInstance>>(null)
-    const triggerElm = computed<Nullable<HTMLButtonElement>>(() => {
-      const _: any =
-        (triggerVNode.value?.$refs.triggerRef as HTMLElement)?.children[0] ?? {}
-      return _
+    const triggerVNode = ref(null)
+    const triggerElm = computed(() => {
+      return (triggerVNode.value?.$refs.triggerRef)?.children[0] ?? {}
     })
 
     function handleClick() {
@@ -209,5 +202,5 @@ export default defineComponent({
       handleRight,
     }
   },
-})
+}
 </script>

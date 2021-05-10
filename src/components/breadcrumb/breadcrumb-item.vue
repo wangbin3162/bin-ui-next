@@ -12,25 +12,18 @@
 </template>
 
 
-<script lang="ts">
-import { defineComponent, inject, onMounted, ref } from 'vue'
+<script>
+import { inject, onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 
-export interface IBreadcrumbInject {
-  props: {
-    separator?: string,
-    separatorIcon?: string,
-  }
-}
-
-export default defineComponent({
+export default {
   name: 'BBreadcrumbItem',
   props: {
     to: {},
     replace: Boolean,
   },
   setup(props) {
-    const parent: IBreadcrumbInject = inject('Breadcrumb')
+    const parent = inject('Breadcrumb')
     const separator = ref(parent.props.separator)
     const separatorIcon = ref(parent.props.separatorIcon)
     const link = ref(null)
@@ -49,5 +42,5 @@ export default defineComponent({
       separatorIcon,
     }
   },
-})
+}
 </script>

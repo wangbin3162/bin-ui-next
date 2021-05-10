@@ -35,9 +35,8 @@
     </div>
   </transition>
 </template>
-<script lang="ts">
-import { defineComponent, computed, ref, PropType } from 'vue'
-import type { NoticeVM } from './types'
+<script>
+import { computed, ref } from 'vue'
 import { EVENT_CODE } from '../../utils/aria'
 import { on, off } from '../../utils/dom'
 
@@ -48,7 +47,7 @@ const TypeMap = {
   'error': 'close-circle-fill',
 }
 
-export default defineComponent({
+export default {
   name: 'BNotice',
   props: {
     customClass: { type: String, default: '' },
@@ -57,20 +56,19 @@ export default defineComponent({
     iconClass: { type: String, default: '' },
     id: { type: String, default: '' },
     message: {
-      type: [String, Object] as PropType<string | NoticeVM>,
+      type: [String, Object],
       default: '',
     },
     offset: { type: Number, default: 0 },
     onClick: {
-      type: Function as PropType<() => void>,
-      default: () => void 0,
+      type: Function,
     },
     onClose: {
-      type: Function as PropType<() => void>,
+      type: Function,
       required: true,
     },
     position: {
-      type: String as PropType<'top-right' | 'top-left' | 'bottom-right' | 'bottom-left'>,
+      type: String,
       default: 'top-right',
     },
     showClose: { type: Boolean, default: true },
@@ -116,7 +114,7 @@ export default defineComponent({
     }
   },
   watch: {
-    closed(newVal: boolean) {
+    closed(newVal) {
       if (newVal) {
         this.visible = false
         on(this.$el, 'transitionend', this.destroyElement)
@@ -160,7 +158,7 @@ export default defineComponent({
       this.closed = true
       this.timer = null
     },
-    keydown({ code }: KeyboardEvent) {
+    keydown({ code }) {
       if (code === EVENT_CODE.delete || code === EVENT_CODE.backspace) {
         this.clearTimer() // press delete/backspace clear timer
       } else if (code === EVENT_CODE.esc) {
@@ -173,5 +171,5 @@ export default defineComponent({
       }
     },
   },
-})
+}
 </script>

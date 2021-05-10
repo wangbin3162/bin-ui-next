@@ -50,9 +50,8 @@
   </teleport>
 </template>
 
-<script lang="ts">
-import { defineComponent, nextTick, onMounted, ref, toRefs, watch } from 'vue'
-import type { PropType, SetupContext } from 'vue'
+<script>
+import { nextTick, onMounted, ref, toRefs, watch } from 'vue'
 import {
   default as useDialog,
   CLOSE_EVENT,
@@ -62,12 +61,11 @@ import {
   UPDATE_MODEL_EVENT,
 } from './useModal'
 import BMask from './mask.vue'
-import { useModalDragMove } from '../../hooks/useModalDrag'
+import { useModalDrag } from '../../hooks'
 import { addEventListenerWrap } from './addListener'
 
-let mousePosition: { x: number; y: number } | null = null
-// ref: https://github.com/ant-design/ant-design/issues/15795
-const getClickPosition = (e: MouseEvent) => {
+let mousePosition = null
+const getClickPosition = (e) => {
   mousePosition = {
     x: e.pageX,
     y: e.pageY,
@@ -75,7 +73,6 @@ const getClickPosition = (e: MouseEvent) => {
   // 100ms 内发生过点击事件，则从点击位置动画展示
   // 否则直接 zoom 展示
   // 这样可以兼容非点击方式展开
-  // eslint-disable-next-line no-unused-vars
   setTimeout(() => (mousePosition = null), 100)
 }
 
@@ -118,7 +115,7 @@ function offset(el) {
   return pos
 }
 
-export default defineComponent({
+export default {
   name: 'BModal',
   components: { BMask },
   props: {
@@ -127,8 +124,7 @@ export default defineComponent({
       default: false,
     },
     beforeClose: {
-      // eslint-disable-next-line no-unused-vars
-      type: Function as PropType<(...args: any[]) => unknown>,
+      type: Function,
     },
     destroyOnClose: {
       type: Boolean,
@@ -200,10 +196,10 @@ export default defineComponent({
     UPDATE_MODEL_EVENT,
   ],
   setup(props, ctx) {
-    const modalRef = ref<HTMLElement>(null)
+    const modalRef = ref(null)
 
     const { modelValue, draggable, destroyOnClose } = toRefs(props)
-    useModalDragMove({
+    useModalDrag({
       visible: modelValue,
       destroyOnClose,
       draggable,
@@ -237,9 +233,9 @@ export default defineComponent({
       })
     })
     return {
-      ...useDialog(props, ctx as SetupContext, modalRef),
+      ...useDialog(props, ctx, modalRef),
       modalRef,
     }
   },
-})
+}
 </script>

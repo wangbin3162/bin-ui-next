@@ -57,12 +57,11 @@
   </label>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
+<script>
 import { UPDATE_MODEL_EVENT } from '../../utils/constants'
 import { useCheckbox } from './useCheckbox'
 
-export default defineComponent({
+export default {
   name: 'BCheckbox',
   props: {
     modelValue: {
@@ -100,5 +99,5 @@ export default defineComponent({
   setup(props) {
     return useCheckbox(props)
   },
-})
+}
 </script>

@@ -13,17 +13,14 @@
   </li>
 </template>
 
-<script lang="ts">
+<script>
 import {
-  defineComponent,
   computed,
   getCurrentInstance,
   inject,
   reactive,
 } from 'vue'
-import { IMenuGroupProps, RootMenuProvider } from './menu'
-
-export default defineComponent({
+export default {
   name: 'BMenuItemGroup',
   componentName: 'BMenuItemGroup',
   props: {
@@ -31,7 +28,7 @@ export default defineComponent({
       type: String,
     },
   },
-  setup(props: IMenuGroupProps, { slots }) {
+  setup(props, { slots }) {
     // data
     const data = reactive({
       paddingLeft: 20,
@@ -52,7 +49,7 @@ export default defineComponent({
     })
 
     // inject
-    const { props: rootProps } = inject<RootMenuProvider>('rootMenu')
+    const { props: rootProps } = inject('rootMenu')
 
     return {
       data,
@@ -61,5 +58,5 @@ export default defineComponent({
       slots,
     }
   },
-})
+}
 </script>

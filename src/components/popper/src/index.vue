@@ -1,7 +1,6 @@
-<script lang="ts">
+<script>
 import {
   createVNode,
-  defineComponent,
   Fragment,
   Teleport,
   onBeforeUnmount,
@@ -25,7 +24,7 @@ import { throwError } from '../../../utils/log'
 const compName = 'BPopper'
 const UPDATE_VISIBLE_EVENT = 'update:visible'
 
-export default defineComponent({
+export default {
   name: compName,
   props: defaultProps,
   emits: [UPDATE_VISIBLE_EVENT, 'after-enter', 'after-leave', 'before-enter', 'before-leave'],
@@ -116,7 +115,7 @@ export default defineComponent({
     return renderBlock(Fragment, null, [
       trigger,
       createVNode(
-        Teleport as any, // Vue did not support createVNode for Teleport
+        Teleport, // Vue did not support createVNode for Teleport
         {
           to: 'body',
           disabled: !appendToBody,
@@ -127,5 +126,5 @@ export default defineComponent({
       ),
     ])
   },
-})
+}
 </script>

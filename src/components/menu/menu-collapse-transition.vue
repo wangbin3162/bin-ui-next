@@ -4,11 +4,10 @@
   </transition>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
+<script>
 import { addClass, removeClass, hasClass } from '../../utils/dom'
 
-export default defineComponent({
+export default {
   name: 'BMenuCollapseTransition',
   setup() {
     return {
@@ -53,5 +52,5 @@ export default defineComponent({
       },
     }
   },
-})
+}
 </script>

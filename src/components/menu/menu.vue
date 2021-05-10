@@ -27,36 +27,25 @@
     <slot></slot>
   </ul>
 </template>
-<script lang="ts">
+<script>
 import {
-  defineComponent,
   getCurrentInstance,
   watch,
   computed,
   ref,
   provide,
-  Ref,
   onMounted,
-  ComputedRef,
   isRef,
 } from 'vue'
 import mitt from 'mitt'
-import {
-  IMenuProps,
-  RootMenuProvider,
-  RegisterMenuItem,
-  SubMenuProvider,
-} from './menu'
-import Menubar from '../../utils/menu/menu-bar'
+import Menubar from './util/menu-bar'
 import BMenuCollapseTransition from './menu-collapse-transition.vue'
 import useMenuColor from './useMenuColor'
 
-export default defineComponent({
+export default {
   name: 'BMenu',
   componentName: 'BMenu',
-  components: {
-    BMenuCollapseTransition,
-  },
+  components: { BMenuCollapseTransition, },
   props: {
     mode: {
       type: String,
@@ -83,7 +72,7 @@ export default defineComponent({
     },
   },
   emits: ['close', 'open', 'select'],
-  setup(props: IMenuProps, ctx) {
+  setup(props, ctx) {
     // data
     const openedMenus = ref(
       props.defaultOpeneds && !props.collapse
@@ -109,7 +98,6 @@ export default defineComponent({
     })
 
     // methods
-
     const initializeMenu = () => {
       const index = activeIndex.value
       const activeItem = items.value[index]
@@ -125,28 +113,28 @@ export default defineComponent({
       })
     }
 
-    const addSubMenu = (item: RegisterMenuItem) => {
+    const addSubMenu = (item) => {
       submenus.value[item.index] = item
     }
 
-    const removeSubMenu = (item: RegisterMenuItem) => {
+    const removeSubMenu = (item) => {
       delete submenus.value[item.index]
     }
 
-    const addMenuItem = (item: RegisterMenuItem) => {
+    const addMenuItem = (item) => {
       items.value[item.index] = item
     }
 
-    const removeMenuItem = (item: RegisterMenuItem) => {
+    const removeMenuItem = (item) => {
       delete items.value[item.index]
     }
 
-    const openMenu = (index: string, indexPath?: Ref<string[]> | string[]) => {
+    const openMenu = (index, indexPath) => {
       if (openedMenus.value.includes(index)) return
       // 将不在该菜单路径下的其余菜单收起
       // collapse all menu that are not under current menu item
       if (props.uniqueOpened) {
-        openedMenus.value = openedMenus.value.filter((index: string) => {
+        openedMenus.value = openedMenus.value.filter((index) => {
           return (
             (isRef(indexPath) ? indexPath.value : indexPath).indexOf(index) !==
             -1
@@ -185,11 +173,7 @@ export default defineComponent({
       }
     }
 
-    const handleItemClick = (item: {
-      index: string
-      indexPath: ComputedRef<string[]>
-      route?: any
-    }) => {
+    const handleItemClick = (item) => {
       const { index, indexPath } = item
       const hasIndex = item.index !== null
       const oldActiveIndex = activeIndex.value
@@ -226,7 +210,7 @@ export default defineComponent({
       }
     }
 
-    const updateActiveIndex = (val?: string) => {
+    const updateActiveIndex = (val) => {
       const itemsInData = items.value
       const item =
         itemsInData[val] ||
@@ -279,7 +263,7 @@ export default defineComponent({
     )
 
     // provide
-    provide<RootMenuProvider>('rootMenu', {
+    provide('rootMenu', {
       props,
       openedMenus,
       items,
@@ -287,7 +271,6 @@ export default defineComponent({
       hoverBackground,
       activeIndex,
       isMenuPopup,
-
       methods: {
         addMenuItem,
         removeMenuItem,
@@ -299,7 +282,7 @@ export default defineComponent({
       rootMenuEmit: rootMenuEmitter.emit,
       rootMenuOn: rootMenuEmitter.on,
     })
-    provide<SubMenuProvider>(`subMenu:${instance.uid}`, {
+    provide(`subMenu:${instance.uid}`, {
       addSubMenu,
       removeSubMenu,
     })
@@ -318,12 +301,10 @@ export default defineComponent({
     return {
       hoverBackground,
       isMenuPopup,
-
       props,
-
       open,
       close,
     }
   },
-})
+}
 </script>

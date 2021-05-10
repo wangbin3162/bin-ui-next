@@ -14,11 +14,11 @@
     <slot></slot>
   </li>
 </template>
-<script lang="ts">
-import { defineComponent, getCurrentInstance } from 'vue'
+<script>
+import { getCurrentInstance } from 'vue'
 import { useDropdown } from './useDropdown'
 
-export default defineComponent({
+export default {
   name: 'BDropdownItem',
   props: {
     name: {
@@ -34,7 +34,7 @@ export default defineComponent({
     const { bDropdown } = useDropdown()
     const _instance = getCurrentInstance()
 
-    function handleClick(e: UIEvent) {
+    function handleClick(e) {
       if (props.disabled) return
       if (bDropdown.hideOnClick.value) {
         bDropdown.handleClick?.()
@@ -46,5 +46,5 @@ export default defineComponent({
       handleClick,
     }
   },
-})
+}
 </script>

@@ -11,12 +11,11 @@
     </div>
   </div>
 </template>
-<script lang="ts">
-import { defineComponent } from 'vue'
+<script>
 
 const prefixCls = 'bin-circle'
 
-export default defineComponent({
+export default {
   name: 'BCircle',
   props: {
     percent: {
@@ -36,7 +35,7 @@ export default defineComponent({
       default: '#1089ff',
     },
     strokeLinecap: {
-      validator: (value: string) => ['square', 'round'].includes(value),
+      validator: (value) => ['square', 'round'].includes(value),
       default: 'round',
     },
     trailWidth: {
@@ -114,5 +113,5 @@ export default defineComponent({
       return `${prefixCls}-inner`
     },
   },
-})
+}
 </script>
