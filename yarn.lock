@@ -1784,7 +1784,7 @@ async-settle@^1.0.0:
   dependencies:
     async-done "^1.2.2"
 
-async-validator@^3.5.1:
+async-validator@^3.4.0:
   version "3.5.2"
   resolved "https://registry.npmjs.org/async-validator/-/async-validator-3.5.2.tgz#68e866a96824e8b2694ff7a831c1a25c44d5e500"
   integrity sha512-8eLCg00W9pIRZSB781UUX/H6Oskmm8xloZfr09lz5bikRpBVDlJ3hRVuxxP1SxcwsEYfJ4IU8Q19Y8/893r3rQ==

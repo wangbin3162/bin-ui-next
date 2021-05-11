@@ -1,0 +1,147 @@
+.bin-form {
+  &--label-left .bin-form-item__label {
+    text-align: left;
+  }
+  &--label-top .bin-form-item__label {
+    float: none;
+    display: inline-block;
+    text-align: left;
+    padding: 0 0 10px 0;
+  }
+  &--inline {
+    .bin-form-item {
+      display: inline-block;
+      margin-right: 10px;
+      vertical-align: top;
+      &__label {
+        float: none;
+        display: inline-block;
+      }
+      &__content {
+        display: inline-block;
+        vertical-align: top;
+      }
+    }
+    .bin-form--label-top, .bin-form--item__content {
+      display: block;
+    }
+  }
+}
+
+.bin-form-item {
+  margin-bottom: 22px;
+  &__label {
+    text-align: right;
+    vertical-align: middle;
+    float: left;
+    font-size: $base-font-size;
+    color: $color-text-primary;
+    line-height: $default-height;
+    height: $default-height;
+    box-sizing: border-box;
+    &::after {
+      content: ':';
+      position: relative;
+      top: -0.5px;
+      margin: 0 8px 0 2px;
+    }
+  }
+  &__content {
+    position: relative;
+    line-height: $default-height;
+    font-size: $base-font-size;
+    .bin-checkbox-group, .bin-radio-group {
+      padding-top: 4px;
+      line-height: 30px;
+    }
+  }
+  &--large {
+    .bin-form-item__label {
+      height: $large-height;
+      line-height: $large-height;
+    }
+    .bin-form-item__content {
+      line-height: $large-height;
+      .bin-checkbox-group, .bin-radio-group {
+        padding-top: 6px;
+        line-height: $large-height - 2;
+      }
+    }
+  }
+  &--small {
+    .bin-form-item__label {
+      height: $small-height;
+      line-height: $small-height;
+    }
+    .bin-form-item__content {
+      line-height: $small-height;
+      .bin-checkbox-group, .bin-radio-group {
+        padding-top: 3px;
+        line-height: $small-height - 2;
+      }
+    }
+  }
+  &--mini {
+    .bin-form-item__label {
+      height: $mini-height;
+      line-height: $mini-height;
+    }
+    .bin-form-item__content {
+      line-height: $mini-height;
+      .bin-checkbox-group, .bin-radio-group {
+        padding-top: 0;
+        line-height: $mini-height - 2;
+      }
+    }
+  }
+  &.is-required {
+    & > .bin-form-item__label:before,
+    & .bin-form-item__label-wrap > .bin-form-item__label:before {
+      content: '*';
+      display: inline-block;
+      margin-right: 4px;
+      line-height: $base-line-height;
+      font-family: SimSun;
+      font-size: $base-font-size;
+      color: $color-danger;
+    }
+  }
+  &__error {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    font-size: 12px;
+    line-height: 1;
+    padding-top: 4px;
+    color: $color-danger;
+  }
+  &__error--inline {
+    position: relative;
+    top: auto;
+    left: auto;
+    display: inline-block;
+    margin-left: 10px
+  }
+  // 校验错误控件样式
+  &.is-error {
+    .bin-input {
+      border: 1px solid $color-danger;
+      &:focus {
+        outline: 0;
+        box-shadow: 0 0 0 2px $color-input-error-shadow;
+      }
+    }
+  }
+
+  .bin-input__validateIcon {
+    &.b-icon-loading {
+      color: $color-primary;
+    }
+    &.b-icon-check-circle {
+      color: $color-success;
+    }
+    &.b-icon-close-circle {
+      color: $color-danger;
+    }
+  }
+}

@@ -26,7 +26,10 @@ placeholder() {
   }
   &:hover {
     .bin-input-icon-clear {
-      display: block;
+      display: flex;
+      i {
+        background-color: #fff;
+      }
     }
   }
   .bin-input-icon-clear .b-icon-close-circle-fill {
@@ -106,7 +109,7 @@ placeholder() {
   width: 100%;
   height: $default-height;
   line-height: $base-line-height;
-  padding: 0 11px;
+  padding: 0 32px 0 11px;
   font-size: $base-font-size;
   border: $border-base;
   border-radius: $border-base-radius;
@@ -148,12 +151,19 @@ placeholder() {
   right: 0;
   top: 0;
   z-index: 3;
-  width: $default-height;
-  height: $default-height;
-  line-height: $default-height;
+  width: 32px;
+  height: 100%;
   font-size: 16px;
   text-align: center;
   color: $color-text-secondary;
+  justify-content: center;
+  align-items: center;
+  &-normal {
+    display: flex;
+  }
+  &-clear {
+    z-index: 30;
+  }
 }
 .bin-input-icon-normal + .bin-input {
   padding-right: 36px;
@@ -163,16 +173,19 @@ placeholder() {
 }
 
 .bin-input-prefix, .bin-input-suffix {
-  width: 36px;
+  width: 32px;
   height: 100%;
   text-align: center;
   position: absolute;
   left: 0;
   top: 0;
   z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   i {
+    vertical-align: middle;
     font-size: 16px;
-    line-height: $default-height;
     color: $color-text-default;
   }
 }

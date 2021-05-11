@@ -8,22 +8,24 @@
       <span :class="closeClasses" v-if="clearable && currentValue && !disabled">
         <i class="b-iconfont b-icon-close-circle-fill" @click="handleClear"></i>
       </span>
-      <i
-        class="b-iconfont"
-        :class="['b-icon-' + icon, 'bin-input-icon', 'bin-input-icon-normal']"
-        v-else-if="icon"
-        @click="handleIconClick"
-      ></i>
-      <i
-        class="b-iconfont b-icon-search"
-        :class="['bin-input-icon', 'bin-input-icon-normal', 'bin-input--search-icon']"
-        v-else-if="search"
-        @click="handleSearch"
-      ></i>
-      <span class="bin-input-suffix" v-else-if="showSuffix">
-        <slot name="suffix"
-        ><i class="b-iconfont" :class="['b-icon-' + suffix]" v-if="suffix"></i></slot
-        ></span>
+      <span class="bin-input-suffix" v-if="showSuffix">
+        <i
+          class="b-iconfont"
+          :class="['b-icon-' + icon, 'bin-input-icon', 'bin-input-icon-normal']"
+          v-if="icon"
+          @click="handleIconClick"
+        ></i>
+        <i
+          class="b-iconfont b-icon-search"
+          :class="['bin-input-icon', 'bin-input-icon-normal', 'bin-input--search-icon']"
+          v-if="search"
+          @click="handleSearch"
+        ></i>
+        <slot name="suffix">
+          <i class="b-iconfont" :class="['b-icon-' + suffix]" v-if="suffix"></i>
+        </slot>
+        <i v-if="validateState" :class="['b-iconfont','bin-input__validateIcon', validateIcon]"></i>
+      </span>
       <input
         :id="elementId"
         :autocomplete="autocomplete"
@@ -31,7 +33,7 @@
         :type="type"
         :class="inputClasses"
         :placeholder="placeholder"
-        :disabled="disabled"
+        :disabled="inputDisabled"
         :maxlength="maxlength"
         :readonly="readonly"
         :name="name"
@@ -51,9 +53,9 @@
         @change="handleChange"
       />
       <span class="bin-input-prefix" v-if="showPrefix">
-        <slot name="prefix"
-        ><i class="b-iconfont" :class="['b-icon-' + prefix]" v-if="prefix"></i
-        ></slot>
+        <slot name="prefix">
+          <i class="b-iconfont" :class="['b-icon-' + prefix]" v-if="prefix"></i>
+        </slot>
       </span>
       <span class="bin-input-word-count" v-if="showWordCount">{{ wordCount }}</span>
 
@@ -97,6 +99,7 @@
 import calcTextareaHeight from './calcTextareaHeight'
 import { computed, ref, watch, onMounted, reactive, toRefs, nextTick } from 'vue'
 import { CHANGE_EVENT, UPDATE_MODEL_EVENT } from '../../utils/constants'
+import useForm from '../../hooks/useForm'
 
 const prefixCls = 'bin-input'
 
@@ -116,10 +119,10 @@ export default {
       default: '',
     },
     size: {
+      type: String,
       validator: (value) => {
-        return ['small', 'large', 'default', 'mini'].includes(value)
+        return ['small', 'large', 'default', 'mini', ''].includes(value)
       },
-      default: 'default',
     },
     placeholder: {
       type: String,
@@ -198,6 +201,8 @@ export default {
     })
     const inputRef = ref(null)
     const textareaRef = ref(null)
+
+    const { BForm, BFormItem, validateState, validateIcon, formEmit } = useForm()
     // watch
     watch(
       () => props.modelValue,
@@ -221,13 +226,17 @@ export default {
       ]
     })
     const showPrefix = computed(() => props.prefix !== '' || ctx.slots.prefix !== undefined)
-    const showSuffix = computed(() => props.suffix !== '' || ctx.slots.suffix !== undefined)
+    const showSuffix = computed(() =>
+      props.suffix !== '' || props.icon !== '' || props.search || validateState.value !== '' || ctx.slots.suffix !== undefined,
+    )
+    const inputDisabled = computed(() => props.disabled || BForm.disabled)
+    const inputSize = computed(() => props.size || BFormItem.size)
     const inputClasses = computed(() => {
       return [
         `${prefixCls}`,
         {
-          [`${prefixCls}-${props.size}`]: !!props.size,
-          [`${prefixCls}-disabled`]: props.disabled,
+          [`${prefixCls}-${inputSize.value}`]: !!inputSize.value,
+          [`${prefixCls}-disabled`]: inputDisabled.value,
           [`${prefixCls}-with-prefix`]: showPrefix.value,
           [`${prefixCls}-with-suffix`]: showSuffix.value || props.search,
         },
@@ -236,7 +245,6 @@ export default {
     const closeClasses = computed(() => [
       prefixCls + '-icon',
       prefixCls + '-icon-clear',
-      prefixCls + '-icon-normal',
     ])
     const textareaStyle = computed(() => {
       return {
@@ -256,6 +264,7 @@ export default {
       return data.currentValue.toString().length + (props.maxlength ? `/${props.maxlength}` : '')
     })
 
+
     // self methods
     const setCurrentValue = (value) => {
       if (value === data.currentValue) return
@@ -263,10 +272,9 @@ export default {
         resizeTextarea()
       })
       data.currentValue = value
-      // Todo 触发校验
-      // if (props.validateEvent) {
-      //   this.dispatch('BFormItem', 'form-change', value)
-      // }
+      if (props.validateEvent) {
+        formEmit('change', [value])
+      }
     }
     const resizeTextarea = () => {
       const autosize = props.autosize
@@ -301,10 +309,9 @@ export default {
     }
     const handleBlur = (e) => {
       ctx.emit('blur', e)
-      // Todo 触发校验
-      // if (props.validateEvent) {
-      //   this.dispatch('BFormItem', 'form-change', value)
-      // }
+      if (props.validateEvent) {
+        formEmit('blur', [props.modelValue])
+      }
     }
 
     const handleComposition = (e) => {
@@ -318,7 +325,6 @@ export default {
     }
     const handleInput = (e) => {
       if (data.isOnComposition) return
-
       let value = e.target.value
       if (props.number && value !== '') value = Number.isNaN(Number(value)) ? value : Number(value)
       setCurrentValue(value)
@@ -383,6 +389,13 @@ export default {
       handleSearch,
       focus,
       blur,
+      BForm,
+      BFormItem,
+      validateState,
+      validateIcon,
+      formEmit,
+      inputDisabled,
+      inputSize,
       wrapClasses,
       showPrefix,
       showSuffix,

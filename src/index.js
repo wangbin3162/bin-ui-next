@@ -59,6 +59,8 @@ import BSelect from './components/select'
 import BOption from './components/option'
 import BOptionGroup from './components/option-group'
 import BPage from './components/page'
+import BForm from './components/form'
+import BFormItem from './components/form-item'
 import Message from './components/message'
 import MessageBox from './components/message-box'
 import Notice from './components/notice'
@@ -134,6 +136,8 @@ const components = [
   BOption,
   BOptionGroup,
   BPage,
+  BForm,
+  BFormItem,
 ]
 const plugins = [
   Message,
@@ -237,6 +241,8 @@ export {
   BOption,
   BOptionGroup,
   BPage,
+  BForm,
+  BFormItem,
   Message,
   MessageBox,
   Notice,
