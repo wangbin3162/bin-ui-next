@@ -67,7 +67,7 @@ export default {
   },
   emits: [UPDATE_MODEL_EVENT, 'change'],
   setup(props, ctx) {
-    const { isGroup, radioGroup, focus } = useRadio()
+    const { isGroup, radioGroup,BForm, focus } = useRadio()
 
     const radioRef = ref()
     const model = computed({
@@ -86,7 +86,8 @@ export default {
 
     const { tabIndex, isDisabled } = useRadioAttrs(props, {
       isGroup,
-      radioGroup: radioGroup,
+      radioGroup,
+      BForm,
       model,
     })
 

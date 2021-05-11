@@ -2,22 +2,20 @@ import {
   ref,
   computed,
   inject,
-  getCurrentInstance,
+  getCurrentInstance, watch,
 } from 'vue'
 import { toTypeString } from '@vue/shared'
 import { UPDATE_MODEL_EVENT } from '../../utils/constants'
+import useForm from '../../hooks/useForm'
 
 export const useCheckboxGroup = () => {
-  // const elForm = inject(elFormKey, {} as ElFormContext)
-  // const elFormItem = inject(elFormItemKey, {} as ElFormItemContext)
+  const { BForm, BFormItem, formEmit } = useForm()
   const checkboxGroup = inject('CheckboxGroup', {})
   const isGroup = computed(() => checkboxGroup && checkboxGroup?.name === 'BCheckboxGroup')
   return {
     isGroup,
     checkboxGroup,
-    // elForm,
-    // elFormItemSize,
-    // elFormItem,
+    BForm, BFormItem, formEmit,
   }
 }
 
@@ -76,7 +74,7 @@ const useCheckboxStatus = (props, { model }) => {
 }
 
 const useDisabled = (props, { model, isChecked }) => {
-  const { isGroup, checkboxGroup } = useCheckboxGroup()
+  const { isGroup, checkboxGroup, BForm } = useCheckboxGroup()
   const isLimitDisabled = computed(() => {
     const max = checkboxGroup.max?.value
     const min = checkboxGroup.min?.value
@@ -84,10 +82,10 @@ const useDisabled = (props, { model, isChecked }) => {
       (model.value.length <= min && isChecked.value)
   })
   const isDisabled = computed(() => {
-    const disabled = props.disabled //|| elForm.disabled
+    const disabled = props.disabled || BForm.disabled
     return isGroup.value
       ? checkboxGroup.disabled?.value || disabled || isLimitDisabled.value
-      : props.disabled // || elForm.disabled
+      : props.disabled || BForm.disabled
   })
 
   return {
@@ -112,7 +110,7 @@ const setStoreValue = (props, { model }) => {
 }
 
 const useEvent = (props, { isLimitExceeded }) => {
-  // const { elFormItem } = useCheckboxGroup()
+  const { formEmit } = useCheckboxGroup()
   const { emit } = getCurrentInstance()
 
   function handleChange(e) {
@@ -125,9 +123,9 @@ const useEvent = (props, { isLimitExceeded }) => {
     emit('change', value, e)
   }
 
-  // watch(() => props.modelValue, val => {
-  //   elFormItem.formItemMitt?.emit('el.form.change', [val])
-  // })
+  watch(() => props.modelValue, val => {
+    formEmit('change', [val])
+  })
 
   return {
     handleChange,

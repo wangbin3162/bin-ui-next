@@ -3,7 +3,7 @@
         'bin-input-number',
         {
           [`bin-input-number-${size}`]: !!size,
-          ['bin-input-number-disabled']: disabled,
+          ['bin-input-number-disabled']: inputDisabled,
           ['bin-input-number-focused']: focused,
           ['bin-input-number-always']: always
         }
@@ -50,10 +50,9 @@
   </div>
 </template>
 
-<script >
-import { reactive, watch, toRefs, } from 'vue'
-
-// import { elFormKey, elFormItemKey } from '../form'
+<script>
+import { reactive, watch, toRefs, nextTick, computed } from 'vue'
+import useForm from '../../hooks/useForm'
 
 function addNum(num1, num2) {
   let sq1, sq2, m
@@ -70,8 +69,6 @@ function addNum(num1, num2) {
   m = Math.pow(10, Math.max(sq1, sq2))
   return (Math.round(num1 * m) + Math.round(num2 * m)) / m
 }
-
-// import type { ElFormContext, ElFormItemContext } from '../form'
 
 const prefixCls = 'bin-input-number'
 
@@ -144,8 +141,9 @@ export default {
   },
   emits: ['update:modelValue', 'change', 'input', 'blur', 'focus'],
   setup(props, ctx) {
-    // const elForm = inject(elFormKey, {} as ElFormContext)
-    // const elFormItem = inject(elFormItemKey, {} as ElFormItemContext)
+
+    const { BForm, BFormItem, formEmit } = useForm()
+    const inputDisabled = computed(() => props.disabled || BForm.disabled)
 
     const data = reactive({
       currentValue: props.modelValue,
@@ -179,8 +177,9 @@ export default {
     const blur = () => {
       data.focused = false
       ctx.emit('blur')
-
-      // this.dispatch('BFormItem', 'form-blur', this.currentValue)
+      nextTick(() => {
+        formEmit('blur', this.currentValue)
+      })
     }
 
     const keyDown = (e) => {
@@ -272,9 +271,9 @@ export default {
       data.currentValue = val
       ctx.emit('update:modelValue', val)
       ctx.emit('change', val)
-      // nextTick(() => {
-      //   this.dispatch('BFormItem', 'form-change', val)
-      // })
+      nextTick(() => {
+        formEmit('change', val)
+      })
     }
 
     function changeVal(val) {
@@ -310,6 +309,8 @@ export default {
       },
     )
     return {
+      BForm, BFormItem, formEmit,
+      inputDisabled,
       ...toRefs(data),
       preventDefault,
       up,

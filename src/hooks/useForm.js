@@ -1,5 +1,6 @@
 import { FormItemKey, FormKey, FormEvents } from '../components/form'
-import { inject, computed, watch } from 'vue'
+import { inject, computed } from 'vue'
+
 export const VALIDATE_STATE_MAP = {
   validating: 'b-icon-loading icon-is-rotating',
   success: 'b-icon-check-circle',
@@ -15,7 +16,7 @@ export default function useForm() {
   const validateIcon = computed(() => VALIDATE_STATE_MAP[validateState.value])
 
   // blur, change,value
-  function formEmit(type = 'blur', value) {
+  function formEmit(type, value) {
     BFormItem.formItemMitt?.emit(FormEvents[type], value)
   }
 

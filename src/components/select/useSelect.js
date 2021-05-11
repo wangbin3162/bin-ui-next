@@ -8,6 +8,7 @@ import { isKorean } from '../../utils/isDef'
 import { getValueByPath, isEdge, isIE } from '../../utils/util-helper'
 import { isObject, toRawType } from '@vue/shared'
 import { debounce } from '../../utils/util'
+import useForm from '../../hooks/useForm'
 
 // import { elFormKey, elFormItemKey } from '@element-plus/form'
 
@@ -52,13 +53,11 @@ export const useSelect = (props, states, ctx) => {
   const scrollbar = ref(null)
   const hoverOption = ref(-1)
 
-  // inject
-  // const elForm = inject(elFormKey, {})
-  // const elFormItem = inject(elFormItemKey, {})
+  const { BForm, BFormItem, formEmit } = useForm()
 
   const readonly = computed(() => !props.filterable || props.multiple || (!isIE() && !isEdge() && !states.visible))
 
-  const selectDisabled = computed(() => props.disabled) //|| elForm.disabled
+  const selectDisabled = computed(() => props.disabled || BForm.disabled)
 
   const showClose = computed(() => {
     const hasValue = props.multiple
@@ -103,7 +102,7 @@ export const useSelect = (props, states, ctx) => {
     return props.filterable && props.allowCreate && states.query !== '' && !hasExistingOption
   })
 
-  const selectSize = computed(() => props.size) //|| elFormItem.size
+  const selectSize = computed(() => props.size || BFormItem.size)
 
   const collapseTagSize = computed(() => ['small', 'mini'].indexOf(selectSize.value) > -1 ? 'mini' : 'small')
 
@@ -137,9 +136,9 @@ export const useSelect = (props, states, ctx) => {
     if (props.filterable && !props.multiple) {
       states.inputLength = 20
     }
-    // if (val!== oldVal) {
-    //   elFormItem.formItemMitt?.emit('el.form.change', val)
-    // }
+    if (val !== oldVal) {
+      formEmit('change', val)
+    }
   }, {
     flush: 'post',
     deep: true,

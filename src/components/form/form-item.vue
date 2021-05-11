@@ -13,7 +13,8 @@
         class="bin-form-item__label"
         :style="labelStyle"
       >
-        <slot name="label">{{ label + elForm.labelSuffix }}</slot>
+        <slot name="label">{{ label }}</slot>
+        <span class="item-suffix">{{ elForm.labelSuffix }}</span>
       </label>
     </LabelWrap>
     <div class="bin-form-item__content" :style="contentStyle">

@@ -46,6 +46,7 @@ import { ref, computed, watch } from 'vue'
 import { hasClass } from '../../utils/dom'
 import { isObject, isArray } from '@vue/shared'
 import { EVENT_CODE } from '../../utils/aria'
+import useForm from '../../hooks/useForm'
 
 export default {
   name: 'BRate',
@@ -128,8 +129,9 @@ export default {
   emits: ['update:modelValue', 'change'],
   setup(props, { emit }) {
     const currentValue = ref(props.modelValue)
+    const { BForm, formEmit } = useForm()
 
-    const rateDisabled = computed(() => props.disabled)
+    const rateDisabled = computed(() => props.disabled || BForm.disabled)
 
     const text = computed(() => {
       let result = ''
@@ -261,6 +263,7 @@ export default {
         emit('update:modelValue', value)
         emit('change', value)
       }
+      formEmit('change', value)
     }
 
     function handleKey(e) {
@@ -302,10 +305,10 @@ export default {
       /* istanbul ignore if */
       if (props.allowHalf) {
         let target = event.target
-        if (hasClass(target, 'el-rate__item')) {
-          target = target.querySelector('.el-rate__icon')
+        if (hasClass(target, 'bin-rate__item')) {
+          target = target.querySelector('.bin-rate__icon')
         }
-        if (hasClass(target, 'el-rate__decimal')) {
+        if (hasClass(target, 'bin-rate__decimal')) {
           target = target.parentNode
         }
         pointerAtLeftHalf.value = event.offsetX * 2 <= target.clientWidth

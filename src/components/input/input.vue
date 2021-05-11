@@ -72,7 +72,7 @@
         :class="textareaClasses"
         :style="textareaStyle"
         :placeholder="placeholder"
-        :disabled="disabled"
+        :disabled="inputDisabled"
         :rows="rows"
         :maxlength="maxlength"
         :readonly="readonly"

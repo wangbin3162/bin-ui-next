@@ -1,11 +1,8 @@
-import { ref, computed, inject, WritableComputedRef } from 'vue'
-// import { elFormKey, elFormItemKey } from '../../form'
-
-// import type { ElFormContext, ElFormItemContext } from '../../form'
+import { ref, computed, inject } from 'vue'
+import useForm from '../../hooks/useForm'
 
 export const useRadio = () => {
-  // const elForm = inject(elFormKey, {} as ElFormContext)
-  // const elFormItem = inject(elFormItemKey, {} as ElFormItemContext)
+  const { BForm, BFormItem, formEmit } = useForm()
   const radioGroup = inject('RadioGroup', {})
   const focus = ref(false)
   const isGroup = computed(() => radioGroup?.name === 'BRadioGroup')
@@ -14,16 +11,15 @@ export const useRadio = () => {
     isGroup,
     focus,
     radioGroup,
+    BForm, BFormItem, formEmit,
   }
 }
 
-export const useRadioAttrs = (props, { isGroup, radioGroup, model }) => {
+export const useRadioAttrs = (props, { isGroup, radioGroup, BForm, model }) => {
   const isDisabled = computed(() => {
     return isGroup.value
-      ? radioGroup.disabled || props.disabled
-      : props.disabled
-    // ? radioGroup.disabled || props.disabled || elForm.disabled
-    // : props.disabled || elForm.disabled
+      ? radioGroup.disabled || props.disabled || BForm.disabled
+      : props.disabled || BForm.disabled
   })
 
   const tabIndex = computed(() => {
@@ -34,5 +30,4 @@ export const useRadioAttrs = (props, { isGroup, radioGroup, model }) => {
     isDisabled,
     tabIndex,
   }
-
 }

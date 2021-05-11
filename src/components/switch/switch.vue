@@ -20,10 +20,12 @@
       </p>
       <div style="text-align: right; margin: 0">
         <b-button size="mini" type="text" @click="visible = false"
-          >取消</b-button
+        >取消
+        </b-button
         >
         <b-button type="primary" size="mini" @click="confirmFun($event)"
-          >确定</b-button
+        >确定
+        </b-button
         >
       </div>
     </template>
@@ -34,6 +36,7 @@
 import BPopover from '../popover'
 import BButton from '../button'
 import { ref, watch } from 'vue'
+import useForm from '../../hooks/useForm'
 
 const prefixCls = 'bin-switch'
 
@@ -70,6 +73,7 @@ export default {
   setup(props, { emit }) {
     const currentValue = ref(props.modelValue)
     const visible = ref(false)
+    const { BForm, formEmit } = useForm()
 
     const handleToggle = (e) => {
       e.preventDefault()
@@ -84,7 +88,7 @@ export default {
       emit('update:modelValue', checked)
       emit('change', checked)
 
-      // this.dispatch('BFormItem', 'form-change', checked)
+      formEmit('change', checked)
     }
     const toggle = (e) => {
       if (!props.confirm) handleToggle(e)
@@ -107,6 +111,8 @@ export default {
       currentValue,
       toggle,
       confirmFun,
+      BForm,
+      formEmit,
     }
   },
   computed: {
@@ -115,7 +121,7 @@ export default {
         `${prefixCls}`,
         {
           [`${prefixCls}-checked`]: this.currentValue === this.trueValue,
-          [`${prefixCls}-disabled`]: this.disabled,
+          [`${prefixCls}-disabled`]: this.disabled || this.BForm.disabled,
           [`${prefixCls}-${this.size}`]: !!this.size,
         },
       ]

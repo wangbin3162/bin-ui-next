@@ -5,11 +5,10 @@
 </template>
 
 <script>
-import {  nextTick, provide, onMounted, ref, reactive, toRefs } from 'vue'
+import { nextTick, provide, onMounted, ref, reactive, toRefs, watch } from 'vue'
 import { EVENT_CODE } from '../../utils/aria'
 import { UPDATE_MODEL_EVENT } from '../../utils/constants'
-// import { elFormItemKey } from '@element-plus/form'
-// import type { ElFormItemContext } from '@element-plus/form'
+import useForm from '../../hooks/useForm'
 
 export default {
   name: 'BRadioGroup',
@@ -27,7 +26,7 @@ export default {
   setup(props, ctx) {
     const radioGroup = ref(null)
 
-    // const elFormItem = inject(elFormItemKey, {} as ElFormItemContext)
+    const { formEmit } = useForm()
 
     // methods
     const changeEvent = (value) => {
@@ -46,9 +45,9 @@ export default {
       }),
     )
 
-    // watch(() => props.modelValue, val => {
-    //   elFormItem.formItemMitt?.emit('el.form.change', [val])
-    // })
+    watch(() => props.modelValue, val => {
+      formEmit('change', [val])
+    })
 
     const handleKeydown = (e) => {
       // 左右上下按键 可以在radio组内切换不同选项

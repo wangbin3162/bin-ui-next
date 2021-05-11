@@ -39,8 +39,7 @@
     line-height: $default-height;
     height: $default-height;
     box-sizing: border-box;
-    &::after {
-      content: ':';
+    .item-suffix {
       position: relative;
       top: -0.5px;
       margin: 0 8px 0 2px;
@@ -52,7 +51,11 @@
     font-size: $base-font-size;
     .bin-checkbox-group, .bin-radio-group {
       padding-top: 4px;
-      line-height: 30px;
+      line-height: $base-line-height;
+    }
+    .bin-rate {
+      padding-top: 0;
+      line-height: $base-line-height;
     }
   }
   &--large {
@@ -105,6 +108,12 @@
       font-size: $base-font-size;
       color: $color-danger;
     }
+    &.is-no-asterisk {
+      & > .bin-form-item__label:before,
+      & .bin-form-item__label-wrap > .bin-form-item__label:before {
+        display: none;
+      }
+    }
   }
   &__error {
     position: absolute;
@@ -122,18 +131,12 @@
     display: inline-block;
     margin-left: 10px
   }
-  // 校验错误控件样式
-  &.is-error {
-    .bin-input {
-      border: 1px solid $color-danger;
-      &:focus {
-        outline: 0;
-        box-shadow: 0 0 0 2px $color-input-error-shadow;
-      }
-    }
-  }
-
+  // 校验状态icon
   .bin-input__validateIcon {
+    display: none;
+    height: 14px;
+    line-height: 1;
+    background-color: #fff;
     &.b-icon-loading {
       color: $color-primary;
     }
@@ -142,6 +145,37 @@
     }
     &.b-icon-close-circle {
       color: $color-danger;
+    }
+  }
+  .bin-select .bin-input__validateIcon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0);
+  }
+  &.bin-form-item--feedback {
+    .bin-input__validateIcon {
+      display: block;
+    }
+  }
+}
+
+// 校验错误控件样式
+.bin-form-item.is-error {
+  .bin-input {
+    border: 1px solid $color-danger;
+    &:focus {
+      outline: 0;
+      box-shadow: 0 0 0 2px $color-input-error-shadow;
+    }
+  }
+
+  .bin-input-number {
+    border: 1px solid $color-danger;
+    &-focused {
+      border: 1px solid $color-danger;
+      outline: 0;
+      box-shadow: 0 0 0 2px $color-input-error-shadow;
     }
   }
 }

@@ -5,8 +5,9 @@
 </template>
 
 <script>
-import { computed, provide, nextTick, toRefs } from 'vue'
+import { computed, provide, nextTick, toRefs, watch } from 'vue'
 import { UPDATE_MODEL_EVENT, CHANGE_EVENT } from '../../utils/constants'
+import { useCheckboxGroup } from './useCheckbox'
 
 export default {
   name: 'BCheckboxGroup',
@@ -27,7 +28,7 @@ export default {
   },
   emits: [UPDATE_MODEL_EVENT, CHANGE_EVENT],
   setup(props, ctx) {
-    // const { elFormItem, elFormItemSize, ELEMENT } = useCheckboxGroup()
+    const { formEmit } = useCheckboxGroup()
 
     const changeEvent = value => {
       ctx.emit(UPDATE_MODEL_EVENT, value)
@@ -52,9 +53,9 @@ export default {
       changeEvent,
     })
 
-    // watch(() => props.modelValue, val => {
-    //   elFormItem.formItemMitt?.emit('el.form.change', [val])
-    // })
+    watch(() => props.modelValue, val => {
+      formEmit('change', [val])
+    })
   },
 }
 </script>
