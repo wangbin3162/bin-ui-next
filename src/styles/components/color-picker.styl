@@ -1,0 +1,333 @@
+circle-dot() {
+  cursor: head;
+  width: 4px;
+  height: 4px;
+  box-shadow: 0 0 0 1.5px #fff, inset 0 0 1px 1px rgba(0, 0, 0, 0.3), 0 0 1px 2px rgba(0, 0, 0, 0.4);
+  border-radius: 50%;
+  transform: translate(-2px, -2px);
+}
+
+active() {
+  border-color: tint($color-primary, 20%);
+  outline: 0;
+  box-shadow: 0 0 0 2px $color-input-shadow;
+}
+
+.bin-color-picker {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  line-height: normal;
+  height: $default-height;
+  &__trigger {
+    display: inline-block;
+    box-sizing: border-box;
+    height: $default-height;
+    width: $default-height;
+    padding: 3px;
+    border: $border-base;
+    border-radius: $border-base-radius;
+    font-size: 0;
+    position: relative;
+    cursor: pointer;
+    &.show-label {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+  &__label {
+    height: 100%;
+    cursor: pointer;
+    border: $border-base;
+    border-radius: $border-base-radius;
+    border-left: none;
+    padding: 0 8px;
+    min-width: 85px;
+    line-height: $default-height - 2px;
+  }
+  &__color {
+    position: relative;
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    &-inner {
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: $border-base-radius;
+      box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.15);
+    }
+  }
+  &__empty {
+    color: $color-text-secondary;
+  }
+  &__empty, &__icon {
+    font-size: 12px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0);
+  }
+  &__icon {
+    display: inline-block;
+    width: 100%;
+    color: #fff;
+    text-align: center;
+  }
+  &--large {
+    height: $large-height;
+    .bin-color-picker__trigger {
+      height: $large-height;
+      width: $large-height;
+    }
+    .bin-color-picker__label {
+      line-height: $large-height - 2px;
+    }
+  }
+  &--small {
+    height: $small-height;
+    .bin-color-picker__trigger {
+      height: $small-height;
+      width: $small-height;
+    }
+    .bin-color-picker__icon, .bin-color-picker__empty {
+      transform: translate3d(-50%, -50%, 0) scale(0.8);
+    }
+    .bin-color-picker__label {
+      line-height: $small-height - 2px;
+    }
+  }
+  &--mini {
+    height: $mini-height;
+    .bin-color-picker__trigger {
+      height: $mini-height;
+      width: $mini-height;
+    }
+    .bin-color-picker__icon, .bin-color-picker__empty {
+      transform: translate3d(-50%, -50%, 0) scale(0.8);
+    }
+    .bin-color-picker__label {
+      line-height: $mini-height - 2px;
+    }
+  }
+  &__mask {
+    border-radius: $border-base-radius;
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    bottom: 1px;
+    right: 1px;
+    z-index: 1;
+    cursor: not-allowed;
+    background-color: rgba(255, 255, 255, .7);
+  }
+}
+
+// popper
+.bin-color-picker__panel {
+  position: absolute;
+  z-index: 10;
+  padding: 6px;
+  box-sizing: content-box;
+  background-color: $color-white;
+  border-radius: $border-base-radius;
+  box-shadow: $shadow-2-down;
+  &.bin-popper {
+    &.is-light {
+      border: none;
+    }
+  }
+  &.bin-color-dropdown {
+    width: 300px;
+  }
+
+  .bin-color-dropdown__main-wrapper {
+    margin-bottom: 6px;
+    &::after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+  }
+  // 色彩条
+  .bin-color-hue-slider {
+    position: relative;
+    box-sizing: border-box;
+    width: 280px;
+    height: 12px;
+    background-color: #f00;
+    padding: 0 2px;
+    float: right;
+    &__bar {
+      position: relative;
+      background: linear-gradient(
+          to right, #f00 0%,
+          #ff0 17%, #0f0 33%,
+          #0ff 50%, #00f 67%,
+          #f0f 83%, #f00 100%);
+      height: 100%;
+    }
+    &__thumb {
+      position: absolute;
+      cursor: pointer;
+      box-sizing: border-box;
+      left: 0;
+      top: 0;
+      width: 4px;
+      height: 100%;
+      border-radius: 1px;
+      background: #fff;
+      border: 1px solid #f0f0f0;
+      box-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
+      z-index: 1;
+    }
+    &.is-vertical {
+      width: 12px;
+      height: 180px;
+      padding: 2px 0;
+      .bin-color-hue-slider__bar {
+        background: linear-gradient(
+            to bottom, #f00 0%,
+            #ff0 17%, #0f0 33%,
+            #0ff 50%, #00f 67%,
+            #f0f 83%, #f00 100%);
+      }
+      .bin-color-hue-slider__thumb {
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 4px;
+      }
+    }
+  }
+
+  // 透明条
+  .bin-color-alpha-slider {
+    position: relative;
+    box-sizing: border-box;
+    width: 280px;
+    height: 12px;
+    background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAIAAADZF8uwAAAAGUlEQVQYV2M4gwH+YwCGIasIUwhT25BVBADtzYNYrHvv4gAAAABJRU5ErkJggg==');
+    &__bar {
+      position: relative;
+      background: linear-gradient(
+          to right, rgba(255, 255, 255, 0) 0%,
+          rgba(255, 255, 255, 1) 100%);
+      height: 100%;
+    }
+    &__thumb {
+      position: absolute;
+      cursor: pointer;
+      box-sizing: border-box;
+      left: 0;
+      top: 0;
+      width: 4px;
+      height: 100%;
+      border-radius: 1px;
+      background: #fff;
+      border: 1px solid #f0f0f0;
+      box-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
+      z-index: 1;
+    }
+    &.is-vertical {
+      width: 20px;
+      height: 180px;
+      .bin-color-alpha-slider__bar {
+        background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
+      }
+      .bin-color-alpha-slider__thumb {
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 4px;
+      }
+    }
+  }
+
+  // 色块
+  .bin-color-predefine {
+    display: flex;
+    font-size: 12px;
+    margin-top: 8px;
+    width: 280px;
+    &__colors {
+      display: flex;
+      flex: 1;
+      flex-wrap: wrap;
+      .bin-color-predefine__color-selector {
+        display: inline;
+        width: 16px;
+        height: 16px;
+        margin: 2px;
+        float: left;
+        position: relative;
+        > div {
+          outline: 0;
+          display: block;
+          position: absolute;
+          width: 16px;
+          height: 16px;
+          cursor: pointer;
+          border-radius: 2px;
+          box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.15);
+        }
+        &.selected {
+          > div::after {
+            content: '';
+            circle-dot();
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            cursor: pointer;
+          }
+        }
+        &.is-alpha {
+          background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAIAAADZF8uwAAAAGUlEQVQYV2M4gwH+YwCGIasIUwhT25BVBADtzYNYrHvv4gAAAABJRU5ErkJggg==');
+        }
+      }
+    }
+  }
+  // 色彩面板
+  .bin-color-svpanel {
+    position: relative;
+    width: 280px;
+    height: 180px;
+    &__black, &__white {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0
+    }
+    &__white {
+      background: linear-gradient(to right, #fff, rgba(255, 255, 255, 0))
+    }
+    &__black {
+      background: linear-gradient(to top, #000, rgba(0, 0, 0, 0))
+    }
+    &__cursor {
+      position: absolute;
+      > div {
+        circle-dot()
+      }
+    }
+  }
+  .bin-color-dropdown__btns {
+    margin-top: 6px;
+    text-align: right;
+  }
+  .bin-color-dropdown__value {
+    float: left;
+    line-height: 24px;
+    color: #000;
+    width: 200px;
+    .bin-input {
+      font-size: 12px;
+      padding: 0 10px;
+    }
+  }
+}

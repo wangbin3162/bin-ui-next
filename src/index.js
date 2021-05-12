@@ -61,6 +61,7 @@ import BOptionGroup from './components/option-group'
 import BPage from './components/page'
 import BCascader from './components/cascader'
 import BCascaderPanel from './components/cascader-panel'
+import BColorPicker from './components/color-picker'
 import BForm from './components/form'
 import BFormItem from './components/form-item'
 import Message from './components/message'
@@ -142,6 +143,7 @@ const components = [
   BCascaderPanel,
   BForm,
   BFormItem,
+  BColorPicker,
 ]
 const plugins = [
   Message,
@@ -248,6 +250,7 @@ export {
   BPage,
   BCascader,
   BCascaderPanel,
+  BColorPicker,
   BForm,
   BFormItem,
   Message,

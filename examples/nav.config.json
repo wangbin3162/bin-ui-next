@@ -219,9 +219,8 @@
         {
           "desc": "ColorPicker 颜色选择器",
           "icon": "bg-colors",
-          "name": "colorPicker",
-          "path": "/colorPicker",
-          "writing": true
+          "name": "color-picker",
+          "path": "/color-picker"
         },
         {
           "desc": "Rate 评分",
