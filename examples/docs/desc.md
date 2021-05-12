@@ -1,15 +1,5 @@
 ## Desc 描述列表
 
-<div class="global-anchor">
-  <b-anchor :scroll-offset="100">
-    <b-anchor-link href="#ji-chu-yong-fa" title="基础用法"></b-anchor-link>
-    <b-anchor-link href="#bu-tong-chi-cun" title="不同尺寸"></b-anchor-link>
-    <b-anchor-link href="#chui-zhi-fang-xiang" title="垂直方向"></b-anchor-link>
-    <b-anchor-link href="#props" title="Props"></b-anchor-link>
-    <b-anchor-link href="#slot" title="slot"></b-anchor-link>
-  </b-anchor>
-</div>
-
 按照一个区块来展示
 
 ### 基础用法

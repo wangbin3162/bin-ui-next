@@ -1,19 +1,5 @@
 ## Modal 模态框
 
- <div class="global-anchor">
-  <b-anchor :scroll-offset="100">
-    <b-anchor-link href="#ji-chu-yong-fa" title="基础用法"></b-anchor-link>
-    <b-anchor-link href="#zi-ding-yi-yang-shi" title="自定义样式"></b-anchor-link>
-    <b-anchor-link href="#jin-yong-guan-bi" title="禁用关闭"></b-anchor-link>
-    <b-anchor-link href="#qian-tao" title="嵌套"></b-anchor-link>
-    <b-anchor-link href="#quan-ping" title="全屏"></b-anchor-link>
-    <b-anchor-link href="#ke-tuo-zhuai" title="可拖拽"></b-anchor-link>
-    <b-anchor-link href="#props" title="Props"></b-anchor-link>
-    <b-anchor-link href="#events" title="Events"></b-anchor-link>
-    <b-anchor-link href="#slot" title="Slot"></b-anchor-link>
-  </b-anchor>
-</div>
-
 对话框/弹窗，在浮层中显示，引导用户进行相关操作。
 
 ### 基础用法

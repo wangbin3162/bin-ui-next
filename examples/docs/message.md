@@ -1,15 +1,5 @@
 ## Message 通知
 
-<div class="global-anchor">
-  <b-anchor :scroll-offset="100">
-    <b-anchor-link href="#ji-chu-yong-fa" title="基础用法"></b-anchor-link>
-    <b-anchor-link href="#bu-tong-lei-bie" title="不同类别"></b-anchor-link>
-    <b-anchor-link href="#pei-zhi-can-shu" title="配置参数"></b-anchor-link>
-    <b-anchor-link href="#api" title="API"></b-anchor-link>
-    <b-anchor-link href="#options" title="Options"></b-anchor-link>
-  </b-anchor>
-</div>
-
 轻量级的信息反馈组件，在顶部居中显示，并自动消失。有多种不同的提示状态可选择。
 
 ### 基础用法

@@ -7,7 +7,7 @@ import scrollIntoView from '../../utils/scroll-into-view'
 import { isKorean } from '../../utils/isDef'
 import { getValueByPath, isEdge, isIE } from '../../utils/util-helper'
 import { isObject, toRawType } from '@vue/shared'
-import { debounce } from '../../utils/util'
+import { debounce, isEqual } from '../../utils/util'
 import useForm from '../../hooks/useForm'
 
 // import { elFormKey, elFormItemKey } from '@element-plus/form'
@@ -136,7 +136,7 @@ export const useSelect = (props, states, ctx) => {
     if (props.filterable && !props.multiple) {
       states.inputLength = 20
     }
-    if (val !== oldVal) {
+    if (!isEqual(val, oldVal)) {
       formEmit('change', val)
     }
   }, {
@@ -423,7 +423,7 @@ export const useSelect = (props, states, ctx) => {
   }, debounceTime.value)
 
   const emitChange = val => {
-    if (props.modelValue !== val) {
+    if (!isEqual(props.modelValue, val)) {
       ctx.emit(CHANGE_EVENT, val)
     }
   }

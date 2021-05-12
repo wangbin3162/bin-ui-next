@@ -34,10 +34,9 @@
         @change="handleChange"
       />
     </span>
-    <span class="bin-radio__label" @keydown.stop>
-      <slot>
-        {{ label }}
-      </slot>
+    <span v-if="$slots.default || label" class="bin-radio__label" @keydown.stop>
+      <slot></slot>
+      <template v-if="!$slots.default">{{ label }}</template>
     </span>
   </label>
 </template>
@@ -67,7 +66,7 @@ export default {
   },
   emits: [UPDATE_MODEL_EVENT, 'change'],
   setup(props, ctx) {
-    const { isGroup, radioGroup,BForm, focus } = useRadio()
+    const { isGroup, radioGroup, BForm, focus } = useRadio()
 
     const radioRef = ref()
     const model = computed({

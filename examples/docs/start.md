@@ -1,13 +1,5 @@
 ## 快速上手
 
-<div class="global-anchor">
-    <b-anchor :scroll-offset="100">
-        <b-anchor-link href="#yin-ru" title="引入"></b-anchor-link>
-        <b-anchor-link href="#wan-zheng-yin-ru" title="完整引入"></b-anchor-link>
-        <b-anchor-link href="#an-xu-yin-ru" title="按需引入"></b-anchor-link>
-    </b-anchor>
-</div>
-
 本章节介绍如何在项目中使用vue3版本的bin-ui-next
 
 ### 引入

@@ -1,16 +1,5 @@
 ## 基础
 
-<div class="global-anchor">
-  <b-anchor :scroll-offset="100">
-    <b-anchor-link href="#ji-chu-api" title="基础api"></b-anchor-link>
-    <b-anchor-link href="#wu-shu-ju-zu-jian" title="无数据组件"></b-anchor-link>
-    <b-anchor-link href="#flex.cssshi-yong" title="flex.css使用"></b-anchor-link>
-    <b-anchor-link href="#flexshu-xing-da-quan" title="flex属性大全"></b-anchor-link>
-    <b-anchor-link href="#flex-boxshu-xing-shuo-ming" title="flex-box属性说明"></b-anchor-link>
-    <b-anchor-link href="#common.css" title="common.css"></b-anchor-link>
-  </b-anchor>
-</div>
-
 ### 基础api
 
 暴露了以下几个api用于实现常用功能，log print在专门模块中说明
@@ -41,6 +30,7 @@ util方法函数
 | $rangeTime | 获取日期区间，如如近一周，近三个月，后一个月等   | days, mode='{y}-{m}-{d}' days为负往前追加，为正时表示之后的天数 |
 | $throttle | 节流函数（时间间隔内执行多次）   | func, wait , immediate   |
 | $debounce | 防抖函数（只执行一次）   | func, wait  |
+| $isEqual | 判定相等，可判定任何类型，数组和对象都可以判定是否全部相等  | a, b  |
 | $getRandomInt | 在某个区间随机一个整数   | min, max  |
 | $typeOf | 精准判断类型   | any  |
 | $deepCopy | 深拷贝函数   | obj/arr  |

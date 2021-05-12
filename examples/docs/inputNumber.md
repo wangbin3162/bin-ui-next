@@ -1,17 +1,5 @@
 ## InputNumber 数字输入
 
-<div class="global-anchor">
-  <b-anchor :scroll-offset="100">
-    <b-anchor-link href="#ji-chu-yong-fa" title="基础用法"></b-anchor-link>
-    <b-anchor-link href="#xiao-shu" title="小数"></b-anchor-link>
-    <b-anchor-link href="#ke-yi-ge-shi-hua" title="可以格式化"></b-anchor-link>
-    <b-anchor-link href="#bu-tong-chi-cun" title="不同尺寸"></b-anchor-link>
-    <b-anchor-link href="#duo-zhong-zhuang-tai" title="多种状态"></b-anchor-link>
-    <b-anchor-link href="#props" title="Props"></b-anchor-link>
-    <b-anchor-link href="#events" title="Events"></b-anchor-link>
-  </b-anchor>
-</div>
-
 用于输入数字
 
 ### 基础用法

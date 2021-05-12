@@ -59,6 +59,8 @@ import BSelect from './components/select'
 import BOption from './components/option'
 import BOptionGroup from './components/option-group'
 import BPage from './components/page'
+import BCascader from './components/cascader'
+import BCascaderPanel from './components/cascader-panel'
 import BForm from './components/form'
 import BFormItem from './components/form-item'
 import Message from './components/message'
@@ -136,6 +138,8 @@ const components = [
   BOption,
   BOptionGroup,
   BPage,
+  BCascader,
+  BCascaderPanel,
   BForm,
   BFormItem,
 ]
@@ -173,6 +177,7 @@ const install = function(app) {
   app.config.globalProperties.$getRandomInt = util.getRandomInt
   app.config.globalProperties.$throttle = util.throttle
   app.config.globalProperties.$debounce = util.debounce
+  app.config.globalProperties.$isEqual = util.isEqual
   app.config.globalProperties.$scrollTop = scrollTop
   app.config.globalProperties.$log = log
   log.pretty(`[${config.name}] ${config.version}`, config.homepage)
@@ -241,6 +246,8 @@ export {
   BOption,
   BOptionGroup,
   BPage,
+  BCascader,
+  BCascaderPanel,
   BForm,
   BFormItem,
   Message,

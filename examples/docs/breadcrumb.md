@@ -1,14 +1,5 @@
 ## Breadcrumb 面包屑
 
-<div class="global-anchor">
-  <b-anchor :scroll-offset="100">
-    <b-anchor-link href="#ji-chu-yong-fa" title="基础用法"></b-anchor-link>
-    <b-anchor-link href="#fen-ge-fu" title="分隔符"></b-anchor-link>
-    <b-anchor-link href="#breadcrumb-props" title="Breadcrumb Props"></b-anchor-link>
-    <b-anchor-link href="#breadcrumb-item-props" title="Breadcrumb Item Props"></b-anchor-link>
-  </b-anchor>
-</div>
-
 显示当前页面的路径，快速返回之前的任意页面或者跳转链接
 
 ### 基础用法

@@ -1,16 +1,5 @@
 ## Notice 通知
 
-<div class="global-anchor">
-  <b-anchor :scroll-offset="100">
-    <b-anchor-link href="#ji-chu-yong-fa" title="基础用法"></b-anchor-link>
-    <b-anchor-link href="#dai-tu-biao" title="带图标"></b-anchor-link>
-    <b-anchor-link href="#4ge-fang-xiang" title="4个方向"></b-anchor-link>
-    <b-anchor-link href="#qi-ta-can-shu" title="其他参数调用"></b-anchor-link>
-    <b-anchor-link href="#api" title="API"></b-anchor-link>
-    <b-anchor-link href="#options" title="Options"></b-anchor-link>
-  </b-anchor>
-</div>
-
 ### 基础用法
 
 Notice 组件提供通知功能，组件注册了$notify方法，设置title字段和message字段用于直接调用

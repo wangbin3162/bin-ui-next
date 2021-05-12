@@ -98,6 +98,35 @@ export function $(ref) {
   return ref.value
 }
 
+export function isUndefined(val) {
+  return val === void 0
+}
+
+export function arrayFlat(arr) {
+  return arr.reduce((acm, item) => {
+    const val = Array.isArray(item) ? arrayFlat(item) : item
+    return acm.concat(val)
+  }, [])
+}
+
+export function deduplicate(arr) {
+  return Array.from(new Set(arr))
+}
+
+// coerce truthy value to array
+export const coerceTruthyValueToArray = arr => {
+  if (!arr && arr !== 0) {
+    return []
+  }
+  return Array.isArray(arr) ? arr : [arr]
+}
+
+export function isEmpty(val) {
+  return !val && val !== 0 ||
+    isArray(val) && !val.length ||
+    isObject(val) && !Object.keys(val).length
+}
+
 export {
   hasOwn,
   isObject,

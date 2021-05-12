@@ -1,21 +1,5 @@
 ## Input 输入框
 
-<div class="global-anchor">
-  <b-anchor :scroll-offset="100">
-    <b-anchor-link href="#ji-chu-yong-fa" title="基础用法"></b-anchor-link>
-    <b-anchor-link href="#tu-biao-he-qing-kong" title="图标和清空"></b-anchor-link>
-    <b-anchor-link href="#zu-he-shi-yong" title="组合使用"></b-anchor-link>
-    <b-anchor-link href="#she-zhi-search" title="设置search"></b-anchor-link>
-    <b-anchor-link href="#bu-tong-chi-cun" title="不同尺寸"></b-anchor-link>
-    <b-anchor-link href="#she-zhi-textarea" title="设置textarea"></b-anchor-link>
-    <b-anchor-link href="#zi-shu-tong-ji" title="字数统计"></b-anchor-link>
-    <b-anchor-link href="#props" title="Props"></b-anchor-link>
-    <b-anchor-link href="#input-events" title="Input events"></b-anchor-link>
-    <b-anchor-link href="#input-slot" title="Input slot"></b-anchor-link>
-    <b-anchor-link href="#input-methods" title="Input methods"></b-anchor-link>
-  </b-anchor>
-</div>
-
 基本表单组件，支持 input 和 textarea
 
 ### 基础用法

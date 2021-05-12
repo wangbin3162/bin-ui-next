@@ -1,18 +1,5 @@
 ## Tree 树结构
 
-<div class="global-anchor">
-  <b-anchor :scroll-offset="100">
-    <b-anchor-link href="#ji-chu-yong-fa" title="基础用法"></b-anchor-link>
-    <b-anchor-link href="#qi-ta-shu-xing" title="其他属性"></b-anchor-link>
-    <b-anchor-link href="#yi-bu-jia-zai-zi-jie-dian" title="异步加载子节点"></b-anchor-link>
-    <b-anchor-link href="#big-tree-chao-da-shu-ju-liang-de-shu-jie-gou" title="超大数据量的树结构"></b-anchor-link>
-    <b-anchor-link href="#props" title="Props"></b-anchor-link>
-    <b-anchor-link href="#events" title="Events"></b-anchor-link>
-    <b-anchor-link href="#methods" title="Methods"></b-anchor-link>
-    <b-anchor-link href="#children" title="Children"></b-anchor-link>
-  </b-anchor>
-</div>
-
 ### 基础用法
 
 ::: demo `lockSelect` 设置可以锁定树的选中事件，这个可以用来控制树菜单在不同情况下的操作

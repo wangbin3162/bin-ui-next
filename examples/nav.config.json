@@ -200,8 +200,7 @@
           "desc": "Cascader 级联选择",
           "icon": "pic-left",
           "name": "cascader",
-          "path": "/cascader",
-          "writing": true
+          "path": "/cascader"
         },
         {
           "desc": "DatePicker 日期选择器",

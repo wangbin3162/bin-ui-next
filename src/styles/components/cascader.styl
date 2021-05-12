@@ -7,293 +7,120 @@
   color: $color-text-default;
   font-size: $base-font-size;
   line-height: $base-line-height;
-  &-rel {
-    display: inline-block;
-    width: 100%;
-    position: relative;
-  }
-  &-panel {
-    display: flex;
-  }
-  .bin-input {
-    padding-right: 24px;
-    display: block;
+  &:not(.is-disabled):hover .el-input__inner {
     cursor: pointer;
+    border-color: $color-text-placeholder;
   }
-  &-disabled .bin-input {
-    cursor: not-allowed;
+  .bin-input-wrapper {
+    .b-icon-down {
+      transition: transform .3s;
+      font-size: 14px;
+      color: $color-text-secondary;
+      &.is-reverse {
+        -webkit-transform: rotateZ(180deg);
+        transform: rotateZ(180deg)
+      }
+    }
+    .b-icon-close-circle-fill {
+      color: $color-icon-hover;
+      cursor: pointer;
+    }
   }
 
-  &-label {
+  &__tags {
     position: absolute;
     left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    line-height: $default-height;
-    padding: 0 15px;
-    box-sizing: border-box;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    cursor: pointer;
-    font-size: $base-font-size;
-  }
-  &-size-large &-label {
-    line-height: $large-height;
-    font-size: 14px;
-  }
-  &-size-small &-label {
-    line-height: $small-height;
-  }
-  &-size-mini &-label {
-    line-height: $mini-height;
-  }
-
-  .bin-cascader-arrow:nth-of-type(1) {
-    display: none;
-    cursor: pointer;
-  }
-
-  &:hover {
-    .bin-cascader-arrow:nth-of-type(1) {
-      display: inline-block;
-    }
-  }
-  &-show-clear:hover .bin-cascader-arrow:nth-of-type(2) {
-    display: none;
-  }
-
-  &-arrow {
-    position: absolute;
+    right: 30px;
     top: 50%;
-    right: 8px;
-    line-height: 1;
+    -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
-    font-size: 14px;
-    color: #808695;
-    transition: all $animation-duration-base ease-in-out;
-  }
-  &-visible &-arrow:nth-of-type(2) {
-    transform: translateY(-50%) rotate(180deg);
-  }
-
-  .bin-select-dropdown {
-    width: auto;
-    padding: 0;
-    white-space: nowrap;
-    overflow: visible;
-  }
-  // menu-item
-  .bin-cascader-menu-item {
-    margin: 0;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
     line-height: normal;
-    padding: 7px 16px;
-    clear: both;
-    color: $color-text-default;
-    font-size: $base-font-size !important;
-    white-space: nowrap;
-    list-style: none;
-    cursor: pointer;
-    transition: background $animation-duration-base ease-in-out;
-
-    &:hover {
-      background: #f3f3f3;
-    }
-
-    &-focus {
-      background: #f3f3f3;
-    }
-
-    &-disabled {
-      color: $btn-disable-color;
-      cursor: not-allowed;
-
-      &:hover {
-        color: $btn-disable-color;
-        background-color: #fff;
-        cursor: not-allowed;
-      }
-    }
-
-    &-selected, &-selected:hover {
-      color: $color-primary;
-    }
-    &-divided {
-      margin-top: 5px;
-      border-top: $border-base;
-      &:before {
-        content: '';
-        height: 5px;
-        display: block;
-        margin: 0 -16px;
-        background-color: #fff;
-        position: relative;
-        top: -7px;
-      }
-    }
-  }
-
-  .bin-cascader-large .bin-cascader-menu-item {
-    padding: 7px 16px 8px;
-    font-size: 14px !important;
-  }
-
-  // menu-item end
-  .bin-select-item span {
-    color: $color-danger;
-  }
-
-  &-dropdown {
-    padding: 5px 0;
-    .bin-select-dropdown-list {
-      max-height: 190px;
+    text-align: left;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    z-index: 10;
+    .bin-tag {
+      display: inline-flex;
+      align-items: center;
+      max-width: 100%;
+      margin: 2px 0 2px 6px;
+      text-overflow: ellipsis;
+      background: #f0f2f5
       box-sizing: border-box;
-      overflow: auto;
+      border-color: transparent;
     }
   }
 
-  &-not-found-tip {
-    padding: 5px 0;
+  &__suggestion-panel {
+    border-radius: $border-base-radius;
+  }
+  &__suggestion-list {
+    max-height: 204px;
+    margin: 0;
+    padding: 6px 0;
+    font-size: 14px;
+    color: #606266;
     text-align: center;
-    color: $btn-disable-color;
-    min-width: 120px;
-    li:not([class^=bin-]) {
-      list-style: none;
-      margin-bottom: 0;
-    }
   }
-  &-not-found .bin-select-dropdown {
-    width: inherit;
-  }
-
-  &-menu {
-    display: inline-block;
-    min-width: 120px;
-    height: 180px;
-    margin: 0;
-    padding: 5px 0 !important;
-    vertical-align: top;
-    list-style: none;
-    border-right: $border-base-light;
-    overflow: auto;
-
-    &:first-child {
-
-    }
-    &:last-child {
-      border-right-color: transparent;
-      margin-right: -1px;
-    }
-    &:only-child {
-
-    }
-
-    & &-item {
-      position: relative;
-      padding-right: 36px;
-      transition: all $animation-duration-base ease-in-out;
-      i {
-        position: absolute;
-        right: 15px;
-        top: 10px;
-        font-size: $base-font-size;
-      }
-      &-loading {
-        margin-top: -6px;
-      }
-      &-active {
-        background-color: $color-primary-light5;
-        color: $color-text-primary;
-      }
-    }
-  }
-}
-
-
-.bin-cascader-transfer {
-  z-index: 1060;
-  width: auto;
-  padding: 0;
-  white-space: nowrap;
-  overflow: visible;
-  // menu-item
-  .bin-cascader-menu-item {
-    margin: 0;
-    line-height: normal;
-    padding: 7px 16px;
-    clear: both;
+  &__suggestion-item {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 24px 0 16px;
+    height: 34px;
+    line-height: 34px;
+    outline: 0;
     color: $color-text-default;
-    font-size: $base-font-size !important;
-    white-space: nowrap;
-    list-style: none;
-    cursor: pointer;
     transition: background $animation-duration-base ease-in-out;
-
+    cursor: pointer;
     &:hover {
       background: $color-select-hover;
     }
-
-    &-focus {
-      background: $color-select-hover;
-    }
-
-    &-disabled {
-      color: $color-text-disabled;
-      cursor: not-allowed;
-
-      &:hover {
-        color: $color-text-disabled;
-        background-color: #fff;
-        cursor: not-allowed;
-      }
-    }
-
-    &-selected, &-selected:hover {
+    &.is-checked {
       color: $color-primary;
-    }
-    &-divided {
-      margin-top: 5px;
-      border-top: $border-base;
-      &:before {
-        content: '';
-        height: 5px;
-        display: block;
-        margin: 0 -16px;
-        background-color: #fff;
-        position: relative;
-        top: -7px;
+      font-weight: 700
+      i {
+        font-size: 14px;
       }
     }
   }
 
-  .bin-cascader-large .bin-cascader-menu-item {
-    padding: 7px 16px 8px;
-    font-size: 14px !important;
+  &__empty-text {
+    margin: 10px 0;
+    color: $color-text-placeholder;
   }
-
-  // menu-item end
-  .bin-select-item span {
-    color: $color-danger;
-  }
-  .bin-cascader {
-    &-menu {
-      &-item {
-        padding-right: 24px;
-        transition: all $animation-duration-base ease-in-out;
-        &-active {
-          background-color: $color-primary-light5;
-          color: $color-text-primary;
-        }
-      }
+  &__search-input {
+    flex: 1;
+    height: 24px;
+    min-width: 60px;
+    margin: 2px 0 2px 12px;
+    padding: 0;
+    color: $color-text-regular;
+    border: none;
+    outline: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box
+    &::placeholder {
+      color: $color-text-placeholder;
     }
   }
 }
 
-.bin-form-item-error {
-  .bin-cascader {
-    &-arrow {
-      color: $color-danger;
+// 下拉框样式
+.bin-cascader__dropdown {
+  border-radius: $border-base-radius;
+  &.bin-popper {
+    background-color: $color-white;
+    box-sizing: border-box;
+    border-radius: $border-base-radius;
+    box-shadow: $shadow-2-down;
+    z-index: 900;
+    &.is-light {
+      border: none;
     }
   }
 }

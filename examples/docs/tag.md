@@ -1,18 +1,5 @@
 ## Tag 标签
 
-<div class="global-anchor">
-  <b-anchor :scroll-offset="100">
-    <b-anchor-link href="#ji-chu-yong-fa" title="基础用法"></b-anchor-link>
-    <b-anchor-link href="#duo-zhong-yan-se" title="多种颜色"></b-anchor-link>
-    <b-anchor-link href="#ke-xuan-ze-biao-qian" title="可选择标签"></b-anchor-link>
-    <b-anchor-link href="#ke-yi-chu-biao-qian" title="可移除标签"></b-anchor-link>
-    <b-anchor-link href="#dot-mo-shi" title="dot 模式"></b-anchor-link>
-    <b-anchor-link href="#zi-ding-yi-yang-shi" title="自定义样式"></b-anchor-link>
-    <b-anchor-link href="#props" title="Props"></b-anchor-link>
-    <b-anchor-link href="#events" title="Events"></b-anchor-link>
-  </b-anchor>
-</div>
-
 显示标签
 
 ### 基础用法

@@ -1,12 +1,5 @@
 ## Split 分割面板
 
-<div class="global-anchor">
-  <b-anchor :scroll-offset="100">
-    <b-anchor-link href="#ji-chu-yong-fa" title="基础用法"></b-anchor-link>
-    <b-anchor-link href="#props" title="Props"></b-anchor-link>
-  </b-anchor>
-</div>
-
 ### 基础用法
 
 `default-percent` 用于设置左侧默认宽度百分比

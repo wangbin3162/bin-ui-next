@@ -1,15 +1,5 @@
 ## Bin-UI-Next
 
-<div class="global-anchor">
-    <b-anchor :scroll-offset="100">
-        <b-anchor-link href="#te-xing" title="特性"></b-anchor-link>
-        <b-anchor-link href="#zhi-chi-huan-jing" title="支持环境"></b-anchor-link>
-        <b-anchor-link href="#ban-ben" title="版本"></b-anchor-link>
-        <b-anchor-link href="#xiang-guan-lian-jie" title="相关链接"></b-anchor-link>
-        <b-anchor-link href="#an-zhuang" title="安装"></b-anchor-link>
-    </b-anchor>
-</div>
-
 bin-ui-next 是bin-ui的vue3升级版，目前组件源码正在疯狂重构中，整体组件依赖vue3
 
 ### 特性

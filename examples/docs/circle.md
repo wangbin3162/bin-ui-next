@@ -1,15 +1,5 @@
 ## Circle 进度环
 
-<div class="global-anchor">
-  <b-anchor :scroll-offset="100">
-    <b-anchor-link href="#ji-chu-yong-fa" title="基础用法"></b-anchor-link>
-    <b-anchor-link href="#dong-tai-jin-du" title="动态进度"></b-anchor-link>
-    <b-anchor-link href="#she-zhi-yang-shi" title="设置样式"></b-anchor-link>
-    <b-anchor-link href="#yi-biao-pan-mo-shi" title="仪表盘模式"></b-anchor-link>
-    <b-anchor-link href="#props" title="Props"></b-anchor-link>
-  </b-anchor>
-</div>
-
 显示环形图，可以显示任务百分比或者是统计某些数据的占比情况
 
 ### 基础用法

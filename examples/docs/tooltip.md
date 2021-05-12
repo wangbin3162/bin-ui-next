@@ -1,17 +1,5 @@
 ## Tooltip 提示
 
-<div class="global-anchor">
-  <b-anchor :scroll-offset="100">
-    <b-anchor-link href="#ji-chu-yong-fa" title="基础用法"></b-anchor-link>
-    <b-anchor-link href="#duo-zhong-xuan-ting-wei-zhi" title="多种悬停位置"></b-anchor-link>
-    <b-anchor-link href="#bu-tong-zhu-ti" title="不同主题"></b-anchor-link>
-    <b-anchor-link href="#duo-xing" title="多行"></b-anchor-link>
-    <b-anchor-link href="#guan-bi-ti-shi" title="关闭提示"></b-anchor-link>
-    <b-anchor-link href="#props" title="Props"></b-anchor-link>
-    <b-anchor-link href="#slot" title="Slot"></b-anchor-link>
-  </b-anchor>
-</div>
-
 文字提示气泡框，在鼠标悬停时显示，代替了系统的title提示。
 
 ### 基础用法

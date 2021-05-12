@@ -1,13 +1,5 @@
 ## Calendar 日历组件
 
-<div class="global-anchor">
-  <b-anchor :scroll-offset="100">
-    <b-anchor-link href="#ji-chu-yong-fa" title="基础用法"></b-anchor-link>
-    <b-anchor-link href="#minixian-shi" title="mini显示"></b-anchor-link>
-    <b-anchor-link href="#props" title="Props"></b-anchor-link>
-  </b-anchor>
-</div>
-
 ### 基础用法
 
 简单的日历组件用于装饰页面

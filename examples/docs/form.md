@@ -1,23 +1,5 @@
 ## Form 表单
 
-<div class="global-anchor">
-  <b-anchor :scroll-offset="100">
-    <b-anchor-link href="#ji-chu-yong-fa" title="基础用法"></b-anchor-link>
-    <b-anchor-link href="#xing-nei-biao-dan" title="行内表单"></b-anchor-link>
-    <b-anchor-link href="#dui-qi-he-chi-cun" title="对齐和尺寸"></b-anchor-link>
-    <b-anchor-link href="#biao-dan-xiao-yan" title="表单校验"></b-anchor-link>
-    <b-anchor-link href="#zi-ding-yi-xiao-yan-gui-ze" title="自定义校验规则"></b-anchor-link>
-    <b-anchor-link href="#dong-tai-zeng-jia-xiao-yan" title="动态增加校验"></b-anchor-link>
-    <b-anchor-link href="#form-props" title="Form Props"></b-anchor-link>
-    <b-anchor-link href="#form-methods" title="Form Methods"></b-anchor-link>
-    <b-anchor-link href="#form-events" title="Form Events"></b-anchor-link>
-    <b-anchor-link href="#formitem-props" title="FormItem Props"></b-anchor-link>
-    <b-anchor-link href="#formitem-slot" title="FormItem Slot"></b-anchor-link>
-    <b-anchor-link href="#formitem-scoped-slot" title="FormItem Scoped Slot"></b-anchor-link>
-    <b-anchor-link href="#formitem-methods" title="FormItem Methods"></b-anchor-link>
-  </b-anchor>
-</div>
-
 由输入框、选择器、单选框、多选框等控件组成，用以收集、校验、提交数据
 
 ### 基础用法

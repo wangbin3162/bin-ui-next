@@ -1,17 +1,5 @@
 ## Carousel 轮播
 
-<div class="global-anchor">
-  <b-anchor :scroll-offset="100">
-    <b-anchor-link href="#ji-chu-yong-fa" title="基础用法"></b-anchor-link>
-    <b-anchor-link href="#zi-dong-qie-huan-he-su-du" title="自动切换和速度"></b-anchor-link>
-    <b-anchor-link href="#zhi-shi-qi-yang-shi-he-wei-zhi" title="指示器样式和位置"></b-anchor-link>
-    <b-anchor-link href="#qia-pian-feng-ge" title="卡片风格"></b-anchor-link>
-    <b-anchor-link href="#fang-xiang" title="方向"></b-anchor-link>
-    <b-anchor-link href="#props" title="Props"></b-anchor-link>
-    <b-anchor-link href="#events" title="Events"></b-anchor-link>
-  </b-anchor>
-</div>
-
 ### 基础用法
 
 轮播组件，用于滚动显示图片等
