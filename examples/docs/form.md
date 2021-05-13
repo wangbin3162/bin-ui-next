@@ -218,6 +218,9 @@
         </b-form-item>
       </b-col>
     </b-row>
+    <b-form-item label="出生日期" prop="birthday">
+      <b-date-picker v-model="form.birthday" type="date" placeholder="出生日期"></b-date-picker>
+    </b-form-item>
     <b-form-item label="爱好" prop="hobby">
       <b-checkbox-group v-model="form.hobby">
         <b-checkbox label="打游戏" name="hobby"></b-checkbox>
@@ -255,7 +258,8 @@
           region: '',
           hobby: [],
           sex: '',
-          status: 'disable'
+          status: 'disable',
+          birthday: ''
         },
         ruleValidate: {
           name: [{ required: true, message: '用户名不能为空', trigger: 'blur' }],
@@ -268,6 +272,7 @@
             { type: 'array', required: true, message: '请至少选择一个爱好', trigger: 'change' }
           ],
           sex: [{ required: true, message: '性别必选', trigger: 'change' }],
+          birthday: [{ required: true, type: 'date', message: '出生日期必选', trigger: 'blur' }],
           mail: [
             { required: true, message: '邮箱不能为空', trigger: 'blur' },
             { type: 'email', message: '邮箱格式不正确', trigger: 'blur' }

@@ -1,0 +1,407 @@
+.bin-date-picker {
+  width: 280px;
+  &.has-sidebar {
+    width: 390px;
+  }
+  &__header {
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    padding: 0 10px;
+    border-bottom: $border-table;
+    &-label {
+      font-weight: 500;
+      padding: 0 5px;
+      line-height: 22px;
+      text-align: center;
+      cursor: pointer;
+      color: $color-text-regular;
+      &:hover {
+        color: $color-primary;
+      }
+    }
+  }
+  &__prev-btn, &__next-btn {
+    i {
+      width: 20px;
+      height: 24px;
+      line-height: 26px;
+      margin-top: 2px;
+      text-align: center;
+      cursor: pointer;
+      color: #c5c8ce;
+      transition: color 0.2s ease-in-out;
+      font-size: 14px;
+    }
+    &:hover i {
+      color: $color-primary;
+    }
+  }
+  &__prev-btn {
+    float: left;
+  }
+  &__next-btn {
+    float: right;
+  }
+  .bin-picker-panel__content {
+    padding: 6px;
+  }
+  &__time-header {
+    position: relative;
+    border-bottom: $border-table;
+    padding: 5px;
+    display: table;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  &__editor-wrap {
+    position: relative;
+    display: table-cell;
+    padding: 0 5px;
+  }
+  .bin-time-panel {
+    position: absolute;
+  }
+}
+
+.bin-picker-panel {
+  &__icon-btn {
+    font-size: 12px;
+    color: #303133;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+    outline: none;
+  }
+  &__sidebar, [slot=slidebar] {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 110px;
+    border-right: $border-table;
+    box-sizing: border-box;
+    padding-top: 6px;
+    background-color: #fff;
+    overflow: auto;
+    + .bin-picker-panel__body {
+      margin-left: 110px;
+    }
+  }
+  &__shortcut {
+    display: block;
+    width: 100%;
+    border: 0;
+    background-color: transparent;
+    line-height: $default-height;
+    font-size: $base-font-size;
+    color: $color-text-regular;
+    padding-left: 12px;
+    text-align: left;
+    outline: none;
+    cursor: pointer;
+    &:hover {
+      background: $color-select-hover;
+      color: $color-primary;
+    }
+  }
+  &__footer {
+    border-top: $border-base;
+    padding: 4px;
+    height: 32px;
+    line-height: 1;
+    text-align: right;
+    box-sizing: border-box;
+    .bin-button {
+      line-height: 20px;
+      height: 22px;
+      font-size: 12px;
+    }
+  }
+  .bin-time-panel {
+    margin: 5px 0;
+    background-color: #fff;
+    box-shadow: $shadow-2-down;
+  }
+}
+// range
+.bin-date-range-picker {
+  .bin-picker-panel__body {
+    display: flex;
+    flex-wrap: wrap;
+    width: 540px;
+  }
+  &.has-sidebar {
+    width: 650px;
+  }
+  &__header {
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    padding: 0 10px;
+    border-bottom: $border-table;
+    div {
+      font-weight: 500;
+      padding: 0 5px;
+      color: $color-text-regular;
+      margin-left: 50px;
+      margin-right: 50px;
+    }
+  }
+  &__content {
+    width: 50%;
+    box-sizing: border-box;
+    margin: 0;
+    &.is-left {
+      border-right: $border-table;
+    }
+  }
+  .bin-date-range-picker-table__content {
+    padding: 6px;
+  }
+  &__time-header {
+    position: relative;
+    border-bottom: $border-table;
+    padding: 5px;
+    display: table;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  &__editors-wrap {
+    box-sizing: border-box;
+    display: table-cell;
+  }
+  &__time-picker-wrap {
+    position: relative;
+    display: table-cell;
+    padding: 0 5px;
+    .bin-input {
+      padding: 0 8px;
+    }
+  }
+  .bin-time-panel {
+    position: absolute;
+  }
+}
+// date-table
+.bin-date-table {
+  font-size: 14px;
+  width: 100%;
+  user-select: none;
+  td {
+    width: 32px;
+    height: 30px;
+    padding: 4px 0;
+    box-sizing: border-box;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+    div {
+      height: 30px;
+      padding: 3px 0;
+      box-sizing: border-box;
+    }
+    span {
+      width: 24px;
+      height: 24px;
+      display: block;
+      margin: 0 auto;
+      line-height: 24px;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 50%;
+      transition: all .2s;
+    }
+    &.prev-month,
+    &.next-month {
+      color: $color-text-placeholder;
+    }
+    &.today {
+      color: $color-primary;
+    }
+    &.current {
+      span {
+        background-color: $color-primary;
+        color: #fff;
+      }
+      &:hover {
+        span {
+          background-color: $color-primary;
+          color: #fff;
+        }
+      }
+    }
+    &:hover {
+      color: $color-primary;
+      span {
+        background-color: $color-info-light4;
+      }
+    }
+    &.start-date, &.end-date {
+      span {
+        background-color: $color-primary;
+        color: #fff;
+      }
+    }
+    &.start-date div {
+      margin-left: 2px;
+      border-top-left-radius: 15px;
+      border-bottom-left-radius: 15px;
+    }
+    &.end-date div {
+      margin-right: 2px;
+      border-top-right-radius: 15px;
+      border-bottom-right-radius: 15px;
+    }
+    &.in-range div, &.in-range div:hover {
+      background: $color-primary-light5;
+    }
+    &.selected {
+      div {
+        margin-left: 3px;
+        margin-right: 3px;
+        background-color: $color-primary-light5;
+        border-radius: 15px;
+      }
+      span {
+        background-color: $color-primary;
+        color: #fff;
+        border-radius: 15px;
+      }
+    }
+  }
+  th {
+    padding: 0 5px;
+    color: $color-text-regular;
+    font-weight: 400;
+    text-align: center;
+  }
+  &.is-week-mode {
+    .bin-date-table__row {
+      &.current div {
+        background: $color-primary-light5;
+      }
+      &:hover {
+        div {
+          background: $color-primary-light5;
+        }
+        span {
+          color: $color-text-regular;
+          background-color: transparent;
+        }
+        td:first-child div {
+          margin-left: 2px;
+          border-top-left-radius: 15px;
+          border-bottom-left-radius: 15px;
+        }
+        td:last-child div {
+          margin-right: 2px;
+          border-top-right-radius: 15px;
+          border-bottom-right-radius: 15px;
+        }
+      }
+    }
+  }
+}
+
+// year-table
+.bin-year-table {
+  margin: -1px;
+  border-collapse: collapse;
+  width: 100%;
+  td {
+    text-align: center;
+    padding: 10px 3px;
+    cursor: pointer;
+    .cell {
+      width: 48px;
+      height: 32px;
+      display: block;
+      line-height: 32px;
+      border-radius: $border-base-radius;
+      color: $color-text-regular;
+      margin: 0 auto;
+      transition: .2s;
+      &:hover {
+        background: $color-primary;
+        color: #fff;
+      }
+    }
+    &.current {
+      &:not(.disabled) .cell {
+        background: $color-primary;
+        color: #fff;
+      }
+    }
+    &.today {
+      .cell {
+        font-weight: 700;
+        color: $color-primary;
+        &:hover {
+          background: $color-primary;
+          color: #fff;
+        }
+      }
+    }
+  }
+}
+// month-table
+.bin-month-table {
+  margin: -1px;
+  border-collapse: collapse;
+  width: 100%;
+  td {
+    text-align: center;
+    padding: 8px 0;
+    cursor: pointer;
+    div {
+      height: 40px;
+      padding: 6px 0;
+    }
+    .cell {
+      width: 48px;
+      height: 28px;
+      display: block;
+      line-height: 28px;
+      border-radius: 14px;
+      color: $color-text-regular;
+      margin: 0 auto;
+      transition: .2s;
+    }
+    &.current {
+      &:not(.disabled) .cell {
+        background: $color-primary;
+        color: #fff;
+      }
+    }
+    &.today {
+      .cell {
+        font-weight: 700;
+        color: $color-primary;
+        &:hover {
+          background: $color-primary;
+          color: #fff;
+        }
+      }
+    }
+    &.start-date, &.end-date {
+      .cell {
+        background-color: $color-primary;
+        color: #fff;
+      }
+    }
+    &.start-date div {
+      margin-left: 2px;
+      border-top-left-radius: 20px;
+      border-bottom-left-radius: 20px;
+    }
+    &.end-date div {
+      margin-right: 2px;
+      border-top-right-radius: 20px;
+      border-bottom-right-radius: 20px;
+    }
+    &.in-range div, &.in-range div:hover {
+      background: $color-primary-light5;
+    }
+  }
+}

@@ -205,16 +205,14 @@
         {
           "desc": "DatePicker 日期选择器",
           "icon": "calendar",
-          "name": "datePicker",
-          "path": "/datePicker",
-          "writing": true
+          "name": "date-picker",
+          "path": "/date-picker"
         },
         {
           "desc": "TimePicker 时间选择器",
           "icon": "time-circle",
-          "name": "timePicker",
-          "path": "/timePicker",
-          "writing": true
+          "name": "time-picker",
+          "path": "/time-picker"
         },
         {
           "desc": "ColorPicker 颜色选择器",
@@ -227,13 +225,6 @@
           "icon": "star",
           "name": "rate",
           "path": "/rate"
-        },
-        {
-          "desc": "Slider 滑块组件",
-          "icon": "sliders",
-          "name": "slider",
-          "path": "/slider",
-          "writing": true
         },
         {
           "desc": "upload 上传",

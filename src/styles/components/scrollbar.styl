@@ -11,16 +11,17 @@
 }
 
 .bin-scrollbar__wrap {
-  overflow: scroll;
+  overflow: auto;
   height: 100%;
 }
 
 // 默认隐藏原生滚动条宽度
 .bin-scrollbar__wrap--hidden-default {
-  margin-bottom: -17px;
-  margin-right: -17px;
+  scrollbar-width: none
 }
-
+.bin-scrollbar__wrap--hidden-default::-webkit-scrollbar {
+  display: none
+}
 .bin-scrollbar__bar {
   position: absolute;
   right: 2px;
@@ -57,4 +58,7 @@
   border-radius: inherit;
   background-color: rgba(144, 147, 153, .3);
   transition: background-color $animation-duration-base;
+  &:hover {
+    background-color: rgba(144, 147, 153, .5)
+  }
 }

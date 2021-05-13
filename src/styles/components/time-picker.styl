@@ -1,0 +1,265 @@
+placeholder() {
+  // Firefox
+  &::-moz-placeholder {
+    color: $color-text-placeholder;
+    opacity: 1; // Override Firefox's unusual default opacity; see https://github.com/twbs/bootstrap/pull/11526
+  }
+  // Internet Explorer 10+
+  &:-ms-input-placeholder {
+    color: $color-text-placeholder
+  }
+  // Safari and Chrome
+  &::-webkit-input-placeholder {
+    color: $color-text-placeholder
+  }
+}
+
+.bin-picker__popper.bin-popper[role=tooltip] {
+  border: none;
+  background-color: $color-white;
+  box-sizing: border-box;
+  border-radius: $border-base-radius;
+  box-shadow: $shadow-2-down;
+  position: absolute;
+  z-index: 900;
+}
+
+.bin-picker-panel {
+  position: relative;
+  color: $color-text-regular;
+  background: #fff;
+  border-radius: $base-font-size;
+  line-height: 30px;
+}
+.bin-date-editor {
+  .bin-range-input {
+    width: 39%;
+    appearance: none;
+    border: none;
+    outline: none;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-size: $base-font-size;
+    color: $color-text-regular;
+    placeholder()
+  }
+
+  .bin-range-separator {
+    height: 100%;
+    padding: 0 5px;
+    margin: 0;
+    text-align: center;
+    line-height: $default-height;
+    font-size: $base-font-size;
+    width: 28px;
+    color: #303133;
+  }
+}
+
+// time-pick独有的样式
+.bin-time-panel {
+  border-radius: $border-base-radius;
+  position: relative;
+  width: 180px;
+  left: 0;
+  z-index: 1000;
+  user-select: none;
+  box-sizing: content-box;
+  background-color: #FFF;
+  &__content {
+    font-size: 0;
+    position: relative;
+    overflow: hidden;
+    &:after, &:before {
+      content: "";
+      top: 50%;
+      position: absolute;
+      margin-top: -15px;
+      height: 32px;
+      z-index: -1;
+      left: 0;
+      right: 0;
+      box-sizing: border-box;
+      padding-top: 6px;
+      text-align: left;
+      border-top: $border-base;
+      border-bottom: $border-base;
+    }
+
+    &:before {
+      padding-left: 50%;
+      margin-right: 5%;
+      margin-left: 5%;
+    }
+    &:after {
+      left: 50%;
+      margin-left: 5%;
+      margin-right: 5%;
+    }
+    &.has-seconds:after {
+      left: 66.66667%;
+    }
+    &.has-seconds:before {
+      padding-left: 33.33333%;
+    }
+  }
+  &__footer {
+    border-top: $border-base;
+    padding: 4px;
+    height: 32px;
+    line-height: 1;
+    text-align: right;
+    box-sizing: border-box;
+    .bin-button {
+      line-height: 20px;
+      height: 22px;
+      font-size: 12px;
+    }
+  }
+}
+.bin-time-spinner {
+  width: 100%;
+  white-space: nowrap;
+  &__wrapper {
+    max-height: 190px;
+    display: inline-block;
+    width: 50%;
+    vertical-align: top;
+    position: relative;
+    &.is-arrow {
+      box-sizing: border-box;
+      text-align: center;
+      overflow: hidden;
+      .bin-time-spinner__list {
+        transform: translateY(-32px);
+      }
+    }
+  }
+  &.has-seconds .bin-time-spinner__wrapper {
+    width: 33.3%;
+  }
+  &__list {
+    margin: 0;
+    list-style: none;
+    padding: 0;
+    text-align: center;
+    &:after, &:before {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 80px;
+    }
+  }
+  &__item {
+    height: 32px;
+    line-height: 32px;
+    font-size: 12px;
+    color: $color-text-regular;
+    &.disabled {
+      color: $color-text-placeholder;
+      cursor: not-allowed;
+    }
+    &.active:not(.disabled) {
+      color: $color-text-primary;
+      font-weight: 700;
+    }
+  }
+  &__arrow {
+    font-size: 12px;
+    color: $color-icon-hover;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+    text-align: center;
+    height: 30px;
+    line-height: 30px;
+    cursor: pointer;
+    &.b-icon-up {
+      top: 10px;
+    }
+    &.b-icon-down {
+      bottom: 10px;
+    }
+  }
+}
+.bin-time-range-picker {
+  width: 340px;
+  overflow: visible;
+  &__content {
+    position: relative;
+    text-align: center;
+    z-index: 1;
+    &:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 1px;
+      bottom: 0;
+      background-color: $border-color-base;
+    }
+  }
+  &__cell {
+    box-sizing: border-box;
+    margin: 0;
+    width: 50%;
+    display: inline-block;
+  }
+  &__header {
+    margin-bottom: 5px;
+    border-bottom: $border-base;
+  }
+}
+.bin-range-editor {
+  box-sizing: border-box;
+  &.bin-input {
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 8px;
+    height: $default-height;
+    &.is-active {
+      outline: 0;
+      border-color: $color-primary;
+      box-shadow: 0 0 0 2px $color-input-shadow;
+    }
+  }
+  .bin-input__icon {
+    font-size: $base-font-size;
+    color: $color-icon-hover;
+    line-height: 32px;
+    width: 16px;
+    &.b-icon-close-circle-fill {
+      cursor: pointer;
+      text-align: right;
+    }
+  }
+  &--large {
+    &.bin-input {
+      height: $large-height;
+      .bin-range-input, .bin-input__icon {
+        font-size: $header-font-size;
+      }
+    }
+  }
+  &--small {
+    &.bin-input {
+      height: $small-height;
+    }
+    .bin-range-separator {
+      line-height: $small-height;
+    }
+  }
+  &--mini {
+    &.bin-input {
+      height: $mini-height;
+    }
+    .bin-range-separator {
+      line-height: $mini-height;
+    }
+  }
+}
+

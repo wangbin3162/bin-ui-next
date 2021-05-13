@@ -152,7 +152,6 @@
     <b-color-picker v-model="color" disabled></b-color-picker>&nbsp;&nbsp;
     <b-color-picker v-model="color" show-label disabled></b-color-picker>&nbsp;&nbsp;
   </div>
-  </div>
 </template>
 <script>
   export default {
@@ -185,7 +184,6 @@
     <b-color-picker v-model="color" show-label></b-color-picker>&nbsp;&nbsp;
     <b-color-picker v-model="color" size="small" show-label></b-color-picker>&nbsp;&nbsp;
     <b-color-picker v-model="color" size="mini" show-label></b-color-picker>&nbsp;&nbsp;
-  </div>
   </div>
 </template>
 <script>

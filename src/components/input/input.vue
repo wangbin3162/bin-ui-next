@@ -85,6 +85,7 @@
         @keydown="handleKeydown"
         @focus="handleFocus"
         @blur="handleBlur"
+        @change="handleChange"
         @compositionstart="handleComposition"
         @compositionupdate="handleComposition"
         @compositionend="handleComposition"
@@ -189,7 +190,6 @@ export default {
     'blur',
     'focus',
     'input',
-    'input-change',
     'clear',
   ],
   setup(props, ctx) {
@@ -329,18 +329,16 @@ export default {
       if (props.number && value !== '') value = Number.isNaN(Number(value)) ? value : Number(value)
       setCurrentValue(value)
       ctx.emit(UPDATE_MODEL_EVENT, value)
-      ctx.emit(CHANGE_EVENT, e)
-      ctx.emit('input', e)
+      ctx.emit('input', value)
     }
     const handleChange = (e) => {
-      ctx.emit('input-change', e)
+      ctx.emit(CHANGE_EVENT, e.target.value)
     }
 
     const handleClear = () => {
-      const e = { target: { value: '' } }
-      ctx.emit(UPDATE_MODEL_EVENT, '')
       setCurrentValue('')
-      ctx.emit(CHANGE_EVENT, e)
+      ctx.emit(UPDATE_MODEL_EVENT, '')
+      ctx.emit(CHANGE_EVENT, '')
       ctx.emit('clear')
     }
     const handleSearch = () => {
