@@ -235,7 +235,7 @@ export function debounce(func, wait) {
 }
 
 // 判断是否是对象或数组
-function isObject(obj) {
+export function isObject(obj) {
   return typeof obj === 'object' && obj !== null
 }
 

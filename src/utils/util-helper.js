@@ -81,8 +81,7 @@ export const isEdge = function() {
 }
 // export const valueEquals
 
-export const escapeRegexpString = (value = '') =>
-  String(value).replace(/[|\\{}()[\]^$+*?.]/g, '\\$&')
+export const escapeRegexpString = (value = '') => String(value).replace(/[|\\{}()[\]^$+*?.]/g, '\\$&')
 
 export function entries(obj) {
   return Object
@@ -127,6 +126,11 @@ export function isEmpty(val) {
     isObject(val) && !Object.keys(val).length
 }
 
+export const arrayFind = function(arr, pred) {
+  return arr.find(pred)
+}
+
+export const arrayFindIndex = (arr, pred) => arr.findIndex(pred)
 export {
   hasOwn,
   isObject,

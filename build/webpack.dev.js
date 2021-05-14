@@ -97,6 +97,7 @@ const config = {
     publicPath: '/',
     contentBase: __dirname,
     overlay: true,
+    open: true
   },
   optimization: {
     splitChunks: {},

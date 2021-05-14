@@ -237,8 +237,7 @@
           "desc": "Form 表单",
           "icon": "reconciliation",
           "name": "form",
-          "path": "/form",
-          "writing": true
+          "path": "/form"
         }
       ]
     },
@@ -249,8 +248,7 @@
           "desc": "Table 表格",
           "icon": "table",
           "name": "table",
-          "path": "/table",
-          "writing": true
+          "path": "/table"
         },
         {
           "desc": "Page 分页器",

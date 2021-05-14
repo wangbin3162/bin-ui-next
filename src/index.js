@@ -66,6 +66,7 @@ import BTimePicker from './components/time-picker'
 import BDatePicker from './components/date-picker'
 import BForm from './components/form'
 import BFormItem from './components/form-item'
+import BTable from './components/table'
 import Message from './components/message'
 import MessageBox from './components/message-box'
 import Notice from './components/notice'
@@ -148,6 +149,7 @@ const components = [
   BColorPicker,
   BTimePicker,
   BDatePicker,
+  BTable,
 ]
 const plugins = [
   Message,
@@ -259,6 +261,7 @@ export {
   BDatePicker,
   BForm,
   BFormItem,
+  BTable,
   Message,
   MessageBox,
   Notice,
