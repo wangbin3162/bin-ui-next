@@ -865,12 +865,14 @@ export default {
         const table = tbodyRef.value.$el.querySelector('.bin-table-tbody')
         Sortable.create(table, {
           animation: 150,
-          group: 'BTable',
           ghostClass: 'bin-table-ghost-class',
           handle: props.dragHandle,
-          onEnd({ newIndex, oldIndex }) {
-            dragAndDrop(newIndex, oldIndex)
-          },
+          onEnd: ({ newIndex, oldIndex }) => {
+            let newData = deepCopy(props.data)
+            const targetRow = newData.splice(oldIndex, 1)[0]
+            newData.splice(newIndex, 0, targetRow)
+            dragAndDrop(newIndex, oldIndex, newData)
+          }
         })
       }
     })

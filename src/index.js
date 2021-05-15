@@ -189,6 +189,7 @@ const install = function(app) {
   app.config.globalProperties.$debounce = util.debounce
   app.config.globalProperties.$isEqual = util.isEqual
   app.config.globalProperties.$scrollTop = scrollTop
+  app.config.globalProperties.$shuffle = util.shuffle
   app.config.globalProperties.$log = log
   log.pretty(`[${config.name}] ${config.version}`, config.homepage)
   return app

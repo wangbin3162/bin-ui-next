@@ -26,6 +26,12 @@
       "desc": "基础",
       "items": [
         {
+          "desc": "测试",
+          "icon": "table",
+          "name": "a-test",
+          "path": "/a-test"
+        },
+        {
           "desc": "Base 基础",
           "icon": "appstore",
           "name": "base",
@@ -230,8 +236,7 @@
           "desc": "upload 上传",
           "icon": "cloud-upload",
           "name": "upload",
-          "path": "/upload",
-          "writing": true
+          "path": "/upload"
         },
         {
           "desc": "Form 表单",
