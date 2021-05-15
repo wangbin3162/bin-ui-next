@@ -64,6 +64,7 @@ import BCascaderPanel from './components/cascader-panel'
 import BColorPicker from './components/color-picker'
 import BTimePicker from './components/time-picker'
 import BDatePicker from './components/date-picker'
+import BUpload from './components/upload'
 import BForm from './components/form'
 import BFormItem from './components/form-item'
 import BTable from './components/table'
@@ -144,6 +145,7 @@ const components = [
   BPage,
   BCascader,
   BCascaderPanel,
+  BUpload,
   BForm,
   BFormItem,
   BColorPicker,
@@ -259,6 +261,7 @@ export {
   BColorPicker,
   BTimePicker,
   BDatePicker,
+  BUpload,
   BForm,
   BFormItem,
   BTable,

@@ -1,0 +1,62 @@
+.bin-upload {
+  input[type="file"] {
+    display: none;
+  }
+  &-select {
+    display: inline-block;
+  }
+  &-list {
+    margin-top: 8px;
+
+    &-file {
+      padding: 4px;
+      color: #515a6e;
+      border-radius: 4px;
+      line-height: 1.5em;
+      font-size: 12px;
+      transition: background-color $animation-duration-base ease-in-out;
+      overflow: hidden;
+      position: relative;
+
+      & > span {
+        cursor: pointer;
+        transition: color $animation-duration-base ease-in-out;
+        i {
+          display: inline-block;
+          vertical-align: baseline
+          width: 14px;
+          height: 14px;
+          font-size: 16px;
+          margin-right: 4px;
+          color: #515a6e;
+          text-align: center;
+        }
+      }
+
+      &:hover {
+        background: #f3f3f3;
+        & > span {
+          color: $color-primary
+          i {
+            color: #515a6e;
+          }
+        }
+        .bin-upload-list-remove {
+          opacity: 1;
+        }
+      }
+    }
+    &-remove {
+      opacity: 0;
+      font-size: 14px;
+      cursor: pointer;
+      float: right;
+      margin-right: 4px;
+      color: #999;
+      transition: all $animation-duration-base ease;
+      &:hover {
+        color: #444;
+      }
+    }
+  }
+}
