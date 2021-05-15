@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 const {
   stripScript,
   stripTemplate,
@@ -44,7 +43,7 @@ module.exports = function(source) {
 
   let pageScript = ''
   if (componenetsString) {
-    pageScript = `<script lang="ts">
+    pageScript = `<script>
       import * as Vue from 'vue';
       export default {
         name: 'component-doc',

@@ -1,10 +1,11 @@
 <template>
   <table cellspacing="0" cellpadding="0" border="0" :style="styleObject">
+
     <colgroup>
       <col v-for="(column, index) in columns" :width="setCellWidth(column)" :key="'group-'+index">
     </colgroup>
     <tbody :class="[prefixCls + '-tbody']">
-    <template v-for="(row, index) in data" :key="rowKey ? row._rowKey : 'tr-'+index">
+    <template v-for="(row, index) in data" :key="rowKey ? row._rowKey : row._index">
       <table-tr
         :draggable="draggable"
         :row="row"

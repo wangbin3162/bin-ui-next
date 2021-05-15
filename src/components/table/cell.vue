@@ -4,7 +4,7 @@
       <span>{{ column.indexMethod ? column.indexMethod(row) : (naturalIndex + 1) }}</span>
     </template>
     <template v-if="renderType === 'selection'">
-      <b-checkbox :value="checked" @click.native.stop @change="toggleSelect"
+      <b-checkbox :model-value="checked" @click.native.stop @change="toggleSelect"
                   :disabled="disabled"></b-checkbox>
     </template>
     <template v-if="renderType === 'html'">
@@ -122,11 +122,11 @@ export default {
     }
 
     function toggleSelect() {
-      TableRoot.toggleSelect(this.index)
+      TableRoot.toggleSelect(props.index)
     }
 
     function toggleExpand() {
-      TableRoot.toggleExpand(this.index)
+      TableRoot.toggleExpand(props.index)
     }
 
     return {

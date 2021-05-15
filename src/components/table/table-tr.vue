@@ -33,7 +33,6 @@ export default {
     }
 
     return {
-      rowClsName,
       rowClasses,
     }
   },

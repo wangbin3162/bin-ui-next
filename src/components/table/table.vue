@@ -1,10 +1,6 @@
 <template>
   <div :class="wrapClasses" :style="wrapStyles" ref="containerRef">
-    <div :class="classes">
-      <!--      {{ objData }}-->
-      <div :class="['bin-table-title']" v-if="showSlotHeader" ref="titleRef">
-        <slot name="header"></slot>
-      </div>
+    <div :class="classes" v-loading:[loadingText]="loading">
       <div :class="['bin-table-header']" v-if="showHeader" ref="headerRef" @mousewheel="handleMouseWheel">
         <table-head
           prefix-cls="bin-table"
@@ -29,6 +25,19 @@
           :columns-width="columnsWidth"
           :obj-data="objData"
         ></table-body>
+      </div>
+      <div
+        :class="['bin-table-tip']" :style="bodyStyle" @scroll="handleBodyScroll"
+        v-show="!data || data.length === 0">
+        <table cellspacing="0" cellpadding="0" border="0">
+          <tbody>
+          <tr>
+            <td :style="{'height':bodyStyle.height,'width':`${headerWidth}px`}">
+              <b-empty v-if="!data || data.length === 0">{{ noDataText }}</b-empty>
+            </td>
+          </tr>
+          </tbody>
+        </table>
       </div>
       <div :class="['bin-table-fixed']" :style="fixedTableStyle" v-if="isLeftFixed">
         <div :class="fixedHeaderClasses" v-if="showHeader">
@@ -85,9 +94,6 @@
         </div>
       </div>
       <div :class="['bin-table-fixed-right-header']" :style="fixedRightHeaderStyle" v-if="isRightFixed"></div>
-      <div :class="['bin-table-footer']" v-if="showSlotFooter" ref="footerRef">
-        <slot name="footer"></slot>
-      </div>
     </div>
   </div>
 </template>
@@ -98,9 +104,10 @@ import { getStyle, on, off, getScrollBarWidth } from '../../utils/dom'
 import { getAllColumns, convertToRows, convertColumnOrder, getRandomStr } from './main/util'
 import { addResizeListener, removeResizeListener } from '../../utils/resize-event'
 import Sortable from 'sortablejs'
-import { computed, nextTick, onBeforeUnmount, onMounted, provide, ref, unref, watch } from 'vue'
+import { computed, nextTick, onBeforeUnmount, onMounted, provide, ref, watch } from 'vue'
 import TableHead from './table-head'
 import TableBody from './table-body'
+import BEmpty from '../empty/empty'
 
 const prefixCls = 'bin-table'
 
@@ -109,7 +116,7 @@ let columnKey = 1
 
 export default {
   name: 'BTable',
-  components: { TableBody, TableHead },
+  components: { BEmpty, TableBody, TableHead },
   props: {
     data: {
       type: Array,
@@ -192,8 +199,22 @@ export default {
     mergeMethod: {
       type: Function,
     },
+    loadingText: String,
   },
-  emits: ['sort-change', 'current-change'],
+  emits: [
+    'sort-change',
+    'current-change',
+    'row-click',
+    'row-dblclick',
+    'select',
+    'select-cancel',
+    'selection-change',
+    'select-all',
+    'select-all-cancel',
+    'selection-change',
+    'expand',
+    'drag-drop',
+  ],
   setup(props, { emit, slots }) {
     const containerRef = ref(null)
     const titleRef = ref(null)
@@ -208,7 +229,6 @@ export default {
     // data
     const read = ref(false)
     const cloneColumns = ref(makeColumns(colsWithId))
-    const cloneData = deepCopy(props.data)
     const columnRows = ref(makeColumnRows(false, colsWithId))
     const leftFixedColumnRows = ref(makeColumnRows('left', colsWithId))
     const rightFixedColumnRows = ref(makeColumnRows('right', colsWithId))
@@ -218,10 +238,8 @@ export default {
     const headerHeight = ref(0)
     const bodyHeight = ref(0)
     const columnsWidth = ref({})
-    const compiledUids = ref([])
 
-    const showSlotHeader = ref(slots.header !== undefined)
-    const showSlotFooter = ref(slots.footer !== undefined)
+    const cloneData = ref(deepCopy(props.data))
     const rebuildData = ref(makeDataWithSort())
     const objData = ref(makeObjData())
 
@@ -236,8 +254,6 @@ export default {
         {
           [`${prefixCls}-hide`]: !read.value,
           [`${prefixCls}-wrapper-with-border`]: props.border,
-          [`${prefixCls}-with-header`]: showSlotHeader.value,
-          [`${prefixCls}-with-footer`]: showSlotFooter.value,
         },
       ]
     })
@@ -356,7 +372,6 @@ export default {
         { [`${prefixCls}-fixed-header-with-empty`]: !rebuildData.value.length },
       ]
     })
-
 
     // methods
     // 修改列，设置一个隐藏的 id，便于后面的多级表头寻找对应的列，否则找不到
@@ -736,6 +751,89 @@ export default {
       handleCurrentRow('highlight', _index)
     }
 
+    function clearCurrentRow() {
+      if (!props.highlightRow) return
+      handleCurrentRow('clear')
+    }
+
+    function clickCurrentRow(_index) {
+      const _cloneData = cloneData.value
+      if (_index === _cloneData.length) return
+      highlightCurrentRow(_index)
+      emit('row-click', JSON.parse(JSON.stringify(_cloneData[_index])), _index)
+    }
+
+    function dblclickCurrentRow(_index) {
+      const _cloneData = cloneData.value
+      highlightCurrentRow(_index)
+      emit('row-dblclick', JSON.parse(JSON.stringify(_cloneData[_index])), _index)
+    }
+
+    function getSelection() {
+      let selectionIndexes = []
+      const _objData = objData.value
+      for (let i in _objData) {
+        if (_objData[i]._isChecked) selectionIndexes.push(parseInt(i))
+      }
+      return JSON.parse(JSON.stringify(props.data.filter((data, index) => selectionIndexes.indexOf(index) > -1)))
+    }
+
+    function toggleSelect(_index) {
+      let data = {}
+      const _objData = objData.value
+      for (let i in _objData) {
+        if (parseInt(i) === _index) {
+          data = _objData[i]
+          break
+        }
+      }
+      const status = !data._isChecked
+
+      _objData[_index]._isChecked = status
+
+      const selection = getSelection()
+      emit(status ? 'select' : 'select-cancel', selection, JSON.parse(JSON.stringify(props.data[_index])))
+      emit('selection-change', selection)
+    }
+
+    function toggleExpand(_index) {
+      let data = {}
+      const _objData = objData.value
+      for (let i in _objData) {
+        if (parseInt(i) === _index) {
+          data = _objData[i]
+          break
+        }
+      }
+      const status = !data._isExpanded
+      data._isExpanded = status
+      emit('expand', JSON.parse(JSON.stringify(cloneData.value[_index])), status)
+      if (props.height || props.maxHeight) {
+        nextTick(() => fixedBody())
+      }
+    }
+
+    function selectAll(status) {
+      for (const data of rebuildData.value) {
+        const _objData = objData.value
+        if (_objData[data._index]._isDisabled) {
+          continue
+        }
+        _objData[data._index]._isChecked = status
+      }
+      const selection = getSelection()
+      if (status) {
+        emit('select-all', selection)
+      } else {
+        emit('select-all-cancel', selection)
+      }
+      emit('selection-change', selection)
+    }
+
+    function dragAndDrop(newIndex, oldIndex, newData) {
+      emit('drag-drop', newIndex, oldIndex, newData)
+    }
+
     provide('BTable', {
       props,
       showVerticalScrollBar,
@@ -746,8 +844,13 @@ export default {
       handleMouseOut,
       handleCurrentRow,
       highlightCurrentRow,
+      clickCurrentRow,
+      dblclickCurrentRow,
+      slots,
+      toggleSelect,
+      selectAll,
+      toggleExpand,
     })
-
     // 钩子函数
     onMounted(() => {
       handleResize()
@@ -758,6 +861,18 @@ export default {
       nextTick(() => {
         read.value = true
       })
+      if (props.draggable) {
+        const table = tbodyRef.value.$el.querySelector('.bin-table-tbody')
+        Sortable.create(table, {
+          animation: 150,
+          group: 'BTable',
+          ghostClass: 'bin-table-ghost-class',
+          handle: props.dragHandle,
+          onEnd({ newIndex, oldIndex }) {
+            dragAndDrop(newIndex, oldIndex)
+          },
+        })
+      }
     })
 
     onBeforeUnmount(() => {
@@ -768,12 +883,16 @@ export default {
     })
 
     watch(() => props.data, (newData) => {
+      read.value = false
       const oldDataLen = rebuildData.value.length
       objData.value = makeObjData()
       rebuildData.value = makeDataWithSort()
-      handleResize()
       if (!oldDataLen) fixedHeader()
       cloneData.value = deepCopy(newData)
+      nextTick(() => {
+        handleResize()
+        read.value = true
+      })
     }, { deep: true })
 
     watch(() => props.columns, (newColumns) => {
@@ -784,7 +903,9 @@ export default {
       leftFixedColumnRows.value = makeColumnRows('left', colsWithId)
       rightFixedColumnRows.value = makeColumnRows('right', colsWithId)
       rebuildData.value = makeDataWithSort()
-      handleResize()
+      nextTick(() => {
+        handleResize()
+      })
     }, { deep: true })
 
     watch(() => [props.height, props.maxHeight, showHorizontalScrollBar, showVerticalScrollBar], () => {
@@ -811,8 +932,7 @@ export default {
       columnsWidth,
       tableWidth,
       rebuildData,
-      showSlotHeader,
-      showSlotFooter,
+      cloneData,
       showVerticalScrollBar,
       scrollBarWidth,
       // computed
@@ -841,6 +961,12 @@ export default {
       handleMouseWheel,
       handleBodyScroll,
       handleFixedMousewheel,
+      clickCurrentRow,
+      clearCurrentRow,
+      selectAll,
+      getSelection,
+      toggleSelect,
+      toggleExpand,
     }
   },
 }

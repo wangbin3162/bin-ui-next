@@ -17,17 +17,22 @@
             <render-header v-else :render="column.renderHeader" :column="column" :index="index"></render-header>
           </template>
           <template v-else-if="column.type === 'selection'">
-            <b-checkbox :value="isSelectAll" :disabled="!data.length" @change="selectAll"></b-checkbox>
+            <b-checkbox
+              :indeterminate="indeterminate"
+              :model-value="isSelectAll"
+              :disabled="!data.length"
+              @change="selectAll"
+            ></b-checkbox>
           </template>
           <template v-else>
             <span v-if="!column.renderHeader" :class="{[prefixCls + '-cell-sort']: column.sortable}"
                   @click="handleSortByHead(getColumn(rowIndex, index)._index)">{{ column.title || '#' }}</span>
             <render-header v-else :render="column.renderHeader" :column="column" :index="index"></render-header>
             <span :class="[prefixCls + '-sort']" v-if="column.sortable">
-                <i class="iconfont icon-md-arrow-dropup"
+                <i class="b-iconfont b-icon-caret-up"
                    :class="{on: getColumn(rowIndex, index)._sortType === 'asc'}"
                    @click="handleSort(getColumn(rowIndex, index)._index, 'asc')"></i>
-                <i class="iconfont icon-md-arrow-dropdown"
+                <i class="b-iconfont b-icon-caret-down"
                    :class="{on: getColumn(rowIndex, index)._sortType === 'desc'}"
                    @click="handleSort(getColumn(rowIndex, index)._index, 'desc')"></i>
             </span>
@@ -91,6 +96,21 @@ export default {
       }
       return flag
     })
+    const indeterminate = computed(() => {
+      let flag = false
+      const data = props.data
+      const objData = props.objData
+      if (!data.length) flag = false
+      if (!data.find(item => !item._disabled)) flag = false // #1751
+      for (let i = 0; i < data.length; i++) {
+        if (objData[data[i]._index]._isChecked && !objData[data[i]._index]._isDisabled) {
+          flag = true
+          break
+        }
+      }
+      if (isSelectAll.value) flag = false
+      return flag
+    })
     const headRows = computed(() => {
       const isGroup = props.columnRows.length > 1
       if (isGroup) {
@@ -111,9 +131,8 @@ export default {
     }
 
     function selectAll() {
-      console.log('selectAll')
-      // const status = !isSelectAll.value
-      // parentRef.selectAll(status)
+      const status = !isSelectAll.value
+      parentRef.selectAll(status)
     }
 
     function scrollBarCellClass() {
@@ -176,6 +195,7 @@ export default {
       showVerticalScrollBar: parentRef.showVerticalScrollBar,
       scrollBarWidth: parentRef.scrollBarWidth,
       isSelectAll,
+      indeterminate,
       headRows,
       setCellWidth,
       alignCls,

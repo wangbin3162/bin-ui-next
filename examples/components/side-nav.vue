@@ -99,6 +99,7 @@ export default {
       .b-iconfont {
         position: relative;
         top: 1px;
+        font-size: 16px;
         margin-right: 8px;
       }
       .writing-icon {

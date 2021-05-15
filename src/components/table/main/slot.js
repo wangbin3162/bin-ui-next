@@ -11,17 +11,16 @@ export default {
       default: null,
     },
   },
-  setup() {
+  setup(props) {
     const tableRoot = inject('BTable', {})
-    return {
-      tableRoot,
+    const render = tableRoot.slots[props.column.slot]
+    if (!render) {
+      throw Error('columns slot should be write <template> in table slots')
     }
-  },
-  render: (ctx) => {
-    return h('div', ctx.injections.tableRoot.$scopedSlots[ctx.props.column.slot]({
-      row: ctx.props.row,
-      column: ctx.props.column,
-      index: ctx.props.index,
+    return () => h('div', render({
+      row: props.row,
+      column: props.column,
+      index: props.index,
     }))
   },
 }

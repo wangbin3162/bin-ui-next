@@ -178,6 +178,26 @@ export function getRandomInt(min, max) {
 }
 
 /**
+ * 打乱某个数组
+ * @return {number}
+ */
+export function shuffle(arr) {
+  let newArr = arr.slice()// 复制一个新数组
+  for (let i = 0; i < newArr.length; i++) {
+    let j = getRandomInt(0, i)// 在0-当前循环的位置随机一个位置做交换
+    swap(arr, i, j)
+  }
+  return newArr
+}
+
+// 交换两个数组内容
+export function swap(arr, i, j) {
+  const t = arr[i]
+  arr[i] = arr[j]
+  arr[j] = t
+}
+
+/**
  * 节流函数，(限制函数的执行频率)返回函数连续调用时，空闲时间必须大于或等于 wait，func 才会执行
  *
  * @param  {function} func        回调函数

@@ -39,7 +39,7 @@
     "lodash": "^4.17.21",
     "mitt": "^2.1.0",
     "resize-observer-polyfill": "^1.5.1",
-    "sortablejs": "^1.13.0"
+    "sortablejs": "^1.10.2"
   },
   "peerDependencies": {
     "vue": "^3.0.5"

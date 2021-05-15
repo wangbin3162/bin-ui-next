@@ -178,7 +178,7 @@ export default {
       data.focused = false
       ctx.emit('blur')
       nextTick(() => {
-        formEmit('blur', this.currentValue)
+        formEmit('blur', data.currentValue)
       })
     }
 
