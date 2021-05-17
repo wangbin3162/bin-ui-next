@@ -618,7 +618,7 @@ height 和 maxHeight 可以设置固定表头
     },
     methods: {
       currentRowChange(currentRow, oldRow, index) {
-        if (index) {
+        if (index >= 0) {
           this.$message(`选中了第${index + 1}行`)
         }
       },
@@ -1178,6 +1178,8 @@ columns内容可以设置children来分组渲染表头,合并表头和行列时�
 
 注意，设置拖拽排序后，row的悬停效果失效，切鼠标拖拽也覆盖了鼠标选中文字，此时可以额外设置也可以设置handle来指定拖拽某一个元素实现
 
+如需要更新数据，则需要配合row-key和@drag-drop函数来处理更新数据
+
 ::: demo
 
 ```html
@@ -1187,12 +1189,17 @@ columns内容可以设置children来分组渲染表头,合并表头和行列时�
     <div>
       <p>默认拖拽</p>
       <b-table :columns="columns1" :data="data1" draggable></b-table>
-      {{data1}}
     </div>
     <div>
       <p>drag-handle</p>
-      <b-table :columns="columns2" :data="data2" draggable drag-handle=".drag-handle"
-               @drag-drop="handleDragDrop">
+      <b-table
+        :columns="columns2"
+        :data="data2"
+        draggable
+        drag-handle=".drag-handle"
+        row-key
+        @drag-drop="handleDragDrop"
+      >
         <template #handle="{row}">
           <span class="drag-handle" style="cursor:grab;"><b-icon name="drag" size="20" /></span>
         </template>
@@ -1200,7 +1207,9 @@ columns内容可以设置children来分组渲染表头,合并表头和行列时�
           <b-button @click="handleEdit(row,index)" type="text">编辑</b-button>
         </template>
       </b-table>
-      {{data2}}
+
+      <p>实际数据：</p>
+      <p>{{ data2.map(v=> v.name ) }}</p>
     </div>
   </div>
 </template>
@@ -1289,11 +1298,10 @@ columns内容可以设置children来分组渲染表头,合并表头和行列时�
       }
     },
     methods: {
-      handleDragDrop(newIndex, oldIndex) {
-        let arr = this.data2
-        const t = arr[newIndex]
-        arr[newIndex] = arr[oldIndex]
-        arr[oldIndex] = t
+      handleDragDrop(newIndex, oldIndex, newData) {
+        this.$nextTick(() => {
+          this.data2 = this.$deepCopy(newData)
+        })
       },
       handleEdit(row, index) {
         console.log(row, index)

@@ -108,6 +108,7 @@ import { computed, nextTick, onBeforeUnmount, onMounted, provide, ref, watch } f
 import TableHead from './table-head'
 import TableBody from './table-body'
 import BEmpty from '../empty/empty'
+import { generateId } from '../../utils/util-helper'
 
 const prefixCls = 'bin-table'
 
@@ -319,6 +320,8 @@ export default {
       return style
     })
 
+    let sortInstance = null
+
     // fixed table
     const isLeftFixed = computed(() => props.columns.some(col => col.fixed && col.fixed === 'left'))
     const isRightFixed = computed(() => props.columns.some(col => col.fixed && col.fixed === 'right'))
@@ -418,7 +421,7 @@ export default {
       let data = deepCopy(props.data)
       data.forEach((row, index) => {
         row._index = index
-        row._rowKey = rowKey++
+        row._rowKey = generateId() + rowKey++
       })
       return data
     }
@@ -862,22 +865,30 @@ export default {
         read.value = true
       })
       if (props.draggable) {
-        const table = tbodyRef.value.$el.querySelector('.bin-table-tbody')
-        Sortable.create(table, {
-          animation: 150,
-          ghostClass: 'bin-table-ghost-class',
-          handle: props.dragHandle,
-          onEnd: ({ newIndex, oldIndex }) => {
-            let newData = deepCopy(props.data)
-            const targetRow = newData.splice(oldIndex, 1)[0]
-            newData.splice(newIndex, 0, targetRow)
-            dragAndDrop(newIndex, oldIndex, newData)
-          }
-        })
+        setSort()
       }
     })
 
+    // 初始化拖拽
+    function setSort() {
+      if (sortInstance) sortInstance.destroy()
+      const table = tbodyRef.value.$el.querySelector('.bin-table-tbody')
+      sortInstance = Sortable.create(table, {
+        animation: 150,
+        ghostClass: 'bin-table-ghost-class',
+        handle: props.dragHandle,
+        onEnd: (evt) => {
+          const { newIndex, oldIndex } = evt
+          let newData = deepCopy(props.data)
+          const targetRow = newData.splice(oldIndex, 1)[0]
+          newData.splice(newIndex, 0, targetRow)
+          dragAndDrop(newIndex, oldIndex, newData)
+        },
+      })
+    }
+
     onBeforeUnmount(() => {
+      if (sortInstance) sortInstance.destroy()
       off(window, 'resize', handleResize)
       if (containerRef.value) {
         removeResizeListener(containerRef.value.parentElement, handleResize)
@@ -885,7 +896,6 @@ export default {
     })
 
     watch(() => props.data, (newData) => {
-      read.value = false
       const oldDataLen = rebuildData.value.length
       objData.value = makeObjData()
       rebuildData.value = makeDataWithSort()
@@ -893,7 +903,6 @@ export default {
       cloneData.value = deepCopy(newData)
       nextTick(() => {
         handleResize()
-        read.value = true
       })
     }, { deep: true })
 

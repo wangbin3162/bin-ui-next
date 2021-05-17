@@ -3,12 +3,11 @@
     <div flex="box:mean">
       <div style="margin-right: 20px; width: 50%;">normal
         <div id="example1" class="list-group col">
-          <div class="list-group-item">Item 1</div>
-          <div class="list-group-item">Item 2</div>
-          <div class="list-group-item">Item 3</div>
-          <div class="list-group-item">Item 4</div>
-          <div class="list-group-item">Item 5</div>
-          <div class="list-group-item">Item 6</div>
+          <template v-for="item in rebuildData" :key="item._rowKey">
+            <div :row-key="item._rowKey" class="list-group-item">
+              {{ item.name }}
+            </div>
+          </template>
         </div>
       </div>
       <div style="margin-right: 20px; width: 50%;">handle
@@ -22,7 +21,7 @@
         </div>
       </div>
     </div>
-
+    <p>{{ rebuildData.map(i => ({ name: i.name })) }}</p>
     <br />
     <div>
       <a href="https://gitee.com/wangbin3162/bin-ui/blob/master/examples/components/draggable-demo.vue"
@@ -33,7 +32,9 @@
 
 <script>
 import Sortable from 'sortablejs'
+import { nextTick } from 'vue'
 
+let rowKey = 1
 export default {
   name: 'draggable-demo',
   data() {
@@ -47,6 +48,7 @@ export default {
         { name: 'Item 5', id: 5 },
         { name: 'Item 6', id: 6 },
       ],
+      rebuildData: [],
       dragging: false,
     }
   },
@@ -55,12 +57,39 @@ export default {
     Sortable.create(document.getElementById('example1'), {
       animation: 150,
       ghostClass: 'blue-background-class',
+      onEnd: ({ newIndex, oldIndex }) => {
+        let newData = this.$deepCopy(this.list)
+        const targetRow = newData.splice(oldIndex, 1)[0]
+        newData.splice(newIndex, 0, targetRow)
+        nextTick(() => {
+          this.list = newData
+        })
+      },
     })
     Sortable.create(document.getElementById('example2'), {
       animation: 150,
       handle: '.handle',
       ghostClass: 'blue-background-class',
     })
+  },
+  watch: {
+    list: {
+      handler(val) {
+        this.rebuildData = this.makeData()
+      },
+      immediate: true,
+      deep: true,
+    },
+  },
+  methods: {
+    makeData() {
+      let data = this.$deepCopy(this.list)
+      data.forEach((row, index) => {
+        row._index = index
+        row._rowKey = rowKey++
+      })
+      return data
+    },
   },
 }
 </script>

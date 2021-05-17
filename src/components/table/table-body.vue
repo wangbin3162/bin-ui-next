@@ -1,13 +1,47 @@
 <template>
   <table cellspacing="0" cellpadding="0" border="0" :style="styleObject">
-
     <colgroup>
       <col v-for="(column, index) in columns" :width="setCellWidth(column)" :key="'group-'+index">
     </colgroup>
-    <tbody :class="[prefixCls + '-tbody']">
+    <tbody :class="[prefixCls + '-tbody']" v-if="!isExpandModel">
+    <!--v-for的内容需要保持只有一个元素，这样拖拽的时候才会更新正确的dom-->
     <template v-for="(row, index) in data" :key="rowKey ? row._rowKey : row._index">
       <table-tr
         :draggable="draggable"
+        :row="row"
+        :prefix-cls="prefixCls"
+        :row-key="row._rowKey"
+        :class="rowExpanded(row._index)?{[prefixCls + '-expanded-hidden']: fixed}:null"
+        @mouseenter.native.stop="handleMouseIn(row._index)"
+        @mouseleave.native.stop="handleMouseOut(row._index)"
+        @click.native="clickCurrentRow(row._index)"
+        @dblclick.native.stop="dblclickCurrentRow(row._index)"
+      >
+        <template v-for="(column,colIndex) in columns">
+          <td :class="alignCls(column, row)" :key="column._columnKey"
+              v-if="showWithSpan(row, column, index, colIndex)"
+              v-bind="getSpan(row, column, index, colIndex)">
+            <table-cell
+              :fixed="fixed"
+              :prefix-cls="prefixCls"
+              :row="row"
+              :key="column._columnKey"
+              :column="column"
+              :natural-index="index"
+              :index="row._index"
+              :checked="rowChecked(row._index)"
+              :disabled="rowDisabled(row._index)"
+              :expanded="rowExpanded(row._index)"
+            ></table-cell>
+          </td>
+        </template>
+      </table-tr>
+    </template>
+    </tbody>
+    <!--需要展开行的模式无法拖拽排序-->
+    <tbody :class="[prefixCls + '-tbody']" v-else>
+    <template v-for="(row, index) in data" :key="rowKey ? row._rowKey : row._index">
+      <table-tr
         :row="row"
         :prefix-cls="prefixCls"
         @mouseenter.native.stop="handleMouseIn(row._index)"
@@ -74,7 +108,7 @@ export default {
       default: false,
     },
   },
-  setup(props, { emit }) {
+  setup(props) {
     const parentRef = inject('BTable', {})
     const { alignCls, setCellWidth } = useMixin(props)
 
@@ -91,6 +125,7 @@ export default {
       }
       return render
     })
+    const isExpandModel = computed(() => props.columns.some(v => v.type === 'expand'))
 
     function getSpan(row, column, rowIndex, columnIndex) {
       const fn = parentRef.props.mergeMethod
@@ -154,6 +189,7 @@ export default {
       setCellWidth,
       alignCls,
       expandRender,
+      isExpandModel,
       getSpan,
       showWithSpan,
       rowChecked,
