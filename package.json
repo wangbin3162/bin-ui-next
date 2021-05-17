@@ -33,7 +33,7 @@
     "lint-fix": "eslint --fix ./src --ext .vue,.js,.ts"
   },
   "dependencies": {
-    "@popperjs/core": "^2.6.0",
+    "@popperjs/core": "^2.9.2",
     "async-validator": "^3.4.0",
     "dayjs": "^1.10.4",
     "lodash": "^4.17.21",

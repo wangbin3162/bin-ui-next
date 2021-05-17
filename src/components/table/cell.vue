@@ -13,16 +13,14 @@
     <template v-if="renderType === 'normal'">
       <template v-if="column.tooltip &&tooltipTheme">
         <b-tooltip
+          class-name="bin-table-cell-tooltip-content"
           append-to-body
           :theme="tooltipTheme"
-          popper-class="bin-popper-tooltip-content"
         >
+          {{ row[column.key] }}
           <template #content>
             <div>{{ row[column.key] }}</div>
           </template>
-          <span ref="tooltipContentRef" class="bin-table-cell-tooltip-content">
-            {{ row[column.key] }}
-          </span>
         </b-tooltip>
       </template>
       <span
@@ -57,8 +55,8 @@ import TableExpand from './main/expand'
 import TableSlot from './main/slot'
 import BIcon from '../icon/icon'
 import BCheckbox from '../checkbox/checkbox'
-import { inject, nextTick, ref } from 'vue'
-import BTooltip from '../tooltip/tooltip'
+import { inject, ref } from 'vue'
+import BTooltip from '../tooltip'
 
 export default {
   name: 'TableCell',

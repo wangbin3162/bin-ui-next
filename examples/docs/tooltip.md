@@ -10,7 +10,7 @@
 
 <template>
   <b-tooltip content="这是tooltip悬停文字">
-    <span>这是一段文字，鼠标经过其上时会显示tooltip</span>
+    这是一段文字，鼠标经过其上时会显示tooltip
   </b-tooltip>
 </template>
 ```
@@ -87,7 +87,7 @@
 
 <template>
   <b-tooltip content="light" theme="light">
-    <b-button>light</b-button>&nbsp;&nbsp;
+    <b-button>light</b-button>
   </b-tooltip>
   <b-tooltip content="Dark" theme="dark">
     <b-button>Dark(default)</b-button>
@@ -111,18 +111,27 @@
       <div>这是多行文字</div>
     </template>
   </b-tooltip>
+  <b-tooltip placement="top" content="我是一段长文本，我是一段长文本，我是一段长文本，我是一段长文本，我是一段长文本，我是一段长文本">
+    <b-button>长文本</b-button>
+  </b-tooltip>
 </template>
 ```
 
 :::
 
-### 关闭提示
+### 延时，触发时机和禁用提示
 
 ::: demo
 
 ```html
 
 <template>
+  <b-tooltip content="延时一秒显示悬停文字" :show-delay="1000">
+    <b-button>延时一秒</b-button>
+  </b-tooltip>
+  <b-tooltip content="点击显示" trigger="click">
+    <b-button>点击显示</b-button>
+  </b-tooltip>
   <b-tooltip content="关闭和隐藏提示" :disabled="disabled">
     <b-button @click="disabled=!disabled">{{ disabled ? '关闭提示':'开启提示'}}</b-button>
   </b-tooltip>
@@ -146,19 +155,16 @@
 |---------- |-------- |---------- |-------------  |-------- |
 | v-model:visible     | 状态是否可见   | Boolean  |  —   |  false   |
 | content     | 显示的内容   | string  |  —   |   —   |
+| class-name     | tooltip trigger内容的类名   | string  |  —   |   —   |
 | placement     | 提示框出现的位置   | string  |  top/top-start/top-end/bottom/bottom-start/bottom-end/left/left-start/left-end/right/right-start/right-end   |   —   |
 | disabled     | 是否禁用提示框   | Boolean  |  —   |   false   |
 | transition | 自定义渐变动画   |  string     |  —   |   fade-in-linear   |
 | visible-arrow     | 是否显示箭头  |  Boolean  |  —   |   true   |
-| popper-options  | popper.js 参数   |  Object  |   —    |   { boundariesElement: 'body', gpuAcceleration: false }   |
 | theme     | 主题   |  string  |  dark 或 light   |   dark   |
-| show-after     | 延迟出现，单位毫秒   | number  | — |   0    |
-| hide-after     | 延迟消失，单位毫秒   | number  | — |   0    |
-| auto-close     | tooltip出现后自动隐藏演示，单位毫秒，为0时不隐藏  | number  | — |   0    |
-| manual    | 手动控制模式，true时鼠标进入移出事件不生效   | Boolean  |  —   |   false   |
-| offset    | 出现位置的偏移量   |  Number |  — |    0     |
+| show-delay     | 延迟出现，单位毫秒   | number  | — |   0    |
+| hide-delay     | 延迟消失，单位毫秒   | number  | — |   0    |
+| offset    | 出现位置的偏移量   |  Number |  — |    12     |
 | appendToBody    | 是否将弹层放置于 body 内   | Boolean  |  —   |   false   |
-| options    | 自定义 popper.js 的配置项具体参考popper.js   | Object  |  —   |   —    |
 
 ### Slot
 
