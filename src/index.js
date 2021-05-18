@@ -1,6 +1,7 @@
 import BAnchor from './components/anchor'
 import BAnchorLink from './components/anchor-link'
 import BIcon from './components/icon'
+import BIconSelect from './components/icon-select'
 import BButton from './components/button'
 import BButtonGroup from './components/button-group'
 import BScrollbar from './components/scrollbar'
@@ -86,6 +87,7 @@ const components = [
   BAnchor,
   BAnchorLink,
   BIcon,
+  BIconSelect,
   BButton,
   BButtonGroup,
   BBackTop,
@@ -201,6 +203,7 @@ export {
   BAnchor,
   BAnchorLink,
   BIcon,
+  BIconSelect,
   BButton,
   BButtonGroup,
   BBackTop,

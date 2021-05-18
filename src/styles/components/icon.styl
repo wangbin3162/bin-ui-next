@@ -1,0 +1,50 @@
+.bin-icon-select__popper {
+  &.bin-popper {
+    width: 485px;
+    overflow: auto;
+    padding: 5px 5px;
+    background-color: $color-white;
+    box-sizing: border-box;
+    border-radius: $border-base-radius;
+    box-shadow: $shadow-2-down;
+    position: absolute;
+    z-index: 900;
+    &.is-light {
+      border: none;
+    }
+
+    .bin-icon-select-panel__wrap {
+      height: 280px;
+    }
+    ul.icon-list {
+      position: relative;
+      overflow: hidden;
+      list-style: none;
+      padding: 0;
+      border: 1px solid #eaeefb;
+      li {
+        display: inline-block;
+        width: 40px;
+        text-align: center;
+        height: 40px;
+        line-height: 40px;
+        color: #606266;
+        font-size: 12px;
+        margin-right: -1px;
+        margin-bottom: -1px;
+        margin-left: 0;
+        padding: 0;
+        cursor: pointer;
+        i {
+          display: block;
+          font-size: 24px;
+          margin-bottom: 15px;
+          transition: .15s linear;
+        }
+        &:hover i {
+          color: #5cb6ff;
+        }
+      }
+    }
+  }
+}

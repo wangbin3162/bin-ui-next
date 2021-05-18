@@ -13,11 +13,11 @@
     <template v-if="renderType === 'normal'">
       <template v-if="column.tooltip &&tooltipTheme">
         <b-tooltip
-          class-name="bin-table-cell-tooltip-content"
+          class="bin-table-cell-tooltip-content"
           append-to-body
           :theme="tooltipTheme"
         >
-          {{ row[column.key] }}
+          <span>{{ row[column.key] }}</span>
           <template #content>
             <div>{{ row[column.key] }}</div>
           </template>
