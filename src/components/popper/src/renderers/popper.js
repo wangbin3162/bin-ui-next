@@ -22,16 +22,19 @@ export default function renderPopper(props, children) {
     onBeforeLeave,
   } = props
 
-  const kls = [
-    popperClass,
-    'bin-popper',
-    'is-' + theme,
-    pure ? 'is-pure' : '',
-  ]
+  const kls = [popperClass, 'bin-popper', 'is-' + theme, pure ? 'is-pure' : '']
   /**
    * Equivalent to
    * <transition :name="name">
-   *  <div v-show="visibility" :aria-hidden="!visibility" :class="kls" ref="popperRef" role="tooltip" @mouseenter="" @mouseleave="" @click="">
+   *  <div
+   *    v-show="visibility"
+   *    :aria-hidden="!visibility"
+   *    :class="kls"
+   *    ref="popperRef"
+   *    role="tooltip"
+   *    @mouseenter=""
+   *    @mouseleave=""
+   *    @click="">
    *    <slot />
    *  </div>
    * </transition>

@@ -1,6 +1,6 @@
 ## Tooltip 提示
 
-文字提示气泡框，在鼠标悬停时显示，代替了系统的title提示。
+文字提示气泡框，在鼠标悬停时显示，代替了系统的title提示。tooltip的default slot应该保证是一个dom或者一个component
 
 ### 基础用法
 
@@ -10,7 +10,7 @@
 
 <template>
   <b-tooltip content="这是tooltip悬停文字">
-    这是一段文字，鼠标经过其上时会显示tooltip
+    <span>这是一段文字，鼠标经过其上时会显示tooltip</span>
   </b-tooltip>
 </template>
 ```
@@ -126,7 +126,7 @@
 ```html
 
 <template>
-  <b-tooltip content="延时一秒显示悬停文字" :show-delay="1000">
+  <b-tooltip content="延时一秒显示悬停文字" :open-delay="1000">
     <b-button>延时一秒</b-button>
   </b-tooltip>
   <b-tooltip content="点击显示" trigger="click">
@@ -155,13 +155,12 @@
 |---------- |-------- |---------- |-------------  |-------- |
 | v-model:visible     | 状态是否可见   | Boolean  |  —   |  false   |
 | content     | 显示的内容   | string  |  —   |   —   |
-| class-name     | tooltip trigger内容的类名   | string  |  —   |   —   |
 | placement     | 提示框出现的位置   | string  |  top/top-start/top-end/bottom/bottom-start/bottom-end/left/left-start/left-end/right/right-start/right-end   |   —   |
 | disabled     | 是否禁用提示框   | Boolean  |  —   |   false   |
 | transition | 自定义渐变动画   |  string     |  —   |   fade-in-linear   |
 | visible-arrow     | 是否显示箭头  |  Boolean  |  —   |   true   |
 | theme     | 主题   |  string  |  dark 或 light   |   dark   |
-| show-delay     | 延迟出现，单位毫秒   | number  | — |   0    |
+| open-delay     | 延迟出现，单位毫秒   | number  | — |   0    |
 | hide-delay     | 延迟消失，单位毫秒   | number  | — |   0    |
 | offset    | 出现位置的偏移量   |  Number |  — |    12     |
 | appendToBody    | 是否将弹层放置于 body 内   | Boolean  |  —   |   false   |

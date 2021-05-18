@@ -4,11 +4,15 @@
   font-size: $base-font-size;
   color: $color-text-default;
   list-style: none;
+  padding: 0 20px;
   cursor: pointer;
   position: relative;
   transition: border-color 0.3s, background-color 0.3s, color 0.3s;
   box-sizing: border-box;
   white-space: nowrap;
+  &.is-tooltip {
+    padding: 0;
+  }
   * {
     vertical-align: middle;
   }
@@ -268,4 +272,7 @@
 .bin-opacity-transition {
   -webkit-transition: opacity .3s cubic-bezier(.55, 0, .1, 1);
   transition: opacity .3s cubic-bezier(.55, 0, .1, 1)
+}
+.bin-submenu-popper .bin-menu-item {
+  padding: 0 20px;
 }

@@ -161,7 +161,7 @@
       <b-button type="danger" plain>确认气泡框</b-button>
       <template #content>
         <p>
-          <b-icon name="question-circle" color="#f5222d"></b-icon>
+          <b-icon name="question-circle" size="16" color="#f5222d"></b-icon>
           Are you sure delete this item?
         </p>
         <div style="text-align: right; margin: 0">
@@ -205,10 +205,8 @@
 | width         | 宽度  |  string/number  | — |   —    |
 | placement     | 提示框出现的位置   | string  |  top/top-start/top-end/bottom/bottom-start/bottom-end/left/left-start/left-end/right/right-start/right-end   |   —   |
 | disabled     | 是否禁用提示框   | Boolean  |  —   |   false   |
-| confirm    | 是否开启对话框模式   |  Boolean |  — |    false     |
 | v-model:visible     | 状态是否可见   | Boolean  |  —   |  false   |
 | placement     | 提示框出现的位置   | string  |  top/top-start/top-end/bottom/bottom-start/bottom-end/left/left-start/left-end/right/right-start/right-end   |   —   |
-| disabled     | 是否禁用提示框   | Boolean  |  —   |   false   |
 | transition | 自定义渐变动画   |  string     |  —   |   fade-in-linear   |
 | visible-arrow     | 是否显示箭头  |  Boolean  |  —   |   true   |
 | popper-options  | popper.js 参数   |  Object  |   —    |   { boundariesElement: 'body', gpuAcceleration: false }   |

@@ -43,10 +43,6 @@ export default {
       type: [String, Number],
       default: 150,
     },
-    appendToBody: {
-      type: Boolean,
-      default: false,
-    },
   },
   emits: ['update:visible', 'after-enter', 'after-leave', SHOW_EVENT, HIDE_EVENT],
   setup(props, ctx) {

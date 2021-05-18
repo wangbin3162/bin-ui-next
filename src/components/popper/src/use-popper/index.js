@@ -14,7 +14,6 @@ import usePopperOptions from './popper-options'
 
 import { transferIncrease } from '../../../../utils/config'
 
-export const DEFAULT_TRIGGER = ['hover']
 export const UPDATE_VISIBLE_EVENT = 'update:visible'
 export default function(props, ctx) {
   const arrowRef = ref(null)
@@ -97,6 +96,7 @@ export default function(props, ctx) {
       close()
     }
   }
+
   const close = () => {
     _hide()
     if (props.disabled) {
@@ -211,29 +211,20 @@ export default function(props, ctx) {
       }
     }
 
-    const mapEvents = (t) => {
-      switch (t) {
-        case 'click': {
-          events.onClick = popperEventsHandler
-          break
-        }
-        case 'hover': {
-          events.onMouseEnter = popperEventsHandler
-          events.onMouseLeave = popperEventsHandler
-          break
-        }
-        case 'focus': {
-          events.onFocus = popperEventsHandler
-          events.onBlur = popperEventsHandler
-          break
-        }
-        default: {
-          break
-        }
-      }
+    const triggerEventsMap = {
+      click: ['onClick'],
+      hover: ['onMouseenter', 'onMouseleave'],
+      focus: ['onFocus', 'onBlur'],
     }
+
+    const mapEvents = (t) => {
+      triggerEventsMap[t].forEach(event => {
+        events[event] = popperEventsHandler
+      })
+    }
+
     if (isArray(props.trigger)) {
-      Object.values(props.trigger).map(mapEvents)
+      Object.values(props.trigger).forEach(mapEvents)
     } else {
       mapEvents(props.trigger)
     }

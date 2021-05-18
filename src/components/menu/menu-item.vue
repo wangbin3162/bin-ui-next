@@ -7,6 +7,7 @@
     :class="{
       'is-active': active,
       'is-disabled': disabled,
+      'is-tooltip':  parentMenu.type.name === 'BMenu' && rootMenu.props.collapse && slots.title
     }"
     @click="handleClick"
     @mouseenter="onMouseEnter"

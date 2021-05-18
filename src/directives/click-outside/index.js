@@ -23,6 +23,7 @@ function createDocumentHandler(el, binding) {
     // due to current implementation on binding type is wrong the type casting is necessary here
     excludes.push(binding.arg)
   }
+
   return function(mouseup, mousedown) {
     const popperRef = binding.instance.popperRef
     const mouseUpTarget = mouseup.target
@@ -32,19 +33,9 @@ function createDocumentHandler(el, binding) {
     const isContainedByEl = el.contains(mouseUpTarget) || el.contains(mouseDownTarget)
     const isSelf = el === mouseUpTarget
 
-    const isTargetExcluded =
-      (excludes.length &&
-        excludes.some(item => item?.contains(mouseUpTarget))
-      ) || (
-      excludes.length && excludes.includes(mouseDownTarget)
-  )
-    const isContainedByPopper = (
-      popperRef &&
-      (
-        popperRef.contains(mouseUpTarget) ||
-        popperRef.contains(mouseDownTarget)
-      )
-    )
+    const isTargetExcluded = (excludes.length && excludes.some(item => item?.contains(mouseUpTarget))) || (excludes.length && excludes.includes(mouseDownTarget))
+    const isContainedByPopper = (popperRef && (popperRef.contains(mouseUpTarget) || popperRef.contains(mouseDownTarget)))
+
     if (
       isBound ||
       isTargetExists ||

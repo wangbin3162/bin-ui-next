@@ -11,6 +11,7 @@ import BRow from './components/row'
 import BCol from './components/col'
 import BCollapseTransition from './components/collapse-transition'
 import BDivider from './components/divider'
+import BPopper from './components/popper'
 import BPopover from './components/popover'
 import BTooltip from './components/tooltip'
 import BMenu from './components/menu'
@@ -95,6 +96,7 @@ const components = [
   BLoading,
   BCollapseTransition,
   BDivider,
+  BPopper,
   BPopover,
   BTooltip,
   BMenu,
@@ -209,6 +211,7 @@ export {
   BLoading,
   BCollapseTransition,
   BDivider,
+  BPopper,
   BPopover,
   BTooltip,
   BMenu,
