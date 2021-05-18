@@ -59,7 +59,11 @@
           tag="ul"
           wrap-class="bin-icon-select-panel__wrap"
           view-class="icon-list">
-          <li v-for="name in icons" :key="name" class="list-complete-item" @click="handleSelect(name)">
+          <li v-for="name in icons"
+              :key="name"
+              class="list-complete-item"
+              :title="name"
+              @click="handleSelect(name)">
             <i :class="['b-iconfont' ,'b-icon-'+ name]"></i>
           </li>
         </b-scrollbar>
