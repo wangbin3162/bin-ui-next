@@ -1,4 +1,6 @@
-## 基础
+## 基础 API
+
+默认会全局注册多个实用的api调用
 
 ### 基础api
 
@@ -34,33 +36,6 @@ util方法函数
 | $getRandomInt | 在某个区间随机一个整数   | min, max  |
 | $typeOf | 精准判断类型   | any  |
 | $deepCopy | 深拷贝函数   | obj/arr  |
-
-### 无数据组件
-
-目前表格和tree型结构使用，可以自定义标签使用，也可以使用指令使用
-
-::: demo
-
-```html
-
-<template>
-  <div style="width: 224px;">
-    <b-empty>当前无数据</b-empty>
-    <div style="border: 1px solid red;height: 150px;" v-no-data:[dataText]="true"></div>
-  </div>
-</template>
-<script>
-  export default {
-    data() {
-      return {
-        dataText: '抱歉没有数据'
-      }
-    }
-  }
-</script>
-```
-
-:::
 
 ### flex.css使用
 
@@ -106,8 +81,8 @@ util方法函数
 dir：主轴方向
     top：从上到下
     right：从右到左
-    bottom：从下到上
-    left：从左到右（默认）
+    bottom：从下到上
+    left：从左到右（默认）
 ```
 
 ```

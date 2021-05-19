@@ -30,7 +30,7 @@ export default {
 
     onMounted(() => {
       // TODO: updatePopper
-      // popper.value.update()
+      // popper.md.value.update()
       addResizeListener(select.selectWrapper, updateMinWidth)
     })
 

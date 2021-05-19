@@ -26,12 +26,6 @@
       "desc": "基础",
       "items": [
         {
-          "desc": "测试",
-          "icon": "table",
-          "name": "a-test",
-          "path": "/a-test"
-        },
-        {
           "desc": "Base 基础",
           "icon": "appstore",
           "name": "base",
@@ -82,6 +76,35 @@
       ]
     },
     {
+      "desc": "内置组件",
+      "items": [
+        {
+          "desc": "Scrollbar 滚动",
+          "icon": "container",
+          "name": "scrollbar",
+          "path": "/scrollbar"
+        },
+        {
+          "desc": "Empty 空状态",
+          "icon": "border",
+          "name": "empty",
+          "path": "/empty"
+        },
+        {
+          "desc": "Popper 弹层",
+          "icon": "pic-center",
+          "name": "popperjs",
+          "path": "/popperjs"
+        },
+        {
+          "desc": "Loading 加载",
+          "icon": "loading2",
+          "name": "loading",
+          "path": "/loading"
+        }
+      ]
+    },
+    {
       "desc": "布局",
       "items": [
         {
@@ -89,12 +112,6 @@
           "icon": "layout",
           "name": "grid",
           "path": "/grid"
-        },
-        {
-          "desc": "Scrollbar 滚动",
-          "icon": "container",
-          "name": "scrollbar",
-          "path": "/scrollbar"
         },
         {
           "desc": "Divider 分割线",
@@ -154,12 +171,6 @@
           "icon": "arrowright",
           "name": "steps",
           "path": "/steps"
-        },
-        {
-          "desc": "Loading 加载",
-          "icon": "loading2",
-          "name": "loading",
-          "path": "/loading"
         }
       ]
     },

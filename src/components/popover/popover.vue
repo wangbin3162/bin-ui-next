@@ -100,7 +100,7 @@ export default {
     )
 
     // when user uses popover directively, trigger will be null so that we only
-    // render a popper window for displaying contents
+    // render a popper.md window for displaying contents
     const _trigger = trigger ? renderTrigger(trigger, {
       ariaDescribedby: popperId,
       ref: 'triggerRef',

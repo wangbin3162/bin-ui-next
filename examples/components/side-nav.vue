@@ -121,7 +121,7 @@ export default {
         position: absolute;
         top: 0;
         bottom: 0;
-        right: 2px;
+        right: 0;
         background: #2d8cf0;
       }
     }
