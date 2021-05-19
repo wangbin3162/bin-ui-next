@@ -250,7 +250,13 @@
           "path": "/rate"
         },
         {
-          "desc": "upload 上传",
+          "desc": "Slider 滑块",
+          "icon": "minus",
+          "name": "slider",
+          "path": "/slider"
+        },
+        {
+          "desc": "Upload 上传",
           "icon": "cloud-upload",
           "name": "upload",
           "path": "/upload"
