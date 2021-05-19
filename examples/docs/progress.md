@@ -12,7 +12,7 @@ Progress 组件设置 `percent` 属性即可，表示进度条对应的百分比
 
 <template>
   <b-progress :percent="0"></b-progress>
-  <b-progress :percent="70" status="text"><span>进度70</span></b-progress>
+  <b-progress :percent="70" status="text" active><span>进度70</span></b-progress>
   <b-progress :percent="100" status="success"></b-progress>
   <b-progress :percent="50" status="exception"></b-progress>
 </template>
@@ -51,9 +51,7 @@ Progress 组件设置 `percent` 属性即可，表示进度条对应的百分比
   <b-progress :percent="70" :show-text="false"></b-progress>
   <b-progress :percent="40" color="#76eeff"></b-progress>
   <b-progress text-inside :stroke-width="20" :percent="60" color="#df52ff"></b-progress>
-  <b-progress radius="5px" :stroke-width="20" :percent="30" color="#ffcf2f"></b-progress>
-  <b-progress radius="5px" :stroke-width="20" :percent="90" active></b-progress>
-  <b-progress radius="5px" :stroke-width="20" :percent="90" bg-color="#fff"></b-progress>
+  <b-progress :stroke-width="20" :percent="30" color="#ffcf2f"></b-progress>
 </template>
 ```
 
@@ -69,7 +67,7 @@ Progress 组件设置 `percent` 属性即可，表示进度条对应的百分比
 
 <template>
   <div class="demo-button">
-    <b-progress radius="5px" :stroke-width="20" :percent="percent" active color="#ff86d8"></b-progress>
+    <b-progress :stroke-width="20" :percent="percent" active color="#ff86d8"></b-progress>
     <br>
     <b-button-group>
       <b-button icon="minus" @click="minus" size="mini"></b-button>

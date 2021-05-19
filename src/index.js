@@ -69,6 +69,8 @@ import BTimePicker from './components/time-picker'
 import BDatePicker from './components/date-picker'
 import BUpload from './components/upload'
 import BSlider from './components/slider'
+import BSkeleton from './components/skeleton'
+import BSkeletonItem from './components/skeleton-item'
 import BForm from './components/form'
 import BFormItem from './components/form-item'
 import BTable from './components/table'
@@ -120,6 +122,8 @@ const components = [
   BDropdownMenu,
   BTimeline,
   BTimelineItem,
+  BSkeleton,
+  BSkeletonItem,
   BCarousel,
   BCarouselItem,
   BCalendar,
@@ -231,6 +235,8 @@ export {
   BAffix,
   BBreadcrumb,
   BBreadcrumbItem,
+  BSkeleton,
+  BSkeletonItem,
   BTabs,
   BSteps,
   BStep,

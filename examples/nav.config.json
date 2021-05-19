@@ -95,18 +95,6 @@
           "icon": "pic-center",
           "name": "popperjs",
           "path": "/popperjs"
-        },
-        {
-          "desc": "Loading 加载",
-          "icon": "loading2",
-          "name": "loading",
-          "path": "/loading"
-        },
-        {
-          "desc": "LoadingBar 进度条",
-          "icon": "minus",
-          "name": "loading-bar",
-          "path": "/loading-bar"
         }
       ]
     },
@@ -348,6 +336,24 @@
           "icon": "tags",
           "name": "tag",
           "path": "/tag"
+        },
+        {
+          "desc": "Skeleton 骨架屏",
+          "icon": "sever-fill",
+          "name": "skeleton",
+          "path": "/skeleton"
+        },
+        {
+          "desc": "Loading 加载",
+          "icon": "loading2",
+          "name": "loading",
+          "path": "/loading"
+        },
+        {
+          "desc": "LoadingBar 进度条",
+          "icon": "minus",
+          "name": "loading-bar",
+          "path": "/loading-bar"
         }
       ]
     },
