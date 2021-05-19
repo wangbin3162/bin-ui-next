@@ -1,0 +1,31 @@
+.bin-loading-bar {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2000;
+  &-inner {
+    transition: width $animation-duration-base linear;
+    &-color-primary {
+      background-color: $color-primary;
+    }
+    &-failed-color-error {
+      background-color: $color-danger;
+    }
+  }
+  .icon {
+    position absolute;
+    right: 5px;
+    top: 5px;
+    &.icon-color-primary i {
+      color: $color-primary;
+    }
+    &.icon-failed-color-error i {
+      color: $color-danger;
+    }
+    .b-icon-loading {
+      font-size: 16px;
+    }
+  }
+}

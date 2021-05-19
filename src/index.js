@@ -70,6 +70,7 @@ import BUpload from './components/upload'
 import BForm from './components/form'
 import BFormItem from './components/form-item'
 import BTable from './components/table'
+import LoadingBar from './components/loading-bar'
 import Message from './components/message'
 import MessageBox from './components/message-box'
 import Notice from './components/notice'
@@ -158,6 +159,7 @@ const components = [
   BTable,
 ]
 const plugins = [
+  LoadingBar,
   Message,
   MessageBox,
   Notice,

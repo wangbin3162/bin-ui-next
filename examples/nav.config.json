@@ -101,6 +101,12 @@
           "icon": "loading2",
           "name": "loading",
           "path": "/loading"
+        },
+        {
+          "desc": "LoadingBar 进度条",
+          "icon": "minus",
+          "name": "loading-bar",
+          "path": "/loading-bar"
         }
       ]
     },
