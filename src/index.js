@@ -10,6 +10,7 @@ import BEmpty from './components/empty'
 import BLoading from './components/loading'
 import BRow from './components/row'
 import BCol from './components/col'
+import BSpace from './components/space'
 import BCollapseTransition from './components/collapse-transition'
 import BDivider from './components/divider'
 import BPopper from './components/popper'
@@ -97,6 +98,7 @@ const components = [
   BEmpty,
   BRow,
   BCol,
+  BSpace,
   BLoading,
   BCollapseTransition,
   BDivider,
@@ -215,6 +217,7 @@ export {
   BEmpty,
   BRow,
   BCol,
+  BSpace,
   BLoading,
   BCollapseTransition,
   BDivider,

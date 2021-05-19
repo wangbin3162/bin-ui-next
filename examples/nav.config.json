@@ -124,6 +124,12 @@
           "icon": "line",
           "name": "divider",
           "path": "/divider"
+        },
+        {
+          "desc": "Space 间距",
+          "icon": "swap",
+          "name": "space",
+          "path": "/space"
         }
       ]
     },
