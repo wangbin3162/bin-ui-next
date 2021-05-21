@@ -288,6 +288,7 @@ export {
   BForm,
   BFormItem,
   BTable,
+  LoadingBar,
   Message,
   MessageBox,
   Notice,
