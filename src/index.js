@@ -88,6 +88,8 @@ import { ClickAnimation, ClickOutside, NoData, Loading, Waves } from './directiv
 
 import config from '../package.json'
 
+const version = config.version // version_ to fix tsc issue
+
 const components = [
   BAnchor,
   BAnchorLink,
@@ -175,7 +177,7 @@ const plugins = [
 const defaultInstallOpt = {
   zIndex: 2000,
 }
-const install = function(app) {
+const install = (app) => {
   components.forEach(component => {
     app.use(component)
   })
@@ -289,8 +291,10 @@ export {
   Message,
   MessageBox,
   Notice,
+  install,
 }
 
 export default {
+  version,
   install,
 }
