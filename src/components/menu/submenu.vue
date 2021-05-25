@@ -368,7 +368,7 @@ export default {
           offset: 6,
           boundariesPadding: 0,
           showArrow: false,
-          popperClass: 'bin-submenu-popper.md',
+          popperClass: 'bin-submenu-popper',
           placement: this.data.currentPlacement,
           appendToBody: this.appendToBody,
         },
@@ -386,7 +386,7 @@ export default {
                       'div',
                       {
                         ref: 'menu',
-                        class: [`bin-menu--${this.mode}`, 'bin-submenu-popper.md'],
+                        class: [`bin-menu--${this.mode}`, 'bin-submenu-popper'],
                         onMouseenter: ($event) =>
                           this.handleMouseenter($event, 100),
                         onMouseleave: () => this.handleMouseleave(true),
