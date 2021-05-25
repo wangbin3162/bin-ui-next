@@ -5,7 +5,7 @@
 <div class="doc-update">
     <b-timeline>
       <b-timeline-item>
-        <p class="version">0.2.5</p>
+        <p class="version">0.2.6</p>
         <p class="time">2021-05-25</p>
         <p class="content"><i>🐞</i>修复button按钮loading</p>
         <p class="content"><i>🐞</i>新增icon可点击属性</p>
