@@ -121,6 +121,32 @@
 
 :::
 
+### 密码框
+
+输入密码的时候默认需要隐藏显示，这里会开启图标提示
+
+::: demo
+
+```html
+
+<template>
+  <div>
+    <b-input v-model="value" type="password" class="input-item"></b-input>
+  </div>
+</template>
+<script>
+  export default {
+    data() {
+      return {
+        value: ''
+      }
+    }
+  }
+</script>
+```
+
+:::
+
 ### 不同尺寸
 
 提供额外3种尺寸进行配置 `large` `small` 或 `mini`三种尺寸

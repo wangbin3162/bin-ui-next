@@ -17,9 +17,15 @@
         ></i>
         <i
           class="b-iconfont b-icon-search"
-          :class="['bin-input-icon', 'bin-input-icon-normal', 'bin-input--search-icon']"
+          :class="['bin-input-icon', 'bin-input-icon-normal', 'bin-input-search-icon']"
           v-if="search"
-          @click="handleSearch"
+          @click.stop="handleSearch"
+        ></i>
+        <i
+          class="b-iconfont bin-input-icon bin-input-icon-normal bin-input-view-icon"
+          :class="showPassword?'b-icon-eye':'b-icon-eye-close'"
+          v-if="type==='password'"
+          @click.stop="handleTogglePass"
         ></i>
         <slot name="suffix">
           <i class="b-iconfont" :class="['b-icon-' + suffix]" v-if="suffix"></i>
@@ -28,9 +34,9 @@
       </span>
       <input
         :id="elementId"
-        :autocomplete="autocomplete"
+        :autocomplete="type==='password'?'new-password':autocomplete"
         ref="inputRef"
-        :type="type"
+        :type="inputType"
         :class="inputClasses"
         :placeholder="placeholder"
         :disabled="inputDisabled"
@@ -201,6 +207,7 @@ export default {
     })
     const inputRef = ref(null)
     const textareaRef = ref(null)
+    const showPassword = ref(false)
 
     const { BForm, BFormItem, validateState, validateIcon, formEmit } = useForm()
     // watch
@@ -231,6 +238,7 @@ export default {
     )
     const inputDisabled = computed(() => props.disabled || BForm.disabled)
     const inputSize = computed(() => props.size || BFormItem.size)
+    const inputType = computed(() => props.type !== 'password' ? props.type : `${showPassword.value ? 'text' : 'password'}`)
     const inputClasses = computed(() => {
       return [
         `${prefixCls}`,
@@ -334,6 +342,9 @@ export default {
     const handleChange = (e) => {
       ctx.emit(CHANGE_EVENT, e.target.value)
     }
+    const handleTogglePass = () => {
+      showPassword.value = !showPassword.value
+    }
 
     const handleClear = () => {
       setCurrentValue('')
@@ -372,6 +383,7 @@ export default {
     return {
       inputRef,
       textareaRef,
+      showPassword,
       ...toRefs(data),
       handleEnter,
       handleKeydown,
@@ -385,6 +397,7 @@ export default {
       handleChange,
       handleClear,
       handleSearch,
+      handleTogglePass,
       focus,
       blur,
       BForm,
@@ -399,6 +412,7 @@ export default {
       showSuffix,
       inputClasses,
       closeClasses,
+      inputType,
       textareaStyle,
       textareaClasses,
       wordCount,

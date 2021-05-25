@@ -10,6 +10,7 @@
         <p class="content"><i>🐞</i>修复button按钮loading</p>
         <p class="content"><i>🐞</i>新增icon可点击属性</p>
         <p class="content"><i>🍀</i>优化icon-select 图标选择可搜索</p>
+        <p class="content"><i>🍀</i>新增input输入框密码框功能</p>
       </b-timeline-item>
       <b-timeline-item>
         <p class="version">0.2.3</p>

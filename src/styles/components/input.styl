@@ -173,9 +173,15 @@ placeholder() {
   right: 0;
 }
 //  搜索
-.bin-input-search-icon {
+.bin-input-search-icon, .bin-input-view-icon {
   cursor: pointer;
   transition: color $animation-duration-base ease-in-out;
+  &:hover {
+    color: $color-text-default;
+  }
+  &:active {
+    color: $color-icon-hover;
+  }
 }
 .bin-input-search {
   cursor: pointer;
