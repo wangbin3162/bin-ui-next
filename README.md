@@ -34,14 +34,12 @@ bin-ui-next 是bin-ui的vue3升级版，目前组件源码正在疯狂重构中.
 
 [element-plus](https://element-plus.gitee.io/#/zh-CN/component/installation)
 
-[ant-design-vue](https://2x.antdv.com/docs/vue/introduce-cn/)
-
 ### 安装
 
 推荐使用 `npm` 或 `yarn` 进行安装，它能更好地和 `webpack` 打包工具配合使用。而且可以更好的和 `es6` `typescript` 配合使用。并且支持按需引入
 
 ```shell
-npm i bin-ui -S
+npm i bin-ui-next -S
 # or 
-yarn add bin-ui
+yarn add bin-ui-next
 ```
