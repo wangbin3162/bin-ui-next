@@ -1,11 +1,11 @@
 <template>
   <p>收录了<span style="color:red;">{{ $icon.length }}</span>个图标</p>
-  <b-alert type="error">双击复制图标名称，邮件复制组件代码</b-alert>
+  <b-alert type="error">点击复制图标名称，右键复制组件代码</b-alert>
   <ul class="icon-list">
     <li v-for="name in $icon"
         :key="name"
         class="list-complete-item"
-        @dblclick="copy(name)" @contextmenu.stop.prevent="copyComp(name)"
+        @click="copy(name)" @contextmenu.stop.prevent="copyComp(name)"
     >
         <span>
             <i :class="['b-iconfont' ,'b-icon-'+ name]"></i>

@@ -53,13 +53,17 @@
         </div>
       </template>
       <template #default>
+        <div class="bin-icon-select-panel__query">
+          <b-input v-model="query" placeholder="输入图标名称搜索" size="small" clearable></b-input>
+        </div>
         <b-scrollbar
-          v-show="visible"
+          v-show="visible && showIcons.length"
           ref="scrollbar"
           tag="ul"
           wrap-class="bin-icon-select-panel__wrap"
-          view-class="icon-list">
-          <li v-for="name in icons"
+          view-class="icon-list"
+        >
+          <li v-for="name in showIcons"
               :key="name"
               class="list-complete-item"
               :title="name"
@@ -67,6 +71,7 @@
             <i :class="['b-iconfont' ,'b-icon-'+ name]"></i>
           </li>
         </b-scrollbar>
+        <b-empty v-show="showIcons.length===0">没有匹配图标</b-empty>
       </template>
     </b-popper>
   </div>
@@ -88,10 +93,11 @@ import icon from '../icon/iconfont.json'
 import BScrollbar from '../scrollbar/scrollbar'
 import BButton from '../button/button'
 import BIcon from '../icon/icon'
+import BEmpty from '../empty/empty'
 
 export default {
   name: 'BIconSelect',
-  components: { BIcon, BButton, BScrollbar, BInput, BPopper },
+  components: { BEmpty, BIcon, BButton, BScrollbar, BInput, BPopper },
   directives: { ClickOutside },
   props: {
     modelValue: String,
@@ -127,13 +133,14 @@ export default {
     const visible = ref(false)
     const inputHovering = ref(false)
     const icons = ref(icon.glyphs.map(i => i.font_class))
+    const query = ref('')
 
     const popperPaneRef = computed(() => popper.value?.popperRef)
     const showClose = computed(() => selectedLabel.value && inputHovering.value)
     const iconClass = computed(() => (visible.value ? 'down is-reverse' : 'down'))
     const inputSize = computed(() => props.size || BForm.size)
-    const { BForm, BFormItem, formEmit } = useForm()
-
+    const showIcons = computed(() => query.value ? icons.value.filter(i => i.includes(query.value)) : icons.value)
+    const { BForm, formEmit } = useForm()
 
     function handleSelect(name) {
       changeValue(name)
@@ -146,6 +153,7 @@ export default {
 
     function handleClose() {
       visible.value = false
+      query.value = ''
     }
 
     function handleClearClick() {
@@ -167,6 +175,7 @@ export default {
       reference,
       input,
       popper,
+      query,
       popperPaneRef,
       selectedLabel,
       visible,
@@ -174,6 +183,7 @@ export default {
       inputHovering,
       showClose,
       iconClass,
+      showIcons,
       inputSize,
       toggleMenu,
       handleSelect,

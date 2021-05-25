@@ -21,7 +21,7 @@
   >
     <i
       class="button-loading icon-is-rotating"
-      :class="['b-iconfont', 'b-icon-' + loadingIcon ? loadingIcon : 'loading']"
+      :class="['b-iconfont', `b-icon-${loadingIcon||'loading'}`]"
       v-if="loading"
       :style="iconStyles"
     ></i>
@@ -54,7 +54,7 @@
   >
     <i
       class="button-loading icon-is-rotating"
-      :class="['b-iconfont', 'b-icon-' + loadingIcon ? loadingIcon : 'loading']"
+      :class="['b-iconfont', `b-icon-${loadingIcon||'loading'}`]"
       v-if="loading"
       :style="iconStyles"
     ></i>
@@ -78,7 +78,7 @@
   >
     <i
       class="button-loading icon-is-rotating"
-      :class="['b-iconfont', 'b-icon-' + loadingIcon ? loadingIcon : 'loading']"
+      :class="['b-iconfont', `b-icon-${loadingIcon||'loading'}`]"
       v-if="loading"
       :style="iconStyles"
     ></i>

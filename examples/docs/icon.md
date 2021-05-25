@@ -12,6 +12,7 @@ i 标签可以直接设置样式类名为 `b-iconfont b-icon-xxx` 来使用即�
   <i class="b-iconfont b-icon-addteam"></i>
   <b-icon name="read-fill" color="#ff53a5"></b-icon>
   <b-icon name="loading" class="icon-is-rotating"></b-icon>
+  <b-icon name="formatpainter" type="button" @click="$message('点击了图标')"></b-icon>
   <p flex="cross:center">
     图标选择器：
   <div style="width: 220px;">
@@ -25,5 +26,5 @@ i 标签可以直接设置样式类名为 `b-iconfont b-icon-xxx` 来使用即�
 
 ### 图标集合
 
-<icon-pane/>
+<icon-pane></icon-pane>
 
