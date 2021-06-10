@@ -41,9 +41,8 @@ export default {
       type: Number,
       default: 3,
     },
-    direction: {
-      type: String,
-      default: 'horizontal',
+    labelWidth: {
+      type: Number
     },
     size: {
       type: String,

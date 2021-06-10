@@ -62,7 +62,7 @@
       <b-radio :label="'large'">大号</b-radio>
     </b-radio-group>
 
-    <b-space wrap :size="size">
+    <b-space :size="size">
       space
       <b-button type="primary">Button</b-button>
       <b-button icon="upload">Button</b-button>
