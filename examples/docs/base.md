@@ -6,21 +6,6 @@
 
 暴露了以下几个api用于实现常用功能，log print在专门模块中说明
 
-```javascript
-this.$global = { zIndex: 2000 }
-this.$title = util.title
-this.$open = util.open
-this.$copy = util.copy
-this.$parseTime = util.parseTime
-this.$rangeTime = util.rangeTime
-this.$typeOf = util.typeOf
-this.$deepCopy = util.deepCopy
-this.$getRandomInt = util.getRandomInt
-this.$throttle = util.throttle
-this.$debounce = util.debounce
-this.$log = log
-```
-
 util方法函数
 
 | 方法名     | 说明    | 参数      |

@@ -33,7 +33,7 @@ app.component('SideNav', SideNav)
 app.component('ColorBase', ColorBase)
 app.component('DraggableDemo', DraggableDemo)
 app.component('IconPane', IconPane)
-app.use(BinUI)
+app.use(BinUI) // , { disabledDoc: true }
 app.use(router)
 // Mount when the route is ready
 router.isReady().then(() => {

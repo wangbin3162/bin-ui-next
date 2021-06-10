@@ -177,7 +177,7 @@ const plugins = [
 const defaultInstallOpt = {
   zIndex: 2000,
 }
-const install = (app) => {
+const install = (app, options = {}) => {
   components.forEach(component => {
     app.use(component)
   })
@@ -191,8 +191,8 @@ const install = (app) => {
   app.directive('NoData', NoData)
   app.directive('Loading', Loading)
   // 注册全局函数和属性
-  app.config.globalProperties.$global = defaultInstallOpt
-  setConfig(defaultInstallOpt)
+  app.config.globalProperties.$global = { ...defaultInstallOpt, ...options }
+  setConfig({ ...defaultInstallOpt, ...options })
   app.config.globalProperties.$title = util.title
   app.config.globalProperties.$open = util.open
   app.config.globalProperties.$copy = util.copy
@@ -207,7 +207,10 @@ const install = (app) => {
   app.config.globalProperties.$scrollTop = scrollTop
   app.config.globalProperties.$shuffle = util.shuffle
   app.config.globalProperties.$log = log
-  log.pretty(`[${config.name}] ${config.version}`, config.homepage)
+
+  if (!options.disabledDoc) {
+    log.pretty(`[${config.name}] ${config.version}`, config.homepage)
+  }
   return app
 }
 

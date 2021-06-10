@@ -18,6 +18,7 @@ import 'bin-ui-next/lib/styles/index.css'
 
 const app = createApp(App)
 app.use(BinUI)
+// app.use(BinUI,{disabledDoc:true}) // 可以设置禁用doc地址log
 app.mount('#app')
 ```
 
