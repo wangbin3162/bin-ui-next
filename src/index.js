@@ -177,7 +177,7 @@ const plugins = [
 const defaultInstallOpt = {
   zIndex: 2000,
 }
-const install = (app, options = {}) => {
+const install = function(app, options = {}) {
   components.forEach(component => {
     app.use(component)
   })
