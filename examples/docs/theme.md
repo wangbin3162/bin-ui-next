@@ -27,16 +27,25 @@ theme.styl
 
 ```stylus
 /* 改变 icon 字体路径变量，必需 */
-$font-path = '~bin-ui-next/src/styles/fonts/';
+$font-path = 'bin-ui-next/src/styles/fonts/';
 /* 改变主题色变量 */
 $color-primary = #722ed1;
 $color-success = #7cb305;
 $color-warning = #faad14;
 $color-danger = #eb2f96;
 
-$border-base-radius = 5px;
+$border-base-radius = 4px;
 
-@import '~bin-ui-next/src/styles/index.styl'
+/* 全部样式引入，可以按需引入 */
+@import 'bin-ui-next/src/styles/index.styl'
+
+/* 按需引入需要引入variables和base，icon */
+@import 'bin-ui-next/src/styles/common/variables.styl';
+@import 'bin-ui-next/src/styles/base.styl'
+@import 'bin-ui-next/src/styles/icon.styl'
+@import 'bin-ui-next/src/styles/components/button.styl'
+@import 'bin-ui-next/src/styles/components/input.styl'
+/* 其他组件...  按需引入样式，有些样式需要依赖其他组件，因此，引入时需要注意 */
 ```
 
 完整的变量列表，可直接参考`bin-ui-next/src/styles/common/variables.styl`进行具体配置
