@@ -46,6 +46,7 @@ export default {
       default: 'children',
     },
     loadData: Function,
+    render: Function,
     lockSelect: Boolean,
     defaultExpand: Boolean,
     filterNodeMethod: Function,
@@ -258,11 +259,13 @@ export default {
       () => {
         updateTreeState()
       },
+      { deep: true },
     )
     provide('BTreeRoot', {
       loadData: props.loadData,
       showCheckbox: props.showCheckbox,
       checkDirectly: props.checkDirectly,
+      render: props.render,
       flatState: states.flatState,
       handleToggle,
       handleSelect,

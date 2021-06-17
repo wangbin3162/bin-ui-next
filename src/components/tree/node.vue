@@ -15,13 +15,16 @@
           :disabled="data.disabled || data.disableCheckbox"
           @change="handleCheck"
         ></b-checkbox>
-        <span
-          v-if="data.display"
-          :class="titleClasses"
-          @click="handleSelect"
-          v-html="data.display"
-        ></span>
-        <span v-else :class="titleClasses" @click="handleSelect">{{ data.title }}</span>
+        <span v-if="data.render" :class="renderClasses" @click="handleSelect">
+          <render :render="data.render" :data="data" :node="node"></render>
+        </span>
+        <span v-else-if="isParentRender" :class="renderClasses" @click="handleSelect">
+          <render :render="parentRender" :data="data" :node="node"></render>
+        </span>
+        <template v-else>
+          <span v-if="data.display" :class="titleClasses" @click="handleSelect" v-html="data.display"></span>
+          <span v-else :class="titleClasses" @click="handleSelect">{{ data.title }}</span>
+        </template>
       </div>
       <collapse-transition>
         <div class="bin-tree-node-children" v-show="data.expand">
@@ -41,15 +44,16 @@
 </template>
 
 <script>
+import Render from './render'
 import CollapseTransition from '../collapse-transition'
-import { inject, nextTick, getCurrentInstance, provide } from 'vue'
+import { inject, nextTick, getCurrentInstance, provide, computed } from 'vue'
 import BCheckbox from '../checkbox'
 
 const prefixCls = 'bin-tree'
 
 export default {
   name: 'TreeNode',
-  components: { CollapseTransition, BCheckbox },
+  components: { CollapseTransition, Render, BCheckbox },
   props: {
     data: {
       type: Object,
@@ -65,11 +69,11 @@ export default {
     showCheckbox: Boolean,
   },
   setup(props) {
-    const TreeInstance = inject('BTreeRoot')
+    const TreeInstance = inject('BTreeRoot', {})
 
-    const instance = getCurrentInstance()
-
-    provide('NodeInstance', instance)
+    const isParentRender = computed(() => TreeInstance && TreeInstance.render)
+    const parentRender = computed(() => TreeInstance.render || null)
+    const node = computed(() => [TreeInstance.flatState, TreeInstance.flatState.find(item => item.nodeKey === props.data.nodeKey)])
     const handleExpand = () => {
       const item = props.data
       if (item.disabled) return
@@ -115,6 +119,9 @@ export default {
     }
     return {
       TreeInstance,
+      isParentRender,
+      parentRender,
+      node,
       handleExpand,
       handleSelect,
       handleCheck,
@@ -138,7 +145,7 @@ export default {
       return [
         `${prefixCls}-title`,
         {
-          [`${prefixCls}-title-selected`]: this.data.selected,
+          ['is-selected']: this.data.selected,
         },
       ]
     },
@@ -146,7 +153,7 @@ export default {
       return [
         `${prefixCls}-render-title`,
         {
-          [`${prefixCls}-title-selected`]: this.data.selected,
+          ['is-selected']: this.data.selected,
         },
       ]
     },

@@ -5,6 +5,13 @@
 <div class="doc-update">
     <b-timeline>
       <b-timeline-item>
+        <p class="version">0.3.4</p>
+        <p class="time">2021-06-17</p>
+        <p class="content"><i>🍀</i>优化树结构，增加render方式渲染</p>
+        <p class="content"><i>🍀</i>修改icon触发click事件冒泡</p>
+        <p class="content"><i>🍀</i>修改部分文档说明</p>
+      </b-timeline-item>
+      <b-timeline-item>
         <p class="version">0.3.3</p>
         <p class="time">2021-06-10</p>
         <p class="content"><i>🍀</i>优化desc 描述列表，增加宽度配置</p>

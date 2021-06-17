@@ -22,6 +22,7 @@ import generate from './generateTreeData'
 const icons = icon.glyphs.map(i => i.font_class)
 
 const app = createApp(App)
+app.use(BinUI) // , { disabledDoc: true }
 app.config.productionTip = false
 app.config.globalProperties.$icon = icons
 
@@ -33,7 +34,6 @@ app.component('SideNav', SideNav)
 app.component('ColorBase', ColorBase)
 app.component('DraggableDemo', DraggableDemo)
 app.component('IconPane', IconPane)
-app.use(BinUI) // , { disabledDoc: true }
 app.use(router)
 // Mount when the route is ready
 router.isReady().then(() => {

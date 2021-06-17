@@ -308,6 +308,94 @@ expand、selected、checked 和 disabled 可以设置展开，选中，勾选和
 
 :::
 
+### render函数
+
+使用render函数可以设置更多自定义的效果
+
+::: demo
+
+```html
+
+<template>
+  <div style="width: 300px;">
+    <b-tree :data="data4" :render="renderContent"></b-tree>
+  </div>
+</template>
+<script>
+  import { h } from 'vue'
+
+  export default {
+    data() {
+      return {
+        data4: [
+          {
+            title: 'parent 1',
+            expand: true,
+            render: ({ root, node, data }) => {
+              return h('span', {
+                style: { display: 'inline-flex', justifyContent: 'space-between', width: '100%', }
+              }, [
+                h('span', data.title),
+                h('i', {
+                  'class': ['b-iconfont', 'b-icon-plus-square'],
+                  style: { fontSize: '16px', color: '#1089ff' },
+                  onClick: () => {
+                    this.append(data)
+                  }
+                })
+              ]);
+            },
+            children: [
+              { title: 'child 1-1', },
+              { title: 'child 1-2', }
+            ]
+          }
+        ],
+      }
+    },
+    methods: {
+      renderContent({ root, node, data }) {
+        return h('span', {
+          style: { display: 'inline-flex', justifyContent: 'space-between', width: '100%', }
+        }, [
+          h('span', data.title),
+          h('span', { style: { display: 'inline-block', } }, [
+            h('i', {
+              'class': ['b-iconfont', 'b-icon-plus-circle'],
+              style: { fontSize: '16px', color: '#5d6d7e' },
+              onClick: () => {
+                this.append(data)
+              }
+            }),
+            h('i', {
+              'class': ['b-iconfont', 'b-icon-minus-circle'],
+              style: { fontSize: '16px', color: '#ff4d4f' },
+              onClick: () => {
+                this.remove(root, node, data)
+              }
+            })
+          ])
+        ]);
+      },
+      append(data) {
+        const children = data.children || [];
+        data.expand = true
+        children.push({ title: 'new node' });
+        data.children = children
+      },
+      remove(root, node, data) {
+        const parentKey = root.find(el => el === node).parent;
+        const parent = root.find(el => el.nodeKey === parentKey).node;
+        const index = parent.children.indexOf(data);
+        parent.children.splice(index, 1);
+      }
+    }
+  }
+</script>
+```
+
+:::
+
 ### Big-Tree 超大数据量的树结构
 
 如果需要渲染超大数据量的属性结构，需要使用扩展组件`<b-big-tree>`,组件内部api基本复用树结构所有属性，对树形结构进行优化，利用可视区域位置来进行过滤筛选节点并进行操作，

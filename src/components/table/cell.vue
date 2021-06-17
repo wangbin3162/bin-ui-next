@@ -33,7 +33,7 @@
     </template>
     <template v-if="renderType === 'expand' && !row._disableExpand">
       <div :class="expandCls" @click="toggleExpand">
-        <b-icon name="right"></b-icon>
+        <i class="b-iconfont b-icon-right"></i>
       </div>
     </template>
     <table-expand
@@ -53,14 +53,13 @@
 <script>
 import TableExpand from './main/expand'
 import TableSlot from './main/slot'
-import BIcon from '../icon/icon'
 import BCheckbox from '../checkbox/checkbox'
 import { inject, ref } from 'vue'
 import BTooltip from '../tooltip'
 
 export default {
   name: 'TableCell',
-  components: { BTooltip, BCheckbox, BIcon, TableExpand, TableSlot },
+  components: { BTooltip, BCheckbox, TableExpand, TableSlot },
   props: {
     prefixCls: String,
     row: Object,

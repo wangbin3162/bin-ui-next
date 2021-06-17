@@ -1,5 +1,5 @@
 <template>
-  <i :class="['b-iconfont', 'b-icon-' + name]" :style="iconStyle" @click.stop.prevent="handleClick"></i>
+  <i :class="['b-iconfont', 'b-icon-' + name]" :style="iconStyle" @click="handleClick"></i>
 </template>
 
 <script>

@@ -30,7 +30,6 @@
   </transition>
 </template>
 <script>
-import { computed, ref } from 'vue'
 import { EVENT_CODE } from '../../utils/aria'
 import { on, off } from '../../utils/dom'
 
