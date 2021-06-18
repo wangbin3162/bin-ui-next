@@ -47,7 +47,8 @@
   .nav-wrapper {
     height: 36px;
     .tab-item {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
       position: relative;
       cursor: pointer;
       color: $color-text-default;
@@ -67,13 +68,14 @@
         transition: $animation-duration-base;
       }
       .b-icon-close {
+        position: relative;
+        right: -5px;
         width: 0;
         overflow: hidden;
         font-size: 12px;
         text-align: center;
-        height: 16px;
-        line-height: 14px;
-        padding-top: 1px;
+        height: 14px;
+        line-height: 15px;
         color: $color-text-default;
         transition: $animation-duration-base;
         &:hover {
@@ -92,7 +94,6 @@
       }
       &.active {
         color: $color-primary;
-        padding: 0 10px 0 18px;
         > i:not(.b-icon-close) {
           color: $color-primary;
         }
@@ -126,7 +127,7 @@
     font-size: $base-font-size;
     font-weight: 400;
     color: $color-text-default;
-    border: 1px solid #cfd7e5;
+    border: 1px solid $border-color-light;
     box-shadow: 0 2px 12px 0 rgba(0, 0, 0, .1)
     li {
       margin: 0;
@@ -169,49 +170,30 @@
       background: #fff;
       border-bottom: 1px solid #e4e7ed;
       border-left: 1px solid #e4e7ed;
-      transition: color $animation-duration-base, padding $animation-duration-base;
+      transition: $animation-duration-base
       &:first-child {
         border-left: none;
       }
       &.active {
-        &.no-close {
-          padding: 0 18px;
-        }
         border-bottom-color: #fff;
-      }
-    }
-    &.closable .tab-item {
-      &:hover {
-        padding: 0 10px 0 18px;
-      }
-      &.no-close:hover {
-        padding: 0 18px;
       }
     }
   }
   &.tag {
-    .scroll-wrapper {
-      height: 32px;
-    }
     .tab-item {
       background: #fff;
-      height: 34px;
-      line-height: 33px;
       border-radius: $border-base-radius;
       padding: 0 12px;
       border: 1px solid #e8eaec;
-      margin-right: 10px;
+      margin-right: 8px;
       font-size: $base-font-size;
       &::before {
         content: '';
         background: #e1e1e1;
-        display: inline-block;
-        position: relative;
-        top: 1px;
         width: 12px;
         height: 12px;
         border-radius: 50%;
-        margin-right: 2px;
+        margin-right: 4px;
       }
       &.width-icon::before {
         display: none;
