@@ -6,7 +6,6 @@ make-row(gutter = 0) {
   clear-fix()
 }
 
-
 make-grid(class = '') {
   float-grid-columns(class);
   loop-grid-columns(class);
@@ -72,4 +71,10 @@ clear-fix() {
     font-size: 0;
     height: 0;
   }
+}
+
+disabled() {
+  opacity: 1;
+  cursor: not-allowed;
+  color: $color-text-placeholder;
 }

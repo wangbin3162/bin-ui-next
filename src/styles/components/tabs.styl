@@ -8,6 +8,9 @@
       box-sizing: border-box;
       .nav-next, .nav-prev {
         position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         cursor: pointer;
         line-height: 36px;
         width: 20px;
@@ -16,6 +19,9 @@
         z-index: 1;
         i {
           font-size: 14px;
+        }
+        &.disabled {
+          disabled()
         }
       }
       .nav-prev {
@@ -69,7 +75,7 @@
         line-height: 14px;
         padding-top: 1px;
         color: $color-text-default;
-        transition: color .2s;
+        transition: $animation-duration-base;
         &:hover {
           color: $color-text-primary;
         }
@@ -81,24 +87,19 @@
         }
         .b-icon-close {
           width: 16px;
-          margin-left: 5px;
+          margin-left: 2px;
         }
       }
       &.active {
         color: $color-primary;
-        &:hover {
-          padding: 0 18px;
-        }
+        padding: 0 10px 0 18px;
         > i:not(.b-icon-close) {
           color: $color-primary;
         }
         .b-icon-close {
           width: 16px;
-          margin-left: 5px;
+          margin-left: 4px;
         }
-      }
-      &.no-close:hover {
-        padding: 0 18px;
       }
     }
     .tabs-active-bar {
@@ -120,7 +121,7 @@
     left: 0;
     top: 0;
     list-style-type: none;
-    padding: 5px 0;
+    padding: 4px 0;
     border-radius: $border-base-radius;
     font-size: $base-font-size;
     font-weight: 400;
@@ -129,9 +130,9 @@
     box-shadow: 0 2px 12px 0 rgba(0, 0, 0, .1)
     li {
       margin: 0;
-      padding: 9px 16px;
+      padding: 8px 16px;
       cursor: pointer;
-      line-height: 1.2em;
+      line-height: 1em;
       list-style: none;
       color: $color-text-default;
       &:hover {
@@ -173,12 +174,15 @@
         border-left: none;
       }
       &.active {
+        &.no-close {
+          padding: 0 18px;
+        }
         border-bottom-color: #fff;
       }
     }
     &.closable .tab-item {
       &:hover {
-        padding: 0 12px;
+        padding: 0 10px 0 18px;
       }
       &.no-close:hover {
         padding: 0 18px;
@@ -207,29 +211,21 @@
         width: 12px;
         height: 12px;
         border-radius: 50%;
-        margin-right: 8px;
+        margin-right: 2px;
       }
       &.width-icon::before {
         display: none;
       }
       &.active {
-        &:hover {
-          padding: 0 12px;
-        }
         &::before {
           background: $color-primary;
+        }
+        &.no-close {
+          padding: 0 12px;
         }
         .custom-icon {
           color: $color-primary;
         }
-      }
-      &.no-close:hover {
-        padding: 0 12px;
-      }
-    }
-    .nav-wrap.is-scrollable {
-      .nav-next, .nav-prev {
-        line-height: 36px;
       }
     }
   }

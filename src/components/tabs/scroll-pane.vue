@@ -1,10 +1,10 @@
 <template>
   <div class="nav-wrap" :class="{ 'is-scrollable': isScrollable }">
     <template v-if="!hideArrow && isScrollable">
-      <span class="nav-prev" @click="handlePrev" v-if="!hidePrev">
+      <span class="nav-prev" :class="{'disabled':hidePrev}" @click="handlePrev">
         <i class="b-iconfont b-icon-left" />
       </span>
-      <span class="nav-next" @click="handleNext" v-if="!hideNext">
+      <span class="nav-next" :class="{'disabled':hideNext}" @click="handleNext">
         <i class="b-iconfont b-icon-right" />
       </span>
     </template>
