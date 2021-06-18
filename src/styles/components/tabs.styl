@@ -63,19 +63,15 @@
       .b-icon-close {
         width: 0;
         overflow: hidden;
-        font-size: 14px;
-        border-radius: 50%;
+        font-size: 12px;
         text-align: center;
         height: 16px;
-        line-height: 16px;
+        line-height: 14px;
+        padding-top: 1px;
         color: $color-text-default;
-        transition: all $animation-duration-base cubic-bezier(.645, .045, .355, 1);
-        &:before {
-          display: inline-block;
-        }
+        transition: color .2s;
         &:hover {
-          background-color: $color-text-secondary;
-          color: $color-white;
+          color: $color-text-primary;
         }
       }
       &:hover {
