@@ -5,11 +5,12 @@
 <div class="doc-update">
     <b-timeline>
       <b-timeline-item>
-        <p class="version">0.3.8</p>
+        <p class="version">0.3.9</p>
         <p class="time">2021-06-24</p>
         <p class="content"><i>🍀</i>优化抽屉组件弹层动态</p>
         <p class="content"><i>🍀</i>优化menu菜单样式</p>
         <p class="content"><i>🍀</i>优化面包屑</p>
+        <p class="content"><i>🍀</i>修复组件路径问题</p>
       </b-timeline-item>
       <b-timeline-item>
         <p class="version">0.3.7</p>
