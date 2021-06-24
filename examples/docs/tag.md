@@ -160,9 +160,9 @@ dot 模式简单显示
   </div>
 </template>
 <script>
-  import { defineComponent, reactive, toRefs } from 'vue'
+  import { reactive, toRefs } from 'vue'
 
-  export default defineComponent({
+  export default {
     setup() {
       const data = reactive({
         dynamicTags: ['标签一', '标签二', '标签三'],
@@ -181,7 +181,7 @@ dot 模式简单显示
         addOne
       }
     }
-  })
+  }
 </script>
 ```
 

@@ -1,6 +1,6 @@
 import { computed, nextTick, ref } from 'vue'
-import { CHANGE_EVENT } from '../../utils/constants'
-import useForm from '../../hooks/useForm'
+import { CHANGE_EVENT } from '../../../utils/constants'
+import useForm from '../../../hooks/useForm'
 
 export const useSlide = (props, initData, emit) => {
   const { BForm, formEmit } = useForm()

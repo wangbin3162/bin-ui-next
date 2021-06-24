@@ -1,5 +1,5 @@
 import { isFunction } from '@vue/shared'
-import { capitalize, isUndefined, isEmpty } from '../../utils/util-helper'
+import { capitalize, isUndefined, isEmpty } from '../../../utils/util-helper'
 
 let uid = 0
 

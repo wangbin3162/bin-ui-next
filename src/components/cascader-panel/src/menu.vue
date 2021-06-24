@@ -35,9 +35,9 @@
 
 <script>
 import { computed, getCurrentInstance, inject, ref } from 'vue'
-import BScrollbar from '../scrollbar'
+import BScrollbar from '../../scrollbar'
 import BCascaderNode from './node.vue'
-import { generateId } from '../../utils/util-helper'
+import { generateId } from '../../../utils/util-helper'
 
 export default {
   name: 'BCascaderMenu',

@@ -91,16 +91,16 @@ import {
   toRefs,
   watch,
 } from 'vue'
-import { UPDATE_MODEL_EVENT, CHANGE_EVENT } from '../../utils/constants'
-import { off, on } from '../../utils/dom'
-import throwError from '../../utils/log'
+import { UPDATE_MODEL_EVENT, CHANGE_EVENT } from '../../../utils/constants'
+import { off, on } from '../../../utils/dom'
+import throwError from '../../../utils/log'
 import SliderButton from './button.vue'
 import SliderMarker from './marker.vue'
 import { useMarks } from './useMarks'
 import { useSlide } from './useSlide'
 import { useStops } from './useStops'
 
-import BInputNumber from '../input-number'
+import BInputNumber from '../../input-number'
 
 export default {
   name: 'BSlider',

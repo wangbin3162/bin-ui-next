@@ -295,7 +295,6 @@ export {
   Message,
   MessageBox,
   Notice,
-  install,
 }
 
 export default {

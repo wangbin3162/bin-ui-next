@@ -1,7 +1,6 @@
-import { UPDATE_MODEL_EVENT } from '../../utils/constants'
-import { off, on } from '../../utils/dom'
+import { UPDATE_MODEL_EVENT } from '../../../utils/constants'
+import { off, on } from '../../../utils/dom'
 import { computed, inject, nextTick, ref, watch } from 'vue'
-
 
 const useTooltip = (props, formatTooltip, showTooltip) => {
   const tooltip = ref(null)

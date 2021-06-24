@@ -1,4 +1,4 @@
-import Skeleton from './index.vue'
+import Skeleton from './skeleton.vue'
 
 Skeleton.install = (app) => {
   app.component(Skeleton.name, Skeleton)

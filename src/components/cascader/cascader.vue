@@ -133,7 +133,7 @@
 <script>
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import BCascaderPanel from '../cascader-panel'
-import { CommonProps } from '../cascader-panel/config'
+import { CommonProps } from '../cascader-panel/src/config'
 import BInput from '../input'
 import BPopper from '../popper'
 import BScrollbar from '../scrollbar'

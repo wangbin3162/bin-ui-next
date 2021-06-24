@@ -1,4 +1,4 @@
-import Slider from './index.vue'
+import Slider from './src/index.vue'
 
 /* istanbul ignore next */
 Slider.install = function(Vue) {

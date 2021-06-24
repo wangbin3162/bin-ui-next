@@ -1,5 +1,5 @@
 import Node from './node'
-import { isEqual } from '../../utils/util'
+import { isEqual } from '../../../utils/util'
 
 const flatNodes = (nodes, leafOnly) => {
   return nodes.reduce((res, node) => {

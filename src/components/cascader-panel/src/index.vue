@@ -26,16 +26,16 @@ import {
 import BCascaderMenu from './menu.vue'
 import Store from './store'
 import Node from './node'
-import { EVENT_CODE } from '../../utils/aria'
-import { UPDATE_MODEL_EVENT, CHANGE_EVENT } from '../../utils/constants'
-import isServer from '../../utils/isServer'
-import scrollIntoView from '../../utils/scroll-into-view'
+import { EVENT_CODE } from '../../../utils/aria'
+import { UPDATE_MODEL_EVENT, CHANGE_EVENT } from '../../../utils/constants'
+import isServer from '../../../utils/isServer'
+import scrollIntoView from '../../../utils/scroll-into-view'
 import {
   arrayFlat,
   coerceTruthyValueToArray,
   deduplicate,
   isEmpty,
-} from '../../utils/util-helper'
+} from '../../../utils/util-helper'
 import { CommonProps, useCascaderConfig } from './config'
 import {
   checkNode,
@@ -44,7 +44,7 @@ import {
   getSibling,
   sortByOriginalOrder,
 } from './utils'
-import { isEqual } from '../../utils/util'
+import { isEqual } from '../../../utils/util'
 
 export default {
   name: 'BCascaderPanel',

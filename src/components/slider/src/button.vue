@@ -37,8 +37,8 @@
 </template>
 
 <script>
-import BTooltip from '../tooltip'
-import { UPDATE_MODEL_EVENT } from '../../utils/constants'
+import BTooltip from '../../tooltip'
+import { UPDATE_MODEL_EVENT } from '../../../utils/constants'
 import { reactive, toRefs } from 'vue'
 import { useSliderButton } from './useSliderButton'
 

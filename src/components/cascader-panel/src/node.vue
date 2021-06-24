@@ -52,8 +52,8 @@
 
 <script>
 import { computed, inject, h } from 'vue'
-import BCheckbox from '../checkbox'
-import BRadio from '../radio'
+import BCheckbox from '../../checkbox'
+import BRadio from '../../radio'
 
 export default {
   name: 'BCascaderNode',
