@@ -10,8 +10,6 @@ import { isObject, toRawType } from '@vue/shared'
 import { debounce, isEqual } from '../../utils/util'
 import useForm from '../../hooks/useForm'
 
-// import { elFormKey, elFormItemKey } from '@element-plus/form'
-
 export function useSelectStates(props) {
   const selectEmitter = mitt()
   return reactive({

@@ -34,7 +34,7 @@
               </div>
               <div class="bin-drawer-footer" v-if="$slots.footer">
                 <div style="text-align: right">
-                  <slot name="footer"> </slot>
+                  <slot name="footer"></slot>
                 </div>
               </div>
             </div>
@@ -102,7 +102,7 @@ export default {
     },
     zIndex: {
       type: Number,
-      default: 1000,
+      default: 0,
     },
     appendToBody: Boolean,
     className: String,
@@ -123,7 +123,7 @@ export default {
     const dragWidth = ref(props.width)
     const wrapperWidth = ref(props.width)
     const wrapperLeft = ref(0)
-    const modalIndex = transferIncrease()
+    const modalIndex = ref(transferIncrease())
 
     if (props.lockScroll) {
       useLockScreen(visible)
@@ -132,7 +132,10 @@ export default {
       () => props.modelValue,
       (val) => {
         visible.value = val
-        if (val) wrapShow.value = true
+        if (val) {
+          modalIndex.value = transferIncrease()
+          wrapShow.value = true
+        }
       },
     )
     return {

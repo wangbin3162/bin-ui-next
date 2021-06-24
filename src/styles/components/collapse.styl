@@ -59,7 +59,7 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    font-size: 18px;
+    font-size: 16px;
     color: #333333;
     background: #fff;
     transition: $animation-duration-base;
@@ -70,15 +70,15 @@
       position: relative;
       display: inline-block;
       vertical-align: middle;
-      padding: 14px 24px;
+      padding: 10px 16px;
       &:after {
         content: '';
         position: absolute;
         background-color: #1890ff;
         left: 0;
-        top: 18px;
-        bottom: 18px;
-        width: 3px;
+        top: 12px;
+        bottom: 12px;
+        width: 2px;
       }
     }
     .right {
@@ -89,8 +89,9 @@
     }
     .arrow {
       position: absolute;
-      top: 16px;
+      top: 50%;
       right: 16px;
+      transform: translateY(-50%);
       transition: $animation-duration-base;
       .iconfont {
         font-size: 20px;
@@ -110,7 +111,7 @@
     .header {
       box-shadow: 0 1px 3px 1px #eeeeee;
       .arrow {
-        transform: rotate(180deg);
+        transform: translateY(-50%) rotate(180deg);
       }
     }
   }

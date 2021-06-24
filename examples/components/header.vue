@@ -141,7 +141,7 @@ export default {
       }
     }
   }
-  >>> .bin-select {
+  :deep(.bin-select) {
     .bin-input.bin-input-default {
       border-color: transparent;
     }
