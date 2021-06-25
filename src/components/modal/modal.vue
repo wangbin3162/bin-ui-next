@@ -12,39 +12,42 @@
         :overlay-class="maskClass"
         :z-index="zIndex"
         @click="onModalClick">
-        <div
-          ref="modalRef"
-          :class="['bin-modal',
+        <transition :name="transitionName || 'dialog-fade'">
+          <div
+            v-show="visible"
+            ref="modalRef"
+            :class="['bin-modal',
            { 'bin-modal-wrap': draggable},
            { 'is-fullscreen': fullscreen},
             customClass,
           ]"
-          aria-modal="true"
-          role="dialog"
-          :aria-label="title || 'dialog'"
-          :style="style"
-          @click.stop=""
-        >
-          <div class="bin-modal-close">
-            <slot name="ctrl"></slot>
-            <i v-if="showClose" class="b-iconfont b-icon-close" @click="handleClose"></i>
-          </div>
-          <div class="bin-modal-header" v-if="$slots.title||title">
-            <slot name="title">
+            aria-modal="true"
+            role="dialog"
+            :aria-label="title || 'dialog'"
+            :style="style"
+            @click.stop=""
+          >
+            <div class="bin-modal-close">
+              <slot name="ctrl"></slot>
+              <i v-if="showClose" class="b-iconfont b-icon-close" @click="handleClose"></i>
+            </div>
+            <div class="bin-modal-header" v-if="$slots.title||title">
+              <slot name="title">
               <span class="bin-modal-title">
                 {{ title }}
               </span>
-            </slot>
-          </div>
-          <template v-if="rendered">
-            <div class="bin-modal-body">
-              <slot></slot>
+              </slot>
             </div>
-          </template>
-          <div v-if="$slots.footer" class="bin-modal-footer">
-            <slot name="footer"></slot>
+            <template v-if="rendered">
+              <div class="bin-modal-body">
+                <slot></slot>
+              </div>
+            </template>
+            <div v-if="$slots.footer" class="bin-modal-footer">
+              <slot name="footer"></slot>
+            </div>
           </div>
-        </div>
+        </transition>
       </b-mask>
     </transition>
   </teleport>
@@ -187,6 +190,9 @@ export default {
     zIndex: {
       type: Number,
     },
+    transitionName: {
+      type: String,
+    },
   },
   emits: [
     OPEN_EVENT,
@@ -210,6 +216,11 @@ export default {
         // first show
         if (!visible) {
           const dialogNode = modalRef.value
+          const cusTransition = props.transitionName && props.transitionName !== 'dialog-fade'
+          if (cusTransition) {
+            setTransformOrigin(dialogNode, '')
+            return
+          }
           if (mousePosition) {
             const elOffset = offset(dialogNode)
             setTransformOrigin(

@@ -3,92 +3,31 @@
     <div class="header-container">
       <div class="left" style="width: 580px" flex="main:justify cross:center">
         <div class="logo"></div>
-        <b-select style="width: 280px;" placeholder="查询组件" filterable :model-value="current"
-                  @change="handleComponentChange" clearable>
-          <template #prefix>
-            <i class="b-iconfont b-icon-search"></i>
-          </template>
-          <b-option v-for="item in components" :value="item.value" :key="item.value">
-            <i :class="['b-iconfont',`b-icon-${item.icon}`]"
-               style="position: relative;top:-1px;margin-right:5px;"></i>
-            {{ item.label }}
-          </b-option>
-        </b-select>
       </div>
       <div class="link">
+        <span class="search" @click="openSearch"><i class="b-iconfont b-icon-search"></i></span>
         <router-link :to="{ name: 'guide' }" class="active">指南</router-link>
         <router-link :to="{ name: 'button' }" class="active">组件</router-link>
         <a
           href="https://github.com/wangbin3162/bin-ui-next"
           class="github"
           target="_blank"
-        >GitHub</a
-        >
+        >GitHub</a>
       </div>
+      <search ref="searchRef"></search>
     </div>
   </header>
 </template>
 
 <script>
-import navConf from '../nav.config.json'
+import Search from './search'
 
 export default {
   name: 'MainHeader',
-  data() {
-    return {
-      components: [],
-      current: '',
-    }
-  },
-  created() {
-    this.getComponentsOptions()
-  },
-  watch: {
-    $route: {
-      handler() {
-        setTimeout(() => {
-          this.current = ''
-        }, 300)
-      },
-      immediate: true,
-    },
-  },
+  components: { Search },
   methods: {
-    goTo(url) {
-      this.$util.open(url, true)
-    },
-    getComponentsOptions() {
-      let routes = []
-      Object.keys(navConf).forEach((header) => {
-        routes = routes.concat(navConf[header])
-      })
-
-      let addComponent = (router) => {
-        router.forEach((route) => {
-          if (route.items) {
-            addComponent(route.items)
-            routes = routes.concat(route.items)
-          } else {
-            // 如果是组件路由
-            if (['guide', 'install', 'start', 'theme', 'logs'].indexOf(route.name) === -1) {
-              this.components.push({
-                value: route.path,
-                label: route.desc,
-                icon: route.icon,
-              })
-            }
-          }
-        })
-      }
-      addComponent(routes)
-    },
-    handleComponentChange(val) {
-      if (!val || val.length === 0) {
-        return
-      }
-      if (this.$route.path !== val) {
-        this.$router.push(val)
-      }
+    openSearch() {
+      this.$refs.searchRef.handleOpen()
     },
   },
 }
@@ -137,6 +76,13 @@ export default {
         font-size: 15px;
         &.github {
           color: #636363;
+        }
+      }
+      > span {
+        padding: 0 20px;
+        color: rgba(0, 0, 0, .65);
+        i {
+          font-size: 18px;
         }
       }
     }

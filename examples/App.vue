@@ -78,6 +78,7 @@ export default {
 #app {
   width: 100%;
   min-height: 100vh;
+  overflow-x: hidden;
 }
 .main-cnt {
   padding-top: 80px;

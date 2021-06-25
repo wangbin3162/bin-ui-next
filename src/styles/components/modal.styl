@@ -30,7 +30,7 @@
     white-space: nowrap;
   }
   &-body {
-    padding: 24px;
+    padding: 16px;
     font-size: $base-font-size;
     line-height: $base-line-height;
     word-wrap: break-word;
@@ -94,16 +94,18 @@
 
 .modal-fade-enter-active {
   animation: modal-fade-in $animation-duration-slow;
-  .bin-modal {
-    animation: dialog-fade-in $animation-duration-slow;
-  }
 }
 
 .modal-fade-leave-active {
   animation: modal-fade-out $animation-duration-slow;
-  .bin-modal {
-    animation: dialog-fade-out $animation-duration-slow;
-  }
+}
+
+.dialog-fade-enter-active {
+  animation: dialog-fade-in $animation-duration-slow;
+}
+
+.dialog-fade-leave-active {
+  animation: dialog-fade-out $animation-duration-slow;
 }
 
 @keyframes dialog-fade-in {

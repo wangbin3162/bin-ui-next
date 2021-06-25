@@ -104,6 +104,52 @@ Modal 组件提供了灵活的自定义样式 API 和 Slot，可以自由控制�
 
 :::
 
+### 自定义弹出动画
+
+弹窗动画可以通过transition-name自定义，默认从点击位置弹出
+
+::: demo 注：
+
+```html
+
+<template>
+  <b-space>
+    <b-select v-model="transitionName">
+      <b-option label="dialog-fade" value="dialog-fade"></b-option>
+      <b-option label="fade-in" value="fade-in"></b-option>
+      <b-option label="move-right" value="move-right"></b-option>
+      <b-option label="zoom-in-top" value="zoom-in-top"></b-option>
+      <b-option label="zoom-in" value="zoom-in"></b-option>
+      <b-option label="fade-scale-move" value="fade-scale-move"></b-option>
+      <b-option label="fade-down" value="fade-down"></b-option>
+    </b-select>
+    <b-button @click="modal1 = true">弹出</b-button>
+  </b-space>
+  <b-modal v-model="modal1" :title="`自定义动画${transitionName}`" :transition-name="transitionName">
+    <p>我是弹窗内容...</p>
+    <p>我是弹窗内容...</p>
+    <p>我是弹窗内容...</p>
+    <template #footer>
+      <span>
+        <b-button @click="modal1 = false">关闭</b-button>
+      </span>
+    </template>
+  </b-modal>
+</template>
+<script>
+  export default {
+    data() {
+      return {
+        modal1: false,
+        transitionName: 'dialog-fade'
+      }
+    }
+  }
+</script>
+```
+
+:::
+
 ### 禁用关闭
 
 可以禁用关闭和遮罩层关闭。
@@ -267,6 +313,7 @@ Modal 组件提供了灵活的自定义样式 API 和 Slot，可以自由控制�
 | z-index    | 层级 | Number  |      —      |  2000  |
 | append-to-body    | 是否将对话框放置于 body 内 | Boolean  |      —      |  false  |
 | lock-scroll | 出现modal时锁定滚动 | Boolean  |      —      |  true  |
+| transition-name   |弹窗动画 | String  |      —      | 'dialog-fade' |
 | open-delay    | 打开延时（毫秒） | Number  |      —      | 0 |
 | close-delay    | 关闭延时（毫秒） | Number  |      —      | 0 |
 | before-close     | 关闭前回调，会暂停关闭 | Function(done) done用于关闭  |      —      |   —     |
