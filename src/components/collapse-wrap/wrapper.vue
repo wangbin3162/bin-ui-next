@@ -35,7 +35,10 @@ export default {
   name: 'BCollapseWrap',
   components: { BCollapseTransition, BIcon },
   props: {
-    modelValue: Boolean,
+    modelValue: {
+      type: Boolean,
+      default: true,
+    },
     title: String,
     collapse: Boolean,
     shadow: String,

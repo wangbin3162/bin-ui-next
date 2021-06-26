@@ -11,7 +11,6 @@
 <template>
   <div class="demo-button">
     <b-button>Default</b-button>
-    <b-button type="dashed">Dashed</b-button>
     <b-button type="primary">Primary</b-button>
     <b-button type="success">Success</b-button>
     <b-button type="info">Info</b-button>

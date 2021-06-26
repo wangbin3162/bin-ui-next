@@ -4,19 +4,7 @@
     class="bin-button"
     :disabled="disabled || loading"
     :type="nativeType"
-    :class="[
-      'bin-button--' + type,
-      'bin-button--' + size,
-      {
-        'is-disabled': disabled,
-        'is-loading': loading,
-        'is-plain': plain,
-        'is-round': round,
-        'is-dashed': dashed,
-        'is-transparent': transparent,
-        'is-background': background,
-      },
-    ]"
+    :class="btnClass"
     @click="handleClick"
     v-click-animation
   >
@@ -38,19 +26,7 @@
     class="bin-button"
     :disabled="disabled || loading"
     :type="nativeType"
-    :class="[
-      'bin-button--' + type,
-      'bin-button--' + size,
-      {
-        'is-disabled': disabled,
-        'is-loading': loading,
-        'is-plain': plain,
-        'is-round': round,
-        'is-dashed': dashed,
-        'is-transparent': transparent,
-        'is-background': background,
-      },
-    ]"
+    :class="btnClass"
     @click="handleClick"
     v-waves="waveColor"
   >
@@ -72,10 +48,11 @@
     :disabled="disabled || loading"
     :type="nativeType"
     class="bin-button"
-    :class="[
-      'bin-button--' + type,
-      { 'is-disabled': disabled, 'is-loading': loading },
-    ]"
+    :class="[{
+        [`bin-button--${type}`]: type,
+        'is-disabled': disabled,
+        'is-loading': loading
+      }]"
     @click="handleClick"
   >
     <i
@@ -104,7 +81,6 @@ export default {
   props: {
     type: {
       type: String,
-      default: 'default',
       validator: (val) =>
         [
           'default',
@@ -119,7 +95,6 @@ export default {
     size: {
       type: String,
       validator: validSize,
-      default: 'default',
     },
     icon: String,
     iconStyle: Object,
@@ -162,6 +137,21 @@ export default {
     },
     iconStyles() {
       return { ...this.textStyle, ...this.iconStyle }
+    },
+    btnClass() {
+      return [
+        {
+          [`bin-button--${this.type}`]: this.type,
+          [`bin-button--${this.size}`]: this.size,
+          'is-disabled': this.disabled,
+          'is-loading': this.loading,
+          'is-plain': this.plain,
+          'is-round': this.round,
+          'is-dashed': this.dashed,
+          'is-transparent': this.transparent,
+          'is-background': this.background,
+        },
+      ]
     },
   },
   methods: {

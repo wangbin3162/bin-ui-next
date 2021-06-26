@@ -1,6 +1,6 @@
 {
   "name": "bin-ui-next",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "keywords": [
     "bin-ui-next",
     "bin-ui",
@@ -87,7 +87,6 @@
     "style-loader": "^1.2.1",
     "stylus": "^0.54.8",
     "stylus-loader": "3.0.2",
-    "tinycolor2": "^1.4.2",
     "transliteration": "^2.2.0",
     "url-loader": "^4.1.1",
     "vue": "^3.0.5",
