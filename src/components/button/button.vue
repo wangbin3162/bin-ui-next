@@ -14,6 +14,7 @@
         'is-round': round,
         'is-dashed': dashed,
         'is-transparent': transparent,
+        'is-background': background,
       },
     ]"
     @click="handleClick"
@@ -47,6 +48,7 @@
         'is-round': round,
         'is-dashed': dashed,
         'is-transparent': transparent,
+        'is-background': background,
       },
     ]"
     @click="handleClick"
@@ -111,7 +113,6 @@ export default {
           'warning',
           'info',
           'danger',
-          'dashed',
           'text',
         ].includes(val),
     },
@@ -129,6 +130,7 @@ export default {
     round: Boolean,
     dashed: Boolean,
     transparent: Boolean,
+    background: Boolean,
     animationType: {
       type: String,
       validator: (val) => ['click', 'waves'].includes(val),

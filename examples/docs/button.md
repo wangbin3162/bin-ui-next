@@ -4,7 +4,45 @@
 
 ### 基础用法
 
-使用`type`可以设置不同类型的按钮样式，其中，`dashed`也可以单独设置
+默认按钮，可设置`dashed`虚线和`background`拟物按钮
+
+::: demo
+
+```html
+
+<template>
+  <div class="demo-button" flex="cross:center">
+    <b-button>Default</b-button>
+    <b-button dashed>Dashed</b-button>
+    <b-button background>Background</b-button>
+  </div>
+</template>
+```
+
+:::
+
+### 不同状态
+
+使用`type`可以设置不同状态的按钮样式
+
+::: demo
+
+```html
+
+<template>
+  <div class="demo-button">
+    <b-button type="primary">Primary</b-button>
+    <b-button type="success">Success</b-button>
+    <b-button type="info">Info</b-button>
+    <b-button type="warning">Warning</b-button>
+    <b-button type="danger">Danger</b-button>
+  </div>
+</template>
+```
+
+:::
+
+### 不同的按钮效果
 
 可以另外给按钮设置不同的按钮效果，如`plain`简约按钮，`round`圆角按钮，`dashed`虚线按钮和`transparent`透明按钮四种不同种类的按钮
 
@@ -13,15 +51,7 @@
 ```html
 
 <template>
-  <div class="demo-button">
-    <b-button>Default</b-button>
-    <b-button type="dashed">Dashed</b-button>
-    <b-button type="primary">Primary</b-button>
-    <b-button type="success">Success</b-button>
-    <b-button type="info">Info</b-button>
-    <b-button type="warning">Warning</b-button>
-    <b-button type="danger">Danger</b-button>
-  </div>
+  <b-divider align="left">[plain]简约按钮</b-divider>
   <div class="demo-button">
     <b-button type="primary" plain>Primary</b-button>
     <b-button type="success" plain>Success</b-button>
@@ -29,6 +59,7 @@
     <b-button type="warning" plain>Warning</b-button>
     <b-button type="danger" plain>Danger</b-button>
   </div>
+  <b-divider align="left">[round]圆角按钮</b-divider>
   <div class="demo-button">
     <b-button type="primary" round>Primary</b-button>
     <b-button type="success" round>Success</b-button>
@@ -36,15 +67,16 @@
     <b-button type="warning" round>Warning</b-button>
     <b-button type="danger" round>Danger</b-button>
   </div>
+  <b-divider align="left">[round]圆角按钮</b-divider>
   <div class="demo-button">
-    <b-button dashed>Default</b-button>
     <b-button type="primary" dashed>Primary</b-button>
     <b-button type="success" dashed>Success</b-button>
     <b-button type="info" dashed>Info</b-button>
     <b-button type="warning" dashed>Warning</b-button>
     <b-button type="danger" dashed>Danger</b-button>
   </div>
-  <div class="demo-button" style="background: #cad4d4;padding: 10px;">
+  <b-divider align="left">[transparent]透明按钮</b-divider>
+  <div class="demo-button" style="background: #cad4d4;padding: 10px 6px;">
     <b-button type="primary" transparent size="small">Primary</b-button>
     <b-button type="success" transparent size="small">Success</b-button>
     <b-button type="info" transparent size="small">Info</b-button>
@@ -85,9 +117,12 @@
 ```html
 
 <template>
-  <div class="demo-button">
+  <div class="demo-button" flex="cross:center">
     <b-button disabled>Default</b-button>
-    <b-button type="dashed" disabled>Dashed</b-button>
+    <b-button dashed disabled>Dashed</b-button>
+    <b-button background disabled>Background</b-button>
+  </div>
+  <div class="demo-button">
     <b-button type="primary" disabled>Primary</b-button>
     <b-button type="success" disabled>Success</b-button>
     <b-button type="info" disabled>Info</b-button>
@@ -109,7 +144,6 @@
     <b-button type="danger" round disabled>Danger</b-button>
   </div>
   <div class="demo-button">
-    <b-button dashed disabled>Default</b-button>
     <b-button type="primary" dashed disabled>Primary</b-button>
     <b-button type="success" dashed disabled>Success</b-button>
     <b-button type="info" dashed disabled>Info</b-button>
@@ -298,6 +332,7 @@ Button 组件提供除了默认值以外的三种尺寸，可以在不同场景�
 | plain | 是否朴素按钮 | boolean | — | false |
 | round | 是否圆角按钮 | boolean | — | false |
 | transparent | 是否是透明按钮 | boolean | — | false |
+| background | 默认按钮是否带有拟物背景 | boolean | — | false |
 | loading | 是否加载中状态 | boolean | — | false |
 | disabled | 是否禁用状态 | boolean | — | false |
 | icon | 图标类名 | string | — | — |

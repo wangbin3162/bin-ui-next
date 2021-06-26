@@ -4,7 +4,7 @@
 
 ### 基础用法
 
-由`type`属性来选择`tag`的类型，也可以通过`color`属性来自定义背景色。
+由`type`属性来选择`tag`的类型，也可以通过`color`属性来自定义背景色。 由于标签原有高度和按钮类似，因此去除size设置
 
 ::: demo
 
@@ -200,8 +200,6 @@ dot 模式简单显示
   <b-tag type="primary" no-border font-size="14px">No Border</b-tag>
   <b-tag :tag-style="{backgroundColor: '#5AFAFC',color:'#606266'}">Style</b-tag>
   <b-tag closable>Default</b-tag>
-  <b-tag size="small" closable>Small</b-tag>
-  <b-tag size="mini" closable>Mini</b-tag>
 </template>
 ```
 
@@ -216,7 +214,6 @@ dot 模式简单显示
 | dot     |  是否显示是小圆点   | boolean  |   —         |    false       |
 | no-border     |  是否关闭边框   | boolean  |   —         |    false       |
 | color    |  背景颜色(可自定义)   | String  |   —         |    —          |
-| size    |  尺寸   | String  |   medium / small / mini       |    —          |
 | fontSize    |  字体大小   | String  |    —      |    —          |
 | tag-style    |  标签样式(完全控制，尽量不要设置)   | String  |    —      |    —          |
 | checkable    |  是否可选中   | Boolean  |    —      |   false       |

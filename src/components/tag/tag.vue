@@ -1,7 +1,6 @@
 <template>
     <span :class="['bin-tag',
             type ? `is-${type}` : '',
-            size ? `is-${size}` : '',
             dark ? 'is-dark' : '',
             checkable ? 'is-checkable' : '',
             (checkable && checked) ? 'is-checked' : '',
@@ -32,7 +31,6 @@ export default {
     noBorder: Boolean,
     color: String,
     tagStyle: {},
-    size: String,
     fontSize: String,
     dark: Boolean,
     checkable: Boolean,
@@ -63,7 +61,7 @@ export default {
       return props.tagStyle ? props.tagStyle : props.dot ?
         {
           backgroundColor: 'transparent',
-          color: props.color,
+          color: props.color || 'rgba(0,0,0,.65)',
           fontSize: props.fontSize,
         } :
         {
