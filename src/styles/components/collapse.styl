@@ -59,7 +59,6 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    font-size: 16px;
     color: #333333;
     background: #fff;
     transition: $animation-duration-base;
@@ -71,6 +70,8 @@
       display: inline-block;
       vertical-align: middle;
       padding: 10px 16px;
+      font-size: 14px;
+      font-weight: 500;
       &:after {
         content: '';
         position: absolute;
@@ -81,8 +82,16 @@
         width: 2px;
       }
     }
+    > .title {
+      position: relative;
+      display: inline-block;
+      vertical-align: middle;
+      padding: 10px 16px;
+      font-size: 14px;
+      font-weight: 500;
+    }
     .right {
-      padding-right: 24px;
+      padding-right: 16px;
       &.can-collapse {
         padding-right: 50px;
       }
@@ -93,19 +102,15 @@
       right: 16px;
       transform: translateY(-50%);
       transition: $animation-duration-base;
-      .iconfont {
-        font-size: 20px;
+      .b-iconfont {
+        font-size: 14px;
         vertical-align: -1px;
       }
     }
   }
   .content {
     color: rgba(0, 0, 0, 0.65);
-    padding: 0 24px;
     background-color: #fff;
-    &-box {
-      padding: 16px 0;
-    }
   }
   &-active {
     .header {

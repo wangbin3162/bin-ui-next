@@ -1,6 +1,6 @@
 <template>
-  <div :class="['bin-collapse-wrap', {'bin-collapse-wrap-active': isActive, }]">
-    <div class="header" :class="{'is-collapse':collapse&&!$slots.right}" @click="toggle">
+  <div :class="['bin-collapse-wrap', {'bin-collapse-wrap-active': isActive, }]" :style="wrapStyle">
+    <div class="header" :class="{'is-collapse':collapse&&!$slots.right}" :style="headerStyle" @click="toggle">
       <slot name="title">
         <div class="label">
           {{ title }}
@@ -13,7 +13,7 @@
       </div>
       <div class="arrow" :style="{cursor:$slots.right?'pointer':null}"
            @click="arrowToggle">
-        <b-icon name="down" v-if="collapse"></b-icon>
+        <b-icon :name="arrowIcon" v-if="collapse"></b-icon>
       </div>
     </div>
     <b-collapse-transition v-if="mounted">
@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import { onMounted, reactive, toRefs, watch } from 'vue'
+import { computed, onMounted, reactive, toRefs, watch } from 'vue'
 import BCollapseTransition from '../collapse-transition'
 import BIcon from '../icon'
 
@@ -38,6 +38,11 @@ export default {
     modelValue: Boolean,
     title: String,
     collapse: Boolean,
+    shadow: String,
+    arrowIcon: {
+      type: String,
+      default: 'down',
+    },
   },
   emits: ['update:modelValue'],
   setup(props, { emit, slots }) {
@@ -46,6 +51,15 @@ export default {
       mounted: false,
     })
 
+    const wrapStyle = computed(() => {
+      return {
+        boxShadow: props.shadow,
+      }
+    })
+    const headerStyle = computed(() => ({
+      boxShadow: props.shadow,
+      borderBottom: props.shadow === 'none' ? '1px solid #eee' : null,
+    }))
     const toggle = () => {
       // 可以收起且没有右侧功能插入时点击一行展开收起
       if (props.collapse && !slots.right) {
@@ -68,6 +82,8 @@ export default {
     })
     return {
       ...toRefs(data),
+      wrapStyle,
+      headerStyle,
       toggle,
       arrowToggle,
     }

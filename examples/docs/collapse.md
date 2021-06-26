@@ -125,22 +125,34 @@ simple 设置简单模式
 <template>
   <div>
     <b-collapse-wrap title="标题栏" collapse>
-      <p v-for="i in 3" :key="i">我是内容我是内容...</p>
+      <div class="p5">
+        <p v-for="i in 3" :key="i">我是内容我是内容...</p>
+      </div>
     </b-collapse-wrap>
     <b-collapse-wrap title="收起附加右侧操作" collapse>
       <template #right>
         <b-button type="primary" plain size="small">编辑</b-button>
       </template>
-      <p v-for="i in 3" :key="i">我是内容我是内容...</p>
+      <div class="p5">
+        <p v-for="i in 3" :key="i">我是内容我是内容...</p>
+      </div>
     </b-collapse-wrap>
-    <b-collapse-wrap v-model="value4">
+    <b-collapse-wrap v-model="value4" shadow="none">
       <template #title>
         <div style="font-size: 16px;padding: 10px;">自定义开关和标题</div>
       </template>
       <template #right>
         <b-button type="text" @click="value4=!value4">{{ value4?'收起':'展开' }}</b-button>
       </template>
-      <p v-for="i in 3" :key="i">我是内容我是内容...</p>
+      <div class="p5">
+        <p v-for="i in 3" :key="i">我是内容我是内容...</p>
+      </div>
+    </b-collapse-wrap>
+    <b-collapse-wrap title="标题栏" collapse shadow="none" arrow-icon="caret-down">
+      <template #title><span class="title">自定义label标题</span></template>
+      <div class="p5">
+        <p v-for="i in 3" :key="i">我是内容我是内容...</p>
+      </div>
     </b-collapse-wrap>
   </div>
 </template>
@@ -184,6 +196,7 @@ simple 设置简单模式
 | value     | 是否展开   | Boolean  |    —       |   true    |
 | title     | 标题   | String  |    —       |   —     |
 | collapse  | 是否可以展开收起   | Boolean  |    —       |    false    |
+| shadow  | shadow，设置为none可以开启简单模式   | String  |  none/自定义shadow    |    —     |
 
 ### collapse-wrap Slot
 
