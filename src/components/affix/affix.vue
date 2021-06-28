@@ -98,7 +98,6 @@ export default {
     }
 
     const onScroll = () => {
-      console.log('scroll')
       updateState()
 
       emit('scroll', {
