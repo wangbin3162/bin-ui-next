@@ -38,6 +38,7 @@ import { computed, getCurrentInstance, inject, ref } from 'vue'
 import BScrollbar from '../../scrollbar'
 import BCascaderNode from './node.vue'
 import { generateId } from '../../../utils/util-helper'
+import { PANEL_INJECTION_KEY } from './utils'
 
 export default {
   name: 'BCascaderMenu',
@@ -62,7 +63,7 @@ export default {
     let activeNode = null
     let hoverTimer = null
 
-    const panel = inject('BPanel', {})
+    const panel = inject(PANEL_INJECTION_KEY, {})
 
     const hoverZone = ref(null)
 

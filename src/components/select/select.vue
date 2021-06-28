@@ -248,8 +248,7 @@ export default {
     },
     collapseTags: Boolean,
     appendToBody: {
-      type: Boolean,
-      default: true,
+      type: Boolean
     },
     clearIcon: {
       type: String,

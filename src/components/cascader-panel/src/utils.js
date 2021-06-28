@@ -50,3 +50,5 @@ export const sortByOriginalOrder = (oldNodes, newNodes) => {
 
   return res
 }
+
+export const PANEL_INJECTION_KEY = Symbol()

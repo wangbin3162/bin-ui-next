@@ -54,6 +54,7 @@
 import { computed, inject, h } from 'vue'
 import BCheckbox from '../../checkbox'
 import BRadio from '../../radio'
+import { PANEL_INJECTION_KEY } from './utils'
 
 export default {
   name: 'BCascaderNode',
@@ -82,7 +83,7 @@ export default {
   },
   emits: ['expand'],
   setup(props, { emit }) {
-    const panel = inject('BPanel', {})
+    const panel = inject(PANEL_INJECTION_KEY, {})
 
     const isHoverMenu = computed(() => panel.isHoverMenu)
     const multiple = computed(() => panel.config.multiple)

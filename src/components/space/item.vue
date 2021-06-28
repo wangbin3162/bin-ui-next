@@ -8,6 +8,7 @@
 import { computed } from 'vue'
 
 export default {
+  name: 'BSpace',
   props: {
     prefixCls: {
       type: String,

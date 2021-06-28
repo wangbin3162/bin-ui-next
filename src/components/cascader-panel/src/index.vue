@@ -42,6 +42,7 @@ import {
   focusNode,
   getMenuIndex,
   getSibling,
+  PANEL_INJECTION_KEY,
   sortByOriginalOrder,
 } from './utils'
 import { isEqual } from '../../../utils/util'
@@ -271,7 +272,7 @@ export default {
       }
     }
 
-    provide('BPanel', reactive({
+    provide(PANEL_INJECTION_KEY, reactive({
       config,
       expandingNode,
       checkedNodes,
