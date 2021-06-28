@@ -98,6 +98,7 @@ export default {
     }
 
     const onScroll = () => {
+      console.log('scroll')
       updateState()
 
       emit('scroll', {
@@ -111,17 +112,17 @@ export default {
     })
 
     onMounted(() => {
-      scrollContainer.value = getScrollContainer(root.value)
-
-      target.value = document.documentElement
 
       if (props.target) {
         target.value = document.querySelector(props.target)
         if (!target.value) {
           throw new Error(`target is not existed: ${props.target}`)
         }
-        scrollContainer.value = target.value
+      } else {
+        target.value = document.documentElement
       }
+      scrollContainer.value = [window, document, document.documentElement].includes(target.value) ? window : target.value
+
       on(scrollContainer.value, 'scroll', onScroll)
       addResizeListener(root.value, updateState)
     })

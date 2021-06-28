@@ -140,8 +140,8 @@ export default {
     },
     btnClass() {
       return [
+        `bin-button--${this.type || 'default'}`,
         {
-          [`bin-button--${this.type}`]: this.type,
           [`bin-button--${this.size}`]: this.size,
           'is-disabled': this.disabled,
           'is-loading': this.loading,
