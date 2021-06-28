@@ -24,8 +24,8 @@ import {
   ref, watch,
 } from 'vue'
 import BCascaderMenu from './menu.vue'
-import Store from './store'
-import Node from './node'
+import Store from '../utils/store'
+import Node from '../utils/node'
 import { EVENT_CODE } from '../../../utils/aria'
 import { UPDATE_MODEL_EVENT, CHANGE_EVENT } from '../../../utils/constants'
 import isServer from '../../../utils/isServer'
@@ -36,7 +36,7 @@ import {
   deduplicate,
   isEmpty,
 } from '../../../utils/util-helper'
-import { CommonProps, useCascaderConfig } from './config'
+import { useCascaderConfig } from '../utils/config'
 import {
   checkNode,
   focusNode,
@@ -44,14 +44,24 @@ import {
   getSibling,
   PANEL_INJECTION_KEY,
   sortByOriginalOrder,
-} from './utils'
+} from '../utils/utils'
 import { isEqual } from '../../../utils/util'
 
 export default {
   name: 'BCascaderPanel',
   components: { BCascaderMenu },
   props: {
-    ...CommonProps,
+    modelValue: [Number, String, Array],
+    options: {
+      type: Array,
+      default() {
+        return []
+      },
+    },
+    props: {
+      type: Object,
+      default: () => ({}),
+    },
     border: {
       type: Boolean,
       default: true,
@@ -285,7 +295,11 @@ export default {
 
     watch(
       [config, () => props.options],
-      initStore,
+      ([newConfig, newOptions], [oldConfig, oldOptions]) => {
+        if (isEqual(newOptions, oldOptions)) return
+
+        initStore()
+      },
       { deep: true, immediate: true },
     )
 

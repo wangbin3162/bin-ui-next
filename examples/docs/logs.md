@@ -5,6 +5,13 @@
 <div class="doc-update">
     <b-timeline>
       <b-timeline-item>
+        <p class="version">0.4.4</p>
+        <p class="time">2021-06-28</p>
+        <p class="content"><i>🍀</i>优化按钮、表单、日期选择器等样式问题</p>
+        <p class="content"><i>🍀</i>修复图钉滚动bug</p>
+        <p class="content"><i>🍀</i>修复级联选择bug</p>
+      </b-timeline-item>
+      <b-timeline-item>
         <p class="version">0.4.1</p>
         <p class="time">2021-06-26</p>
         <p class="content"><i>🍀</i>优化展开折叠面板样式</p>

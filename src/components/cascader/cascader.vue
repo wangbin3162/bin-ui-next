@@ -133,7 +133,6 @@
 <script>
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import BCascaderPanel from '../cascader-panel'
-import { CommonProps } from '../cascader-panel/src/config'
 import BInput from '../input'
 import BPopper from '../popper'
 import BScrollbar from '../scrollbar'
@@ -183,7 +182,17 @@ export default {
   },
   directives: { ClickOutside },
   props: {
-    ...CommonProps,
+    modelValue: [Number, String, Array],
+    options: {
+      type: Array,
+      default() {
+        return []
+      },
+    },
+    props: {
+      type: Object,
+      default: () => ({}),
+    },
     size: {
       type: String,
       validator: validSize,
