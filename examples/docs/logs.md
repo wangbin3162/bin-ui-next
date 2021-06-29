@@ -5,6 +5,12 @@
 <div class="doc-update">
     <b-timeline>
       <b-timeline-item>
+        <p class="version">0.4.5</p>
+        <p class="time">2021-06-29</p>
+        <p class="content"><i>🍀</i>新增count-to数字动画组件</p>
+        <p class="content"><i>🍀</i>优化tag标签，增加dot动态效果</p>
+      </b-timeline-item>
+      <b-timeline-item>
         <p class="version">0.4.4</p>
         <p class="time">2021-06-28</p>
         <p class="content"><i>🍀</i>优化按钮、表单、日期选择器等样式问题</p>
