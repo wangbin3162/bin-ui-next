@@ -65,36 +65,36 @@
 
 <template>
   <div>
-    <b-tag type="primary" dark size="mini" checkable><span>primary</span></b-tag>
-    <b-tag type="success" dark size="mini" checkable>success</b-tag>
-    <b-tag type="info" dark size="mini" checkable>info</b-tag>
-    <b-tag type="warning" dark size="mini" checkable>warning</b-tag>
-    <b-tag type="danger" dark size="mini" checkable>danger</b-tag>
-    <b-tag type="magenta" size="mini" dark checkable>magenta</b-tag>
-    <b-tag type="red" size="mini" dark checkable>red</b-tag>
-    <b-tag type="volcano" size="mini" dark checkable>volcano</b-tag>
-    <b-tag type="orange" size="mini" dark checkable>orange</b-tag>
-    <b-tag type="gold" size="mini" dark checkable>gold</b-tag>
-    <b-tag type="cyan" size="mini" dark checkable>cyan</b-tag>
-    <b-tag type="blue" size="mini" dark checkable>blue</b-tag>
-    <b-tag type="geekblue" size="mini" dark checkable>geekblue</b-tag>
-    <b-tag type="purple" size="mini" dark checkable>purple</b-tag>
+    <b-tag type="primary" dark checkable><span>primary</span></b-tag>
+    <b-tag type="success" dark checkable>success</b-tag>
+    <b-tag type="info" dark checkable>info</b-tag>
+    <b-tag type="warning" dark checkable>warning</b-tag>
+    <b-tag type="danger" dark checkable>danger</b-tag>
+    <b-tag type="magenta" dark checkable>magenta</b-tag>
+    <b-tag type="red" dark checkable>red</b-tag>
+    <b-tag type="volcano" dark checkable>volcano</b-tag>
+    <b-tag type="orange" dark checkable>orange</b-tag>
+    <b-tag type="gold" dark checkable>gold</b-tag>
+    <b-tag type="cyan" dark checkable>cyan</b-tag>
+    <b-tag type="blue" dark checkable>blue</b-tag>
+    <b-tag type="geekblue" dark checkable>geekblue</b-tag>
+    <b-tag type="purple" dark checkable>purple</b-tag>
   </div>
   <div>
-    <b-tag type="primary" size="mini" checkable><span>primary</span></b-tag>
-    <b-tag type="success" size="mini" checkable>success</b-tag>
-    <b-tag type="info" size="mini" checkable>info</b-tag>
-    <b-tag type="warning" size="mini" checkable>warning</b-tag>
-    <b-tag type="danger" size="mini" checkable>danger</b-tag>
-    <b-tag type="magenta" size="mini" checkable>magenta</b-tag>
-    <b-tag type="red" size="mini" checkable>red</b-tag>
-    <b-tag type="volcano" size="mini" checkable>volcano</b-tag>
-    <b-tag type="orange" size="mini" checkable>orange</b-tag>
-    <b-tag type="gold" size="mini" checkable>gold</b-tag>
-    <b-tag type="cyan" size="mini" checkable>cyan</b-tag>
-    <b-tag type="blue" size="mini" checkable>blue</b-tag>
-    <b-tag type="geekblue" size="mini" checkable>geekblue</b-tag>
-    <b-tag type="purple" size="mini" checkable>purple</b-tag>
+    <b-tag type="primary" checkable><span>primary</span></b-tag>
+    <b-tag type="success" checkable>success</b-tag>
+    <b-tag type="info" checkable>info</b-tag>
+    <b-tag type="warning" checkable>warning</b-tag>
+    <b-tag type="danger" checkable>danger</b-tag>
+    <b-tag type="magenta" checkable>magenta</b-tag>
+    <b-tag type="red" checkable>red</b-tag>
+    <b-tag type="volcano" checkable>volcano</b-tag>
+    <b-tag type="orange" checkable>orange</b-tag>
+    <b-tag type="gold" checkable>gold</b-tag>
+    <b-tag type="cyan" checkable>cyan</b-tag>
+    <b-tag type="blue" checkable>blue</b-tag>
+    <b-tag type="geekblue" checkable>geekblue</b-tag>
+    <b-tag type="purple" checkable>purple</b-tag>
   </div>
 </template>
 ```
@@ -122,17 +122,27 @@
 
 ### dot 模式
 
-dot 模式简单显示
+dot 模式可以简单显示带有提示小圆点等内容
 
-::: demo 设置`dot`属性可以定义一个标签是否可移除。
+::: demo 
 
 ```html
 
 <template>
-  <b-tag dot>dot</b-tag>
-  <b-tag type="primary" no-border dot>no-border-dot</b-tag>
-  <b-tag type="success" dot no-border>type dot</b-tag>
-  <b-tag color="#13c2c2" closable dot>color dot</b-tag>
+  <b-tag type="primary" dot><span>primary</span></b-tag>
+  <b-tag type="success" dot>success</b-tag>
+  <b-tag type="info" dot>info</b-tag>
+  <b-tag type="warning" dot>warning</b-tag>
+  <b-tag type="danger" dot>danger</b-tag>
+  <b-tag type="magenta" dot>magenta</b-tag>
+  <b-tag type="red" dot>red</b-tag>
+  <b-tag type="volcano" dot>volcano</b-tag>
+  <b-tag type="orange" dot>orange</b-tag>
+  <b-tag type="gold" dot>gold</b-tag>
+  <b-tag type="cyan" dot>cyan</b-tag>
+  <b-tag type="blue" dot>blue</b-tag>
+  <b-tag type="geekblue" dot>geekblue</b-tag>
+  <b-tag type="purple" dot>purple</b-tag>
 </template>
 ```
 
@@ -140,7 +150,7 @@ dot 模式简单显示
 
 ### 动态编辑标签
 
-::: demo 设置`closable`属性可以定义一个标签是否可移除。
+::: demo
 
 ```html
 

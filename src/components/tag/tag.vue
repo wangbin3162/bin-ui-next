@@ -1,14 +1,17 @@
 <template>
-    <span :class="['bin-tag',
+    <span
+      :class="['bin-tag',
             type ? `is-${type}` : '',
             dark ? 'is-dark' : '',
+            dot ? 'is-dot' : '',
             checkable ? 'is-checkable' : '',
             (checkable && checked) ? 'is-checked' : '',
             { 'no-border': noBorder }
           ]"
-          :style="tagStyleBind"
-          @click="handleClick">
-      <span v-if="dot" class="bin-dot" :style="{ backgroundColor: dotColor }"></span>
+      :style="tagStyleBind"
+      @click="handleClick"
+    >
+      <span v-if="dot" class="bin-dot"></span>
       <slot></slot>
       <i class="b-iconfont b-icon-close" v-if="closable"
          :style="dot ? { backgroundColor: '#fff',color } : {}"

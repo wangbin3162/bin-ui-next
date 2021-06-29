@@ -41,13 +41,44 @@
       color: #515a6e;
     }
   }
+  &.no-border, &.is-dot {
+    border: none;
+    height: auto;
+  }
+  .bin-dot {
+    position: relative;
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    margin-right: 5px;
+    border-radius: 50%;
+    background: $color-primary;
+    top: -1px;
+    &:after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      border: 1px solid $color-primary;
+      content: "";
+      animation: aniStatusProcessing 1.2s ease-in-out infinite;
+    }
 
+  }
   &.is-primary {
     background-color: $color-primary-light6;
     color: $color-primary;
     border-color: $color-primary-light4;
     &.is-dark {
       background-color: $color-primary;
+    }
+    .bin-dot {
+      background: $color-primary;
+      &:after {
+        border-color: $color-primary;
+      }
     }
   }
   &.is-success {
@@ -57,6 +88,12 @@
     &.is-dark {
       background-color: $color-success;
     }
+    .bin-dot {
+      background: $color-success;
+      &:after {
+        border-color: $color-success;
+      }
+    }
   }
   &.is-info {
     background-color: $color-info-light6;
@@ -64,6 +101,12 @@
     color: $color-info;
     &.is-dark {
       background-color: $color-info;
+    }
+    .bin-dot {
+      background: $color-info;
+      &:after {
+        border-color: $color-info;
+      }
     }
   }
   &.is-warning {
@@ -73,6 +116,12 @@
     &.is-dark {
       background-color: $color-warning;
     }
+    .bin-dot {
+      background: $color-warning;
+      &:after {
+        border-color: $color-warning;
+      }
+    }
   }
   &.is-danger {
     background-color: $color-danger-light6;
@@ -81,20 +130,12 @@
     &.is-dark {
       background-color: $color-danger;
     }
-  }
-  &.no-border {
-    border: none;
-    height: auto;
-  }
-  .bin-dot {
-    display: inline-block;
-    width: 8px;
-    height: 8px;
-    margin-right: 5px;
-    border-radius: 50%;
-    background: $border-color-base;
-    position: relative;
-    top: 0;
+    .bin-dot {
+      background: $color-danger;
+      &:after {
+        border-color: $color-danger;
+      }
+    }
   }
 
   // 多色
@@ -105,6 +146,12 @@
     &.is-dark {
       background-color: #eb2f96;
     }
+    .bin-dot {
+      background: #eb2f96;
+      &:after {
+        border-color: #eb2f96;
+      }
+    }
   }
   &.is-red {
     background: #fff1f0;
@@ -112,6 +159,12 @@
     color: #f5222d;
     &.is-dark {
       background-color: #f5222d;
+    }
+    .bin-dot {
+      background: #f5222d;
+      &:after {
+        border-color: #f5222d;
+      }
     }
   }
   &.is-volcano {
@@ -121,6 +174,12 @@
     &.is-dark {
       background-color: #fa541c;
     }
+    .bin-dot {
+      background: #fa541c;
+      &:after {
+        border-color: #fa541c;
+      }
+    }
   }
   &.is-orange {
     background: #fff7e6;
@@ -128,6 +187,12 @@
     color: #fa8c16;
     &.is-dark {
       background-color: #fa8c16;
+    }
+    .bin-dot {
+      background: #fa8c16;
+      &:after {
+        border-color: #fa8c16;
+      }
     }
   }
   &.is-gold {
@@ -137,6 +202,12 @@
     &.is-dark {
       background-color: #faad14;
     }
+    .bin-dot {
+      background: #faad14;
+      &:after {
+        border-color: #faad14;
+      }
+    }
   }
   &.is-cyan {
     background: #e6fffb;
@@ -145,13 +216,25 @@
     &.is-dark {
       background-color: #13c2c2;
     }
+    .bin-dot {
+      background: #13c2c2;
+      &:after {
+        border-color: #13c2c2;
+      }
+    }
   }
   &.is-blue {
     background: #e6f7ff;
-    border-color: #91d5ff;
-    color: #1890ff;
+    border-color: #63aee0;
+    color: #167bd7;
     &.is-dark {
-      background-color: #1890ff;
+      background-color: #167bd7;
+    }
+    .bin-dot {
+      background: #167bd7;
+      &:after {
+        border-color: #167bd7;
+      }
     }
   }
   &.is-geekblue {
@@ -161,6 +244,12 @@
     &.is-dark {
       background-color: #2f54eb;
     }
+    .bin-dot {
+      background: #2f54eb;
+      &:after {
+        border-color: #2f54eb;
+      }
+    }
   }
   &.is-purple {
     background: #f9f0ff;
@@ -169,5 +258,21 @@
     &.is-dark {
       background-color: #722ed1;
     }
+    .bin-dot {
+      background: #722ed1;
+      &:after {
+        border-color: #722ed1;
+      }
+    }
+  }
+}
+@keyframes aniStatusProcessing {
+  0% {
+    transform: scale(.8);
+    opacity: .5;
+  }
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
   }
 }
