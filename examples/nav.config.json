@@ -320,6 +320,12 @@
           "path": "/badge"
         },
         {
+          "desc": "CountTo 数字动画",
+          "icon": "orderedlist",
+          "name": "countTo",
+          "path": "/countTo"
+        },
+        {
           "desc": "Collapse 折叠面板",
           "icon": "database",
           "name": "collapse",

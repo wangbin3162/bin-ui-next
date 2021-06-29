@@ -74,6 +74,7 @@ import BSkeletonItem from './components/skeleton-item'
 import BForm from './components/form'
 import BFormItem from './components/form-item'
 import BTable from './components/table'
+import BCountTo from './components/count-to'
 import LoadingBar from './components/loading-bar'
 import Message from './components/message'
 import MessageBox from './components/message-box'
@@ -167,6 +168,7 @@ const components = [
   BTimePicker,
   BDatePicker,
   BTable,
+  BCountTo,
 ]
 const plugins = [
   LoadingBar,
@@ -291,6 +293,7 @@ export {
   BForm,
   BFormItem,
   BTable,
+  BCountTo,
   LoadingBar,
   Message,
   MessageBox,
