@@ -51,6 +51,11 @@ export function toRgbArr(color) {
   return Color(color).rgb().array()
 }
 
+// getHslArr
+export function toHslArr(color) {
+  return Color(color).hsl()
+}
+
 // grayscale
 export function grayscale(color) {
   return Color(color).grayscale().toString()

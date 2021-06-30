@@ -19,21 +19,18 @@ active() {
   align-items: center;
   line-height: normal;
   height: $default-height;
+  width: $default-height;
   &__trigger {
     display: inline-block;
     box-sizing: border-box;
     height: $default-height;
-    width: $default-height;
+    width: 100%;
     padding: 3px;
     border: $border-base;
     border-radius: $border-base-radius;
     font-size: 0;
     position: relative;
     cursor: pointer;
-    &.show-label {
-      border-top-right-radius: 0;
-      border-bottom-right-radius: 0;
-    }
   }
   &__label {
     height: 100%;
@@ -62,27 +59,11 @@ active() {
       box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.15);
     }
   }
-  &__empty {
-    color: $color-text-secondary;
-  }
-  &__empty, &__icon {
-    font-size: 12px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate3d(-50%, -50%, 0);
-  }
-  &__icon {
-    display: inline-block;
-    width: 100%;
-    color: #fff;
-    text-align: center;
-  }
   &--large {
     height: $large-height;
+    width: $large-height;
     .bin-color-picker__trigger {
       height: $large-height;
-      width: $large-height;
     }
     .bin-color-picker__label {
       line-height: $large-height - 2px;
@@ -90,9 +71,9 @@ active() {
   }
   &--small {
     height: $small-height;
+    width: $small-height;
     .bin-color-picker__trigger {
       height: $small-height;
-      width: $small-height;
     }
     .bin-color-picker__icon, .bin-color-picker__empty {
       transform: translate3d(-50%, -50%, 0) scale(0.8);
@@ -103,9 +84,9 @@ active() {
   }
   &--mini {
     height: $mini-height;
+    width: $mini-height;
     .bin-color-picker__trigger {
       height: $mini-height;
-      width: $mini-height;
     }
     .bin-color-picker__icon, .bin-color-picker__empty {
       transform: translate3d(-50%, -50%, 0) scale(0.8);
@@ -124,6 +105,21 @@ active() {
     z-index: 1;
     cursor: not-allowed;
     background-color: rgba(255, 255, 255, .7);
+  }
+  &.show-label {
+    width: auto;
+    .bin-color-picker__trigger {
+      width: $default-height;
+    }
+    &.bin-color-picker--large .bin-color-picker__trigger {
+      width: $large-height;
+    }
+    &.bin-color-picker--small .bin-color-picker__trigger {
+      width: $small-height;
+    }
+    &.bin-color-picker--mini .bin-color-picker__trigger {
+      width: $mini-height;
+    }
   }
 }
 

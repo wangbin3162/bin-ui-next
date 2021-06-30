@@ -64,12 +64,13 @@
       <div
         :class="[
           'bin-color-picker',
+          {'show-label': showLabel},
           colorDisabled ? 'is-disabled' : '',
           colorSize ? `bin-color-picker--${ colorSize }` : ''
         ]"
       >
         <div v-if="colorDisabled" class="bin-color-picker__mask"></div>
-        <div class="bin-color-picker__trigger" :class="{'show-label':showLabel}" @click="handleTrigger">
+        <div class="bin-color-picker__trigger" @click="handleTrigger">
           <span class="bin-color-picker__color" :class="{ 'is-alpha': showAlpha }">
             <span
               class="bin-color-picker__color-inner"
@@ -77,9 +78,7 @@
                 backgroundColor: displayedColor
               }"
             ></span>
-            <span v-if="!modelValue && !showPanelColor" class="bin-color-picker__empty b-iconfont b-icon-close"></span>
           </span>
-          <span v-show="modelValue || showPanelColor" class="bin-color-picker__icon b-iconfont b-icon-down"></span>
         </div>
         <div class="bin-color-picker__label" v-if="showLabel" @click="handleTrigger">
           {{ modelValue }}
@@ -133,7 +132,7 @@ export default {
     popperClass: String,
     colors: Array,
     showLabel: {
-      type: Boolean
+      type: Boolean,
     },
   },
   emits: ['change', 'active-change', UPDATE_MODEL_EVENT],

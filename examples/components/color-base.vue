@@ -191,6 +191,11 @@
         color-{{ index + 1 }}<span class="main-color-value">{{ color }}</span>
       </div>
     </div>
+    <div class="mt-20" flex="cross:center">
+      <b-color-picker v-model="custom" style="width: 128px;" :colors="colorsList"></b-color-picker>
+      <span class="ml-10">{{ custom }}</span>
+    </div>
+    <p class="ml-10 f-color-red f-s-12">注意：亮度和饱和度建议在70以上，以生成更好的效果</p>
     <div style="height: 100px;"></div>
   </div>
 </template>
@@ -229,6 +234,21 @@ export default {
       customColor5: '#fa541c',
       customColor6: '#2f54eb',
       custom: '#1089ff',
+      colorsList: [
+        '#1089ff',
+        '#52c41a',
+        '#fa8c16',
+        '#f5222d',
+        '#2f54eb',
+        '#faad14',
+        '#722ed1',
+        '#eb2f96',
+        '#13c2c2',
+        '#fadb14',
+        '#a0d911',
+        '#fa541c',
+        '#00bcd4',
+      ],
     }
   },
   methods: {
