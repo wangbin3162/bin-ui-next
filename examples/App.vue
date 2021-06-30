@@ -55,7 +55,7 @@ export default {
       if (!content) return
       const h3 = content.querySelectorAll('h3')
       anchors.value = Array.from(h3).map(item => {
-        const text = item.childNodes[1]?.textContent.trim()
+        const text = item.innerText.trim()
         const id = item.getAttribute('id')
         return { id, text }
       })

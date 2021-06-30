@@ -7,7 +7,7 @@ a {
 }
 .element-doc {
   margin: 0 auto;
-  padding: 24px 178px 24px 24px
+  padding: 24px 178px 24px 32px
   color: #314659;
   font-size: 14px;
   code {
@@ -38,6 +38,14 @@ a {
   h2, h3, h4, h5 {
     font-weight: 400;
     color: #1f2f3d;
+    position: relative;
+    &::after {
+      content: '¶'
+      position: absolute;
+      left: 0;
+      margin-left: -18px;
+      color: #6fb8ff;
+    }
   }
   h2 {
     font-size: 28px;

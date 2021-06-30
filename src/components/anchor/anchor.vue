@@ -76,8 +76,8 @@ export default {
         primary: '#1089ff',
         success: '#52c41a',
         info: '#35495E',
-        warning: '#fea638',
-        danger: '#ff4d4f',
+        warning: '#fa8c16',
+        danger: '#f5222d',
       }
       return props.activeColor ? (colorMap[props.activeColor] ?
         colorMap[props.activeColor] : props.activeColor) : null

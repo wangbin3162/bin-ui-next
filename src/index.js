@@ -84,12 +84,19 @@ import * as util from './utils/util'
 import { setConfig } from './utils/config'
 import log from './utils/log'
 import { scrollTop } from './utils/dom'
+import * as color from './utils/color'
 
 import { ClickAnimation, ClickOutside, NoData, Loading, Waves } from './directives'
 
 import config from '../package.json'
 
 const version = config.version // version_ to fix tsc issue
+
+const Utils = {
+  util,
+  color,
+  log,
+}
 
 const components = [
   BAnchor,
@@ -209,6 +216,7 @@ const install = function(app, options = {}) {
   app.config.globalProperties.$scrollTop = scrollTop
   app.config.globalProperties.$shuffle = util.shuffle
   app.config.globalProperties.$log = log
+  app.config.globalProperties.$color = color
 
   if (!options.disabledDoc) {
     log.pretty(`[${config.name}] ${config.version}`, config.homepage)
@@ -298,6 +306,7 @@ export {
   Message,
   MessageBox,
   Notice,
+  Utils,
 }
 
 export default {

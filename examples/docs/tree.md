@@ -369,7 +369,7 @@ expand、selected、checked 和 disabled 可以设置展开，选中，勾选和
             }),
             h('i', {
               'class': ['b-iconfont', 'b-icon-minus-circle'],
-              style: { fontSize: '16px', color: '#ff4d4f' },
+              style: { fontSize: '16px', color: '#f5222d' },
               onClick: () => {
                 this.remove(root, node, data)
               }
