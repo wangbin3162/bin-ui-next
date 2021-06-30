@@ -16,6 +16,11 @@
       "desc": "定制主题"
     },
     {
+      "desc": "色彩设计",
+      "name": "color",
+      "path": "/color"
+    },
+    {
       "name": "logs",
       "path": "/logs",
       "desc": "更新日志"
@@ -30,12 +35,6 @@
           "icon": "appstore",
           "name": "base",
           "path": "/base"
-        },
-        {
-          "desc": "Color 颜色",
-          "icon": "bg-colors",
-          "name": "color",
-          "path": "/color"
         },
         {
           "desc": "Icon 图标",

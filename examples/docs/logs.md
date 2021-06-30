@@ -5,6 +5,12 @@
 <div class="doc-update">
     <b-timeline>
       <b-timeline-item>
+        <p class="version">0.4.6</p>
+        <p class="time">2021-06-30</p>
+        <p class="content"><i>🍀</i>修改颜色版，提供颜色辅助函数</p>
+        <p class="content"><i>🍀</i>修改部分样式</p>
+      </b-timeline-item>
+      <b-timeline-item>
         <p class="version">0.4.5</p>
         <p class="time">2021-06-29</p>
         <p class="content"><i>🍀</i>新增count-to数字动画组件</p>
