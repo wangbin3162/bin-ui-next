@@ -5,6 +5,12 @@
 <div class="doc-update">
     <b-timeline>
       <b-timeline-item>
+        <p class="version">0.4.7</p>
+        <p class="time">2021-01-01</p>
+        <p class="content"><i>🍀</i>修改颜色透明显示</p>
+        <p class="content"><i>🍀</i>修改弹窗样式</p>
+      </b-timeline-item>
+      <b-timeline-item>
         <p class="version">0.4.6</p>
         <p class="time">2021-06-30</p>
         <p class="content"><i>🍀</i>修改颜色版，提供颜色辅助函数</p>
