@@ -179,7 +179,7 @@ export default {
     },
     modelValue: {
       type: Boolean,
-      required: true,
+      default: false,
     },
     maskClass: String,
     width: {
