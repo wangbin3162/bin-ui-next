@@ -1,4 +1,4 @@
-import DescItem from '../desc/description-item'
+import DescItem from './item'
 
 DescItem.install = (app) => {
   app.component(DescItem.name, DescItem)

@@ -47,7 +47,7 @@ export default {
         return h(this.tag, {
           class: 'bin-desc__content',
           style: { width: `${this.span * this.contentWidth}%` },
-          colSpan: this.span,
+          colSpan: this.span * 2 - 1,
         }, this.content)
       default:
         return h('td', {

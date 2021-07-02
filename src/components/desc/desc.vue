@@ -23,14 +23,14 @@
 
 <script>
 import { computed, provide } from 'vue'
-import DescItem from './description-item'
 import BDescRow from './descriptions-row.vue'
+import BDescItem from '../desc-item/item.vue'
 
 export default {
   name: 'BDesc',
   components: {
     BDescRow,
-    [DescItem.name]: DescItem,
+    [BDescItem.name]: BDescItem,
   },
   props: {
     border: {
@@ -42,7 +42,7 @@ export default {
       default: 3,
     },
     labelWidth: {
-      type: Number
+      type: Number,
     },
     size: {
       type: String,
