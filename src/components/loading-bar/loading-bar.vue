@@ -2,8 +2,8 @@
   <transition name="fade-in">
     <div :class="classes" :style="outerStyles" v-show="show">
       <div :class="innerClasses" :style="styles"></div>
-      <div class="icon" :class="iconClasses" v-if="showIcon">
-        <i class="b-iconfont b-icon-loading" :style="iconStyle"></i>
+      <div class="icon" :class="iconClasses" v-if="icon">
+        <i :class="`b-iconfont b-icon-${icon} icon-is-rotating`" :style="iconStyle"></i>
       </div>
     </div>
   </transition>
@@ -26,10 +26,7 @@ export default {
       type: Number,
       default: 2,
     },
-    showIcon: {
-      type: Boolean,
-      default: false,
-    },
+    icon: String,
   },
   data() {
     return {

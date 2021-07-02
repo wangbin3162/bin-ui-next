@@ -68,7 +68,7 @@ LoadingBar 只会在全局创建一个，因此在任何位置调用的方法都
           color: '#5cb85c',
           failedColor: '#f0ad4e',
           height: 5,
-          showIcon: true
+          icon: 'loading2'
         })
       }
     }
@@ -92,11 +92,12 @@ LoadingBar 只会在全局创建一个，因此在任何位置调用的方法都
 
 以上方法隐式的创建及维护Vue组件。函数及参数说明如下：
 
-### Attributes
+### Options
 
-| 函数      | 说明    | 参数      |
-|---------- |-------- |---------- |
-| start     |  开始从 0 显示进度条，并自动加载进度   | 无  |
-| done     |  结束进度条，自动补全剩余进度   | 无  |
-| error     |  以错误的类型结束进度条，自动补全剩余进度   | 无  |
-| update     |  精确加载到指定的进度   | percent进度百分比  |
+| 函数      | 说明    | 
+|---------- |-------- |
+| color     |  默认颜色 ，primary  |
+| duration  |  动画执行时间 ，默认800 |
+| failedColor  | 错误颜色，默认error |
+| height  | 进度条高度，默认2 |
+| icon  | 可以设置icon开启右侧loading icon|

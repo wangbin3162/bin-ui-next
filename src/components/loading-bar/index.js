@@ -6,12 +6,12 @@ let duration = 800
 let failedColor = 'error'
 let height = 2
 let timer
-let showIcon = true
+let icon = undefined
 
 // 获取loadingBar的实例
 function getLoadingBarInstance() {
   // 初始化实例
-  loadingBarInstance = loadingBarInstance || Instance({ color, failedColor, height, showIcon })
+  loadingBarInstance = loadingBarInstance || Instance({ color, failedColor, height, icon })
   return loadingBarInstance
 }
 
@@ -105,8 +105,8 @@ const LoadingBar = {
     if (options.height) {
       height = options.height
     }
-    if (options.showIcon) {
-      showIcon = options.showIcon
+    if (options.icon) {
+      icon = options.icon
     }
   },
   destroy() {

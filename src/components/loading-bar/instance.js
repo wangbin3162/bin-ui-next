@@ -17,6 +17,9 @@ export default function getInstance(properties) {
       if ('show' in options) {
         loadingBar.show = options.show
       }
+      if ('icon' in options) {
+        loadingBar.icon = options.icon
+      }
     },
     component: loadingBar,
     destroy() {
