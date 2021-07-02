@@ -187,7 +187,7 @@
 
 ### 表单校验
 
-提供基础的校验规则，校验规则参考
+提供基础的校验规则，校验规则参考 [async-validator](https://github.com/yiminghe/async-validator)
 
 ::: demo
 

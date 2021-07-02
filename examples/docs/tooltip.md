@@ -163,7 +163,7 @@
 | open-delay     | 延迟出现，单位毫秒   | number  | — |   0    |
 | hide-delay     | 延迟消失，单位毫秒   | number  | — |   0    |
 | offset    | 出现位置的偏移量   |  Number |  — |    12     |
-| appendToBody    | 是否将弹层放置于 body 内   | Boolean  |  —   |   false   |
+| appendToBody    | 是否将弹层放置于 body 内   | Boolean  |  —   |   true   |
 
 ### Slot
 

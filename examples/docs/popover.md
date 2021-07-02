@@ -215,7 +215,7 @@
 | auto-close     | tooltip出现后自动隐藏演示，单位毫秒，为0时不隐藏  | number  | — |   0    |
 | manual    | 手动控制模式，true时鼠标进入移出事件不生效   | Boolean  |  —   |   false   |
 | offset    | 出现位置的偏移量   |  Number |  — |    0     |
-| appendToBody    | 是否将弹层放置于 body 内   | Boolean  |  —   |   false   |
+| appendToBody    | 是否将弹层放置于 body 内   | Boolean  |  —   |   true   |
 | options    | 自定义 popper.js 的配置项具体参考popper.js   | Object  |  —   |   —    |
 
 ### Slot

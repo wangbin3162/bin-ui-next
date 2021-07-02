@@ -1,6 +1,6 @@
 ## Bin-UI-Next
 
-bin-ui-next 是bin-ui的vue3升级版，目前组件源码正在疯狂重构中，整体组件依赖vue3
+bin-ui-next 是bin-ui的vue3升级版，目前组件库已经基本完成重构，整体组件依赖vue3
 
 ### 特性
 
