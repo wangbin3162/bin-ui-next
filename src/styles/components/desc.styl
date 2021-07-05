@@ -6,11 +6,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
   }
   &__title {
-    font-size: $header-font-size;
-    font-weight: 600;
+    font-weight: 500;
   }
   &__body {
     color: $color-text-default;
@@ -32,13 +31,16 @@
     }
   }
   &__label {
-    font-weight: 500;
     color: $color-text-primary;
     &:not(.is-bordered-label) {
-      margin-right: 10px;
+      &::after {
+        content: ':';
+        position: relative;
+        top: -.5px;
+        margin: 0 8px 0 2px;
+      }
     }
     &.is-bordered-label {
-      font-weight: 500;
       background: #fafafa;
     }
   }

@@ -64,7 +64,7 @@
 ```html
 
 <template>
-  <div>
+  <div class="mb-10">
     <b-tag type="primary" dark checkable><span>primary</span></b-tag>
     <b-tag type="success" dark checkable>success</b-tag>
     <b-tag type="info" dark checkable>info</b-tag>
@@ -124,7 +124,7 @@
 
 dot 模式可以简单显示带有提示小圆点等内容
 
-::: demo 
+::: demo
 
 ```html
 
