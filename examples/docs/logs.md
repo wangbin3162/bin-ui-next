@@ -5,7 +5,7 @@
 <div class="doc-update">
     <b-timeline>
       <b-timeline-item>
-        <p class="version">0.4.9</p>
+        <p class="version">0.5.0</p>
         <p class="time">2021-07-05</p>
         <p class="content"><i>🍀</i>修改desc组件</p>
         <p class="content"><i>🍀</i>修改全局字体颜色</p>
