@@ -79,6 +79,7 @@
       </b-col>
     </b-row>
     <br />
+
     <h3 id="custom" style="margin-bottom: 20px;">自定义色板</h3>
     <p>如果自定的配色不能满足要求，则可以取如下色板，默认会给生成不同的色板值，可供使用</p>
     <b-row :gutter="20">
@@ -164,6 +165,7 @@
         </div>
       </b-col>
     </b-row>
+
     <h3 id="zhong-xing-se" style="margin-bottom: 20px;">中性色</h3>
     <p>中性色包含了黑、白、灰。在后台设计中被大量使用到，合理地选择中性色能够令页面信息具备良好的主次关关系。</p>
     <div class="main-color">
@@ -177,6 +179,21 @@
         gary-{{ index + 1 }}<span class="main-color-value">{{ color }}</span>
       </div>
     </div>
+
+    <h3 id="wen-zi" style="margin-bottom: 20px;">文字</h3>
+    <p>提供了几个文字颜色，色板中可自己定义使用</p>
+    <div class="main-color">
+      <div class="main-color-item"
+           v-for="(color,index) in textColor"
+           :key="index"
+           title="click to copy color"
+           @click="copyColor(color)"
+           :style="{background:color,color:index<3?'#fff':'rgba(0,0,0,.85)'}"
+      >
+        text-{{ index + 1 }}<span class="main-color-value">{{ color }}</span>
+      </div>
+    </div>
+
     <h3 id="se-ban" style="margin-bottom: 20px;">色板工具</h3>
     <p>如果上面的色板还不能满足你的需求，你可以选择一个主色，这里会生成一个色板。</p>
     <div class="color-palette-pick t-center f-s-22 mb-20">选择你的主色</div>
@@ -225,6 +242,13 @@ export default {
         '#1f1f1f',
         '#141414',
         '#000000',
+      ],
+      textColor: [
+        '#17233d',
+        '#515a6e',
+        '#808695',
+        '#c5c8ce',
+        '#C0C4CC',
       ],
 
       customColor1: '#722ed1',

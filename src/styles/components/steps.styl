@@ -1,10 +1,3 @@
-$steps-wait-icon-color = #ccc;
-$steps-wait-title-color = #999;
-$steps-wait-description-color = #999;
-$steps-wait-tail-color = #e8eaec;
-$border-color-split = #e8eaec;
-$steps-title-color = #666;
-
 .bin-steps {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -31,17 +24,17 @@ $steps-title-color = #666;
       .bin-steps-head-inner {
         background-color: #fff;
         > .bin-steps-icon, span {
-          color: $steps-wait-icon-color;
+          color: $color-text-disabled;
         }
       }
       .bin-steps-title {
-        color: $steps-wait-title-color;
+        color: $color-text-secondary;
       }
       .bin-steps-content {
-        color: $steps-wait-description-color;
+        color: $color-text-secondary;
       }
       .bin-steps-tail > i {
-        background-color: $steps-wait-tail-color;
+        background-color: $border-color-base;
       }
     }
     &.bin-steps-status-process {
@@ -53,13 +46,13 @@ $steps-title-color = #666;
         }
       }
       .bin-steps-title {
-        color: $steps-title-color;
+        color: $color-text-primary;
       }
       .bin-steps-content {
-        color: $steps-title-color;
+        color: $color-text-default;
       }
       .bin-steps-tail > i {
-        background-color: $border-color-split;
+        background-color: $border-color-base;
       }
     }
     &.bin-steps-status-finish {
@@ -77,10 +70,10 @@ $steps-title-color = #666;
         opacity: 1;
       }
       .bin-steps-title {
-        color: $steps-wait-title-color;
+        color: $color-text-secondary;
       }
       .bin-steps-content {
-        color: $steps-wait-description-color;
+        color: $color-text-secondary;
       }
     }
     &.bin-steps-status-success {
@@ -101,7 +94,7 @@ $steps-title-color = #666;
         color: $color-success;
       }
       .bin-steps-tail > i {
-        background-color: $border-color-split;
+        background-color: $border-color-base;
       }
     }
 
@@ -127,7 +120,7 @@ $steps-title-color = #666;
         color: $color-danger;
       }
       .bin-steps-tail > i {
-        background-color: $border-color-split;
+        background-color: $border-color-base;
       }
     }
 
@@ -179,7 +172,7 @@ $steps-title-color = #666;
     line-height: 24px;
     margin-right: 8px;
     text-align: center;
-    border: 1px solid $steps-wait-icon-color;
+    border: 1px solid $color-text-disabled;
     border-radius: 50%;
     font-size: 14px;
     transition: background-color $animation-duration-base ease-in-out;
@@ -212,11 +205,11 @@ $steps-title-color = #666;
     padding-right: 10px;
     font-size: 14px;
     font-weight: bold;
-    color: #666;
+    color: $color-text-primary;
     background: #fff;
 
     > a:first-child:last-child {
-      color: #666;
+      color: $color-text-primary;
     }
   }
   .bin-steps-item-last {
@@ -240,14 +233,14 @@ $steps-title-color = #666;
       width: 100%;
       height: 1px;
       vertical-align: top;
-      background: $border-color-split;
+      background: $border-color-base;
       border-radius: 1px;
       position: relative;
       &:after {
         content: '';
         width: 0;
         height: 100%;
-        background: $border-color-split;
+        background: $border-color-base;
         opacity: 0;
         position: absolute;
         top: 0;
@@ -276,13 +269,13 @@ $steps-title-color = #666;
     .bin-steps-title {
       margin-bottom: 4px;
       margin-top: 0;
-      color: #666;
+      color: $color-text-primary;
       font-size: 12px;
       font-weight: bold;
     }
     .bin-steps-content {
       font-size: 12px;
-      color: #999;
+      color: $color-text-default;
       padding-left: 30px;
     }
     .bin-steps-tail {
