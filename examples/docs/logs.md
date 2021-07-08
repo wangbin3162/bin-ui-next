@@ -5,6 +5,12 @@
 <div class="doc-update">
     <b-timeline>
       <b-timeline-item>
+        <p class="version">0.6.0</p>
+        <p class="time">2021-07-08</p>
+        <p class="content"><i>🍀</i>修改全局样式，移除默认清空css，并对外提供编译后的normalize.css</p>
+        <p class="content"><i>🍀</i>修改部分组件样式</p>
+      </b-timeline-item>
+      <b-timeline-item>
         <p class="version">0.5.0</p>
         <p class="time">2021-07-05</p>
         <p class="content"><i>🍀</i>修改desc组件</p>
