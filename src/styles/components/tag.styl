@@ -1,12 +1,13 @@
 .bin-tag {
-  display: inline-flex;
-  align-items: center;
+  display: inline-block;
+  vertical-align: middle;
   border: 1px solid #e8eaec;
   color: #515a6e;
   background: #f7f7f7;
   font-size: 12px;
   padding: 0 8px;
   height: $mini-height - 2px;
+  line-height: 20px;
   border-radius: $border-base-radius;
   white-space: nowrap;
   + .bin-tag {
@@ -42,7 +43,7 @@
   }
   &.no-border, &.is-dot {
     border: none;
-    height: auto;
+    height: 20px;
   }
   .bin-dot {
     position: relative;
@@ -52,7 +53,6 @@
     margin-right: 6px;
     border-radius: 50%;
     background: $color-primary;
-    top: -1px;
     &:after {
       position: absolute;
       top: 0;

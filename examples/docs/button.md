@@ -266,35 +266,34 @@ Button 组件提供除了默认值以外的三种尺寸，可以在不同场景�
 <template>
   <div class="demo-button">
     <b-button
-      type="primary"
-      :loading="loading"
-      icon="reload"
-      @click="loading=true"
+        type="primary"
+        :loading="loading"
+        icon="reload"
+        @click="loading=true"
     >Click me!
     </b-button>
     <b-button
-      type="primary"
-      :loading="loading1"
-      loading-icon="loading1"
-      @click="loading1=true"
+        type="primary"
+        :loading="loading"
+        loading-icon="loading1"
+        @click="loading=true"
     >Click me!
     </b-button>
     <b-button
-      type="primary"
-      :loading="loading2"
-      loading-icon="loading2"
-      @click="loading2=true"
+        type="primary"
+        :loading="loading"
+        loading-icon="loading2"
+        @click="loading=true"
     >Click me!
     </b-button>
+    <b-button @click="loading=false">stop</b-button>
   </div>
 </template>
 <script>
   export default {
     data() {
       return {
-        loading: false,
-        loading1: false,
-        loading2: false,
+        loading: false
       }
     },
   }

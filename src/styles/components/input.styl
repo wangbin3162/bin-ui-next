@@ -44,12 +44,12 @@ placeholder() {
     position relative;
   }
   .bin-input-group-prepend {
-    z-index: 1;
+    z-index: 3;
     right: -1px;
   }
 
   .bin-input-group-append {
-    z-index: 0;
+    z-index: 3;
     left: -1px;
   }
 }
@@ -98,7 +98,7 @@ placeholder() {
   placeholder()
   &:focus, &:hover {
     border-color: $color-primary;
-    z-index: 1;
+    z-index: 4;
   }
   &:focus {
     outline: 0;
@@ -156,7 +156,7 @@ placeholder() {
   position: absolute;
   left: 0;
   top: 0;
-  z-index: 10;
+  z-index: 1;
   display: flex;
   justify-content: center;
   align-items: center;
