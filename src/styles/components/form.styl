@@ -4,23 +4,13 @@
   }
   &--label-top .bin-form-item__label {
     float: none;
-    display: inline-block;
     text-align: left;
-    padding: 0 0 10px 0;
+    line-height: $base-line-height;
   }
   &--inline {
     .bin-form-item {
-      display: inline-block;
-      margin-right: 10px;
-      vertical-align: top;
-      &__label {
-        float: none;
-        display: inline-block;
-      }
-      &__content {
-        display: inline-block;
-        vertical-align: top;
-      }
+      display: inline-flex;
+      //margin-right: 8px;
     }
     .bin-form--label-top, .bin-form--item__content {
       display: block;
@@ -32,7 +22,6 @@
   margin-bottom: 22px;
   &__label {
     text-align: right;
-    vertical-align: middle;
     float: left;
     font-size: $base-font-size;
     color: $color-text-primary;
@@ -47,8 +36,8 @@
   }
   &__content {
     position: relative;
-    line-height: $default-height;
     font-size: $base-font-size;
+    min-height: $default-height;
     .bin-checkbox-group, .bin-radio-group {
       padding-top: 4px;
       line-height: $base-line-height;
@@ -57,14 +46,14 @@
       padding-top: 0;
       line-height: $base-line-height;
     }
+    .bin-switch {
+      margin-top: 4px;
+    }
   }
   &--large {
-    .bin-form-item__label {
-      height: $large-height;
-      line-height: $large-height;
-    }
     .bin-form-item__content {
       line-height: $large-height;
+      min-height: $large-height;
       .bin-checkbox-group, .bin-radio-group {
         padding-top: 6px;
         line-height: $large-height - 2;
@@ -72,12 +61,9 @@
     }
   }
   &--small {
-    .bin-form-item__label {
-      height: $small-height;
-      line-height: $small-height;
-    }
     .bin-form-item__content {
       line-height: $small-height;
+      min-height: $small-height;
       .bin-checkbox-group, .bin-radio-group {
         padding-top: 3px;
         line-height: $small-height - 2;
@@ -85,12 +71,9 @@
     }
   }
   &--mini {
-    .bin-form-item__label {
-      height: $mini-height;
-      line-height: $mini-height;
-    }
     .bin-form-item__content {
       line-height: $mini-height;
+      min-height: $mini-height;
       .bin-checkbox-group, .bin-radio-group {
         padding-top: 0;
         line-height: $mini-height - 2;

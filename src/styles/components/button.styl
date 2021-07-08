@@ -1,9 +1,8 @@
 .bin-button {
   position: relative;
   display: inline-block;
-  vertical-align: middle;
   height: $default-height;
-  line-height: $default-height - 2;
+  line-height: $base-line-height;
   white-space: nowrap;
   cursor: pointer;
   background: $color-white;
@@ -94,7 +93,6 @@
 
 .bin-button--large {
   height: $large-height;
-  line-height: $large-height - 2;
   padding: 0 14px;
   font-size: $header-font-size;
   &.is-round {
@@ -103,7 +101,6 @@
 }
 .bin-button--small {
   height: $small-height;
-  line-height: $small-height - 2;
   padding: 0 11px;
   &.is-round {
     padding: 0 11px;
@@ -111,7 +108,6 @@
 }
 .bin-button--mini {
   height: $mini-height;
-  line-height: $mini-height - 2;
   padding: 0 7px;
   &.is-round {
     padding: 0 10px;
@@ -503,7 +499,6 @@
   background-image: none;
   padding: 0;
   height: auto;
-  line-height: $base-line-height;
   &:focus, &:hover {
     color: $color-primary-light1;
     border-color: transparent;
@@ -523,7 +518,6 @@
 //  button-group
 .bin-button-group {
   display: inline-block;
-  vertical-align: middle;
   & > .bin-button {
     float: left;
     position: relative;

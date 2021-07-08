@@ -1,4 +1,6 @@
 .bin-page {
+  display: flex;
+  align-items: center;
   color: $color-text-default;
   font-size: $base-font-size;
   font-variant: tabular-nums;
@@ -12,9 +14,6 @@
     visibility: hidden;
   }
   &-item {
-    display: inline-block;
-    box-sizing: border-box;
-    vertical-align: middle;
     min-width: 32px;
     height: 32px;
     line-height: 30px;
@@ -74,8 +73,6 @@
     margin-right: 4px;
   }
   &-prev, &-next, &-item-jump-prev, &-item-jump-next {
-    display: inline-block;
-    vertical-align: middle;
     user-select: none;
     min-width: 32px;
     height: 32px;
@@ -132,18 +129,15 @@
     }
   }
   &-options {
-    display: inline-block;
-    vertical-align: middle;
+    display: inline-flex;
+    align-items: center;
     margin-left: 15px;
     &-sizer {
-      display: inline-block;
       margin-right: 10px;
       min-width: 100px;
       width: 100px;
     }
     &-elevator {
-      display: inline-block;
-      vertical-align: middle;
       height: 32px;
       line-height: 30px;
       input {
@@ -189,9 +183,7 @@
   }
 
   &-simple &-simple-pager {
-    display: inline-block;
     margin-right: 8px;
-    vertical-align: middle;
     input {
       width: 30px;
       height: 24px;

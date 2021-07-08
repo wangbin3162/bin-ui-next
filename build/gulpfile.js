@@ -1,6 +1,6 @@
 'use strict'
 // 单独打包css
-const { src, dest, series, task } = require('gulp')
+const {src, dest, series, task} = require('gulp')
 const stylus = require('gulp-stylus')
 const autoprefixer = require('gulp-autoprefixer')
 const cssmin = require('gulp-cssmin')
@@ -11,7 +11,7 @@ function compile() {
     .pipe(stylus())
     .pipe(autoprefixer({
       overrideBrowserslist: ['ie > 9', 'last 2 versions'],
-      cascade: false
+      cascade: false,
     }))
     .pipe(cssmin())
     .pipe(dest('../lib/styles'))
@@ -23,17 +23,17 @@ function compileComponents() {
     .pipe(stylus())
     .pipe(autoprefixer({
       overrideBrowserslist: ['ie > 9', 'last 2 versions'],
-      cascade: false
+      cascade: false,
     }))
     .pipe(cssmin())
     .pipe(dest('../lib/styles/components'))
 }
 
 // 复制字体包
-function copyfont() {
+function copyFont() {
   return src('../src/styles/fonts/**')
     .pipe(cssmin())
     .pipe(dest('../lib/styles/fonts'))
 }
 
-task('default', series(copyfont, compile, compileComponents))
+task('default', series(copyFont, compile, compileComponents))

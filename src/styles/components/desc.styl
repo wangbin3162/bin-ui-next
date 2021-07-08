@@ -7,6 +7,7 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 16px;
+    font-weight: 500;
   }
   &__title {
     font-weight: 500;
@@ -16,6 +17,7 @@
     background-color: #fff;
     table {
       border-collapse: collapse;
+      border-spacing: 0;
       width: 100%;
       border: none;
       tr {
@@ -25,7 +27,7 @@
         background-color: #fff;
         text-align: left;
         font-weight: 400;
-        line-height: 1.5;
+        line-height: $base-line-height;
       }
     }
     :not(.is-bordered) td, :not(.is-bordered) th {

@@ -1,5 +1,5 @@
 import '@babel/polyfill'
-import { createApp } from 'vue'
+import {createApp} from 'vue'
 import router from './route'
 import App from './App.vue'
 
@@ -10,11 +10,11 @@ import SideNav from './components/side-nav.vue'
 import ColorBase from './components/color-base.vue'
 import IconPane from './components/icon-pane.vue'
 import DraggableDemo from './components/draggable-demo'
-import './assets/styles/color-brewer.css'
-import './assets/styles/index.styl'
 
 import BinUI from 'bin-ui-next'
+import '../src/styles/normalize.styl'
 import '../src/styles/index.styl'
+import './assets/styles/index.styl'
 
 import icon from '../src/components/icon/iconfont.json'
 import generate from './generateTreeData'

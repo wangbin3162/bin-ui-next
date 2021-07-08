@@ -15,9 +15,9 @@ placeholder() {
 }
 .bin-input-wrapper {
   display: inline-block;
+  vertical-align: middle;
   width: 100%;
   position: relative;
-  vertical-align: middle;
   line-height: $base-line-height;
   label {
     display: inline-block;
@@ -93,6 +93,7 @@ placeholder() {
   background-image: none;
   position: relative;
   cursor: text;
+  font-weight: normal;
   transition: border $animation-duration-base ease-in-out, background $animation-duration-base ease-in-out, box-shadow $animation-duration-base ease;
   placeholder()
   &:focus, &:hover {

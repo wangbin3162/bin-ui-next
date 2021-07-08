@@ -1,11 +1,11 @@
 .bin-checkbox {
+  display: inline-block;
+  height: 100%;
   cursor: pointer;
   white-space: nowrap;
-  display: inline-block;
   margin-right: 8px;
   user-select: none;
   font-size: $base-font-size;
-  line-height: $base-line-height;
   &-group {
     font-size: 0;
   }
@@ -43,12 +43,12 @@
   }
   &__input {
     position: relative;
+    display: inline-block;
+    vertical-align: middle;
     white-space: nowrap;
     cursor: pointer;
     outline: none;
-    display: inline-block;
     line-height: 1;
-    vertical-align: middle;
     width: 16px;
     height: 16px;
     &.is-checked {

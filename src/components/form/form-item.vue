@@ -1,17 +1,17 @@
 <template>
   <div
-    class="bin-form-item"
-    :class="formItemClass"
+      class="bin-form-item"
+      :class="formItemClass"
   >
     <LabelWrap
-      :is-auto-width="labelStyle.width === 'auto'"
-      :update-all="elForm.labelWidth === 'auto'"
+        :is-auto-width="labelStyle.width === 'auto'"
+        :update-all="elForm.labelWidth === 'auto'"
     >
       <label
-        v-if="label || $slots.label"
-        :for="labelFor"
-        class="bin-form-item__label"
-        :style="labelStyle"
+          v-if="label || $slots.label"
+          :for="labelFor"
+          class="bin-form-item__label"
+          :style="labelStyle"
       >
         <slot name="label">{{ label }}</slot>
         <span class="item-suffix">{{ elForm.labelSuffix }}</span>
@@ -21,13 +21,13 @@
       <slot></slot>
       <transition name="zoom-in-top">
         <slot
-          v-if="shouldShowError"
-          name="error"
-          :error="validateMessage"
+            v-if="shouldShowError"
+            name="error"
+            :error="validateMessage"
         >
           <div
-            class="bin-form-item__error"
-            :class="{
+              class="bin-form-item__error"
+              :class="{
               'bin-form-item__error--inline':
                 typeof inlineMessage === 'boolean'
                   ? inlineMessage
@@ -56,18 +56,18 @@ import {
   toRefs,
   reactive,
 } from 'vue'
-import { NOOP } from '@vue/shared'
+import {NOOP} from '@vue/shared'
 import AsyncValidator from 'async-validator'
 import LabelWrap from './label-wrap'
-import { getPropByPath } from '../../utils/util-helper'
-import { validSize } from '../../utils/validator-size'
+import {getPropByPath} from '../../utils/util-helper'
+import {validSize} from '../../utils/validator-size'
 import mitt from 'mitt'
-import { FormKey, FormItemKey, FormEvents } from './token'
+import {FormKey, FormItemKey, FormEvents} from './token'
 
 export default {
   name: 'BFormItem',
   componentName: 'BFormItem',
-  components: { LabelWrap },
+  components: {LabelWrap},
   props: {
     label: String,
     labelWidth: String,
@@ -119,19 +119,19 @@ export default {
     let initialValue = undefined
 
     watch(
-      () => props.error,
-      val => {
-        validateMessage.value = val
-        validateState.value = val ? 'error' : ''
-      }, {
-        immediate: true,
-      },
+        () => props.error,
+        val => {
+          validateMessage.value = val
+          validateState.value = val ? 'error' : ''
+        }, {
+          immediate: true,
+        },
     )
     watch(
-      () => props.validateStatus,
-      val => {
-        validateState.value = val
-      },
+        () => props.validateStatus,
+        val => {
+          validateState.value = val
+        },
     )
 
     const labelFor = computed(() => props.for || props.prop)
@@ -217,19 +217,19 @@ export default {
       const model = {}
       model[props.prop] = fieldValue.value
       validator.validate(
-        model,
-        { firstFields: true },
-        (errors, invalidFields) => {
-          validateState.value = !errors ? 'success' : 'error'
-          validateMessage.value = errors ? errors[0].message : ''
-          callback(validateMessage.value, invalidFields)
-          elForm.emit?.(
-            'validate',
-            props.prop,
-            !errors,
-            validateMessage.value || null,
-          )
-        },
+          model,
+          {firstFields: true},
+          (errors, invalidFields) => {
+            validateState.value = !errors ? 'success' : 'error'
+            validateMessage.value = errors ? errors[0].message : ''
+            callback(validateMessage.value, invalidFields)
+            elForm.emit?.(
+                'validate',
+                props.prop,
+                !errors,
+                validateMessage.value || null,
+            )
+          },
       )
     }
 
@@ -264,12 +264,12 @@ export default {
       const formRules = elForm.rules
       const selfRules = props.rules
       const requiredRule =
-        props.required !== undefined ? { required: !!props.required } : []
+          props.required !== undefined ? {required: !!props.required} : []
 
       const prop = getPropByPath(formRules, props.prop || '', false)
       const normalizedRule = formRules
-        ? (prop.o[props.prop || ''] || prop.v)
-        : []
+          ? (prop.o[props.prop || ''] || prop.v)
+          : []
 
       return [].concat(selfRules || normalizedRule || []).concat(requiredRule)
     }
@@ -277,15 +277,15 @@ export default {
       const rules = getRules()
 
       return rules
-        .filter(rule => {
-          if (!rule.trigger || trigger === '') return true
-          if (Array.isArray(rule.trigger)) {
-            return rule.trigger.indexOf(trigger) > -1
-          } else {
-            return rule.trigger === trigger
-          }
-        })
-        .map(rule => ({ ...rule }))
+          .filter(rule => {
+            if (!rule.trigger || trigger === '') return true
+            if (Array.isArray(rule.trigger)) {
+              return rule.trigger.indexOf(trigger) > -1
+            } else {
+              return rule.trigger === trigger
+            }
+          })
+          .map(rule => ({...rule}))
     }
 
     const onFieldBlur = () => {
@@ -336,7 +336,7 @@ export default {
 
         let value = fieldValue.value
         initialValue = Array.isArray(value)
-          ? [...value] : value
+            ? [...value] : value
 
         addValidateEvents()
       }

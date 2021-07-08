@@ -49,7 +49,7 @@
         </div>
       </b-col>
     </b-row>
-    <br />
+    <br/>
     <b-row :gutter="20">
       <b-col span="8">
         <div class="color-wrap">
@@ -78,7 +78,7 @@
         </div>
       </b-col>
     </b-row>
-    <br />
+    <br/>
 
     <h3 id="custom" style="margin-bottom: 20px;">自定义色板</h3>
     <p>如果自定的配色不能满足要求，则可以取如下色板，默认会给生成不同的色板值，可供使用</p>
@@ -123,7 +123,7 @@
         </div>
       </b-col>
     </b-row>
-    <br />
+    <br/>
     <b-row :gutter="20">
       <b-col span="8">
         <div class="color-wrap">
@@ -286,7 +286,7 @@ export default {
     copyColor(color) {
       this.$copy(color).then(result => {
         if (result) {
-          this.$message.info({ message: `已复制颜色 ${color} 至剪切板` })
+          this.$message.info({message: `已复制颜色 ${color} 至剪切板`})
           console.log(color)
         }
       })
@@ -294,3 +294,71 @@ export default {
   },
 }
 </script>
+
+<style scoped lang="stylus">
+.color-wrap {
+  .item {
+    position: relative;
+    height: 44px;
+    margin-right: 4px;
+    padding: 0 12px;
+    font-size: 14px;
+    font-family: Consolas, sans-serif;
+    line-height: 44px;
+    cursor: pointer;
+    -webkit-transition: all .2s;
+    transition: all .2s;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0;
+    user-select: none;
+    &:hover {
+      margin-right: -8px;
+      border-radius: 0 4px 4px 0;
+    }
+  }
+}
+.main-color {
+  width: 100%;
+  display: flex;
+  .main-color-item {
+    position: relative;
+    flex: 1;
+    height: 86px;
+    margin-right: 0;
+    padding: 37px 0 0;
+    line-height: normal;
+    text-align: center;
+    border-radius: 0;
+    cursor: pointer;
+    transition: all .2s
+    &:hover {
+      height: 96px;
+      margin-top: -10px;
+      border-radius: 4px 4px 0 0;
+    }
+  }
+  .main-color-value {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    float: right;
+    transform: scale(.85);
+    opacity: 0;
+    transition: all .3s;
+  }
+  &:hover {
+    .main-color-item {
+      padding-top: 8px;
+    }
+    .main-color-value {
+      bottom: 8px;
+      opacity: .7;
+    }
+  }
+}
+
+
+</style>
