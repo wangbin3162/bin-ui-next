@@ -701,6 +701,7 @@ expand、selected、checked 和 disabled 可以设置展开，选中，勾选和
 | show-checkbox     | 是否显示多选框   | Boolean  |  —   |  false  |
 | empty-text     | 没有数据时的提示  | String      |  —   |  暂无数据  |
 | load-data    | 异步加载数据的方法，见示例 | Function      |  —   |   —    |
+| title-key | 定义title键,默认title  | String      |  —   |   title   |
 | children-key   | 定义子节点键,默认children为子节点key | String      |  —   |   children   |
 | check-strictly   | 复选框的情况下，是否严格的遵循父子不互相关联的做法 | Boolean          |  —   |   false   |
 | check-directly   | 开启后，在 show-checkbox 模式下，select 的交互也将转为 check | Boolean          |  —   |   false   |

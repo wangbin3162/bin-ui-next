@@ -22,7 +22,7 @@
           <span v-if="node.display" :class="titleClasses(node)"
                 @click="handleSelect(node)"
                 v-html="node.display"></span>
-          <span v-else :class="titleClasses(node)" @click="handleSelect(node)">{{ node.title }}</span>
+          <span v-else :class="titleClasses(node)" @click="handleSelect(node)">{{ node[titleKey] }}</span>
         </div>
       </div>
     </template>
@@ -69,6 +69,10 @@ export default {
     emptyText: {
       type: String,
       default: '暂无数据',
+    },
+    titleKey: {
+      type: String,
+      default: 'title',
     },
     childrenKey: {
       type: String,
@@ -185,7 +189,7 @@ export default {
       return [
         `${prefixCls}-title`,
         {
-          [`${prefixCls}-title-selected`]: node.selected,
+          ['is-selected']: node.selected,
         },
       ]
     }
