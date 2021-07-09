@@ -78,7 +78,7 @@ export default {
     const handleExpand = () => {
       const item = props.data
       if (item.disabled) return
-      if (item.isLeaf) return
+      if (item.isLeaf || typeof item.isLeaf === 'undefined') return
 
       // async loading
       if (item[props.childrenKey].length === 0) {

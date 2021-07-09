@@ -79,6 +79,12 @@ export default {
         if (typeof node.visible === 'undefined') {
           node['visible'] = true
         }
+        if (typeof node.loading === 'undefined' && props.loadData) {
+          node['loading'] = false
+        }
+        if (typeof node.isLeaf === 'undefined') {
+          node['isLeaf'] = !node[childrenKey]
+        }
         flatTree[node.nodeKey] = {node: node, nodeKey: node.nodeKey}
         if (typeof parent !== 'undefined') {
           flatTree[node.nodeKey].parent = parent.nodeKey
@@ -242,7 +248,7 @@ export default {
     // 替换节点文字
     function replaceDisplayTitle(node, query) {
       if (query) {
-        node['display'] = node.title.replace(new RegExp(query, 'g'), `<span>${query}</span>`)
+        node['display'] = node[props.titleKey].replace(new RegExp(query, 'g'), `<span>${query}</span>`)
       } else {
         delete node['display']
       }
@@ -305,12 +311,13 @@ export default {
       updateTreeUp(nodeKey) // propagate up
       updateTreeDown(node, {checked, indeterminate: false}) // reset `indeterminate` when going down
 
-      ctx.emit('check-change', getCheckedNodes(), node)
+      ctx.emit('check-change', getCheckedNodes(), node, getCheckedAndIndeterminateNodes())
     }
 
     function updateTreeState() {
       states.stateTree = props.data
       states.flatState = compileFlatState()
+      console.log(states.flatState)
       rebuildTree()
     }
 

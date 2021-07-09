@@ -366,12 +366,10 @@ expand、selected、checked 和 disabled 可以设置展开，选中，勾选和
         data3: [
           {
             title: 'root',
-            loading: false,
             children: []
           },
           {
             title: 'leaf',
-            loading: false,
             isLeaf: true,
             children: []
           }
@@ -716,7 +714,7 @@ expand、selected、checked 和 disabled 可以设置展开，选中，勾选和
 | 事件名      | 说明    | 返回值      |
 |---------- |-------- |---------- |
 | select-change    | 点击树节点时触发   | 当前已选中的节点数组、当前项  |
-| check-change     | 点击复选框时触发   | 当前已勾选节点的数组、当前项  |
+| check-change     | 点击复选框时触发   | 当前已勾选节点的数组、当前项、包含半选的节点数组  |
 | toggle-expand    | 展开和收起子列表时触发   | 当前节点的数据  |
 
 ### Methods
