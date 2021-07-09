@@ -92,7 +92,7 @@ loading结束后加载真实的ui，通过slot设置之后的ui
     <label style="margin-right: 16px;">切换 Loading</label>
     <b-switch v-model="loading" />
   </div>
-  <b-skeleton style="width: 350px;" :loading="loading" animated>
+  <b-skeleton style="width: 350px;" :loading="loading">
     <template #template>
       <div flex="cross:center" style="margin-bottom: 8px;">
         <b-skeleton-item variant="circle" style="width: 36px;margin-right: 8px;" />

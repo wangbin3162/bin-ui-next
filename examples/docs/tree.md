@@ -35,16 +35,16 @@
                 title: '二级 1-1',
                 expand: true,
                 children: [
-                  { title: '三级 1-1-1', },
-                  { title: '三级 1-1-2' }
+                  {title: '三级 1-1-1',},
+                  {title: '三级 1-1-2'}
                 ]
               },
               {
                 title: '二级 1-2',
                 expand: true,
                 children: [
-                  { title: '三级 1-2-1' },
-                  { title: '三级 1-2-2' }
+                  {title: '三级 1-2-1'},
+                  {title: '三级 1-2-2'}
                 ]
               }
             ]
@@ -64,11 +64,139 @@
 
 :::
 
+### 额外参数配置
+
+可以配置额外参数设置，比如附加id，code等业务参数，也可以指定title显示的字段名称，默认为`title`
+
+::: demo
+
+```html
+
+<template>
+  <b-button @click="initData">初始化数据并默认选中前端组</b-button>
+  <div flex class="mt-10">
+    <div style="width: 200px">
+      <b-tree :data="data" ref="tree" @select-change="handleSelect" titleKey="text"></b-tree>
+    </div>
+  </div>
+  <div>
+  </div>
+</template>
+
+<script>
+  export default {
+    data() {
+      return {
+        data: [],
+        defaultId: '00102'
+      }
+    },
+    methods: {
+      initData() {
+        // 初始化数据后
+        this.data = [
+          {
+            id: '001',
+            text: '研发部',
+            deptCode: 'yfb',
+            status: '1',
+            desc: '研发中心',
+            parentId: null,
+            children: [
+              {
+                id: '00101',
+                text: '后端组',
+                deptCode: 'hd',
+                status: '1',
+                desc: '后端研发中心',
+                parentId: '001'
+              },
+              {
+                id: '00102',
+                text: '前端组',
+                deptCode: 'qd',
+                status: '1',
+                desc: '前端研发中心',
+                parentId: '001'
+              },
+              {
+                id: '00103',
+                text: 'UI设计',
+                deptCode: 'sj',
+                status: '1',
+                desc: '交互、ui设计中心',
+                parentId: '001'
+              },
+              {
+                id: '00104',
+                text: '测试组',
+                deptCode: 'cs',
+                status: '1',
+                desc: '测试组',
+                parentId: '001'
+              },
+              {
+                id: '00105',
+                text: '运维组',
+                deptCode: 'yw',
+                status: '1',
+                desc: '运维、服务、巡检',
+                parentId: '001'
+              }
+            ]
+          },
+          {
+            id: '002',
+            text: '项目部',
+            deptCode: 'xmb',
+            status: '1',
+            desc: '项目服务部',
+            parentId: null,
+            children: [
+              {
+                id: '00201',
+                text: '开发组',
+                deptCode: 'kf',
+                status: '1',
+                desc: '后端项目开发',
+                parentId: '002'
+              },
+              {
+                id: '00202',
+                text: '交付服务组',
+                deptCode: 'jf',
+                status: '1',
+                desc: '交付项目，技术服务支持',
+                parentId: '002'
+              }
+            ]
+          }
+        ]
+        this.$nextTick(() => {
+          // 获取树结构的拍平数据，查找当前需要选中的节点值
+          const flatState = this.$refs.tree.getFlatState()
+          const current = flatState.find(node => node.node.id === this.defaultId)
+          if (current && current) {
+            this.$refs.tree.setSelected([current.nodeKey])
+          }
+        })
+      },
+      handleSelect(selected, node) {
+        console.log(node)
+        this.$message(`选中节点${node.text}`)
+      }
+    }
+  }
+</script>
+```
+
+:::
+
 ### 其他属性
 
 可以设置show-checkbox开启勾选，并可以设置数据格式中的默认选中
 
-expand、selected、checked 和 disabled 可以设置展开，选中，勾选和禁用 multiple 开启多选
+expand、selected、checked 和 disabled 可以设置展开，选中，勾选和禁用。multiple 开启多选
 
 ::: demo
 
@@ -94,16 +222,16 @@ expand、selected、checked 和 disabled 可以设置展开，选中，勾选和
                 expand: true,
                 disabled: true,
                 children: [
-                  { title: '三级 1-1-1', },
-                  { title: '三级 1-1-2' }
+                  {title: '三级 1-1-1',},
+                  {title: '三级 1-1-2'}
                 ]
               },
               {
                 title: '二级 1-2',
                 expand: true,
                 children: [
-                  { title: '三级 1-2-1' },
-                  { title: '三级 1-2-2' }
+                  {title: '三级 1-2-1'},
+                  {title: '三级 1-2-2'}
                 ]
               }
             ]
@@ -119,6 +247,101 @@ expand、selected、checked 和 disabled 可以设置展开，选中，勾选和
       handleChecked(checked, node) {
         console.log(checked)
         console.log(node)
+      }
+    }
+  }
+</script>
+```
+
+:::
+
+### 树节点的操作
+
+树结构默认拍平了所有节点数组，并塞入了唯一的nodeKey值用于索引节点，这样可以方便快捷的获取和设置树的状态
+
+::: demo
+
+```html
+
+<template>
+  <div class="mb-16">
+    <b-button @click="expandAll" size="small">展开全部</b-button>
+    <b-button @click="collapseAll" size="small">收起全部</b-button>
+    <b-button @click="setExpand" size="small">展开三级</b-button>
+    <b-button @click="checkAll" size="small">选择全部</b-button>
+    <b-button @click="uncheckAll" size="small">取消全选</b-button>
+    <b-button @click="setChecked" size="small">设置选中1-2及以下</b-button>
+    <b-button @click="setSelected" size="small">单选 1-2-1</b-button>
+    <b-button @click="clear" size="small">清空单选和多选</b-button>
+  </div>
+  <div style="width: 300px;">
+    <b-tree :data="data" show-checkbox ref="tree"></b-tree>
+  </div>
+</template>
+<script>
+  export default {
+    data() {
+      return {
+        data: [
+          {
+            title: '一级 1',
+            children: [
+              {
+                title: '二级 1-1',
+                children: [
+                  {title: '三级 1-1-1',},
+                  {title: '三级 1-1-2'}
+                ]
+              },
+              {
+                title: '二级 1-2',
+                children: [
+                  {title: '三级 1-2-1'},
+                  {title: '三级 1-2-2'}
+                ]
+              }
+            ]
+          },
+          {
+            title: '一级 2',
+            children: [
+              {
+                title: '二级 2-1',
+              },
+              {
+                title: '二级 2-2',
+              }
+            ]
+          }
+        ],
+      }
+    },
+    methods: {
+      expandAll() {
+        this.$refs.tree.expandAll()
+      },
+      collapseAll() {
+        this.$refs.tree.collapseAll()
+      },
+      checkAll() {
+        this.$refs.tree.checkAll()
+      },
+      uncheckAll() {
+        this.$refs.tree.uncheckAll()
+      },
+      setChecked() {
+        // 默认是获取了nodeKey索引，如有特殊判断，如id，则可以自行根据flatState.find所有nodeKey值
+        this.$refs.tree.setChecked([5, 6])
+      },
+      setSelected() {
+        this.$refs.tree.setSelected([5])
+      },
+      clear() {
+        this.$refs.tree.uncheckAll()
+        this.$refs.tree.unselectAll()
+      },
+      setExpand() {
+        this.$refs.tree.setExpand([0, 4])
       }
     }
   }
@@ -220,7 +443,7 @@ expand、selected、checked 和 disabled 可以设置展开，选中，勾选和
   </div>
 </template>
 <script>
-  import { reactive, toRefs, ref } from 'vue'
+  import {reactive, toRefs, ref} from 'vue'
 
   export default {
     setup() {
@@ -235,36 +458,36 @@ expand、selected、checked 和 disabled 可以设置展开，选中，勾选和
                 id: '1-1',
                 title: '南京市',
                 children: [
-                  { id: '1-1-1', title: '玄武区' },
-                  { id: '1-1-2', title: '鼓楼区' },
-                  { id: '1-1-3', title: '建邺区' },
-                  { id: '1-1-4', title: '秦淮区' }
+                  {id: '1-1-1', title: '玄武区'},
+                  {id: '1-1-2', title: '鼓楼区'},
+                  {id: '1-1-3', title: '建邺区'},
+                  {id: '1-1-4', title: '秦淮区'}
                 ]
               },
               {
                 id: '1-2',
                 title: '无锡市',
                 children: [
-                  { id: '1-2-1', title: '锡山区' },
-                  { id: '1-2-2', title: '惠山区' },
-                  { id: '1-2-3', title: '滨湖区' },
-                  { id: '1-2-4', title: '梁溪区' }
+                  {id: '1-2-1', title: '锡山区'},
+                  {id: '1-2-2', title: '惠山区'},
+                  {id: '1-2-3', title: '滨湖区'},
+                  {id: '1-2-4', title: '梁溪区'}
                 ]
               },
               {
                 id: '1-3',
                 title: '徐州市',
                 children: [
-                  { id: '1-3-1', title: '鼓楼区' },
-                  { id: '1-3-2', title: '云龙区' },
-                  { id: '1-3-3', title: '泉山区' },
-                  { id: '1-3-4', title: '铜山区' },
-                  { id: '1-3-5', title: '贾汪区' },
-                  { id: '1-3-6', title: '沛县' },
-                  { id: '1-3-7', title: '丰县' },
-                  { id: '1-3-8', title: '睢宁县' },
-                  { id: '1-3-9', title: '新沂市' },
-                  { id: '1-3-10', title: '邳州市' }
+                  {id: '1-3-1', title: '鼓楼区'},
+                  {id: '1-3-2', title: '云龙区'},
+                  {id: '1-3-3', title: '泉山区'},
+                  {id: '1-3-4', title: '铜山区'},
+                  {id: '1-3-5', title: '贾汪区'},
+                  {id: '1-3-6', title: '沛县'},
+                  {id: '1-3-7', title: '丰县'},
+                  {id: '1-3-8', title: '睢宁县'},
+                  {id: '1-3-9', title: '新沂市'},
+                  {id: '1-3-10', title: '邳州市'}
                 ]
               }
             ]
@@ -277,9 +500,9 @@ expand、selected、checked 和 disabled 可以设置展开，选中，勾选和
                 id: '2-1',
                 title: '石家庄',
                 children: [
-                  { id: '2-1-1', title: '长安区' },
-                  { id: '2-1-2', title: '新华区' },
-                  { id: '2-1-3', title: '鼓楼区' }
+                  {id: '2-1-1', title: '长安区'},
+                  {id: '2-1-2', title: '新华区'},
+                  {id: '2-1-3', title: '鼓楼区'}
                 ]
               }
             ]
@@ -318,27 +541,27 @@ expand、selected、checked 和 disabled 可以设置展开，选中，勾选和
 
 <template>
   <div style="width: 300px;">
-    <b-tree :data="data4" :render="renderContent"></b-tree>
+    <b-tree :data="data" :render="renderContent" ref="tree"></b-tree>
   </div>
 </template>
 <script>
-  import { h } from 'vue'
+  import {h} from 'vue'
 
   export default {
     data() {
       return {
-        data4: [
+        data: [
           {
             title: 'parent 1',
             expand: true,
-            render: ({ root, node, data }) => {
+            render: ({root, node, data}) => {
               return h('span', {
-                style: { display: 'inline-flex', justifyContent: 'space-between', width: '100%', }
+                style: {display: 'inline-flex', justifyContent: 'space-between', width: '100%',}
               }, [
                 h('span', data.title),
                 h('i', {
                   'class': ['b-iconfont', 'b-icon-plus-square'],
-                  style: { fontSize: '16px', color: '#1089ff' },
+                  style: {fontSize: '16px', color: '#1089ff'},
                   onClick: () => {
                     this.append(data)
                   }
@@ -346,31 +569,34 @@ expand、selected、checked 和 disabled 可以设置展开，选中，勾选和
               ]);
             },
             children: [
-              { title: 'child 1-1', },
-              { title: 'child 1-2', }
+              {title: 'child 1-1',},
+              {title: 'child 1-2',}
             ]
           }
         ],
+        id: 0,
       }
     },
     methods: {
-      renderContent({ root, node, data }) {
+      renderContent({root, node, data}) {
         return h('span', {
-          style: { display: 'inline-flex', justifyContent: 'space-between', width: '100%', }
+          style: {display: 'inline-flex', justifyContent: 'space-between', width: '100%',}
         }, [
           h('span', data.title),
-          h('span', { style: { display: 'inline-block', } }, [
+          h('span', {style: {display: 'inline-block',}}, [
             h('i', {
               'class': ['b-iconfont', 'b-icon-plus-circle'],
-              style: { fontSize: '16px', color: '#5d6d7e' },
-              onClick: () => {
+              style: {fontSize: '16px', color: '#5d6d7e'},
+              onClick: (e) => {
+                e.stopPropagation()
                 this.append(data)
               }
             }),
             h('i', {
               'class': ['b-iconfont', 'b-icon-minus-circle'],
-              style: { fontSize: '16px', color: '#f5222d' },
-              onClick: () => {
+              style: {fontSize: '16px', color: '#f5222d'},
+              onClick: (e) => {
+                e.stopPropagation()
                 this.remove(root, node, data)
               }
             })
@@ -380,10 +606,12 @@ expand、selected、checked 和 disabled 可以设置展开，选中，勾选和
       append(data) {
         const children = data.children || [];
         data.expand = true
-        children.push({ title: 'new node' });
+        children.push({title: 'new node'});
         data.children = children
+        this.data = [...this.data]
       },
       remove(root, node, data) {
+        console.log(root, node, data)
         const parentKey = root.find(el => el === node).parent;
         const parent = root.find(el => el.nodeKey === parentKey).node;
         const index = parent.children.indexOf(data);
@@ -494,12 +722,19 @@ expand、selected、checked 和 disabled 可以设置展开，选中，勾选和
 
 | 事件名      | 说明    | 返回值      |
 |---------- |-------- |---------- |
+| getFlatState | 拍平的数组buffer，包含层级关系及索引 无 |
 | getCheckedNodes     | 获取被勾选的节点   | 无 |
 | getSelectedNodes     | 获取被选中的节点   | 无  |
 | getCheckedAndIndeterminateNodes     | 获取选中及半选节点   | 无  |
 | filter     | 树节点过滤函数，必须设置filter-node-method 过滤匹配函数   | 无  |
-| collapseAll   | 收起所有 | 无  |
+| setChecked     | 设置node勾选 ，参数为 keys：nodeKey数组, flag：勾选状态，默认true | 无  |
+| setSelected     | 设置node单选 ，参数为 keys：nodeKey数组, flag：勾选状态，默认true，expandParent：是否展开祖先节点，默认true | 无  |
+| setExpand     | 设置node展开 ，参数为 keys：nodeKey数组, flag：勾选状态，默认true | 无  |
 | expandAll     | 展开所有 | 无  |
+| collapseAll   | 收起所有 | 无  |
+| checkAll     | 勾选所有 | 无  |
+| unselectAll     | 取消所有单选 | 无  |
+| uncheckAll     | 取消全部勾选 | 无  |
 
 ### Children
 

@@ -20,11 +20,12 @@
 <script>
 import TreeNode from './node.vue'
 import BEmpty from '../empty'
-import { provide, reactive, toRefs, unref, watch } from 'vue'
+import {provide, reactive, toRef, toRefs, unref, watch} from 'vue'
+import expand from '../table/main/expand'
 
 export default {
   name: 'BTree',
-  components: { TreeNode, BEmpty },
+  components: {TreeNode, BEmpty},
   props: {
     data: {
       type: Array,
@@ -41,6 +42,10 @@ export default {
       type: String,
       default: '暂无数据',
     },
+    titleKey: {
+      type: String,
+      default: 'title',
+    },
     childrenKey: {
       type: String,
       default: 'children',
@@ -54,8 +59,8 @@ export default {
   emits: ['select-change', 'toggle-expand', 'check-change'],
   setup(props, ctx) {
     const states = reactive({
-      stateTree: props.data,
-      flatState: compileFlatState(),
+      stateTree: [],
+      flatState: [],
       query: '',
     })
 
@@ -66,7 +71,7 @@ export default {
       let defaultExpand = props.defaultExpand
       const flatTree = []
 
-      const flattenChildren = (node, parent) => {
+      const flattenChildren = (node, parent, parentKeys) => {
         node['nodeKey'] = keyCounter++
         if (typeof node.expand === 'undefined') {
           node['expand'] = defaultExpand
@@ -74,15 +79,21 @@ export default {
         if (typeof node.visible === 'undefined') {
           node['visible'] = true
         }
-        flatTree[node.nodeKey] = { node: node, nodeKey: node.nodeKey }
+        flatTree[node.nodeKey] = {node: node, nodeKey: node.nodeKey}
         if (typeof parent !== 'undefined') {
           flatTree[node.nodeKey].parent = parent.nodeKey
           flatTree[parent.nodeKey][childrenKey].push(node.nodeKey)
         }
+        let parents = parentKeys ? parentKeys.split(',').map(i => +i) : []
+        // 拼接parents
+        if (typeof parentKeys !== 'undefined') {
+          parents.push(parent.nodeKey)
+          flatTree[node.nodeKey].parents = parents
+        }
 
         if (node[childrenKey]) {
           flatTree[node.nodeKey][childrenKey] = []
-          node[childrenKey].forEach((child) => flattenChildren(child, node))
+          node[childrenKey].forEach((child) => flattenChildren(child, node, parents.join(',')))
         }
       }
 
@@ -112,6 +123,11 @@ export default {
       updateTreeUp(parentKey)
     }
 
+    //===============public start=====================//
+    function getFlatState() {
+      return states.flatState
+    }
+
     function getCheckedNodes() {
       return states.flatState.filter((obj) => obj.node.checked).map((obj) => obj.node)
     }
@@ -137,6 +153,50 @@ export default {
         node.node.expand = true
       })
     }
+
+    function checkAll() {
+      states.flatState.forEach((node) => {
+        handleCheck({checked: true, nodeKey: node.nodeKey})
+      })
+    }
+
+    function uncheckAll() {
+      states.flatState.forEach((node) => {
+        handleCheck({checked: false, nodeKey: node.nodeKey})
+      })
+    }
+
+    function setChecked(keys, flag = true) {
+      keys.forEach(nodeKey => {
+        handleCheck({checked: flag, nodeKey})
+      })
+    }
+
+    function setSelected(keys, flag = true, expandParent = true) {
+      keys.forEach(nodeKey => {
+        handleSelect(nodeKey, flag)
+        if (expandParent) { // 是否展开祖先层级
+          const parents = states.flatState[nodeKey].parents
+          if (parents) {
+            setExpand(parents)
+          }
+        }
+      })
+    }
+
+    function unselectAll() {
+      states.flatState.forEach((node) => {
+        node.node.selected = false
+      })
+    }
+
+    function setExpand(keys, flag = true) {
+      keys.forEach(nodeKey => {
+        states.flatState[nodeKey].node.expand = flag
+      })
+    }
+
+    //===============public end=====================//
 
     function getMatchesNode(query) {
       return states.flatState.filter((obj) =>
@@ -209,7 +269,7 @@ export default {
       // only called when `data` prop changes
       const checkedNodes = getCheckedNodes()
       checkedNodes.forEach((node) => {
-        updateTreeDown(node, { checked: true })
+        updateTreeDown(node, {checked: true})
         // propagate upwards
         const parentKey = states.flatState[node.nodeKey].parent
         if (!parentKey && parentKey !== 0) return
@@ -221,7 +281,7 @@ export default {
       })
     }
 
-    function handleSelect(nodeKey) {
+    function handleSelect(nodeKey, flag) {
       if (props.lockSelect) { // 如果锁定选择，则不触发选中事件
         return
       }
@@ -232,18 +292,18 @@ export default {
           states.flatState[currentSelectedKey].node['selected'] = false
         }
       }
-      node['selected'] = !node.selected
+      node['selected'] = flag || !node.selected
 
       ctx.emit('select-change', getSelectedNodes(), node)
     }
 
-    function handleCheck({ checked, nodeKey }) {
+    function handleCheck({checked, nodeKey}) {
       const node = states.flatState[nodeKey].node
       node['checked'] = checked
       node['indeterminate'] = false
 
       updateTreeUp(nodeKey) // propagate up
-      updateTreeDown(node, { checked, indeterminate: false }) // reset `indeterminate` when going down
+      updateTreeDown(node, {checked, indeterminate: false}) // reset `indeterminate` when going down
 
       ctx.emit('check-change', getCheckedNodes(), node)
     }
@@ -259,20 +319,20 @@ export default {
       () => {
         updateTreeState()
       },
-      { deep: true },
+      {deep: true, immediate: true},
     )
     provide('BTreeRoot', {
       loadData: props.loadData,
       showCheckbox: props.showCheckbox,
       checkDirectly: props.checkDirectly,
       render: props.render,
-      flatState: states.flatState,
+      states,
+      titleKey: props.titleKey,
       handleToggle,
       handleSelect,
       handleCheck,
       updateTreeState,
     })
-    rebuildTree()
     return {
       ...toRefs(states),
       updateTreeUp,
@@ -281,6 +341,13 @@ export default {
       getCheckedAndIndeterminateNodes,
       collapseAll,
       expandAll,
+      getFlatState,
+      checkAll,
+      uncheckAll,
+      setChecked,
+      setSelected,
+      unselectAll,
+      setExpand,
       getMatchesNode,
       filter,
       handleToggle,
@@ -291,8 +358,8 @@ export default {
   },
   computed: {
     isEmpty() {
-      const { stateTree } = this
-      return !stateTree || stateTree.length === 0 || stateTree.every(({ visible }) => !visible)
+      const {stateTree} = this
+      return !stateTree || stateTree.length === 0 || stateTree.every(({visible}) => !visible)
     },
   },
 }

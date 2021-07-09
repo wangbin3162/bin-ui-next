@@ -8,7 +8,6 @@
       role="alert"
       @mouseenter="clearTimer()"
       @mouseleave="startTimer()"
-      @click="click"
     >
       <i
         v-if="type || iconClass"

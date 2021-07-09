@@ -23,7 +23,7 @@
         </span>
         <template v-else>
           <span v-if="data.display" :class="titleClasses" @click="handleSelect" v-html="data.display"></span>
-          <span v-else :class="titleClasses" @click="handleSelect">{{ data.title }}</span>
+          <span v-else :class="titleClasses" @click="handleSelect">{{ data[titleKey] }}</span>
         </template>
       </div>
       <collapse-transition>
@@ -46,14 +46,14 @@
 <script>
 import Render from './render'
 import CollapseTransition from '../collapse-transition'
-import { inject, nextTick, getCurrentInstance, provide, computed } from 'vue'
+import {inject, nextTick, getCurrentInstance, provide, computed} from 'vue'
 import BCheckbox from '../checkbox'
 
 const prefixCls = 'bin-tree'
 
 export default {
   name: 'TreeNode',
-  components: { CollapseTransition, Render, BCheckbox },
+  components: {CollapseTransition, Render, BCheckbox},
   props: {
     data: {
       type: Object,
@@ -73,7 +73,8 @@ export default {
 
     const isParentRender = computed(() => TreeInstance && TreeInstance.render)
     const parentRender = computed(() => TreeInstance.render || null)
-    const node = computed(() => [TreeInstance.flatState, TreeInstance.flatState.find(item => item.nodeKey === props.data.nodeKey)])
+    const titleKey = computed(() => TreeInstance.titleKey || 'title')
+    const node = computed(() => [TreeInstance.states.flatState, TreeInstance.states.flatState.find(item => item.nodeKey === props.data.nodeKey)])
     const handleExpand = () => {
       const item = props.data
       if (item.disabled) return
@@ -122,6 +123,7 @@ export default {
       isParentRender,
       parentRender,
       node,
+      titleKey,
       handleExpand,
       handleSelect,
       handleCheck,

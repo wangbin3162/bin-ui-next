@@ -8,9 +8,9 @@ export default {
   },
   render: (ctx) => {
     const params = {
-      root: ctx.node[0],
-      node: ctx.node[1],
-      data: ctx.data,
+      root: ctx.node[0],// root 为拍平的数据
+      node: ctx.node[1],// 当前的节点
+      data: ctx.data,// 当前点选的节点
     }
     return ctx.render(params)
   },
