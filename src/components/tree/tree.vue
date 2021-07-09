@@ -317,7 +317,6 @@ export default {
     function updateTreeState() {
       states.stateTree = props.data
       states.flatState = compileFlatState()
-      console.log(states.flatState)
       rebuildTree()
     }
 
