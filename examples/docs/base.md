@@ -4,7 +4,7 @@
 
 ### 基础api
 
-暴露了以下几个api用于实现常用功能，log print在专门模块中说明
+暴露了以下几个api用于实现常用功能，log print在专门模块中说明，组件全局导出了全部可供外部使用的辅助工具函数，使用时建议自定义util并按需引入常用的即可
 
 util方法函数
 
@@ -30,9 +30,9 @@ util方法函数
 
 ```css
 [flex~="wrap:wrap"] {
-  -webkit-flex-wrap: wrap;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
 }
 ```
 
@@ -148,7 +148,6 @@ box：子元素设置
 | ml-8      | 左外边距8  | pl-8      | 左内边距8  |
 | ml-16     | 左外边距16 | pl-16     | 左内边距16 |
 | ml-24     | 左外边距24 | pl-24     | 左内边距24 |
-
 
 还有文字等其他常用样式
 

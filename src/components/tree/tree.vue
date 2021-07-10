@@ -20,12 +20,12 @@
 <script>
 import TreeNode from './node.vue'
 import BEmpty from '../empty'
-import {provide, reactive, toRef, toRefs, unref, watch} from 'vue'
+import { provide, reactive, toRef, toRefs, unref, watch } from 'vue'
 import expand from '../table/main/expand'
 
 export default {
   name: 'BTree',
-  components: {TreeNode, BEmpty},
+  components: { TreeNode, BEmpty },
   props: {
     data: {
       type: Array,
@@ -85,7 +85,7 @@ export default {
         if (typeof node.isLeaf === 'undefined') {
           node['isLeaf'] = !node[childrenKey]
         }
-        flatTree[node.nodeKey] = {node: node, nodeKey: node.nodeKey}
+        flatTree[node.nodeKey] = { node: node, nodeKey: node.nodeKey }
         if (typeof parent !== 'undefined') {
           flatTree[node.nodeKey].parent = parent.nodeKey
           flatTree[parent.nodeKey][childrenKey].push(node.nodeKey)
@@ -162,19 +162,19 @@ export default {
 
     function checkAll() {
       states.flatState.forEach((node) => {
-        handleCheck({checked: true, nodeKey: node.nodeKey})
+        handleCheck({ checked: true, nodeKey: node.nodeKey })
       })
     }
 
     function uncheckAll() {
       states.flatState.forEach((node) => {
-        handleCheck({checked: false, nodeKey: node.nodeKey})
+        handleCheck({ checked: false, nodeKey: node.nodeKey })
       })
     }
 
     function setChecked(keys, flag = true) {
       keys.forEach(nodeKey => {
-        handleCheck({checked: flag, nodeKey})
+        handleCheck({ checked: flag, nodeKey })
       })
     }
 
@@ -248,7 +248,7 @@ export default {
     // 替换节点文字
     function replaceDisplayTitle(node, query) {
       if (query) {
-        node['display'] = node[props.titleKey].replace(new RegExp(query, 'g'), `<span>${query}</span>`)
+        node['display'] = node[props.titleKey].replace(new RegExp(query, 'g'), `<span>${ query }</span>`)
       } else {
         delete node['display']
       }
@@ -275,7 +275,7 @@ export default {
       // only called when `data` prop changes
       const checkedNodes = getCheckedNodes()
       checkedNodes.forEach((node) => {
-        updateTreeDown(node, {checked: true})
+        updateTreeDown(node, { checked: true })
         // propagate upwards
         const parentKey = states.flatState[node.nodeKey].parent
         if (!parentKey && parentKey !== 0) return
@@ -300,18 +300,18 @@ export default {
       }
       node['selected'] = flag || !node.selected
 
-      ctx.emit('select-change', getSelectedNodes(), node)
+      ctx.emit('select-change', getSelectedNodes(), node, states.flatState)
     }
 
-    function handleCheck({checked, nodeKey}) {
+    function handleCheck({ checked, nodeKey }) {
       const node = states.flatState[nodeKey].node
       node['checked'] = checked
       node['indeterminate'] = false
 
       updateTreeUp(nodeKey) // propagate up
-      updateTreeDown(node, {checked, indeterminate: false}) // reset `indeterminate` when going down
+      updateTreeDown(node, { checked, indeterminate: false }) // reset `indeterminate` when going down
 
-      ctx.emit('check-change', getCheckedNodes(), node, getCheckedAndIndeterminateNodes())
+      ctx.emit('check-change', getCheckedNodes(), node, getCheckedAndIndeterminateNodes(), states.flatState)
     }
 
     function updateTreeState() {
@@ -325,7 +325,7 @@ export default {
       () => {
         updateTreeState()
       },
-      {deep: true, immediate: true},
+      { deep: true, immediate: true },
     )
     provide('BTreeRoot', {
       loadData: props.loadData,
@@ -364,8 +364,8 @@ export default {
   },
   computed: {
     isEmpty() {
-      const {stateTree} = this
-      return !stateTree || stateTree.length === 0 || stateTree.every(({visible}) => !visible)
+      const { stateTree } = this
+      return !stateTree || stateTree.length === 0 || stateTree.every(({ visible }) => !visible)
     },
   },
 }

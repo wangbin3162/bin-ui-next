@@ -81,6 +81,9 @@ import MessageBox from './components/message-box'
 import Notice from './components/notice'
 
 import * as util from './utils/util'
+import * as helper from './utils/util-helper'
+import * as resize from './utils/resize-event'
+import * as dom from './utils/dom'
 import { setConfig } from './utils/config'
 import log from './utils/log'
 import { scrollTop } from './utils/dom'
@@ -94,9 +97,14 @@ const version = config.version // version_ to fix tsc issue
 
 const Utils = {
   util,
+  helper,
+  resize,
   color,
+  dom,
   log,
 }
+
+console.log(Utils)
 
 const components = [
   BAnchor,
@@ -186,7 +194,7 @@ const plugins = [
 const defaultInstallOpt = {
   zIndex: 2000,
 }
-const install = function(app, options = {}) {
+const install = function (app, options = {}) {
   components.forEach(component => {
     app.use(component)
   })
@@ -219,7 +227,7 @@ const install = function(app, options = {}) {
   app.config.globalProperties.$color = color
 
   if (!options.disabledDoc) {
-    log.pretty(`[${config.name}] ${config.version}`, config.homepage)
+    log.pretty(`[${ config.name }] ${ config.version }`, config.homepage)
   }
   return app
 }
