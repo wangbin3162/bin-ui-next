@@ -121,7 +121,7 @@ export default {
     },
     appendToBody: {
       type: Boolean,
-      default: false,
+      default: true,
     },
     clearIcon: {
       type: String,
