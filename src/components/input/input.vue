@@ -6,7 +6,7 @@
       </span>
       <!--清空按钮-->
       <span :class="closeClasses" v-if="clearable && currentValue && !disabled">
-        <i class="b-iconfont b-icon-close-circle-fill" @click="handleClear"></i>
+        <i class="b-iconfont b-icon-close-circle-fill" @click.stop.prevent="handleClear"></i>
       </span>
       <span class="bin-input-suffix" v-if="showSuffix">
         <i

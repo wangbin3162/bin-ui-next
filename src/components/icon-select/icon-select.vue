@@ -46,7 +46,7 @@
               <i
                 v-if="showClose"
                 :class="`bin-select__caret is-show-close b-iconfont b-icon-close-circle-fill`"
-                @click="handleClearClick"
+                @click.stop.prevent="handleClearClick"
               ></i>
             </template>
           </b-input>
@@ -82,13 +82,8 @@ import BPopper from '../popper'
 import { ClickOutside } from '../../directives'
 import BInput from '../input/input'
 import { CHANGE_EVENT, UPDATE_MODEL_EVENT } from '../../utils/constants'
-import { useSelect, useSelectStates } from '../select/useSelect'
-import { useFocus } from '../../hooks'
-import { computed, nextTick, onBeforeUnmount, onMounted, provide, reactive, ref, toRefs, watch } from 'vue'
-import { selectKey } from '../select/token'
-import { addResizeListener, removeResizeListener } from '../../utils/resize-event'
+import { computed, ref, watch } from 'vue'
 import useForm from '../../hooks/useForm'
-import { isEdge, isIE } from '../../utils/util-helper'
 import icon from '../icon/iconfont.json'
 import BScrollbar from '../scrollbar/scrollbar'
 import BButton from '../button/button'
@@ -193,7 +188,3 @@ export default {
   },
 }
 </script>
-
-<style scoped>
-
-</style>

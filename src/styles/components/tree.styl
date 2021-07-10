@@ -73,6 +73,7 @@
     }
   }
   &-arrow {
+    flex-shrink: 0;
     width: 24px;
     height: 24px;
     line-height: 24px;
@@ -127,6 +128,7 @@
     min-height: 100px;
   }
 }
+
 .b-icon-loading {
   animation: rotating 2s linear infinite;
 }
@@ -137,5 +139,34 @@
   }
   100% {
     transform: rotateZ(360deg);
+  }
+}
+
+// 树选择
+.bin-tree-select__popper {
+  &.bin-popper {
+    width: inherit;
+    min-width: 10px;
+    overflow: auto;
+    padding: 5px 0 2px;
+    background-color: $color-white;
+    box-sizing: border-box;
+    border-radius: $border-base-radius;
+    box-shadow: $shadow-2-down;
+    position: absolute;
+    z-index: 900;
+    &.is-light {
+      border: none;
+    }
+    .bin-tree-title {
+      display: inline-block;
+      width: 100%;
+    }
+    .bin-tree-select-inner {
+      padding: 0 4px;
+    }
+  }
+  .bin-tree-select-panel__wrap {
+    max-height: 220px;
   }
 }

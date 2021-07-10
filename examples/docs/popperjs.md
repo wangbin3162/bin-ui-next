@@ -47,14 +47,14 @@ popper借助了第三方插件<a href="https://popper.js.org/" target="_blank">p
   <div flex>
     <div style="width: 200px;">
       <b-popper
-        trigger="click"
-        theme="light"
-        :show-arrow="false"
-        :offset="4"
-        placement="bottom-start"
-        transition="zoom-in-top"
-        popper-class="bin-select__popper"
-        :gpu-acceleration="false"
+          trigger="click"
+          theme="light"
+          :show-arrow="false"
+          :offset="4"
+          placement="bottom-start"
+          transition="zoom-in-top"
+          popper-class="bin-select__popper"
+          :gpu-acceleration="false"
       >
         <template #default>
           <div style="width: 120px;">
@@ -92,7 +92,7 @@ popper借助了第三方插件<a href="https://popper.js.org/" target="_blank">p
 
 :::
 
-### 选择器
+### 图标选择器
 
 可以参考图标选择器，来实现类似的业务功能，并可以扩展实现表单的校验逻辑，
 <a href="https://github.com/wangbin3162/bin-ui-next/blob/master/src/components/icon-select/icon-select.vue" target="_blank">

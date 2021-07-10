@@ -54,6 +54,7 @@ import BCheckboxGroup from './components/checkbox-group'
 import BRadio from './components/radio'
 import BRadioGroup from './components/radio-group'
 import BTree from './components/tree'
+import BTreeSelect from './components/tree-select'
 import BBigTree from './components/tree-big'
 import BDesc from './components/desc'
 import BDescItem from './components/desc-item'
@@ -103,8 +104,6 @@ const Utils = {
   dom,
   log,
 }
-
-console.log(Utils)
 
 const components = [
   BAnchor,
@@ -165,6 +164,7 @@ const components = [
   BCheckbox,
   BCheckboxGroup,
   BTree,
+  BTreeSelect,
   BBigTree,
   BDesc,
   BDescItem,
@@ -291,6 +291,7 @@ export {
   BCheckbox,
   BCheckboxGroup,
   BTree,
+  BTreeSelect,
   BBigTree,
   BDesc,
   BDescItem,
