@@ -62,6 +62,10 @@ export default {
     }
 
     onMounted(() => {
+      if (route.meta.desc) {
+        document.title = route.meta.desc + ' - Bin UI Next'
+        document.scrollingElement.scrollTop = 0
+      }
       fetchAnchors()
     })
 

@@ -4,7 +4,7 @@
       <div class="search-modal" @click.stop v-if="visible">
         <div class="search-modal-content" v-click-outside="handleClose">
           <div class="search-modal-input__wrapper">
-            <b-input size="large" v-model="query" placeholder="搜索" class="input-item" clearable>
+            <b-input ref="inputRef" size="large" v-model="query" placeholder="搜索" class="input-item" clearable>
               <template #prefix>
                 <b-icon name="search" size="22"></b-icon>
               </template>
@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import { computed, ref } from 'vue'
+import { computed, nextTick, ref } from 'vue'
 import navConf from '../nav.config.json'
 import { useRoute, useRouter } from 'vue-router'
 
@@ -38,6 +38,7 @@ export default {
   name: 'Search',
   setup() {
     const visible = ref(false)
+    const inputRef = ref(null)
     const dataText = ref('暂无搜索结果')
     const query = ref('')
     const compList = ref([])
@@ -62,7 +63,7 @@ export default {
             routes = routes.concat(route.items)
           } else {
             // 如果是组件路由
-            if (['guide', 'install', 'start', 'theme', 'logs'].indexOf(route.name) === -1) {
+            if (['guide', 'install', 'start', 'theme', 'color', 'logs'].indexOf(route.name) === -1) {
               compList.value.push({
                 path: route.path,
                 label: route.desc,
@@ -79,7 +80,10 @@ export default {
 
     function handleOpen() {
       visible.value = true
-      hideScroll()
+      nextTick(() => {
+        hideScroll()
+        inputRef.value && inputRef.value.focus()
+      })
     }
 
     function handleClick(path) {
@@ -104,6 +108,7 @@ export default {
 
     return {
       visible,
+      inputRef,
       query,
       filterList,
       dataText,

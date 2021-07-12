@@ -2,12 +2,29 @@
   <header class="page-header">
     <div class="header-container">
       <div class="left" style="width: 580px" flex="main:justify cross:center">
-        <div class="logo"></div>
+        <div class="logo">
+          <img src="../assets/images/favicon.png" class="icon" alt="icon"/>
+          <img src="../assets/images/text03.png" class="text" alt="text"/>
+        </div>
       </div>
-      <div class="link">
-        <span class="search" @click="openSearch"><i class="b-iconfont b-icon-search"></i></span>
+      <div class="link-box">
+        <b-tooltip content="搜索组件" placement="bottom-start">
+          <span class="search" @click="openSearch"><i class="b-iconfont b-icon-search"></i></span>
+        </b-tooltip>
         <router-link :to="{ name: 'guide' }" class="active">指南</router-link>
         <router-link :to="{ name: 'button' }" class="active">组件</router-link>
+        <b-dropdown @command="handleCommand">
+          <a href="#" class="active" @click.prevent>生态
+            <i class="iconfont icon-ios-arrow-down"></i>
+          </a>
+          <template #dropdown>
+            <b-dropdown-menu>
+              <b-dropdown-item name="bin-admin-pro">bin-admin-pro</b-dropdown-item>
+              <b-dropdown-item name="bin-tree-org">bin-tree-org</b-dropdown-item>
+              <b-dropdown-item name="bin-charts">bin-charts</b-dropdown-item>
+            </b-dropdown-menu>
+          </template>
+        </b-dropdown>
         <a
           href="https://github.com/wangbin3162/bin-ui-next"
           class="github"
@@ -28,6 +45,9 @@ export default {
   methods: {
     openSearch() {
       this.$refs.searchRef.handleOpen()
+    },
+    handleCommand(name) {
+      this.$util.open(`https://github.com/wangbin3162/${ name }`, true)
     },
   },
 }
@@ -52,21 +72,33 @@ export default {
     margin: 0 auto;
     height: 80px;
     .logo {
+      display: flex;
+      align-items: center;
       color: #1089ff;
       text-transform: uppercase;
       font-weight: bold;
       font-family: helvetica;
-      text-align: center;
       font-size: 40px;
-      margin-left: 30px;
-      width: 220px;
       height: 80px;
-      background: url('../assets/bin-ui.png') no-repeat 0 0;
-      background-size: 220px 80px;
+      padding-left: 32px;
+      .icon {
+        width: 70px;
+        height: 70px;
+      }
+      .text {
+        height: 55px;
+        margin-left: 24px;
+      }
     }
-    .link {
+    .link-box {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       padding: 0 20px;
-      line-height: 80px;
+      height: 80px;
+      .search {
+        cursor: pointer;
+      }
       a {
         text-decoration: none;
         color: #1989fa;
