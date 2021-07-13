@@ -3,8 +3,10 @@
     <div class="header-container">
       <div class="left" style="width: 580px" flex="main:justify cross:center">
         <div class="logo">
-          <img src="../assets/images/favicon.png" class="icon" alt="icon"/>
-          <img src="../assets/images/text03.png" class="text" alt="text"/>
+          <img src="../assets/images/bin-ui-next.svg" class="icon" alt="icon"/>
+          <div class="text">
+            <img src="../assets/images/text.svg" alt="text"/>
+          </div>
         </div>
       </div>
       <div class="link-box">
@@ -80,14 +82,20 @@ export default {
       font-family: helvetica;
       font-size: 40px;
       height: 80px;
-      padding-left: 32px;
+      padding-left: 24px;
       .icon {
-        width: 70px;
-        height: 70px;
+        width: 52px;
+        height: 52px;
       }
       .text {
-        height: 55px;
-        margin-left: 24px;
+        height: 64px;
+        overflow: hidden;
+        margin-left: 18px;
+        img {
+          width: 100%;
+          opacity: .85;
+          transform: translate(-132px, -166px);
+        }
       }
     }
     .link-box {
