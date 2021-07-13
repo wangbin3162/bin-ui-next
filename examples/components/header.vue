@@ -3,7 +3,7 @@
     <div class="header-container">
       <div class="left" style="width: 580px" flex="main:justify cross:center">
         <div class="logo">
-          <img src="../assets/images/logo/bin-ui-next.svg" class="icon" alt="icon"/>
+          <img src="../assets/images/logo/bin-ui-next-02.svg" class="icon" alt="icon"/>
           <div class="text">
             <img src="../assets/images/text.svg" alt="text"/>
           </div>
@@ -84,8 +84,8 @@ export default {
       height: 80px;
       padding-left: 24px;
       .icon {
-        width: 52px;
-        height: 52px;
+        width: 54px;
+        height: 54px;
       }
       .text {
         height: 64px;
