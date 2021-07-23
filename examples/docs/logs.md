@@ -5,6 +5,11 @@
 <div class="doc-update">
     <b-timeline>
       <b-timeline-item>
+        <p class="version">0.7.1</p>
+        <p class="time">2021-07-23</p>
+        <p class="content"><i>🍀</i>修改部分样式</p>
+      </b-timeline-item>
+      <b-timeline-item>
         <p class="version">0.7.0</p>
         <p class="time">2021-07-12</p>
         <p class="content"><i>🍀</i>修改树结构，提供更多操作函数</p>
