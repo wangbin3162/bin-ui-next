@@ -1,5 +1,5 @@
 <template>
-  <div ref="radioGroup" class="bin-radio-group" role="radiogroup" @keydown="handleKeydown">
+  <div ref="radioGroup" :class="classes" role="radiogroup" @keydown="handleKeydown">
     <slot></slot>
   </div>
 </template>
@@ -10,17 +10,40 @@ import { EVENT_CODE } from '../../utils/aria'
 import { UPDATE_MODEL_EVENT } from '../../utils/constants'
 import useForm from '../../hooks/useForm'
 
+const prefixCls = 'bin-radio-group'
 export default {
   name: 'BRadioGroup',
   componentName: 'BRadioGroup',
   props: {
     modelValue: {
       type: [Boolean, String, Number],
-      default: '',
+      default: ''
     },
-    disabled: Boolean,
+    type: {
+      validator(value) {
+        return ['button'].includes(value)
+      }
+    },
+    size: {
+      validator(value) {
+        return ['small', 'large', 'default', 'mini'].includes(value)
+      },
+      default: 'default'
+    },
+    disabled: Boolean
   },
-
+  computed: {
+    classes() {
+      return [
+        `${prefixCls}`,
+        {
+          [`${prefixCls}-${this.type}`]: !!this.type,
+          [`${prefixCls}-${this.size}`]: !!this.size,
+          [`bin-radio-${this.size}`]: !!this.size
+        }
+      ]
+    }
+  },
   emits: [UPDATE_MODEL_EVENT, 'change'],
 
   setup(props, ctx) {
@@ -41,8 +64,8 @@ export default {
       reactive({
         name: 'BRadioGroup',
         ...toRefs(props),
-        changeEvent: changeEvent,
-      }),
+        changeEvent: changeEvent
+      })
     )
 
     watch(() => props.modelValue, val => {
@@ -88,9 +111,9 @@ export default {
     })
     return {
       handleKeydown,
-      radioGroup,
+      radioGroup
     }
-  },
+  }
 }
 </script>
 

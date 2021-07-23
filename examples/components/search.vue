@@ -30,9 +30,10 @@
 </template>
 
 <script>
-import { computed, nextTick, ref } from 'vue'
+import { computed, nextTick, onBeforeUnmount, onMounted, ref } from 'vue'
 import navConf from '../nav.config.json'
 import { useRoute, useRouter } from 'vue-router'
+import { on, off } from '../../src/utils/dom'
 
 export default {
   name: 'Search',
@@ -67,7 +68,7 @@ export default {
               compList.value.push({
                 path: route.path,
                 label: route.desc,
-                icon: route.icon,
+                icon: route.icon
               })
             }
           }
@@ -106,6 +107,32 @@ export default {
       document.body.classList.remove('bin-popup-parent--hidden')
     }
 
+
+    // ctrl + f 全局呼出搜索面板
+    const keydownEvent = (e) => {
+      const { ctrlKey, code } = e
+      // 面板打开
+      if (visible.value) {
+        if (code === 'Escape') {
+          e.preventDefault()
+          handleClose()
+        }
+      } else {
+        if (ctrlKey && code === 'KeyF') {
+          e.preventDefault()
+          handleOpen()
+        }
+      }
+    }
+
+    onMounted(() => {
+      on(document, 'keydown', keydownEvent)
+    })
+
+    onBeforeUnmount(() => {
+      off(document, 'keydown', keydownEvent)
+    })
+
     return {
       visible,
       inputRef,
@@ -115,9 +142,9 @@ export default {
       handleOpen,
       handleClose,
       showScroll,
-      handleClick,
+      handleClick
     }
-  },
+  }
 }
 </script>
 

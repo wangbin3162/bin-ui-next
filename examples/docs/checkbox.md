@@ -106,9 +106,9 @@
 <template>
   <div style="border-bottom: 1px solid #e9e9e9;padding-bottom:6px;margin-bottom:6px;">
     <b-checkbox
-      :indeterminate="indeterminate"
-      v-model="checkAll"
-      @change="handleCheckAll">全选
+        :indeterminate="indeterminate"
+        v-model="checkAll"
+        @change="handleCheckAll">全选
     </b-checkbox>
     <span style="color:#ff4511;margin: 5px 0;">{{ checkAllGroup }} - {{ checkAll }}</span>
   </div>
@@ -207,11 +207,12 @@
 
 ### CheckboxGroup props
 
-| 属性      | 说明    |类型      | 返回值  |
-|---------- |-------- |---------- |--------- |
-| value   | 指定选中项目的集合，可以使用 v-model 双向绑定数据  |Array  | []  |
-| min   | 最小数量 |Number  | — |
-| max   | 最大数量  |Number  | —  |
+| 参数      | 说明    | 类型      | 可选值       | 默认值   |
+|---------- |-------- |---------- |-------------  |-------- |
+| value   | 指定选中项目的集合，可以使用 v-model 双向绑定数据  | String/ Number  |  —   |   ''  |
+| disabled     | 是否禁用所有选项  | Boolean  |  —   |  false  || min   | 最小数量 |Number  | — |
+| min   | 最小数量  |Number  | —  |  —  |
+| max   | 最大数量  |Number  | —  |  —  |
 
 ### CheckboxGroup events
 

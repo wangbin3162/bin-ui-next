@@ -10,7 +10,7 @@
         </div>
       </div>
       <div class="link-box">
-        <b-tooltip content="搜索组件" placement="bottom-start">
+        <b-tooltip content="搜索组件">
           <span class="search" @click="openSearch"><i class="b-iconfont b-icon-search"></i></span>
         </b-tooltip>
         <router-link :to="{ name: 'guide' }" class="active">指南</router-link>
@@ -49,9 +49,9 @@ export default {
       this.$refs.searchRef.handleOpen()
     },
     handleCommand(name) {
-      this.$util.open(`https://github.com/wangbin3162/${ name }`, true)
-    },
-  },
+      this.$util.open(`https://github.com/wangbin3162/${name}`, true)
+    }
+  }
 }
 </script>
 

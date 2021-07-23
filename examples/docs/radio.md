@@ -96,7 +96,65 @@
 
 :::
 
-### Attributes
+### 按钮模式
+
+::: demo
+
+```html
+
+<template>
+  <div flex>
+    <div>
+      <b-radio-group v-model="fruit" type="button">
+        <b-radio label="香蕉"></b-radio>
+        <b-radio label="苹果"></b-radio>
+        <b-radio label="西瓜"></b-radio>
+      </b-radio-group>
+      <br>
+      <b-radio-group v-model="fruit" type="button" size="small">
+        <b-radio label="香蕉"></b-radio>
+        <b-radio label="苹果"></b-radio>
+        <b-radio label="西瓜"></b-radio>
+      </b-radio-group>
+      <br>
+      <b-radio-group v-model="fruit" type="button" size="mini">
+        <b-radio label="香蕉"></b-radio>
+        <b-radio label="苹果"></b-radio>
+        <b-radio label="西瓜"></b-radio>
+      </b-radio-group>
+    </div>
+    <div style="margin-left: 24px;">
+      <b-radio-group v-model="fruit" type="button">
+        <b-radio label="香蕉" disabled></b-radio>
+        <b-radio label="苹果"></b-radio>
+        <b-radio label="西瓜"></b-radio>
+      </b-radio-group>
+      <br>
+      <b-radio-group v-model="fruit" type="button" disabled>
+        <b-radio label="香蕉" disabled></b-radio>
+        <b-radio label="苹果"></b-radio>
+        <b-radio label="西瓜"></b-radio>
+      </b-radio-group>
+    </div>
+  </div>
+
+
+  <span style="color:#ff4511;margin: 5px 0;">{{fruit}}</span>
+</template>
+<script>
+  export default {
+    data() {
+      return {
+        fruit: ''
+      }
+    }
+  }
+</script>
+```
+
+:::
+
+### Props
 
 | 参数      | 说明    | 类型      | 可选值       | 默认值   |
 |---------- |-------- |---------- |-------------  |-------- |
@@ -112,11 +170,12 @@
 
 ### RadioGroup  props
 
-| 事件名      | 说明    |类型      | 返回值  |
-|---------- |-------- |---------- |--------- |
-| value   | 指定选中项目的集合，可以使用 v-model 双向绑定数据  | String/ Number  | ...  |
-| size   | 多选框组的尺寸，可选值为 large、small、default 或者不设置  |String  | — |
-| disabled     | 是否禁用所有选项  | Boolean  |  —   |   false  |
+| 参数      | 说明    | 类型      | 可选值       | 默认值   |
+|---------- |-------- |---------- |-------------  |-------- |
+| value   | 指定选中项目的集合，可以使用 v-model 双向绑定数据  | String/ Number  |  —   |   ''  |
+| disabled     | 是否禁用所有选项  | Boolean  |  —   |  false  |
+| type     | 是否开启button模式  | String  |  button   |   false  |
+| size   | 按钮模式单选组的尺寸  |String  | large、small、default | — |
 
 ### RadioGroup  events
 
