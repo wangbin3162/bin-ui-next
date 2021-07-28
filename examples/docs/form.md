@@ -125,7 +125,7 @@
 
 ### 对齐和尺寸
 
-可以有三种不同的标签对齐方式
+可以有三种不同的标签对齐方式,纯文字需要包裹label或span标签
 
 ::: demo
 
@@ -134,33 +134,70 @@
 <template>
   <div flex>
     <p>对齐方式：
-      <b-radio-group v-model="labelPosition">
+      <b-radio-group v-model="labelPosition" type="button">
         <b-radio label="left">左对齐</b-radio>
         <b-radio label="right">右对齐</b-radio>
         <b-radio label="top">顶部对齐</b-radio>
       </b-radio-group>
     </p>
+    &nbsp;
     <p>尺寸大小：
-      <b-radio-group v-model="size">
+      <b-radio-group v-model="size" type="button">
         <b-radio label="large">large</b-radio>
         <b-radio label="default">default</b-radio>
         <b-radio label="small">small</b-radio>
         <b-radio label="mini">mini</b-radio>
       </b-radio-group>
     </p>
+    &nbsp;
+    <p>纯文字：
+    <div>
+      <b-switch v-model="onlyText"></b-switch>
+    </div>
+    </p>
   </div>
   <div style="margin: 20px;"></div>
-  <b-form :label-position="labelPosition" label-width="80px" :model="formLabelAlign" :size="size">
-    <b-form-item label="名称">
-      <b-input v-model="formLabelAlign.name"></b-input>
+  <b-form :label-position="labelPosition" label-width="80px" :model="form" :size="size" label-suffix=":">
+    <b-form-item label="姓名">
+      <b-input v-if="!onlyText" v-model="form.name" placeholder="输入姓名"></b-input>
+      <label v-else>{{ form.name }}</label>
     </b-form-item>
-    <b-form-item label="活动区域">
-      <b-input v-model="formLabelAlign.region"></b-input>
+    <b-form-item label="年龄">
+      <b-input-number v-if="!onlyText" v-model="form.age" :size="size"></b-input-number>
+      <label v-else>{{ form.age }}</label>
     </b-form-item>
-    <b-form-item label="活动形式">
-      <b-input v-model="formLabelAlign.type"></b-input>
+    <b-form-item label="户籍地">
+      <b-select v-if="!onlyText" v-model="form.city" placeholder="请选择户籍地" :size="size">
+        <b-option label="上海" value="shanghai"></b-option>
+        <b-option label="北京" value="beijing"></b-option>
+        <b-option label="南京" value="nanjing"></b-option>
+        <b-option label="徐州" value="xuzhou"></b-option>
+      </b-select>
+      <label v-else>{{ form.city }}</label>
     </b-form-item>
-    <b-form-item>
+    <b-form-item label="学历">
+      <b-radio-group v-if="!onlyText" v-model="form.edu">
+        <b-radio label="高中"></b-radio>
+        <b-radio label="大专"></b-radio>
+        <b-radio label="本科"></b-radio>
+        <b-radio label="硕士"></b-radio>
+      </b-radio-group>
+      <span v-else>{{ form.edu }}</span>
+    </b-form-item>
+    <b-form-item label="爱好">
+      <b-checkbox-group v-if="!onlyText" v-model="form.hobby">
+        <b-checkbox label="打游戏" name="hobby"></b-checkbox>
+        <b-checkbox label="看电影" name="hobby"></b-checkbox>
+        <b-checkbox label="打篮球/运动" name="hobby"></b-checkbox>
+        <b-checkbox label="看书" name="hobby"></b-checkbox>
+      </b-checkbox-group>
+      <span v-else>{{ form.hobby }}</span>
+    </b-form-item>
+    <b-form-item label="住址">
+      <b-input v-if="!onlyText" type="textarea" v-model="form.address" placeholder="请输入住址..."></b-input>
+      <span v-else>{{ form.address }}</span>
+    </b-form-item>
+    <b-form-item v-if="!onlyText">
       <b-button type="primary">提交</b-button>
       <b-button>取消</b-button>
     </b-form-item>
@@ -170,13 +207,17 @@
   export default {
     data() {
       return {
-        formLabelAlign: {
-          name: '',
-          region: '',
-          type: ''
+        form: {
+          name: '张三',
+          age: 18,
+          city: 'xuzhou',
+          edu: '高中',
+          hobby: ['打游戏', '看电影'],
+          address: '徐州市鼓楼区'
         },
         labelPosition: 'right',
-        size: 'default'
+        size: 'default',
+        onlyText: false
       }
     }
   }
@@ -410,11 +451,11 @@
 <template>
   <b-form :model="dynamicValidateForm" ref="dynamicValidateForm" label-width="100px" class="demo-dynamic">
     <b-form-item
-      v-for="(domain, index) in dynamicValidateForm.domains"
-      :label="'域名' + index"
-      :key="domain.key"
-      :prop="'domains.' + index + '.value'"
-      :rules="{
+        v-for="(domain, index) in dynamicValidateForm.domains"
+        :label="'域名' + index"
+        :key="domain.key"
+        :prop="'domains.' + index + '.value'"
+        :rules="{
       required: true, message: '域名不能为空', trigger: 'blur'
     }"
     >

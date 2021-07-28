@@ -1,80 +1,82 @@
 <template>
-  <div
-    ref="sliderWrapper"
-    class="bin-slider"
-    :class="{ 'is-vertical': vertical, 'bin-slider--with-input': showInput }"
-    role="slider"
-    :aria-valuemin="min"
-    :aria-valuemax="max"
-    :aria-orientation="vertical ? 'vertical': 'horizontal'"
-    :aria-disabled="sliderDisabled"
-  >
-    <b-input-number
-      v-if="showInput && !range"
-      ref="input"
-      v-model="firstValue"
-      class="bin-slider__input"
-      :step="step"
-      :disabled="sliderDisabled"
-      :controls="showInputControls"
-      :min="min"
-      :max="max"
-      :debounce="debounce"
-      :size="inputSize"
-      @change="emitChange"
-    />
+  <div class="bin-slider-wrapper">
     <div
-      ref="slider"
-      class="bin-slider__runway"
-      :class="{ 'show-input': showInput, 'disabled': sliderDisabled }"
-      :style="runwayStyle"
-      @click="onSliderClick"
+      ref="sliderWrapper"
+      class="bin-slider"
+      :class="{ 'is-vertical': vertical, 'bin-slider--with-input': showInput }"
+      role="slider"
+      :aria-valuemin="min"
+      :aria-valuemax="max"
+      :aria-orientation="vertical ? 'vertical': 'horizontal'"
+      :aria-disabled="sliderDisabled"
     >
-      <div
-        class="bin-slider__bar"
-        :style="barStyle"
-      >
-      </div>
-      <slider-button
-        ref="firstButton"
+      <b-input-number
+        v-if="showInput && !range"
+        ref="input"
         v-model="firstValue"
-        :vertical="vertical"
-        :tooltip-class="tooltipClass"
+        class="bin-slider__input"
+        :step="step"
+        :disabled="sliderDisabled"
+        :controls="showInputControls"
+        :min="min"
+        :max="max"
+        :debounce="debounce"
+        :size="inputSize"
+        @change="emitChange"
       />
-      <slider-button
-        v-if="range"
-        ref="secondButton"
-        v-model="secondValue"
-        :vertical="vertical"
-        :tooltip-class="tooltipClass"
-      />
-      <div v-if="showStops">
+      <div
+        ref="slider"
+        class="bin-slider__runway"
+        :class="{ 'show-input': showInput, 'disabled': sliderDisabled }"
+        :style="runwayStyle"
+        @click="onSliderClick"
+      >
         <div
-          v-for="(item, key) in stops"
-          :key="key"
-          class="bin-slider__stop"
-          :style="getStopStyle(item)"
-        ></div>
-      </div>
-      <template v-if="markList.length > 0">
-        <div>
+          class="bin-slider__bar"
+          :style="barStyle"
+        >
+        </div>
+        <slider-button
+          ref="firstButton"
+          v-model="firstValue"
+          :vertical="vertical"
+          :tooltip-class="tooltipClass"
+        />
+        <slider-button
+          v-if="range"
+          ref="secondButton"
+          v-model="secondValue"
+          :vertical="vertical"
+          :tooltip-class="tooltipClass"
+        />
+        <div v-if="showStops">
           <div
-            v-for="(item, key) in markList"
+            v-for="(item, key) in stops"
             :key="key"
-            :style="getStopStyle(item.position)"
-            class="bin-slider__stop bin-slider__marks-stop"
-          >
+            class="bin-slider__stop"
+            :style="getStopStyle(item)"
+          ></div>
+        </div>
+        <template v-if="markList.length > 0">
+          <div>
+            <div
+              v-for="(item, key) in markList"
+              :key="key"
+              :style="getStopStyle(item.position)"
+              class="bin-slider__stop bin-slider__marks-stop"
+            >
+            </div>
           </div>
-        </div>
-        <div class="bin-slider__marks">
-          <slider-marker
-            v-for="(item, key) in markList"
-            :key="key"
-            :mark="item.mark"
-            :style="getStopStyle(item.position)"
-          />
-        </div>
-      </template>
+          <div class="bin-slider__marks">
+            <slider-marker
+              v-for="(item, key) in markList"
+              :key="key"
+              :mark="item.mark"
+              :style="getStopStyle(item.position)"
+            />
+          </div>
+        </template>
+      </div>
     </div>
   </div>
 </template>
@@ -89,7 +91,7 @@ import {
   reactive,
   ref,
   toRefs,
-  watch,
+  watch
 } from 'vue'
 import { UPDATE_MODEL_EVENT, CHANGE_EVENT } from '../../../utils/constants'
 import { off, on } from '../../../utils/dom'
@@ -107,79 +109,79 @@ export default {
   components: {
     BInputNumber,
     SliderButton,
-    SliderMarker,
+    SliderMarker
   },
 
   props: {
     modelValue: {
       type: [Number, Array],
-      default: 0,
+      default: 0
     },
     min: {
       type: Number,
-      default: 0,
+      default: 0
     },
     max: {
       type: Number,
-      default: 100,
+      default: 100
     },
     step: {
       type: Number,
-      default: 1,
+      default: 1
     },
     showInput: {
       type: Boolean,
-      default: false,
+      default: false
     },
     showInputControls: {
       type: Boolean,
-      default: true,
+      default: true
     },
     inputSize: {
       type: String,
-      default: 'small',
+      default: 'small'
     },
     showStops: {
       type: Boolean,
-      default: false,
+      default: false
     },
     showTooltip: {
       type: Boolean,
-      default: true,
+      default: true
     },
     formatTooltip: {
       type: Function,
-      default: undefined,
+      default: undefined
     },
     disabled: {
       type: Boolean,
-      default: false,
+      default: false
     },
     range: {
       type: Boolean,
-      default: false,
+      default: false
     },
     vertical: {
       type: Boolean,
-      default: false,
+      default: false
     },
     height: {
       type: String,
-      default: '',
+      default: ''
     },
     debounce: {
       type: Number,
-      default: 300,
+      default: 300
     },
     label: {
       type: String,
-      default: undefined,
+      default: undefined
     },
     tooltipClass: {
       type: String,
-      default: undefined,
+      default: undefined
     },
-    marks: Object,
+    marks: Object
   },
   emits: [UPDATE_MODEL_EVENT, CHANGE_EVENT],
   setup(props, { emit }) {
@@ -188,7 +190,7 @@ export default {
       secondValue: null,
       oldValue: null,
       dragging: false,
-      sliderSize: 1,
+      sliderSize: 1
     })
 
     const {
@@ -203,12 +205,12 @@ export default {
       barStyle,
       resetSize,
       emitChange,
-      onSliderClick,
+      onSliderClick
     } = useSlide(props, initData, emit)
 
     const {
       stops,
-      getStopStyle,
+      getStopStyle
     } = useStops(props, initData, minValue, maxValue)
 
     const markList = useMarks(props)
@@ -230,7 +232,7 @@ export default {
       secondValue,
       oldValue,
       dragging,
-      sliderSize,
+      sliderSize
     } = toRefs(initData)
 
     const updateDragging = (val) => {
@@ -244,7 +246,7 @@ export default {
       precision: precision,
       emitChange: emitChange,
       resetSize: resetSize,
-      updateDragging: updateDragging,
+      updateDragging: updateDragging
     })
 
     return {
@@ -267,9 +269,9 @@ export default {
       stops,
       markList,
 
-      sliderWrapper,
+      sliderWrapper
     }
-  },
+  }
 }
 
 const useWatch = (props, initData, minValue, maxValue, emit, formEmit) => {
@@ -401,7 +403,7 @@ const useLifecycle = (props, initData, resetSize) => {
   })
 
   return {
-    sliderWrapper,
+    sliderWrapper
   }
 }
 </script>

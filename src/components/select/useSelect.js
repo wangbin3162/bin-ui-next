@@ -37,7 +37,7 @@ export function useSelectStates(props) {
     isSilentBlur: false,
     selectEmitter,
     prefixWidth: null,
-    tagInMultiLine: false,
+    tagInMultiLine: false
   })
 }
 
@@ -100,7 +100,7 @@ export const useSelect = (props, states, ctx) => {
     return props.filterable && props.allowCreate && states.query !== '' && !hasExistingOption
   })
 
-  const selectSize = computed(() => props.size || BFormItem.size)
+  const selectSize = computed(() => props.size || BForm.size || BFormItem.size)
 
   const collapseTagSize = computed(() => ['small', 'mini'].indexOf(selectSize.value) > -1 ? 'mini' : 'small')
 
@@ -139,7 +139,7 @@ export const useSelect = (props, states, ctx) => {
     }
   }, {
     flush: 'post',
-    deep: true,
+    deep: true
   })
 
   watch(() => states.visible, val => {
@@ -214,8 +214,8 @@ export const useSelect = (props, states, ctx) => {
       }
     },
     {
-      flush: 'post',
-    },
+      flush: 'post'
+    }
   )
 
   watch(() => states.hoverIndex, val => {
@@ -366,7 +366,7 @@ export const useSelect = (props, states, ctx) => {
         option = {
           value,
           currentLabel: cachedOption.currentLabel,
-          isDisabled: cachedOption.isDisabled,
+          isDisabled: cachedOption.isDisabled
         }
         break
       }
@@ -375,7 +375,7 @@ export const useSelect = (props, states, ctx) => {
     const label = (!isObjectValue && !isNull && !isUndefined) ? value : ''
     const newOption = {
       value,
-      currentLabel: label,
+      currentLabel: label
     }
     if (props.multiple) {
       newOption.hitState = false
@@ -730,7 +730,7 @@ export const useSelect = (props, states, ctx) => {
     popper,
     tags,
     selectWrapper,
-    scrollbar,
+    scrollbar
   }
 }
 

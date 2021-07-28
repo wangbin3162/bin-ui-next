@@ -353,7 +353,7 @@ export default {
       addResizeListener(selectWrapper.value, handleResize)
       if (reference.value && reference.value.$el) {
         const sizeMap = {
-          medium: 36,
+          large: 36,
           small: 32,
           mini: 28,
         }

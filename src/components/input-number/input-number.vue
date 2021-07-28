@@ -2,7 +2,7 @@
   <div :class="[
         'bin-input-number',
         {
-          [`bin-input-number-${size}`]: !!size,
+          [`bin-input-number-${inputSize}`]: !!inputSize,
           ['bin-input-number-disabled']: inputDisabled,
           ['bin-input-number-focused']: focused,
           ['bin-input-number-always']: always
@@ -77,79 +77,80 @@ export default {
   props: {
     max: {
       type: Number,
-      default: Infinity,
+      default: Infinity
     },
     min: {
       type: Number,
-      default: -Infinity,
+      default: -Infinity
     },
     step: {
       type: Number,
-      default: 1,
+      default: 1
     },
     activeChange: {
       type: Boolean,
-      default: false,
+      default: false
     },
     modelValue: {
       type: Number,
-      default: 1,
+      default: 1
     },
     size: {
       type: String,
       validator: (val) => ['', 'large', 'default', 'small', 'mini'].includes(val),
-      default: 'default',
+      default: 'default'
     },
     disabled: {
       type: Boolean,
-      default: false,
+      default: false
     },
     autofocus: {
       type: Boolean,
-      default: false,
+      default: false
     },
     readonly: {
       type: Boolean,
-      default: false,
+      default: false
     },
     editable: {
       type: Boolean,
-      default: true,
+      default: true
     },
     name: {
-      type: String,
+      type: String
     },
     precision: {
-      type: Number,
+      type: Number
     },
     elementId: {
-      type: String,
+      type: String
     },
     formatter: {
-      type: Function,
+      type: Function
     },
     parser: {
-      type: Function,
+      type: Function
     },
     placeholder: {
       type: String,
-      default: '',
+      default: ''
     },
     always: {
-      type: Boolean,
-    },
+      type: Boolean
+    }
   },
   emits: ['update:modelValue', 'change', 'input', 'blur', 'focus'],
   setup(props, ctx) {
 
     const { BForm, BFormItem, formEmit } = useForm()
     const inputDisabled = computed(() => props.disabled || BForm.disabled)
+    const inputSize = computed(() => props.size || BForm.size || BFormItem.size)
 
     const data = reactive({
       currentValue: props.modelValue,
       focused: false,
       upDisabled: false,
-      downDisabled: false,
+      downDisabled: false
     })
 
     const preventDefault = (e) => {
@@ -294,31 +295,32 @@ export default {
       (val) => {
         data.currentValue = val
         changeVal(val)
-      },
+      }
     )
     watch(
       () => props.min,
       () => {
         changeVal(data.currentValue)
-      },
+      }
     )
     watch(
       () => props.max,
       () => {
         changeVal(data.currentValue)
-      },
+      }
     )
     return {
       BForm, BFormItem, formEmit,
       inputDisabled,
       ...toRefs(data),
+      inputSize,
       preventDefault,
       up,
       down,
       focus,
       blur,
       keyDown,
-      change,
+      change
     }
   },
   computed: {
@@ -330,16 +332,16 @@ export default {
         `${prefixCls}-handler`,
         `${prefixCls}-handler-up`,
         {
-          [`${prefixCls}-handler-up-disabled`]: this.upDisabled,
-        },
+          [`${prefixCls}-handler-up-disabled`]: this.upDisabled
+        }
       ]
     },
     plusClasses() {
       return [
         `${prefixCls}-handler-plus`,
         {
-          [`${prefixCls}-handler-plus-disabled`]: this.upDisabled,
-        },
+          [`${prefixCls}-handler-plus-disabled`]: this.upDisabled
+        }
       ]
     },
     innerUpClasses() {
@@ -350,16 +352,16 @@ export default {
         `${prefixCls}-handler`,
         `${prefixCls}-handler-down`,
         {
-          [`${prefixCls}-handler-down-disabled`]: this.downDisabled,
-        },
+          [`${prefixCls}-handler-down-disabled`]: this.downDisabled
+        }
       ]
     },
     minusClasses() {
       return [
         `${prefixCls}-handler-minus`,
         {
-          [`${prefixCls}-handler-plus-minus`]: this.downDisabled,
-        },
+          [`${prefixCls}-handler-plus-minus`]: this.downDisabled
+        }
       ]
     },
     innerDownClasses() {
@@ -382,7 +384,7 @@ export default {
       } else {
         return this.precisionValue
       }
-    },
-  },
+    }
+  }
 }
 </script>

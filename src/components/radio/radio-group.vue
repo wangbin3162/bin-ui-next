@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { nextTick, provide, onMounted, ref, reactive, toRefs, watch } from 'vue'
+import { nextTick, provide, onMounted, ref, reactive, toRefs, watch, computed } from 'vue'
 import { EVENT_CODE } from '../../utils/aria'
 import { UPDATE_MODEL_EVENT } from '../../utils/constants'
 import useForm from '../../hooks/useForm'
@@ -38,8 +38,7 @@ export default {
         `${prefixCls}`,
         {
           [`${prefixCls}-${this.type}`]: !!this.type,
-          [`${prefixCls}-${this.size}`]: !!this.size,
-          [`bin-radio-${this.size}`]: !!this.size
+          [`${prefixCls}-${this.radioSize}`]: !!this.radioSize,
         }
       ]
     }
@@ -49,7 +48,8 @@ export default {
   setup(props, ctx) {
     const radioGroup = ref(null)
 
-    const { formEmit } = useForm()
+    const { BForm, BFormItem, formEmit } = useForm()
+    const radioSize = computed(() => props.size || BForm.size || BFormItem.size)
 
     // methods
     const changeEvent = (value) => {
@@ -111,7 +111,8 @@ export default {
     })
     return {
       handleKeydown,
-      radioGroup
+      radioGroup,
+      radioSize
     }
   }
 }
