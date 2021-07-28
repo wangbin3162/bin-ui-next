@@ -101,7 +101,7 @@ export default {
       () => props.modelValue,
       (val) => {
         if (val !== props.trueValue && val !== props.falseValue) {
-          console.log('Value should be true or false.')
+          console.warn('Value should be true or false.')
         }
         currentValue.value = val
       },

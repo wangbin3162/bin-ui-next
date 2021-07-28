@@ -5,9 +5,10 @@
 <div class="doc-update">
     <b-timeline>
       <b-timeline-item>
-        <p class="version">0.7.3</p>
+        <p class="version">0.8.0</p>
         <p class="time">2021-07-28</p>
-        <p class="content"><i>🍀</i>修改全局表单控件样式</p>
+        <p class="content"><i>🍀</i>优化table拖拽排序功能，支持默认更新数据v-model:data</p>
+        <p class="content"><i>🍀</i>优化全局样式，sortablejs使用方式更新</p>
       </b-timeline-item>
       <b-timeline-item>
         <p class="version">0.7.2</p>

@@ -1060,11 +1060,11 @@ columns内容可以设置children来分组渲染表头,合并表头和行列时�
     </template>
     <template #birthday="{index,row}">
       <b-date-picker
-        v-if="editIndex === index"
-        size="small"
-        v-model="editBirthday"
-        type="date"
-        placeholder="选择日期"
+          v-if="editIndex === index"
+          size="small"
+          v-model="editBirthday"
+          type="date"
+          placeholder="选择日期"
       ></b-date-picker>
       <span v-else>{{ row.birthday }}</span>
     </template>
@@ -1174,11 +1174,11 @@ columns内容可以设置children来分组渲染表头,合并表头和行列时�
 
 ### 拖拽调整顺序
 
-可以设置draggable开启拖拽排序，这里需要设置row-key强制更新视图
+可以设置draggable开启拖拽排序
 
-注意，设置拖拽排序后，row的悬停效果失效，切鼠标拖拽也覆盖了鼠标选中文字，此时可以额外设置也可以设置handle来指定拖拽某一个元素实现
+注意，设置拖拽排序后，row的悬停效果失效，且鼠标拖拽也覆盖了鼠标选中文字，此时可以额外设置也可以设置handle来指定拖拽某一个元素实现
 
-如需要更新数据，则需要配合row-key和@drag-drop函数来处理更新数据
+如需要更新数据，则需使用v-model:data来更新,或配合@drag-drop函数来处理更新数据都可以
 
 ::: demo
 
@@ -1188,28 +1188,26 @@ columns内容可以设置children来分组渲染表头,合并表头和行列时�
   <div>
     <div>
       <p>默认拖拽</p>
-      <b-table :columns="columns1" :data="data1" draggable></b-table>
+      <b-table :columns="columns1" v-model:data="data1" draggable></b-table>
+      <p>实际数据：{{ data1.map(v=> v.id+'-'+v.name ) }}</p>
     </div>
     <div>
       <p>drag-handle</p>
       <b-table
-        :columns="columns2"
-        :data="data2"
-        draggable
-        drag-handle=".drag-handle"
-        row-key
-        @drag-drop="handleDragDrop"
+          :columns="columns2"
+          :data="data2"
+          draggable
+          drag-handle=".drag-handle"
+          @drag-drop="handleDragDrop"
       >
         <template #handle="{row}">
-          <span class="drag-handle" style="cursor:grab;"><b-icon name="drag" size="20" /></span>
+          <span class="drag-handle" style="cursor:grab;"><b-icon name="drag" size="20"/></span>
         </template>
         <template #ctrl="{row,index}">
           <b-button @click="handleEdit(row,index)" type="text">编辑</b-button>
         </template>
       </b-table>
-
-      <p>实际数据：</p>
-      <p>{{ data2.map(v=> v.name ) }}</p>
+      <p>实际数据：{{ data2.map(v=> v.id+'-'+v.name ) }}</p>
     </div>
   </div>
 </template>
@@ -1218,6 +1216,7 @@ columns内容可以设置children来分组渲染表头,合并表头和行列时�
     data() {
       return {
         columns1: [
+          { title: 'ID', key: 'id', width: 70 },
           { title: '姓名', key: 'name' },
           { title: '年龄', key: 'age' },
           { title: '出生日期', key: 'birthday' },
@@ -1225,6 +1224,7 @@ columns内容可以设置children来分组渲染表头,合并表头和行列时�
         ],
         columns2: [
           { slot: 'handle', width: 70 },
+          { title: 'ID', key: 'id', width: 70 },
           { title: '姓名', key: 'name' },
           { title: '年龄', key: 'age' },
           { title: '出生日期', key: 'birthday' },
@@ -1233,30 +1233,35 @@ columns内容可以设置children来分组渲染表头,合并表头和行列时�
         ],
         data1: [
           {
+            id: 1,
             name: '王小明',
             age: 18,
             birthday: '1990-04-22',
             address: '北京市朝阳区芍药居'
           },
           {
+            id: 2,
             name: '张小刚',
             age: 25,
             birthday: '1990-11-11',
             address: '北京市海淀区西二旗'
           },
           {
+            id: 3,
             name: '李小红',
             age: 30,
             birthday: '1985-02-05',
             address: '上海市浦东新区世纪大道'
           },
           {
+            id: 4,
             name: '周小伟',
             age: 26,
             birthday: '1993-07-11',
             address: '深圳市南山区深南大道'
           },
           {
+            id: 5,
             name: '张小发',
             age: 33,
             birthday: '1999-12-12',
@@ -1264,32 +1269,38 @@ columns内容可以设置children来分组渲染表头,合并表头和行列时�
           }
         ],
         data2: [
+
           {
-            name: '王小明1',
+            id: 1,
+            name: '王小明',
             age: 18,
             birthday: '1990-04-22',
             address: '北京市朝阳区芍药居'
           },
           {
-            name: '张小刚2',
+            id: 2,
+            name: '张小刚',
             age: 25,
             birthday: '1990-11-11',
             address: '北京市海淀区西二旗'
           },
           {
-            name: '李小红3',
+            id: 3,
+            name: '李小红',
             age: 30,
             birthday: '1985-02-05',
             address: '上海市浦东新区世纪大道'
           },
           {
-            name: '周小伟4',
+            id: 4,
+            name: '周小伟',
             age: 26,
             birthday: '1993-07-11',
             address: '深圳市南山区深南大道'
           },
           {
-            name: '张小发5',
+            id: 5,
+            name: '张小发',
             age: 33,
             birthday: '1999-12-12',
             address: '南京市龙眠大道'
@@ -1298,10 +1309,8 @@ columns内容可以设置children来分组渲染表头,合并表头和行列时�
       }
     },
     methods: {
-      handleDragDrop(newIndex, oldIndex, newData) {
-        this.$nextTick(() => {
-          this.data2 = this.$deepCopy(newData)
-        })
+      handleDragDrop(newList) {
+        this.data2 = this.$deepCopy(newList)
       },
       handleEdit(row, index) {
         console.log(row, index)
@@ -1534,9 +1543,9 @@ noDataText可以设置无数据状态
 | size |  表格尺寸 | string      |  large / small    |  default    |
 | no-data-text |  空数据内容 | string      |   —     |  暂无数据    |
 | loading-text|  加载数据文字 | string      |   —     |   —      |
-| draggable  | 开启拖拽调整行顺序，如需要更新数据源则需配合 @drag-drop 事件使用 | Boolean      |   —     |    false |
+| draggable  | 开启拖拽调整行顺序，同步元数据需要使用v-model:data使用或需配合 @drag-drop 事件更新data都可以 | Boolean      |   —     |    false |
 | drag-handle  | 拖拽的handle图标 | String      |   —     |     —   |
-| row-key  | 是否强制使用内置row-key刷新，配合拖拽排序使用 | Boolean      |   —     |    false   |
+| row-key  | 是否强制使用内置row-key刷新 | Boolean      |   —     |    false   |
 | merge-method  | 表格合并行列的方法函数 | Function      |   —     |    false |
 
 ### Table events
@@ -1553,7 +1562,7 @@ noDataText可以设置无数据状态
 | row-click    | 单击某一行时触发     | 当前行的数据,index |
 | row-dblclick   | 双击某一行时触发         | 当前行的数据,index |
 | expand   | 展开或收起某一行时触         | row：当前行的数据,status：当前的状态 |
-| drag-drop    | 拖拽排序松开时触发         | 置换的两行数据索引和更新后的数据 newIndex, oldIndex, newData |
+| drag-drop    | 拖拽排序松开时触发         | 置换的两行数据索引和更新后的数据 newData, newIndex, oldIndex  |
 
 ### Table slot
 

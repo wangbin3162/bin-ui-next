@@ -10,7 +10,7 @@
       v-model:visible="visible"
       placement="bottom-start"
       :append-to-body="appendToBody"
-      :popper-class="`bin-tree-select__popper ${popperClass||''}`"
+      :popper-class="`bin-tree-select__popper ${popperClass}`"
       manual-mode
       theme="light"
       pure

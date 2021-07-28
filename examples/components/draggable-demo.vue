@@ -2,27 +2,23 @@
   <div class="draggable-wrap">
     <div flex="box:mean">
       <div style="margin-right: 20px; width: 50%;">normal
-        <div id="example1" class="list-group col">
-          <template v-for="item in rebuildData" :key="item._rowKey">
-            <div :row-key="item._rowKey" class="list-group-item">
-              {{ item.name }}
-            </div>
-          </template>
+        <div ref="list1Ref" class="list-group col">
+          <div v-for="(item,index) in list1" :key="index" class="list-group-item">
+            {{ item.name }}
+          </div>
         </div>
       </div>
       <div style="margin-right: 20px; width: 50%;">handle
-        <div id="example2" class="list-group col">
-          <div class="list-group-item"><i class="b-iconfont b-icon-drag handle"></i>Item 1</div>
-          <div class="list-group-item"><i class="b-iconfont b-icon-drag handle"></i>Item 2</div>
-          <div class="list-group-item"><i class="b-iconfont b-icon-drag handle"></i>Item 3</div>
-          <div class="list-group-item"><i class="b-iconfont b-icon-drag handle"></i>Item 4</div>
-          <div class="list-group-item"><i class="b-iconfont b-icon-drag handle"></i>Item 5</div>
-          <div class="list-group-item"><i class="b-iconfont b-icon-drag handle"></i>Item 6</div>
+        <div ref="list2Ref" class="list-group col">
+          <div v-for="(item,index) in list2" :key="index" class="list-group-item">
+            <i class="b-iconfont b-icon-drag drag"></i> {{ item.name }}
+          </div>
         </div>
       </div>
     </div>
-    <p>{{ rebuildData.map(i => ({ name: i.name })) }}</p>
-    <br />
+    <p>list1: {{ list1.map(i => i.id) }}</p>
+    <p>list2: {{ list2.map(i => i.id) }}</p>
+    <br/>
     <div>
       <a href="https://gitee.com/wangbin3162/bin-ui/blob/master/examples/components/draggable-demo.vue"
          target="_blank">示例代码</a>
@@ -31,66 +27,38 @@
 </template>
 
 <script>
-import Sortable from 'sortablejs'
-import { nextTick } from 'vue'
+import { onMounted, ref } from 'vue'
+import { useSortable } from '../../src/hooks'
 
-let rowKey = 1
 export default {
   name: 'draggable-demo',
-  data() {
+  setup() {
+    const list1 = ref([
+      { name: 'Item 1', id: 1 },
+      { name: 'Item 2', id: 2 },
+      { name: 'Item 3', id: 3 },
+      { name: 'Item 4', id: 4 },
+      { name: 'Item 5', id: 5 },
+      { name: 'Item 6', id: 6 }
+    ])
+    const list2 = ref([
+      { name: 'Item 1', id: 1 },
+      { name: 'Item 2', id: 2 },
+      { name: 'Item 3', id: 3 },
+      { name: 'Item 4', id: 4 },
+      { name: 'Item 5', id: 5 },
+      { name: 'Item 6', id: 6 }
+    ])
+    const { listRef: list1Ref } = useSortable(list1, null, { handle: '.list-group-item' })
+    const { listRef: list2Ref } = useSortable(list2)
+
     return {
-      enabled: true,
-      list: [
-        { name: 'Item 1', id: 1 },
-        { name: 'Item 2', id: 2 },
-        { name: 'Item 3', id: 3 },
-        { name: 'Item 4', id: 4 },
-        { name: 'Item 5', id: 5 },
-        { name: 'Item 6', id: 6 },
-      ],
-      rebuildData: [],
-      dragging: false,
+      list1,
+      list2,
+      list1Ref,
+      list2Ref
     }
-  },
-  mounted() {
-    // Sortable.mount(new Swap())
-    Sortable.create(document.getElementById('example1'), {
-      animation: 150,
-      ghostClass: 'blue-background-class',
-      onEnd: ({ newIndex, oldIndex }) => {
-        let newData = this.$deepCopy(this.list)
-        const targetRow = newData.splice(oldIndex, 1)[0]
-        newData.splice(newIndex, 0, targetRow)
-        nextTick(() => {
-          this.list = newData
-        })
-      },
-    })
-    Sortable.create(document.getElementById('example2'), {
-      animation: 150,
-      handle: '.handle',
-      ghostClass: 'blue-background-class',
-    })
-  },
-  watch: {
-    list: {
-      handler(val) {
-        this.rebuildData = this.makeData()
-      },
-      immediate: true,
-      deep: true,
-    },
-  },
-  methods: {
-    makeData() {
-      let data = this.$deepCopy(this.list)
-      data.forEach((row, index) => {
-        row._index = index
-        row._rowKey = rowKey++
-      })
-      return data
-    },
-  },
+  }
 }
 </script>
 
@@ -125,9 +93,10 @@ export default {
   margin-bottom: -1px;
   background-color: #fff;
   border: 1px solid rgba(0, 0, 0, .125);
-  .handle {
+  .drag {
     cursor: grabbing;
     margin-right: 20px;
+    font-size: 18px;
   }
 }
 .blue-background-class {
