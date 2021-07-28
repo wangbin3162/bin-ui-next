@@ -67,7 +67,7 @@
     <b-button type="warning" round>Warning</b-button>
     <b-button type="danger" round>Danger</b-button>
   </div>
-  <b-divider align="left">[round]圆角按钮</b-divider>
+  <b-divider align="left">[dashed]虚线按钮</b-divider>
   <div class="demo-button">
     <b-button type="primary" dashed>Primary</b-button>
     <b-button type="success" dashed>Success</b-button>
