@@ -74,7 +74,7 @@
   .is-multiple {
     .bin-select-dropdown__item {
       &.selected {
-        background-color: #fff;
+        background-color: #fff !important;
         &::after {
           font-family: "b-iconfont" !important;
           font-style: normal;
@@ -85,6 +85,10 @@
           position: absolute;
           top: 2px;
           right: 8px;
+        }
+        &:hover, &:focus, &.hover {
+          background: #f3f3f3 !important;
+          outline: none;
         }
       }
     }
@@ -121,8 +125,11 @@
     }
     &.selected {
       color: $color-primary;
-      font-weight: 600;
       background: $color-primary-light5;
+      &:hover, &:focus, &.hover {
+        background: #f3f3f3;
+        outline: none;
+      }
     }
     &.is-disabled {
       color: $color-text-disabled !important;

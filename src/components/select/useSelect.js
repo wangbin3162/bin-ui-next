@@ -236,7 +236,7 @@ export const useSelect = (props, states, ctx) => {
       const inputChildNodes = reference.value.$el.childNodes
       const input = [].filter.call(inputChildNodes, item => item.tagName === 'INPUT')[0]
       const _tags = tags.value
-      const sizeInMap = states.initialInputHeight || 40
+      const sizeInMap = states.initialInputHeight || 32
       input.style.height = states.selected.length === 0
         ? sizeInMap + 'px'
         : Math.max(
