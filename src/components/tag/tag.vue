@@ -75,8 +75,8 @@ export default {
     })
     watch(
       () => props.modelValue,
-      () => {
-        checked.value = !props.modelValue
+      (val) => {
+        checked.value = val
       },
     )
     return {
