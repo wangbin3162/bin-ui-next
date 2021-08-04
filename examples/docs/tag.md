@@ -34,21 +34,21 @@
 
 <template>
   <div>
-    <b-tag size="small">default</b-tag>
-    <b-tag type="primary" dark size="small">primary</b-tag>
-    <b-tag type="success" dark size="small">success</b-tag>
-    <b-tag type="info" dark size="small">info</b-tag>
-    <b-tag type="warning" dark size="small">warning</b-tag>
-    <b-tag type="danger" dark size="small">danger</b-tag>
-    <b-tag type="magenta" size="small">magenta</b-tag>
-    <b-tag type="red" size="small">red</b-tag>
-    <b-tag type="volcano" size="small">volcano</b-tag>
-    <b-tag type="orange" size="small">orange</b-tag>
-    <b-tag type="gold" size="small">gold</b-tag>
-    <b-tag type="cyan" size="small">cyan</b-tag>
-    <b-tag type="blue" size="small">blue</b-tag>
-    <b-tag type="geekblue" size="small">geekblue</b-tag>
-    <b-tag type="purple" size="small">purple</b-tag>
+    <b-tag>default</b-tag>
+    <b-tag type="primary" dark>primary</b-tag>
+    <b-tag type="success" dark>success</b-tag>
+    <b-tag type="info" dark>info</b-tag>
+    <b-tag type="warning" dark>warning</b-tag>
+    <b-tag type="danger" dark>danger</b-tag>
+    <b-tag type="magenta">magenta</b-tag>
+    <b-tag type="red">red</b-tag>
+    <b-tag type="volcano">volcano</b-tag>
+    <b-tag type="orange">orange</b-tag>
+    <b-tag type="gold">gold</b-tag>
+    <b-tag type="cyan">cyan</b-tag>
+    <b-tag type="blue">blue</b-tag>
+    <b-tag type="geekblue">geekblue</b-tag>
+    <b-tag type="purple">purple</b-tag>
   </div>
 </template>
 ```
@@ -156,7 +156,7 @@ dot 模式可以简单显示带有提示小圆点等内容
 
 <template>
   <div>
-    <b-button class="button-new-tag" size="small" @click="addOne">+ New Tag</b-button>
+    <b-button class="button-new-tag" @click="addOne">+ New Tag</b-button>
     <p>
       <b-tag
         :key="tag"

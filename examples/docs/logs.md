@@ -5,6 +5,12 @@
 <div class="doc-update">
     <b-timeline>
       <b-timeline-item>
+        <p class="version">0.8.3</p>
+        <p class="time">2021-08-04</p>
+        <p class="content"><i>🍀</i>优化文档</p>
+        <p class="content"><i>🍀</i>优化树形选择器功能</p>
+      </b-timeline-item>
+      <b-timeline-item>
         <p class="version">0.8.2</p>
         <p class="time">2021-07-30</p>
         <p class="content"><i>🍀</i>优化全局样式，多选下拉框样式调整</p>
