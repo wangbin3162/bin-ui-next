@@ -525,7 +525,7 @@ height 和 maxHeight 可以设置固定表头
     <br>
     <b-table :columns="columns2" ref="currentRowTable2" :data="data2"
              highlight-row @current-change="currentRowChange">
-      <template #ctrl="{index}">
+      <template v-slot:ctrl="{index}">
         <b-button type="text" text-color="danger" @click="removeRow(index)">删除</b-button>
       </template>
     </b-table>
@@ -1176,7 +1176,7 @@ columns内容可以设置children来分组渲染表头,合并表头和行列时�
 
 可以设置draggable开启拖拽排序
 
-注意，设置拖拽排序后，row的悬停效果失效，且鼠标拖拽也覆盖了鼠标选中文字，此时可以额外设置也可以设置handle来指定拖拽某一个元素实现
+注意，设置拖拽排序后，且鼠标拖拽也覆盖了鼠标选中文字，此时可以额外设置也可以设置handle来指定拖拽某一个元素实现
 
 如需要更新数据，则需使用v-model:data来更新,或配合@drag-drop函数来处理更新数据都可以
 
@@ -1191,23 +1191,30 @@ columns内容可以设置children来分组渲染表头,合并表头和行列时�
       <b-table :columns="columns1" v-model:data="data1" draggable></b-table>
       <p>实际数据：{{ data1.map(v=> v.id+'-'+v.name ) }}</p>
     </div>
+    <b-divider></b-divider>
     <div>
+      <p>如需和单选结合使用，推荐使用drag-drop函数来自定义控制，这样可以更好的实现自定义选中效果</p>
       <p>drag-handle</p>
       <b-table
+          ref="currentRowTable"
           :columns="columns2"
           :data="data2"
           draggable
           drag-handle=".drag-handle"
           @drag-drop="handleDragDrop"
+          highlight-row
+          @current-change="currentRowChange"
       >
         <template #handle="{row}">
           <span class="drag-handle" style="cursor:grab;"><b-icon name="drag" size="20"/></span>
         </template>
         <template #ctrl="{row,index}">
-          <b-button @click="handleEdit(row,index)" type="text">编辑</b-button>
+          <b-button @click.stop="handleEdit(row,index)" type="text">编辑</b-button>
+          <b-button type="text" text-color="danger" @click.stop="removeRow(index)">删除</b-button>
         </template>
       </b-table>
       <p>实际数据：{{ data2.map(v=> v.id+'-'+v.name ) }}</p>
+      <p>选中行：{{ currentRow }}</p>
     </div>
   </div>
 </template>
@@ -1305,15 +1312,28 @@ columns内容可以设置children来分组渲染表头,合并表头和行列时�
             birthday: '1999-12-12',
             address: '南京市龙眠大道'
           }
-        ]
+        ],
+        currentRow: {}
       }
     },
     methods: {
-      handleDragDrop(newList) {
+      currentRowChange(currentRow, oldRow, index) {
+        this.currentRow = currentRow
+      },
+      handleDragDrop(newList, newIndex, oldIndex) {
         this.data2 = this.$deepCopy(newList)
+        this.$nextTick(() => {
+          this.$refs.currentRowTable.clickCurrentRow(newIndex)
+        })
       },
       handleEdit(row, index) {
         console.log(row, index)
+      },
+      removeRow(index) {
+        this.data2.splice(index, 1)
+        this.$nextTick(() => {
+          this.$refs.currentRowTable.clearCurrentRow()
+        })
       }
     }
   }
@@ -1408,10 +1428,10 @@ columns内容可以设置children来分组渲染表头,合并表头和行列时�
 
 <template>
   <div>
-    <div>
-      <b-radio-group v-model="tableSize">
+    <div class="mb-16">
+      <b-radio-group v-model="tableSize" type="button">
         <b-radio label="large">松散</b-radio>
-        <b-radio label="default">紧凑</b-radio>
+        <b-radio label="default">默认</b-radio>
         <b-radio label="small">紧凑</b-radio>
       </b-radio-group>
     </div>

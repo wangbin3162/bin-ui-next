@@ -21,9 +21,6 @@ export default {
 
     function rowClasses(_index) {
       const obj = parentRef.objData.value
-      if (props.draggable) {
-        return [`${props.prefixCls}-row`, rowClsName(_index)]
-      }
       return [
         `${props.prefixCls}-row`,
         rowClsName(_index),
