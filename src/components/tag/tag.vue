@@ -39,8 +39,8 @@ export default {
     checkable: Boolean,
     modelValue: {
       type: Boolean,
-      default: true,
-    },
+      default: true
+    }
   },
   emits: [UPDATE_MODEL_EVENT, CHANGE_EVENT, 'click', 'close'],
   setup(props, { emit }) {
@@ -61,31 +61,33 @@ export default {
     }
     const dotColor = computed(() => props.type ? typeColor(props.type) : props.color)
     const tagStyleBind = computed(() => {
-      return props.tagStyle ? props.tagStyle : props.dot ?
+      return props.dot ?
         {
           backgroundColor: 'transparent',
           color: props.color || 'rgba(0,0,0,.65)',
           fontSize: props.fontSize,
+          ...props.tagStyle
         } :
         {
           backgroundColor: props.color,
           color: props.color ? '#fff' : '',
           fontSize: props.fontSize,
+          ...props.tagStyle
         }
     })
     watch(
       () => props.modelValue,
       (val) => {
         checked.value = val
-      },
+      }
     )
     return {
       checked,
       dotColor,
       tagStyleBind,
       handleClose,
-      handleClick,
+      handleClick
     }
-  },
+  }
 }
 </script>

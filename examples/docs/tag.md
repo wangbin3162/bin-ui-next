@@ -129,6 +129,7 @@ dot 模式可以简单显示带有提示小圆点等内容
 ```html
 
 <template>
+  <b-tag type="default" dot><span>default</span></b-tag>
   <b-tag type="primary" dot><span>primary</span></b-tag>
   <b-tag type="success" dot>success</b-tag>
   <b-tag type="info" dot>info</b-tag>
