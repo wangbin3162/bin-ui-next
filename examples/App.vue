@@ -1,8 +1,8 @@
 <template>
   <div id="app" ref="scrollBox">
-    <main-header />
+    <main-header/>
     <div class="main-cnt">
-      <side-nav class="nav" />
+      <side-nav class="nav"/>
       <div class="page-container" ref="containerRef">
         <div class="global-anchor" v-if="anchors.length">
           <b-scrollbar>
@@ -16,8 +16,8 @@
             </b-anchor>
           </b-scrollbar>
         </div>
-        <router-view />
-        <main-footer />
+        <router-view/>
+        <main-footer/>
       </div>
       <b-back-top></b-back-top>
     </div>
@@ -28,6 +28,8 @@
 import { watch, ref, onMounted, nextTick } from 'vue'
 import { useRoute } from 'vue-router'
 import BScrollbar from '../src/components/scrollbar/scrollbar'
+
+const cfg = require('/package.json')
 
 export default {
   name: 'App',
@@ -41,7 +43,7 @@ export default {
     watch(() => route.path, () => {
       anchors.value = []
       if (route.meta.desc) {
-        document.title = route.meta.desc + ' - Bin UI Next'
+        document.title = route.meta.desc + ' | ' + cfg.name.toUpperCase()
         document.scrollingElement.scrollTop = 0
       }
       nextTick(() => {
@@ -63,7 +65,7 @@ export default {
 
     onMounted(() => {
       if (route.meta.desc) {
-        document.title = route.meta.desc + ' - Bin UI Next'
+        document.title = route.meta.desc + ' | ' + cfg.name.toUpperCase()
         document.scrollingElement.scrollTop = 0
       }
       fetchAnchors()

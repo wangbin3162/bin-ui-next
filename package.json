@@ -1,6 +1,6 @@
 {
   "name": "bin-ui-next",
-  "version": "0.8.6",
+  "version": "0.8.7",
   "keywords": [
     "bin-ui-next",
     "bin-ui",
@@ -15,9 +15,9 @@
     "lib",
     "src"
   ],
-  "main": "lib/bin-ui.common.js",
-  "module": "lib/bin-ui.esm.js",
-  "unpkg": "lib/bin-ui.js",
+  "main": "lib/bin-ui-next.common.js",
+  "module": "lib/bin-ui-next.esm.js",
+  "unpkg": "lib/bin-ui-next.js",
   "style": "lib/styles/index.css",
   "homepage": "https://wangbin3162.gitee.io/bin-ui-next/",
   "private": false,

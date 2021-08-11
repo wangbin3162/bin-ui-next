@@ -9,7 +9,7 @@ import replace from '@rollup/plugin-replace'
 import babel from '@rollup/plugin-babel'
 import { terser } from 'rollup-plugin-terser'
 
-const name = 'BinUI'
+const name = 'BinUINext'
 
 const createBanner = () => {
   return `/*!
@@ -64,7 +64,7 @@ function mergeConfig(baseConfig, configB) {
 }
 
 function createFileName(formatName) {
-  return `lib/bin-ui${formatName}.js`
+  return `lib/bin-ui-next${formatName}.js`
 }
 
 // es-bundle
