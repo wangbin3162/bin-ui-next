@@ -6,11 +6,13 @@ export const useRadio = () => {
   const radioGroup = inject('RadioGroup', {})
   const focus = ref(false)
   const isGroup = computed(() => radioGroup?.name === 'BRadioGroup')
+  const isBtnGroup = computed(() => isGroup.value && radioGroup?.type === 'button')
 
   return {
     isGroup,
     focus,
     radioGroup,
+    isBtnGroup,
     BForm, BFormItem, formEmit,
   }
 }

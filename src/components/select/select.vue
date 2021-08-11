@@ -248,7 +248,7 @@ export default {
     },
     collapseTags: Boolean,
     appendToBody: {
-      type: Boolean
+      type: Boolean,
     },
     clearIcon: {
       type: String,
@@ -379,7 +379,6 @@ export default {
       })
       setSelected()
     })
-
 
     onBeforeUnmount(() => {
       removeResizeListener(selectWrapper.value, handleResize)

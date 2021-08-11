@@ -4,34 +4,6 @@
       <span class="bin-input-group-prepend" v-if="$slots.prepend">
         <slot name="prepend"></slot>
       </span>
-      <!--清空按钮-->
-      <span :class="closeClasses" v-if="clearable && currentValue && !disabled">
-        <i class="b-iconfont b-icon-close-circle-fill" @click.stop.prevent="handleClear"></i>
-      </span>
-      <span class="bin-input-suffix" v-if="showSuffix">
-        <i
-          class="b-iconfont"
-          :class="['b-icon-' + icon, 'bin-input-icon', 'bin-input-icon-normal']"
-          v-if="icon"
-          @click="handleIconClick"
-        ></i>
-        <i
-          class="b-iconfont b-icon-search"
-          :class="['bin-input-icon', 'bin-input-icon-normal', 'bin-input-search-icon']"
-          v-if="search"
-          @click.stop="handleSearch"
-        ></i>
-        <i
-          class="b-iconfont bin-input-icon bin-input-icon-normal bin-input-view-icon"
-          :class="showPassword?'b-icon-eye':'b-icon-eye-close'"
-          v-if="type==='password'"
-          @click.stop="handleTogglePass"
-        ></i>
-        <slot name="suffix">
-          <i class="b-iconfont" :class="['b-icon-' + suffix]" v-if="suffix"></i>
-        </slot>
-        <i v-if="validateState" :class="['b-iconfont','bin-input__validateIcon', validateIcon]"></i>
-      </span>
       <input
         :id="elementId"
         :autocomplete="type==='password'?'new-password':autocomplete"
@@ -63,7 +35,35 @@
           <i class="b-iconfont" :class="['b-icon-' + prefix]" v-if="prefix"></i>
         </slot>
       </span>
+      <span class="bin-input-suffix" v-if="showSuffix">
+        <i
+          class="b-iconfont"
+          :class="['b-icon-' + icon, 'bin-input-icon', 'bin-input-icon-normal']"
+          v-if="icon"
+          @click="handleIconClick"
+        ></i>
+        <i
+          class="b-iconfont b-icon-search"
+          :class="['bin-input-icon', 'bin-input-icon-normal', 'bin-input-search-icon']"
+          v-if="search"
+          @click.stop="handleSearch"
+        ></i>
+        <i
+          class="b-iconfont bin-input-icon bin-input-icon-normal bin-input-view-icon"
+          :class="showPassword?'b-icon-eye':'b-icon-eye-close'"
+          v-if="showPasswordToggle"
+          @click.stop="handleTogglePass"
+        ></i>
+        <slot name="suffix">
+          <i class="b-iconfont" :class="['b-icon-' + suffix]" v-if="suffix"></i>
+        </slot>
+        <i v-if="validateState" :class="['b-iconfont','bin-input__validateIcon', validateIcon]"></i>
+      </span>
       <span class="bin-input-word-count" v-if="showWordCount">{{ wordCount }}</span>
+      <!--清空按钮-->
+      <span :class="closeClasses" v-if="clearable && currentValue && !disabled">
+        <i class="b-iconfont b-icon-close-circle-fill" @click.stop.prevent="handleClear"></i>
+      </span>
 
       <span class="bin-input-group-append" v-if="$slots.append">
         <slot name="append"></slot>
@@ -122,7 +122,7 @@ export default {
       default: 'text',
     },
     modelValue: {
-      type: [String, Number],
+      type: [String, Number, Boolean],
       default: '',
     },
     size: {
@@ -139,7 +139,11 @@ export default {
       type: Number,
     },
     disabled: Boolean,
-    icon: String,
+    showPasswordToggle: Boolean,
+    icon: {
+      type: String,
+      default: '',
+    },
     autosize: {
       type: Object,
       default: () => {
@@ -233,8 +237,10 @@ export default {
       ]
     })
     const showPrefix = computed(() => props.prefix !== '' || ctx.slots.prefix !== undefined)
-    const showSuffix = computed(() =>
-      props.suffix !== '' || props.icon !== '' || props.search || validateState.value !== '' || ctx.slots.suffix !== undefined,
+    const showSuffix = computed(() => {
+        return props.suffix !== '' || props.icon !== '' || props.search || props.showPasswordToggle ||
+          validateState.value !== '' || ctx.slots.suffix !== undefined
+      },
     )
     const inputDisabled = computed(() => props.disabled || BForm.disabled)
     const inputSize = computed(() => props.size || BFormItem.size)

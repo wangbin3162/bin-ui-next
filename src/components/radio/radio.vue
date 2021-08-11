@@ -1,5 +1,48 @@
 <template>
   <label
+    v-if="isBtnGroup"
+    v-click-animation
+    class="bin-radio"
+    :class="{
+      'is-disabled': isDisabled,
+      'is-focus': focus,
+      'is-checked': model === label,
+    }"
+    role="radio"
+    :aria-checked="model === label"
+    :aria-disabled="isDisabled"
+    :tabindex="tabIndex"
+  >
+    <span
+      class="bin-radio__input"
+      :class="{
+        'is-disabled': isDisabled,
+        'is-checked': model === label,
+      }"
+    >
+      <span class="bin-radio__inner"></span>
+      <input
+        ref="radioRef"
+        v-model="model"
+        class="bin-radio__original"
+        :value="label"
+        type="radio"
+        aria-hidden="true"
+        :name="name"
+        :disabled="isDisabled"
+        tabindex="-1"
+        @focus="focus = true"
+        @blur="focus = false"
+        @change="handleChange"
+      />
+    </span>
+    <span v-if="$slots.default || label" class="bin-radio__label" @keydown.stop>
+      <slot></slot>
+      <template v-if="!$slots.default">{{ label }}</template>
+    </span>
+  </label>
+  <label
+    v-else
     class="bin-radio"
     :class="{
       'is-disabled': isDisabled,
@@ -66,7 +109,7 @@ export default {
   },
   emits: [UPDATE_MODEL_EVENT, 'change'],
   setup(props, ctx) {
-    const { isGroup, radioGroup, BForm, focus } = useRadio()
+    const { isGroup, isBtnGroup, radioGroup, BForm, focus } = useRadio()
 
     const radioRef = ref()
     const model = computed({
@@ -99,6 +142,7 @@ export default {
     return {
       focus,
       isGroup,
+      isBtnGroup,
       isDisabled,
       model,
       tabIndex,

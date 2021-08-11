@@ -64,41 +64,62 @@
 ```html
 
 <template>
+  <p>Props：</p>
   <div>
-    Props：
-    <b-input prefix="bulb-fill" placeholder="Enter name" style="width: auto"></b-input>
+    <b-input prefix="bulb-fill" clearable placeholder="Enter name" style="width: auto"></b-input>
     &nbsp;
-    <b-input suffix="search" placeholder="Enter text" style="width: auto"></b-input>
+    <b-input suffix="search" clearable placeholder="Enter text" style="width: auto"></b-input>
   </div>
+  <p>Slots：</p>
   <div style="margin-top: 6px">
-    Slots：
     <b-input placeholder="Enter name" style="width: auto">
       <template #prefix>
         <b-icon name="bulb-fill"></b-icon>
       </template>
     </b-input>
     &nbsp;
-    <b-input placeholder="Enter text" style="width: auto">
+    <b-input placeholder="Enter text" clearable style="width: auto">
       <template #suffix>
         <b-icon name="search"></b-icon>
       </template>
     </b-input>
   </div>
+  <p>prepend/append：</p>
   <div style="margin-top: 6px">
-    prepend/append：
-    <b-input placeholder="Enter text" style="width: auto">
+    <b-input placeholder="Enter text" style="width: auto" clearable>
       <template #prepend>
         <b-button>prepend</b-button>
       </template>
     </b-input>
     &nbsp;
-    <b-input placeholder="Enter name" style="width: auto">
+    <b-input placeholder="Enter name" style="width: auto" clearable>
+      <template #append>
+        <b-button>append</b-button>
+      </template>
+    </b-input>
+    &nbsp;
+    <b-input placeholder="Enter name" style="width: auto" clearable>
+      <template #prepend>
+        <b-select v-model="type" clearable style="width: 100px;">
+          <b-option lable="email" value="email"></b-option>
+          <b-option lable="phone" value="phone"></b-option>
+        </b-select>
+      </template>
       <template #append>
         <b-button>append</b-button>
       </template>
     </b-input>
   </div>
 </template>
+<script>
+  export default {
+    data() {
+      return {
+        type: ''
+      }
+    }
+  }
+</script>
 ```
 
 :::
@@ -131,7 +152,7 @@
 
 <template>
   <div>
-    <b-input v-model="value" type="password" class="input-item"></b-input>
+    <b-input v-model="value" show-password-toggle type="password" class="input-item"></b-input>
   </div>
 </template>
 <script>
