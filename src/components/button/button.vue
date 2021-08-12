@@ -10,13 +10,13 @@
   >
     <span :style="textStyle">
       <i
-        class="button-loading icon-is-rotating"
-        :class="['b-iconfont', `b-icon-${loadingIcon||'loading'}`]"
+        class="bin-button-loading icon-is-rotating"
+        :class="['b-iconfont', `b-icon-${loadingIcon||'loading'}`,{'has-text':$slots.default}]"
         v-if="loading"
         :style="iconStyles"
       ></i>
       <i
-        :class="['b-iconfont', 'b-icon-' + icon]"
+        :class="['b-iconfont', 'b-icon-' + icon,{'has-text':$slots.default}]"
         v-if="icon && !loading"
         :style="iconStyles"
       ></i>
@@ -34,13 +34,13 @@
   >
     <span :style="textStyle">
       <i
-        class="button-loading icon-is-rotating"
-        :class="['b-iconfont', `b-icon-${loadingIcon||'loading'}`]"
+        class="bin-button-loading icon-is-rotating"
+        :class="['b-iconfont', `b-icon-${loadingIcon||'loading'}`,{'has-text':$slots.default}]"
         v-if="loading"
         :style="iconStyles"
       ></i>
       <i
-        :class="['b-iconfont', 'b-icon-' + icon]"
+        :class="['b-iconfont', 'b-icon-' + icon,{'has-text':$slots.default}]"
         v-if="icon && !loading"
         :style="iconStyles"
       ></i>
@@ -60,13 +60,13 @@
     @click="handleClick"
   >
     <i
-      class="button-loading icon-is-rotating"
-      :class="['b-iconfont', `b-icon-${loadingIcon||'loading'}`]"
+      class="bin-button-loading icon-is-rotating"
+      :class="['b-iconfont', `b-icon-${loadingIcon||'loading'}`,{'has-text':$slots.default}]"
       v-if="loading"
       :style="iconStyles"
     ></i>
     <i
-      :class="['b-iconfont', 'b-icon-' + icon]"
+      :class="['b-iconfont', 'b-icon-' + icon,{'has-text':$slots.default}]"
       v-if="icon && !loading"
       :style="iconStyles"
     ></i>
@@ -93,12 +93,12 @@ export default {
           'warning',
           'info',
           'danger',
-          'text'
-        ].includes(val)
+          'text',
+        ].includes(val),
     },
     size: {
       type: String,
-      validator: validSize
+      validator: validSize,
     },
     icon: String,
     iconStyle: Object,
@@ -113,14 +113,14 @@ export default {
     animationType: {
       type: String,
       validator: (val) => ['click', 'waves'].includes(val),
-      default: 'click'
+      default: 'click',
     },
     textColor: String,
     nativeType: {
       type: String,
       default: 'button',
-      validator: (val) => ['button', 'submit', 'reset'].includes(val)
-    }
+      validator: (val) => ['button', 'submit', 'reset'].includes(val),
+    },
   },
   emits: ['click'],
   computed: {
@@ -134,7 +134,7 @@ export default {
         success: '#52c41a',
         info: '#35495E',
         warning: '#fa8c16',
-        danger: '#f5222d'
+        danger: '#f5222d',
       }
       let color = this.textColor ? (colorMap[this.textColor] ? colorMap[this.textColor] : this.textColor) : null
       return color ? { color } : null
@@ -153,15 +153,15 @@ export default {
           'is-round': this.round,
           'is-dashed': this.dashed,
           'is-transparent': this.transparent,
-          'is-background': this.background
-        }
+          'is-background': this.background,
+        },
       ]
-    }
+    },
   },
   methods: {
     handleClick(e) {
       this.$emit('click', e)
-    }
-  }
+    },
+  },
 }
 </script>
