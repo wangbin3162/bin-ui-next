@@ -375,7 +375,7 @@
 | clearable | 清空选项，只在单选时有效|  Boolean |  —   |  false  |
 | filterable | 是否支持搜索 |  Boolean |  —   |  false  |
 | size | 选择框大小 |  String  | large、small、default、mini  |  default  |
-| placeholder | 选择框默认文字 |  String  |  —   |  请选择  |
+| placeholder | 选择框默认文字 |  String  |  —   |   —  |
 | value-key | 作为 value 唯一标识的键名，绑定值为对象类型时必填|  string |  —   |  value  |
 | no-match-text | 搜索条件无匹配时显示的文字，也可以使用#empty设置 |  String  |  —   |  暂无匹配数据  |
 | no-data-tex | 选项为空时显示的文字 |  String  |  —   |  暂无数据  |
@@ -385,7 +385,7 @@
 | loading | 是否正在从远程获取数据 |  boolean  |  —   | false   |
 | loading-text | 远程加载文字 |  boolean  |  —   | 加载中   |
 | placement | 弹窗的展开方向 |  String  |  top、bottom、top-start、bottom-start、top-end、bottom-end  |  bottom-start  |
-| append-to-body | 是否将弹层放置于 body 内 |  Boolean  |  —   |  false  |
+| append-to-body | 是否将弹层放置于 body 内 |  Boolean  |  —   |  true  |
 | multiple-limit | 多选时最多允许选择几个|  Number  |  —   | —    |
 | collapse-tags  | 多选时是否折叠标签 |  Boolean  |  —   | false   |
 | popper-class  | 自定义弹出层类名 |  String  |  —   | —    |

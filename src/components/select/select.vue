@@ -249,6 +249,7 @@ export default {
     collapseTags: Boolean,
     appendToBody: {
       type: Boolean,
+      default: true,
     },
     clearIcon: {
       type: String,
@@ -346,7 +347,7 @@ export default {
     }))
 
     onMounted(() => {
-      states.cachedPlaceHolder = currentPlaceholder.value = (props.placeholder || '请选择')
+      states.cachedPlaceHolder = currentPlaceholder.value = (props.placeholder || '')
       if (props.multiple && Array.isArray(props.modelValue) && props.modelValue.length > 0) {
         currentPlaceholder.value = ''
       }

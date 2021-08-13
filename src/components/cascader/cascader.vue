@@ -199,7 +199,7 @@ export default {
     },
     placeholder: {
       type: String,
-      default: '请选择',
+      default: '',
     },
     disabled: Boolean,
     clearable: Boolean,
