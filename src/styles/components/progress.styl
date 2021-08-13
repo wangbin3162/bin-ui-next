@@ -21,7 +21,7 @@
       border-radius: 10px;
       opacity: 0;
       background-size: 400% 100%;
-      animation: progress-bar-stripes 2s cubic-bezier(.23, 1, .32, 1) infinite
+      animation: progress-bar-stripes 1.5s cubic-bezier(.23, 1, .32, 1) infinite
     }
   }
 }
@@ -45,7 +45,7 @@
   white-space: nowrap;
   transition: width .6s ease;
 }
-.bin-progress--text-inside .bin-progress-bar {
+.bin-progress-text-inside .bin-progress-bar {
   padding-right: 0;
   margin-right: 0;
 }
@@ -88,7 +88,7 @@
 @keyframes progress-bar-stripes {
   0% {
     width: 0;
-    opacity: .5;
+    opacity: .6;
   }
   100% {
     width: 100%;
