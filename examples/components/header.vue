@@ -22,8 +22,12 @@
           <template #dropdown>
             <b-dropdown-menu>
               <b-dropdown-item name="bin-admin-pro">bin-admin-pro</b-dropdown-item>
-              <b-dropdown-item name="bin-tree-org">bin-tree-org</b-dropdown-item>
+              <b-dropdown-item name="bin-datav">bin-datav</b-dropdown-item>
+              <b-dropdown-item name="bin-ace-editor">bin-ace-editor</b-dropdown-item>
               <b-dropdown-item name="bin-charts">bin-charts</b-dropdown-item>
+              <b-dropdown-item name="bin-ui" divided>bin-ui(vue2+)</b-dropdown-item>
+              <b-dropdown-item name="bin-admin">bin-admin</b-dropdown-item>
+              <b-dropdown-item name="bin-tree-org">bin-tree-org</b-dropdown-item>
             </b-dropdown-menu>
           </template>
         </b-dropdown>
@@ -49,9 +53,10 @@ export default {
       this.$refs.searchRef.handleOpen()
     },
     handleCommand(name) {
-      this.$util.open(`https://github.com/wangbin3162/${name}`, true)
-    }
-  }
+      this.$open(`https://github.com/wangbin3162/${name}`, true)
+      this.$open(`https://gitee.com/wangbin3162/${name}`, true)
+    },
+  },
 }
 </script>
 
