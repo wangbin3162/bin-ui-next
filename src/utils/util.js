@@ -95,7 +95,7 @@ export function parseTime(time, cFormat = '{y}-{m}-{d} {h}:{i}:{s}', weekArray) 
 }
 
 /**
- * 获取区间范围，如近一周，近三个月，后一个月等
+ * @description 获取区间范围，如近一周，近三个月，后一个月等
  * @param days 为负值时往前，正为之后的日期
  * @param mode
  * @returns {*}
@@ -168,7 +168,28 @@ export function deepCopy(data) {
 }
 
 /**
- * 在某个区间随机一个整数
+ * @description 深度合并
+ * @param target
+ * @param merged
+ */
+export function deepMerge(target, merged) {
+  for (const key in merged) {
+    if (target[key] && typeof target[key] === 'object') {
+      deepMerge(target[key], merged[key])
+      continue
+    }
+    if (typeof merged[key] === 'object') {
+      target[key] = deepCopy(merged[key])
+
+      continue
+    }
+    target[key] = merged[key]
+  }
+  return target
+}
+
+/**
+ * @description 在某个区间随机一个整数
  * @param min 最小值
  * @param max 最大值
  * @return {number}
@@ -178,7 +199,7 @@ export function getRandomInt(min, max) {
 }
 
 /**
- * 打乱某个数组
+ * @description 打乱某个数组
  * @return {number}
  */
 export function shuffle(arr) {
@@ -190,7 +211,10 @@ export function shuffle(arr) {
   return newArr
 }
 
-// 交换两个数组内容
+/**
+ * @description 交换两个数组内容
+ * @return {number}
+ */
 export function swap(arr, i, j) {
   const t = arr[i]
   arr[i] = arr[j]
@@ -198,7 +222,7 @@ export function swap(arr, i, j) {
 }
 
 /**
- * 节流函数，(限制函数的执行频率)返回函数连续调用时，空闲时间必须大于或等于 wait，func 才会执行
+ * @description 节流函数，(限制函数的执行频率)返回函数连续调用时，空闲时间必须大于或等于 wait，func 才会执行
  *
  * @param  {function} func        回调函数
  * @param  {number}   wait        表示时间窗口的间隔
@@ -244,7 +268,7 @@ export function throttle(func, wait, immediate) {
 }
 
 /**
- * 防抖函数，(限制函数的执行频率) 保证再一系列调用时间内，只调用一次
+ * @description 防抖函数，(限制函数的执行频率) 保证再一系列调用时间内，只调用一次
  *
  * @param  {function} func        回调函数
  * @param  {number}   wait        表示时间窗口的间隔
@@ -254,12 +278,21 @@ export function debounce(func, wait) {
   return throttle(func, wait, false)
 }
 
-// 判断是否是对象或数组
+/**
+ * @description 判断是否是对象或数组
+ * @param obj
+ * @returns {boolean}
+ */
 export function isObject(obj) {
   return typeof obj === 'object' && obj !== null
 }
 
-// 判定对象数组相等
+/**
+ * @description 判定对象数组相等
+ * @param obj1
+ * @param obj2
+ * @returns {boolean}
+ */
 export function isEqual(obj1, obj2) {
   // 两个数据有任何一个不是对象或数组
   if (!isObject(obj1) || !isObject(obj2)) {
@@ -291,4 +324,17 @@ export function isEqual(obj1, obj2) {
 
   // 3.全相等
   return true
+}
+
+/**
+ * @description 获取随机uuid
+ * @param hasHyphen 是否有连接符
+ */
+export function uuid(hasHyphen) {
+  const str = hasHyphen ? 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx' : 'xxxxxxxxxxxx4xxxyxxxxxxxxxxxxxxx'
+  return str.replace(/[xy]/g, c => {
+    const r = Math.random() * 16 | 0
+    const v = c === 'x' ? r : (r & 0x3 | 0x8)
+    return v.toString(16)
+  })
 }

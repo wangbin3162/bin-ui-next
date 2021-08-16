@@ -217,6 +217,7 @@ const install = function (app, options = {}) {
   app.config.globalProperties.$rangeTime = util.rangeTime
   app.config.globalProperties.$typeOf = util.typeOf
   app.config.globalProperties.$deepCopy = util.deepCopy
+  app.config.globalProperties.$deepMerge = util.deepMerge()
   app.config.globalProperties.$getRandomInt = util.getRandomInt
   app.config.globalProperties.$throttle = util.throttle
   app.config.globalProperties.$debounce = util.debounce
@@ -227,7 +228,7 @@ const install = function (app, options = {}) {
   app.config.globalProperties.$color = color
 
   if (!options.disabledDoc) {
-    log.pretty(`[${ config.name }] ${ config.version }`, config.homepage)
+    log.printVersion(config.name, config.version, config.homepage)
   }
   return app
 }

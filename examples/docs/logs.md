@@ -5,6 +5,13 @@
 <div class="doc-update">
     <b-timeline>
       <b-timeline-item>
+        <p class="version">0.9.0</p>
+        <p class="time">2021-08-16</p>
+        <p class="content"><i>🍀</i>优化基本util函数，增加深度合并</p>
+        <p class="content"><i>🍀</i>优化log打印函数</p>
+        <p class="content"><i>🍀</i>优化全局滚动显示效果</p>
+      </b-timeline-item>
+      <b-timeline-item>
         <p class="version">0.8.10</p>
         <p class="time">2021-08-13</p>
         <p class="content"><i>🍀</i>优化按钮组件，修复点击动画错位问题</p>

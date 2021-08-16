@@ -1,9 +1,9 @@
 <template>
-  <div id="app" ref="scrollBox">
+  <div ref="scrollBox">
     <main-header/>
     <div class="main-cnt">
-      <side-nav class="nav"/>
-      <div class="page-container" ref="containerRef">
+      <side-nav class="nav" :show-menu="showMenu" @toggle="toggleMenu"/>
+      <div class="page-container" :style="{marginLeft:showMenu?'256px':'0'}" ref="containerRef">
         <div class="global-anchor" v-if="anchors.length">
           <b-scrollbar>
             <b-anchor :scroll-offset="100" ref="anchorRef">
@@ -39,17 +39,11 @@ export default {
     const containerRef = ref(null)
     const anchorRef = ref(null)
     const anchors = ref([])
+    const showMenu = ref(true)
 
-    watch(() => route.path, () => {
-      anchors.value = []
-      if (route.meta.desc) {
-        document.title = route.meta.desc + ' | ' + cfg.name.toUpperCase()
-        document.scrollingElement.scrollTop = 0
-      }
-      nextTick(() => {
-        fetchAnchors()
-      })
-    })
+    function toggleMenu() {
+      showMenu.value = !showMenu.value
+    }
 
     function fetchAnchors() {
       if (!containerRef.value) return
@@ -63,6 +57,16 @@ export default {
       })
     }
 
+    watch(() => route.path, () => {
+      anchors.value = []
+      if (route.meta.desc) {
+        document.title = route.meta.desc + ' | ' + cfg.name.toUpperCase()
+        document.scrollingElement.scrollTop = 0
+      }
+      nextTick(() => {
+        fetchAnchors()
+      })
+    })
     onMounted(() => {
       if (route.meta.desc) {
         document.title = route.meta.desc + ' | ' + cfg.name.toUpperCase()
@@ -75,6 +79,8 @@ export default {
       containerRef,
       anchorRef,
       anchors,
+      showMenu,
+      toggleMenu,
     }
   },
 }
@@ -87,12 +93,14 @@ export default {
   overflow-x: hidden;
 }
 .main-cnt {
+  position: relative;
   padding-top: 80px;
   width: 100%;
   height: 100%;
   .page-container {
     box-sizing: border-box;
-    margin-left: 260px;
+    transition: margin-left .15s ease;
+    margin-left: 256px;
     background: #fff;
   }
 }

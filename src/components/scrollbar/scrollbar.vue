@@ -5,7 +5,7 @@
       :class="[
         wrapClass,
         'bin-scrollbar__wrap',
-        native ? '' : 'bin-scrollbar__wrap--hidden-default',
+        'bin-scrollbar__wrap--hidden-default'
       ]"
       :style="style"
       @scroll="handleScroll"
@@ -20,8 +20,21 @@
       </component>
     </div>
     <template v-if="!native">
-      <bar :move="moveX" :size="sizeWidth" />
-      <bar vertical :move="moveY" :size="sizeHeight" />
+      <bar
+        :class="{ 'always': always }"
+        :move="moveX"
+        :size="sizeWidth"
+        :bar-style="barStyle"
+        :bar-wrap-style="barWrapStyle"
+      />
+      <bar
+        :class="{ 'always': always }"
+        vertical
+        :move="moveY"
+        :size="sizeHeight"
+        :bar-style="barStyle"
+        :bar-wrap-style="barWrapStyle"
+      />
     </template>
   </div>
 </template>
@@ -48,6 +61,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    always: { // 是否是一直显示，不是悬停显示
+      type: Boolean,
+      default: false,
+    },
     wrapStyle: {
       type: [String, Array],
       default: '',
@@ -69,6 +86,8 @@ export default {
       type: String,
       default: 'div',
     },
+    barStyle: {}, // bar的样式
+    barWrapStyle: {}, // bar容器样式
   },
   setup(props) {
     const sizeWidth = ref('0')

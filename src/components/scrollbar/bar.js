@@ -8,6 +8,8 @@ export default {
     vertical: Boolean,
     size: String,
     move: Number,
+    barStyle: {},
+    barWrapStyle: {},
   },
   setup(props) {
     const instance = getCurrentInstance()
@@ -65,17 +67,21 @@ export default {
 
     return () => h('div', {
         class: ['bin-scrollbar__bar', 'is-' + bar.value.key],
+        style: props.barWrapStyle,
         onMousedown: clickTrackHandler,
       },
       h('div', {
         ref: thumb,
         class: 'bin-scrollbar__thumb',
         onMousedown: clickThumbHandler,
-        style: renderThumbStyle({
-          size: props.size,
-          move: props.move,
-          bar: bar.value,
-        }),
+        style: {
+          ...renderThumbStyle({
+            size: props.size,
+            move: props.move,
+            bar: bar.value,
+          }),
+          ...props.barStyle,
+        },
       }),
     )
   },

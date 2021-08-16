@@ -21,6 +21,9 @@ util方法函数
 | $getRandomInt | 在某个区间随机一个整数   | min, max  |
 | $typeOf | 精准判断类型   | any  |
 | $deepCopy | 深拷贝函数   | obj/arr  |
+| $deepMerge | 深度克隆函数，用于合并基本配置项使用  | target, merged  |
+| $log | log 函数  | 参考log美化  |
+| $color | color操作函数  | 参考源码  |
 
 ### flex.css使用
 

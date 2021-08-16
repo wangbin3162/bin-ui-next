@@ -69,6 +69,13 @@ const warning = (text, back = false) => {
 const danger = (text, back = false) => {
   print(text, 'danger', back)
 }
+const printVersion = (title, version, link, type = 'primary', fontSize = '20px', versionColor = '#999') => {
+  console.log(
+    `%c${title.toUpperCase()} %cV${version}  ${link}`,
+    `color: ${typeColor(type)};font-weight: 500;font-size: ${fontSize};font-family: Source Sans Pro,Helvetica Neue,Arial,sans-serif;`,
+    `color: ${versionColor};`,
+  )
+}
 const log = {
   print,
   pretty,
@@ -77,6 +84,7 @@ const log = {
   success,
   warning,
   danger,
+  printVersion,
 }
 
 export default log

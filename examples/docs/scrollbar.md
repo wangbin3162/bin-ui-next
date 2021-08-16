@@ -32,7 +32,8 @@
 
 | 参数      | 说明    | 类型      | 可选值       | 默认值   |
 |---------- |-------- |---------- |-------------  |-------- |
-| normal    | 是否采用原生滚动 (隐藏原生滚动条)  | boolean    | true | false   |
+| native    | 是否采用原生滚动 (隐藏原生滚动条)  | boolean    | true | false   |
+| always    | 是否一直显示，而非悬停显示  | boolean    | true | false   |
 | wrapStyle    | 内联方式 自定义wrap容器的样式  | Object    | - | {}   |
 | wrapClass    | 类名方式 自定义wrap容器的样式  | Object    | - | {}   |
 | viewClass    | 类名方式 自定义view容器的样式  | Object    | - | {}   |

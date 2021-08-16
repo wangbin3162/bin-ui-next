@@ -239,7 +239,6 @@ export default {
     watch(() => props.modelValue, (val) => {
       if (val) {
         modalIndex.value = transferIncrease()
-        console.log(modalIndex.value)
       }
       nextTick(() => {
         updateCallback(!val)
