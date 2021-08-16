@@ -14,23 +14,33 @@
           <span class="search" @click="openSearch"><i class="b-iconfont b-icon-search"></i></span>
         </b-tooltip>
         <router-link :to="{ name: 'guide' }" class="active">指南</router-link>
-        <router-link :to="{ name: 'button' }" class="active">组件</router-link>
         <b-dropdown @command="handleCommand">
-          <a href="#" class="active" @click.prevent>生态
-            <i class="iconfont icon-ios-arrow-down"></i>
+          <a href="#" class="active" @click.prevent>生态系统
+            <i class="b-iconfont b-icon-down"></i>
           </a>
           <template #dropdown>
             <b-dropdown-menu>
+              <div class="drop-down-menu-group">官方生态</div>
               <b-dropdown-item name="bin-admin-pro">bin-admin-pro</b-dropdown-item>
               <b-dropdown-item name="bin-datav">bin-datav</b-dropdown-item>
               <b-dropdown-item name="bin-ace-editor">bin-ace-editor</b-dropdown-item>
               <b-dropdown-item name="bin-charts">bin-charts</b-dropdown-item>
-              <b-dropdown-item name="bin-ui" divided>bin-ui(vue2+)</b-dropdown-item>
+              <div class="drop-down-menu-group">Vue2组件</div>
+              <b-dropdown-item name="bin-ui">bin-ui(vue2+)</b-dropdown-item>
               <b-dropdown-item name="bin-admin">bin-admin</b-dropdown-item>
               <b-dropdown-item name="bin-tree-org">bin-tree-org</b-dropdown-item>
+              <div class="drop-down-menu-group">动画库</div>
+              <b-dropdown-item name="bin-animation">bin-animation</b-dropdown-item>
+              <b-dropdown-item name="bin-keyframe-animation">bin-keyframe-animation</b-dropdown-item>
             </b-dropdown-menu>
           </template>
         </b-dropdown>
+        <router-link :to="{ name: 'color' }" class="active">色彩设计</router-link>
+        <a
+          href="https://gitee.com/wangbin3162/bin-ui-next"
+          class="github"
+          target="_blank"
+        >国内镜像</a>
         <a
           href="https://github.com/wangbin3162/bin-ui-next"
           class="github"
@@ -53,8 +63,15 @@ export default {
       this.$refs.searchRef.handleOpen()
     },
     handleCommand(name) {
-      this.$open(`https://github.com/wangbin3162/${name}`, true)
-      this.$open(`https://gitee.com/wangbin3162/${name}`, true)
+      const githubUrl = `https://github.com/wangbin3162/${name}/`
+      const giteeUrl = `https://gitee.com/wangbin3162/${name}/`
+      const preview = `https://wangbin3162.gitee.io/${name}/`
+      this.$log.primary(`------------------------------[${name}]-------------------------------`)
+      this.$log.primary(`github：  ${githubUrl}`)
+      this.$log.primary(`gitee：  ${giteeUrl}`)
+      this.$log.primary(`preview：${preview}`)
+      this.$log.primary('----------------------------------------------------------------------------')
+      this.$open(preview, true)
     },
   },
 }
@@ -114,13 +131,13 @@ export default {
       }
       a {
         text-decoration: none;
-        color: #1989fa;
+        color: #636363;
         display: inline-block;
         line-height: 1.5;
         padding: 0 22px;
         font-size: 15px;
-        &.github {
-          color: #636363;
+        &:hover {
+          color: #1089ff;
         }
       }
       > span {
@@ -139,6 +156,22 @@ export default {
     .bin-input-suffix {
       opacity: 0;
     }
+  }
+}
+.drop-down-menu-group {
+  padding: 8px 8px 4px;
+  line-height: 18px;
+  width: 100%;
+  clear: both;
+  color: #1c1f31;
+  font-weight: 700;
+  font-size: 12px !important;
+  white-space: nowrap;
+  border-top: 1px solid #eee;
+  margin-top: 6px;
+  &:first-child {
+    border-top: none;
+    margin-top: 0;
   }
 }
 </style>
