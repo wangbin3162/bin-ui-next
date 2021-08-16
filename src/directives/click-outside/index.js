@@ -1,7 +1,6 @@
 import { on } from '../../utils/dom'
 import isServer from '../../utils/isServer'
 
-
 const nodeList = new Map()
 
 let startClick
@@ -26,7 +25,8 @@ function createDocumentHandler(el, binding) {
     excludes.push(binding.arg)
   }
 
-  return function(mouseup, mousedown) {
+  return function (mouseup, mousedown) {
+    if (!mouseup || !mousedown) return
     const popperRef = binding.instance.popperRef
     const mouseUpTarget = mouseup.target
     const mouseDownTarget = mousedown.target
