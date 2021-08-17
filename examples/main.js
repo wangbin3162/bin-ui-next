@@ -37,5 +37,5 @@ app.component('IconPane', IconPane)
 app.use(router)
 // Mount when the route is ready
 router.isReady().then(() => {
-  // app.mount('#app', true)
+  app.mount('#app', true)
 })
