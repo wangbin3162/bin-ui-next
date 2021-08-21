@@ -240,7 +240,7 @@
       <b-input v-model="form.name" placeholder="用户名"></b-input>
     </b-form-item>
     <b-form-item prop="mail" label="邮箱">
-      <b-input v-model="form.mail" placeholder="邮箱"></b-input>
+      <b-input v-model="form.mail" placeholder="邮箱" clearable></b-input>
     </b-form-item>
     <b-row>
       <b-col :span="12">

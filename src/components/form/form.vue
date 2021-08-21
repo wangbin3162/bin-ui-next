@@ -65,7 +65,10 @@ export default {
     },
     inline: Boolean,
     inlineMessage: Boolean,
-    statusIcon: Boolean,
+    statusIcon: {
+      type: Boolean,
+      default: false,
+    },
     showMessage: {
       type: Boolean,
       default: true,
@@ -148,7 +151,7 @@ export default {
       // if no callback, return promise
       if (typeof callback !== 'function') {
         promise = new Promise((resolve, reject) => {
-          callback = function(valid, invalidFields) {
+          callback = function (valid, invalidFields) {
             if (valid) {
               resolve(true)
             } else {

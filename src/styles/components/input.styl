@@ -68,7 +68,7 @@ placeholder() {
 }
 // 大小设置
 .bin-input-wrapper-large {
-  .bin-input-with-prefix {
+  .bin-input-with-suffix {
     padding-left: $large-height;
   }
   .bin-input-prefix, .bin-input-suffix {
@@ -76,7 +76,7 @@ placeholder() {
   }
 }
 .bin-input-wrapper-small {
-  .bin-input-with-prefix {
+  .bin-input-with-suffix {
     padding-left: $small-height;
   }
   .bin-input-prefix, .bin-input-suffix {
@@ -84,7 +84,7 @@ placeholder() {
   }
 }
 .bin-input-wrapper-mini {
-  .bin-input-with-prefix {
+  .bin-input-with-suffix {
     padding-left: $mini-height;
   }
   .bin-input-prefix, .bin-input-suffix {
@@ -115,6 +115,12 @@ placeholder() {
   &:focus {
     outline: 0;
     box-shadow: 0 0 0 2px $color-input-shadow;
+  }
+  &.bin-input-with-suffix {
+    padding-right: 28px;
+  }
+  &.bin-input-with-prefix {
+    padding-left: 28px;
   }
 }
 // 大小设置
@@ -156,12 +162,7 @@ placeholder() {
 .bin-input-icon-normal + .bin-input {
   padding-right: 36px;
 }
-.bin-input-with-suffix {
-  padding-right: 28px;
-}
-.bin-input-with-prefix {
-  padding-left: 28px;
-}
+
 
 .bin-input-prefix, .bin-input-suffix {
   width: 32px;

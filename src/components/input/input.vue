@@ -239,7 +239,7 @@ export default {
     const showPrefix = computed(() => props.prefix !== '' || ctx.slots.prefix !== undefined)
     const showSuffix = computed(() => {
         return props.suffix !== '' || props.icon !== '' || props.search || props.showPasswordToggle ||
-          validateState.value !== '' || ctx.slots.suffix !== undefined
+          (BForm.statusIcon && validateState.value !== '') || ctx.slots.suffix !== undefined
       },
     )
     const inputDisabled = computed(() => props.disabled || BForm.disabled)
