@@ -5,7 +5,7 @@
   >
     <LabelWrap
         :is-auto-width="labelStyle.width === 'auto'"
-        :update-all="elForm.labelWidth === 'auto'"
+        :update-all="BForm.labelWidth === 'auto'"
     >
       <label
           v-if="label || $slots.label"
@@ -14,7 +14,7 @@
           :style="labelStyle"
       >
         <slot name="label">{{ label }}</slot>
-        <span class="item-suffix">{{ elForm.labelSuffix }}</span>
+        <span class="item-suffix">{{ BForm.labelSuffix }}</span>
       </label>
     </LabelWrap>
     <div class="bin-form-item__content" :style="contentStyle">
@@ -31,7 +31,7 @@
               'bin-form-item__error--inline':
                 typeof inlineMessage === 'boolean'
                   ? inlineMessage
-                  : elForm.inlineMessage || false
+                  : BForm.inlineMessage || false
             }"
           >
             {{ validateMessage }}
@@ -96,7 +96,7 @@ export default {
   setup(props) {
     const formItemMitt = mitt()
 
-    const elForm = inject(FormKey, {})
+    const BForm = inject(FormKey, {})
     const validateState = ref('')
     const validateMessage = ref('')
     const validateDisabled = ref(false)
@@ -136,8 +136,8 @@ export default {
 
     const labelFor = computed(() => props.for || props.prop)
     const labelStyle = computed(() => {
-      if (elForm.labelPosition === 'top') return {}
-      const labelWidth = props.labelWidth || elForm.labelWidth
+      if (BForm.labelPosition === 'top') return {}
+      const labelWidth = props.labelWidth || BForm.labelWidth
       if (labelWidth) {
         return {
           width: labelWidth,
@@ -146,19 +146,19 @@ export default {
       return {}
     })
     const contentStyle = computed(() => {
-      if (elForm.labelPosition === 'top' || elForm.inline) {
+      if (BForm.labelPosition === 'top' || BForm.inline) {
         return {}
       }
       if (!props.label && !props.labelWidth && isNested.value) {
         return {}
       }
-      const labelWidth = props.labelWidth || elForm.labelWidth
+      const labelWidth = props.labelWidth || BForm.labelWidth
       const ret = {}
       if (labelWidth === 'auto') {
         if (props.labelWidth === 'auto') {
           ret.marginLeft = computedLabelWidth.value
-        } else if (elForm.labelWidth === 'auto') {
-          ret.marginLeft = elForm.autoLabelWidth
+        } else if (BForm.labelWidth === 'auto') {
+          ret.marginLeft = BForm.autoLabelWidth
         }
       } else {
         ret.marginLeft = labelWidth
@@ -166,7 +166,7 @@ export default {
       return ret
     })
     const fieldValue = computed(() => {
-      const model = elForm.model
+      const model = BForm.model
       if (!model || !props.prop) {
         return
       }
@@ -193,9 +193,9 @@ export default {
       }
       return required
     })
-    const elFormItemSize = computed(() => props.size || elForm.size)
+    const BFormItemSize = computed(() => props.size || BForm.size)
     const sizeClass = computed(() => {
-      return elFormItemSize.value
+      return BFormItemSize.value
     })
 
     const validate = (trigger, callback = NOOP) => {
@@ -223,7 +223,7 @@ export default {
             validateState.value = !errors ? 'success' : 'error'
             validateMessage.value = errors ? errors[0].message : ''
             callback(validateMessage.value, invalidFields)
-            elForm.emit?.(
+            BForm.emit?.(
                 'validate',
                 props.prop,
                 !errors,
@@ -241,7 +241,7 @@ export default {
     const resetField = () => {
       validateState.value = ''
       validateMessage.value = ''
-      let model = elForm.model
+      let model = BForm.model
       let value = fieldValue.value
       let path = props.prop
       if (path.indexOf(':') !== -1) {
@@ -261,7 +261,7 @@ export default {
     }
 
     const getRules = () => {
-      const formRules = elForm.rules
+      const formRules = BForm.rules
       const selfRules = props.rules
       const requiredRule =
           props.required !== undefined ? {required: !!props.required} : []
@@ -317,7 +317,7 @@ export default {
       formItemMitt.off(FormEvents.change, onFieldChange)
     }
 
-    const elFormItem = reactive({
+    const BFormItem = reactive({
       ...toRefs(props),
       size: sizeClass,
       validateState,
@@ -332,7 +332,7 @@ export default {
 
     onMounted(() => {
       if (props.prop) {
-        elForm.formMitt?.emit(FormEvents.addField, elFormItem)
+        BForm.formMitt?.emit(FormEvents.addField, BFormItem)
 
         let value = fieldValue.value
         initialValue = Array.isArray(value)
@@ -342,31 +342,31 @@ export default {
       }
     })
     onBeforeUnmount(() => {
-      elForm.formMitt?.emit(FormEvents.removeField, elFormItem)
+      BForm.formMitt?.emit(FormEvents.removeField, BFormItem)
     })
 
-    provide(FormItemKey, elFormItem)
+    provide(FormItemKey, BFormItem)
 
     const formItemClass = computed(() => [
       {
-        'bin-form-item--feedback': elForm.statusIcon,
+        'bin-form-item--feedback': BForm.statusIcon,
         'is-error': validateState.value === 'error',
         'is-validating': validateState.value === 'validating',
         'is-success': validateState.value === 'success',
         'is-required': isRequired.value || props.required,
-        'is-no-asterisk': elForm.hideRequiredAsterisk,
+        'is-no-asterisk': BForm.hideRequiredAsterisk,
       },
       sizeClass.value ? 'bin-form-item--' + sizeClass.value : '',
     ])
 
     const shouldShowError = computed(() => {
-      return validateState.value === 'error' && props.showMessage && elForm.showMessage
+      return validateState.value === 'error' && props.showMessage && BForm.showMessage
     })
 
     return {
       formItemClass,
       shouldShowError,
-      elForm,
+      BForm,
       labelStyle,
       contentStyle,
       validateMessage,

@@ -5,8 +5,8 @@
 <div class="doc-update">
     <b-timeline>
       <b-timeline-item>
-        <p class="version">0.9.4</p>
-        <p class="time">2021-08-21</p>
+        <p class="version">0.9.5</p>
+        <p class="time">2021-08-23</p>
         <p class="content"><i>🍀</i>优化table表格插槽多余标签问题</p>
         <p class="content"><i>🍀</i>优化全局滚动显示效果</p>
         <p class="content"><i>🍀</i>优化输入框和form表单控件样式</p>

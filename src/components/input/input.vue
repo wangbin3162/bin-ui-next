@@ -57,7 +57,7 @@
         <slot name="suffix">
           <i class="b-iconfont" :class="['b-icon-' + suffix]" v-if="suffix"></i>
         </slot>
-        <i v-if="validateState" :class="['b-iconfont','bin-input__validateIcon', validateIcon]"></i>
+        <i v-if="BForm.statusIcon&&validateState" :class="['b-iconfont','bin-input__validateIcon', validateIcon]"></i>
       </span>
       <span class="bin-input-word-count" v-if="showWordCount">{{ wordCount }}</span>
       <!--清空按钮-->

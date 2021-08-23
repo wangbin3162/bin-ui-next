@@ -235,7 +235,7 @@
 ```html
 
 <template>
-  <b-form ref="ruleForm" :model="form" label-width="85px" :rules="ruleValidate">
+  <b-form ref="ruleForm" :model="form" status-icon label-width="85px" :rules="ruleValidate">
     <b-form-item prop="name" label="名称">
       <b-input v-model="form.name" placeholder="用户名"></b-input>
     </b-form-item>
