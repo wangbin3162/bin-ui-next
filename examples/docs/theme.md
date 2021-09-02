@@ -115,7 +115,7 @@ Bin UI Next 提供了一套默认的主题变量，并在一定程度上可以�
     --bin-color-warning-light3: #fdd1a2;
     --bin-color-warning-light4: #fee8d0;
     --bin-color-warning-light5: #fff4e8;
-    --bin-color-warning-light6: #fff4e8;
+    --bin-color-warning-light6: #fff9f3;
     --bin-color-warning-active: #e17e14;
     /* danger-color */
     --bin-color-danger: #f5222d;
@@ -136,10 +136,9 @@ Bin UI Next 提供了一套默认的主题变量，并在一定程度上可以�
     --bin-color-bg-fa: #fafafa;
     --bin-color-select-hover: #f5f5f5;
     --bin-color-input-shadow: rgba(16, 137, 255, 0.2);
-/ / primary 0.2 --bin-color-input-error-shadow: rgba(245, 34, 45, 0.2);
-/ / danger 0.2
+    --bin-color-input-error-shadow: rgba(245, 34, 45, 0.2);
     /* border */
---bin-border-color-base: #dcdfe6;
+    --bin-border-color-base: #dcdfe6;
     --bin-border-color-light: #f0f0f0;
     --bin-border-base: 1px solid #dcdfe6;
     --bin-border-base-light: 1px solid #f0f0f0;
@@ -152,15 +151,20 @@ Bin UI Next 提供了一套默认的主题变量，并在一定程度上可以�
     --bin-header-font-size: 16px;
     /* height */
     --bin-large-height: 36px;
+    --bin-large-height-2: 34px;
     --bin-default-height: 32px;
+    --bin-default-height-2: 30px;
     --bin-small-height: 28px;
+    --bin-small-height-2: 26px;
     --bin-mini-height: 24px;
+    --bin-mini-height-2: 22px;
     --bin-base-line-height: 1.5715;
     /* animation-duration */
     --bin-animation-duration-slow: 0.3s;
     --bin-animation-duration-base: 0.2s;
     /* shadow-duration */
-    --bin-shadow-2-down: 0px 3px 6px -4px rgba(0, 0, 0, .12), 0 6px 16px 0px rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
+    --bin-shadow-down: 0px 3px 6px -4px rgba(0, 0, 0, .12), 0 6px 16px 0px rgba(0, 0, 0, 0.08), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
     --bin-shadow-popper: 0 1px 6px rgba(0, 0, 0, .2);
 }
+
 ```
