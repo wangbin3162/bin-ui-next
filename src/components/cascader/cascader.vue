@@ -11,7 +11,7 @@
     theme="light"
     pure
     :show-arrow="false"
-    :offset="4"
+    :offset="5"
     @after-leave="hideSuggestionPanel"
   >
     <template #trigger>

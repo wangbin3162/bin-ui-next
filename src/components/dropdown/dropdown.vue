@@ -10,7 +10,7 @@
     popper-class="bin-dropdown__popper"
     :append-to-body="appendToBody"
     transition="zoom-in-top"
-    :offset="4"
+    :offset="5"
     :stop-popper-mouse-event="false"
     :gpu-acceleration="false"
     :show-arrow="false"

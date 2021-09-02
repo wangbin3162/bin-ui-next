@@ -1,16 +1,16 @@
 <template>
   <transition name="fade-in">
     <div v-if="!closed" :class="wrapClasses">
-            <span class="bin-alert-icon" v-if="showIcon">
-                <slot name="icon">
-                    <b-icon :name="iconType"></b-icon>
-                </slot>
-            </span>
+      <span class="bin-alert-icon" v-if="showIcon">
+        <slot name="icon">
+            <i :class="`b-iconfont b-icon-${iconType}`"></i>
+        </slot>
+      </span>
       <span class="bin-alert-message"><slot></slot></span>
       <span class="bin-alert-desc"><slot name="desc"></slot></span>
       <a class="bin-alert-close" v-if="closable" @click="close">
         <slot name="close">
-          <b-icon name="close"></b-icon>
+          <i class="b-iconfont b-icon-close"></i>
         </slot>
       </a>
     </div>

@@ -2,18 +2,18 @@
 import {
   createCommentVNode,
   createTextVNode,
-  createVNode,
   Fragment,
   renderSlot,
   Teleport,
   toDisplayString,
   withDirectives,
+  h,
 } from 'vue'
 import BPopper, { defaultProps, Theme } from '../popper'
 import { renderArrow, renderPopper, renderTrigger } from '../popper'
 import { ClickOutside } from '../../directives'
 import { throwWarn } from '../../utils/log'
-import { PatchFlags, renderBlock, renderIf } from '../../utils/vnode'
+import { PatchFlags, renderIf } from '../../utils/vnode'
 import usePopover, { HIDE_EVENT, SHOW_EVENT } from './usePopover'
 
 const _hoist = { key: 0, class: 'bin-popover__title', role: 'title' }
@@ -58,7 +58,7 @@ export default {
     const title = renderIf(this.title, 'div', _hoist, toDisplayString(this.title), PatchFlags.TEXT)
 
     const content = $slots.content ? renderSlot($slots, 'content', {},
-      () => [createTextVNode(toDisplayString(this.content), PatchFlags.TEXT)])
+        () => [createTextVNode(toDisplayString(this.content), PatchFlags.TEXT)])
       : renderIf(this.content, 'div', _content, toDisplayString(this.content), PatchFlags.TEXT)
     const {
       events,
@@ -107,14 +107,14 @@ export default {
       ...events,
     }) : createCommentVNode('v-if', true)
 
-    return renderBlock(Fragment, null, [
+    return h(Fragment, null, [
       this.trigger === 'click'
         ? withDirectives(_trigger, [[ClickOutside, this.hide]])
         : _trigger,
-      createVNode(Teleport, {
+      h(Teleport, {
         disabled: !this.appendToBody,
         to: 'body',
-      }, [popover], PatchFlags.PROPS, ['disabled']),
+      }, [popover]),
     ])
   },
 }

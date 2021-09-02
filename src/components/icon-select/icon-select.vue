@@ -18,7 +18,7 @@
       :stop-popper-mouse-event="false"
       :gpu-acceleration="false"
       :show-arrow="false"
-      :offset="4"
+      :offset="5"
       transition="zoom-in-top"
     >
       <template #trigger>

@@ -7,7 +7,7 @@
     manual-mode
     trigger="click"
     :show-arrow="false"
-    :offset="4"
+    :offset="5"
     transition="zoom-in-top"
     :gpu-acceleration="false"
     :popper-class="`bin-color-picker__panel bin-color-dropdown ${popperClass}`"

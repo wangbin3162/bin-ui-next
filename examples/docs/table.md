@@ -1562,7 +1562,7 @@ noDataText可以设置无数据状态
 | highlight-row |  是否支持高亮选中的行，即单选 | Boolean      | —     |  false    |
 | size |  表格尺寸 | string      |  large / small    |  default    |
 | no-data-text |  空数据内容 | string      |   —     |  暂无数据    |
-| loading-text|  加载数据文字 | string      |   —     |   —      |
+| loading-text|  加载数据文字 | string      |   —     |  正在加载    |
 | draggable  | 开启拖拽调整行顺序，同步元数据需要使用v-model:data使用或需配合 @drag-drop 事件更新data都可以 | Boolean      |   —     |    false |
 | drag-handle  | 拖拽的handle图标 | String      |   —     |     —   |
 | row-key  | 是否强制使用内置row-key刷新 | Boolean      |   —     |    false   |

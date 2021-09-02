@@ -1,6 +1,5 @@
 <script>
 import {
-  createVNode,
   Fragment,
   Teleport,
   onBeforeUnmount,
@@ -13,8 +12,6 @@ import {
   h,
 } from 'vue'
 
-import { PatchFlags } from '../../../utils/vnode'
-
 import usePopper from './use-popper'
 import defaultProps from './use-popper/defaults'
 
@@ -22,16 +19,15 @@ import { renderPopper, renderTrigger, renderArrow } from './renderers'
 import { ClickOutside } from '../../../directives'
 import { throwError } from '../../../utils/log'
 
-const compName = 'BPopper'
 const UPDATE_VISIBLE_EVENT = 'update:visible'
 
 export default {
-  name: compName,
+  name: 'BPopper',
   props: defaultProps,
   emits: [UPDATE_VISIBLE_EVENT, 'after-enter', 'after-leave', 'before-enter', 'before-leave'],
   setup(props, ctx) {
     if (!ctx.slots.trigger) {
-      throwError(compName, 'Trigger must be provided')
+      throwError('BPopper', 'Trigger must be provided')
     }
     // this is a reference that we need to pass down to child component
     // to obtain the child instance

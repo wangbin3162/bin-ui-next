@@ -13,7 +13,7 @@
     :gpu-acceleration="false"
     :stop-popper-mouse-event="false"
     :show-arrow="false"
-    :offset="4"
+    :offset="5"
     append-to-body
     @before-enter="pickerActualVisible = true"
     @after-leave="pickerActualVisible = false"

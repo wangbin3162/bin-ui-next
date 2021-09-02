@@ -7,7 +7,7 @@
       @click="toggle"
       @keydown.space="toggle"
     >
-      <input type="hidden" :name="name" :value="currentValue" />
+      <input type="hidden" :name="name" :value="currentValue"/>
       <span class="bin-switch-inner">
         <slot name="open" v-if="currentValue === trueValue"></slot>
         <slot name="close" v-if="currentValue === falseValue"></slot>
@@ -19,14 +19,10 @@
         {{ confirmTxt || '确定切换吗？' }}
       </p>
       <div style="text-align: right; margin: 0">
-        <b-button size="mini" type="text" @click="visible = false"
-        >取消
-        </b-button
-        >
-        <b-button type="primary" size="mini" @click="confirmFun($event)"
-        >确定
-        </b-button
-        >
+        <b-button size="mini" type="text" @click="visible = false">取消
+        </b-button>
+        <b-button type="primary" size="mini" @click="confirmFun($event)">确定
+        </b-button>
       </div>
     </template>
   </b-popover>

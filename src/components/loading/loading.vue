@@ -19,7 +19,6 @@
 </template>
 
 <script>
-
 const prefixCls = 'bin-loading'
 export default {
   name: 'BLoading',

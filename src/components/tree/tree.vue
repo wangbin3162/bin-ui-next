@@ -55,6 +55,7 @@ export default {
     lockSelect: Boolean,
     defaultExpand: Boolean,
     filterNodeMethod: Function,
+    highlightFilter: Boolean,
   },
   emits: ['select-change', 'toggle-expand', 'check-change'],
   setup(props, ctx) {
@@ -218,7 +219,9 @@ export default {
       // 隐藏全部
       states.flatState.forEach((item) => {
         item.node.visible = false
-        replaceDisplayTitle(item.node, query)
+        if (props.highlightFilter) {
+          replaceDisplayTitle(item.node, query)
+        }
         if (query.length > 0) {
           item.node['expand'] = false
         }
@@ -228,7 +231,9 @@ export default {
         item.node.visible = true
         if (query.length > 0) {
           item.node['expand'] = true
-          replaceDisplayTitle(item.node, query)
+          if (props.highlightFilter) {
+            replaceDisplayTitle(item.node, query)
+          }
         }
         const parentKey = item.parent
         // 如果是第一层则直接跳过下面逻辑
@@ -248,7 +253,7 @@ export default {
     // 替换节点文字
     function replaceDisplayTitle(node, query) {
       if (query) {
-        node['display'] = node[props.titleKey].replace(new RegExp(query, 'g'), `<span>${ query }</span>`)
+        node['display'] = node[props.titleKey].replace(new RegExp(query, 'g'), `<span>${query}</span>`)
       } else {
         delete node['display']
       }

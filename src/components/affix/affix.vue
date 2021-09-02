@@ -8,7 +8,7 @@
 
 <script>
 import { computed, onBeforeUnmount, onMounted, reactive, ref, watch } from 'vue'
-import { getScrollContainer, off, on } from '../../utils/dom'
+import { off, on } from '../../utils/dom'
 import { addResizeListener, removeResizeListener } from '../../utils/resize-event'
 
 export default {
@@ -99,7 +99,6 @@ export default {
 
     const onScroll = () => {
       updateState()
-
       emit('scroll', {
         scrollTop: state.scrollTop,
         fixed: state.fixed,
@@ -111,7 +110,6 @@ export default {
     })
 
     onMounted(() => {
-
       if (props.target) {
         target.value = document.querySelector(props.target)
         if (!target.value) {

@@ -183,7 +183,7 @@
       },
       handleSelect(selected, node) {
         console.log(node)
-        this.$message(`选中节点${ node.text }`)
+        this.$message(`选中节点${node.text}`)
       }
     }
   }
@@ -437,7 +437,7 @@ expand、selected、checked 和 disabled 可以设置展开，选中，勾选和
   <div>
     <b-input v-model="query" search placeholder="输入过滤条件后回车筛选" @search="handleFilter" style="width: 230px;"></b-input>
     <b-divider style="margin: 14px 0;"></b-divider>
-    <b-tree :data="data" ref="treeRef" :filter-node-method="filterNode"></b-tree>
+    <b-tree :data="data" ref="treeRef" :filter-node-method="filterNode" highlight-filter></b-tree>
   </div>
 </template>
 <script>
@@ -847,6 +847,7 @@ expand、selected、checked 和 disabled 可以设置展开，选中，勾选和
 | check-directly   | 开启后，在 show-checkbox 模式下，select 的交互也将转为 check | Boolean          |  —   |   false   |
 | lock-select    | 锁定树选择，再部分业务中常用，比如开启弹窗后禁用树的选中操作   | Boolean  |  —   |  false  |
 | filter-node-method   | 筛选过滤树节点函数   | Function  |  —   |   —   |
+| highlight-filter | 高亮搜索条件文字   | Boolean  |  —   |  false  |
 | timeout  | 刷新频率（`<b-big-tree>`扩展组件可用）   | Number  |  —   |  17   |
 | itemHeight  | 节点高度 （`<b-big-tree>`扩展组件可用）  | Number  |  —   |  28   |
 | visibleCount  | 显示区域个数（`<b-big-tree>`扩展组件可用）   | Number  |  —   |  15   |

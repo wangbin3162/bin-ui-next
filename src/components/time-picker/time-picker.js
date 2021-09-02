@@ -1,4 +1,4 @@
-import { h, ref } from 'vue'
+import { h, ref, provide } from 'vue'
 import dayjs from 'dayjs'
 import customParseFormat from 'dayjs/plugin/customParseFormat'
 import { DEFAULT_FORMATS_TIME } from './common/constant'
@@ -29,17 +29,27 @@ export default {
       focus: () => {
         commonPicker.value?.handleFocus()
       },
-    }
-    ctx.expose(refProps)
-    return () => h(Picker, {
-        format: DEFAULT_FORMATS_TIME,
-        ...props, // allow format to be overwrite
-        type,
-        ref: commonPicker,
-        'onUpdate:modelValue': value => ctx.emit('update:modelValue', value),
+      blur: () => {
+        commonPicker.value?.handleBlur()
       },
-      {
-        default: scopedProps => h(panel, scopedProps),
-      })
+    }
+    provide('BPopperOptions', props.popperOptions)
+    ctx.expose(refProps)
+    return () => {
+      const format = props.format ?? DEFAULT_FORMATS_TIME
+      return h(
+        Picker,
+        {
+          ...props, // allow format to be overwrite
+          format,
+          type,
+          ref: commonPicker,
+          'onUpdate:modelValue': value => ctx.emit('update:modelValue', value),
+        },
+        {
+          default: scopedProps => h(panel, scopedProps),
+        },
+      )
+    }
   },
 }

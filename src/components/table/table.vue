@@ -123,84 +123,87 @@ export default {
       type: Array,
       default() {
         return []
-      }
+      },
     },
     columns: {
       type: Array,
       default() {
         return []
-      }
+      },
     },
     size: {
       validator(value) {
         return ['small', 'large', 'default'].includes(value)
       },
-      default: 'default'
+      default: 'default',
     },
     width: {
-      type: [Number, String]
+      type: [Number, String],
     },
     height: {
-      type: [Number, String]
+      type: [Number, String],
     },
     maxHeight: {
-      type: [Number, String]
+      type: [Number, String],
     },
     stripe: {
       type: Boolean,
-      default: false
+      default: false,
     },
     border: {
       type: Boolean,
-      default: false
+      default: false,
     },
     showHeader: {
       type: Boolean,
-      default: true
+      default: true,
     },
     highlightRow: {
       type: Boolean,
-      default: false
+      default: false,
     },
     rowClassName: {
       type: Function,
       default() {
         return ''
-      }
+      },
     },
     context: {
-      type: Object
+      type: Object,
     },
     noDataText: {
       type: String,
-      default: '暂无数据'
+      default: '暂无数据',
     },
     disabledHover: {
-      type: Boolean
+      type: Boolean,
     },
     loading: {
       type: Boolean,
-      default: false
+      default: false,
     },
     draggable: {
       type: Boolean,
-      default: false
+      default: false,
     },
     dragHandle: String,
     tooltipTheme: {
       type: String,
       validator(value) {
         return ['dark', 'light'].includes(value)
-      }
+      },
     },
     rowKey: {
       type: Boolean,
-      default: false
+      default: false,
     },
     mergeMethod: {
-      type: Function
+      type: Function,
     },
-    loadingText: String
+    loadingText: {
+      type: String,
+      default: '正在加载',
+    },
   },
   emits: [
     'sort-change',
@@ -215,7 +218,7 @@ export default {
     'selection-change',
     'expand',
     'drag-drop',
-    'update:data'
+    'update:data',
   ],
   setup(props, { emit, slots }) {
     const containerRef = ref(null)
@@ -255,8 +258,8 @@ export default {
         `${prefixCls}-wrapper`,
         {
           [`${prefixCls}-hide`]: !read.value,
-          [`${prefixCls}-wrapper-with-border`]: props.border
-        }
+          [`${prefixCls}-wrapper-with-border`]: props.border,
+        },
       ]
     })
     const wrapStyles = computed(() => {
@@ -280,8 +283,8 @@ export default {
           [`${prefixCls}-${props.size}`]: !!props.size,
           [`${prefixCls}-border`]: props.border,
           [`${prefixCls}-stripe`]: props.stripe,
-          [`${prefixCls}-with-fixed-top`]: !!props.height
-        }
+          [`${prefixCls}-with-fixed-top`]: !!props.height,
+        },
       ]
     })
     const bodyStyle = computed(() => {
@@ -373,7 +376,7 @@ export default {
     const fixedHeaderClasses = computed(() => {
       return [
         `${prefixCls}-fixed-header`,
-        { [`${prefixCls}-fixed-header-with-empty`]: !rebuildData.value.length }
+        { [`${prefixCls}-fixed-header-with-empty`]: !rebuildData.value.length },
       ]
     })
 
@@ -613,7 +616,7 @@ export default {
         column._width = width
 
         columnsWidthObj[column._index] = {
-          width: width
+          width: width,
         }
       }
 
@@ -634,7 +637,7 @@ export default {
           column._width = width
 
           columnsWidthObj[column._index] = {
-            width: width
+            width: width,
           }
         }
       }
@@ -667,7 +670,7 @@ export default {
       emit('sort-change', {
         column: JSON.parse(JSON.stringify(allColumns.value[columns[index]._index])),
         key: key,
-        order: type
+        order: type,
       })
     }
 
@@ -854,7 +857,7 @@ export default {
       slots,
       toggleSelect,
       selectAll,
-      toggleExpand
+      toggleExpand,
     })
     // 钩子函数
     onMounted(() => {
@@ -901,7 +904,7 @@ export default {
         onEnd: ({ newIndex, oldIndex }) => {
           // 下一个tick就会走patch更新
           dragAndDrop(cloneData.value, newIndex, oldIndex)
-        }
+        },
       })
     }
 
@@ -996,8 +999,8 @@ export default {
       selectAll,
       getSelection,
       toggleSelect,
-      toggleExpand
+      toggleExpand,
     }
-  }
+  },
 }
 </script>

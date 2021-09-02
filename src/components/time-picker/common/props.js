@@ -48,6 +48,10 @@ export const defaultProps = {
     type: String,
     default: '',
   },
+  popperOptions: {
+    type: Object,
+    default: () => ({}),
+  },
   modelValue: {
     type: [Date, Array, String],
     default: '',

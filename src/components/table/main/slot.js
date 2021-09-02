@@ -1,4 +1,4 @@
-import { h, inject } from 'vue'
+import { inject } from 'vue'
 
 export default {
   name: 'TableSlot',

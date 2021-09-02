@@ -219,6 +219,12 @@
     &.today {
       color: $color-primary;
     }
+    &:not(.disabled):hover {
+      color: $color-primary;
+      span {
+        background-color: $color-info-light4;
+      }
+    }
     &.current {
       span {
         background-color: $color-primary;
@@ -229,12 +235,6 @@
           background-color: $color-primary;
           color: #fff;
         }
-      }
-    }
-    &:hover {
-      color: $color-primary;
-      span {
-        background-color: $color-info-light4;
       }
     }
     &.start-date, &.end-date {
@@ -269,6 +269,14 @@
         border-radius: 15px;
       }
     }
+    &.disabled {
+      div {
+        background-color: #f5f7fa;
+        opacity: 1;
+        cursor: not-allowed;
+        color: var(--el-text-color-placeholder);
+      }
+    }
   }
   th {
     padding: 0 5px;
@@ -290,12 +298,10 @@
           background-color: transparent;
         }
         td:first-child div {
-          margin-left: 2px;
           border-top-left-radius: 15px;
           border-bottom-left-radius: 15px;
         }
         td:last-child div {
-          margin-right: 2px;
           border-top-right-radius: 15px;
           border-bottom-right-radius: 15px;
         }
@@ -395,12 +401,10 @@
       }
     }
     &.start-date div {
-      margin-left: 2px;
       border-top-left-radius: 20px;
       border-bottom-left-radius: 20px;
     }
     &.end-date div {
-      margin-right: 2px;
       border-top-right-radius: 20px;
       border-bottom-right-radius: 20px;
     }
