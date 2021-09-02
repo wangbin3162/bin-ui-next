@@ -109,6 +109,15 @@
     padding: 0 10px;
   }
 }
+.bin-button--default {
+  &.is-disabled, &.is-disabled:focus, &.is-disabled:hover, &.is-loading {
+    color: #c0c4cc;
+    cursor: not-allowed;
+    background-image: none;
+    background-color: #fff;
+    border-color: #ebeef5;
+  }
+}
 .bin-button--primary {
   color: var(--bin-color-white);
   background-color: var(--bin-color-primary);

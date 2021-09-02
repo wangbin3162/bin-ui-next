@@ -5,6 +5,14 @@
 <div class="doc-update">
     <b-timeline>
       <b-timeline-item>
+        <p class="version">0.9.7</p>
+        <p class="time">2021-09-02</p>
+        <p class="content"><i>🍀</i>升级vue依赖，现版本依赖最新3.2.7</p>
+        <p class="content"><i>🍀</i>全局组件bug修复（因vue版本升级的问题）</p>
+        <p class="content"><i>🍀</i>全局样式重构，所有样式依赖css 变量</p>
+        <p class="content"><i>🍀</i>主题设置，样式优化</p>
+      </b-timeline-item>
+      <b-timeline-item>
         <p class="version">0.9.5</p>
         <p class="time">2021-08-23</p>
         <p class="content"><i>🍀</i>优化table表格插槽多余标签问题</p>

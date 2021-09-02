@@ -8,7 +8,7 @@
 
 <template>
   <div flex>
-    <div style="width: 200px">
+    <div style="width: 300px">
       <b-tree :data="data" @select-change="handleSelect" :lock-select="lockSelect"></b-tree>
     </div>
     <div style="width: 80px">
@@ -75,7 +75,7 @@
 <template>
   <b-button @click="initData">初始化数据并默认选中前端组</b-button>
   <div flex class="mt-10">
-    <div style="width: 200px">
+    <div style="width: 300px">
       <b-tree :data="data" ref="tree" @select-change="handleSelect" titleKey="text"></b-tree>
     </div>
   </div>
@@ -203,7 +203,7 @@ expand、selected、checked 和 disabled 可以设置展开，选中，勾选和
 ```html
 
 <template>
-  <div>
+  <div style="width: 300px">
     <b-tree :data="data" show-checkbox multiple @select-change="handleSelect" @check-change="handleChecked"></b-tree>
   </div>
 </template>
@@ -357,7 +357,9 @@ expand、selected、checked 和 disabled 可以设置展开，选中，勾选和
 ```html
 
 <template>
-  <b-tree :data="data3" show-checkbox :load-data="loadData"></b-tree>
+  <div style="width: 300px;">
+    <b-tree :data="data3" show-checkbox :load-data="loadData"></b-tree>
+  </div>
 </template>
 <script>
   export default {
@@ -437,7 +439,9 @@ expand、selected、checked 和 disabled 可以设置展开，选中，勾选和
   <div>
     <b-input v-model="query" search placeholder="输入过滤条件后回车筛选" @search="handleFilter" style="width: 230px;"></b-input>
     <b-divider style="margin: 14px 0;"></b-divider>
-    <b-tree :data="data" ref="treeRef" :filter-node-method="filterNode" highlight-filter></b-tree>
+    <div style="width: 300px;">
+      <b-tree :data="data" ref="treeRef" :filter-node-method="filterNode" highlight-filter></b-tree>
+    </div>
   </div>
 </template>
 <script>
@@ -634,7 +638,7 @@ expand、selected、checked 和 disabled 可以设置展开，选中，勾选和
   <div flex>
     <div flex>
       <b-tree-select
-          style="width: 200px;"
+          style="width: 300px;"
           :data="data"
           v-model="currentId"
           titleKey="text"
@@ -644,7 +648,7 @@ expand、selected、checked 和 disabled 可以设置展开，选中，勾选和
     </div>
     <div flex class="ml-16">
       <b-tree-select
-          style="width: 200px;"
+          style="width: 300px;"
           :data="data"
           v-model="currentId"
           v-model:checked="checked"

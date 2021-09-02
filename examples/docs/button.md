@@ -121,6 +121,7 @@
     <b-button disabled>Default</b-button>
     <b-button dashed disabled>Dashed</b-button>
     <b-button background disabled>Background</b-button>
+    <b-button loading disabled>Loading</b-button>
   </div>
   <div class="demo-button">
     <b-button type="primary" disabled>Primary</b-button>
