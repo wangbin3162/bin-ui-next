@@ -14,9 +14,9 @@
     padding: 12px 20px;
     border-bottom: 1px solid #ebeef5;
     &-title {
-      color: $color-text-primary;
+      color: var(--bin-color-text-primary);
       align-self: center;
-      font-size: $base-font-size;
+      font-size: var(--bin-base-font-size);
     }
   }
   .bin-calendar-week {
@@ -25,9 +25,9 @@
     &-item {
       flex: 1;
       text-align: center;
-      font-size: $base-font-size;
-      color: $color-text-default;
-      line-height: $base-line-height;
+      font-size: var(--bin-base-font-size);
+      color: var(--bin-color-text-default);
+      line-height: var(--bin-base-line-height);
       font-weight: 500;
       padding: 10px 0;
     }
@@ -36,25 +36,25 @@
     display: flex;
     flex-wrap: wrap;
     width: 100%;
-    border-top: $border-base;
-    border-left: $border-base;
+    border-top: var(--bin-border-base);
+    border-left: var(--bin-border-base);
   }
   .bin-calendar-date-view {
     width: 14.285%;
     height: 80px;
-    line-height: $base-line-height;
+    line-height: var(--bin-base-line-height);
     padding: 8px;
-    border-right: $border-base;
-    border-bottom: $border-base;
+    border-right: var(--bin-border-base);
+    border-bottom: var(--bin-border-base);
     cursor: pointer;
     &.is-current-day, &.is-selected {
-      color: $color-primary;
+      color: var(--bin-color-primary);
     }
     &.is-selected, &:hover {
-      background-color: $color-primary-light5;
+      background-color: var(--bin-color-primary-light5);
     }
     &.prev, &.next {
-      color: $color-text-disabled;
+      color: var(--bin-color-text-disabled);
     }
   }
   &.card {

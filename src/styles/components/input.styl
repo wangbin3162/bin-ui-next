@@ -1,16 +1,16 @@
 placeholder() {
   // Firefox
   &::-moz-placeholder {
-    color: $color-text-placeholder;
+    color: var(--bin-color-text-placeholder);
     opacity: 1; // Override Firefox's unusual default opacity; see https://github.com/twbs/bootstrap/pull/11526
   }
   // Internet Explorer 10+
   &:-ms-input-placeholder {
-    color: $color-text-placeholder
+    color: var(--bin-color-text-placeholder)
   }
   // Safari and Chrome
   &::-webkit-input-placeholder {
-    color: $color-text-placeholder
+    color: var(--bin-color-text-placeholder)
   }
 }
 .bin-input-wrapper {
@@ -18,7 +18,7 @@ placeholder() {
   vertical-align: middle;
   width: 100%;
   position: relative;
-  line-height: $base-line-height;
+  line-height: var(--bin-base-line-height);
   label {
     display: inline-block;
     width: 100%;
@@ -35,7 +35,7 @@ placeholder() {
   .bin-input-icon-clear .b-icon-close-circle-fill {
     vertical-align: baseline;
     cursor: pointer;
-    color: $color-text-secondary;
+    color: var(--bin-color-text-secondary);
   }
   &.bin-input-group-with-prepend, &.bin-input-group-with-append {
     display: inline-flex;
@@ -71,52 +71,52 @@ placeholder() {
 // 大小设置
 .bin-input-wrapper-large {
   .bin-input-with-prefix {
-    padding-left: $large-height;
+    padding-left: var(--bin-large-height);
   }
   .bin-input-prefix, .bin-input-suffix {
-    width: $large-height;
+    width: var(--bin-large-height);
   }
 }
 .bin-input-wrapper-small {
   .bin-input-with-prefix {
-    padding-left: $small-height;
+    padding-left: var(--bin-small-height);
   }
   .bin-input-prefix, .bin-input-suffix {
-    width: $small-height;
+    width: var(--bin-small-height);
   }
 }
 .bin-input-wrapper-mini {
   .bin-input-with-prefix {
-    padding-left: $mini-height;
+    padding-left: var(--bin-mini-height);
   }
   .bin-input-prefix, .bin-input-suffix {
-    width: $mini-height;
+    width: var(--bin-mini-height);
   }
 }
 
 .bin-input {
   display: inline-block;
   width: 100%;
-  height: $default-height;
-  line-height: $base-line-height;
+  height: var(--bin-default-height);
+  line-height: var(--bin-base-line-height);
   padding: 0 12px;
-  font-size: $base-font-size;
-  border: $border-base;
-  border-radius: $border-base-radius;
-  color: $color-text-default;
-  background-color: $color-white;
+  font-size: var(--bin-base-font-size);
+  border: var(--bin-border-base);
+  border-radius: var(--bin-border-base-radius);
+  color: var(--bin-color-text-default);
+  background-color: var(--bin-color-white);
   background-image: none;
   position: relative;
   cursor: text;
   font-weight: normal;
-  transition: border $animation-duration-base ease-in-out, background $animation-duration-base ease-in-out, box-shadow $animation-duration-base ease;
+  transition: border var(--bin-animation-duration-base) ease-in-out, background var(--bin-animation-duration-base) ease-in-out, box-shadow var(--bin-animation-duration-base) ease;
   placeholder()
   &:focus, &:hover {
-    border-color: $color-primary;
+    border-color: var(--bin-color-primary);
   }
   &:focus {
     outline: 0;
-    box-shadow: 0 0 0 2px $color-input-shadow;
+    box-shadow: 0 0 0 2px var(--bin-color-input-shadow);
   }
   &.bin-input-with-suffix {
     padding-right: 28px;
@@ -127,15 +127,15 @@ placeholder() {
 }
 // 大小设置
 .bin-input-large {
-  height: $large-height;
+  height: var(--bin-large-height);
 }
 
 .bin-input-small {
-  height: $small-height;
+  height: var(--bin-small-height);
 }
 
 .bin-input-mini {
-  height: $mini-height;
+  height: var(--bin-mini-height);
 }
 //  图标部分
 .bin-input-hide-icon .bin-input-icon, .bin-input-icon-clear, .bin-input-icon-validate {
@@ -150,7 +150,7 @@ placeholder() {
   line-height: 1;
   font-size: 14px;
   text-align: center;
-  color: $color-text-secondary;
+  color: var(--bin-color-text-secondary);
   justify-content: center;
   align-items: center;
   &-normal {
@@ -179,7 +179,7 @@ placeholder() {
   i {
     vertical-align: middle;
     font-size: 14px;
-    color: $color-text-secondary;
+    color: var(--bin-color-text-secondary);
     &.b-icon-close-circle-fill {
       cursor: pointer;
     }
@@ -192,21 +192,21 @@ placeholder() {
 //  搜索
 .bin-input-search-icon, .bin-input-view-icon {
   cursor: pointer;
-  transition: color $animation-duration-base ease-in-out;
+  transition: color var(--bin-animation-duration-base) ease-in-out;
   &:hover {
-    color: $color-text-default;
+    color: var(--bin-color-text-default);
   }
   &:active {
-    color: $color-text-secondary;
+    color: var(--bin-color-text-secondary);
   }
 }
 .bin-input-search {
   cursor: pointer;
   padding: 0 16px !important;
-  background: $color-primary !important;
+  background: var(--bin-color-primary) !important;
   color: #fff !important;
-  border-color: $color-primary !important;
-  transition: all $animation-duration-base ease-in-out;
+  border-color: var(--bin-color-primary) !important;
+  transition: all var(--bin-animation-duration-base) ease-in-out;
   position: relative;
   z-index: 0;
 }
@@ -215,7 +215,7 @@ textarea.bin-input {
   height: auto;
   min-height: 32px;
   vertical-align: bottom;
-  font-size: $base-font-size;
+  font-size: var(--bin-base-font-size);
   padding: 4px 7px;
   resize: vertical;
 }
@@ -223,7 +223,7 @@ textarea.bin-input {
   opacity: 1;
   cursor: not-allowed;
   background-color: #f9f9f9;
-  color: $color-text-placeholder;
+  color: var(--bin-color-text-placeholder);
 }
 
 .bin-input-word-count {

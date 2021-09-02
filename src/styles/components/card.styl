@@ -1,11 +1,11 @@
 .bin-card {
-  border-radius: $border-base-radius;
-  border: $border-base-light;
+  border-radius: var(--bin-border-base-radius);
+  border: var(--bin-border-base-light);
   background-color: #fff;
-  transition: $animation-duration-base;
+  transition: var(--bin-animation-duration-base);
   width: 100%;
   &.is-always-shadow, &.is-hover-shadow:focus, &.is-hover-shadow:hover {
-    box-shadow: $shadow-popper;
+    box-shadow: var(--bin-shadow-popper);
   }
   &.is-never-shadow, &.is-never-shadow:focus, &.is-never-shadow:hover {
     box-shadow: none;
@@ -16,11 +16,11 @@
   .bin-card__header {
     padding: 10px 16px;
     box-sizing: border-box;
-    font-size: $base-font-size;
-    color: $color-text-primary;
+    font-size: var(--bin-base-font-size);
+    color: var(--bin-color-text-primary);
     font-weight: 500;
     &.has-divider {
-      border-bottom: $border-base-light;
+      border-bottom: var(--bin-border-base-light);
     }
     &.no-divider {
       border-bottom: none;
@@ -34,12 +34,11 @@
         top: 12px;
         bottom: 12px;
         width: 2px;
-        background: $color-primary;
+        background: var(--bin-color-primary);
       }
     }
   }
   .bin-card__body {
     padding: 16px;
   }
-
 }

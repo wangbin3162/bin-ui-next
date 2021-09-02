@@ -1,11 +1,11 @@
 .bin-cascader {
   &-panel {
     display: flex;
-    border-radius: $border-base-radius;
-    font-size: $base-font-size;
+    border-radius: var(--bin-border-base-radius);
+    font-size: var(--bin-base-font-size);
     &.is-bordered {
-      border: $border-base;
-      border-radius: $border-base-radius;
+      border: var(--bin-border-base);
+      border-radius: var(--bin-border-base-radius);
     }
   }
   &-node {
@@ -16,8 +16,8 @@
     height: 34px;
     line-height: 34px;
     outline: 0;
-    color: $color-text-default;
-    transition: background $animation-duration-base ease-in-out;
+    color: var(--bin-color-text-default);
+    transition: background var(--bin-animation-duration-base) ease-in-out;
     &.is-disabled {
       color: #C0C4CC;
       cursor: not-allowed
@@ -26,13 +26,13 @@
       cursor: pointer;
     }
     &:not(.is-disabled):hover {
-      background: $color-select-hover;
+      background: var(--bin-color-select-hover);
     }
     &.is-selectable.in-active-path {
       color: #606266
     }
     &.in-active-path, &.is-active, &.is-selectable.in-checked-path {
-      color: $color-primary;
+      color: var(--bin-color-primary);
       font-weight: 500;
     }
     &__prefix {
@@ -45,7 +45,7 @@
       right: 10px;
       font-size: 14px;
       font-weight: normal;
-      color: $color-text-placeholder;
+      color: var(--bin-color-text-placeholder);
     }
     &__label {
       -webkit-box-flex: 1;
@@ -67,7 +67,7 @@
     margin: 0;
     vertical-align: top;
     box-sizing: border-box;
-    border-right: $border-base;
+    border-right: var(--bin-border-base);
     &:last-child {
       border-right-color: transparent;
       margin-right: -1px;

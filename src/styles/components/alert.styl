@@ -2,10 +2,10 @@
   position: relative;
   width: 100%;
   padding: 8px 15px;
-  border-radius: $border-base-radius;
-  color: $color-text-default;
-  font-size: $base-font-size;
-  line-height: $base-line-height;
+  border-radius: var(--bin-border-base-radius);
+  color: var(--bin-color-text-default);
+  font-size: var(--bin-base-font-size);
+  line-height: var(--bin-base-line-height);
   margin-bottom: 10px;
   &.bin-alert-with-icon {
     padding: 8px 48px 8px 38px;
@@ -27,44 +27,44 @@
 }
 
 .bin-alert-success {
-  border: 1px solid  $color-success-light3;
-  background-color: $color-success-light6;
+  border: 1px solid var(--bin-color-success-light3);
+  background-color: var(--bin-color-success-light6);
   .bin-alert-icon {
-    color: $color-success;
+    color: var(--bin-color-success);
   }
 }
 
 .bin-alert-info {
-  border: 1px solid  $color-primary-light3;
-  background-color: $color-primary-light6;
+  border: 1px solid var(--bin-color-primary-light3);
+  background-color: var(--bin-color-primary-light6);
   .bin-alert-icon {
-    color: $color-primary;
+    color: var(--bin-color-primary);
   }
 }
 
 .bin-alert-warning {
-  border: 1px solid $color-warning-light3;
-  background-color: $color-warning-light6;
+  border: 1px solid var(--bin-color-warning-light3);
+  background-color: var(--bin-color-warning-light6);
   .bin-alert-icon {
-    color: $color-warning;
+    color: var(--bin-color-warning);
   }
 }
 
 .bin-alert-error {
-  border: 1px solid $color-danger-light3;
-  background-color: $color-danger-light6;
+  border: 1px solid var(--bin-color-danger-light3);
+  background-color: var(--bin-color-danger-light6);
   .bin-alert-icon {
-    color: $color-danger;
+    color: var(--bin-color-danger);
   }
 }
 
 .bin-alert-message {
-  font-size: $base-font-size;
-  color: $color-text-primary;
+  font-size: var(--bin-base-font-size);
+  color: var(--bin-color-text-primary);
 }
 .bin-alert-with-desc .bin-alert-message {
   display: block;
-  font-size: $header-font-size;
+  font-size: var(--bin-header-font-size);
   margin-bottom: 4px;
 }
 .bin-alert-desc {
@@ -77,7 +77,7 @@
   left: 14px;
   position: absolute;
   .b-iconfont {
-    line-height: $base-line-height;
+    line-height: var(--bin-base-line-height);
     font-size: 18px;
   }
 }
@@ -88,11 +88,11 @@
   overflow: hidden;
   cursor: pointer;
   .b-icon-close {
-    color: $color-text-secondary;
-    transition: color $animation-duration-base ease;
+    color: var(--bin-color-text-secondary);
+    transition: color var(--bin-animation-duration-base) ease;
     position: relative;
     &:hover {
-      color: $color-text-default;
+      color: var(--bin-color-text-default);
     }
   }
 }

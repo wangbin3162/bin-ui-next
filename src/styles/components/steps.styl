@@ -24,110 +24,110 @@
       .bin-steps-head-inner {
         background-color: #fff;
         > .bin-steps-icon, span {
-          color: $color-text-disabled;
+          color: var(--bin-color-text-disabled);
         }
       }
       .bin-steps-title {
-        color: $color-text-secondary;
+        color: var(--bin-color-text-secondary);
       }
       .bin-steps-content {
-        color: $color-text-secondary;
+        color: var(--bin-color-text-secondary);
       }
       .bin-steps-tail > i {
-        background-color: $border-color-base;
+        background-color: var(--bin-border-color-base);
       }
     }
     &.bin-steps-status-process {
       .bin-steps-head-inner {
-        border-color: $color-primary;
-        background-color: $color-primary;
+        border-color: var(--bin-color-primary);
+        background-color: var(--bin-color-primary);
         > .bin-steps-icon, span {
           color: #fff;
         }
       }
       .bin-steps-title {
-        color: $color-text-primary;
+        color: var(--bin-color-text-primary);
       }
       .bin-steps-content {
-        color: $color-text-default;
+        color: var(--bin-color-text-default);
       }
       .bin-steps-tail > i {
-        background-color: $border-color-base;
+        background-color: var(--bin-border-color-base);
       }
     }
     &.bin-steps-status-finish {
       .bin-steps-head-inner {
         background-color: #fff;
-        border-color: $color-primary;
+        border-color: var(--bin-color-primary);
         > .bin-steps-icon, span {
-          color: $color-primary;
+          color: var(--bin-color-primary);
         }
       }
       .bin-steps-tail > i:after {
         width: 100%;
-        background: $color-primary;
-        transition: $animation-duration-base ease-in-out;
+        background: var(--bin-color-primary);
+        transition: var(--bin-animation-duration-base) ease-in-out;
         opacity: 1;
       }
       .bin-steps-title {
-        color: $color-text-secondary;
+        color: var(--bin-color-text-secondary);
       }
       .bin-steps-content {
-        color: $color-text-secondary;
+        color: var(--bin-color-text-secondary);
       }
     }
     &.bin-steps-status-success {
       .bin-steps-head-inner {
         background-color: #fff;
-        border-color: $color-success;
+        border-color: var(--bin-color-success);
         > .bin-steps-icon {
-          color: $color-success;
+          color: var(--bin-color-success);
         }
         span {
-          color: $color-success;
+          color: var(--bin-color-success);
         }
       }
       .bin-steps-title {
-        color: $color-success;
+        color: var(--bin-color-success);
       }
       .bin-steps-content {
-        color: $color-success;
+        color: var(--bin-color-success);
       }
       .bin-steps-tail > i {
-        background-color: $border-color-base;
+        background-color: var(--bin-border-color-base);
       }
     }
 
     &.bin-steps-next-success {
       .bin-steps-tail > i,
       .bin-steps-tail > i:after {
-        background-color: $color-success;
+        background-color: var(--bin-color-success);
       }
     }
 
     &.bin-steps-status-error {
       .bin-steps-head-inner {
         background-color: #fff;
-        border-color: $color-danger;
+        border-color: var(--bin-color-danger);
         > .bin-steps-icon {
-          color: $color-danger;
+          color: var(--bin-color-danger);
         }
       }
       .bin-steps-title {
-        color: $color-danger;
+        color: var(--bin-color-danger);
       }
       .bin-steps-content {
-        color: $color-danger;
+        color: var(--bin-color-danger);
       }
       .bin-steps-tail > i {
-        background-color: $border-color-base;
+        background-color: var(--bin-border-color-base);
       }
     }
 
     &.bin-steps-next-error {
       .bin-steps-tail > i,
       .bin-steps-tail > i:after {
-        background-color: $color-danger;
+        background-color: var(--bin-color-danger);
       }
     }
 
@@ -146,7 +146,7 @@
       }
       &.bin-steps-status-process {
         .bin-steps-head-inner > .bin-steps-icon {
-          color: $color-primary;
+          color: var(--bin-color-primary);
         }
       }
     }
@@ -172,10 +172,10 @@
     line-height: 24px;
     margin-right: 8px;
     text-align: center;
-    border: 1px solid $color-text-disabled;
+    border: 1px solid var(--bin-color-text-disabled);
     border-radius: 50%;
     font-size: 14px;
-    transition: background-color $animation-duration-base ease-in-out;
+    transition: background-color var(--bin-animation-duration-base) ease-in-out;
 
     > .bin-steps-icon {
       line-height: 1;
@@ -205,11 +205,11 @@
     padding-right: 10px;
     font-size: 14px;
     font-weight: bold;
-    color: $color-text-primary;
+    color: var(--bin-color-text-primary);
     background: #fff;
 
     > a:first-child:last-child {
-      color: $color-text-primary;
+      color: var(--bin-color-text-primary);
     }
   }
   .bin-steps-item-last {
@@ -233,14 +233,14 @@
       width: 100%;
       height: 1px;
       vertical-align: top;
-      background: $border-color-base;
+      background: var(--bin-border-color-base);
       border-radius: 1px;
       position: relative;
       &:after {
         content: '';
         width: 0;
         height: 100%;
-        background: $border-color-base;
+        background: var(--bin-border-color-base);
         opacity: 0;
         position: absolute;
         top: 0;
@@ -269,13 +269,13 @@
     .bin-steps-title {
       margin-bottom: 4px;
       margin-top: 0;
-      color: $color-text-primary;
+      color: var(--bin-color-text-primary);
       font-size: 12px;
       font-weight: bold;
     }
     .bin-steps-content {
       font-size: 12px;
-      color: $color-text-default;
+      color: var(--bin-color-text-default);
       padding-left: 30px;
     }
     .bin-steps-tail {

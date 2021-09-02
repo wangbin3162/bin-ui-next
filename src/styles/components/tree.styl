@@ -1,6 +1,6 @@
 .bin-tree {
-  font-size: $base-font-size;
-  color: $color-text-default;
+  font-size: var(--bin-base-font-size);
+  color: var(--bin-color-text-default);
   &-wrapper {
     margin-right: 4px;
     margin-left: 4px;
@@ -43,17 +43,17 @@
     margin: 0;
     padding: 0 6px;
     line-height: 24px;
-    border-radius: $border-base-radius;
+    border-radius: var(--bin-border-base-radius);
     cursor: pointer;
-    transition: background-color $animation-duration-base ease-in-out;
+    transition: background-color var(--bin-animation-duration-base) ease-in-out;
     span {
-      color: $color-danger;
+      color: var(--bin-color-danger);
     }
     &:hover {
-      background-color: $color-info-light6;
+      background-color: var(--bin-color-info-light6);
     }
     &.is-selected, &.is-selected:hover {
-      background-color: $color-primary-light4;
+      background-color: var(--bin-color-primary-light4);
     }
   }
 
@@ -62,14 +62,14 @@
     margin: 0;
     padding: 0 6px;
     line-height: 24px;
-    border-radius: $border-base-radius;
+    border-radius: var(--bin-border-base-radius);
     cursor: pointer;
-    transition: background-color $animation-duration-base ease-in-out;
+    transition: background-color var(--bin-animation-duration-base) ease-in-out;
     &:hover {
-      background-color: $color-info-light6;
+      background-color: var(--bin-color-info-light6);
     }
     &.is-selected, &.is-selected:hover {
-      background-color: $color-primary-light4;
+      background-color: var(--bin-color-primary-light4);
     }
   }
   &-arrow {
@@ -82,18 +82,18 @@
     .b-icon-caret-right {
       position: relative;
       top: -1px;
-      transition: transform $animation-duration-base ease-in-out;
-      color: $color-text-default;
+      transition: transform var(--bin-animation-duration-base) ease-in-out;
+      color: var(--bin-color-text-default);
       font-size: 12px;
       vertical-align: middle;
     }
     .b-icon-loading {
       position: relative;
       top: -1px;
-      transition: transform $animation-duration-base ease-in-out;
+      transition: transform var(--bin-animation-duration-base) ease-in-out;
       font-size: 14px;
       vertical-align: middle;
-      color: $color-primary;
+      color: var(--bin-color-primary);
     }
     &-open {
       .b-icon-caret-right {
@@ -109,7 +109,7 @@
   }
   .bin-checkbox {
     margin-right: 4px;
-    line-height: $base-line-height;
+    line-height: var(--bin-base-line-height);
     vertical-align: baseline;
   }
   &-phantom {
@@ -149,10 +149,10 @@
     min-width: 10px;
     overflow: auto;
     padding: 5px 0 2px;
-    background-color: $color-white;
+    background-color: var(--bin-color-white);
     box-sizing: border-box;
-    border-radius: $border-base-radius;
-    box-shadow: $shadow-2-down;
+    border-radius: var(--bin-border-base-radius);
+    box-shadow: var(--bin-shadow-2-down);
     position: absolute;
     z-index: 900;
     &.is-light {

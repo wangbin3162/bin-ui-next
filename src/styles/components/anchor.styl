@@ -29,10 +29,10 @@
         width: 10px;
         height: 10px;
         border-radius: 50%;
-        border: 1px solid $color-primary;
+        border: 1px solid var(--bin-color-primary);
         background-color: #fff;
         left: 50%;
-        transition: top $animation-duration-base ease;
+        transition: top var(--bin-animation-duration-base) ease;
         transform: translate(-50%, 2px);
       }
       &-line {
@@ -41,8 +41,8 @@
         left: 50%;
         width: 2px;
         height: 18px;
-        background-color: $color-primary;
-        transition: top $animation-duration-base ease;
+        background-color: var(--bin-color-primary);
+        transition: top var(--bin-animation-duration-base) ease;
         transform: translate(-50%, -2px);
       }
       .b-iconfont {
@@ -50,8 +50,8 @@
         width: 14px;
         height: 14px;
         font-size: 14px;
-        color: $color-primary;
-        transition: top $animation-duration-base ease;
+        color: var(--bin-color-primary);
+        transition: top var(--bin-animation-duration-base) ease;
         transform: translate(-6px, -1px);
       }
     }
@@ -63,8 +63,8 @@
     &-title {
       display: block;
       position: relative;
-      transition: all $animation-duration-base;
-      color: $color-text-default;
+      transition: all var(--bin-animation-duration-base);
+      color: var(--bin-color-text-default);
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -75,7 +75,7 @@
     }
 
     &-active > &-title {
-      color: $color-primary;
+      color: var(--bin-color-primary);
     }
     a {
       background: 0 0;
@@ -83,7 +83,7 @@
       outline: 0;
       cursor: pointer;
       &:hover {
-        color: $color-primary;
+        color: var(--bin-color-primary);
       }
     }
   }

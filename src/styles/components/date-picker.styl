@@ -8,16 +8,16 @@
     line-height: 32px;
     text-align: center;
     padding: 0 10px;
-    border-bottom: $border-table;
+    border-bottom: var(--bin-border-table);
     &-label {
       font-weight: 500;
       padding: 0 5px;
       line-height: 22px;
       text-align: center;
       cursor: pointer;
-      color: $color-text-default;
+      color: var(--bin-color-text-default);
       &:hover {
-        color: $color-primary;
+        color: var(--bin-color-primary);
       }
     }
   }
@@ -34,7 +34,7 @@
       font-size: 14px;
     }
     &:hover i {
-      color: $color-primary;
+      color: var(--bin-color-primary);
     }
   }
   &__prev-btn {
@@ -48,7 +48,7 @@
   }
   &__time-header {
     position: relative;
-    border-bottom: $border-table;
+    border-bottom: var(--bin-border-table);
     padding: 5px;
     display: table;
     width: 100%;
@@ -78,7 +78,7 @@
     top: 0;
     bottom: 0;
     width: 110px;
-    border-right: $border-table;
+    border-right: var(--bin-border-table);
     box-sizing: border-box;
     padding-top: 6px;
     background-color: #fff;
@@ -92,20 +92,20 @@
     width: 100%;
     border: 0;
     background-color: transparent;
-    line-height: $default-height;
-    font-size: $base-font-size;
-    color: $color-text-default;
+    line-height: var(--bin-default-height);
+    font-size: var(--bin-base-font-size);
+    color: var(--bin-color-text-default);
     padding-left: 12px;
     text-align: left;
     outline: none;
     cursor: pointer;
     &:hover {
-      background: $color-select-hover;
-      color: $color-primary;
+      background: var(--bin-color-select-hover);
+      color: var(--bin-color-primary);
     }
   }
   &__footer {
-    border-top: $border-base;
+    border-top: var(--bin-border-base);
     padding: 4px;
     height: 32px;
     line-height: 1;
@@ -120,7 +120,7 @@
   .bin-time-panel {
     margin: 5px 0;
     background-color: #fff;
-    box-shadow: $shadow-2-down;
+    box-shadow: var(--bin-shadow-2-down);
   }
 }
 // range
@@ -138,11 +138,11 @@
     line-height: 32px;
     text-align: center;
     padding: 0 10px;
-    border-bottom: $border-table;
+    border-bottom: var(--bin-border-table);
     div {
       font-weight: 500;
       padding: 0 5px;
-      color: $color-text-default;
+      color: var(--bin-color-text-default);
       margin-left: 50px;
       margin-right: 50px;
     }
@@ -152,7 +152,7 @@
     box-sizing: border-box;
     margin: 0;
     &.is-left {
-      border-right: $border-table;
+      border-right: var(--bin-border-table);
     }
   }
   .bin-date-range-picker-table__content {
@@ -160,7 +160,7 @@
   }
   &__time-header {
     position: relative;
-    border-bottom: $border-table;
+    border-bottom: var(--bin-border-table);
     padding: 5px;
     display: table;
     width: 100%;
@@ -214,32 +214,32 @@
     }
     &.prev-month,
     &.next-month {
-      color: $color-text-placeholder;
+      color: var(--bin-color-text-placeholder);
     }
     &.today {
-      color: $color-primary;
+      color: var(--bin-color-primary);
     }
     &:not(.disabled):hover {
-      color: $color-primary;
+      color: var(--bin-color-primary);
       span {
-        background-color: $color-info-light4;
+        background-color: var(--bin-color-info-light4);
       }
     }
     &.current {
       span {
-        background-color: $color-primary;
+        background-color: var(--bin-color-primary);
         color: #fff;
       }
       &:hover {
         span {
-          background-color: $color-primary;
+          background-color: var(--bin-color-primary);
           color: #fff;
         }
       }
     }
     &.start-date, &.end-date {
       span {
-        background-color: $color-primary;
+        background-color: var(--bin-color-primary);
         color: #fff;
       }
     }
@@ -254,17 +254,17 @@
       border-bottom-right-radius: 15px;
     }
     &.in-range div, &.in-range div:hover {
-      background: $color-primary-light5;
+      background: var(--bin-color-primary-light5);
     }
     &.selected {
       div {
         margin-left: 3px;
         margin-right: 3px;
-        background-color: $color-primary-light5;
+        background-color: var(--bin-color-primary-light5);
         border-radius: 15px;
       }
       span {
-        background-color: $color-primary;
+        background-color: var(--bin-color-primary);
         color: #fff;
         border-radius: 15px;
       }
@@ -274,27 +274,27 @@
         background-color: #f5f7fa;
         opacity: 1;
         cursor: not-allowed;
-        color: var(--el-text-color-placeholder);
+        color: var(--bin-color-text-placeholder);
       }
     }
   }
   th {
     padding: 0 5px;
-    color: $color-text-default;
+    color: var(--bin-color-text-default);
     font-weight: 500;
     text-align: center;
   }
   &.is-week-mode {
     .bin-date-table__row {
       &.current div {
-        background: $color-primary-light5;
+        background: var(--bin-color-primary-light5);
       }
       &:hover {
         div {
-          background: $color-primary-light5;
+          background: var(--bin-color-primary-light5);
         }
         span {
-          color: $color-text-default;
+          color: var(--bin-color-text-default);
           background-color: transparent;
         }
         td:first-child div {
@@ -324,27 +324,27 @@
       height: 32px;
       display: block;
       line-height: 32px;
-      border-radius: $border-base-radius;
-      color: $color-text-default;
+      border-radius: var(--bin-border-base-radius);
+      color: var(--bin-color-text-default);
       margin: 0 auto;
       transition: .2s;
       &:hover {
-        background: $color-primary;
+        background: var(--bin-color-primary);
         color: #fff;
       }
     }
     &.current {
       &:not(.disabled) .cell {
-        background: $color-primary;
+        background: var(--bin-color-primary);
         color: #fff;
       }
     }
     &.today {
       .cell {
         font-weight: 700;
-        color: $color-primary;
+        color: var(--bin-color-primary);
         &:hover {
-          background: $color-primary;
+          background: var(--bin-color-primary);
           color: #fff;
         }
       }
@@ -370,33 +370,33 @@
       display: block;
       line-height: 28px;
       border-radius: 14px;
-      color: $color-text-default;
+      color: var(--bin-color-text-default);
       margin: 0 auto;
       transition: .2s;
       &:hover {
-        background: $color-primary;
+        background: var(--bin-color-primary);
         color: #fff;
       }
     }
     &.current {
       &:not(.disabled) .cell {
-        background: $color-primary;
+        background: var(--bin-color-primary);
         color: #fff;
       }
     }
     &.today {
       .cell {
         font-weight: 700;
-        color: $color-primary;
+        color: var(--bin-color-primary);
         &:hover {
-          background: $color-primary;
+          background: var(--bin-color-primary);
           color: #fff;
         }
       }
     }
     &.start-date, &.end-date {
       .cell {
-        background-color: $color-primary;
+        background-color: var(--bin-color-primary);
         color: #fff;
       }
     }
@@ -409,7 +409,7 @@
       border-bottom-right-radius: 20px;
     }
     &.in-range div, &.in-range div:hover {
-      background: $color-primary-light5;
+      background: var(--bin-color-primary-light5);
     }
   }
 }

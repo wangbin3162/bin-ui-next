@@ -14,13 +14,13 @@
       border-radius: 4px;
       line-height: 1.5em;
       font-size: 12px;
-      transition: background-color $animation-duration-base ease-in-out;
+      transition: background-color var(--bin-animation-duration-base) ease-in-out;
       overflow: hidden;
       position: relative;
 
       & > span {
         cursor: pointer;
-        transition: color $animation-duration-base ease-in-out;
+        transition: color var(--bin-animation-duration-base) ease-in-out;
         i {
           display: inline-block;
           vertical-align: baseline
@@ -36,7 +36,7 @@
       &:hover {
         background: #f3f3f3;
         & > span {
-          color: $color-primary
+          color: var(--bin-color-primary);
           i {
             color: #515a6e;
           }
@@ -53,7 +53,7 @@
       float: right;
       margin-right: 4px;
       color: #999;
-      transition: all $animation-duration-base ease;
+      transition: all var(--bin-animation-duration-base) ease;
       &:hover {
         color: #444;
       }

@@ -1,34 +1,34 @@
 placeholder() {
   // Firefox
   &::-moz-placeholder {
-    color: $color-text-placeholder;
+    color: var(--bin-color-text-placeholder);
     opacity: 1; // Override Firefox's unusual default opacity; see https://github.com/twbs/bootstrap/pull/11526
   }
   // Internet Explorer 10+
   &:-ms-input-placeholder {
-    color: $color-text-placeholder
+    color: var(--bin-color-text-placeholder)
   }
   // Safari and Chrome
   &::-webkit-input-placeholder {
-    color: $color-text-placeholder
+    color: var(--bin-color-text-placeholder)
   }
 }
 
 .bin-picker__popper.bin-popper[role=tooltip] {
   border: none;
-  background-color: $color-white;
+  background-color: var(--bin-color-white);
   box-sizing: border-box;
-  border-radius: $border-base-radius;
-  box-shadow: $shadow-2-down;
+  border-radius: var(--bin-border-base-radius);
+  box-shadow: var(--bin-shadow-2-down);
   position: absolute;
   z-index: 900;
 }
 
 .bin-picker-panel {
   position: relative;
-  color: $color-text-default;
+  color: var(--bin-color-text-default);
   background: #fff;
-  border-radius: $base-font-size;
+  border-radius: var(--bin-base-font-size);
   line-height: 30px;
 }
 .bin-date-editor {
@@ -41,8 +41,8 @@ placeholder() {
     margin: 0;
     padding: 0;
     text-align: center;
-    font-size: $base-font-size;
-    color: $color-text-default;
+    font-size: var(--bin-base-font-size);
+    color: var(--bin-color-text-default);
     placeholder()
   }
 
@@ -51,8 +51,8 @@ placeholder() {
     padding: 0 5px;
     margin: 0;
     text-align: center;
-    line-height: $default-height;
-    font-size: $base-font-size;
+    line-height: var(--bin-default-height);
+    font-size: var(--bin-base-font-size);
     width: 28px;
     color: #303133;
   }
@@ -60,7 +60,7 @@ placeholder() {
 
 // time-pick独有的样式
 .bin-time-panel {
-  border-radius: $border-base-radius;
+  border-radius: var(--bin-border-base-radius);
   position: relative;
   width: 180px;
   left: 0;
@@ -84,8 +84,8 @@ placeholder() {
       box-sizing: border-box;
       padding-top: 6px;
       text-align: left;
-      border-top: $border-base;
-      border-bottom: $border-base;
+      border-top: var(--bin-border-base);
+      border-bottom: var(--bin-border-base);
     }
 
     &:before {
@@ -106,7 +106,7 @@ placeholder() {
     }
   }
   &__footer {
-    border-top: $border-base;
+    border-top: var(--bin-border-base);
     padding: 4px;
     height: 32px;
     line-height: 1;
@@ -156,19 +156,19 @@ placeholder() {
     height: 32px;
     line-height: 32px;
     font-size: 12px;
-    color: $color-text-default;
+    color: var(--bin-color-text-default);
     &.disabled {
-      color: $color-text-placeholder;
+      color: var(--bin-color-text-placeholder);
       cursor: not-allowed;
     }
     &.active:not(.disabled) {
-      color: $color-text-primary;
+      color: var(--bin-color-text-primary);
       font-weight: 500;
     }
   }
   &__arrow {
     font-size: 12px;
-    color: $color-text-secondary;
+    color: var(--bin-color-text-secondary);
     position: absolute;
     left: 0;
     width: 100%;
@@ -199,7 +199,7 @@ placeholder() {
       left: 50%;
       width: 1px;
       bottom: 0;
-      background-color: $border-color-base;
+      background-color: var(--bin-border-color-base);
     }
   }
   &__cell {
@@ -210,7 +210,7 @@ placeholder() {
   }
   &__header {
     margin-bottom: 5px;
-    border-bottom: $border-base;
+    border-bottom: var(--bin-border-base);
   }
 }
 .bin-range-editor {
@@ -220,16 +220,16 @@ placeholder() {
     justify-content: space-between;
     align-items: center;
     padding: 0 8px;
-    height: $default-height;
+    height: var(--bin-default-height);
     &.is-active {
       outline: 0;
-      border-color: $color-primary;
-      box-shadow: 0 0 0 2px $color-input-shadow;
+      border-color: var(--bin-color-primary);
+      box-shadow: 0 0 0 2px var(--bin-color-input-shadow);
     }
   }
   .bin-input__icon {
-    font-size: $base-font-size;
-    color: $color-text-secondary;
+    font-size: var(--bin-base-font-size);
+    color: var(--bin-color-text-secondary);
     line-height: 32px;
     width: 16px;
     &.b-icon-close-circle-fill {
@@ -239,26 +239,26 @@ placeholder() {
   }
   &--large {
     &.bin-input {
-      height: $large-height;
+      height: var(--bin-large-height);
       .bin-range-input, .bin-input__icon {
-        font-size: $header-font-size;
+        font-size: var(--bin-header-font-size);
       }
     }
   }
   &--small {
     &.bin-input {
-      height: $small-height;
+      height: var(--bin-small-height);
     }
     .bin-range-separator {
-      line-height: $small-height;
+      line-height: var(--bin-small-height);
     }
   }
   &--mini {
     &.bin-input {
-      height: $mini-height;
+      height: var(--bin-mini-height);
     }
     .bin-range-separator {
-      line-height: $mini-height;
+      line-height: var(--bin-mini-height);
     }
   }
 }

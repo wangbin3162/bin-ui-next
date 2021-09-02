@@ -5,7 +5,7 @@
   &--label-top .bin-form-item__label {
     float: none;
     text-align: left;
-    line-height: $base-line-height;
+    line-height: var(--bin-base-line-height);
   }
   &--inline {
     .bin-form-item {
@@ -26,10 +26,10 @@
   &__label {
     text-align: right;
     float: left;
-    font-size: $base-font-size;
-    color: $color-text-primary;
-    line-height: $default-height;
-    min-height: $default-height;
+    font-size: var(--bin-base-font-size);
+    color: var(--bin-color-text-primary);
+    line-height: var(--bin-default-height);
+    min-height: var(--bin-default-height);
     box-sizing: border-box;
     .item-suffix {
       position: relative;
@@ -39,18 +39,18 @@
   }
   &__content {
     position: relative;
-    font-size: $base-font-size;
-    min-height: $default-height;
+    font-size: var(--bin-base-font-size);
+    min-height: var(--bin-default-height);
     .bin-checkbox-group, .bin-radio-group {
       padding-top: 4px;
-      line-height: $base-line-height;
+      line-height: var(--bin-base-line-height);
     }
     .bin-radio-group.bin-radio-group-button {
       padding-top: 0;
     }
     .bin-rate {
       padding-top: 0;
-      line-height: $default-height;
+      line-height: var(--bin-default-height);
     }
     .bin-switch {
       margin-top: 6px;
@@ -60,16 +60,16 @@
       padding: 1px 0 0 8px;
     }
     > label, > span {
-      line-height: $default-height;
+      line-height: var(--bin-default-height);
     }
   }
   &--large {
     .bin-form-item__label {
-      line-height: $large-height;
-      min-height: $large-height;
+      line-height: var(--bin-large-height);
+      min-height: var(--bin-large-height);
     }
     .bin-form-item__content {
-      min-height: $large-height;
+      min-height: var(--bin-large-height);
       .bin-checkbox-group, .bin-radio-group {
         padding-top: 6px;
       }
@@ -78,7 +78,7 @@
       }
       .bin-rate {
         padding-top: 2px;
-        line-height: $large-height;
+        line-height: var(--bin-large-height);
       }
       .bin-switch {
         margin-top: 8px;
@@ -88,17 +88,17 @@
         padding: 2px 0 0 8px;
       }
       > label, > span {
-        line-height: $large-height;
+        line-height: var(--bin-large-height);
       }
     }
   }
   &--small {
     .bin-form-item__label {
-      line-height: $small-height;
-      min-height: $small-height;
+      line-height: var(--bin-small-height);
+      min-height: var(--bin-small-height);
     }
     .bin-form-item__content {
-      min-height: $small-height;
+      min-height: var(--bin-small-height);
       .bin-checkbox-group, .bin-radio-group {
         padding-top: 2px;
       }
@@ -107,7 +107,7 @@
       }
       .bin-rate {
         padding-top: 2px;
-        line-height: $small-height;
+        line-height: var(--bin-small-height);
       }
       .bin-switch {
         margin-top: 4px;
@@ -120,17 +120,17 @@
         }
       }
       > label, > span {
-        line-height: $small-height;
+        line-height: var(--bin-small-height);
       }
     }
   }
   &--mini {
     .bin-form-item__label {
-      line-height: $mini-height;
-      min-height: $mini-height;
+      line-height: var(--bin-mini-height);
+      min-height: var(--bin-mini-height);
     }
     .bin-form-item__content {
-      min-height: $mini-height;
+      min-height: var(--bin-mini-height);
       .bin-checkbox-group, .bin-radio-group {
         padding-top: 0;
       }
@@ -139,7 +139,7 @@
       }
       .bin-rate {
         padding-top: 0;
-        line-height: $mini-height;
+        line-height: var(--bin-mini-height);
       }
       .bin-switch {
         margin-top: 2px;
@@ -152,7 +152,7 @@
         }
       }
       > label {
-        line-height: $mini-height;
+        line-height: var(--bin-mini-height);
       }
     }
   }
@@ -162,10 +162,10 @@
       content: '*';
       display: inline-block;
       margin-right: 4px;
-      line-height: $base-line-height;
+      line-height: var(--bin-base-line-height);
       font-family: SimSun;
-      font-size: $base-font-size;
-      color: $color-danger;
+      font-size: var(--bin-base-font-size);
+      color: var(--bin-color-danger);
     }
     &.is-no-asterisk {
       & > .bin-form-item__label:before,
@@ -181,7 +181,7 @@
     font-size: 12px;
     line-height: 1;
     padding-top: 4px;
-    color: $color-danger;
+    color: var(--bin-color-danger);
   }
   &__error--inline {
     position: relative;
@@ -197,13 +197,13 @@
     line-height: 1;
     background-color: #fff;
     &.b-icon-loading {
-      color: $color-primary;
+      color: var(--bin-color-primary);
     }
     &.b-icon-check-circle {
-      color: $color-success;
+      color: var(--bin-color-success);
     }
     &.b-icon-close-circle {
-      color: $color-danger;
+      color: var(--bin-color-danger);
     }
   }
   .bin-date-editor {
@@ -230,22 +230,22 @@
 // 校验错误控件样式
 .bin-form-item.is-error {
   .bin-input {
-    border: 1px solid $color-danger;
+    border: 1px solid var(--bin-color-danger);
     &:focus {
       outline: 0;
-      box-shadow: 0 0 0 2px $color-input-error-shadow;
+      box-shadow: 0 0 0 2px var(--bin-color-input-error-shadow);
     }
   }
 
   .bin-input-number {
-    border: 1px solid $color-danger;
+    border: 1px solid var(--bin-color-danger);
     &-focused {
-      border: 1px solid $color-danger;
+      border: 1px solid var(--bin-color-danger);
       outline: 0;
-      box-shadow: 0 0 0 2px $color-input-error-shadow;
+      box-shadow: 0 0 0 2px var(--bin-color-input-error-shadow);
     }
   }
   .bin-range-editor.bin-input.is-active {
-    box-shadow: 0 0 0 2px $color-input-error-shadow;
+    box-shadow: 0 0 0 2px var(--bin-color-input-error-shadow);
   }
 }

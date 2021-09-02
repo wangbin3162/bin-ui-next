@@ -3,12 +3,12 @@
   display: inline-block;
   width: 100%;
   box-sizing: border-box;
-  color: $color-text-default;
-  font-size: $base-font-size;
-  line-height: $base-line-height;
+  color: var(--bin-color-text-default);
+  font-size: var(--bin-base-font-size);
+  line-height: var(--bin-base-line-height);
   &__caret {
     &.b-iconfont.b-icon-down {
-      color: $color-text-secondary;
+      color: var(--bin-color-text-secondary);
       font-size: 14px;
       transition: transform .3s;
       cursor: pointer;
@@ -17,7 +17,7 @@
       }
     }
     &.is-show-close {
-      color: $color-text-secondary;
+      color: var(--bin-color-text-secondary);
       font-size: 14px;
       transition: transform .3s;
       cursor: pointer;
@@ -61,10 +61,10 @@
     width: inherit;
     overflow: auto;
     padding: 5px 0;
-    background-color: $color-white;
+    background-color: var(--bin-color-white);
     box-sizing: border-box;
-    border-radius: $border-base-radius;
-    box-shadow: $shadow-popper;
+    border-radius: var(--bin-border-base-radius);
+    box-shadow: var(--bin-shadow-popper);
     position: absolute;
     z-index: 900;
     &.is-light {
@@ -81,7 +81,7 @@
           font-weight: normal;
           font-size: 14px;
           content: '\e829';
-          color: $color-primary-light1;
+          color: var(--bin-color-primary-light1);
           position: absolute;
           top: 5px;
           right: 8px;
@@ -113,29 +113,29 @@
     line-height: 22px;
     width: 100%;
     clear: both;
-    color: $color-text-default;
-    font-size: $base-font-size !important;
+    color: var(--bin-color-text-default);
+    font-size: var(--bin-base-font-size) !important;
     white-space: nowrap;
     list-style: none;
     cursor: pointer;
-    transition: background $animation-duration-base ease-in-out;
+    transition: background var(--bin-animation-duration-base) ease-in-out;
     &:hover, &:focus, &.hover {
       background: #f3f3f3;
       outline: none;
     }
     &.selected {
-      color: $color-primary;
-      background: $color-primary-light5;
+      color: var(--bin-color-primary);
+      background: var(--bin-color-primary-light5);
       &:hover, &:focus, &.hover {
         background: #f3f3f3;
         outline: none;
       }
     }
     &.is-disabled {
-      color: $color-text-disabled !important;
+      color: var(--bin-color-text-disabled) !important;
       cursor: not-allowed;
       &:hover {
-        color: $color-text-disabled !important;
+        color: var(--bin-color-text-disabled) !important;
         background-color: #fff;
         cursor: not-allowed;
       }
@@ -163,8 +163,8 @@
   }
   .bin-select-group__title {
     padding-left: 8px;
-    font-size: $base-font-size;
-    color: $color-text-secondary;
+    font-size: var(--bin-base-font-size);
+    color: var(--bin-color-text-secondary);
     height: 30px;
     line-height: 30px;
   }

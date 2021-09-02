@@ -5,8 +5,8 @@
     border-collapse: separate;
     overflow: auto;
     border: none;
-    color: $color-text-default;
-    font-size: $base-font-size;
+    color: var(--bin-color-text-default);
+    font-size: var(--bin-base-font-size);
     thead, tbody {
       width: auto;
     }
@@ -17,18 +17,18 @@
     border: none;
   }
   th {
-    background-color: $color-bg-fa;
+    background-color: var(--bin-color-bg-fa);
   }
 }
 .bin-table {
   user-select: text;
-  color: $color-text-default;
-  font-size: $base-font-size;
+  color: var(--bin-color-text-default);
+  font-size: var(--bin-base-font-size);
   width: inherit;
   height: 100%;
   max-width: 100%;
   overflow: hidden;
-  background-color: $color-white;
+  background-color: var(--bin-color-white);
   box-sizing: border-box;
   &-wrapper {
     position: relative;
@@ -47,7 +47,7 @@
     position: absolute;
     left: 0;
     bottom: 0;
-    background-color: $border-table-color;
+    background-color: var(--bin-border-table-color);
     z-index: 1;
   }
 
@@ -59,13 +59,13 @@
     position: absolute;
     top: 0;
     right: 0;
-    background-color: $border-table-color;
+    background-color: var(--bin-border-table-color);
     z-index: 3;
   }
   &-title, &-footer {
     height: 48px;
     line-height: 48px;
-    border-bottom: $border-table;
+    border-bottom: var(--bin-border-table);
   }
   &-footer {
     border-bottom: none;
@@ -88,7 +88,7 @@
   }
   &-with-fixed-top&-with-footer {
     .bin-table-footer {
-      border-top: $border-table;
+      border-top: var(--bin-border-table);
     }
     tbody tr:last-child td {
       border-bottom: none;
@@ -101,21 +101,21 @@
     text-align: left;
     text-overflow: ellipsis;
     vertical-align: middle;
-    border-bottom: $border-table;
+    border-bottom: var(--bin-border-table);
   }
 
   th {
     height: 50px;
     white-space: nowrap;
     overflow: hidden;
-    background-color: $color-bg-fa;
-    color: $color-text-primary;
+    background-color: var(--bin-color-bg-fa);
+    color: var(--bin-color-text-primary);
     font-weight: 500;
   }
   td {
     word-break: break-all;
     background-color: #fff;
-    transition: background-color $animation-duration-base ease-in-out;
+    transition: background-color var(--bin-animation-duration-base) ease-in-out;
   }
   th&-column, td&-column {
     &-left {
@@ -137,7 +137,7 @@
       position: absolute;
       left: 0;
       top: 0;
-      background-color: $border-table-color;
+      background-color: var(--bin-border-table-color);
     }
     &:before {
       height: 100%;
@@ -153,13 +153,13 @@
       display: block;
     }
     th, td {
-      border-right: $border-table;
+      border-right: var(--bin-border-table);
     }
   }
   &-cell {
     padding: 0 16px;
     box-sizing: border-box;
-    color: $color-text-default;
+    color: var(--bin-color-text-default);
     white-space: normal;
     line-height: 24px;
 
@@ -194,9 +194,9 @@
 
     &-expand {
       cursor: pointer;
-      transition: transform $animation-duration-base ease-in-out;
+      transition: transform var(--bin-animation-duration-base) ease-in-out;
       i {
-        font-size: $base-font-size;
+        font-size: var(--bin-base-font-size);
       }
       &-expanded {
         transform: rotate(90deg);
@@ -228,25 +228,25 @@
   &-stripe &-body, &-stripe &-fixed-body {
     tr:nth-child(2n) {
       td {
-        background-color: $color-bg-fa;
+        background-color: var(--bin-color-bg-fa);
       }
     }
     // #1380
     tr.bin-table-row-hover {
       td {
-        background-color: $color-primary-light5;
+        background-color: var(--bin-color-primary-light5);
       }
     }
   }
 
   tr&-row-hover {
     td {
-      background-color: $color-primary-light5;
+      background-color: var(--bin-color-primary-light5);
     }
   }
 
   &-large {
-    font-size: $base-font-size;
+    font-size: var(--bin-base-font-size);
     td {
       height: 55px;
     }
@@ -282,7 +282,7 @@
 
   &-row-highlight, tr&-row-highlight&-row-hover, &-stripe &-body tr&-row-highlight:nth-child(2n), &-stripe &-fixed-body tr&-row-highlight:nth-child(2n) {
     td {
-      background-color: $color-primary-light5;
+      background-color: var(--bin-color-primary-light5);
     }
   }
 
@@ -296,7 +296,7 @@
       content: '';
       width: 100%;
       height: 1px;
-      background-color: $border-table-color;
+      background-color: var(--bin-border-table-color);
       position: absolute;
       left: 0;
       bottom: 0;
@@ -314,9 +314,9 @@
     position: absolute;
     top: -1px;
     right: 0;
-    background-color: $color-bg-fa;
-    border-top: $border-table;
-    border-bottom: $border-table;
+    background-color: var(--bin-color-bg-fa);
+    border-top: var(--bin-border-table);
+    border-bottom: var(--bin-border-table);
   }
   &-fixed-header {
     overflow: hidden;
@@ -352,14 +352,14 @@
       line-height: 6px;
       overflow: hidden;
       position: absolute;
-      color: $color-text-disabled;
-      transition: color $animation-duration-base ease-in-out;
+      color: var(--bin-color-text-disabled);
+      transition: color var(--bin-animation-duration-base) ease-in-out;
       font-size: 12px;
       &:hover {
         color: inherit;
       }
       &.on {
-        color: $color-primary
+        color: var(--bin-color-primary);
       }
       &:first-child {
         top: 0;
@@ -388,6 +388,6 @@
 
 .bin-popper-tooltip-content {
   max-width: 300px;
-  line-height: $base-line-height;
+  line-height: var(--bin-base-line-height);
   word-break: break-all;
 }

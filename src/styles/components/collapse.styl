@@ -1,22 +1,22 @@
 .bin-collapse {
   background-color: #fafafa;
-  border-radius: $border-base-radius;
-  border: $border-base;
+  border-radius: var(--bin-border-base-radius);
+  border: var(--bin-border-base);
   > .bin-collapse-item {
-    border-top: $border-base;
+    border-top: var(--bin-border-base);
     &:first-child {
       border-top: none;
     }
     > .bin-collapse-header {
-      line-height: $base-line-height;
+      line-height: var(--bin-base-line-height);
       padding: 10px 16px;
-      color: $color-text-primary;
+      color: var(--bin-color-text-primary);
       cursor: pointer;
       position: relative;
       border-bottom: 1px solid transparent;
-      transition: all $animation-duration-base ease-in-out;
+      transition: all var(--bin-animation-duration-base) ease-in-out;
       > i.b-icon-right {
-        transition: transform $animation-duration-base ease-in-out, -webkit-transform $animation-duration-base ease-in-out;
+        transition: transform var(--bin-animation-duration-base) ease-in-out, -webkit-transform var(--bin-animation-duration-base) ease-in-out;
         margin-right: 10px;
         vertical-align: -1px;
         font-size: 14px;
@@ -24,7 +24,7 @@
     }
     &.bin-collapse-item-active {
       > .bin-collapse-header {
-        border-bottom: $border-base;
+        border-bottom: var(--bin-border-base);
         > i.b-icon-right {
           -webkit-transform: rotate(90deg);
           transform: rotate(90deg);
@@ -34,14 +34,14 @@
   }
 }
 .bin-collapse-content {
-  color: $color-text-default;
+  color: var(--bin-color-text-default);
   padding: 0 16px;
   background-color: #fff;
   > .bin-collapse-content-box {
     padding-top: 16px;
     padding-bottom: 16px;
     line-height: 2em;
-    font-size: $base-font-size;
+    font-size: var(--bin-base-font-size);
   }
 }
 .bin-collapse-simple {
@@ -59,9 +59,9 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    color: $color-text-primary;
+    color: var(--bin-color-text-primary);
     background: #fff;
-    transition: $animation-duration-base;
+    transition: var(--bin-animation-duration-base);
     &.is-collapse {
       cursor: pointer;
     }
@@ -103,7 +103,7 @@
       top: 50%;
       right: 16px;
       transform: translateY(-50%);
-      transition: $animation-duration-base;
+      transition: var(--bin-animation-duration-base);
       .b-iconfont {
         font-size: 14px;
         vertical-align: -1px;

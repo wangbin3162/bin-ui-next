@@ -1,8 +1,8 @@
 .bin-menu-item {
   height: 48px;
   line-height: 48px;
-  font-size: $base-font-size;
-  color: $color-text-default;
+  font-size: var(--bin-base-font-size);
+  color: var(--bin-color-text-default);
   list-style: none;
   padding: 0 20px;
   cursor: pointer;
@@ -26,8 +26,8 @@
   &:hover,
   &:focus {
     outline: 0;
-    color: $color-primary;
-    background: $color-primary-light6;
+    color: var(--bin-color-primary);
+    background: var(--bin-color-primary-light6);
   }
   &.is-disabled {
     opacity: .25;
@@ -42,7 +42,7 @@
     vertical-align: middle;
   }
   &.is-active {
-    color: $color-primary;
+    color: var(--bin-color-primary);
     i {
       color: inherit;
     }
@@ -61,11 +61,11 @@
     position: relative;
     height: 48px;
     line-height: 48px;
-    font-size: $base-font-size;
-    color: $color-text-default;
+    font-size: var(--bin-base-font-size);
+    color: var(--bin-color-text-default);
     padding: 0 20px;
     cursor: pointer;
-    transition: border-color $animation-duration-slow, background-color $animation-duration-slow, color $animation-duration-slow;
+    transition: border-color var(--bin-animation-duration-slow), background-color var(--bin-animation-duration-slow), color var(--bin-animation-duration-slow);
     box-sizing: border-box;
     overflow: hidden;
     white-space: nowrap;
@@ -84,7 +84,7 @@
     }
     &:focus, &:hover {
       outline: 0;
-      background: $color-primary-light6;
+      background: var(--bin-color-primary-light6);
     }
   }
   .bin-submenu__icon-arrow {
@@ -109,7 +109,7 @@
   padding: 7px 0 7px 20px;
   line-height: normal;
   font-size: 12px;
-  color: $color-text-disabled;
+  color: var(--bin-color-text-disabled);
   overflow: hidden;
   white-space: nowrap;
 }
@@ -145,8 +145,8 @@
         background-color: #fff;
       }
       &.is-active {
-        border-bottom: 2px solid $color-primary;
-        color: $color-primary;
+        border-bottom: 2px solid var(--bin-color-primary);
+        color: var(--bin-color-primary);
       }
     }
     > .bin-submenu {
@@ -154,20 +154,20 @@
       &:focus, &:hover {
         outline: none;
         .bin-menu-submenu__title {
-          color: $color-primary;
+          color: var(--bin-color-primary);
         }
       }
       &.is-active {
         .bin-submenu__title {
-          border-bottom: 2px solid $color-primary;
-          color: $color-primary;
+          border-bottom: 2px solid var(--bin-color-primary);
+          color: var(--bin-color-primary);
         }
       }
       .bin-submenu__title {
         height: 60px;
         line-height: 60px;
         border-bottom: 2px solid transparent;
-        color: $color-text-default;
+        color: var(--bin-color-text-default);
         &:hover {
           background-color: #fff;
         }
@@ -188,8 +188,8 @@
   min-width: 180px;
   border: none;
   padding: 5px 0;
-  border-radius: $border-base-radius;
-  box-shadow: $shadow-2-down;
+  border-radius: var(--bin-border-base-radius);
+  box-shadow: var(--bin-shadow-2-down);
   .bin-menu-item, .bin-submenu__title {
     height: 40px;
     line-height: 40px;
@@ -244,7 +244,7 @@
   right: 16px;
   width: 10px;
   transition: transform .3s cubic-bezier(.645, .045, .355, 1);
-  background: linear-gradient(to right, $color-text-default, $color-text-default);
+  background: linear-gradient(to right, var(--bin-color-text-default), var(--bin-color-text-default));
   &::before, &::after {
     position: absolute;
     width: 6px;

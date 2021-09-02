@@ -4,7 +4,7 @@
   top: 20px;
   pointer-events: all;
   padding: 10px 16px;
-  border-radius: $border-base-radius;
+  border-radius: var(--bin-border-base-radius);
   box-shadow: 0 1px 6px 1px rgba(0, 0, 0, .15);
   background: #fff;
   box-sizing: border-box;
@@ -20,8 +20,8 @@
   }
   .b-iconfont.b-icon-close {
     cursor: pointer;
-    color: $color-text-secondary;
-    font-size: $base-font-size;
+    color: var(--bin-color-text-secondary);
+    font-size: var(--bin-base-font-size);
     vertical-align: middle;
     line-height: 1
 
@@ -29,25 +29,25 @@
       outline-width: 0;
     }
     &:hover {
-      color: $color-text-primary;
+      color: var(--bin-color-text-primary);
     }
   }
 }
 
 .bin-message__icon {
   margin-right: 10px;
-  font-size: $header-font-size;
+  font-size: var(--bin-header-font-size);
   &.is-info {
-    color: $color-primary;
+    color: var(--bin-color-primary);
   }
   &.is-success {
-    color: $color-success;
+    color: var(--bin-color-success);
   }
   &.is-warning {
-    color: $color-warning;
+    color: var(--bin-color-warning);
   }
   &.is-error {
-    color: $color-danger;
+    color: var(--bin-color-danger);
   }
 }
 

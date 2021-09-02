@@ -1,6 +1,6 @@
 .bin-page {
-  color: $color-text-default;
-  font-size: $base-font-size;
+  color: var(--bin-color-text-default);
+  font-size: var(--bin-base-font-size);
   font-variant: tabular-nums;
   line-height: 1.5715;
   &:after {
@@ -21,29 +21,29 @@
     margin-right: 4px;
     text-align: center;
     list-style: none;
-    background-color: $color-white;
+    background-color: var(--bin-color-white);
     user-select: none;
     cursor: pointer;
     font-family: Arial;
-    border: $border-base;
-    border-radius: $border-base-radius;
-    transition: border $animation-duration-base ease-in-out, color $animation-duration-base ease-in-out;
+    border: var(--bin-border-base);
+    border-radius: var(--bin-border-base-radius);
+    transition: border var(--bin-animation-duration-base) ease-in-out, color var(--bin-animation-duration-base) ease-in-out;
     a {
       font-family: Monospaced Number;
       margin: 0 6px;
       text-decoration: none;
-      color: $color-text-default;
+      color: var(--bin-color-text-default);
     }
     &:hover {
-      border-color: $color-primary;
+      border-color: var(--bin-color-primary);
       a {
-        color: $color-primary;
+        color: var(--bin-color-primary);
       }
     }
     &-active {
-      border-color: $color-primary;
+      border-color: var(--bin-color-primary);
       a, &:hover a {
-        color: $color-primary;
+        color: var(--bin-color-primary);
       }
     }
   }
@@ -53,7 +53,7 @@
       content: "•••";
       display: block;
       letter-spacing: 1px;
-      color: $color-text-disabled;
+      color: var(--bin-color-text-disabled);
       text-align: center;
     }
     i {
@@ -65,7 +65,7 @@
       }
       i {
         display: inline;
-        color: $color-text-disabled;
+        color: var(--bin-color-text-disabled);
       }
     }
   }
@@ -85,35 +85,35 @@
     cursor: pointer;
     color: #666;
     font-family: Arial;
-    border: $border-base;
-    border-radius: $border-base-radius;
-    transition: all $animation-duration-base ease-in-out;
+    border: var(--bin-border-base);
+    border-radius: var(--bin-border-base-radius);
+    transition: all var(--bin-animation-duration-base) ease-in-out;
   }
 
   &-item-jump-prev, &-item-jump-next {
     border-color: transparent;
   }
   &-item-jump-prev:hover a, &-item-jump-next:hover a {
-    color: $color-primary;
+    color: var(--bin-color-primary);
   }
 
   &-prev, &-next {
-    background-color: $color-white;
+    background-color: var(--bin-color-white);
     padding: 0 5px;
     a {
-      color: $color-text-secondary;
-      font-size: $base-font-size;
+      color: var(--bin-color-text-secondary);
+      font-size: var(--bin-base-font-size);
       display: inline-flex;
       align-items: center;
       height: 100%;
       .b-iconfont {
-        font-size: $base-font-size;
+        font-size: var(--bin-base-font-size);
       }
     }
     &:hover {
-      border-color: $color-primary;
+      border-color: var(--bin-color-primary);
       a {
-        color: $color-primary;
+        color: var(--bin-color-primary);
       }
     }
   }
@@ -121,12 +121,12 @@
   &-disabled {
     cursor: not-allowed;
     a {
-      color: $color-text-disabled;
+      color: var(--bin-color-text-disabled);
     }
     &:hover {
       border-color: #dcdee2;
       a {
-        color: $color-text-disabled;
+        color: var(--bin-color-text-disabled);
         cursor: not-allowed;
       }
     }
@@ -153,22 +153,22 @@
         height: 32px;
         line-height: 1.5;
         padding: 0 11px;
-        font-size: $base-font-size;
-        border: $border-base;
-        border-radius: $border-base-radius;
-        color: $color-text-default;
-        background-color: $color-white;
+        font-size: var(--bin-base-font-size);
+        border: var(--bin-border-base);
+        border-radius: var(--bin-border-base-radius);
+        color: var(--bin-color-text-default);
+        background-color: var(--bin-color-white);
         background-image: none;
         position: relative;
         cursor: text;
-        transition: border $animation-duration-base ease-in-out, background $animation-duration-base ease-in-out, box-shadow $animation-duration-base ease;
+        transition: border var(--bin-animation-duration-base) ease-in-out, background var(--bin-animation-duration-base) ease-in-out, box-shadow var(--bin-animation-duration-base) ease;
         placeholder()
         &:focus, &:hover {
-          border-color: $color-primary;
+          border-color: var(--bin-color-primary);
         }
         &:focus {
           outline: 0;
-          box-shadow: 0 0 0 2px $color-input-shadow;
+          box-shadow: 0 0 0 2px var(--bin-color-input-shadow);
         }
       }
     }
@@ -178,7 +178,7 @@
     height: 32px;
     line-height: 32px;
     margin-right: 10px;
-    font-size: $base-font-size;
+    font-size: var(--bin-base-font-size);
   }
   &-simple &-prev, &-simple &-next {
     margin: 0;
@@ -199,13 +199,13 @@
       padding: 5px 8px;
       text-align: center;
       box-sizing: border-box;
-      background-color: $color-white;
+      background-color: var(--bin-color-white);
       outline: none;
-      border: $border-base;
-      border-radius: $border-base-radius;
-      transition: border $animation-duration-base ease-in-out, background $animation-duration-base ease-in-out, box-shadow $animation-duration-base ease;
+      border: var(--bin-border-base);
+      border-radius: var(--bin-border-base-radius);
+      transition: border var(--bin-animation-duration-base) ease-in-out, background var(--bin-animation-duration-base) ease-in-out, box-shadow var(--bin-animation-duration-base) ease;
       &:hover {
-        border-color: $color-primary;
+        border-color: var(--bin-color-primary);
       }
     }
     span {
@@ -226,9 +226,9 @@
     min-width: 24px;
     height: 24px;
     line-height: 23px;
-    border-radius: $border-base-radius;
+    border-radius: var(--bin-border-base-radius);
     &-active {
-      border-color: $color-primary;
+      border-color: var(--bin-color-primary);
     }
   }
   &.mini &-prev, &.mini &-next {

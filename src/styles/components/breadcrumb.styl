@@ -1,6 +1,6 @@
 .bin-breadcrumb {
-  font-size: $base-font-size;
-  line-height: $base-line-height;
+  font-size: var(--bin-base-font-size);
+  line-height: var(--bin-base-line-height);
   &:after, &:before {
     display: table;
     content: "";
@@ -14,7 +14,7 @@
 }
 .bin-separator {
   margin: 0 6px;
-  color: $color-text-secondary;
+  color: var(--bin-color-text-secondary);
   &.icon {
     font-size: 14px;
     vertical-align: middle;
@@ -23,13 +23,13 @@
   }
 }
 .bin-breadcrumb__inner {
-  color: $color-text-default;
+  color: var(--bin-color-text-default);
   a {
     text-decoration: none;
-    transition: color $animation-duration-base cubic-bezier(.645, .045, .355, 1);
-    color: $color-text-secondary;
+    transition: color var(--bin-animation-duration-base) cubic-bezier(.645, .045, .355, 1);
+    color: var(--bin-color-text-secondary);
     &:hover {
-      color: $color-primary;
+      color: var(--bin-color-primary);
       cursor: pointer;
     }
   }

@@ -1,5 +1,3 @@
-$color-timeline = #e8eaec;
-
 .bin-timeline {
   list-style: none;
   margin: 0;
@@ -9,13 +7,13 @@ $color-timeline = #e8eaec;
     padding: 0 0 12px 0;
     list-style: none;
     position: relative;
-    line-height: $base-line-height;
+    line-height: var(--bin-base-line-height);
     &-tail {
       position: absolute;
       left: 6px;
       top: 3px;
       height: 100%;
-      border-left: 1px solid $color-timeline;
+      border-left: 1px solid  #e8eaec;
     }
     &-pending &-tail {
       display: none;
@@ -29,24 +27,24 @@ $color-timeline = #e8eaec;
       border-radius: 50%;
       border: 1px solid transparent;
       &-primary {
-        border-color: $color-primary;
-        color: $color-primary;
+        border-color: var(--bin-color-primary);
+        color: var(--bin-color-primary);
       }
       &-success {
-        border-color: $color-success;
-        color: $color-success;
+        border-color: var(--bin-color-success);
+        color: var(--bin-color-success);
       }
       &-info {
-        border-color: $color-info;
-        color: $color-info;
+        border-color: var(--bin-color-info);
+        color: var(--bin-color-info);
       }
       &-warning {
-        border-color: $color-warning;
-        color: $color-warning;
+        border-color: var(--bin-color-warning);
+        color: var(--bin-color-warning);
       }
       &-danger {
-        border-color: $color-danger;
-        color: $color-danger;
+        border-color: var(--bin-color-danger);
+        color: var(--bin-color-danger);
       }
     }
 
@@ -69,7 +67,7 @@ $color-timeline = #e8eaec;
     }
     &-content {
       padding: 1px 1px 10px 24px;
-      font-size: $base-font-size;
+      font-size: var(--bin-base-font-size);
       position: relative;
       top: -3px;
       line-height: 1.5em;
@@ -83,7 +81,7 @@ $color-timeline = #e8eaec;
   }
   &-pending &-item:nth-last-of-type(2) {
     .bin-timeline-item-tail {
-      border-left: 1px dotted $color-timeline;
+      border-left: 1px dotted  #e8eaec;
     }
     .bin-timeline-item-content {
       min-height: 48px;

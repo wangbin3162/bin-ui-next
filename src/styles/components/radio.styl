@@ -4,8 +4,8 @@
   display: inline-block;
   margin-right: 8px;
   user-select: none;
-  font-size: $base-font-size;
-  line-height: $base-line-height;
+  font-size: var(--bin-base-font-size);
+  line-height: var(--bin-base-line-height);
   outline: none;
   &-group {
     font-size: 0;
@@ -26,17 +26,17 @@
     height: 16px;
     &:hover {
       .bin-radio__inner {
-        border-color: $color-primary-light1;
+        border-color: var(--bin-color-primary-light1);
       }
     }
     &.is-checked {
       .bin-radio__inner {
-        border-color: $color-primary
+        border-color: var(--bin-color-primary);
         &:after {
           opacity: 1;
           -webkit-transform: scale(1);
           transform: scale(1);
-          transition: all $animation-duration-base ease-in-out;
+          transition: all var(--bin-animation-duration-base) ease-in-out;
         }
       }
       &:after {
@@ -45,9 +45,9 @@
         left: 0;
         width: 100%;
         height: 100%;
-        border: 1px solid $color-primary;
+        border: 1px solid var(--bin-color-primary);
         border-radius: 50%;
-        animation: radioEffect $animation-duration-slow ease-in-out;
+        animation: radioEffect var(--bin-animation-duration-slow) ease-in-out;
         animation-fill-mode: both;
         content: '';
       }
@@ -71,9 +71,9 @@
     width: 16px;
     height: 16px;
     background-color: #fff;
-    border: $border-base;
+    border: var(--bin-border-base);
     border-radius: 50%;
-    transition: all $animation-duration-base ease-in-out;
+    transition: all var(--bin-animation-duration-base) ease-in-out;
     &:after {
       position: absolute;
       width: 8px;
@@ -85,9 +85,9 @@
       border-top: 0;
       border-left: 0;
       content: " ";
-      background-color: $color-primary;
+      background-color: var(--bin-color-primary);
       opacity: 0;
-      transition: all $animation-duration-base ease-in-out;
+      transition: all var(--bin-animation-duration-base) ease-in-out;
       -webkit-transform: scale(0);
       transform: scale(0);
     }
@@ -121,12 +121,12 @@
     color: #515a6e;
     border: 1px solid #dcdee2;
     background: #fff;
-    height: $default-height;
-    line-height: $default-height - 2;
-    transition: background-color $animation-duration-base, color $animation-duration-base;
+    height: var(--bin-default-height);
+    line-height: var(--bin-default-height);
+    transition: background-color var(--bin-animation-duration-base), color var(--bin-animation-duration-base);
     &:hover {
-      color: $color-primary;
-      border-color: $color-primary;
+      color: var(--bin-color-primary);
+      border-color: var(--bin-color-primary);
       z-index: 1;
     }
     > span {
@@ -140,10 +140,10 @@
       height: 0;
     }
     &:first-child {
-      border-radius: $border-base-radius 0 0 $border-base-radius;
+      border-radius: var(--bin-border-base-radius) 0 0 var(--bin-border-base-radius);
     }
     &:last-child {
-      border-radius: 0 $border-base-radius $border-base-radius 0;
+      border-radius: 0 var(--bin-border-base-radius) var(--bin-border-base-radius) 0;
     }
     + .bin-radio {
       margin-left: -1px;
@@ -153,28 +153,28 @@
     }
   }
   &.bin-radio-group-large .bin-radio {
-    height: $large-height;
-    line-height: $large-height - 2;
+    height: var(--bin-large-height);
+    line-height: var(--bin-large-height-2);
     padding: 0 16px;
   }
   &.bin-radio-group-small .bin-radio {
-    height: $small-height;
-    line-height: $small-height - 2;
+    height: var(--bin-small-height);
+    line-height: var(--bin-small-height-2);
     padding: 0 12px;
   }
   &.bin-radio-group-mini .bin-radio {
-    height: $mini-height;
-    line-height: $mini-height - 2;
+    height: var(--bin-mini-height);
+    line-height: var(--bin-mini-height-2);
     padding: 0 8px;
   }
   .bin-radio.is-checked {
-    background: $color-primary;
-    border-color: $color-primary;
+    background: var(--bin-color-primary);
+    border-color: var(--bin-color-primary);
     color: #fff;
     z-index: 1;
     &:hover {
       color: #fff;
-      border-color: $color-primary;
+      border-color: var(--bin-color-primary);
       z-index: 1;
     }
   }

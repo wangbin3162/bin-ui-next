@@ -1,7 +1,7 @@
 .bin-desc {
   box-sizing: border-box;
-  font-size: $base-font-size;
-  color: $color-text-primary;
+  font-size: var(--bin-base-font-size);
+  color: var(--bin-color-text-primary);
   &__header {
     display: flex;
     justify-content: space-between;
@@ -13,7 +13,7 @@
     font-weight: 500;
   }
   &__body {
-    color: $color-text-default;
+    color: var(--bin-color-text-default);
     background-color: #fff;
     table {
       border-collapse: collapse;
@@ -27,7 +27,7 @@
         background-color: #fff;
         text-align: left;
         font-weight: 500;
-        line-height: $base-line-height;
+        line-height: var(--bin-base-line-height);
       }
     }
     :not(.is-bordered) td, :not(.is-bordered) th {
@@ -36,7 +36,7 @@
     }
   }
   &__label {
-    color: $color-text-primary;
+    color: var(--bin-color-text-primary);
     &:not(.is-bordered-label) {
       font-weight: 500;
       &::after {
@@ -52,7 +52,7 @@
   }
   .is-bordered {
     th, td {
-      border: 1px solid $border-table-color;
+      border: 1px solid var(--bin-border-table-color);
       padding: 10px;
     }
   }

@@ -9,7 +9,7 @@
   position: relative;
   cursor: pointer;
   user-select: none;
-  transition: all $animation-duration-base ease-in-out;
+  transition: all var(--bin-animation-duration-base) ease-in-out;
   &:after {
     content: "";
     width: 18px;
@@ -20,10 +20,10 @@
     left: 1px;
     top: 1px;
     cursor: pointer;
-    transition: left $animation-duration-base ease-in-out, width $animation-duration-base ease-in-out;
+    transition: left var(--bin-animation-duration-base) ease-in-out, width var(--bin-animation-duration-base) ease-in-out;
   }
   &:focus {
-    box-shadow: 0 0 0 2px $color-input-shadow;
+    box-shadow: 0 0 0 2px var(--bin-color-input-shadow);
     outline: 0;
   }
   &:active:after {
@@ -51,8 +51,8 @@
 
 
 .bin-switch-checked {
-  border-color: $color-primary;
-  background-color: $color-primary;
+  border-color: var(--bin-color-primary);
+  background-color: var(--bin-color-primary);
   &:after {
     left: 23px;
   }

@@ -2,35 +2,35 @@
   position: relative;
   display: inline-block;
   vertical-align: middle;
-  height: $default-height;
-  line-height: $base-line-height;
+  height: var(--bin-default-height);
+  line-height: var(--bin-base-line-height);
   white-space: nowrap;
   cursor: pointer;
-  background: $color-white;
-  border: $border-base;
-  color: $color-text-default
+  background: var(--bin-color-white);
+  border: var(--bin-border-base);
+  color: var(--bin-color-text-default)
   -webkit-appearance: none;
   text-align: center;
   box-sizing: border-box;
   outline: none;
   margin: 0;
-  transition: $animation-duration-base;
+  transition: var(--bin-animation-duration-base);
   user-select: none;
   padding: 0 16px;
-  font-size: $base-font-size;
-  border-radius: $border-base-radius;
+  font-size: var(--bin-base-font-size);
+  border-radius: var(--bin-border-base-radius);
   .b-iconfont {
     &.has-text {
       margin-right: 4px;
     }
   }
   &:hover, &:focus {
-    color: $color-primary;
-    border-color: $color-primary;
+    color: var(--bin-color-primary);
+    border-color: var(--bin-color-primary);
   }
   &:active {
-    color: $color-primary-active;
-    border-color: $color-primary-active;
+    color: var(--bin-color-primary-active);
+    border-color: var(--bin-color-primary-active);
   }
   &.is-round {
     border-radius: 20px;
@@ -40,12 +40,12 @@
     border-color: #fff;
     color: #fff;
     &:hover {
-      color: $color-primary;
-      border-color: $color-primary;
+      color: var(--bin-color-primary);
+      border-color: var(--bin-color-primary);
     }
     &:active {
-      color: $color-primary-active;
-      border-color: $color-primary-active;
+      color: var(--bin-color-primary-active);
+      border-color: var(--bin-color-primary-active);
     }
     &.is-disabled, &.is-disabled:focus, &.is-disabled:hover {
       background: transparent;
@@ -56,12 +56,12 @@
   &.is-dashed {
     border-style: dashed;
     &:hover {
-      color: $color-primary;
-      border-color: $color-primary;
+      color: var(--bin-color-primary);
+      border-color: var(--bin-color-primary);
     }
     &:active {
-      color: $color-primary-active;
-      border-color: $color-primary-active;
+      color: var(--bin-color-primary-active);
+      border-color: var(--bin-color-primary-active);
     }
   }
   &.is-background {
@@ -88,421 +88,421 @@
 }
 
 .bin-button--large {
-  height: $large-height;
+  height: var(--bin-large-height);
   padding: 0 14px;
-  font-size: $header-font-size;
+  font-size: var(--bin-header-font-size);
   &.is-round {
     padding: 0 14px;
   }
 }
 .bin-button--small {
-  height: $small-height;
+  height: var(--bin-small-height);
   padding: 0 11px;
   &.is-round {
     padding: 0 11px;
   }
 }
 .bin-button--mini {
-  height: $mini-height;
+  height: var(--bin-mini-height);
   padding: 0 7px;
   &.is-round {
     padding: 0 10px;
   }
 }
 .bin-button--primary {
-  color: $color-white;
-  background-color: $color-primary;
-  border-color: $color-primary;
+  color: var(--bin-color-white);
+  background-color: var(--bin-color-primary);
+  border-color: var(--bin-color-primary);
   background-image: none;
   &:hover, &:focus {
-    background: $color-primary-light1;
-    border-color: $color-primary-light1;
+    background: var(--bin-color-primary-light1);
+    border-color: var(--bin-color-primary-light1);
     color: #fff;
   }
   &:active {
-    background: $color-primary-active;
-    border-color: $color-primary-active;
+    background: var(--bin-color-primary-active);
+    border-color: var(--bin-color-primary-active);
   }
   &.is-transparent {
-    border-color: $color-primary;
-    color: $color-primary;
+    border-color: var(--bin-color-primary);
+    color: var(--bin-color-primary);
     background-color: transparent;
     &:hover {
-      border-color: $color-primary-light1;
-      color: $color-primary;
+      border-color: var(--bin-color-primary-light1);
+      color: var(--bin-color-primary);
       background-color: rgba(245, 249, 254, .5);
     }
     &:active {
-      color: $color-primary-active;
-      border-color: $color-primary-active;
+      color: var(--bin-color-primary-active);
+      border-color: var(--bin-color-primary-active);
     }
     &.is-disabled, &.is-disabled:focus, &.is-disabled:hover {
-      border-color: $color-primary-light2;
-      color: $color-primary-light2;
+      border-color: var(--bin-color-primary-light2);
+      color: var(--bin-color-primary-light2);
     }
   }
   &.is-plain {
-    color: $color-primary;
-    background: $color-primary-light5;
-    border-color: $color-primary-light3;
+    color: var(--bin-color-primary);
+    background: var(--bin-color-primary-light5);
+    border-color: var(--bin-color-primary-light3);
     &:hover, &:focus {
-      border-color: $color-primary-light2;
+      border-color: var(--bin-color-primary-light2);
     }
     &:active {
-      color: $color-primary-active;
-      border-color: $color-primary-active;
+      color: var(--bin-color-primary-active);
+      border-color: var(--bin-color-primary-active);
     }
     &.is-disabled, &.is-disabled:focus, &.is-disabled:hover {
       cursor: not-allowed;
-      color: $color-primary-light2;
-      background-color: $color-primary-light5;
-      border-color: $color-primary-light3;
+      color: var(--bin-color-primary-light2);
+      background-color: var(--bin-color-primary-light5);
+      border-color: var(--bin-color-primary-light3);
     }
   }
   &.is-dashed {
-    background: $color-white;
-    color: $color-primary;
+    background: var(--bin-color-white);
+    color: var(--bin-color-primary);
     &:hover {
-      border-color: $color-primary-light1;
-      color: $color-primary;
+      border-color: var(--bin-color-primary-light1);
+      color: var(--bin-color-primary);
       background-color: rgba(245, 249, 254, .5);
     }
     &:active {
-      color: $color-primary-active;
-      border-color: $color-primary-active;
+      color: var(--bin-color-primary-active);
+      border-color: var(--bin-color-primary-active);
     }
     &.is-disabled, &.is-disabled:focus, &.is-disabled:hover, &.is-loading {
       cursor: not-allowed;
-      background: $color-white;
-      color: $color-primary-light2;
+      background: var(--bin-color-white);
+      color: var(--bin-color-primary-light2);
     }
   }
   &.is-disabled, &.is-disabled:focus, &.is-disabled:hover, &.is-loading {
     cursor: not-allowed;
-    color: $color-white;
-    background-color: $color-primary-light2;
-    border-color: $color-primary-light2;
+    color: var(--bin-color-white);
+    background-color: var(--bin-color-primary-light2);
+    border-color: var(--bin-color-primary-light2);
   }
 }
 
 .bin-button--success {
   color: #fff;
-  background-color: $color-success;
-  border-color: $color-success;
+  background-color: var(--bin-color-success);
+  border-color: var(--bin-color-success);
   background-image: none;
   &:hover, &:focus {
-    background: $color-success-light1;
-    border-color: $color-success-light1;
+    background: var(--bin-color-success-light1);
+    border-color: var(--bin-color-success-light1);
     color: #fff;
   }
   &:active {
-    background: $color-success-active;
-    border-color: $color-success-active;
+    background: var(--bin-color-success-active);
+    border-color: var(--bin-color-success-active);
   }
   &.is-transparent {
-    border-color: $color-success;
-    color: $color-success;
+    border-color: var(--bin-color-success);
+    color: var(--bin-color-success);
     background-color: transparent;
     &:hover {
-      border-color: $color-success-light1;
-      color: $color-success;
+      border-color: var(--bin-color-success-light1);
+      color: var(--bin-color-success);
       background-color: rgba(245, 249, 254, .5);
     }
     &:active {
-      color: $color-success-active;
-      border-color: $color-success-active;
+      color: var(--bin-color-success-active);
+      border-color: var(--bin-color-success-active);
     }
     &.is-disabled, &.is-disabled:focus, &.is-disabled:hover {
-      border-color: $color-success-light2;
-      color: $color-success-light2;
+      border-color: var(--bin-color-success-light2);
+      color: var(--bin-color-success-light2);
     }
   }
   &.is-plain {
-    color: $color-success;
-    background: $color-success-light5;
-    border-color: $color-success-light3;
+    color: var(--bin-color-success);
+    background: var(--bin-color-success-light5);
+    border-color: var(--bin-color-success-light3);
     &:hover, &:focus {
-      border-color: $color-success-light2;
+      border-color: var(--bin-color-success-light2);
     }
     &:active {
-      color: $color-success-active;
-      border-color: $color-success-active;
+      color: var(--bin-color-success-active);
+      border-color: var(--bin-color-success-active);
     }
     &.is-disabled, &.is-disabled:focus, &.is-disabled:hover {
       cursor: not-allowed;
-      color: $color-success-light2;
-      background-color: $color-success-light5;
-      border-color: $color-success-light3;
+      color: var(--bin-color-success-light2);
+      background-color: var(--bin-color-success-light5);
+      border-color: var(--bin-color-success-light3);
     }
   }
   &.is-dashed {
-    background: $color-white;
-    color: $color-success;
+    background: var(--bin-color-white);
+    color: var(--bin-color-success);
     &:hover {
-      border-color: $color-success-light1;
-      color: $color-success;
+      border-color: var(--bin-color-success-light1);
+      color: var(--bin-color-success);
       background-color: rgba(245, 249, 254, .5);
     }
     &:active {
-      color: $color-success-active;
-      border-color: $color-success-active;
+      color: var(--bin-color-success-active);
+      border-color: var(--bin-color-success-active);
     }
     &.is-disabled, &.is-disabled:focus, &.is-disabled:hover, &.is-loading {
       cursor: not-allowed;
-      background: $color-white;
-      color: $color-success-light2;
+      background: var(--bin-color-white);
+      color: var(--bin-color-success-light2);
     }
   }
   &.is-disabled, &.is-disabled:focus, &.is-disabled:hover, &.is-loading {
     cursor: not-allowed;
-    color: $color-white;
-    background-color: $color-success-light2;
-    border-color: $color-success-light2;
+    color: var(--bin-color-white);
+    background-color: var(--bin-color-success-light2);
+    border-color: var(--bin-color-success-light2);
   }
 }
 
 .bin-button--info {
   color: #fff;
-  background-color: $color-info;
-  border-color: $color-info;
+  background-color: var(--bin-color-info);
+  border-color: var(--bin-color-info);
   background-image: none;
   &:hover, &:focus {
-    background: $color-info-light1;
-    border-color: $color-info-light1;
+    background: var(--bin-color-info-light1);
+    border-color: var(--bin-color-info-light1);
     color: #fff;
   }
   &:active {
-    background: $color-info-active;
-    border-color: $color-info-active;
+    background: var(--bin-color-info-active);
+    border-color: var(--bin-color-info-active);
   }
   &.is-transparent {
-    border-color: $color-info;
-    color: $color-info;
+    border-color: var(--bin-color-info);
+    color: var(--bin-color-info);
     background-color: transparent;
     &:hover {
-      border-color: $color-info-light1;
-      color: $color-info;
+      border-color: var(--bin-color-info-light1);
+      color: var(--bin-color-info);
       background-color: rgba(245, 249, 254, .5);
     }
     &:active {
-      color: $color-info-active;
-      border-color: $color-info-active;
+      color: var(--bin-color-info-active);
+      border-color: var(--bin-color-info-active);
     }
     &.is-disabled, &.is-disabled:focus, &.is-disabled:hover {
-      border-color: $color-info-light2;
-      color: $color-info-light2;
+      border-color: var(--bin-color-info-light2);
+      color: var(--bin-color-info-light2);
     }
   }
   &.is-plain {
-    color: $color-info;
-    background: $color-info-light5;
-    border-color: $color-info-light3;
+    color: var(--bin-color-info);
+    background: var(--bin-color-info-light5);
+    border-color: var(--bin-color-info-light3);
     &:hover, &:focus {
-      border-color: $color-info-light2;
+      border-color: var(--bin-color-info-light2);
     }
     &:active {
-      color: $color-info-active;
-      border-color: $color-info-active;
+      color: var(--bin-color-info-active);
+      border-color: var(--bin-color-info-active);
     }
     &.is-disabled, &.is-disabled:focus, &.is-disabled:hover {
       cursor: not-allowed;
-      color: $color-info-light2;
-      background-color: $color-info-light5;
-      border-color: $color-info-light3;
+      color: var(--bin-color-info-light2);
+      background-color: var(--bin-color-info-light5);
+      border-color: var(--bin-color-info-light3);
     }
   }
   &.is-dashed {
-    background: $color-white;
-    color: $color-info;
+    background: var(--bin-color-white);
+    color: var(--bin-color-info);
     &:hover {
-      border-color: $color-info-light1;
-      color: $color-info;
+      border-color: var(--bin-color-info-light1);
+      color: var(--bin-color-info);
       background-color: rgba(245, 249, 254, .5);
     }
     &:active {
-      color: $color-info-active;
-      border-color: $color-info-active;
+      color: var(--bin-color-info-active);
+      border-color: var(--bin-color-info-active);
     }
     &.is-disabled, &.is-disabled:focus, &.is-disabled:hover, &.is-loading {
       cursor: not-allowed;
-      background: $color-white;
-      color: $color-info-light2;
+      background: var(--bin-color-white);
+      color: var(--bin-color-info-light2);
     }
   }
   &.is-disabled, &.is-disabled:focus, &.is-disabled:hover, &.is-loading {
     cursor: not-allowed;
-    color: $color-white;
-    background-color: $color-info-light2;
-    border-color: $color-info-light2;
+    color: var(--bin-color-white);
+    background-color: var(--bin-color-info-light2);
+    border-color: var(--bin-color-info-light2);
   }
 }
 
 .bin-button--warning {
   color: #fff;
-  background-color: $color-warning;
-  border-color: $color-warning;
+  background-color: var(--bin-color-warning);
+  border-color: var(--bin-color-warning);
   background-image: none;
   &:hover, &:focus {
-    background: $color-warning-light1;
-    border-color: $color-warning-light1;
+    background: var(--bin-color-warning-light1);
+    border-color: var(--bin-color-warning-light1);
     color: #fff;
   }
   &:active {
-    background: $color-warning-active;
-    border-color: $color-warning-active;
+    background: var(--bin-color-warning-active);
+    border-color: var(--bin-color-warning-active);
   }
   &.is-transparent {
-    border-color: $color-warning;
-    color: $color-warning;
+    border-color: var(--bin-color-warning);
+    color: var(--bin-color-warning);
     background-color: transparent;
     &:hover {
-      border-color: $color-warning-light1;
-      color: $color-warning;
+      border-color: var(--bin-color-warning-light1);
+      color: var(--bin-color-warning);
       background-color: rgba(245, 249, 254, .5);
     }
     &:active {
-      color: $color-warning-active;
-      border-color: $color-warning-active;
+      color: var(--bin-color-warning-active);
+      border-color: var(--bin-color-warning-active);
     }
     &.is-disabled, &.is-disabled:focus, &.is-disabled:hover {
-      border-color: $color-warning-light2;
-      color: $color-warning-light2;
+      border-color: var(--bin-color-warning-light2);
+      color: var(--bin-color-warning-light2);
     }
   }
   &.is-plain {
-    color: $color-warning;
-    background: $color-warning-light5;
-    border-color: $color-warning-light3;
+    color: var(--bin-color-warning);
+    background: var(--bin-color-warning-light5);
+    border-color: var(--bin-color-warning-light3);
     &:hover, &:focus {
-      border-color: $color-warning-light2;
+      border-color: var(--bin-color-warning-light2);
     }
     &:active {
-      color: $color-warning-active;
-      border-color: $color-warning-active;
+      color: var(--bin-color-warning-active);
+      border-color: var(--bin-color-warning-active);
     }
     &.is-disabled, &.is-disabled:focus, &.is-disabled:hover {
       cursor: not-allowed;
-      color: $color-warning-light2;
-      background-color: $color-warning-light5;
-      border-color: $color-warning-light3;
+      color: var(--bin-color-warning-light2);
+      background-color: var(--bin-color-warning-light5);
+      border-color: var(--bin-color-warning-light3);
     }
   }
   &.is-dashed {
-    background: $color-white;
-    color: $color-warning;
+    background: var(--bin-color-white);
+    color: var(--bin-color-warning);
     &:hover {
-      border-color: $color-warning-light1;
-      color: $color-warning;
+      border-color: var(--bin-color-warning-light1);
+      color: var(--bin-color-warning);
       background-color: rgba(245, 249, 254, .5);
     }
     &:active {
-      color: $color-warning-active;
-      border-color: $color-warning-active;
+      color: var(--bin-color-warning-active);
+      border-color: var(--bin-color-warning-active);
     }
     &.is-disabled, &.is-disabled:focus, &.is-disabled:hover, &.is-loading {
       cursor: not-allowed;
-      background: $color-white;
-      color: $color-warning-light2;
+      background: var(--bin-color-white);
+      color: var(--bin-color-warning-light2);
     }
   }
   &.is-disabled, &.is-disabled:focus, &.is-disabled:hover, &.is-loading {
     cursor: not-allowed;
-    color: $color-white;
-    background-color: $color-warning-light2;
-    border-color: $color-warning-light2;
+    color: var(--bin-color-white);
+    background-color: var(--bin-color-warning-light2);
+    border-color: var(--bin-color-warning-light2);
   }
 }
 .bin-button--danger {
   color: #fff;
-  background-color: $color-danger;
-  border-color: $color-danger;
+  background-color: var(--bin-color-danger);
+  border-color: var(--bin-color-danger);
   background-image: none;
   &:hover, &:focus {
-    background: $color-danger-light1;
-    border-color: $color-danger-light1;
+    background: var(--bin-color-danger-light1);
+    border-color: var(--bin-color-danger-light1);
     color: #fff;
   }
   &:active {
-    background: $color-danger-active;
-    border-color: $color-danger-active;
+    background: var(--bin-color-danger-active);
+    border-color: var(--bin-color-danger-active);
   }
   &.is-transparent {
-    border-color: $color-danger;
-    color: $color-danger;
+    border-color: var(--bin-color-danger);
+    color: var(--bin-color-danger);
     background-color: transparent;
     &:hover {
-      border-color: $color-danger-light1;
-      color: $color-danger;
+      border-color: var(--bin-color-danger-light1);
+      color: var(--bin-color-danger);
       background-color: rgba(245, 249, 254, .5);
     }
     &:active {
-      color: $color-danger-active;
-      border-color: $color-danger-active;
+      color: var(--bin-color-danger-active);
+      border-color: var(--bin-color-danger-active);
     }
     &.is-disabled, &.is-disabled:focus, &.is-disabled:hover {
-      border-color: $color-danger-light2;
-      color: $color-danger-light2;
+      border-color: var(--bin-color-danger-light2);
+      color: var(--bin-color-danger-light2);
     }
   }
   &.is-plain {
-    color: $color-danger;
-    background: $color-danger-light5;
-    border-color: $color-danger-light3;
+    color: var(--bin-color-danger);
+    background: var(--bin-color-danger-light5);
+    border-color: var(--bin-color-danger-light3);
     &:hover, &:focus {
-      border-color: $color-danger-light2;
+      border-color: var(--bin-color-danger-light2);
     }
     &:active {
-      color: $color-danger-active;
-      border-color: $color-danger-active;
+      color: var(--bin-color-danger-active);
+      border-color: var(--bin-color-danger-active);
     }
     &.is-disabled, &.is-disabled:focus, &.is-disabled:hover {
       cursor: not-allowed;
-      color: $color-danger-light2;
-      background-color: $color-danger-light5;
-      border-color: $color-danger-light3;
+      color: var(--bin-color-danger-light2);
+      background-color: var(--bin-color-danger-light5);
+      border-color: var(--bin-color-danger-light3);
     }
   }
   &.is-dashed {
-    background: $color-white;
-    color: $color-danger;
+    background: var(--bin-color-white);
+    color: var(--bin-color-danger);
     &:hover {
-      border-color: $color-danger-light1;
-      color: $color-danger;
+      border-color: var(--bin-color-danger-light1);
+      color: var(--bin-color-danger);
       background-color: rgba(245, 249, 254, .5);
     }
     &:active {
-      color: $color-danger-active;
-      border-color: $color-danger-active;
+      color: var(--bin-color-danger-active);
+      border-color: var(--bin-color-danger-active);
     }
     &.is-disabled, &.is-disabled:focus, &.is-disabled:hover, &.is-loading {
       cursor: not-allowed;
-      background: $color-white;
-      color: $color-danger-light2;
+      background: var(--bin-color-white);
+      color: var(--bin-color-danger-light2);
     }
   }
   &.is-disabled, &.is-disabled:focus, &.is-disabled:hover, &.is-loading {
     cursor: not-allowed;
-    color: $color-white;
-    background-color: $color-danger-light2;
-    border-color: $color-danger-light2;
+    color: var(--bin-color-white);
+    background-color: var(--bin-color-danger-light2);
+    border-color: var(--bin-color-danger-light2);
   }
 }
 
 .bin-button--text {
   border-color: transparent;
-  color: $color-primary;
+  color: var(--bin-color-primary);
   background: transparent;
   background-image: none;
   padding: 0;
   height: auto;
   &:focus, &:hover {
-    color: $color-primary-light1;
+    color: var(--bin-color-primary-light1);
     border-color: transparent;
     background-color: transparent;
     box-shadow: none;
   }
   &:active {
-    color: $color-primary-active;
+    color: var(--bin-color-primary-active);
   }
   &.is-disabled, &.is-disabled:focus, &.is-disabled:hover {
     cursor: not-allowed;

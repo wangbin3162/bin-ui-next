@@ -286,7 +286,7 @@ export default {
     copyColor(color) {
       this.$copy(color).then(result => {
         if (result) {
-          this.$message.info({message: `已复制颜色 ${color} 至剪切板`})
+          this.$message.info({ message: `已复制颜色 ${color} 至剪切板` })
           console.log(color)
         }
       })
@@ -359,6 +359,4 @@ export default {
     }
   }
 }
-
-
 </style>

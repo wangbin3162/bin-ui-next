@@ -1,8 +1,8 @@
 .bin-dropdown {
   display: inline-block;
   position: relative;
-  color: $color-text-default;
-  font-size: $base-font-size;
+  color: var(--bin-color-text-default);
+  font-size: var(--bin-base-font-size);
   i.b-iconfont {
     font-size: 14px;
   }
@@ -13,10 +13,10 @@
     padding: 5px 0;
     background-color: #fff;
     max-height: none;
-    box-shadow: $shadow-2-down;
+    box-shadow: var(--bin-shadow-2-down);
     border: none;
     &.is-dark {
-      background-color: $dark-bg
+      background-color: var(--bin-dark-bg);
       .bin-dropdown-menu .bin-dropdown-item {
         color: rgba(255, 255, 255, .65);
         &:hover, &:focus {
@@ -25,7 +25,7 @@
           background-color: transparent;
         }
         &-selected {
-          background-color: $color-primary;
+          background-color: var(--bin-color-primary);
           color: #fff;
         }
         &-disabled {
@@ -54,25 +54,25 @@
     line-height: 22px;
     width: 100%;
     clear: both;
-    color: $color-text-default;
-    font-size: $base-font-size !important;
+    color: var(--bin-color-text-default);
+    font-size: var(--bin-base-font-size) !important;
     white-space: nowrap;
     list-style: none;
     cursor: pointer;
-    transition: background $animation-duration-base ease-in-out;
+    transition: background var(--bin-animation-duration-base) ease-in-out;
     &:hover, &:focus {
       background: #f3f3f3;
       outline: none;
     }
 
     &-selected {
-      background: $color-primary-light5;
+      background: var(--bin-color-primary-light5);
     }
     &-disabled {
-      color: $color-text-disabled !important;
+      color: var(--bin-color-text-disabled) !important;
       cursor: not-allowed;
       &:hover {
-        color: $color-text-disabled !important;
+        color: var(--bin-color-text-disabled) !important;
         background-color: #fff;
         cursor: not-allowed;
       }

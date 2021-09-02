@@ -6,9 +6,9 @@
   background: #f7f7f7;
   font-size: 12px;
   padding: 0 8px;
-  height: $mini-height - 2px;
+  height: var(--bin-mini-height-2);
   line-height: 20px;
-  border-radius: $border-base-radius;
+  border-radius: var(--bin-border-base-radius);
   white-space: nowrap;
   + .bin-tag {
     margin-left: 6px;
@@ -18,9 +18,9 @@
     right: -4px;
     cursor: pointer;
     font-size: 12px;
-    color: $color-text-secondary;
+    color: var(--bin-color-text-secondary);
     &:hover {
-      color: $color-text-default;
+      color: var(--bin-color-text-default);
     }
   }
   &.is-checkable {
@@ -69,72 +69,72 @@
 
   }
   &.is-primary {
-    background-color: $color-primary-light6;
-    color: $color-primary;
-    border-color: $color-primary-light4;
+    background-color: var(--bin-color-primary-light6);
+    color: var(--bin-color-primary);
+    border-color: var(--bin-color-primary-light4);
     &.is-dark {
-      background-color: $color-primary;
+      background-color: var(--bin-color-primary);
     }
     .bin-dot {
-      background: $color-primary;
+      background: var(--bin-color-primary);
       &:after {
-        border-color: $color-primary;
+        border-color: var(--bin-color-primary);
       }
     }
   }
   &.is-success {
-    background-color: $color-success-light6;
-    border-color: $color-success-light4;
-    color: $color-success;
+    background-color: var(--bin-color-success-light6);
+    border-color: var(--bin-color-success-light4);
+    color: var(--bin-color-success);
     &.is-dark {
-      background-color: $color-success;
+      background-color: var(--bin-color-success);
     }
     .bin-dot {
-      background: $color-success;
+      background: var(--bin-color-success);
       &:after {
-        border-color: $color-success;
+        border-color: var(--bin-color-success);
       }
     }
   }
   &.is-info {
-    background-color: $color-info-light6;
-    border-color: $color-info-light4;
-    color: $color-info;
+    background-color: var(--bin-color-info-light6);
+    border-color: var(--bin-color-info-light4);
+    color: var(--bin-color-info);
     &.is-dark {
-      background-color: $color-info;
+      background-color: var(--bin-color-info);
     }
     .bin-dot {
-      background: $color-info;
+      background: var(--bin-color-info);
       &:after {
-        border-color: $color-info;
+        border-color: var(--bin-color-info);
       }
     }
   }
   &.is-warning {
-    background-color: $color-warning-light6;
-    border-color: $color-warning-light4;
-    color: $color-warning;
+    background-color: var(--bin-color-warning-light6);
+    border-color: var(--bin-color-warning-light4);
+    color: var(--bin-color-warning);
     &.is-dark {
-      background-color: $color-warning;
+      background-color: var(--bin-color-warning);
     }
     .bin-dot {
-      background: $color-warning;
+      background: var(--bin-color-warning);
       &:after {
-        border-color: $color-warning;
+        border-color: var(--bin-color-warning);
       }
     }
   }
   &.is-danger {
-    background-color: $color-danger-light6;
-    border-color: $color-danger-light4;
-    color: $color-danger;
+    background-color: var(--bin-color-danger-light6);
+    border-color: var(--bin-color-danger-light4);
+    color: var(--bin-color-danger);
     &.is-dark {
-      background-color: $color-danger;
+      background-color: var(--bin-color-danger);
     }
     .bin-dot {
-      background: $color-danger;
+      background: var(--bin-color-danger);
       &:after {
-        border-color: $color-danger;
+        border-color: var(--bin-color-danger);
       }
     }
   }

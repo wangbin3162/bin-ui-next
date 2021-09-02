@@ -73,14 +73,14 @@
     }
   }
   &-header {
-    border-bottom: $border-base-light;
+    border-bottom: var(--bin-border-base-light);
     padding: 16px 24px;
     p,
     &-inner {
       width: 100%;
       line-height: 22px;
-      font-size: $header-font-size;
-      color: $color-text-primary;
+      font-size: var(--bin-header-font-size);
+      color: var(--bin-color-text-primary);
       font-weight: 600;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -93,14 +93,14 @@
     right: 0;
     z-index: 10;
     padding: 0;
-    color: $color-text-secondary;
+    color: var(--bin-color-text-secondary);
     line-height: 1;
     text-decoration: none;
     background: transparent;
     border: 0;
     outline: 0;
     cursor: pointer;
-    transition: color $animation-duration-base;
+    transition: color var(--bin-animation-duration-base);
     .b-icon-close {
       display: block;
       width: 56px;
@@ -111,26 +111,26 @@
       text-transform: none;
       text-rendering: auto;
       font-size: 18px;
-      color: $color-text-secondary;
-      transition: color $animation-duration-base ease;
+      color: var(--bin-color-text-secondary);
+      transition: color var(--bin-animation-duration-base) ease;
       &:hover {
-        color: $color-text-default;
+        color: var(--bin-color-text-default);
       }
     }
   }
   &-body {
     width: 100%;
-    font-size: $base-font-size;
+    font-size: var(--bin-base-font-size);
     word-wrap: break-word;
     overflow: auto;
     flex-grow: 1;
     padding: 24px;
-    line-height: $base-line-height;
+    line-height: var(--bin-base-line-height);
   }
   &-footer {
     flex-shrink: 0;
     padding: 10px 10px;
-    border-top: $border-base-light;
+    border-top: var(--bin-border-base-light);
   }
   &-no-header &-body {
     height: 100%;

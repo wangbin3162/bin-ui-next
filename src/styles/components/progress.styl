@@ -38,7 +38,7 @@
   left: 0;
   top: 0;
   height: 100%;
-  background-color: $color-primary;
+  background-color: var(--bin-color-primary);
   text-align: right;
   border-radius: 100px;
   line-height: 1;
@@ -50,8 +50,8 @@
   margin-right: 0;
 }
 .bin-progress__text {
-  font-size: $base-font-size;
-  color: $color-text-default;
+  font-size: var(--bin-base-font-size);
+  color: var(--bin-color-text-default);
   display: inline-block;
   vertical-align: middle;
   margin-left: 10px;
@@ -72,16 +72,16 @@
 }
 
 .bin-progress.progress-success .bin-progress__text {
-  color: $color-success;
+  color: var(--bin-color-success);
 }
 .bin-progress.progress-success .bin-progress-bar__inner {
-  background-color: $color-success;
+  background-color: var(--bin-color-success);
 }
 .bin-progress.progress-exception .bin-progress__text {
-  color: $color-danger;
+  color: var(--bin-color-danger);
 }
 .bin-progress.progress-exception .bin-progress-bar__inner {
-  background-color: $color-danger;
+  background-color: var(--bin-color-danger);
 }
 
 // Spec and IE10+

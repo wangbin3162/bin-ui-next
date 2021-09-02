@@ -3,10 +3,10 @@
     width: 485px;
     overflow: auto;
     padding: 5px 5px;
-    background-color: $color-white;
+    background-color: var(--bin-color-white);
     box-sizing: border-box;
-    border-radius: $border-base-radius;
-    box-shadow: $shadow-2-down;
+    border-radius: var(--bin-border-base-radius);
+    box-shadow: var(--bin-shadow-2-down);
     position: absolute;
     z-index: 900;
     &.is-light {
@@ -45,7 +45,7 @@
           transition: .15s linear;
         }
         &:hover i {
-          color: $color-primary-light1;
+          color: var(--bin-color-primary-light1);
         }
       }
     }
