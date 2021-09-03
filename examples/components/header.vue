@@ -23,8 +23,8 @@
               <div class="drop-down-menu-group">官方生态</div>
               <b-dropdown-item name="bin-admin-pro">bin-admin-pro</b-dropdown-item>
               <b-dropdown-item name="bin-datav">bin-datav</b-dropdown-item>
-              <b-dropdown-item name="bin-ace-editor">bin-ace-editor</b-dropdown-item>
-              <b-dropdown-item name="bin-charts">bin-charts</b-dropdown-item>
+              <b-dropdown-item name="bin-ace-editor-next">bin-ace-editor-next</b-dropdown-item>
+              <b-dropdown-item name="bin-charts-next">bin-charts-next</b-dropdown-item>
               <div class="drop-down-menu-group">Vue2组件</div>
               <b-dropdown-item name="bin-ui">bin-ui(vue2+)</b-dropdown-item>
               <b-dropdown-item name="bin-admin">bin-admin</b-dropdown-item>
