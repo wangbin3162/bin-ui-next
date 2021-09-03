@@ -1,6 +1,7 @@
-import { h, render, isVNode } from 'vue'
+import { h, isVNode, render, watch } from 'vue'
 import MessageBoxConstructor from './message-box.vue'
 import isServer from '../../utils/isServer'
+import { isString } from '../../utils/util-helper'
 
 const messageInstance = new Map()
 
@@ -50,10 +51,16 @@ const showMessage = (options) => {
   // get component instance like v2.
   const vm = instance.proxy
 
-  if (isVNode(options.message)) {
-    // Override slots since message is vnode type.
-    instance.slots.default = () => [options.message]
-  }
+  watch(() => vm.message, (newVal, oldVal) => {
+    if (isVNode(newVal)) {
+      // Override slots since message is vnode type.
+      instance.slots.default = () => [newVal]
+    } else if (isVNode(oldVal) && !isVNode(newVal)) {
+      delete instance.slots.default
+    }
+  }, {
+    immediate: true,
+  })
   // change visibility after everything is settled
   vm.visible = true
   return vm
@@ -61,8 +68,14 @@ const showMessage = (options) => {
 
 function MessageBox(options) {
   if (isServer) return
-  const callback = options.callback
-
+  let callback
+  if (isString(options) || isVNode(options)) {
+    options = {
+      message: options,
+    }
+  } else {
+    callback = options.callback
+  }
   return new Promise((resolve, reject) => {
     const vm = showMessage(options)
     // collect this vm in order to handle upcoming events.

@@ -5,12 +5,13 @@
 <div class="doc-update">
     <b-timeline>
       <b-timeline-item>
-        <p class="version">0.9.8</p>
+        <p class="version">0.9.9</p>
         <p class="time">2021-09-03</p>
         <p class="content"><i>🍀</i>升级vue依赖，现版本依赖最新3.2.8</p>
         <p class="content"><i>🍀</i>全局组件bug修复（因vue版本升级的问题）</p>
         <p class="content"><i>🍀</i>全局样式重构，所有样式依赖css 变量</p>
         <p class="content"><i>🍀</i>主题设置，样式优化</p>
+        <p class="content"><i>🍀</i>修复message-box的bug</p>
       </b-timeline-item>
       <b-timeline-item>
         <p class="version">0.9.5</p>
