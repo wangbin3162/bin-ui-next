@@ -78,7 +78,6 @@ import BTable from './components/table'
 import BCountTo from './components/count-to'
 import LoadingBar from './components/loading-bar'
 import Message from './components/message'
-import MessageBox from './components/message-box'
 import Notice from './components/notice'
 
 import * as util from './utils/util'
@@ -188,7 +187,6 @@ const components = [
 const plugins = [
   LoadingBar,
   Message,
-  MessageBox,
   Notice,
 ]
 const defaultInstallOpt = {
@@ -314,7 +312,6 @@ export {
   BCountTo,
   LoadingBar,
   Message,
-  MessageBox,
   Notice,
   Utils,
 }

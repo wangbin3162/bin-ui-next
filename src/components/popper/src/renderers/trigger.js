@@ -7,5 +7,5 @@ export default function renderTrigger(trigger, extraProps) {
   if (!firstElement) {
     throwError('renderTrigger', 'trigger expects single rooted node')
   }
-  return cloneVNode(firstElement, extraProps)
+  return cloneVNode(firstElement, extraProps, true)
 }

@@ -1,6 +1,5 @@
-import { withDirectives, Transition, vShow, withCtx, createVNode } from 'vue'
+import { withDirectives, Transition, vShow, withCtx, h } from 'vue'
 import { NOOP } from '@vue/shared'
-import { PatchFlags } from '../../../../utils/vnode'
 import { stop } from '../../../../utils/dom'
 
 export default function renderPopper(props, children) {
@@ -41,7 +40,7 @@ export default function renderPopper(props, children) {
    */
 
   const mouseUpAndDown = stopPopperMouseEvent ? stop : NOOP
-  return createVNode(
+  return h(
     Transition,
     {
       name,
@@ -52,7 +51,7 @@ export default function renderPopper(props, children) {
     },
     {
       default: withCtx(() => [withDirectives(
-        createVNode(
+        h(
           'div',
           {
             'aria-hidden': String(!visibility),
@@ -61,27 +60,16 @@ export default function renderPopper(props, children) {
             id: popperId,
             ref: popperRef ?? 'popperRef',
             role: 'tooltip',
-            onMouseEnter,
-            onMouseLeave,
+            onMouseenter: onMouseEnter,
+            onMouseleave: onMouseLeave,
             onClick: stop,
-            onMouseDown: mouseUpAndDown,
-            onMouseUp: mouseUpAndDown,
+            onMousedown: mouseUpAndDown,
+            onMouseup: mouseUpAndDown,
           },
           children,
-          PatchFlags.CLASS | PatchFlags.STYLE | PatchFlags.PROPS | PatchFlags.HYDRATE_EVENTS,
-          [
-            'aria-hidden',
-            'onMouseenter',
-            'onMouseleave',
-            'onMouseDown',
-            'onMouseUp',
-            'onClick',
-            'id',
-          ],
         ),
         [[vShow, visibility]],
       )]),
     },
-    PatchFlags.PROPS, ['name', 'onAfterEnter', 'onAfterLeave', 'onBeforeEnter', 'onBeforeLeave'],
   )
 }

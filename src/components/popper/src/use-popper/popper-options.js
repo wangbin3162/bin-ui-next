@@ -12,6 +12,7 @@ export default function usePopperOptions(props, state) {
         arrowOffset: props.arrowOffset,
         offset: props.offset,
         gpuAcceleration: props.gpuAcceleration,
+        fallbackPlacements: props.fallbackPlacements,
       }, props.popperOptions?.modifiers),
     }
   })

@@ -5,6 +5,7 @@ Popper.install = (app) => {
 }
 
 export default Popper
+export const BPopper = Popper
 
 export { default as defaultProps, Theme } from './src/use-popper/defaults'
 export { default as usePopper } from './src/use-popper'

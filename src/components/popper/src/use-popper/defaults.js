@@ -10,7 +10,7 @@ export default {
   // adding a offset to the ceil of 4.1 should be 5 this resolves the problem of arrow overflowing out of popper.
   arrowOffset: {
     type: Number,
-    default: 5,
+    default: 4,
   },
   appendToBody: {
     type: Boolean,
