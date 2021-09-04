@@ -3,16 +3,19 @@
 更新日志记录
 
 <div class="doc-update">
-    <b-timeline>
-      <b-timeline-item>
-        <p class="version">0.9.12</p>
+    <b-timeline> 
+      <b-timeline-item color="success" dot-top="10px">
+        <template #dot>
+         <b-icon name="trophy-fill" size="24"></b-icon>
+        </template>
+        <p class="version">1.0.0</p>
         <p class="time">2021-09-04</p>
-        <p class="content"><i>🍀</i>升级vue依赖，现版本依赖最新3.2.8</p>
-        <p class="content"><i>🍀</i>全局组件bug修复（因vue版本升级的问题）</p>
-        <p class="content"><i>🍀</i>全局样式重构，所有样式依赖css 变量</p>
-        <p class="content"><i>🍀</i>主题设置，样式优化</p>
-        <p class="content"><i>🍀</i>移除message-box</p>
-        <p class="content"><i>🍀</i>修复tooltip</p>
+        <p class="content"><i>🍀</i>升级vue依赖，现版本依赖最新3.2.8。</p>
+        <p class="content"><i>📖</i>组件文档优化，更新样式文档信息。</p>
+        <p class="content"><i>🌈</i>全局样式重构，所有样式依赖css变量，提供了更灵活的主题配色方案。</p>
+        <p class="content"><i>🌀</i>移除message-box、后续可使用modal更灵活的实现确认窗。</p>
+        <p class="content"><i>🐞</i>全局组件bug修复（因vue版本升级的问题）。</p>
+        <p class="content"><i>🐞</i>修复popper，tooltip，popover，dropdown等组件bug。</p>
       </b-timeline-item>
       <b-timeline-item>
         <p class="version">0.9.5</p>

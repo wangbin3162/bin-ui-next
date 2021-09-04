@@ -209,7 +209,7 @@
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
-      border-radius: 50%;
+      border-radius: var(--bin-border-base-radius);
       transition: all .2s;
     }
     &.prev-month,
@@ -245,13 +245,13 @@
     }
     &.start-date div {
       margin-left: 2px;
-      border-top-left-radius: 15px;
-      border-bottom-left-radius: 15px;
+      border-top-left-radius: var(--bin-border-base-radius);
+      border-bottom-left-radius: var(--bin-border-base-radius);
     }
     &.end-date div {
       margin-right: 2px;
-      border-top-right-radius: 15px;
-      border-bottom-right-radius: 15px;
+      border-top-right-radius: var(--bin-border-base-radius);
+      border-bottom-right-radius: var(--bin-border-base-radius);
     }
     &.in-range div, &.in-range div:hover {
       background: var(--bin-color-primary-light5);
@@ -261,12 +261,12 @@
         margin-left: 3px;
         margin-right: 3px;
         background-color: var(--bin-color-primary-light5);
-        border-radius: 15px;
+        border-radius: var(--bin-border-base-radius);
       }
       span {
         background-color: var(--bin-color-primary);
         color: #fff;
-        border-radius: 15px;
+        border-radius: var(--bin-border-base-radius);
       }
     }
     &.disabled {
@@ -298,12 +298,12 @@
           background-color: transparent;
         }
         td:first-child div {
-          border-top-left-radius: 15px;
-          border-bottom-left-radius: 15px;
+          border-top-left-radius: var(--bin-border-base-radius);
+          border-bottom-left-radius: var(--bin-border-base-radius);
         }
         td:last-child div {
-          border-top-right-radius: 15px;
-          border-bottom-right-radius: 15px;
+          border-top-right-radius: var(--bin-border-base-radius);
+          border-bottom-right-radius: var(--bin-border-base-radius);
         }
       }
     }
@@ -328,10 +328,10 @@
       color: var(--bin-color-text-default);
       margin: 0 auto;
       transition: .2s;
-      &:hover {
-        background: var(--bin-color-primary);
-        color: #fff;
-      }
+    }
+    &:not(.disabled) .cell:hover {
+      background: var(--bin-color-primary);
+      color: #fff;
     }
     &.current {
       &:not(.disabled) .cell {
@@ -347,6 +347,14 @@
           background: var(--bin-color-primary);
           color: #fff;
         }
+      }
+    }
+    &.disabled {
+      a {
+        background-color: #f5f7fa;
+        opacity: 1;
+        cursor: not-allowed;
+        color: var(--bin-color-text-placeholder);
       }
     }
   }
@@ -369,14 +377,14 @@
       height: 28px;
       display: block;
       line-height: 28px;
-      border-radius: 14px;
+      border-radius: var(--bin-border-base-radius);
       color: var(--bin-color-text-default);
       margin: 0 auto;
       transition: .2s;
-      &:hover {
-        background: var(--bin-color-primary);
-        color: #fff;
-      }
+    }
+    &:not(.disabled) .cell:hover {
+      background: var(--bin-color-primary);
+      color: #fff;
     }
     &.current {
       &:not(.disabled) .cell {
@@ -401,15 +409,23 @@
       }
     }
     &.start-date div {
-      border-top-left-radius: 20px;
-      border-bottom-left-radius: 20px;
+      border-top-left-radius: var(--bin-border-base-radius);
+      border-bottom-left-radius: var(--bin-border-base-radius);
     }
     &.end-date div {
-      border-top-right-radius: 20px;
-      border-bottom-right-radius: 20px;
+      border-top-right-radius: var(--bin-border-base-radius);
+      border-bottom-right-radius: var(--bin-border-base-radius);
     }
     &.in-range div, &.in-range div:hover {
       background: var(--bin-color-primary-light5);
+    }
+    &.disabled {
+      a {
+        background-color: #f5f7fa;
+        opacity: 1;
+        cursor: not-allowed;
+        color: var(--bin-color-text-placeholder);
+      }
     }
   }
 }
