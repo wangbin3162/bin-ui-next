@@ -11,19 +11,28 @@
   box-sizing: border-box;
   width: 50%
   &-header {
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: var(--bin-border-base-light);
-    padding: 16px 24px;
+    padding: 16px;
     height: 55px;
+    &:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 1px;
+      background-color: var(--bin-border-table-color);
+    }
   }
   &-title {
     flex: auto;
     flex-shrink: 0;
     font-size: var(--bin-header-font-size);
     color: var(--bin-color-text-primary);
-    font-weight: 500;
+    font-weight: 600;
     line-height: 22px;
     overflow: hidden;
     text-overflow: ellipsis;
