@@ -31,7 +31,7 @@ const createBaseConfig = () => {
       babel({
         exclude: 'node_modules/**',
         extensions: ['.js', '.jsx', '.vue'],
-        babelHelpers: 'bundled',
+        babelHelpers: 'runtime',
       }),
       resolve({
         extensions: ['.vue', '.jsx', '.js'],

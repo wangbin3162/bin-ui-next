@@ -9,7 +9,9 @@ module.exports = {
     ],
   ],
   plugins: [
-    '@vue/babel-plugin-jsx',
+    ['@babel/plugin-transform-runtime', {
+      'regenerator': true,
+    }],
   ],
   env: {
     utils: {
