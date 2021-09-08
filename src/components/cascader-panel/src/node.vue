@@ -40,7 +40,7 @@
     <i v-else-if="isLeaf && node.checked" class="b-iconfont b-icon-check bin-cascader-node__prefix"></i>
 
     <!-- content -->
-    <node-content/>
+    <node-content />
 
     <!-- postfix -->
     <template v-if="!isLeaf">
@@ -133,14 +133,13 @@ export default {
 
     const handleClick = () => {
       if (isHoverMenu.value && !isLeaf.value) return
-
       if (isLeaf.value && !isDisabled.value && !checkStrictly.value && !multiple.value) {
         handleCheck(true)
       } else {
         handleExpand()
         // 单选模式，默认触发选中
-        if (checkStrictly.value && !multiple.value) {
-          doCheck(true)
+        if (checkStrictly.value && !isDisabled.value && !multiple.value) {
+          handleCheck(true)
         }
       }
     }

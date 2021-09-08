@@ -13,17 +13,17 @@
     <div class="block" style="width: 220px;margin-right: 20px;">
       <span class="demonstration">默认 click 触发子菜单</span>
       <b-cascader
-        v-model="selected"
-        :options="options"
-        @change="handleChange"></b-cascader>
+          v-model="selected"
+          :options="options"
+          @change="handleChange"></b-cascader>
     </div>
     <div class="block" style="width: 220px;margin-right: 20px;">
       <span class="demonstration">hover 触发子菜单</span>
       <b-cascader
-        v-model="selected"
-        :options="options"
-        :props="{ expandTrigger: 'hover' }"
-        @change="handleChange"></b-cascader>
+          v-model="selected"
+          :options="options"
+          :props="{ expandTrigger: 'hover' }"
+          @change="handleChange"></b-cascader>
     </div>
     <div class="block" style="width: 220px;margin-right: 20px;">
       <span class="demonstration">选项值</span>
@@ -114,17 +114,17 @@
     <div class="block" style="width: 220px;margin-right: 20px;">
       <span class="demonstration">禁用项</span>
       <b-cascader
-        v-model="selected"
-        :options="options"
-        @change="handleChange"></b-cascader>
+          v-model="selected"
+          :options="options"
+          @change="handleChange"></b-cascader>
     </div>
     <div class="block" style="width: 220px;margin-right: 20px;">
       <span class="demonstration">全部禁用</span>
       <b-cascader
-        v-model="selected"
-        :options="options"
-        disabled
-        @change="handleChange"></b-cascader>
+          v-model="selected"
+          :options="options"
+          disabled
+          @change="handleChange"></b-cascader>
     </div>
     <div class="block" style="width: 220px;margin-right: 20px;">
       <span class="demonstration">选项值</span>
@@ -215,10 +215,10 @@
   <div flex>
     <div class="block" style="width: 220px;margin-right: 20px;">
       <b-cascader
-        v-model="selected"
-        :options="options"
-        clearable
-        @change="handleChange"></b-cascader>
+          v-model="selected"
+          :options="options"
+          clearable
+          @change="handleChange"></b-cascader>
     </div>
     <div class="block" style="width: 220px;margin-right: 20px;">
       <div class="mt-5">{{selected}}</div>
@@ -307,11 +307,11 @@
   <div flex>
     <div class="block" style="width: 220px;margin-right: 20px;">
       <b-cascader
-        v-model="selected"
-        :options="options"
-        clearable
-        :show-all-levels="false"
-        @change="handleChange"></b-cascader>
+          v-model="selected"
+          :options="options"
+          clearable
+          :show-all-levels="false"
+          @change="handleChange"></b-cascader>
     </div>
     <div class="block" style="width: 220px;margin-right: 20px;">
       <div class="mt-5">{{selected}}</div>
@@ -401,19 +401,19 @@
     <div class="block" style="width: 220px;margin-right: 20px;">
       <span class="demonstration">默认 显示所有tag</span>
       <b-cascader
-        v-model="selected"
-        :options="options"
-        :props="{ multiple: true }"
-        @change="handleChange"></b-cascader>
+          v-model="selected"
+          :options="options"
+          :props="{ multiple: true }"
+          @change="handleChange"></b-cascader>
     </div>
     <div class="block" style="width: 220px;margin-right: 20px;">
       <span class="demonstration">折叠显示tag</span>
       <b-cascader
-        v-model="selected"
-        :options="options"
-        :props="{ multiple: true }"
-        collapse-tags
-        @change="handleChange"></b-cascader>
+          v-model="selected"
+          :options="options"
+          :props="{ multiple: true }"
+          collapse-tags
+          @change="handleChange"></b-cascader>
     </div>
     <div class="block" style="width: calc(100% - 500px);margin-right: 20px;">
       <span class="demonstration">选项值</span>
@@ -504,20 +504,20 @@
     <div class="block" style="width: 220px;margin-right: 20px;">
       <span class="demonstration">单选选择任意一级选项</span>
       <b-cascader
-        v-model="selected1"
-        :options="options"
-        :props="{ checkStrictly: true }"
-        @change="handleChange"></b-cascader>
+          v-model="selected1"
+          :options="options"
+          :props="{ checkStrictly: true }"
+          @change="handleChange"></b-cascader>
       <div class="mt-5">{{selected1}}</div>
     </div>
     <div class="block" style="width: 220px;margin-right: 20px;">
       <span class="demonstration">多选选择任意一级选项</span>
       <b-cascader
-        v-model="selected2"
-        :options="options"
-        :props="{ multiple: true, checkStrictly: true  }"
-        collapse-tags
-        @change="handleChange"></b-cascader>
+          v-model="selected2"
+          :options="options"
+          :props="{ multiple: true, checkStrictly: true  }"
+          collapse-tags
+          @change="handleChange"></b-cascader>
       <div class="mt-5">{{selected2}}</div>
     </div>
   </div>
@@ -530,6 +530,7 @@
           {
             value: 'nanjing',
             label: '南京',
+            disabled: true,
             children: [
               {
                 value: 'xuanwu',
@@ -608,8 +609,8 @@ lazyload方法有两个参数，第一个参数node为当前点击的节点，�
   <div flex>
     <div class="block" style="width: 220px;margin-right: 20px;">
       <b-cascader
-        v-model="selected"
-        :props="props"></b-cascader>
+          v-model="selected"
+          :props="props"></b-cascader>
     </div>
     <div class="block" style="width: 220px;margin-right: 20px;">
       <div class="mt-5">{{selected}}</div>
@@ -679,11 +680,11 @@ lazyload方法有两个参数，第一个参数node为当前点击的节点，�
             const { level } = node;
             setTimeout(() => {
               const nodes = Array.from({ length: level + 1 })
-                .map(item => ({
-                  value: ++id,
-                  label: `选项${id}`,
-                  leaf: level >= 2
-                }));
+                  .map(item => ({
+                    value: ++id,
+                    label: `选项${id}`,
+                    leaf: level >= 2
+                  }));
               // 通过调用resolve将子节点数据返回，通知组件数据加载完成
               resolve(nodes);
             }, 1000);
@@ -718,22 +719,22 @@ lazyload方法有两个参数，第一个参数node为当前点击的节点，�
     <div class="block" style="width: 220px;margin-right: 20px;">
       <span class="demonstration">单选可搜索</span>
       <b-cascader
-        v-model="selected1"
-        placeholder="试试搜索：鼓楼"
-        :options="options"
-        filterable></b-cascader>
+          v-model="selected1"
+          placeholder="试试搜索：鼓楼"
+          :options="options"
+          filterable></b-cascader>
       <div class="mt-5">{{selected1}}</div>
     </div>
     <div class="block" style="width: 220px;margin-right: 20px;">
       <span class="demonstration">多选可搜索</span>
       <b-cascader
-        v-model="selected2"
-        placeholder="试试搜索：鼓楼"
-        :options="options"
-        :props="{ multiple: true }"
-        collapse-tags
-        filterable
-        :filter-method="filterMethod"
+          v-model="selected2"
+          placeholder="试试搜索：鼓楼"
+          :options="options"
+          :props="{ multiple: true }"
+          collapse-tags
+          filterable
+          :filter-method="filterMethod"
       ></b-cascader>
       <div class="mt-5">{{selected2}}</div>
     </div>
@@ -1082,6 +1083,7 @@ lazyload方法有两个参数，第一个参数node为当前点击的节点，�
 :::
 
 ### Cascader Props
+
 | 参数      | 说明    | 类型      | 可选值       | 默认值   |
 |---------- |-------- |---------- |-------------  |-------- |
 | value / v-model | 选中项绑定值 | - | — | — |
@@ -1101,6 +1103,7 @@ lazyload方法有两个参数，第一个参数node为当前点击的节点，�
 | popper-class | 自定义浮层类名   | string | —  | — |
 
 ### Cascader Events
+
 | 事件名称      | 说明    | 回调参数      |
 |---------- |-------- |---------- |
 | change | 当选中节点变化时触发 | 选中节点的值 |
@@ -1111,17 +1114,20 @@ lazyload方法有两个参数，第一个参数node为当前点击的节点，�
 | remove-tag | 在多选模式下，移除Tag时触发 | 移除的Tag对应的节点的值 |
 
 ### Cascader Methods
+
 | 方法名 | 说明 | 参数 |
 | ---- | ---- | ---- |
 | getCheckedNodes | 获取选中的节点 | (leafOnly) 是否只是叶子节点，默认值为 `false` |
 
 ### Cascader Slots
+
 | 名称     | 说明 |
 |---------|-------------|
 | - | 自定义备选项的节点内容，参数为 { node, data }，分别为当前节点的 Node 对象和数据 |
 | empty  | 无匹配选项时的内容 |
 
 ### CascaderPanel Attributes
+
 | 参数      | 说明    | 类型      | 可选值       | 默认值   |
 |---------- |-------- |---------- |-------------  |-------- |
 | value / v-model | 选中项绑定值 | - | — | — |
@@ -1129,23 +1135,27 @@ lazyload方法有两个参数，第一个参数node为当前点击的节点，�
 | props | 配置选项，具体见下表 | object | — | — |
 
 ### CascaderPanel Events
+
 | 事件名称      | 说明    | 回调参数      |
 |---------- |-------- |---------- |
 | change | 当选中节点变化时触发 | 选中节点的值 |
 | expand-change | 当展开节点发生变化时触发 | 各父级选项值组成的数组 |
 
 ### CascaderPanel Methods
+
 | 方法名 | 说明 | 参数 |
 | ---- | ---- | ---- |
 | getCheckedNodes | 获取选中的节点数组 | (leafOnly) 是否只是叶子节点，默认值为 `false` |
 | clearCheckedNodes | 清空选中的节点 | - |
 
 ### CascaderPanel Slots
+
 | 名称     | 说明 |
 |---------|-------------|
 | - | 自定义备选项的节点内容，参数为 { node, data }，分别为当前节点的 Node 对象和数据 |
 
 ### Props
+
 | 参数     | 说明              | 类型   | 可选值 | 默认值 |
 | -------- | ----------------- | ------ | ------ | ------ |
 | expandTrigger | 次级菜单的展开方式 | string | click / hover | 'click' |

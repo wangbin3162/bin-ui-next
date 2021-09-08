@@ -1,7 +1,9 @@
 ## Draggable 拖拽
 
-表格的拖拽排序，现已采用`sortablejs`进行实现，由于后续拖拽需求可能会日益增多，现已将`sortablejs`内置进入组件库,
-组件封装了一个基础的hook用于展示后续业务该如何使用自定义排序配置内容。
+表格的拖拽排序，现已采用`sortablejs`进行实现，由于后续拖拽需求可能会日益增多，现已将`sortablejs`内置进入组件库, 组件封装了一个基础的hook用于展示后续业务该如何使用自定义排序配置内容。
+
+vue3版本的draggable，参考
+<a href="https://github.com/SortableJS/vue.draggable.next" target="_blank">[vue.draggable.next]</a>
 
 相关链接
 
