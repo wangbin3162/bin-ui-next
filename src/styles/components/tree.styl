@@ -26,11 +26,8 @@
       }
     }
   }
-  li {
-    ul {
-      margin: 0;
-      padding: 0 0 0 16px;
-    }
+  .bin-tree-node-children {
+    padding-left: 16px;
   }
 
   &-node {
@@ -39,8 +36,10 @@
     padding: 0 0 4px 0;
     white-space: nowrap;
   }
+
   &-title {
-    width: 100%;
+    width: auto;
+    min-width: calc(100% - 24px);
     margin: 0;
     padding: 0 6px;
     line-height: 24px;
@@ -55,10 +54,25 @@
     &.is-selected, &.is-selected:hover {
       background-color: var(--bin-color-primary-light4);
     }
+    &.is-ellipsis {
+      min-width: calc(100% - 24px);
+      width: calc(100% - 24px);
+      &.has-checkbox {
+        min-width: calc(100% - 44px);
+        width: calc(100% - 44px);
+      }
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    > i:first-child {
+      margin-right: 4px;
+    }
   }
 
   &-render-title {
-    width: 100%;
+    width: auto;
+    min-width: calc(100% - 24px);
     margin: 0;
     padding: 0 6px;
     line-height: 24px;
@@ -70,15 +84,26 @@
     &.is-selected, &.is-selected:hover {
       background-color: var(--bin-color-primary-light4);
     }
+    &.is-ellipsis {
+      min-width: calc(100% - 24px);
+      width: calc(100% - 24px);
+      &.has-checkbox {
+        min-width: calc(100% - 44px);
+        width: calc(100% - 44px);
+      }
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
   }
   &-arrow {
     flex-shrink: 0;
     width: 24px;
     height: 24px;
     line-height: 24px;
-    cursor: pointer;
     text-align: center;
     .b-icon-caret-right {
+      cursor: pointer;
       position: relative;
       top: -1px;
       transition: transform var(--bin-animation-duration-base) ease-in-out;

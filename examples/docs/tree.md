@@ -8,8 +8,8 @@
 
 <template>
   <div flex>
-    <div style="width: 300px">
-      <b-tree :data="data" @select-change="handleSelect" :lock-select="lockSelect"></b-tree>
+    <div style="width: 300px;">
+      <b-tree :data="data" @select-change="handleSelect" :lock-select="lockSelect" title-ellipsis></b-tree>
     </div>
     <div style="width: 80px">
       <b-switch v-model="lockSelect" size="large">
@@ -17,8 +17,6 @@
         <template #close>解锁</template>
       </b-switch>
     </div>
-  </div>
-  <div>
   </div>
 </template>
 
@@ -35,7 +33,7 @@
                 title: '二级 1-1',
                 expand: true,
                 children: [
-                  { title: '三级 1-1-1', },
+                  { title: '三级 1-1-1 我是超长字段我是超长字段我是超长字段', },
                   { title: '三级 1-1-2' }
                 ]
               },
@@ -203,8 +201,15 @@ expand、selected、checked 和 disabled 可以设置展开，选中，勾选和
 ```html
 
 <template>
-  <div style="width: 300px">
-    <b-tree :data="data" show-checkbox multiple @select-change="handleSelect" @check-change="handleChecked"></b-tree>
+  <div flex>
+    <div class="p10" style="width: 300px;">
+      多选
+      <b-tree :data="data" show-checkbox multiple @select-change="handleSelect" @check-change="handleChecked"></b-tree>
+    </div>
+    <div class="p10" style="width: 300px; border-left: 1px solid #eeeeee;">
+      附加图标
+      <b-tree :data="data1"></b-tree>
+    </div>
   </div>
 </template>
 
@@ -222,7 +227,7 @@ expand、selected、checked 和 disabled 可以设置展开，选中，勾选和
                 expand: true,
                 disabled: true,
                 children: [
-                  { title: '三级 1-1-1', },
+                  { title: '三级 1-1-1 我是超长字段我是超长字段我是超长字段', },
                   { title: '三级 1-1-2' }
                 ]
               },
@@ -234,6 +239,20 @@ expand、selected、checked 和 disabled 可以设置展开，选中，勾选和
                   { title: '三级 1-2-2' }
                 ]
               }
+            ]
+          }
+        ],
+        data1: [
+          {
+            title: '导航',
+            icon: 'apartment',
+            expand: true,
+            children: [
+              { title: '导航菜单', icon: 'menu' },
+              { title: '图钉', icon: 'pushpin' },
+              { title: '锚点', icon: 'attachment' },
+              { title: '面包屑', icon: 'right' },
+              { title: '标签页', icon: 'project' }
             ]
           }
         ]
@@ -542,12 +561,20 @@ expand、selected、checked 和 disabled 可以设置展开，选中，勾选和
 ```html
 
 <template>
-  <div style="width: 300px;">
-    <b-tree :data="data" :render="renderContent" ref="tree"></b-tree>
+  <div flex>
+    <div class="p10" style="width: 300px;">
+      新增移除
+      <b-tree :data="data" :render="renderContent" ref="tree"></b-tree>
+    </div>
+    <div class="p10" style="width: 300px; border-left: 1px solid #eeeeee;">
+      下拉菜单
+      <b-tree :data="data1" :render="renderContent1"></b-tree>
+    </div>
   </div>
 </template>
 <script>
   import { h } from 'vue'
+  // import { BDropdown, BDropdownMenu, BDropdownItem } from 'bin-ui-next' 
 
   export default {
     data() {
@@ -562,8 +589,8 @@ expand、selected、checked 和 disabled 可以设置展开，选中，勾选和
               }, [
                 h('span', data.title),
                 h('i', {
-                  'class': ['b-iconfont', 'b-icon-plus-square'],
-                  style: { fontSize: '16px', color: '#1089ff' },
+                  'class': ['b-iconfont', 'b-icon-plus-square-fill'],
+                  style: { fontSize: '16px', color: '#1089ff', marginRight: '4px' },
                   onClick: () => {
                     this.append(data)
                   }
@@ -576,7 +603,20 @@ expand、selected、checked 和 disabled 可以设置展开，选中，勾选和
             ]
           }
         ],
-        id: 0,
+        data1: [
+          {
+            title: '导航',
+            icon: 'apartment',
+            expand: true,
+            children: [
+              { title: '导航菜单', icon: 'menu' },
+              { title: '图钉', icon: 'pushpin' },
+              { title: '锚点', icon: 'attachment' },
+              { title: '面包屑', icon: 'right' },
+              { title: '标签页', icon: 'project' }
+            ]
+          }
+        ],
       }
     },
     methods: {
@@ -584,10 +624,10 @@ expand、selected、checked 和 disabled 可以设置展开，选中，勾选和
         return h('span', {
           style: { display: 'inline-flex', justifyContent: 'space-between', width: '100%', }
         }, [
-          h('span', data.title),
-          h('span', { style: { display: 'inline-block', } }, [
+          h('span', { 'class': 't-ellipsis', style: { width: 'calc(100% - 36px)' } }, data.title),
+          h('span', { style: { width: '36px' } }, [
             h('i', {
-              'class': ['b-iconfont', 'b-icon-plus-circle'],
+              'class': ['b-iconfont', 'b-icon-plus-square-fill'],
               style: { fontSize: '16px', color: '#5d6d7e' },
               onClick: (e) => {
                 e.stopPropagation()
@@ -595,7 +635,7 @@ expand、selected、checked 和 disabled 可以设置展开，选中，勾选和
               }
             }),
             h('i', {
-              'class': ['b-iconfont', 'b-icon-minus-circle'],
+              'class': ['b-iconfont', 'b-icon-minus-square-fill'],
               style: { fontSize: '16px', color: '#f5222d' },
               onClick: (e) => {
                 e.stopPropagation()
@@ -618,7 +658,52 @@ expand、selected、checked 和 disabled 可以设置展开，选中，勾选和
         const parent = root.find(el => el.nodeKey === parentKey).node;
         const index = parent.children.indexOf(data);
         parent.children.splice(index, 1);
-      }
+      },
+      renderContent1({ root, node, data }) {
+        // 实际使用时，在最上方导入 import { BDropdown, BDropdownMenu, BDropdownItem } from 'bin-ui-next' 即可
+        const { BDropdown, BDropdownMenu, BDropdownItem } = this.BinUINext
+        const inline = [
+          h('span',
+              {
+                class: 't-ellipsis',
+                style: { width: 'calc(100% - 24px)' },
+                title: `${data.title}-(${data.field})`,
+              },
+              [
+                h('i', { 'class': ['b-iconfont', `b-icon-${data.icon}`], style: { marginRight: '4px' } }),
+                data.title,
+              ]
+          ),
+          h(
+              BDropdown,
+              {
+                trigger: 'click',
+                appendToBody: true,
+                placement: 'bottom-start',
+                onCommand: (name) => {
+                  console.log(name, data)
+                  this.$message(`[${name}] - node-title:[${data.title}]`)
+                },
+              },
+              {
+                default: () => h('i', { 'class': ['b-iconfont', 'b-icon-setting', 'setting-action'] }),
+                dropdown: () => h(BDropdownMenu, () => [
+                  h(
+                      BDropdownItem,
+                      { name: 'edit' },
+                      () => [h('i', { 'class': 'b-iconfont b-icon-edit-square' }), '编辑'],
+                  ),
+                  h(
+                      BDropdownItem,
+                      { name: 'delete' },
+                      () => [h('i', { 'class': 'b-iconfont b-icon-delete' }), '删除']
+                  ),
+                ]),
+              }
+          )
+        ]
+        return h('span', { style: { width: '100%', fontSize: '12px' }, flex: 'main:justify' }, inline)
+      },
     }
   }
 </script>
@@ -628,7 +713,7 @@ expand、selected、checked 和 disabled 可以设置展开，选中，勾选和
 
 ### 树选择
 
-由于书选择场景较多，这里也额外封装了一个树形选择器以供表单进行节点选择
+由于树选择场景较多，这里也额外封装了一个树形选择器以供表单进行节点选择
 
 ::: demo
 
@@ -850,8 +935,9 @@ expand、selected、checked 和 disabled 可以设置展开，选中，勾选和
 | check-strictly   | 复选框的情况下，是否严格的遵循父子不互相关联的做法 | Boolean          |  —   |   false   |
 | check-directly   | 开启后，在 show-checkbox 模式下，select 的交互也将转为 check | Boolean          |  —   |   false   |
 | lock-select    | 锁定树选择，再部分业务中常用，比如开启弹窗后禁用树的选中操作   | Boolean  |  —   |  false  |
+| title-ellipsis | 是否开启标题超长省略   | Boolean  |  —   |  true  |
 | filter-node-method   | 筛选过滤树节点函数   | Function  |  —   |   —   |
-| highlight-filter | 高亮搜索条件文字   | Boolean  |  —   |  false  |
+| highlight-filter | 高亮搜索条件文字   | Boolean  |  —   |  true  |
 | timeout  | 刷新频率（`<b-big-tree>`扩展组件可用）   | Number  |  —   |  17   |
 | itemHeight  | 节点高度 （`<b-big-tree>`扩展组件可用）  | Number  |  —   |  28   |
 | visibleCount  | 显示区域个数（`<b-big-tree>`扩展组件可用）   | Number  |  —   |  15   |
@@ -886,6 +972,7 @@ expand、selected、checked 和 disabled 可以设置展开，选中，勾选和
 
 | 属性      | 说明    | 类型      | 默认值   |
 |---------- |-------- |---------- |-------------  |
+| icon      | 节点显示icon   | String |  —   |
 | title     | 节点显示标题   | String |  —   |
 | expand     | 是否展开直子节点   | Boolean  | false  |
 | disabled   | 禁用   | Boolean  | false  |

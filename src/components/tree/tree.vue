@@ -53,9 +53,16 @@ export default {
     loadData: Function,
     render: Function,
     lockSelect: Boolean,
+    titleEllipsis: {
+      type: Boolean,
+      default: true,
+    },
     defaultExpand: Boolean,
     filterNodeMethod: Function,
-    highlightFilter: Boolean,
+    highlightFilter: {
+      type: Boolean,
+      default: true,
+    },
   },
   emits: ['select-change', 'toggle-expand', 'check-change'],
   setup(props, ctx) {
@@ -338,6 +345,7 @@ export default {
       checkDirectly: props.checkDirectly,
       render: props.render,
       states,
+      titleEllipsis: props.titleEllipsis,
       titleKey: props.titleKey,
       handleToggle,
       handleSelect,

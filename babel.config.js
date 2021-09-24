@@ -26,7 +26,7 @@ module.exports = {
       ],
       plugins: [
         [
-          'module-resolver',
+          'babel-plugin-module-resolver',
           {
             root: ['bin-ui-next'],
             alias: { 'bin-ui-next/src': 'bin-ui-next/lib' },
