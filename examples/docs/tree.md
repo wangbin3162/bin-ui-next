@@ -202,12 +202,14 @@ expand、selected、checked 和 disabled 可以设置展开，选中，勾选和
 
 <template>
   <div flex>
-    <div class="p10" style="width: 300px;">
-      多选
+    <div class="p10" style="width: 300px; border-right: 1px solid #eeeeee;">
+      <b-tag type="primary">多选</b-tag>
+      <b-divider style="margin: 8px 0;"></b-divider>
       <b-tree :data="data" show-checkbox multiple @select-change="handleSelect" @check-change="handleChecked"></b-tree>
     </div>
-    <div class="p10" style="width: 300px; border-left: 1px solid #eeeeee;">
-      附加图标
+    <div class="p10" style="width: 300px; border-right: 1px solid #eeeeee;">
+      <b-tag type="primary">附加图标</b-tag>
+      <b-divider style="margin: 8px 0;"></b-divider>
       <b-tree :data="data1"></b-tree>
     </div>
   </div>
@@ -552,6 +554,305 @@ expand、selected、checked 和 disabled 可以设置展开，选中，勾选和
 
 :::
 
+### 拖拽排序
+
+开启`draggable`可以开启树节点的拖拽功能，此时需要监听几个事件来进行数据处理
+
+::: demo
+
+```html
+
+<template>
+  <div flex>
+    <div class="p10" style="width: 300px; border-right: 1px solid #eeeeee;">
+      <b-tag type="primary">基础拖拽排序</b-tag>
+      <b-divider style="margin: 8px 0;"></b-divider>
+      <b-tree
+          :data="data"
+          ref="treeRef"
+          draggable
+          default-expand
+          @node-drag-start="handleDragStart"
+          @node-drag-enter="handleDragEnter"
+          @node-drag-leave="handleDragLeave"
+          @node-drag-end="handleDragEnd"
+          @node-drop="handleDrop"
+      ></b-tree>
+    </div>
+    <div class="p10" style="width: 300px; border-right: 1px solid #eeeeee;">
+      <b-tag type="primary">自定义函数配置</b-tag>
+      <b-divider style="margin: 8px 0;"></b-divider>
+      <b-tree
+          :allow-drop="allowDrop"
+          :allow-drag="allowDrag"
+          :data="data1"
+          :render="renderContent1"
+          draggable
+          lock-select
+          default-expand
+      ></b-tree>
+    </div>
+  </div>
+</template>
+<script>
+  import { reactive, toRefs, ref, h } from 'vue'
+
+  export default {
+    setup() {
+      const states = reactive({
+        data: [
+          {
+            title: '一级 1',
+            children: [
+              {
+                title: '二级 1-1',
+                children: [
+                  { title: '三级 1-1-1', },
+                  { title: '三级 1-1-2' }
+                ]
+              },
+              {
+                title: '二级 1-2',
+                children: [
+                  { title: '三级 1-2-1' },
+                  { title: '三级 1-2-2' }
+                ]
+              }
+            ]
+          },
+          {
+            title: '一级 2',
+            children: [
+              {
+                title: '二级 2-1',
+                children: [
+                  { title: '三级 2-1-1', },
+                  { title: '三级 2-1-2' }
+                ]
+              },
+              {
+                title: '二级 2-2',
+                children: [
+                  { title: '三级 2-2-1' },
+                  { title: '三级 2-2-2' }
+                ]
+              }
+            ]
+          }
+        ],
+        data1: [
+          {
+            title: '数据维度',
+            nodeType: 'root',
+            children: [
+              {
+                title: '国家层级',
+                nodeType: 'hierarchy',
+                children: [
+                  {
+                    field: 'country',
+                    title: '国家',
+                    dataType: 'STRING',
+                    type: 'dimension',
+                    nodeType: 'attribute',
+                    tableId: '0001',
+                  },
+                  {
+                    field: 'province',
+                    title: '省',
+                    dataType: 'STRING',
+                    type: 'dimension',
+                    nodeType: 'attribute',
+                    tableId: '0001',
+                  },
+                  {
+                    field: 'city',
+                    title: '市',
+                    dataType: 'STRING',
+                    type: 'dimension',
+                    nodeType: 'attribute',
+                    tableId: '0001',
+                  }
+                ]
+              },
+              {
+                title: '部门',
+                nodeType: 'folder',
+                children: [
+                  {
+                    field: 'dept_code',
+                    title: '部门编号',
+                    dataType: 'STRING',
+                    type: 'dimension',
+                    nodeType: 'attribute',
+                    tableId: '0002',
+                  },
+                  {
+                    field: 'dept_name',
+                    title: '部门名称',
+                    dataType: 'STRING',
+                    type: 'dimension',
+                    nodeType: 'attribute',
+                    tableId: '0002',
+                  },
+                ]
+              },
+            ]
+          },
+          {
+            title: '数据度量',
+            nodeType: 'root',
+            children: [
+              {
+                title: '默认',
+                nodeType: 'folder',
+                children: [
+                  {
+                    field: 'count',
+                    title: '统计',
+                    dataType: 'NUMBER',
+                    type: 'measure',
+                    nodeType: 'attribute',
+                    tableId: '0001',
+                  },
+                ]
+              },
+              {
+                title: '部门',
+                nodeType: 'folder',
+                children: [
+                  {
+                    field: 'parent_dept',
+                    title: '上级部门',
+                    dataType: 'NUMBER',
+                    type: 'measure',
+                    nodeType: 'attribute',
+                    tableId: '0002',
+                  },
+                  {
+                    field: 'level',
+                    title: '层级',
+                    dataType: 'NUMBER',
+                    type: 'measure',
+                    nodeType: 'attribute',
+                    tableId: '0002',
+                  },
+                ]
+              },
+            ]
+          },
+        ]
+      })
+      const treeRef = ref(null)
+
+      function allowDrop(draggingNode, dropNode, type) {
+        if (dropNode.nodeType === 'attribute') {
+          return type !== 'inner'
+        } else {
+          return dropNode.nodeType !== 'root'
+        }
+      }
+
+      function allowDrag(draggingNode) {
+        // 限制拖拽节点
+        return draggingNode.nodeType === 'attribute'
+      }
+
+      function renderContent1({ root, node, data }) {
+        // 实际使用时，在最上方导入 import { BDropdown, BDropdownMenu, BDropdownItem } from 'bin-ui-next' 即可
+        const { BDropdown, BDropdownMenu, BDropdownItem } = this.BinUINext
+        const iconMap = {
+          root: '',
+          hierarchy: 'cluster',
+          folder: 'folder',
+          dimension: 'deploymentunit',
+          measure: 'linechart'
+        }
+        const colorMap = {
+          root: '#1089ff',
+          hierarchy: '#1089ff',
+          folder: '#35495e',
+          dimension: '#1089ff',
+          measure: '#52c41a'
+        }
+        const iconType = data.nodeType === 'attribute' ? data.type : data.nodeType
+        const inline = [
+          h('span',
+              {
+                class: 't-ellipsis',
+                style: { width: 'calc(100% - 24px)' },
+                title: `${data.title}-(${data.field})`,
+              },
+              [
+                h('i', {
+                  'class': ['b-iconfont', `b-icon-${iconMap[iconType]}`],
+                  style: { fontSize: '16px', marginRight: '4px', color: colorMap[iconType] }
+                }),
+                data.title,
+              ]
+          ),
+          h(
+              BDropdown,
+              {
+                trigger: 'click',
+                appendToBody: true,
+                placement: 'bottom-start',
+                onCommand: (name) => {
+                  console.log(name, data)
+                  this.$message(`${name} node: [${data.title}]`)
+                },
+              },
+              {
+                default: () => h('i', { 'class': ['b-iconfont', 'b-icon-setting', 'setting-action'] }),
+                dropdown: () => h(BDropdownMenu, () => [
+                  h(
+                      BDropdownItem,
+                      { name: 'edit' },
+                      () => [h('i', { 'class': 'b-iconfont b-icon-edit-square' }), '编辑'],
+                  ),
+                  h(
+                      BDropdownItem,
+                      { name: 'delete' },
+                      () => [h('i', { 'class': 'b-iconfont b-icon-delete' }), '删除']
+                  ),
+                ]),
+              }
+          )
+        ]
+        return h('span', { style: { width: '100%', fontSize: '12px' }, flex: 'main:justify' }, inline)
+      }
+
+      return {
+        ...toRefs(states),
+        treeRef,
+        allowDrop,
+        allowDrag,
+        renderContent1
+      }
+    },
+    methods: {
+      handleDragStart(node, ev) {
+        console.log('drag start', node)
+      },
+      handleDragEnter(draggingNode, dropNode, ev) {
+        console.log('tree drag enter: ', dropNode.title)
+      },
+      handleDragLeave(draggingNode, dropNode, ev) {
+        console.log('tree drag leave: ', dropNode.title)
+      },
+      handleDragEnd(draggingNode, dropNode, dropType, ev) {
+        console.log('tree drag end: ', dropNode && dropNode.title, dropType)
+      },
+      handleDrop(draggingNode, dropNode, dropType, ev) {
+        console.log('tree drop: ', dropNode.title, dropType)
+      },
+    }
+  }
+</script>
+```
+
+:::
+
 ### render函数
 
 使用render函数可以设置更多自定义的效果
@@ -562,12 +863,14 @@ expand、selected、checked 和 disabled 可以设置展开，选中，勾选和
 
 <template>
   <div flex>
-    <div class="p10" style="width: 300px;">
-      新增移除
+    <div class="p10" style="width: 300px; border-right: 1px solid #eeeeee;">
+      <b-tag type="primary">新增移除</b-tag>
+      <b-divider style="margin: 8px 0;"></b-divider>
       <b-tree :data="data" :render="renderContent" ref="tree"></b-tree>
     </div>
-    <div class="p10" style="width: 300px; border-left: 1px solid #eeeeee;">
-      下拉菜单
+    <div class="p10" style="width: 300px; border-right: 1px solid #eeeeee;">
+      <b-tag type="primary">下拉菜单</b-tag>
+      <b-divider style="margin: 8px 0;"></b-divider>
       <b-tree :data="data1" :render="renderContent1"></b-tree>
     </div>
   </div>
@@ -682,7 +985,7 @@ expand、selected、checked 和 disabled 可以设置展开，选中，勾选和
                 placement: 'bottom-start',
                 onCommand: (name) => {
                   console.log(name, data)
-                  this.$message(`[${name}] - node-title:[${data.title}]`)
+                  this.$message(`${name} node: [${data.title}]`)
                 },
               },
               {
@@ -936,6 +1239,9 @@ expand、selected、checked 和 disabled 可以设置展开，选中，勾选和
 | check-directly   | 开启后，在 show-checkbox 模式下，select 的交互也将转为 check | Boolean          |  —   |   false   |
 | lock-select    | 锁定树选择，再部分业务中常用，比如开启弹窗后禁用树的选中操作   | Boolean  |  —   |  false  |
 | title-ellipsis | 是否开启标题超长省略   | Boolean  |  —   |  true  |
+| draggable | 是否开启拖拽节点功能   | Boolean  |  —   |  true  |
+| allow-drag   | 判断节点能否被拖拽 如果返回 false ，节点不能被拖动   | Function(node)  |  —   |   —   |
+| allow-drop   | 拖拽时判定目标节点能否成为拖动目标位置。 如果返回 false ，拖动节点不能被拖放到目标节点。type 参数有三种情况：'prev'、'inner' 和 'next'，分别表示放置在目标节点前、插入至目标节点和放置在目标节点后    | Function(draggingNode, dropNode, type)  |  —   |   —   |
 | filter-node-method   | 筛选过滤树节点函数   | Function  |  —   |   —   |
 | highlight-filter | 高亮搜索条件文字   | Boolean  |  —   |  true  |
 | timeout  | 刷新频率（`<b-big-tree>`扩展组件可用）   | Number  |  —   |  17   |
@@ -949,6 +1255,12 @@ expand、selected、checked 和 disabled 可以设置展开，选中，勾选和
 | select-change    | 点击树节点时触发   | 当前已选中的节点数组、当前项、flatState  |
 | check-change     | 点击复选框时触发   | 当前已勾选节点的数组、当前项、包含半选的节点数组、flatState  |
 | toggle-expand    | 展开和收起子列表时触发   | 当前节点的数据  |
+| node-drag-start    | 拖拽节点开始事件   | 被拖拽节点对应的 Node、event |
+| node-drag-enter    | 拖拽节点进入事件   | 被拖拽节点对应的 Node、当前进入节点对应的 Node、event |
+| node-drag-leave    | 拖拽节点移除事件   | 被拖拽节点对应的 Node、所离开节点对应的 Node、event |
+| node-drag-over   | 拖拽节点over事件  | 被拖拽节点对应的 Node、当前进入节点对应的 Node、event |
+| node-drag-end   | 拖拽节点结束事件  | 被拖拽节点对应的 Node、当前进入节点对应的 Node、放置节点类型 dropType、event |
+| node-drag   | 拖拽节点结束事件  | 被拖拽节点对应的 Node、当前进入节点对应的 Node、放置节点类型 dropType、event |
 
 ### Methods
 

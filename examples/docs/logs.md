@@ -5,6 +5,13 @@
 <div class="doc-update">
     <b-timeline> 
       <b-timeline-item>
+        <p class="version">1.0.4</p>
+        <p class="time">2021-09-24</p>
+        <p class="content"><i>🍀</i>升级vue依赖，现版本依赖最新3.2.16。</p>
+        <p class="content"><i>🐞</i>优化树节点显示，新增 title-ellipsis 标题超长省略</p>
+        <p class="content"><i>🍀</i>新增树节点拖拽功能，编写文档</p>
+      </b-timeline-item>
+      <b-timeline-item>
         <p class="version">1.0.3</p>
         <p class="time">2021-09-08</p>
         <p class="content"><i>🍀</i>升级vue依赖，现版本依赖最新3.2.10。</p>

@@ -1,4 +1,5 @@
 .bin-tree {
+  position: relative;
   font-size: var(--bin-base-font-size);
   color: var(--bin-color-text-default);
   &-wrapper {
@@ -35,8 +36,18 @@
     align-items: flex-start;
     padding: 0 0 4px 0;
     white-space: nowrap;
+    &.is-drop-inner {
+      > .bin-tree-title, > .bin-tree-render-title {
+        background-color: var(--bin-color-primary);
+        color: #fff
+      }
+    }
   }
-
+  &.is-dragging {
+    .bin-tree-title, .bin-tree-render-title {
+      transition: none;
+    }
+  }
   &-title {
     width: auto;
     min-width: calc(100% - 24px);
@@ -153,6 +164,14 @@
   }
 }
 
+
+.bin-tree__drop-indicator {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: var(--bin-color-primary);
+}
 .b-icon-loading {
   animation: rotating 2s linear infinite;
 }

@@ -1,7 +1,16 @@
 <template>
   <ul class="bin-tree-children">
     <li v-show="data.visible">
-      <div class="bin-tree-node">
+      <div
+        class="bin-tree-node"
+        ref="node$"
+        :draggable="TreeInstance.draggable"
+        :data-key="data.nodeKey"
+        @dragstart.stop="handleDragStart"
+        @dragover.stop="handleDragOver"
+        @dragend.stop="handleDragEnd"
+        @drop.stop="handleDrop"
+      >
         <span :class="arrowClasses">
           <i v-if="showArrow" class="b-iconfont b-icon-caret-right" @click="handleExpand"></i>
           <template v-if="!isLeaf">
@@ -59,7 +68,7 @@
 <script>
 import Render from './render'
 import CollapseTransition from '../collapse-transition'
-import { inject, nextTick, getCurrentInstance, provide, computed } from 'vue'
+import { inject, nextTick, ref, computed } from 'vue'
 import BCheckbox from '../checkbox'
 
 const prefixCls = 'bin-tree'
@@ -83,6 +92,7 @@ export default {
   },
   setup(props) {
     const TreeInstance = inject('BTreeRoot', {})
+    const node$ = ref(null)
 
     const isParentRender = computed(() => TreeInstance && TreeInstance.render)
     const parentRender = computed(() => TreeInstance.render || null)
@@ -130,7 +140,28 @@ export default {
       }
       TreeInstance.handleCheck(changes)
     }
+
+    const handleDragStart = (e) => {
+      if (!TreeInstance.draggable) return
+      TreeInstance.handleTreeNodeDragStart({ e, treeNode: { $el: node$.value, node: props.data } })
+    }
+
+    const handleDragOver = (e) => {
+      if (!TreeInstance.draggable) return
+      TreeInstance.handleTreeNodeDragOver({ e, treeNode: { $el: node$.value, node: props.data } })
+      e.preventDefault()
+    }
+
+    const handleDrop = (e) => {
+      e.preventDefault()
+    }
+
+    const handleDragEnd = (e) => {
+      if (!TreeInstance.draggable) return
+      TreeInstance.handleTreeNodeDragEnd({ e, treeNode: { $el: node$.value, node: props.data } })
+    }
     return {
+      node$,
       TreeInstance,
       isParentRender,
       parentRender,
@@ -139,6 +170,10 @@ export default {
       handleExpand,
       handleSelect,
       handleCheck,
+      handleDragStart,
+      handleDragOver,
+      handleDrop,
+      handleDragEnd,
     }
   },
   computed: {
