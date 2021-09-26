@@ -94,7 +94,7 @@ const config = {
     hot: true,
     port: 8090,
     static: {
-      directory: __dirname,
+      directory: path.resolve(__dirname, 'static'),
       publicPath: '/',
     },
     client: {
