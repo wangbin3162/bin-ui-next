@@ -43,7 +43,7 @@
     "sortablejs": "^1.14.0"
   },
   "peerDependencies": {
-    "vue": "^3.2.16"
+    "vue": "^3.2.19"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.1",
@@ -58,7 +58,7 @@
     "@rollup/plugin-node-resolve": "^9.0.0",
     "@rollup/plugin-replace": "^2.3.4",
     "@vue/babel-plugin-jsx": "^1.0.0",
-    "@vue/compiler-sfc": "^3.2.16",
+    "@vue/compiler-sfc": "^3.2.19",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.2",
     "babel-plugin-module-resolver": "^4.1.0",
@@ -94,7 +94,6 @@
     "stylus-loader": "3.0.2",
     "transliteration": "^2.2.0",
     "url-loader": "^4.1.1",
-    "vue": "^3.2.16",
     "vue-loader": "^16.1.2",
     "vue-router": "^4.0.2",
     "webpack": "^4.44.1",
