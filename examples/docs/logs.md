@@ -10,6 +10,7 @@
         <p class="content"><i>🍀</i>升级vue依赖，现版本依赖最新3.2.19。</p>
         <p class="content"><i>🐞</i>优化树节点显示，新增 title-ellipsis 标题超长省略</p>
         <p class="content"><i>🍀</i>新增树节点拖拽功能，编写文档</p>
+        <p class="content"><i>📖</i>更新文档依赖，更新webpack依赖，更新相关配置文件。</p>
       </b-timeline-item>
       <b-timeline-item>
         <p class="version">1.0.3</p>
