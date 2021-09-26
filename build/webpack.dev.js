@@ -4,12 +4,13 @@ const { VueLoaderPlugin } = require('vue-loader')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')
+const ProgressBarPlugin = require('progress-bar-webpack-plugin')
 
 const isProd = process.env.NODE_ENV === 'production'
 
 const config = {
   mode: isProd ? 'production' : 'development',
-  devtool: 'eval-source-map',
+  devtool: 'eval-cheap-module-source-map',
   entry: {
     app: './examples/main.js',
   },
@@ -84,18 +85,22 @@ const config = {
       favicon: './examples/favicon.ico',
     }),
     // new BundleAnalyzerPlugin(),
+    new ProgressBarPlugin(),
   ],
   performance: {
     hints: false,
   },
   devServer: {
-    inline: true,
     hot: true,
-    stats: 'minimal',
-    port: 8086,
-    publicPath: '/',
-    contentBase: __dirname,
-    overlay: true,
+    port: 8090,
+    static: {
+      directory: __dirname,
+      publicPath: '/',
+    },
+    client: {
+      progress: true,
+      overlay: true,
+    },
     open: true,
   },
   optimization: {
@@ -120,7 +125,6 @@ if (isProd) {
     minChunks: 1, // 模块出现1次就会被抽离到公共模块
     maxAsyncRequests: 5, // 异步模块，一次最多只能被加载5个
     maxInitialRequests: 3, // 入口模块最多只能加载3个
-    name: true,
     cacheGroups: {
       default: {
         minChunks: 2,

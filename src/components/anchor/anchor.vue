@@ -26,7 +26,7 @@ import {
   nextTick,
 } from 'vue'
 import { off, on, scrollTop } from '../../utils/dom'
-import { BIcon } from '../../index'
+import BIcon from '../icon/icon'
 
 export default {
   name: 'BAnchor',
