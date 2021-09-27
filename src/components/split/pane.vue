@@ -15,7 +15,6 @@ export default {
   setup(props) {
     return {
       classes: [props.split, props.className],
-      percent: 50,
     }
   },
 }

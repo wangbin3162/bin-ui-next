@@ -5,6 +5,12 @@
 <div class="doc-update">
     <b-timeline> 
       <b-timeline-item>
+        <p class="version">1.0.6</p>
+        <p class="time">2021-09-27</p>
+        <p class="content"><i>🍀</i>优化分割线，默认采用像素拖动，提供默认配置。</p>
+        <p class="content"><i>📖</i>更新文档</p>
+      </b-timeline-item>
+      <b-timeline-item>
         <p class="version">1.0.5</p>
         <p class="time">2021-09-26</p>
         <p class="content"><i>🍀</i>升级vue依赖，现版本依赖最新3.2.19。</p>
