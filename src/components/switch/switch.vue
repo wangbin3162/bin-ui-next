@@ -7,11 +7,12 @@
       @click="toggle"
       @keydown.space="toggle"
     >
-      <input type="hidden" :name="name" :value="currentValue"/>
+      <input type="hidden" :name="name" :value="currentValue" />
       <span class="bin-switch-inner">
         <slot name="open" v-if="currentValue === trueValue"></slot>
         <slot name="close" v-if="currentValue === falseValue"></slot>
       </span>
+      <i v-if="loading" class="b-iconfont b-icon-loading" :style="{color:currentValue?activeColor:inactiveColor}"></i>
     </span>
     <template #content>
       <p>
@@ -31,8 +32,10 @@
 <script>
 import BPopover from '../popover'
 import BButton from '../button'
-import { ref, watch } from 'vue'
+import { isPromise } from '@vue/shared'
+import { computed, ref, watch } from 'vue'
 import useForm from '../../hooks/useForm'
+import { isBool } from '../../utils/util-helper'
 
 const prefixCls = 'bin-switch'
 
@@ -55,7 +58,7 @@ export default {
     disabled: Boolean,
     size: {
       validator: (value) => {
-        return ['large', 'small', 'default', 'mini'].includes(value)
+        return ['large', 'small', 'default'].includes(value)
       },
       default: 'default',
     },
@@ -64,6 +67,11 @@ export default {
     inactiveColor: String,
     confirm: Boolean,
     confirmTxt: String,
+    loading: {
+      type: Boolean,
+      default: false,
+    },
+    beforeChange: Function,
   },
   emits: ['update:modelValue', 'change'],
   setup(props, { emit }) {
@@ -71,24 +79,67 @@ export default {
     const visible = ref(false)
     const { BForm, formEmit } = useForm()
 
-    const handleToggle = (e) => {
-      e.preventDefault()
-      if (props.disabled) {
-        return false
+    const switchDisabled = computed(() => props.disabled || props.loading || (BForm || {}).disabled)
+    const wrapClasses = computed(() => {
+      return [
+        `${prefixCls}`,
+        {
+          [`${prefixCls}-checked`]: currentValue.value === props.trueValue,
+          [`${prefixCls}-disabled`]: switchDisabled.value,
+          [`${prefixCls}-${props.size}`]: !!props.size,
+          'is-confirm': props.confirm,
+        },
+      ]
+    })
+    const wrapStyle = computed(() => {
+      let isChecked = currentValue.value === props.trueValue
+      return {
+        backgroundColor: isChecked ? props.activeColor : props.inactiveColor,
+        borderColor: isChecked ? props.activeColor : props.inactiveColor,
       }
-      const checked =
-        currentValue.value === props.trueValue
-          ? props.falseValue
-          : props.trueValue
+    })
+    // 更新
+    const handleChange = () => {
+      const checked = currentValue.value === props.trueValue ? props.falseValue : props.trueValue
       currentValue.value = checked
       emit('update:modelValue', checked)
       emit('change', checked)
 
       formEmit('change', checked)
     }
+    const handleToggle = (e) => {
+      e.preventDefault()
+      if (switchDisabled.value) return
+      const { beforeChange } = props
+      // 如果没有拦截函数，则直接更新
+      if (!beforeChange) {
+        handleChange()
+        return
+      }
+
+      const shouldChange = beforeChange()
+      const isExpectType = [isPromise(shouldChange), isBool(shouldChange)].some(i => i)
+      if (!isExpectType) {
+        console.error('beforeChange must return type `Promise<boolean>` or `boolean`')
+      }
+      if (isPromise(shouldChange)) {
+        shouldChange.then(result => {
+          if (result) {
+            handleChange()
+          }
+        }).catch(e => {
+          if (process.env.NODE_ENV !== 'production') {
+            console.warn(`switch beforeChange error: ${e}`)
+          }
+        })
+      } else if (shouldChange) {
+        handleChange()
+      }
+    }
     const toggle = (e) => {
       if (!props.confirm) handleToggle(e)
     }
+
     const confirmFun = (e) => {
       visible.value = false
       handleToggle(e)
@@ -109,26 +160,10 @@ export default {
       confirmFun,
       BForm,
       formEmit,
+      switchDisabled,
+      wrapStyle,
+      wrapClasses,
     }
-  },
-  computed: {
-    wrapClasses() {
-      return [
-        `${prefixCls}`,
-        {
-          [`${prefixCls}-checked`]: this.currentValue === this.trueValue,
-          [`${prefixCls}-disabled`]: this.disabled || this.BForm.disabled,
-          [`${prefixCls}-${this.size}`]: !!this.size,
-        },
-      ]
-    },
-    wrapStyle() {
-      let isChecked = this.currentValue === this.trueValue
-      return {
-        backgroundColor: isChecked ? this.activeColor : this.inactiveColor,
-        borderColor: isChecked ? this.activeColor : this.inactiveColor,
-      }
-    },
   },
 }
 </script>

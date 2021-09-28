@@ -85,18 +85,31 @@
 ```html
 
 <template>
-  <b-switch :disabled="disabled"></b-switch>&nbsp;
-  <b-button type="primary" @click="disabled = !disabled" size="mini">Toggle Disabled</b-button>
+  <b-switch :model-value="true" disabled size="large"></b-switch>&nbsp;
+  <b-switch :model-value="true" disabled></b-switch>&nbsp;
+  <b-switch :model-value="true" disabled size="small"></b-switch>&nbsp;
+  <b-switch :model-value="false" disabled size="large"></b-switch>&nbsp;
+  <b-switch :model-value="false" disabled></b-switch>&nbsp;
+  <b-switch :model-value="false" disabled size="small" disabled></b-switch>&nbsp;
 </template>
-<script>
-  export default {
-    data() {
-      return {
-        disabled: false
-      }
-    }
-  }
-</script>
+```
+
+:::
+
+### loading
+
+::: demo
+
+```html
+
+<template>
+  <b-switch :model-value="true" loading size="large"></b-switch>&nbsp;
+  <b-switch :model-value="true" loading></b-switch>&nbsp;
+  <b-switch :model-value="true" loading size="small"></b-switch>&nbsp;
+  <b-switch :model-value="false" loading size="large"></b-switch>&nbsp;
+  <b-switch :model-value="false" loading></b-switch>&nbsp;
+  <b-switch :model-value="false" loading size="small" disabled></b-switch>&nbsp;
+</template>
 ```
 
 :::
@@ -112,6 +125,64 @@
 <template>
   <b-switch confirm></b-switch>
 </template>
+```
+
+:::
+
+### 阻止切换
+
+可以配合loading和confirm一级before-change函数props来配合实现阻止切换
+
+::: demo
+
+```html
+
+<template>
+  <b-switch confirm v-model="value1" :loading="loading1" :before-change="beforeChange1"></b-switch>
+  &nbsp;
+  <b-switch confirm v-model="value2" :loading="loading2" :before-change="beforeChange2"></b-switch>
+</template>
+<script>
+  import { reactive, toRefs } from 'vue'
+
+  export default {
+    setup() {
+      const status1 = reactive({
+        value1: false,
+        loading1: false,
+      })
+      const beforeChange1 = () => {
+        status1.loading1 = true
+        return new Promise((resolve) => {
+          setTimeout(() => {
+            status1.loading1 = false
+            return resolve(true)
+          }, 1000)
+        })
+      }
+      const status2 = reactive({
+        value2: false,
+        loading2: false,
+      })
+
+      const beforeChange2 = () => {
+        status2.loading2 = true
+        return new Promise((_, reject) => {
+          setTimeout(() => {
+            status2.loading2 = false
+            return reject(new Error('调用出错！'))
+          }, 1000)
+        })
+      }
+      return {
+        ...toRefs(status1),
+        ...toRefs(status2),
+        beforeChange1,
+        beforeChange2
+      }
+    }
+  }
+</script>
 ```
 
 :::
