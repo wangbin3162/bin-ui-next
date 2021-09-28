@@ -143,7 +143,6 @@ export default {
         const currentPage = props.split === 'vertical' ? e.pageX : e.pageY
         const targetOffset = props.split === 'vertical' ? e.currentTarget.offsetWidth : e.currentTarget.offsetHeight
         const px = currentPage - offset
-        console.log(targetOffset)
         if (px >= props.min && px < targetOffset - props.min) {
           status.pixel = px
         }

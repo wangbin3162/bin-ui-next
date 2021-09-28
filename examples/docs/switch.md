@@ -85,13 +85,23 @@
 ```html
 
 <template>
-  <b-switch :model-value="true" disabled size="large"></b-switch>&nbsp;
-  <b-switch :model-value="true" disabled></b-switch>&nbsp;
-  <b-switch :model-value="true" disabled size="small"></b-switch>&nbsp;
-  <b-switch :model-value="false" disabled size="large"></b-switch>&nbsp;
-  <b-switch :model-value="false" disabled></b-switch>&nbsp;
-  <b-switch :model-value="false" disabled size="small" disabled></b-switch>&nbsp;
+  <b-switch v-model="value1" disabled size="large"></b-switch>&nbsp;
+  <b-switch v-model="value1" disabled></b-switch>&nbsp;
+  <b-switch v-model="value1" disabled size="small"></b-switch>&nbsp;
+  <b-switch v-model="value2" disabled size="large"></b-switch>&nbsp;
+  <b-switch v-model="value2" disabled></b-switch>&nbsp;
+  <b-switch v-model="value2" disabled size="small"></b-switch>&nbsp;
 </template>
+<script>
+  export default {
+    data() {
+      return {
+        value1: true,
+        value2: false
+      }
+    }
+  }
+</script>
 ```
 
 :::
@@ -103,13 +113,23 @@
 ```html
 
 <template>
-  <b-switch :model-value="true" loading size="large"></b-switch>&nbsp;
-  <b-switch :model-value="true" loading></b-switch>&nbsp;
-  <b-switch :model-value="true" loading size="small"></b-switch>&nbsp;
-  <b-switch :model-value="false" loading size="large"></b-switch>&nbsp;
-  <b-switch :model-value="false" loading></b-switch>&nbsp;
-  <b-switch :model-value="false" loading size="small" disabled></b-switch>&nbsp;
+  <b-switch v-model="value1" loading size="large"></b-switch>&nbsp;
+  <b-switch v-model="value1" loading></b-switch>&nbsp;
+  <b-switch v-model="value1" loading size="small"></b-switch>&nbsp;
+  <b-switch v-model="value2" loading size="large"></b-switch>&nbsp;
+  <b-switch v-model="value2" loading></b-switch>&nbsp;
+  <b-switch v-model="value2" loading size="small"></b-switch>&nbsp;
 </template>
+<script>
+  export default {
+    data() {
+      return {
+        value1: true,
+        value2: false
+      }
+    }
+  }
+</script>
 ```
 
 :::
@@ -200,6 +220,8 @@
 | inactive-color | switch 关闭时的背景色       | string |  —   |   —    |
 | confirm | 开启切换前拦截功能  | Boolean  |  —   |  false   |
 | confirm-txt | 切换拦截文字   | string |  —   |   —    |
+| loading | 加载中状态 | Boolean  |  —   |  —    |
+| beforeChange | 改变状态前拦截函数，return type Promise or boolean  | Function  |  —   |  —    |
 
 ### Events
 

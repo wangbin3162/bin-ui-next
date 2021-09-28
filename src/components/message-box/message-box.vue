@@ -289,7 +289,6 @@ export default {
 
     const handleClose = () => {
       handleAction('close')
-      console.log('close')
     }
 
     if (props.escClosable) {

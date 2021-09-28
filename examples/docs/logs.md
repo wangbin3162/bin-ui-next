@@ -5,7 +5,7 @@
 <div class="doc-update">
     <b-timeline> 
       <b-timeline-item>
-        <p class="version">1.0.7</p>
+        <p class="version">1.0.8</p>
         <p class="time">2021-09-28</p>
         <p class="content"><i>🌈</i>优化switch组件，新增loading和beforeChange切换前拦截。</p>
         <p class="content"><i>🌈</i>优化button组件样式</p>
