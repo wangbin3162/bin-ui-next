@@ -1,6 +1,6 @@
 {
   "name": "bin-ui-next",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "keywords": [
     "bin-ui-next",
     "bin-ui",
@@ -43,7 +43,7 @@
     "sortablejs": "^1.14.0"
   },
   "peerDependencies": {
-    "vue": "^3.2.19"
+    "vue": "^3.2.20"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.1",
@@ -52,13 +52,15 @@
     "@babel/plugin-transform-runtime": "^7.12.1",
     "@babel/polyfill": "^7.12.1",
     "@babel/preset-env": "^7.11.5",
+    "@babel/runtime": "^7.15.4",
     "@rollup/plugin-babel": "^5.2.2",
     "@rollup/plugin-commonjs": "^20.0.0",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^13.0.5",
     "@rollup/plugin-replace": "^3.0.0",
     "@vue/babel-plugin-jsx": "^1.0.0",
-    "@vue/compiler-sfc": "^3.2.19",
+    "@vue/compiler-sfc": "^3.2.20",
+    "@vue/shared": "^3.2.20",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.2",
     "babel-plugin-module-resolver": "^4.1.0",
@@ -94,7 +96,7 @@
     "stylus-loader": "6.1.0",
     "transliteration": "^2.2.0",
     "url-loader": "^4.1.1",
-    "vue": "^3.2.19",
+    "vue": "^3.2.20",
     "vue-loader": "16.5.0",
     "vue-router": "^4.0.2",
     "webpack": "^5.54.0",

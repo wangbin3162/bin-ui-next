@@ -108,62 +108,70 @@
   border-radius: var(--bin-border-base-radius);
   transition: all var(--bin-animation-duration-base) linear;
 }
-//  数字输入
+
 .bin-input-number-handler-wrap {
   position: absolute;
   top: 0;
   right: 0;
+  display: flex;
+  flex-direction: column;
   width: 22px;
   height: 100%;
-  border-left: var(--bin-border-base);
   border-radius: 0 var(--bin-border-base-radius) var(--bin-border-base-radius) 0;
   background: var(--bin-color-white);
-  &:hover .bin-input-number-handler {
-    height: 40%;
-  }
 }
+//  数字输入
 .bin-input-number-handler {
-  display: block;
-  width: 100%;
-  height: 50%;
-  line-height: 0;
+  position: absolute;
+  z-index: 1;
+  width: 22px;
+  height: auto;
   text-align: center;
-  overflow: hidden;
-  color: var(--bin-color-text-secondary);
-  position: relative;
-  transition: var(--bin-animation-duration-base);
-}
-.bin-input-number-handler-up {
   cursor: pointer;
-  &:hover {
-    height: 60% !important;
-    .bin-input-number-handler-up-inner {
+  font-size: 13px;
+  background: var(--bin-color-white);
+  right: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+  overflow: hidden;
+  border-left: var(--bin-border-base);
+  color: var(--bin-color-text-secondary);
+  transition: var(--bin-animation-duration-base);
+  &.bin-input-number-handler-up {
+    cursor: pointer;
+    border-bottom: var(--bin-border-base);
+    top: 0;
+    &:hover {
+      z-index: 2;
+      border-left-color: var(--bin-color-primary);
+      border-bottom-color: var(--bin-color-primary);
       color: var(--bin-color-primary);
     }
   }
-}
-.bin-input-number-handler-down {
-  border-top: var(--bin-border-base);
-  top: -1px;
-  cursor: pointer;
-  &:hover {
-    height: 60% !important;
-    .bin-input-number-handler-down-inner {
+  &.bin-input-number-handler-down {
+    cursor: pointer;
+    border-top: var(--bin-border-base);
+    bottom: 0;
+    &:hover {
+      z-index: 2;
+      border-left-color: var(--bin-color-primary);
+      border-top-color: var(--bin-color-primary);
       color: var(--bin-color-primary);
     }
+  }
+  &:active {
+    background: var(--bin-color-select-hover);
   }
 }
 .bin-input-number-handler-down-inner, .bin-input-number-handler-up-inner {
   user-select: none;
-  position: absolute;
-  top: 50%;
-  right: 4px;
   width: 12px;
   height: 12px;
-  transform: translateY(-50%);
+  transform: scale(0.8);
   line-height: 12px;
   font-size: 12px;
-  color: var(--bin-color-text-secondary);
   transition: all var(--bin-animation-duration-base) linear;
 }
 
@@ -188,9 +196,6 @@
   opacity: 1;
   cursor: not-allowed;
   color: var(--bin-color-text-disabled);
-}
-.bin-input-number-disabled .bin-input-number-handler-wrap {
-  display: none;
 }
 
 .bin-input-number-disabled.bin-input-number-always {
@@ -222,6 +227,9 @@
     height: var(--bin-mini-height);
     line-height: var(--bin-mini-height);
     vertical-align: top;
+  }
+  .bin-input-number-handler {
+    height: 12px;
   }
   .bin-input-number-input-wrap {
     height: var(--bin-mini-height);
@@ -265,6 +273,11 @@
       height: var(--bin-small-height);
       line-height: var(--bin-small-height-2);
     }
+  }
+}
+.bin-input-number-default {
+  .bin-input-number-handler {
+    height: 16px;
   }
 }
 .bin-input-number-large {

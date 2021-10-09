@@ -9,7 +9,7 @@
 ```html
 
 <template>
-  <b-input-number :max="10" :min="1" v-model="value1"></b-input-number>
+  <b-input-number :max="10" :min="1" v-model="value1" arrow-up-icon="plus" arrow-down-icon="minus"></b-input-number>
   &nbsp;
   <b-input-number :max="10" :min="1" v-model="value1" always></b-input-number>
 </template>
@@ -165,7 +165,9 @@
 |readonly    |是否设置为只读|    Boolean|-|    false|
 |editable    |是否可编辑|    Boolean| |    true|
 |precision    |数值精度|    Number| |    -|
-|active-change|    是否实时响应数据|    Boolean| |    true|
+|active-change |    是否实时响应数据|    Boolean| |    true|
+| arrow-up-icon | 普通模式下箭头图标|    String| |    up |
+| arrow-down-icon | 普通模式下箭头图标|    String| |    down |
 | always |    是否始终显示控制器 |    Boolean| true |    - |
 
 ### Events

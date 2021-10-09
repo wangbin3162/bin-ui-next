@@ -5,6 +5,13 @@
 <div class="doc-update">
     <b-timeline> 
       <b-timeline-item>
+        <p class="version">1.0.9</p>
+        <p class="time">2021-10-09</p>
+        <p class="content"><i>🌈</i>优化menu，input-number组件样式。</p>
+        <p class="content"><i>🍀</i>升级vue依赖，现版本依赖最新3.2.20。</p>
+        <p class="content"><i>🍀</i>文档更新安装依赖为pnpm。</p>
+      </b-timeline-item>
+      <b-timeline-item>
         <p class="version">1.0.8</p>
         <p class="time">2021-09-28</p>
         <p class="content"><i>🌈</i>优化switch组件，新增loading和beforeChange切换前拦截。</p>

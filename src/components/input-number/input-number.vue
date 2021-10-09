@@ -16,7 +16,7 @@
         <i class="b-iconfont b-icon-plus"></i>
       </a>
     </template>
-    <div v-else :class="handlerClasses">
+    <template v-else>
       <a
         @click="up"
         :class="upClasses">
@@ -27,7 +27,7 @@
         :class="downClasses">
         <span :class="innerDownClasses" @click="preventDefault"></span>
       </a>
-    </div>
+    </template>
     <div :class="inputWrapClasses">
       <input
         :id="elementId"
@@ -77,67 +77,75 @@ export default {
   props: {
     max: {
       type: Number,
-      default: Infinity
+      default: Infinity,
     },
     min: {
       type: Number,
-      default: -Infinity
+      default: -Infinity,
     },
     step: {
       type: Number,
-      default: 1
+      default: 1,
     },
     activeChange: {
       type: Boolean,
-      default: false
+      default: false,
     },
     modelValue: {
       type: Number,
-      default: 1
+      default: 1,
     },
     size: {
       type: String,
       validator: (val) => ['', 'large', 'default', 'small', 'mini'].includes(val),
-      default: 'default'
+      default: 'default',
     },
     disabled: {
       type: Boolean,
-      default: false
+      default: false,
     },
     autofocus: {
       type: Boolean,
-      default: false
+      default: false,
     },
     readonly: {
       type: Boolean,
-      default: false
+      default: false,
     },
     editable: {
       type: Boolean,
-      default: true
+      default: true,
     },
     name: {
-      type: String
+      type: String,
     },
     precision: {
-      type: Number
+      type: Number,
     },
     elementId: {
-      type: String
+      type: String,
     },
     formatter: {
-      type: Function
+      type: Function,
     },
     parser: {
-      type: Function
+      type: Function,
     },
     placeholder: {
       type: String,
-      default: ''
+      default: '',
+    },
+    arrowUpIcon: {
+      type: String,
+      default: 'up',
+    },
+    arrowDownIcon: {
+      type: String,
+      default: 'down',
     },
     always: {
-      type: Boolean
-    }
+      type: Boolean,
+    },
   },
   emits: ['update:modelValue', 'change', 'input', 'blur', 'focus'],
   setup(props, ctx) {
@@ -150,7 +158,7 @@ export default {
       currentValue: props.modelValue,
       focused: false,
       upDisabled: false,
-      downDisabled: false
+      downDisabled: false,
     })
 
     const preventDefault = (e) => {
@@ -295,19 +303,20 @@ export default {
       (val) => {
         data.currentValue = val
         changeVal(val)
-      }
+      },
+      { immediate: true },
     )
     watch(
       () => props.min,
       () => {
         changeVal(data.currentValue)
-      }
+      },
     )
     watch(
       () => props.max,
       () => {
         changeVal(data.currentValue)
-      }
+      },
     )
     return {
       BForm, BFormItem, formEmit,
@@ -320,52 +329,49 @@ export default {
       focus,
       blur,
       keyDown,
-      change
+      change,
     }
   },
   computed: {
-    handlerClasses() {
-      return `${prefixCls}-handler-wrap`
-    },
     upClasses() {
       return [
         `${prefixCls}-handler`,
         `${prefixCls}-handler-up`,
         {
-          [`${prefixCls}-handler-up-disabled`]: this.upDisabled
-        }
+          [`${prefixCls}-handler-up-disabled`]: this.upDisabled,
+        },
       ]
     },
     plusClasses() {
       return [
         `${prefixCls}-handler-plus`,
         {
-          [`${prefixCls}-handler-plus-disabled`]: this.upDisabled
-        }
+          [`${prefixCls}-handler-plus-disabled`]: this.upDisabled,
+        },
       ]
     },
     innerUpClasses() {
-      return `${prefixCls}-handler-up-inner b-iconfont b-icon-up`
+      return `${prefixCls}-handler-up-inner b-iconfont b-icon-${this.arrowUpIcon}`
     },
     downClasses() {
       return [
         `${prefixCls}-handler`,
         `${prefixCls}-handler-down`,
         {
-          [`${prefixCls}-handler-down-disabled`]: this.downDisabled
-        }
+          [`${prefixCls}-handler-down-disabled`]: this.downDisabled,
+        },
       ]
     },
     minusClasses() {
       return [
         `${prefixCls}-handler-minus`,
         {
-          [`${prefixCls}-handler-plus-minus`]: this.downDisabled
-        }
+          [`${prefixCls}-handler-plus-minus`]: this.downDisabled,
+        },
       ]
     },
     innerDownClasses() {
-      return `${prefixCls}-handler-down-inner b-iconfont b-icon-down`
+      return `${prefixCls}-handler-down-inner b-iconfont b-icon-${this.arrowDownIcon}`
     },
     inputWrapClasses() {
       return `${prefixCls}-input-wrap`
@@ -384,7 +390,7 @@ export default {
       } else {
         return this.precisionValue
       }
-    }
-  }
+    },
+  },
 }
 </script>
