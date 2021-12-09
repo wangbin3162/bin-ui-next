@@ -158,7 +158,7 @@
 | placement     | 提示框出现的位置   | string  |  top/top-start/top-end/bottom/bottom-start/bottom-end/left/left-start/left-end/right/right-start/right-end   |   —   |
 | disabled     | 是否禁用提示框   | Boolean  |  —   |   false   |
 | transition | 自定义渐变动画   |  string     |  —   |   fade-in-linear   |
-| visible-arrow     | 是否显示箭头  |  Boolean  |  —   |   true   |
+| show-arrow     | 是否显示箭头  |  Boolean  |  —   |   true   |
 | theme     | 主题   |  string  |  dark 或 light   |   dark   |
 | open-delay     | 延迟出现，单位毫秒   | number  | — |   0    |
 | hide-delay     | 延迟消失，单位毫秒   | number  | — |   0    |

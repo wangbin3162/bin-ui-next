@@ -208,7 +208,7 @@
 | v-model:visible     | 状态是否可见   | Boolean  |  —   |  false   |
 | placement     | 提示框出现的位置   | string  |  top/top-start/top-end/bottom/bottom-start/bottom-end/left/left-start/left-end/right/right-start/right-end   |   —   |
 | transition | 自定义渐变动画   |  string     |  —   |   fade-in-linear   |
-| visible-arrow     | 是否显示箭头  |  Boolean  |  —   |   true   |
+| show-arrow     | 是否显示箭头  |  Boolean  |  —   |   true   |
 | popper-options  | popper.js 参数   |  Object  |   —    |   { boundariesElement: 'body', gpuAcceleration: false }   |
 | show-after     | 延迟出现，单位毫秒   | number  | — |   0    |
 | hide-after     | 延迟消失，单位毫秒   | number  | — |   0    |

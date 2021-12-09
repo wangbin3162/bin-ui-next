@@ -98,34 +98,34 @@ export default {
     modelValue: String, // value一般为选中的id
     valueKey: {
       type: String,
-      default: 'id'
+      default: 'id',
     }, // 实际保存值
     checked: {
       type: Array,
       default() {
         return []
-      }
+      },
     },
     size: {
       type: String,
       validator: (value) => {
         return ['small', 'large', 'default', 'mini'].includes(value)
       },
-      default: 'default'
+      default: 'default',
     },
     disabled: Boolean,
     clearable: Boolean,
     placeholder: {
       type: String,
-      default: '请选择'
+      default: '请选择',
     },
     appendToBody: {
       type: Boolean,
-      default: true
+      default: true,
     },
     clearIcon: {
       type: String,
-      default: 'close-circle-fill'
+      default: 'close-circle-fill',
     },
     popperClass: String,
     // 树结构的props
@@ -133,28 +133,28 @@ export default {
       type: Array,
       default: () => {
         return []
-      }
+      },
     },
     showCheckbox: Boolean,
     checkStrictly: Boolean,
     checkDirectly: Boolean,
     emptyText: {
       type: String,
-      default: '暂无数据'
+      default: '暂无数据',
     },
     titleKey: {
       type: String,
-      default: 'title'
+      default: 'title',
     },
     childrenKey: {
       type: String,
-      default: 'children'
+      default: 'children',
     },
     loadData: Function,
     render: Function,
     lockSelect: Boolean,
     defaultExpand: Boolean,
-    filterNodeMethod: Function
+    filterNodeMethod: Function,
   },
   emits: [UPDATE_MODEL_EVENT, CHANGE_EVENT, 'clear', 'visible-change', 'focus', 'blur', 'update:checked'],
   setup(props, { emit }) {
@@ -231,6 +231,10 @@ export default {
             throwWarn('BTreeSelect', ' There is no such data in the tree structure!')
           }
         })
+      } else {
+        nextTick(() => {
+          handleClearClick()
+        })
       }
     }, { deep: true, immediate: true })
 
@@ -278,12 +282,8 @@ export default {
       toggleMenu,
       handleSelect,
       handleClose,
-      handleClearClick
+      handleClearClick,
     }
-  }
+  },
 }
 </script>
-
-<style scoped>
-
-</style>

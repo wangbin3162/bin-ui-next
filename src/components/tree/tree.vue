@@ -115,7 +115,6 @@ export default {
       dropType: null,
     })
 
-
     function compileFlatState() {
       // 每个结点都有一个关系父结点/子结点
       let keyCounter = 0
@@ -619,9 +618,7 @@ export default {
     isEmpty() {
       const { stateTree } = this
       return !stateTree || stateTree.length === 0 || stateTree.every(({ visible }) => !visible)
-    }
-    ,
-  }
-  ,
+    },
+  },
 }
 </script>

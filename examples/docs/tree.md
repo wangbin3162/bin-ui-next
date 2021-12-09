@@ -1047,6 +1047,10 @@ expand、selected、checked 和 disabled 可以设置展开，选中，勾选和
       <b-button @click="setChecked">设置默认勾选项目部</b-button>
     </div>
   </div>
+
+  <div class="pt-8 pb-8">
+    <b-button @click="clear">清空选择</b-button>
+  </div>
   <div>{{ currentId }}</div>
   <div>{{ currentNode }}</div>
   <div>{{ checked }}</div>
@@ -1148,6 +1152,11 @@ expand、selected、checked 和 disabled 可以设置展开，选中，勾选和
       },
       setChecked() {
         this.checked = ["002", "00201", "00202"]
+      },
+      clear() {
+        this.currentId = ''
+        this.currentNode = {}
+        this.checked = []
       }
     }
   }

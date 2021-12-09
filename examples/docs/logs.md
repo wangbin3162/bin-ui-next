@@ -5,6 +5,13 @@
 <div class="doc-update">
     <b-timeline> 
       <b-timeline-item>
+        <p class="version">1.0.10</p>
+        <p class="time">2021-12-09</p>
+        <p class="content"><i>🌈</i>优化树选择组件，清空绑定值清空问题。</p>
+        <p class="content"><i>🍀</i>升级vue依赖，现版本依赖最新3.2.24。</p>
+        <p class="content"><i>📖</i>修改部分文档错误</p>
+      </b-timeline-item>
+      <b-timeline-item>
         <p class="version">1.0.9</p>
         <p class="time">2021-10-09</p>
         <p class="content"><i>🌈</i>优化menu，input-number组件样式。</p>
