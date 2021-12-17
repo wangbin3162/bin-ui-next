@@ -9,21 +9,21 @@
         }
       ]">
     <template v-if="always">
-      <a @click="down" :class="minusClasses">
+      <a v-repeat-click="down" :class="minusClasses">
         <i class="b-iconfont b-icon-minus"></i>
       </a>
-      <a @click="up" :class="plusClasses">
+      <a v-repeat-click="up" :class="plusClasses">
         <i class="b-iconfont b-icon-plus"></i>
       </a>
     </template>
     <template v-else>
       <a
-        @click="up"
+        v-repeat-click="up"
         :class="upClasses">
         <span :class="innerUpClasses" @click="preventDefault"></span>
       </a>
       <a
-        @click="down"
+        v-repeat-click="down"
         :class="downClasses">
         <span :class="innerDownClasses" @click="preventDefault"></span>
       </a>
@@ -165,19 +165,19 @@ export default {
       e.preventDefault()
     }
 
-    const up = (e) => {
-      const targetVal = Number(e.target.value)
+    const up = () => {
+      const targetVal = Number(props.modelValue)
       if (data.upDisabled && isNaN(targetVal)) {
         return false
       }
-      changeStep('up', e)
+      changeStep('up', targetVal)
     }
-    const down = (e) => {
-      const targetVal = Number(e.target.value)
+    const down = () => {
+      const targetVal = Number(props.modelValue)
       if (data.downDisabled && isNaN(targetVal)) {
         return false
       }
-      changeStep('down', e)
+      changeStep('down', targetVal)
     }
     const focus = (e) => {
       data.focused = true
@@ -229,12 +229,12 @@ export default {
       }
     }
 
-    function changeStep(type, e) {
+    function changeStep(type, value) {
       if (props.disabled || props.readonly) {
         return false
       }
 
-      const targetVal = Number(e.target.value)
+      const targetVal = Number(value)
       let val = Number(data.currentValue)
       const step = Number(props.step)
       if (isNaN(val)) {

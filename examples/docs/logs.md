@@ -5,9 +5,10 @@
 <div class="doc-update">
     <b-timeline> 
       <b-timeline-item>
-        <p class="version">1.1.0</p>
+        <p class="version">1.1.1</p>
         <p class="time">2021-12-17</p>
         <p class="content"><i>🌈</i>优化按钮组件样式</p>
+        <p class="content"><i>🌈</i>增加repeat-click指令用于数字输入的连续点击</p>
         <p class="content"><i>🍀</i>全局新增图标，部分图标有更改。</p>
         <p class="content"><i>📖</i>更新文档图标显示等。</p>
       </b-timeline-item>
