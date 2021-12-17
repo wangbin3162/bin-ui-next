@@ -89,8 +89,7 @@ import { setConfig } from './utils/config'
 import log from './utils/log'
 import { scrollTop } from './utils/dom'
 import * as color from './utils/color'
-
-import { ClickAnimation, ClickOutside, NoData, Loading, Waves } from './directives'
+import { ClickAnimation, ClickOutside, NoData, Loading, Waves, RepeatClick } from './directives'
 
 import config from '../package.json'
 
@@ -202,6 +201,7 @@ const install = function (app, options = {}) {
     app.use(plugin)
   })
   // 注册全局指令
+  app.directive('RepeatClick', RepeatClick)
   app.directive('Waves', Waves)
   app.directive('ClickAnimation', ClickAnimation)
   app.directive('ClickOutside', ClickOutside)

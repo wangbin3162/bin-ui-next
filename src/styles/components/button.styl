@@ -1,7 +1,6 @@
 .bin-button {
   position: relative;
   display: inline-block;
-  vertical-align: middle;
   height: var(--bin-default-height);
   line-height: var(--bin-base-line-height);
   white-space: nowrap;
@@ -20,6 +19,9 @@
   font-size: var(--bin-base-font-size);
   border-radius: var(--bin-border-base-radius);
   .b-iconfont {
+    position: relative;
+    top: 1px;
+    line-height: 1;
     &.has-text {
       margin-right: 4px;
     }

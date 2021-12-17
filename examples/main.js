@@ -1,4 +1,3 @@
-import '@babel/polyfill'
 import { createApp } from 'vue'
 import router from './route'
 import App from './App.vue'
@@ -17,15 +16,11 @@ import '../src/styles/normalize.styl'
 import '../src/styles/index.styl'
 import './assets/styles/index.styl'
 
-import icon from '../src/components/icon/iconfont.json'
 import generate from './generateTreeData'
-
-const icons = icon.glyphs.map(i => i.font_class)
 
 const app = createApp(App)
 app.use(BinUI) // , { disabledDoc: true }
 app.config.productionTip = false
-app.config.globalProperties.$icon = icons
 app.config.globalProperties.$generateTree = generate // Icon 列表页用
 
 app.config.globalProperties.BinUINext = BinUINext // Icon 列表页用

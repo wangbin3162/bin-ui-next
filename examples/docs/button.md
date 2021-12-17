@@ -273,20 +273,6 @@ Button 组件提供除了默认值以外的三种尺寸，可以在不同场景�
         @click="loading=true"
     >Click me!
     </b-button>
-    <b-button
-        type="primary"
-        :loading="loading"
-        loading-icon="loading1"
-        @click="loading=true"
-    >Click me!
-    </b-button>
-    <b-button
-        type="primary"
-        :loading="loading"
-        loading-icon="loading2"
-        @click="loading=true"
-    >Click me!
-    </b-button>
     <b-button @click="loading=false">stop</b-button>
   </div>
 </template>
@@ -305,7 +291,7 @@ Button 组件提供除了默认值以外的三种尺寸，可以在不同场景�
 
 ### 点击动画
 
-可以设置两种不同的点击动画['click','waves'] ,默认为 click
+通过指令`v-waves`开启水波纹动画
 
 ::: demo
 
@@ -315,8 +301,8 @@ Button 组件提供除了默认值以外的三种尺寸，可以在不同场景�
   <div class="demo-button">
     <b-button>Click me!</b-button>
     <b-button type="danger">Click me!</b-button>
-    <b-button animation-type="waves">Wave Click!</b-button>
-    <b-button type="success" animation-type="waves">Wave Click!</b-button>
+    <b-button v-waves>Wave Click!</b-button>
+    <b-button type="success" v-waves>Wave Click!</b-button>
   </div>
 </template>
 ```

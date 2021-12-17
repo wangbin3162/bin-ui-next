@@ -84,11 +84,13 @@ import BInput from '../input/input'
 import { CHANGE_EVENT, UPDATE_MODEL_EVENT } from '../../utils/constants'
 import { computed, ref, watch } from 'vue'
 import useForm from '../../hooks/useForm'
-import icon from '../icon/iconfont.json'
 import BScrollbar from '../scrollbar/scrollbar'
 import BButton from '../button/button'
 import BIcon from '../icon/icon'
 import BEmpty from '../empty/empty'
+import icon from '../../styles/fonts/iconfont.json'
+
+const iconList = icon.glyphs.map(v => v.font_class)
 
 export default {
   name: 'BIconSelect',
@@ -127,7 +129,10 @@ export default {
     const selectedLabel = ref(props.modelValue)
     const visible = ref(false)
     const inputHovering = ref(false)
-    const icons = ref(icon.glyphs.map(i => i.font_class))
+    const icons = ref([
+      ...iconList.filter(i => !i.includes('-fill')),
+      ...iconList.filter(i => i.includes('-fill')),
+    ])
     const query = ref('')
 
     const popperPaneRef = computed(() => popper.value?.popperRef)

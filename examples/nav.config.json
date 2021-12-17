@@ -350,7 +350,7 @@
         },
         {
           "desc": "Loading 加载",
-          "icon": "loading2",
+          "icon": "loading",
           "name": "loading",
           "path": "/loading"
         },

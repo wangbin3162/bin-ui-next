@@ -1,8 +1,8 @@
 <template>
-  <p>收录了<span style="color:red;">{{ $icon.length }}</span>个图标</p>
+  <p>收录了<span style="color:red;">{{ baseIcons.length }}</span>个图标</p>
   <b-alert type="error">点击复制图标名称，右键复制组件代码</b-alert>
   <ul class="icon-list">
-    <li v-for="name in $icon"
+    <li v-for="name in baseIcons"
         :key="name"
         class="list-complete-item"
         @click="copy(name)" @contextmenu.stop.prevent="copyComp(name)"
@@ -17,10 +17,21 @@
 
 <script>
 import BAlert from '../../src/components/alert/alert'
+import builtInIcons from '../../src/styles/fonts/iconfont.json'
+
+const iconList = builtInIcons.glyphs.map(v => v.font_class)
 
 export default {
   name: 'icon-pane',
-  components: {BAlert},
+  components: { BAlert },
+  data() {
+    return {
+      baseIcons: [
+        ...iconList.filter(i => !i.includes('-fill')),
+        ...iconList.filter(i => i.includes('-fill')),
+      ],
+    }
+  },
   methods: {
     copy(name) {
       this.$copy(name)

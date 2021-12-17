@@ -1,36 +1,12 @@
 <template>
   <button
-    v-if="type !== 'text' && animationType === 'click'"
+    v-if="type !== 'text'"
     class="bin-button"
     :disabled="disabled || loading"
     :type="nativeType"
     :class="btnClass"
     @click="handleClick"
     v-click-animation
-  >
-    <span :style="textStyle">
-      <i
-        class="bin-button-loading icon-is-rotating"
-        :class="['b-iconfont', `b-icon-${loadingIcon||'loading'}`,{'has-text':$slots.default}]"
-        v-if="loading"
-        :style="iconStyles"
-      ></i>
-      <i
-        :class="['b-iconfont', 'b-icon-' + icon,{'has-text':$slots.default}]"
-        v-if="icon && !loading"
-        :style="iconStyles"
-      ></i>
-      <slot></slot>
-    </span>
-  </button>
-  <button
-    v-else-if="type !== 'text' && animationType === 'waves'"
-    class="bin-button"
-    :disabled="disabled || loading"
-    :type="nativeType"
-    :class="btnClass"
-    @click="handleClick"
-    v-waves="waveColor"
   >
     <span :style="textStyle">
       <i

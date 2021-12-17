@@ -68,7 +68,7 @@ export default {
               compList.value.push({
                 path: route.path,
                 label: route.desc,
-                icon: route.icon
+                icon: route.icon,
               })
             }
           }
@@ -118,7 +118,7 @@ export default {
           handleClose()
         }
       } else {
-        if (ctrlKey && code === 'KeyF') {
+        if (ctrlKey && code === 'KeyF' && $route.path !== '/icon') {
           e.preventDefault()
           handleOpen()
         }
@@ -142,9 +142,9 @@ export default {
       handleOpen,
       handleClose,
       showScroll,
-      handleClick
+      handleClick,
     }
-  }
+  },
 }
 </script>
 
