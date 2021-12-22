@@ -5,6 +5,13 @@
 <div class="doc-update">
     <b-timeline> 
       <b-timeline-item>
+        <p class="version">1.1.2</p>
+        <p class="time">2021-12-22</p>
+        <p class="content"><i>🌈</i>优化样式文件引用路径问题</p>
+        <p class="content"><i>🐞</i>修复cli工程导入样式的字体路径问题。</p>
+        <p class="content"><i>📖</i>更新文档图标显示等。</p>
+      </b-timeline-item>
+      <b-timeline-item>
         <p class="version">1.1.1</p>
         <p class="time">2021-12-17</p>
         <p class="content"><i>🌈</i>优化按钮组件样式</p>
