@@ -12,10 +12,14 @@
 
 <template>
   <b-tabs v-model="activeTab" :data="tabs"></b-tabs>
-  <p v-show="activeTab==='tab0'">首页</p>
-  <p v-show="activeTab==='tab1'">用户管理</p>
-  <p v-show="activeTab==='tab2'">组织管理</p>
-  <p v-show="activeTab==='tab3'">系统管理</p>
+  <div style="overflow:hidden;">
+    <b-move-transition>
+      <p v-if="activeTab==='tab0'">首页</p>
+      <p v-else-if="activeTab==='tab1'">用户管理</p>
+      <p v-else-if="activeTab==='tab2'">组织管理</p>
+      <p v-else-if="activeTab==='tab3'">系统管理</p>
+    </b-move-transition>
+  </div>
 </template>
 <script>
   import { ref } from 'vue'
@@ -137,64 +141,67 @@
 配合可以关闭，可以开启右键菜单实现更多的配置信息，开启右键菜单需要手动插入右键菜单的按钮列表标签为`<li>`,并需要配合`tab-select`事件
 
 ::: demo
+
 ```html
+
 <template>
   <b-tabs v-model="activeTab" :data="tabs" type="card" closable context-menu
-    ref="tabs" @tab-close="handleTabClose" @tab-select="handleSelect">
+          ref="tabs" @tab-close="handleTabClose" @tab-select="handleSelect">
     <template v-slot:menu>
-        <li @click="refreshSelected">刷新</li>
-        <li @click="closeSelected">关闭</li>
-        <li @click="closeOthers">关闭其他</li>
-        <li @click="closeAll">关闭所有</li>
+      <li @click="refreshSelected">刷新</li>
+      <li @click="closeSelected">关闭</li>
+      <li @click="closeOthers">关闭其他</li>
+      <li @click="closeAll">关闭所有</li>
     </template>
   </b-tabs>
   <p>开启的tab：{{ activeTab }}</p>
 </template>
 <script>
-export default {
-  data(){
-    return {
-      tabs:[
-        {key:'tab1',title:'用户管理'},
-        {key:'tab2',title:'组织管理'},
-        {key:'tab3',title:'系统管理'},
-        {key:'tab4',title:'目录模块配置'}
-      ],
-      activeTab: 'tab2'
-    } 
-  },
-  methods:{
-    handleTabClose(tab){
-      this.tabs.splice(this.tabs.findIndex(t => t.key === tab.key), 1)
+  export default {
+    data() {
+      return {
+        tabs: [
+          { key: 'tab1', title: '用户管理' },
+          { key: 'tab2', title: '组织管理' },
+          { key: 'tab3', title: '系统管理' },
+          { key: 'tab4', title: '目录模块配置' }
+        ],
+        activeTab: 'tab2'
+      }
     },
-    // 缓存右键选中的tab
-    handleSelect(tab){
-      this.selectTab = {...tab}
-    },
-    // 刷新当前view
-    refreshSelected () {
-      this.$message('刷新当前view:'+this.selectTab.title)
-    },
-    closeSelected(){
-      // 这里需要调用组件的关闭选择的tag
-      this.$refs.tabs.closeSelectedTab(this.selectTab)
-    }, 
-    // 关闭其他tags
-    closeOthers () {
+    methods: {
+      handleTabClose(tab) {
+        this.tabs.splice(this.tabs.findIndex(t => t.key === tab.key), 1)
+      },
+      // 缓存右键选中的tab
+      handleSelect(tab) {
+        this.selectTab = { ...tab }
+      },
+      // 刷新当前view
+      refreshSelected() {
+        this.$message('刷新当前view:' + this.selectTab.title)
+      },
+      closeSelected() {
+        // 这里需要调用组件的关闭选择的tag
+        this.$refs.tabs.closeSelectedTab(this.selectTab)
+      },
+      // 关闭其他tags
+      closeOthers() {
         this.tabs = [this.selectTab]
         this.activeTab = this.selectTab.key
         this.$refs.tabs.moveToCurrentTab()
-    },
-    // 关闭所有
-    closeAll () {
+      },
+      // 关闭所有
+      closeAll() {
         this.tabs = []
         this.activeTab = ''
         this.$refs.tabs.moveToCurrentTab()
+      }
     }
   }
-}
 </script>
 ```
+
 :::
 
 ### 标签模式
@@ -202,73 +209,78 @@ export default {
 除了卡片模式也可以设置成tag标签模式，这种模式更独立也更像标签导航。根据需求选择使用
 
 ::: demo
+
 ```html
+
 <template>
-  <div class="mb-15"><b-button type="primary" plain size="small" @click="handleAdd">add tab</b-button></div>
+  <div class="mb-15">
+    <b-button type="primary" plain size="small" @click="handleAdd">add tab</b-button>
+  </div>
   <b-tabs v-model="activeTab" :data="tabs" type="tag" closable context-menu
-    ref="tabs" @tab-close="handleTabClose" @tab-select="handleSelect">
+          ref="tabs" @tab-close="handleTabClose" @tab-select="handleSelect">
     <template v-slot:menu>
-        <li @click="refreshSelected">刷新</li>
-        <li @click="closeSelected">关闭</li>
-        <li @click="closeOthers">关闭其他</li>
-        <li @click="closeAll">关闭所有</li>
+      <li @click="refreshSelected">刷新</li>
+      <li @click="closeSelected">关闭</li>
+      <li @click="closeOthers">关闭其他</li>
+      <li @click="closeAll">关闭所有</li>
     </template>
   </b-tabs>
   <p>开启的tab：{{ activeTab }}</p>
 </template>
 <script>
-export default {
-  data(){
-    return {
-      tabs:[
-        {key:'tab0',title:'首页',noClose:true},
-        {key:'tab1',title:'用户管理',icon:'user'},
-        {key:'tab2',title:'组织管理'},
-        {key:'tab3',title:'系统管理'},
-        {key:'tab4',title:'目录模块配置'}
-      ],
-      activeTab: 'tab2'
-    } 
-  },
-  methods:{
-    handleAdd(){
-      // 这里需要保证key值唯一否则会影响渲染显示
-      const newTab = { key:`tab${+new Date()}`,title:'New Tab' }
-      this.tabs.push(newTab)
-      // 增加完毕后通常默认选中这个新的tab
-      this.activeTab = newTab.key
+  export default {
+    data() {
+      return {
+        tabs: [
+          { key: 'tab0', title: '首页', noClose: true },
+          { key: 'tab1', title: '用户管理', icon: 'user' },
+          { key: 'tab2', title: '组织管理' },
+          { key: 'tab3', title: '系统管理' },
+          { key: 'tab4', title: '目录模块配置' }
+        ],
+        activeTab: 'tab2'
+      }
     },
-    handleTabClose(tab){
-      this.tabs.splice(this.tabs.findIndex(t => t.key === tab.key), 1)
-    },
-    // 缓存右键选中的tab
-    handleSelect(tab){
-      this.selectTab = {...tab}
-    },
-    // 刷新当前view
-    refreshSelected () {
-      this.$message('刷新当前view:'+this.selectTab.title)
-    },
-    closeSelected(){
-      // 这里需要调用组件的关闭选择的tag
-      this.$refs.tabs.closeSelectedTab(this.selectTab)
-    }, 
-    // 关闭其他tags
-    closeOthers () {
+    methods: {
+      handleAdd() {
+        // 这里需要保证key值唯一否则会影响渲染显示
+        const newTab = { key: `tab${+new Date()}`, title: 'New Tab' }
+        this.tabs.push(newTab)
+        // 增加完毕后通常默认选中这个新的tab
+        this.activeTab = newTab.key
+      },
+      handleTabClose(tab) {
+        this.tabs.splice(this.tabs.findIndex(t => t.key === tab.key), 1)
+      },
+      // 缓存右键选中的tab
+      handleSelect(tab) {
+        this.selectTab = { ...tab }
+      },
+      // 刷新当前view
+      refreshSelected() {
+        this.$message('刷新当前view:' + this.selectTab.title)
+      },
+      closeSelected() {
+        // 这里需要调用组件的关闭选择的tag
+        this.$refs.tabs.closeSelectedTab(this.selectTab)
+      },
+      // 关闭其他tags
+      closeOthers() {
         this.tabs = [this.selectTab]
         this.activeTab = this.selectTab.key
         this.$refs.tabs.moveToCurrentTab()
-    },
-    // 关闭所有
-    closeAll () {
+      },
+      // 关闭所有
+      closeAll() {
         this.tabs = []
         this.activeTab = ''
         this.$refs.tabs.moveToCurrentTab()
+      }
     }
   }
-}
 </script>
 ```
+
 :::
 
 ### Props

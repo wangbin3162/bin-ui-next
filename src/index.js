@@ -12,6 +12,7 @@ import BRow from './components/row'
 import BCol from './components/col'
 import BSpace from './components/space'
 import BCollapseTransition from './components/collapse-transition'
+import BMoveTransition from './components/move-transition'
 import BDivider from './components/divider'
 import BPopper from './components/popper'
 import BPopover from './components/popover'
@@ -119,6 +120,7 @@ const components = [
   BSpace,
   BLoading,
   BCollapseTransition,
+  BMoveTransition,
   BDivider,
   BPopper,
   BPopover,
@@ -248,6 +250,7 @@ export {
   BSpace,
   BLoading,
   BCollapseTransition,
+  BMoveTransition,
   BDivider,
   BPopper,
   BPopover,

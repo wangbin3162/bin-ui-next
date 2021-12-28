@@ -5,6 +5,12 @@
 <div class="doc-update">
     <b-timeline> 
       <b-timeline-item>
+        <p class="version">1.1.3</p>
+        <p class="time">2021-12-28</p>
+        <p class="content"><i>🐞</i>修复tabs组件，修复动态绑定数值时的样式计算问题。</p>
+        <p class="content"><i>🌈</i>新增一个隐藏式的`b-move-transition`组件，用于处理同层级的动画渲染问题。</p>
+      </b-timeline-item>
+      <b-timeline-item>
         <p class="version">1.1.2</p>
         <p class="time">2021-12-22</p>
         <p class="content"><i>🌈</i>优化样式文件引用路径问题</p>

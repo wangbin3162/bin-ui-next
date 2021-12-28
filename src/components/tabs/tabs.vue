@@ -99,6 +99,11 @@ export default {
     // 计算滚动宽度
     const calcScrollWidth = () => {
       scrollPaneRef?.value.calcWidth()
+      if (props.type === 'default') {     // 计算bar位置
+        nextTick(() => {
+          calcBar()
+        })
+      }
     }
 
     // 移动到当前的tag
@@ -118,11 +123,11 @@ export default {
     const handleSelectTab = (tab) => {
       data.selectedTag = { ...tab }
       emitInput()
-      nextTick(() => {
-          // 计算bar位置
+      if (props.type === 'default') {     // 计算bar位置
+        nextTick(() => {
           calcBar()
-        },
-      )
+        })
+      }
     }
 
     // 移动焦点至后一个view
@@ -166,24 +171,25 @@ export default {
     }
     const calcEvent = throttle(calcScrollWidth, 10)
     onMounted(() => {
-      calcBar()
       addResizeListener(rootRef.value, calcEvent)
       on(window, 'resize', calcEvent)
-      nextTick(() => {
-        calcScrollWidth()
-      })
+      calcScrollWidth()
     })
     onBeforeUnmount(() => {
       removeResizeListener(rootRef.value, calcEvent)
       off(window, 'resize', calcEvent)
     })
     watch(
-      () => props.data,
+      [
+        () => props.data,
+        () => props.modelValue,
+      ],
       () => {
         nextTick(() => {
           calcScrollWidth()
         })
       },
+      { immediate: true, deep: true },
     )
     watch(
       () => data.visible,
