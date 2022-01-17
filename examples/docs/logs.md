@@ -3,7 +3,13 @@
 更新日志记录
 
 <div class="doc-update">
-    <b-timeline> 
+    <b-timeline>
+      <b-timeline-item>
+        <p class="version">1.1.4</p>
+        <p class="time">2022-01-17</p>
+        <p class="content"><i>🌈</i>更新vue依赖，优化部分样式及代码片段段。</p>
+        <p class="content"><i>🐞</i>修复因依赖而导致time-picker导致无法定位滚动的bug。</p>
+      </b-timeline-item>
       <b-timeline-item>
         <p class="version">1.1.3</p>
         <p class="time">2021-12-28</p>

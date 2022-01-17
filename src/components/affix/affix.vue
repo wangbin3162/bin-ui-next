@@ -1,6 +1,6 @@
 <template>
   <div ref="root" class="bin-affix" :style="rootStyle">
-    <div :class="{'bin-affix--fixed': state.fixed}" :style="affixStyle">
+    <div :class="{ 'bin-affix--fixed': state.fixed }" :style="affixStyle">
       <slot></slot>
     </div>
   </div>
@@ -39,10 +39,10 @@ export default {
 
     const state = reactive({
       fixed: false,
-      height: 0,  // height of root
-      width: 0,  // width of root
+      height: 0, // height of root
+      width: 0, // width of root
       scrollTop: 0, // scrollTop of documentElement
-      clientHeight: 0,  // clientHeight of documentElement
+      clientHeight: 0, // clientHeight of documentElement
       transform: 0,
     })
 
@@ -75,7 +75,10 @@ export default {
       const targetRect = target.value.getBoundingClientRect()
       state.height = rootRect.height
       state.width = rootRect.width
-      state.scrollTop = scrollContainer.value === window ? document.documentElement.scrollTop : scrollContainer.value.scrollTop
+      state.scrollTop =
+        scrollContainer.value === window
+          ? document.documentElement.scrollTop
+          : scrollContainer.value.scrollTop
       state.clientHeight = document.documentElement.clientHeight
 
       if (props.position === 'top') {
@@ -89,7 +92,9 @@ export default {
       } else {
         if (target.value) {
           const difference = state.clientHeight - targetRect.top - props.offset - state.height
-          state.fixed = state.clientHeight - props.offset < rootRect.bottom && state.clientHeight > targetRect.top
+          state.fixed =
+            state.clientHeight - props.offset < rootRect.bottom &&
+            state.clientHeight > targetRect.top
           state.transform = difference < 0 ? -difference : 0
         } else {
           state.fixed = state.clientHeight - props.offset < rootRect.bottom
@@ -105,9 +110,12 @@ export default {
       })
     }
 
-    watch(() => state.fixed, () => {
-      emit('change', state.fixed)
-    })
+    watch(
+      () => state.fixed,
+      () => {
+        emit('change', state.fixed)
+      },
+    )
 
     onMounted(() => {
       if (props.target) {
@@ -118,7 +126,9 @@ export default {
       } else {
         target.value = document.documentElement
       }
-      scrollContainer.value = [window, document, document.documentElement].includes(target.value) ? window : target.value
+      scrollContainer.value = [window, document, document.documentElement].includes(target.value)
+        ? window
+        : target.value
 
       on(scrollContainer.value, 'scroll', onScroll)
       addResizeListener(root.value, updateState)

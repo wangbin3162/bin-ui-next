@@ -153,6 +153,7 @@ placeholder() {
     }
   }
   &__item {
+    cursor: pointer;
     height: 32px;
     line-height: 32px;
     font-size: 12px;
@@ -164,6 +165,9 @@ placeholder() {
     &.active:not(.disabled) {
       color: var(--bin-color-text-primary);
       font-weight: 500;
+    }
+    &:hover:not(.disabled) {
+      background-color: var(--bin-color-select-hover);
     }
   }
   &__arrow {
