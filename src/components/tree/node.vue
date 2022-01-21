@@ -34,16 +34,11 @@
           <span
             v-if="data.display"
             :class="titleClasses"
-            :title="data.display"
+            :title="data[titleKey]"
             v-html="data.display"
             @click="handleSelect"
           ></span>
-          <span
-            v-else
-            :class="titleClasses"
-            :title="data[titleKey]"
-            @click="handleSelect"
-          >
+          <span v-else :class="titleClasses" :title="data[titleKey]" @click="handleSelect">
             <i v-if="data.icon" :class="`b-iconfont b-icon-${data.icon}`"></i>{{ data[titleKey] }}
           </span>
         </template>
@@ -97,10 +92,12 @@ export default {
     const isParentRender = computed(() => TreeInstance && TreeInstance.render)
     const parentRender = computed(() => TreeInstance.render || null)
     const titleKey = computed(() => TreeInstance.titleKey || 'title')
-    const node = computed(() => [TreeInstance.states.flatState, TreeInstance.states.flatState.find(item => item.nodeKey === props.data.nodeKey)])
+    const node = computed(() => [
+      TreeInstance.states.flatState,
+      TreeInstance.states.flatState.find((item) => item.nodeKey === props.data.nodeKey),
+    ])
     const handleExpand = () => {
       const item = props.data
-      if (item.disabled) return
 
       // async loading
       if (item[props.childrenKey].length === 0) {

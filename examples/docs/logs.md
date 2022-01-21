@@ -5,6 +5,11 @@
 <div class="doc-update">
     <b-timeline>
       <b-timeline-item>
+        <p class="version">1.1.5</p>
+        <p class="time">2022-01-21</p>
+        <p class="content"><i>🐞</i>修复树结构组件搜索悬停问题，修复树组件，禁用节点无法点击展开的问题。</p>
+      </b-timeline-item>
+      <b-timeline-item>
         <p class="version">1.1.4</p>
         <p class="time">2022-01-17</p>
         <p class="content"><i>🌈</i>更新vue依赖，优化部分样式及代码片段段。</p>
