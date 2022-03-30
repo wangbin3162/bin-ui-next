@@ -26,7 +26,7 @@ export default {
     xxl: [Number, Object],
   },
   setup(props) {
-    const gutter = inject('BRow', 0)
+    const rowProps = inject('BRow', {})
     const classes = computed(() => {
       const classList = [
         `${prefixCls}`,
@@ -38,9 +38,9 @@ export default {
           [`${prefixCls}-pull-${props.pull}`]: props.pull,
           [`${props.className}`]: !!props.className,
         },
-      ];
+      ]
 
-      ['xs', 'sm', 'md', 'lg', 'xl', 'xxl'].forEach(size => {
+      ;['xs', 'sm', 'md', 'lg', 'xl', 'xxl'].forEach(size => {
         if (typeof props[size] === 'number') {
           classList.push(`${prefixCls}-span-${size}-${props[size]}`)
         } else if (typeof props[size] === 'object') {
@@ -57,20 +57,22 @@ export default {
 
       return classList
     })
+    const gutter = computed(() => rowProps.gutter)
     const styles = computed(() => {
       let style = {}
-      if (gutter !== 0) {
+      if (gutter.value !== 0) {
         style = {
-          paddingLeft: gutter / 2 + 'px',
-          paddingRight: gutter / 2 + 'px',
+          paddingLeft: gutter.value / 2 + 'px',
+          paddingRight: gutter.value / 2 + 'px',
         }
       }
       return style
-
     })
 
     return {
-      gutter, classes, styles,
+      gutter,
+      classes,
+      styles,
     }
   },
 }

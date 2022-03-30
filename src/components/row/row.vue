@@ -4,7 +4,6 @@
   </div>
 </template>
 <script>
-
 import { computed, provide } from 'vue'
 
 const prefixCls = 'bin-row'
@@ -14,19 +13,19 @@ export default {
   props: {
     type: {
       type: String,
-      validator: (value) => {
+      validator: value => {
         return ['flex'].includes(value)
       },
     },
     align: {
       type: String,
-      validator: (value) => {
+      validator: value => {
         return ['top', 'middle', 'bottom'].includes(value)
       },
     },
     justify: {
       type: String,
-      validator: (value) => {
+      validator: value => {
         return ['start', 'end', 'center', 'space-around', 'space-between'].includes(value)
       },
     },
@@ -37,7 +36,7 @@ export default {
     className: String,
   },
   setup(props) {
-    provide('BRow', props.gutter)
+    provide('BRow', props)
     const classes = computed(() => {
       return [
         {
@@ -60,7 +59,8 @@ export default {
       return style
     })
     return {
-      classes, styles,
+      classes,
+      styles,
     }
   },
 }

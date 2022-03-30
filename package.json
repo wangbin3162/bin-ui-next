@@ -1,6 +1,6 @@
 {
   "name": "bin-ui-next",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "keywords": [
     "bin-ui-next",
     "bin-ui",
@@ -33,26 +33,26 @@
     "lint-fix": "eslint --fix ./src --ext .vue,.js,.ts"
   },
   "dependencies": {
-    "@popperjs/core": "^2.11.2",
+    "@popperjs/core": "^2.11.4",
     "async-validator": "^4.0.7",
     "color": "^4.2.1",
-    "dayjs": "^1.10.7",
+    "dayjs": "^1.11.0",
     "lodash": "^4.17.21",
     "mitt": "^3.0.0",
     "resize-observer-polyfill": "^1.5.1",
-    "sortablejs": "^1.14.0"
+    "sortablejs": "^1.15.0"
   },
   "peerDependencies": {
     "vue": "^3.2.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.17.6",
-    "@babel/core": "^7.17.5",
+    "@babel/core": "^7.17.8",
     "@babel/eslint-parser": "^7.17.0",
     "@babel/plugin-proposal-class-properties": "^7.16.7",
     "@babel/plugin-transform-runtime": "^7.17.0",
     "@babel/preset-env": "^7.16.11",
-    "@babel/runtime": "^7.17.2",
+    "@babel/runtime": "^7.17.8",
     "@rollup/plugin-babel": "^5.3.1",
     "@rollup/plugin-commonjs": "^20.0.0",
     "@rollup/plugin-json": "^4.1.0",
@@ -62,11 +62,11 @@
     "@vue/babel-plugin-jsx": "^1.1.1",
     "@vue/compiler-sfc": "^3.2.31",
     "@vue/shared": "^3.2.31",
-    "babel-loader": "^8.2.3",
+    "babel-loader": "^8.2.4",
     "babel-plugin-module-resolver": "^4.1.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "cross-env": "^7.0.3",
-    "css-loader": "^6.6.0",
+    "css-loader": "^6.7.1",
     "css-minimizer-webpack-plugin": "^3.4.1",
     "eslint": "^7.32.0",
     "eslint-plugin-vue": "^7.20.0",
@@ -76,7 +76,7 @@
     "gulp-autoprefixer": "^8.0.0",
     "gulp-cssmin": "^0.2.0",
     "gulp-stylus": "^2.7.1",
-    "highlight.js": "^11.4.0",
+    "highlight.js": "^11.5.0",
     "html-webpack-plugin": "^5.5.0",
     "markdown-it": "^12.3.2",
     "markdown-it-anchor": "^8.4.1",
@@ -85,7 +85,7 @@
     "mini-css-extract-plugin": "2.4.5",
     "progress-bar-webpack-plugin": "^2.1.0",
     "rimraf": "^3.0.2",
-    "rollup": "^2.68.0",
+    "rollup": "^2.70.1",
     "rollup-plugin-css-only": "^3.1.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-stylus-css-modules": "^1.5.0",
@@ -98,8 +98,8 @@
     "url-loader": "^4.1.1",
     "vue": "^3.2.31",
     "vue-loader": "16.5.0",
-    "vue-router": "^4.0.12",
-    "webpack": "^5.69.1",
+    "vue-router": "^4.0.14",
+    "webpack": "^5.70.0",
     "webpack-bundle-analyzer": "^4.5.0",
     "webpack-cli": "^4.9.2",
     "webpack-dev-server": "^4.7.4"
