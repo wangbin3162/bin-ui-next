@@ -3,7 +3,7 @@
     class="bin-form"
     :class="[
       labelPosition ? 'bin-form--label-' + labelPosition : '',
-      { 'bin-form--inline': inline }
+      { 'bin-form--inline': inline },
     ]"
   >
     <slot></slot>
@@ -118,9 +118,7 @@ export default {
 
     const resetFields = () => {
       if (!props.model) {
-        console.warn(
-          '[Element Warn][Form]model is required for resetFields to work.',
-        )
+        console.warn('[Element Warn][Form]model is required for resetFields to work.')
         return
       }
       fields.forEach(field => {
@@ -139,23 +137,21 @@ export default {
       })
     }
 
-    const validate = (callback) => {
+    const validate = callback => {
       if (!props.model) {
-        console.warn(
-          '[Element Warn][Form]model is required for validate to work!',
-        )
+        console.warn('[Element Warn][Form]model is required for validate to work!')
         return
       }
 
       let promise
       // if no callback, return promise
       if (typeof callback !== 'function') {
-        promise = new Promise((resolve, reject) => {
+        promise = new Promise(resolve => {
           callback = function (valid, invalidFields) {
             if (valid) {
               resolve(true)
             } else {
-              reject(invalidFields)
+              resolve(false, invalidFields)
             }
           }
         })

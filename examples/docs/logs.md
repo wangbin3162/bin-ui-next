@@ -5,6 +5,12 @@
 <div class="doc-update">
     <b-timeline>
       <b-timeline-item>
+        <p class="version">1.2.4</p>
+        <p class="time">2022-04-13</p>
+        <p class="content"><i>🐞</i>修复form，校验函数返回promise的问题</p>
+        <p class="content"><i>🌈</i>更新vue依赖</p>
+      </b-timeline-item>
+      <b-timeline-item>
         <p class="version">1.2.3</p>
         <p class="time">2022-03-30</p>
         <p class="content"><i>🐞</i>修复grid组件gutter不相应间距的问题</p>
