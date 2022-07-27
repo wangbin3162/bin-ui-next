@@ -1,15 +1,15 @@
 .bin-tag {
-  display: inline-block;
-  vertical-align: middle;
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  white-space: nowrap;
   border: 1px solid #e8eaec;
   color: #515a6e;
   background: #f7f7f7;
-  font-size: 12px;
-  padding: 0 8px;
-  height: var(--bin-mini-height-2);
-  line-height: 20px;
+  font-size: var(--bin-tag-font-size);
+  padding: var(--bin-tag-padding);
+  height: var(--bin-tag-height);
   border-radius: var(--bin-border-base-radius);
-  white-space: nowrap;
   + .bin-tag {
     margin-left: 6px;
   }

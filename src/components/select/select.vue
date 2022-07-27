@@ -39,8 +39,12 @@
                 disable-transitions
                 @close="deleteTag($event, selected[0])"
               >
-                <span class="bin-select__tags-text"
-                      :style="{ 'max-width': inputWidth - 123 + 'px' }">{{ selected[0].currentLabel }}</span>
+                <span
+                  class="bin-select__tags-text"
+                  :style="{ 'max-width': inputWidth - 123 + 'px' }"
+                >
+                  {{ selected[0].currentLabel }}
+                </span>
               </b-tag>
               <b-tag
                 v-if="selected.length > 1"
@@ -53,7 +57,9 @@
             </span>
 
             <transition v-if="!collapseTags" @after-leave="resetInputHeight">
-              <span :style="{marginLeft: prefixWidth && selected.length ? `${prefixWidth}px` : null}">
+              <span
+                :style="{ marginLeft: prefixWidth && selected.length ? `${prefixWidth}px` : null }"
+              >
                 <b-tag
                   v-for="item in selected"
                   :key="getValueKey(item)"
@@ -62,8 +68,12 @@
                   type="info"
                   @close="deleteTag($event, item)"
                 >
-                  <span class="bin-select__tags-text"
-                        :style="{ 'max-width': inputWidth - 75 + 'px' }">{{ item.currentLabel }}</span>
+                  <span
+                    class="bin-select__tags-text"
+                    :style="{ 'max-width': inputWidth - 75 + 'px' }"
+                  >
+                    {{ item.currentLabel }}
+                  </span>
                 </b-tag>
               </span>
             </transition>
@@ -74,10 +84,16 @@
               v-model="query"
               type="text"
               class="bin-select__input"
-              :class="[selectSize ? `is-${ selectSize }` : '']"
+              :class="[selectSize ? `is-${selectSize}` : '']"
               :disabled="selectDisabled"
               :autocomplete="autocomplete"
-              :style="{ marginLeft: prefixWidth && !selected.length || tagInMultiLine ? `${prefixWidth}px` : null, flexGrow: '1', width: `${inputLength / (inputWidth - 32)}%`, maxWidth: `${inputWidth - 42}px` }"
+              :style="{
+                marginLeft:
+                  (prefixWidth && !selected.length) || tagInMultiLine ? `${prefixWidth}px` : null,
+                flexGrow: '1',
+                width: `${inputLength / (inputWidth - 32)}%`,
+                maxWidth: `${inputWidth - 42}px`,
+              }"
               @focus="handleFocus"
               @blur="handleBlur"
               @keyup="managePlaceholder"
@@ -92,7 +108,7 @@
               @compositionupdate="handleComposition"
               @compositionend="handleComposition"
               @input="debouncedQueryChange"
-            >
+            />
           </div>
           <b-input
             :id="id"
@@ -107,7 +123,7 @@
             :readonly="readonly"
             :validate-event="false"
             :class="{ 'is-focus': visible }"
-            :tabindex="(multiple && filterable) ? '-1' : null"
+            :tabindex="multiple && filterable ? '-1' : null"
             @focus="handleFocus"
             @blur="handleBlur"
             @input="debouncedOnInputChange"
@@ -121,13 +137,18 @@
             @mouseleave="inputHovering = false"
           >
             <template v-if="$slots.prefix" #prefix>
-              <div class="bin-input__prefix"
-                   style="height: 100%;display: flex;justify-content: center;align-items: center">
+              <div
+                class="bin-input__prefix"
+                style="height: 100%; display: flex; justify-content: center; align-items: center"
+              >
                 <slot name="prefix"></slot>
               </div>
             </template>
             <template #suffix>
-              <i v-show="!showClose" :class="['bin-select__caret', 'b-iconfont', 'b-icon-' + iconClass]"></i>
+              <i
+                v-show="!showClose"
+                :class="['bin-select__caret', 'b-iconfont', 'b-icon-' + iconClass]"
+              ></i>
               <i
                 v-if="showClose"
                 :class="`bin-select__caret is-show-close b-iconfont b-icon-${clearIcon}`"
@@ -147,14 +168,12 @@
             view-class="bin-select-dropdown__list"
             :class="{ 'is-empty': !allowCreate && query && filteredOptionsCount === 0 }"
           >
-            <b-option
-              v-if="showNewOption"
-              :value="query"
-              :created="true"
-            />
+            <b-option v-if="showNewOption" :value="query" :created="true" />
             <slot></slot>
           </b-scrollbar>
-          <template v-if="emptyText && (!allowCreate || loading || (allowCreate && options.size === 0 ))">
+          <template
+            v-if="emptyText && (!allowCreate || loading || (allowCreate && options.size === 0))"
+          >
             <slot v-if="$slots.empty" name="empty"></slot>
             <p v-else class="bin-select-dropdown__empty">
               {{ emptyText }}
@@ -167,15 +186,7 @@
 </template>
 
 <script>
-import {
-  toRefs,
-  onMounted,
-  onBeforeUnmount,
-  nextTick,
-  reactive,
-  provide,
-  computed,
-} from 'vue'
+import { toRefs, onMounted, onBeforeUnmount, nextTick, reactive, provide, computed } from 'vue'
 import BInput from '../input'
 import BOption from './option.vue'
 import BSelectMenu from './select-dropdown.vue'
@@ -212,7 +223,7 @@ export default {
     automaticDropdown: Boolean,
     size: {
       type: String,
-      validator: (value) => {
+      validator: value => {
         return ['small', 'large', 'default', 'mini'].includes(value)
       },
       default: 'default',
@@ -256,7 +267,15 @@ export default {
       default: 'close-circle-fill',
     },
   },
-  emits: [UPDATE_MODEL_EVENT, CHANGE_EVENT, 'remove-tag', 'clear', 'visible-change', 'focus', 'blur'],
+  emits: [
+    UPDATE_MODEL_EVENT,
+    CHANGE_EVENT,
+    'remove-tag',
+    'clear',
+    'visible-change',
+    'focus',
+    'blur',
+  ],
   setup(props, ctx) {
     const states = useSelectStates(props)
     const {
@@ -329,25 +348,28 @@ export default {
       tagInMultiLine,
     } = toRefs(states)
 
-    provide(selectKey, reactive({
-      props,
-      options,
-      optionsArray,
-      cachedOptions,
-      optionsCount,
-      filteredOptionsCount,
-      hoverIndex,
-      handleOptionSelect,
-      selectEmitter: states.selectEmitter,
-      onOptionCreate,
-      onOptionDestroy,
-      selectWrapper,
-      selected,
-      setSelected,
-    }))
+    provide(
+      selectKey,
+      reactive({
+        props,
+        options,
+        optionsArray,
+        cachedOptions,
+        optionsCount,
+        filteredOptionsCount,
+        hoverIndex,
+        handleOptionSelect,
+        selectEmitter: states.selectEmitter,
+        onOptionCreate,
+        onOptionDestroy,
+        selectWrapper,
+        selected,
+        setSelected,
+      }),
+    )
 
     onMounted(() => {
-      states.cachedPlaceHolder = currentPlaceholder.value = (props.placeholder || '')
+      states.cachedPlaceHolder = currentPlaceholder.value = props.placeholder || ''
       if (props.multiple && Array.isArray(props.modelValue) && props.modelValue.length > 0) {
         currentPlaceholder.value = ''
       }
@@ -359,7 +381,8 @@ export default {
           mini: 28,
         }
         const input = reference.value.inputRef
-        states.initialInputHeight = input.getBoundingClientRect().height || sizeMap[selectSize.value]
+        states.initialInputHeight =
+          input.getBoundingClientRect().height || sizeMap[selectSize.value]
       }
       if (props.remote && props.multiple) {
         resetInputHeight()

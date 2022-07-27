@@ -148,6 +148,48 @@
 
 :::
 
+### 移动变换
+
+同等位置的移动变化，会存在位置错位情况，这个动画内置了绝对定位的覆盖，可同时切换一组内容的动画类型
+
+::: demo 默认执行动画名称fade-transverse，可自定义
+
+```html
+<template>
+  <b-tabs v-model="activeTab" :data="tabs"></b-tabs>
+  <div style="position:relative; overflow:hidden;margin:10px 0; width: 200px;height: 100px;">
+    <b-move-transition>
+      <div class="transition-box" v-if="activeTab==='tab1'">tab1</div>
+      <div class="transition-box" v-else-if="activeTab==='tab2'">tab2</div>
+      <div class="transition-box" v-else-if="activeTab==='tab3'">tab3</div>
+      <div class="transition-box" v-else-if="activeTab==='tab4'">tab4</div>
+    </b-move-transition>
+  </div>
+</template>
+<script>
+  import { ref } from 'vue'
+
+  export default {
+    setup() {
+      const tabs = ref([
+        { key: 'tab1', title: 'tab1'},
+        { key: 'tab2', title: 'tab2' },
+        { key: 'tab3', title: 'tab3' },
+        { key: 'tab4', title: 'tab4' },
+      ])
+      const activeTab = ref('tab1')
+
+      return {
+        tabs,
+        activeTab,
+      }
+    },
+  }
+</script>
+```
+
+:::
+
 ### 展开折叠
 
 展开折叠也作为内部组件实现，因组件较为简单，只有默认插槽，因此不再专门编写文档说明

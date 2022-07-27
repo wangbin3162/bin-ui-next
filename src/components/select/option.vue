@@ -3,9 +3,10 @@
     v-show="visible"
     class="bin-select-dropdown__item"
     :class="{
-      'selected': itemSelected,
+      selected: itemSelected,
       'is-disabled': isDisabled,
-      'hover': hover}"
+      hover: hover,
+    }"
     @mouseenter="hoverItem"
     @click.stop="selectOptionClick"
   >
@@ -16,7 +17,7 @@
 </template>
 
 <script>
-import { toRefs, getCurrentInstance, onBeforeUnmount, reactive, } from 'vue'
+import { toRefs, getCurrentInstance, onBeforeUnmount, reactive } from 'vue'
 import { useOption } from './useOption'
 
 export default {
@@ -43,18 +44,9 @@ export default {
       hover: false,
     })
 
-    const {
-      currentLabel,
-      itemSelected,
-      isDisabled,
-      select,
-      hoverItem,
-    } = useOption(props, states)
+    const { currentLabel, itemSelected, isDisabled, select, hoverItem } = useOption(props, states)
 
-    const {
-      visible,
-      hover,
-    } = toRefs(states)
+    const { visible, hover } = toRefs(states)
     const vm = getCurrentInstance().proxy
     select.onOptionCreate(vm)
     onBeforeUnmount(() => {

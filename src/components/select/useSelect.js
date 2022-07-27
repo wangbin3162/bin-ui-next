@@ -37,7 +37,7 @@ export function useSelectStates(props) {
     isSilentBlur: false,
     selectEmitter,
     prefixWidth: null,
-    tagInMultiLine: false
+    tagInMultiLine: false,
   })
 }
 
@@ -53,7 +53,9 @@ export const useSelect = (props, states, ctx) => {
 
   const { BForm, BFormItem, formEmit } = useForm()
 
-  const readonly = computed(() => !props.filterable || props.multiple || (!isIE() && !isEdge() && !states.visible))
+  const readonly = computed(
+    () => !props.filterable || props.multiple || (!isIE() && !isEdge() && !states.visible),
+  )
 
   const selectDisabled = computed(() => props.disabled || BForm.disabled)
 
@@ -62,22 +64,26 @@ export const useSelect = (props, states, ctx) => {
       ? Array.isArray(props.modelValue) && props.modelValue.length > 0
       : props.modelValue !== undefined && props.modelValue !== null && props.modelValue !== ''
 
-    return props.clearable &&
-      !selectDisabled.value &&
-      states.inputHovering &&
-      hasValue
+    return props.clearable && !selectDisabled.value && states.inputHovering && hasValue
   })
 
-  const iconClass = computed(() => props.remote && props.filterable ? '' : (states.visible ? 'down is-reverse' : 'down'))
+  const iconClass = computed(() =>
+    props.remote && props.filterable ? '' : states.visible ? 'down is-reverse' : 'down',
+  )
 
-  const debounceTime = computed(() => props.remote ? 300 : 0)
+  const debounceTime = computed(() => (props.remote ? 300 : 0))
 
   const emptyText = computed(() => {
     if (props.loading) {
       return props.loadingText || '正在加载'
     } else {
       if (props.remote && states.query === '' && states.options.size === 0) return false
-      if (props.filterable && states.query && states.options.size > 0 && states.filteredOptionsCount === 0) {
+      if (
+        props.filterable &&
+        states.query &&
+        states.options.size > 0 &&
+        states.filteredOptionsCount === 0
+      ) {
         return props.noMatchText || '没有匹配数据'
       }
       if (states.options.size === 0) {
@@ -92,108 +98,130 @@ export const useSelect = (props, states, ctx) => {
   const cachedOptionsArray = computed(() => Array.from(states.cachedOptions.values()))
 
   const showNewOption = computed(() => {
-    const hasExistingOption = optionsArray.value.filter(option => {
-      return !option.created
-    }).some(option => {
-      return option.currentLabel === states.query
-    })
+    const hasExistingOption = optionsArray.value
+      .filter(option => {
+        return !option.created
+      })
+      .some(option => {
+        return option.currentLabel === states.query
+      })
     return props.filterable && props.allowCreate && states.query !== '' && !hasExistingOption
   })
 
   const selectSize = computed(() => props.size || BForm.size || BFormItem.size)
 
-  const collapseTagSize = computed(() => ['small', 'mini'].indexOf(selectSize.value) > -1 ? 'mini' : 'small')
+  const collapseTagSize = computed(() =>
+    ['small', 'mini'].indexOf(selectSize.value) > -1 ? 'mini' : 'small',
+  )
 
   const dropMenuVisible = computed(() => states.visible && emptyText.value !== false)
 
   // watch
-  watch(() => selectDisabled.value, () => {
-    nextTick(() => {
-      resetInputHeight()
-    })
-  })
-
-  watch(() => props.placeholder, val => {
-    states.cachedPlaceHolder = states.currentPlaceholder = val
-  })
-
-  watch(() => props.modelValue, (val, oldVal) => {
-    if (props.multiple) {
-      resetInputHeight()
-      if ((val && val.length > 0) || (input.value && states.query !== '')) {
-        states.currentPlaceholder = ''
-      } else {
-        states.currentPlaceholder = states.cachedPlaceHolder
-      }
-      if (props.filterable && !props.reserveKeyword) {
-        states.query = ''
-        handleQueryChange(states.query)
-      }
-    }
-    setSelected()
-    if (props.filterable && !props.multiple) {
-      states.inputLength = 20
-    }
-    if (!isEqual(val, oldVal)) {
-      formEmit('change', val)
-    }
-  }, {
-    flush: 'post',
-    deep: true
-  })
-
-  watch(() => states.visible, val => {
-    if (!val) {
-      input.value && input.value.blur()
-      states.query = ''
-      states.previousQuery = null
-      states.selectedLabel = ''
-      states.inputLength = 20
-      states.menuVisibleOnFocus = false
-      resetHoverIndex()
+  watch(
+    () => selectDisabled.value,
+    () => {
       nextTick(() => {
-        if (input.value && input.value.value === '' && states.selected.length === 0) {
+        resetInputHeight()
+      })
+    },
+  )
+
+  watch(
+    () => props.placeholder,
+    val => {
+      states.cachedPlaceHolder = states.currentPlaceholder = val
+    },
+  )
+
+  watch(
+    () => props.modelValue,
+    (val, oldVal) => {
+      if (props.multiple) {
+        resetInputHeight()
+        if ((val && val.length > 0) || (input.value && states.query !== '')) {
+          states.currentPlaceholder = ''
+        } else {
           states.currentPlaceholder = states.cachedPlaceHolder
         }
-      })
-
-      if (!props.multiple) {
-        if (states.selected) {
-          if (props.filterable && props.allowCreate && states.createdSelected && states.createdLabel) {
-            states.selectedLabel = states.createdLabel
-          } else {
-            states.selectedLabel = states.selected.currentLabel
-          }
-          if (props.filterable) states.query = states.selectedLabel
+        if (props.filterable && !props.reserveKeyword) {
+          states.query = ''
+          handleQueryChange(states.query)
         }
+      }
+      setSelected()
+      if (props.filterable && !props.multiple) {
+        states.inputLength = 20
+      }
+      if (!isEqual(val, oldVal)) {
+        formEmit('change', val)
+      }
+    },
+    {
+      flush: 'post',
+      deep: true,
+    },
+  )
+
+  watch(
+    () => states.visible,
+    val => {
+      if (!val) {
+        input.value && input.value.blur()
+        states.query = ''
+        states.previousQuery = null
+        states.selectedLabel = ''
+        states.inputLength = 20
+        states.menuVisibleOnFocus = false
+        resetHoverIndex()
+        nextTick(() => {
+          if (input.value && input.value.value === '' && states.selected.length === 0) {
+            states.currentPlaceholder = states.cachedPlaceHolder
+          }
+        })
+
+        if (!props.multiple) {
+          if (states.selected) {
+            if (
+              props.filterable &&
+              props.allowCreate &&
+              states.createdSelected &&
+              states.createdLabel
+            ) {
+              states.selectedLabel = states.createdLabel
+            } else {
+              states.selectedLabel = states.selected.currentLabel
+            }
+            if (props.filterable) states.query = states.selectedLabel
+          }
+
+          if (props.filterable) {
+            states.currentPlaceholder = states.cachedPlaceHolder
+          }
+        }
+      } else {
+        popper.value?.update?.()
 
         if (props.filterable) {
-          states.currentPlaceholder = states.cachedPlaceHolder
-        }
-      }
-    } else {
-      popper.value?.update?.()
-
-      if (props.filterable) {
-        states.filteredOptionsCount = states.optionsCount
-        states.query = props.remote ? '' : states.selectedLabel
-        if (props.multiple) {
-          input.value.focus()
-        } else {
-          if (states.selectedLabel) {
-            states.currentPlaceholder = states.selectedLabel
-            states.selectedLabel = ''
+          states.filteredOptionsCount = states.optionsCount
+          states.query = props.remote ? '' : states.selectedLabel
+          if (props.multiple) {
+            input.value.focus()
+          } else {
+            if (states.selectedLabel) {
+              states.currentPlaceholder = states.selectedLabel
+              states.selectedLabel = ''
+            }
+          }
+          handleQueryChange(states.query)
+          if (!props.multiple && !props.remote) {
+            states.selectEmitter.emit('OptionQueryChange', '')
+            states.selectEmitter.emit('OptionGroupQueryChange')
           }
         }
-        handleQueryChange(states.query)
-        if (!props.multiple && !props.remote) {
-          states.selectEmitter.emit('OptionQueryChange', '')
-          states.selectEmitter.emit('OptionGroupQueryChange')
-        }
       }
-    }
-    ctx.emit('visible-change', val)
-  })
+      ctx.emit('visible-change', val)
+    },
+  )
 
   watch(
     // fix `Array.prototype.push/splice/..` cannot trigger non-deep watcher
@@ -209,24 +237,30 @@ export const useSelect = (props, states, ctx) => {
       if ([].indexOf.call(inputs, document.activeElement) === -1) {
         setSelected()
       }
-      if (props.defaultFirstOption && (props.filterable || props.remote) && states.filteredOptionsCount) {
+      if (
+        props.defaultFirstOption &&
+        (props.filterable || props.remote) &&
+        states.filteredOptionsCount
+      ) {
         checkDefaultFirstOption()
       }
     },
     {
-      flush: 'post'
-    }
+      flush: 'post',
+    },
   )
 
-  watch(() => states.hoverIndex, val => {
-    if (typeof val === 'number' && val > -1) {
-      hoverOption.value = optionsArray.value[val] || {}
-    }
-    optionsArray.value.forEach(option => {
-      option.hover = hoverOption.value === option
-    })
-  })
-
+  watch(
+    () => states.hoverIndex,
+    val => {
+      if (typeof val === 'number' && val > -1) {
+        hoverOption.value = optionsArray.value[val] || {}
+      }
+      optionsArray.value.forEach(option => {
+        option.hover = hoverOption.value === option
+      })
+    },
+  )
 
   // methods
   const resetInputHeight = () => {
@@ -237,11 +271,13 @@ export const useSelect = (props, states, ctx) => {
       const input = [].filter.call(inputChildNodes, item => item.tagName === 'INPUT')[0]
       const _tags = tags.value
       const sizeInMap = states.initialInputHeight || 32
-      input.style.height = states.selected.length === 0
-        ? sizeInMap + 'px'
-        : Math.max(
-        _tags ? (_tags.clientHeight + (_tags.clientHeight > sizeInMap ? 6 : 0)) : 0,
-        sizeInMap) + 'px'
+      input.style.height =
+        states.selected.length === 0
+          ? sizeInMap + 'px'
+          : Math.max(
+              _tags ? _tags.clientHeight + (_tags.clientHeight > sizeInMap ? 6 : 0) : 0,
+              sizeInMap,
+            ) + 'px'
 
       states.tagInMultiLine = parseFloat(input.style.height) > sizeInMap
 
@@ -284,7 +320,11 @@ export const useSelect = (props, states, ctx) => {
       states.selectEmitter.emit('OptionQueryChange', val)
       states.selectEmitter.emit('OptionGroupQueryChange')
     }
-    if (props.defaultFirstOption && (props.filterable || props.remote) && states.filteredOptionsCount) {
+    if (
+      props.defaultFirstOption &&
+      (props.filterable || props.remote) &&
+      states.filteredOptionsCount
+    ) {
       checkDefaultFirstOption()
     }
   }
@@ -360,22 +400,23 @@ export const useSelect = (props, states, ctx) => {
     for (let i = states.cachedOptions.size - 1; i >= 0; i--) {
       const cachedOption = cachedOptionsArray.value[i]
       const isEqualValue = isObjectValue
-        ? getValueByPath(cachedOption.value, props.valueKey) === getValueByPath(value, props.valueKey)
+        ? getValueByPath(cachedOption.value, props.valueKey) ===
+          getValueByPath(value, props.valueKey)
         : cachedOption.value === value
       if (isEqualValue) {
         option = {
           value,
           currentLabel: cachedOption.currentLabel,
-          isDisabled: cachedOption.isDisabled
+          isDisabled: cachedOption.isDisabled,
         }
         break
       }
     }
     if (option) return option
-    const label = (!isObjectValue && !isNull && !isUndefined) ? value : ''
+    const label = !isObjectValue && !isNull && !isUndefined ? value : ''
     const newOption = {
       value,
-      currentLabel: label
+      currentLabel: label,
     }
     if (props.multiple) {
       newOption.hitState = false
@@ -389,7 +430,10 @@ export const useSelect = (props, states, ctx) => {
         states.hoverIndex = optionsArray.value.indexOf(states.selected)
       } else {
         if (states.selected.length > 0) {
-          states.hoverIndex = Math.min.apply(null, states.selected.map(item => optionsArray.value.indexOf(item)))
+          states.hoverIndex = Math.min.apply(
+            null,
+            states.selected.map(item => optionsArray.value.indexOf(item)),
+          )
         } else {
           states.hoverIndex = -1
         }
@@ -538,7 +582,7 @@ export const useSelect = (props, states, ctx) => {
     scrollbar.value?.handleScroll()
   }
 
-  const onOptionCreate = (vm) => {
+  const onOptionCreate = vm => {
     states.optionsCount++
     states.filteredOptionsCount++
     states.options.set(vm.value, vm)
@@ -551,13 +595,13 @@ export const useSelect = (props, states, ctx) => {
     states.options.delete(key)
   }
 
-  const resetInputState = (e) => {
+  const resetInputState = e => {
     if (e.code !== EVENT_CODE.backspace) toggleLastOptionHitState(false)
     states.inputLength = input.value.length * 15 + 20
     resetInputHeight()
   }
 
-  const toggleLastOptionHitState = (hit) => {
+  const toggleLastOptionHitState = hit => {
     if (!Array.isArray(states.selected)) return
     const option = states.selected[states.selected.length - 1]
     if (!option) return
@@ -605,7 +649,7 @@ export const useSelect = (props, states, ctx) => {
     reference.value.blur()
   }
 
-  const handleBlur = (event) => {
+  const handleBlur = event => {
     // https://github.com/ElemeFE/element/pull/10822
     nextTick(() => {
       if (states.isSilentBlur) {
@@ -617,7 +661,7 @@ export const useSelect = (props, states, ctx) => {
     states.softFocus = false
   }
 
-  const handleClearClick = (event) => {
+  const handleClearClick = event => {
     deleteSelected(event)
   }
 
@@ -634,7 +678,7 @@ export const useSelect = (props, states, ctx) => {
         states.visible = !states.visible
       }
       if (states.visible) {
-        (input.value || reference.value).focus()
+        ;(input.value || reference.value).focus()
       }
     }
   }
@@ -650,12 +694,12 @@ export const useSelect = (props, states, ctx) => {
   }
 
   const getValueKey = item => {
-    return isObject(item.value)
-      ? getValueByPath(item.value, props.valueKey)
-      : item.value
+    return isObject(item.value) ? getValueByPath(item.value, props.valueKey) : item.value
   }
 
-  const optionsAllDisabled = computed(() => optionsArray.value.filter(option => option.visible).every(option => option.disabled))
+  const optionsAllDisabled = computed(() =>
+    optionsArray.value.filter(option => option.visible).every(option => option.disabled),
+  )
 
   const navigateOptions = direction => {
     if (!states.visible) {
@@ -677,9 +721,7 @@ export const useSelect = (props, states, ctx) => {
         }
       }
       const option = optionsArray.value[states.hoverIndex]
-      if (option.disabled === true ||
-        option.groupDisabled === true ||
-        !option.visible) {
+      if (option.disabled === true || option.groupDisabled === true || !option.visible) {
         navigateOptions(direction)
       }
       nextTick(() => scrollToOption(hoverOption.value))
@@ -730,7 +772,6 @@ export const useSelect = (props, states, ctx) => {
     popper,
     tags,
     selectWrapper,
-    scrollbar
+    scrollbar,
   }
 }
-

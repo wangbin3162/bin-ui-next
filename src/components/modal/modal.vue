@@ -10,17 +10,19 @@
         v-show="visible"
         :mask="mask"
         :overlay-class="maskClass"
-        :z-index="modalIndex+zIndex"
-        @click="onModalClick">
+        :z-index="modalIndex + zIndex"
+        @click="onModalClick"
+      >
         <transition :name="transitionName || 'dialog-fade'">
           <div
             v-show="visible"
             ref="modalRef"
-            :class="['bin-modal',
-           { 'bin-modal-wrap': draggable},
-           { 'is-fullscreen': fullscreen},
-            customClass,
-          ]"
+            :class="[
+              'bin-modal',
+              { 'bin-modal-wrap': draggable },
+              { 'is-fullscreen': fullscreen },
+              customClass,
+            ]"
             aria-modal="true"
             role="dialog"
             :aria-label="title || 'dialog'"
@@ -31,11 +33,11 @@
               <slot name="ctrl"></slot>
               <i v-if="showClose" class="b-iconfont b-icon-close" @click="handleClose"></i>
             </div>
-            <div class="bin-modal-header" v-if="$slots.title||title">
+            <div class="bin-modal-header" v-if="$slots.title || title">
               <slot name="title">
-              <span class="bin-modal-title">
-                {{ title }}
-              </span>
+                <span class="bin-modal-title">
+                  {{ title }}
+                </span>
               </slot>
             </div>
             <template v-if="rendered">
@@ -69,7 +71,7 @@ import { addEventListenerWrap } from './addListener'
 import { transferIncrease } from '../../utils/config'
 
 let mousePosition = null
-const getClickPosition = (e) => {
+const getClickPosition = e => {
   mousePosition = {
     x: e.pageX,
     y: e.pageY,
@@ -99,8 +101,8 @@ function getScroll(w, top) {
 }
 
 function setTransformOrigin(node, value) {
-  const style = node.style;
-  ['Webkit', 'Moz', 'Ms', 'ms'].forEach(prefix => {
+  const style = node.style
+  ;['Webkit', 'Moz', 'Ms', 'ms'].forEach(prefix => {
     style[`${prefix}TransformOrigin`] = value
   })
   style[`transformOrigin`] = value
@@ -196,13 +198,7 @@ export default {
       type: String,
     },
   },
-  emits: [
-    OPEN_EVENT,
-    OPENED_EVENT,
-    CLOSE_EVENT,
-    CLOSED_EVENT,
-    UPDATE_MODEL_EVENT,
-  ],
+  emits: [OPEN_EVENT, OPENED_EVENT, CLOSE_EVENT, CLOSED_EVENT, UPDATE_MODEL_EVENT],
   setup(props, ctx) {
     const modalRef = ref(null)
     const modalIndex = ref(transferIncrease())
@@ -214,7 +210,7 @@ export default {
       draggable,
     })
 
-    const updateCallback = (visible) => {
+    const updateCallback = visible => {
       if (props.modelValue) {
         // first show
         if (!visible) {
@@ -236,14 +232,17 @@ export default {
         }
       }
     }
-    watch(() => props.modelValue, (val) => {
-      if (val) {
-        modalIndex.value = transferIncrease()
-      }
-      nextTick(() => {
-        updateCallback(!val)
-      })
-    })
+    watch(
+      () => props.modelValue,
+      val => {
+        if (val) {
+          modalIndex.value = transferIncrease()
+        }
+        nextTick(() => {
+          updateCallback(!val)
+        })
+      },
+    )
     onMounted(() => {
       nextTick(() => {
         updateCallback(false)

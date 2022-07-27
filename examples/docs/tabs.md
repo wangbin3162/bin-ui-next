@@ -55,10 +55,14 @@
 
 <template>
   <b-tabs v-model="activeTab" :data="tabs" type="card"></b-tabs>
-  <p v-show="activeTab==='tab0'">首页</p>
-  <p v-show="activeTab==='tab1'">用户管理</p>
-  <p v-show="activeTab==='tab2'">组织管理</p>
-  <p v-show="activeTab==='tab3'">系统管理</p>
+  <div style="overflow:hidden;">
+    <b-move-transition>
+      <p v-if="activeTab==='tab0'">首页</p>
+      <p v-else-if="activeTab==='tab1'">用户管理</p>
+      <p v-else-if="activeTab==='tab2'">组织管理</p>
+      <p v-else-if="activeTab==='tab3'">系统管理</p>
+    </b-move-transition>
+  </div>
 </template>
 <script>
   import { ref } from 'vue'
@@ -98,7 +102,14 @@
   </div>
   <b-tabs v-model="activeTab" :data="tabs" type="card" closable
           @tab-close="handleTabClose"></b-tabs>
-  <p>开启的tab：{{ activeTab }}</p>
+  <div style="overflow:hidden;">
+    <b-move-transition>
+      <p v-if="activeTab==='tab0'">首页</p>
+      <p v-else-if="activeTab==='tab1'">用户管理</p>
+      <p v-else-if="activeTab==='tab2'">组织管理</p>
+      <p v-else-if="activeTab==='tab3'">系统管理</p>
+    </b-move-transition>
+  </div>
 </template>
 <script>
   import { ref } from 'vue'
@@ -154,7 +165,14 @@
       <li @click="closeAll">关闭所有</li>
     </template>
   </b-tabs>
-  <p>开启的tab：{{ activeTab }}</p>
+  <div style="overflow:hidden;">
+    <b-move-transition>
+      <p v-if="activeTab==='tab0'">首页</p>
+      <p v-else-if="activeTab==='tab1'">用户管理</p>
+      <p v-else-if="activeTab==='tab2'">组织管理</p>
+      <p v-else-if="activeTab==='tab3'">系统管理</p>
+    </b-move-transition>
+  </div>
 </template>
 <script>
   export default {

@@ -60,7 +60,7 @@
   &.bin-popper {
     width: inherit;
     overflow: auto;
-    padding: 5px 0;
+    padding: 4px 0;
     background-color: var(--bin-color-white);
     box-sizing: border-box;
     border-radius: var(--bin-border-base-radius);
@@ -109,8 +109,8 @@
   .bin-select-dropdown__item {
     position: relative;
     margin: 0;
-    padding: 5px 12px;
-    line-height: 22px;
+    padding: 0 18px 0 10px;
+    line-height: 32px;
     width: 100%;
     clear: both;
     color: var(--bin-color-text-default);
@@ -129,6 +129,17 @@
       &:hover, &:focus, &.hover {
         background: #f3f3f3;
         outline: none;
+      }
+      &::after {
+        font-family: "b-iconfont" !important;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        content: '\e886';
+        color: var(--bin-color-primary-light1);
+        position: absolute;
+        top: 0;
+        right: 4px;
       }
     }
     &.is-disabled {

@@ -15,7 +15,7 @@ import usePopperOptions from './popper-options'
 import { transferIncrease } from '../../../../utils/config'
 
 export const UPDATE_VISIBLE_EVENT = 'update:visible'
-export default function(props, ctx) {
+export default function (props, ctx) {
   const arrowRef = ref(null)
   const triggerRef = ref(null)
   const popperRef = ref(null)
@@ -49,9 +49,7 @@ export default function(props, ctx) {
     },
     set(val) {
       if (isManualMode()) return
-      isBool(props.visible)
-        ? ctx.emit(UPDATE_VISIBLE_EVENT, val)
-        : (state.visible = val)
+      isBool(props.visible) ? ctx.emit(UPDATE_VISIBLE_EVENT, val) : (state.visible = val)
     },
   })
 
@@ -120,8 +118,7 @@ export default function(props, ctx) {
       // trigger === 'focus', because that when trigger is string
       // trigger.length === 1 and trigger[0] === 5 chars string is mutually exclusive.
       // so there will be no need to test if trigger is array type.
-      (trigger.length === 1 &&
-        (trigger[0] === 'click' || trigger[0] === 'focus'))
+      (trigger.length === 1 && (trigger[0] === 'click' || trigger[0] === 'focus'))
 
     if (shouldPrevent) return
 
@@ -178,7 +175,7 @@ export default function(props, ctx) {
       }
     }
 
-    const popperEventsHandler = (e) => {
+    const popperEventsHandler = e => {
       e.stopPropagation()
       switch (e.type) {
         case 'click': {
@@ -217,7 +214,7 @@ export default function(props, ctx) {
       focus: ['onFocus', 'onBlur'],
     }
 
-    const mapEvents = (t) => {
+    const mapEvents = t => {
       triggerEventsMap[t].forEach(event => {
         events[event] = popperEventsHandler
       })

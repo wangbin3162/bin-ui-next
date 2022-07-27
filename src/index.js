@@ -186,12 +186,7 @@ const components = [
   BTable,
   BCountTo,
 ]
-const plugins = [
-  LoadingBar,
-  Message,
-  MessageBox,
-  Notice,
-]
+const plugins = [LoadingBar, Message, MessageBox, Notice]
 const defaultInstallOpt = {
   zIndex: 2000,
 }

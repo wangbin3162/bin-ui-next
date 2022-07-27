@@ -326,4 +326,3 @@ Button 组件提供除了默认值以外的三种尺寸，可以在不同场景�
 | icon-style | 图标样式,可设置图标大小，字体对其等，可依托 text-color 设置颜色，也可以自定义 | Object | — | — |
 | autofocus | 是否默认聚焦 | boolean | — | false |
 | native-type | 原生 type 属性 | string | button / submit / reset | button |
-| animation-type | 点击动画 | string | click / waves | click |

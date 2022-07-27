@@ -324,7 +324,7 @@ Modal 组件提供了灵活的自定义样式 API 和 Slot，可以自由控制�
 | fullscreen     | 是否全屏显示 | Boolean  |      —      | false |
 | draggable     | 是否可以拖拽移动 | Boolean  |      —      | false |
 | mask     | 是否显示遮罩层 | Boolean  |      —      | true |
-| custom-name    | 自定义类名 | String  |      —      |  —  |
+| custom-class    | 自定义类名 | String  |      —      |  —  |
 | z-index    | 层级 | Number  |      —      |  2000  |
 | append-to-body    | 是否将对话框放置于 body 内 | Boolean  |      —      |  false  |
 | lock-scroll | 出现modal时锁定滚动 | Boolean  |      —      |  true  |

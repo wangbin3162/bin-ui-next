@@ -6,14 +6,16 @@
       @drop.prevent="onDrop"
       @paste="handlePaste"
       @dragover.prevent="dragOver = true"
-      @dragleave.prevent="dragOver = false">
+      @dragleave.prevent="dragOver = false"
+    >
       <input
         ref="input"
         type="file"
         :class="[prefixCls + '-input']"
         @change="handleChange"
         :multiple="multiple"
-        :accept="accept">
+        :accept="accept"
+      />
       <slot>
         <b-button icon="cloud-upload">点击上传</b-button>
       </slot>
@@ -24,7 +26,8 @@
       v-if="showUploadList"
       :files="fileList"
       @file-remove="handleRemove"
-      @file-preview="handlePreview"></upload-list>
+      @file-preview="handlePreview"
+    ></upload-list>
   </div>
 </template>
 
@@ -187,7 +190,7 @@ export default {
     },
     onDrop(e) {
       this.dragOver = false
-      if (this.disabled) return
+      if (this.type === 'select' || this.disabled) return
       this.uploadFiles(e.dataTransfer.files)
     },
     handlePaste(e) {
@@ -213,15 +216,18 @@ export default {
 
       const before = this.beforeUpload(file)
       if (before && before.then) {
-        before.then(processedFile => {
-          if (Object.prototype.toString.call(processedFile) === '[object File]') {
-            this.post(processedFile)
-          } else {
-            this.post(file)
-          }
-        }, () => {
-          // this.$emit('cancel', file);
-        })
+        before.then(
+          processedFile => {
+            if (Object.prototype.toString.call(processedFile) === '[object File]') {
+              this.post(processedFile)
+            } else {
+              this.post(file)
+            }
+          },
+          () => {
+            // this.$emit('cancel', file);
+          },
+        )
       } else if (before !== false) {
         this.post(file)
       } else {

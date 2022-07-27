@@ -30,14 +30,14 @@
   opacity: 0;
   transition: opacity .12s ease-out;
   &.is-horizontal {
-    height: 6px;
+    height: var(--bin-scrollbar-width);
     left: 0;
     > div {
       height: 100%;
     }
   }
   &.is-vertical {
-    width: 6px;
+    width: var(--bin-scrollbar-width);
     top: 0;
     > div {
       width: 100%;
@@ -54,10 +54,10 @@
   width: 0;
   height: 0;
   cursor: pointer;
-  border-radius: inherit;
+  border-radius: var(--bin-scrollbar-radius);
   background: rgba(0, 0, 0, 0.2);
   transition: box-shadow var(--bin-animation-duration-base);
   &:hover {
-    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.25);
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
   }
 }
