@@ -5,11 +5,12 @@
 <div class="doc-update">
     <b-timeline>
       <b-timeline-item>
-        <p class="version">1.2.5</p>
-        <p class="time">2022-07-27</p>
+        <p class="version">1.2.6</p>
+        <p class="time">2022-07-28</p>
         <p class="content"><i>🐞</i>修复uplod组件，非拖拽模式也可以拖拽上传。</p>
         <p class="content"><i>🌈</i>优化弹窗样式</p>
         <p class="content"><i>🌈</i>优化了按钮，下拉框，tag标签等相关样式</p>
+        <p class="content"><i>🌈</i>优化返回顶部参数说明</p>
       </b-timeline-item>
       <b-timeline-item>
         <p class="version">1.2.4</p>

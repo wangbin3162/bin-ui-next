@@ -3,8 +3,8 @@
     <div
       v-if="visible"
       :style="{
-        'right': styleRight,
-        'bottom': styleBottom
+        right: styleRight,
+        bottom: styleBottom,
       }"
       class="bin-back-top"
       @click.stop="handleClick"
@@ -26,7 +26,7 @@ import { scrollTop, on, off } from '../../utils/dom'
 export default {
   name: 'BBackTop',
   props: {
-    visibilityHeight: {
+    visibleHeight: {
       type: Number,
       default: 400,
     },
@@ -56,7 +56,7 @@ export default {
     const styleRight = computed(() => `${props.right}px`)
 
     const onScroll = () => {
-      visible.value = el.value.scrollTop >= props.visibilityHeight
+      visible.value = el.value.scrollTop >= props.visibleHeight
     }
     const handleClick = event => {
       scrollTop(el.value, el.value.scrollTop, 0, props.duration)

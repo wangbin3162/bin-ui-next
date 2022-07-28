@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import { computed, onBeforeUnmount, onMounted, reactive, ref, watch } from 'vue'
+import { computed, onBeforeUnmount, onMounted, reactive, ref, watch, nextTick } from 'vue'
 import { off, on } from '../../utils/dom'
 import { addResizeListener, removeResizeListener } from '../../utils/resize-event'
 
@@ -132,6 +132,9 @@ export default {
 
       on(scrollContainer.value, 'scroll', onScroll)
       addResizeListener(root.value, updateState)
+      nextTick(() => {
+        onScroll()
+      })
     })
 
     onBeforeUnmount(() => {
