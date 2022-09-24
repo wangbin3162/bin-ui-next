@@ -3,11 +3,17 @@
     <div class="bin-anchor">
       <div class="bin-anchor-ink">
         <b-icon v-if="icon" :name="icon" :style="iconStyle" :color="activeColorStr"></b-icon>
-        <span v-show="!icon&&showInk" class="bin-anchor-ink-ball"
-              :style="{borderColor:activeColorStr, top: `${inkTop}px`}"></span>
+        <span
+          v-show="!icon && showInk"
+          class="bin-anchor-ink-ball"
+          :style="{ borderColor: activeColorStr, top: `${inkTop}px` }"
+        ></span>
 
-        <span v-show="!icon&&!showInk" class="bin-anchor-ink-line"
-              :style="{backgroundColor:activeColorStr, top: `${inkTop}px`}"></span>
+        <span
+          v-show="!icon && !showInk"
+          class="bin-anchor-ink-line"
+          :style="{ backgroundColor: activeColorStr, top: `${inkTop}px` }"
+        ></span>
       </div>
       <slot></slot>
     </div>
@@ -15,16 +21,7 @@
 </template>
 
 <script>
-import {
-  provide,
-  ref,
-  toRefs,
-  computed,
-  reactive,
-  onMounted,
-  onBeforeUnmount,
-  nextTick,
-} from 'vue'
+import { provide, ref, toRefs, computed, reactive, onMounted, onBeforeUnmount, nextTick } from 'vue'
 import { off, on, scrollTop } from '../../utils/dom'
 import BIcon from '../icon/icon'
 
@@ -81,10 +78,13 @@ export default {
         warning: '#fa8c16',
         danger: '#f5222d',
       }
-      return props.activeColor ? (colorMap[props.activeColor] ?
-        colorMap[props.activeColor] : props.activeColor) : null
+      return props.activeColor
+        ? colorMap[props.activeColor]
+          ? colorMap[props.activeColor]
+          : props.activeColor
+        : null
     })
-    const chooseLink = (current) => {
+    const chooseLink = current => {
       data.currentLink = current
       data.currentId = current.slice(1)
       emit('select', data.currentLink)
@@ -96,7 +96,6 @@ export default {
 
     provide('BAnchor', { props, data, linksRef })
     provide('chooseLink', chooseLink)
-
 
     const handleScroll = () => {
       if (animating) return
@@ -121,7 +120,7 @@ export default {
       data.titlesOffsetArr = offsetArr
     }
 
-    const getCurrentScrollAtTitleId = (scrollTop) => {
+    const getCurrentScrollAtTitleId = scrollTop => {
       let i = -1
       let len = data.titlesOffsetArr.length
       let titleItem = { link: '#', offset: 0 }
@@ -129,7 +128,10 @@ export default {
       while (++i < len) {
         let currentEle = data.titlesOffsetArr[i]
         let nextEle = data.titlesOffsetArr[i + 1]
-        if (scrollTop >= currentEle.offset && scrollTop < ((nextEle && nextEle.offset) || Infinity)) {
+        if (
+          scrollTop >= currentEle.offset &&
+          scrollTop < ((nextEle && nextEle.offset) || Infinity)
+        ) {
           titleItem = data.titlesOffsetArr[i]
           break
         }
@@ -139,13 +141,15 @@ export default {
     }
 
     const handleSetInkTop = () => {
-      const currentLinkElementA = container.value.querySelector(`a[data-href="${data.currentLink}"]`)
+      const currentLinkElementA = container.value.querySelector(
+        `a[data-href="${data.currentLink}"]`,
+      )
       if (!currentLinkElementA) return
       const elementATop = currentLinkElementA.offsetTop
-      data.inkTop = (elementATop < 0 ? props.offsetTop : elementATop)
+      data.inkTop = elementATop < 0 ? props.offsetTop : elementATop
     }
 
-    const handleScrollTo = (to) => {
+    const handleScrollTo = to => {
       const offsetTop = to - props.scrollOffset
       animating = true
       const currentPos = el.value.pageYOffset || el.value.scrollTop
@@ -182,6 +186,7 @@ export default {
       ...toRefs(data),
       iconStyle,
       activeColorStr,
+      chooseLink,
     }
   },
 }
