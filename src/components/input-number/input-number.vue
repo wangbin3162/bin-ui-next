@@ -1,13 +1,15 @@
 <template>
-  <div :class="[
-        'bin-input-number',
-        {
-          [`bin-input-number-${inputSize}`]: !!inputSize,
-          ['bin-input-number-disabled']: inputDisabled,
-          ['bin-input-number-focused']: focused,
-          ['bin-input-number-always']: always
-        }
-      ]">
+  <div
+    :class="[
+      'bin-input-number',
+      {
+        [`bin-input-number-${inputSize}`]: !!inputSize,
+        ['bin-input-number-disabled']: inputDisabled,
+        ['bin-input-number-focused']: focused,
+        ['bin-input-number-always']: always,
+      },
+    ]"
+  >
     <template v-if="always">
       <a v-repeat-click="down" :class="minusClasses">
         <i class="b-iconfont b-icon-minus"></i>
@@ -17,15 +19,11 @@
       </a>
     </template>
     <template v-else>
-      <a
-        v-repeat-click="up"
-        :class="upClasses">
-        <span :class="innerUpClasses" @click="preventDefault"></span>
+      <a v-repeat-click="up" :class="upClasses">
+        <span :class="innerUpClasses" @click.prevent></span>
       </a>
-      <a
-        v-repeat-click="down"
-        :class="downClasses">
-        <span :class="innerDownClasses" @click="preventDefault"></span>
+      <a v-repeat-click="down" :class="downClasses">
+        <span :class="innerDownClasses" @click.prevent></span>
       </a>
     </template>
     <div :class="inputWrapClasses">
@@ -40,12 +38,13 @@
         @blur="blur"
         @keydown.stop="keyDown"
         @input="change"
-        @mouseup="preventDefault"
+        @mouseup.prevent
         @change="change"
         :readonly="readonly || !editable"
         :name="name"
         :value="formatterValue"
-        :placeholder="placeholder">
+        :placeholder="placeholder"
+      />
     </div>
   </div>
 </template>
@@ -53,6 +52,7 @@
 <script>
 import { reactive, watch, toRefs, nextTick, computed } from 'vue'
 import useForm from '../../hooks/useForm'
+import { typeOf } from '../../utils/util'
 
 function addNum(num1, num2) {
   let sq1, sq2, m
@@ -92,12 +92,11 @@ export default {
       default: false,
     },
     modelValue: {
-      type: Number,
-      default: 1,
+      type: [Number, String],
     },
     size: {
       type: String,
-      validator: (val) => ['', 'large', 'default', 'small', 'mini'].includes(val),
+      validator: val => ['', 'large', 'default', 'small', 'mini'].includes(val),
       default: 'default',
     },
     disabled: {
@@ -149,21 +148,16 @@ export default {
   },
   emits: ['update:modelValue', 'change', 'input', 'blur', 'focus'],
   setup(props, ctx) {
-
     const { BForm, BFormItem, formEmit } = useForm()
     const inputDisabled = computed(() => props.disabled || BForm.disabled)
     const inputSize = computed(() => props.size || BForm.size || BFormItem.size)
 
     const data = reactive({
-      currentValue: props.modelValue,
+      currentValue: null,
       focused: false,
       upDisabled: false,
       downDisabled: false,
     })
-
-    const preventDefault = (e) => {
-      e.preventDefault()
-    }
 
     const up = () => {
       const targetVal = Number(props.modelValue)
@@ -179,7 +173,7 @@ export default {
       }
       changeStep('down', targetVal)
     }
-    const focus = (e) => {
+    const focus = e => {
       data.focused = true
       ctx.emit('focus', e)
     }
@@ -191,7 +185,7 @@ export default {
       })
     }
 
-    const keyDown = (e) => {
+    const keyDown = e => {
       if (e.keyCode === 38) {
         e.preventDefault()
         up(e)
@@ -200,10 +194,11 @@ export default {
         down(e)
       }
     }
-    const change = (e) => {
+    const change = e => {
       let val = e.target.value.trim()
       // 需要格式化数据时
-      let needFormat = (e.type === 'input' && props.activeChange) || (e.type === 'change' && !props.activeChange)
+      let needFormat =
+        (e.type === 'input' && props.activeChange) || (e.type === 'change' && !props.activeChange)
       if (needFormat) {
         if (e.type === 'input' && !props.activeChange) return
         if (props.parser) {
@@ -286,6 +281,28 @@ export default {
     }
 
     function changeVal(val) {
+      // 根据类型进行特殊处理
+      const inputType = typeOf(val)
+
+      if (inputType === 'undefined') {
+        data.currentValue = null
+        setValue(null)
+        return
+      }
+
+      if (inputType === 'string') {
+        val = Number(val)
+
+        if (!isNaN(val)) {
+          data.currentValue = val
+          setValue(val)
+        } else {
+          data.currentValue = null
+          setValue(null)
+        }
+        return
+      }
+
       val = Number(val)
       if (!isNaN(val)) {
         const step = props.step
@@ -300,7 +317,7 @@ export default {
 
     watch(
       () => props.modelValue,
-      (val) => {
+      val => {
         data.currentValue = val
         changeVal(val)
       },
@@ -319,11 +336,12 @@ export default {
       },
     )
     return {
-      BForm, BFormItem, formEmit,
+      BForm,
+      BFormItem,
+      formEmit,
       inputDisabled,
       ...toRefs(data),
       inputSize,
-      preventDefault,
       up,
       down,
       focus,

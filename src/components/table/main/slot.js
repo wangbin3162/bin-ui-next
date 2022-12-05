@@ -17,10 +17,11 @@ export default {
     if (!render) {
       throw Error('columns slot should be write <template> in table slots')
     }
-    return () => render({
-      row: props.row,
-      column: props.column,
-      index: props.index,
-    })
+    return () =>
+      render({
+        row: props.row,
+        column: props.column,
+        index: props.index,
+      })
   },
 }

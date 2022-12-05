@@ -75,6 +75,7 @@ Modal 组件提供了灵活的自定义样式 API 和 Slot，可以自由控制�
   <b-button @click="modal2 = true">不带标题栏和页脚</b-button>
   <b-button @click="modal3 = true">设置宽</b-button>
   <b-button @click="modal4 = true">距离顶部200px</b-button>
+  <b-button @click="modal5 = true">body-style</b-button>
   <b-modal v-model="modal1">
     <template #title>
       <p style="color:#f60;text-align:center">
@@ -88,19 +89,28 @@ Modal 组件提供了灵活的自定义样式 API 和 Slot，可以自由控制�
       <b-button type="danger" @click="$log.print('delete click','danger')">Delete</b-button>
     </template>
   </b-modal>
+
   <b-modal v-model="modal2">
     <p>我是弹窗内容...</p>
     <p>我是弹窗内容...</p>
     <p>我是弹窗内容...</p>
   </b-modal>
+
   <b-modal v-model="modal3"
            title="自定义宽度"
            width="300px">
     <p> 自定义宽度，单位 px，默认 520px。
       对话框的宽度是响应式的，当屏幕尺寸小于 768px 时，宽度会变为自动auto。</p>
   </b-modal>
+
   <b-modal v-model="modal4" title="距离顶部" top="200px">
     <p>距离顶部200px</p>
+  </b-modal>
+  
+  <b-modal v-model="modal5" title="body-style" :body-styles="{padding: 0}">
+    <p>我是弹窗内容...</p>
+    <p>我是弹窗内容...</p>
+    <p>我是弹窗内容...</p>
   </b-modal>
 </template>
 <script>
@@ -110,7 +120,8 @@ Modal 组件提供了灵活的自定义样式 API 和 Slot，可以自由控制�
         modal1: false,
         modal2: false,
         modal3: false,
-        modal4: false
+        modal4: false,
+        modal5: false
       }
     }
   }
@@ -325,6 +336,7 @@ Modal 组件提供了灵活的自定义样式 API 和 Slot，可以自由控制�
 | draggable     | 是否可以拖拽移动 | Boolean  |      —      | false |
 | mask     | 是否显示遮罩层 | Boolean  |      —      | true |
 | custom-class    | 自定义类名 | String  |      —      |  —  |
+| body-style    | 自定body的样式style | Object  |      —      |  —  |
 | z-index    | 层级 | Number  |      —      |  2000  |
 | append-to-body    | 是否将对话框放置于 body 内 | Boolean  |      —      |  false  |
 | lock-scroll | 出现modal时锁定滚动 | Boolean  |      —      |  true  |

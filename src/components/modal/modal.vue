@@ -41,7 +41,7 @@
               </slot>
             </div>
             <template v-if="rendered">
-              <div class="bin-modal-body">
+              <div class="bin-modal-body" :style="bodyStyles">
                 <slot></slot>
               </div>
             </template>
@@ -139,6 +139,9 @@ export default {
     customClass: {
       type: String,
       default: '',
+    },
+    bodyStyles: {
+      type: Object,
     },
     maskClosable: {
       type: Boolean,

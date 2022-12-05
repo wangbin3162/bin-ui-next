@@ -17,7 +17,43 @@
   export default {
     data() {
       return {
-        value1: 1
+        value1: 1,
+      }
+    }
+  }
+</script>
+```
+
+:::
+
+
+### 初始化值
+
+默认控件初始化值为null，这时如果绑定的属性值为undefined，则会改变默认值为null（因为undefined转换为数字之后为NaN），
+如果默认传输为字符串，则也会进行一次值的转换，如能转换为数字，则会根据最大最小值进行数字转换。否则也会置空。
+
+::: demo
+
+```html
+
+<template>
+  <b-space>
+    初始化值为null(绑定属性存在）<b-input-number v-model="obj.num1"></b-input-number>
+    <b-divider type="vertical"/>
+    初始化值为字符串<b-input-number :min="1" :max="10" v-model="obj.num2"></b-input-number>
+    <b-divider type="vertical"/>
+    初始化值为undefined(绑定属性不存在）<b-input-number v-model="obj.num3"></b-input-number>
+  </b-space>
+  <p>{{obj}}</p>
+</template>
+<script>
+  export default {
+    data() {
+      return {
+        obj: {
+          num1: null,
+          num2: '0'
+        }
       }
     }
   }

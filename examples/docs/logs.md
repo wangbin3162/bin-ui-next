@@ -5,6 +5,13 @@
 <div class="doc-update">
     <b-timeline>
       <b-timeline-item>
+        <p class="version">1.2.8</p>
+        <p class="time">2022-12-05</p>
+        <p class="content"><i>🌈</i>优化数字输入控件，对undefined和字符串予以不同的初始化处理</p>
+        <p class="content"><i>🌈</i>优化弹窗组件，增加body-styles对象样式控制</p>
+        <p class="content"><i>🍀</i>升级vue依赖</p>
+      </b-timeline-item>
+      <b-timeline-item>
         <p class="version">1.2.7</p>
         <p class="time">2022-09-24</p>
         <p class="content"><i>🌈</i>优化锚点滚动，扩展快捷点击事件</p>
