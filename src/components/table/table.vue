@@ -1,7 +1,12 @@
 <template>
   <div :class="wrapClasses" :style="wrapStyles" ref="containerRef">
     <div :class="classes" v-loading:[loadingText]="loading">
-      <div :class="['bin-table-header']" v-if="showHeader" ref="headerRef" @mousewheel="handleMouseWheel">
+      <div
+        :class="['bin-table-header']"
+        v-if="showHeader"
+        ref="headerRef"
+        @mousewheel="handleMouseWheel"
+      >
         <table-head
           prefix-cls="bin-table"
           :styleObject="tableHeaderStyle"
@@ -12,8 +17,13 @@
           :data="rebuildData"
         ></table-head>
       </div>
-      <div :class="['bin-table-body']" ref="bodyRef" :style="bodyStyle" @scroll="handleBodyScroll"
-           v-show="!(!!noDataText && (!data || data.length === 0))">
+      <div
+        :class="['bin-table-body']"
+        ref="bodyRef"
+        :style="bodyStyle"
+        @scroll="handleBodyScroll"
+        v-show="!(!!noDataText && (!data || data.length === 0))"
+      >
         <table-body
           ref="tbodyRef"
           prefix-cls="bin-table"
@@ -27,15 +37,18 @@
         ></table-body>
       </div>
       <div
-        :class="['bin-table-tip']" :style="bodyStyle" @scroll="handleBodyScroll"
-        v-show="!data || data.length === 0">
+        :class="['bin-table-tip']"
+        :style="bodyStyle"
+        @scroll="handleBodyScroll"
+        v-show="!data || data.length === 0"
+      >
         <table cellspacing="0" cellpadding="0" border="0">
           <tbody>
-          <tr>
-            <td :style="{'height':bodyStyle.height,'width':`${headerWidth}px`}">
-              <b-empty v-if="!data || data.length === 0">{{ noDataText }}</b-empty>
-            </td>
-          </tr>
+            <tr>
+              <td :style="{ height: bodyStyle.height, width: `${headerWidth}px` }">
+                <b-empty v-if="!data || data.length === 0">{{ noDataText }}</b-empty>
+              </td>
+            </tr>
           </tbody>
         </table>
       </div>
@@ -50,10 +63,16 @@
             :fixed-column-rows="leftFixedColumnRows"
             :obj-data="objData"
             :columns-width="columnsWidth"
-            :data="rebuildData"></table-head>
+            :data="rebuildData"
+          ></table-head>
         </div>
-        <div :class="['bin-table-fixed-body']" :style="fixedBodyStyle" ref="fixedBodyRef"
-             @mousewheel="handleFixedMousewheel" @DOMMouseScroll="handleFixedMousewheel">
+        <div
+          :class="['bin-table-fixed-body']"
+          :style="fixedBodyStyle"
+          ref="fixedBodyRef"
+          @mousewheel="handleFixedMousewheel"
+          @DOMMouseScroll="handleFixedMousewheel"
+        >
           <table-body
             fixed="left"
             :draggable="draggable"
@@ -63,7 +82,8 @@
             :data="rebuildData"
             :row-key="rowKey"
             :columns-width="columnsWidth"
-            :obj-data="objData"></table-body>
+            :obj-data="objData"
+          ></table-body>
         </div>
       </div>
       <div :class="['bin-table-fixed-right']" :style="fixedRightTableStyle" v-if="isRightFixed">
@@ -77,10 +97,16 @@
             :fixed-column-rows="rightFixedColumnRows"
             :obj-data="objData"
             :columns-width="columnsWidth"
-            :data="rebuildData"></table-head>
+            :data="rebuildData"
+          ></table-head>
         </div>
-        <div :class="['bin-table-fixed-body']" :style="fixedBodyStyle" ref="fixedRightBodyRef"
-             @mousewheel="handleFixedMousewheel" @DOMMouseScroll="handleFixedMousewheel">
+        <div
+          :class="['bin-table-fixed-body']"
+          :style="fixedBodyStyle"
+          ref="fixedRightBodyRef"
+          @mousewheel="handleFixedMousewheel"
+          @DOMMouseScroll="handleFixedMousewheel"
+        >
           <table-body
             fixed="right"
             :draggable="draggable"
@@ -90,10 +116,15 @@
             :data="rebuildData"
             :row-key="rowKey"
             :columns-width="columnsWidth"
-            :obj-data="objData"></table-body>
+            :obj-data="objData"
+          ></table-body>
         </div>
       </div>
-      <div :class="['bin-table-fixed-right-header']" :style="fixedRightHeaderStyle" v-if="isRightFixed"></div>
+      <div
+        :class="['bin-table-fixed-right-header']"
+        :style="fixedRightHeaderStyle"
+        v-if="isRightFixed"
+      ></div>
     </div>
   </div>
 </template>
@@ -328,13 +359,15 @@ export default {
 
     // fixed table
     const isLeftFixed = computed(() => props.columns.some(col => col.fixed && col.fixed === 'left'))
-    const isRightFixed = computed(() => props.columns.some(col => col.fixed && col.fixed === 'right'))
+    const isRightFixed = computed(() =>
+      props.columns.some(col => col.fixed && col.fixed === 'right'),
+    )
     const leftFixedColumns = computed(() => convertColumnOrder(cloneColumns.value, 'left'))
     const rightFixedColumns = computed(() => convertColumnOrder(cloneColumns.value, 'right'))
     const fixedTableStyle = computed(() => {
       let style = {}
       let width = 0
-      leftFixedColumns.value.forEach((col) => {
+      leftFixedColumns.value.forEach(col => {
         if (col.fixed && col.fixed === 'left') width += col._width
       })
       style.width = `${width - 1}px`
@@ -344,7 +377,7 @@ export default {
     const fixedRightTableStyle = computed(() => {
       let style = {}
       let width = 0
-      rightFixedColumns.value.forEach((col) => {
+      rightFixedColumns.value.forEach(col => {
         if (col.fixed && col.fixed === 'right') width += col._width
       })
       // width += this.scrollBarWidth;
@@ -433,7 +466,7 @@ export default {
     function makeObjData() {
       let data = {}
       props.data.forEach((row, index) => {
-        const newRow = deepCopy(row)// todo 直接替换
+        const newRow = deepCopy(row) // todo 直接替换
         newRow._isHover = false
         if (newRow._disabled) {
           newRow._isDisabled = newRow._disabled
@@ -533,7 +566,9 @@ export default {
         let bodyContentHeight = bodyContentEl.offsetHeight
         let offsetHeight = bodyEl.offsetHeight
 
-        const showHBar = showHorizontalScrollBar.value = bodyEl.offsetWidth < bodyContentEl.offsetWidth + (showVerticalScrollBar.value ? scrollBarWidth.value : 0)
+        const showHBar = (showHorizontalScrollBar.value =
+          bodyEl.offsetWidth <
+          bodyContentEl.offsetWidth + (showVerticalScrollBar.value ? scrollBarWidth.value : 0))
         showVerticalScrollBar.value = bodyHeight.value
           ? offsetHeight - (showHBar ? scrollBarWidth.value : 0) < bodyContentHeight
           : false
@@ -560,7 +595,7 @@ export default {
       let noWidthColumns = []
       let maxWidthColumns = []
       let noMaxWidthColumns = []
-      cloneColumnsBuf.forEach((col) => {
+      cloneColumnsBuf.forEach(col => {
         if (col.width) {
           hasWidthColumns.push(col)
         } else {
@@ -578,7 +613,12 @@ export default {
       })
 
       let unUsableWidth = hasWidthColumns.map(cell => cell.width).reduce((a, b) => a + b, 0)
-      let usableWidth = offsetWidth - unUsableWidth - sumMinWidth - (showVerticalScrollBar.value ? scrollBarWidth.value : 0) - 1
+      let usableWidth =
+        offsetWidth -
+        unUsableWidth -
+        sumMinWidth -
+        (showVerticalScrollBar.value ? scrollBarWidth.value : 0) -
+        1
       let usableLength = noWidthColumns.length
       let columnWidth = 0
       if (usableWidth > 0 && usableLength > 0) {
@@ -641,7 +681,10 @@ export default {
           }
         }
       }
-      tableWidth.value = cloneColumnsBuf.map(cell => cell._width).reduce((a, b) => a + b, 0) + (showVerticalScrollBar.value ? scrollBarWidth.value : 0) + 1
+      tableWidth.value =
+        cloneColumnsBuf.map(cell => cell._width).reduce((a, b) => a + b, 0) +
+        (showVerticalScrollBar.value ? scrollBarWidth.value : 0) +
+        1
       columnsWidth.value = columnsWidthObj
       fixedHeader()
     }
@@ -653,12 +696,13 @@ export default {
     function handleSort(_index, type) {
       const index = GetOriginalIndex(_index)
       const columns = cloneColumns.value
-      columns.forEach((col) => {
+      columns.forEach(col => {
         col._sortType = 'normal'
       })
 
       const key = columns[index].key
-      if (columns[index].sortable !== 'custom') { // custom is for remote sort
+      if (columns[index].sortable !== 'custom') {
+        // custom is for remote sort
         if (type === 'normal') {
           rebuildData.value = makeDataWithSort()
         } else {
@@ -782,7 +826,9 @@ export default {
       for (let i in _objData) {
         if (_objData[i]._isChecked) selectionIndexes.push(parseInt(i))
       }
-      return JSON.parse(JSON.stringify(props.data.filter((data, index) => selectionIndexes.indexOf(index) > -1)))
+      return JSON.parse(
+        JSON.stringify(props.data.filter((data, index) => selectionIndexes.indexOf(index) > -1)),
+      )
     }
 
     function toggleSelect(_index) {
@@ -799,7 +845,11 @@ export default {
       _objData[_index]._isChecked = status
 
       const selection = getSelection()
-      emit(status ? 'select' : 'select-cancel', selection, JSON.parse(JSON.stringify(props.data[_index])))
+      emit(
+        status ? 'select' : 'select-cancel',
+        selection,
+        JSON.parse(JSON.stringify(props.data[_index])),
+      )
       emit('selection-change', selection)
     }
 
@@ -916,37 +966,49 @@ export default {
       }
     })
 
-    watch(() => props.data, (newData) => {
-      // 缓存原始list-data，用于拖拽时更新数据
-      const oldDataLen = rebuildData.value.length
-      objData.value = makeObjData()
-      rebuildData.value = makeDataWithSort()
-      if (!oldDataLen) fixedHeader()
-      cloneData.value = deepCopy(newData)
-      nextTick(() => {
-        handleResize()
-      })
-    }, { deep: true })
+    watch(
+      () => props.data,
+      newData => {
+        // 缓存原始list-data，用于拖拽时更新数据
+        const oldDataLen = rebuildData.value.length
+        objData.value = makeObjData()
+        rebuildData.value = makeDataWithSort()
+        if (!oldDataLen) fixedHeader()
+        cloneData.value = deepCopy(newData)
+        nextTick(() => {
+          handleResize()
+        })
+      },
+      { deep: true },
+    )
 
-    watch(() => props.columns, (newColumns) => {
-      const colsWithId = makeColumnsId(newColumns)
-      allColumns.value = getAllColumns(colsWithId)
-      cloneColumns.value = makeColumns(colsWithId)
-      columnRows.value = makeColumnRows(false, colsWithId)
-      leftFixedColumnRows.value = makeColumnRows('left', colsWithId)
-      rightFixedColumnRows.value = makeColumnRows('right', colsWithId)
-      rebuildData.value = makeDataWithSort()
-      nextTick(() => {
-        handleResize()
-      })
-    }, { deep: true })
+    watch(
+      () => props.columns,
+      newColumns => {
+        const colsWithId = makeColumnsId(newColumns)
+        allColumns.value = getAllColumns(colsWithId)
+        cloneColumns.value = makeColumns(colsWithId)
+        columnRows.value = makeColumnRows(false, colsWithId)
+        leftFixedColumnRows.value = makeColumnRows('left', colsWithId)
+        rightFixedColumnRows.value = makeColumnRows('right', colsWithId)
+        rebuildData.value = makeDataWithSort()
+        nextTick(() => {
+          handleResize()
+        })
+      },
+      { deep: true },
+    )
 
-    watch(() => [props.height, props.maxHeight, showHorizontalScrollBar, showVerticalScrollBar], () => {
-      handleResize()
-    })
+    watch(
+      () => [props.height, props.maxHeight, showHorizontalScrollBar, showVerticalScrollBar],
+      () => {
+        handleResize()
+      },
+    )
 
     return {
       containerRef,
+      handleResize,
       titleRef,
       headerRef,
       bodyRef,

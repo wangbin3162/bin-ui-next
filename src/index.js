@@ -91,10 +91,31 @@ import log from './utils/log'
 import { scrollTop } from './utils/dom'
 import * as color from './utils/color'
 import { ClickAnimation, ClickOutside, NoData, Loading, Waves, RepeatClick } from './directives'
+import {
+  useFocus,
+  useForm,
+  useLockScreen,
+  useModal,
+  useModalDrag,
+  useMousePosition,
+  useRestoreActive,
+  useSortable,
+} from './hooks'
 
 import config from '../package.json'
 
 const version = config.version // version_ to fix tsc issue
+
+const Hooks = {
+  useFocus,
+  useForm,
+  useLockScreen,
+  useModal,
+  useModalDrag,
+  useMousePosition,
+  useRestoreActive,
+  useSortable,
+}
 
 const Utils = {
   util,
@@ -187,6 +208,7 @@ const components = [
   BCountTo,
 ]
 const plugins = [LoadingBar, Message, MessageBox, Notice]
+
 const defaultInstallOpt = {
   zIndex: 2000,
 }
@@ -214,7 +236,7 @@ const install = function (app, options = {}) {
   app.config.globalProperties.$rangeTime = util.rangeTime
   app.config.globalProperties.$typeOf = util.typeOf
   app.config.globalProperties.$deepCopy = util.deepCopy
-  app.config.globalProperties.$deepMerge = util.deepMerge()
+  app.config.globalProperties.$deepMerge = util.deepMerge
   app.config.globalProperties.$getRandomInt = util.getRandomInt
   app.config.globalProperties.$throttle = util.throttle
   app.config.globalProperties.$debounce = util.debounce
@@ -315,6 +337,7 @@ export {
   MessageBox,
   Notice,
   Utils,
+  Hooks,
 }
 
 export default {
