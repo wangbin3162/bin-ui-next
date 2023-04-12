@@ -1,4 +1,4 @@
-import { FormItemKey, FormKey, FormEvents } from '../components/form'
+import { FormItemKey, FormKey, FormEvents } from '../components/form/token'
 import { inject, computed } from 'vue'
 
 export const VALIDATE_STATE_MAP = {
@@ -9,7 +9,6 @@ export const VALIDATE_STATE_MAP = {
 export default function useForm() {
   const BForm = inject(FormKey, {})
   const BFormItem = inject(FormItemKey, {})
-
 
   const validateState = computed(() => BFormItem.validateState || '')
 

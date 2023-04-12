@@ -91,31 +91,31 @@ import log from './utils/log'
 import { scrollTop } from './utils/dom'
 import * as color from './utils/color'
 import { ClickAnimation, ClickOutside, NoData, Loading, Waves, RepeatClick } from './directives'
-// import {
-//   useFocus,
-//   useForm,
-//   useLockScreen,
-//   useModal,
-//   useModalDrag,
-//   useMousePosition,
-//   useRestoreActive,
-//   useSortable,
-// } from './hooks'
+import {
+  useFocus,
+  useForm,
+  useLockScreen,
+  useModal,
+  useModalDrag,
+  useMousePosition,
+  useRestoreActive,
+  useSortable,
+} from './hooks'
 
 import config from '../package.json'
 
 const version = config.version // version_ to fix tsc issue
 
-// const Hooks = {
-//   useFocus,
-//   useForm,
-//   useLockScreen,
-//   useModal,
-//   useModalDrag,
-//   useMousePosition,
-//   useRestoreActive,
-//   useSortable,
-// }
+const Hooks = {
+  useFocus,
+  useForm,
+  useLockScreen,
+  useModal,
+  useModalDrag,
+  useMousePosition,
+  useRestoreActive,
+  useSortable,
+}
 
 const Utils = {
   util,
@@ -337,7 +337,7 @@ export {
   MessageBox,
   Notice,
   Utils,
-  // Hooks,
+  Hooks,
 }
 
 export default {
