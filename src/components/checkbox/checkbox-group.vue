@@ -53,9 +53,12 @@ export default {
       changeEvent,
     })
 
-    watch(() => props.modelValue, val => {
-      formEmit('change', [val])
-    })
+    watch(
+      () => props.modelValue,
+      val => {
+        formEmit('change', [val])
+      },
+    )
   },
 }
 </script>

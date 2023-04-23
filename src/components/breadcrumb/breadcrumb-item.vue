@@ -1,12 +1,13 @@
 <template>
   <span class="bin-breadcrumb__item">
-    <span
-      :class="['bin-breadcrumb__inner']"
-      ref="link"
-      role="link">
+    <span :class="['bin-breadcrumb__inner']" ref="link" role="link">
       <slot></slot>
     </span>
-    <i v-if="separatorIcon" class="bin-separator icon" :class="['b-iconfont','b-icon-'+separatorIcon]"></i>
+    <i
+      v-if="separatorIcon"
+      class="bin-separator icon"
+      :class="['b-iconfont', 'b-icon-' + separatorIcon]"
+    ></i>
     <span v-else class="bin-separator" role="presentation">{{ separator }}</span>
   </span>
 </template>

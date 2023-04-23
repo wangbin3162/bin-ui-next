@@ -5,7 +5,7 @@
     :class="{
       'is-dragging': !!dragState.draggingNode,
       'is-drop-not-allow': !dragState.allowDrop,
-      'is-drop-inner': dragState.dropType === 'inner'
+      'is-drop-inner': dragState.dropType === 'inner',
     }"
     role="tree"
   >
@@ -17,8 +17,7 @@
         :multiple="multiple"
         :show-checkbox="showCheckbox"
         :children-key="childrenKey"
-      >
-      </tree-node>
+      ></tree-node>
     </template>
     <div v-else>
       <b-empty style="margin: 16px 0">{{ emptyText }}</b-empty>
@@ -27,8 +26,7 @@
       v-show="dragState.showDropIndicator"
       ref="dropIndicator$"
       class="bin-tree__drop-indicator"
-    >
-    </div>
+    ></div>
   </div>
 </template>
 
@@ -36,7 +34,6 @@
 import TreeNode from './node.vue'
 import BEmpty from '../empty'
 import { provide, reactive, ref, toRefs, watch } from 'vue'
-import expand from '../table/main/expand'
 import { addClass, removeClass } from '../../utils/dom'
 import { deepCopy } from '../../utils/util'
 
@@ -150,11 +147,11 @@ export default {
 
         if (node[childrenKey]) {
           flatTree[node.nodeKey][childrenKey] = []
-          node[childrenKey].forEach((child) => flattenChildren(child, node, parents.join(',')))
+          node[childrenKey].forEach(child => flattenChildren(child, node, parents.join(',')))
         }
       }
 
-      props.data.forEach((rootNode) => {
+      props.data.forEach(rootNode => {
         flattenChildren(rootNode)
       })
       return flatTree
@@ -169,12 +166,12 @@ export default {
       if (node.checked === parent.checked && node.indeterminate === parent.indeterminate) return // no need to update upwards
 
       if (node.checked === true) {
-        parent['checked'] = parent[props.childrenKey].every((node) => node.checked)
+        parent['checked'] = parent[props.childrenKey].every(node => node.checked)
         parent['indeterminate'] = !parent.checked
       } else {
         parent['checked'] = false
         parent['indeterminate'] = parent[props.childrenKey].some(
-          (node) => node.checked || node.indeterminate,
+          node => node.checked || node.indeterminate,
         )
       }
       updateTreeUp(parentKey)
@@ -186,39 +183,39 @@ export default {
     }
 
     function getCheckedNodes() {
-      return states.flatState.filter((obj) => obj.node.checked).map((obj) => obj.node)
+      return states.flatState.filter(obj => obj.node.checked).map(obj => obj.node)
     }
 
     function getSelectedNodes() {
-      return states.flatState.filter((obj) => obj.node.selected).map((obj) => obj.node)
+      return states.flatState.filter(obj => obj.node.selected).map(obj => obj.node)
     }
 
     function getCheckedAndIndeterminateNodes() {
       return states.flatState
-        .filter((obj) => obj.node.checked || obj.node.indeterminate)
-        .map((obj) => obj.node)
+        .filter(obj => obj.node.checked || obj.node.indeterminate)
+        .map(obj => obj.node)
     }
 
     function collapseAll() {
-      states.flatState.forEach((node) => {
+      states.flatState.forEach(node => {
         node.node.expand = false
       })
     }
 
     function expandAll() {
-      states.flatState.forEach((node) => {
+      states.flatState.forEach(node => {
         node.node.expand = true
       })
     }
 
     function checkAll() {
-      states.flatState.forEach((node) => {
+      states.flatState.forEach(node => {
         handleCheck({ checked: true, nodeKey: node.nodeKey })
       })
     }
 
     function uncheckAll() {
-      states.flatState.forEach((node) => {
+      states.flatState.forEach(node => {
         handleCheck({ checked: false, nodeKey: node.nodeKey })
       })
     }
@@ -229,10 +226,17 @@ export default {
       })
     }
 
+    /**
+     * 设置选择
+     * @param {*} keys 选择的nodeKey
+     * @param {*} flag 选中或者未选中
+     * @param {*} expandParent 是否需要打开选择的祖先层级
+     */
     function setSelected(keys, flag = true, expandParent = true) {
       keys.forEach(nodeKey => {
         handleSelect(nodeKey, flag)
-        if (expandParent) { // 是否展开祖先层级
+        if (expandParent) {
+          // 是否展开祖先层级
           const parents = states.flatState[nodeKey].parents
           if (parents) {
             setExpand(parents)
@@ -242,7 +246,7 @@ export default {
     }
 
     function unselectAll() {
-      states.flatState.forEach((node) => {
+      states.flatState.forEach(node => {
         node.node.selected = false
       })
     }
@@ -256,9 +260,7 @@ export default {
     //===============public end=====================//
 
     function getMatchesNode(query) {
-      return states.flatState.filter((obj) =>
-        props.filterNodeMethod.call(obj.node, query, obj.node),
-      )
+      return states.flatState.filter(obj => props.filterNodeMethod.call(obj.node, query, obj.node))
     }
 
     function filter(query) {
@@ -267,7 +269,7 @@ export default {
       // 获取匹配的拉平节点
       let matches = getMatchesNode(query)
       // 隐藏全部
-      states.flatState.forEach((item) => {
+      states.flatState.forEach(item => {
         item.node.visible = false
         if (props.highlightFilter) {
           replaceDisplayTitle(item.node, query)
@@ -277,7 +279,7 @@ export default {
         }
       })
       // 再遍历一次匹配数组以及父级的开关tes
-      matches.forEach((item) => {
+      matches.forEach(item => {
         item.node.visible = true
         if (query.length > 0) {
           item.node['expand'] = true
@@ -303,7 +305,10 @@ export default {
     // 替换节点文字
     function replaceDisplayTitle(node, query) {
       if (query) {
-        node['display'] = node[props.titleKey].replace(new RegExp(query, 'g'), `<span>${query}</span>`)
+        node['display'] = node[props.titleKey].replace(
+          new RegExp(query, 'g'),
+          `<span>${query}</span>`,
+        )
       } else {
         delete node['display']
       }
@@ -316,7 +321,7 @@ export default {
         node[key] = changes[key]
       }
       if (node[props.childrenKey]) {
-        node[props.childrenKey].forEach((child) => {
+        node[props.childrenKey].forEach(child => {
           updateTreeDown(child, changes)
         })
       }
@@ -329,7 +334,7 @@ export default {
     function rebuildTree() {
       // only called when `data` prop changes
       const checkedNodes = getCheckedNodes()
-      checkedNodes.forEach((node) => {
+      checkedNodes.forEach(node => {
         updateTreeDown(node, { checked: true })
         // propagate upwards
         const parentKey = states.flatState[node.nodeKey].parent
@@ -342,13 +347,18 @@ export default {
       })
     }
 
+    let currentSelectedKey
+    /**
+     * 节点选择事件
+     * @param {*} nodeKey 选中的nodeKey
+     * @param {*} flag 选中值
+     */
     function handleSelect(nodeKey, flag) {
-      if (props.lockSelect) { // 如果锁定选择，则不触发选中事件
-        return
-      }
+      if (props.lockSelect) return
       const node = states.flatState[nodeKey].node
-      if (!props.multiple) { // reset previously selected node
-        const currentSelectedKey = states.flatState.findIndex(obj => obj.node.selected)
+      if (!props.multiple) {
+        // reset previously selected node
+        currentSelectedKey = states.flatState.findIndex(obj => obj.node.selected)
         if (currentSelectedKey >= 0 && currentSelectedKey !== nodeKey) {
           states.flatState[currentSelectedKey].node['selected'] = false
         }
@@ -366,7 +376,13 @@ export default {
       updateTreeUp(nodeKey) // propagate up
       updateTreeDown(node, { checked, indeterminate: false }) // reset `indeterminate` when going down
 
-      ctx.emit('check-change', getCheckedNodes(), node, getCheckedAndIndeterminateNodes(), states.flatState)
+      ctx.emit(
+        'check-change',
+        getCheckedNodes(),
+        node,
+        getCheckedAndIndeterminateNodes(),
+        states.flatState,
+      )
     }
 
     function updateTreeState() {
@@ -438,8 +454,8 @@ export default {
       const targetPosition = dropNode.$el.getBoundingClientRect()
       const treePosition = el$.value.getBoundingClientRect()
       let dropType
-      const prevPercent = dropPrev ? (dropInner ? 0.25 : (dropNext ? 0.45 : 1)) : -1
-      const nextPercent = dropNext ? (dropInner ? 0.75 : (dropPrev ? 0.55 : 0)) : 1
+      const prevPercent = dropPrev ? (dropInner ? 0.25 : dropNext ? 0.45 : 1) : -1
+      const nextPercent = dropNext ? (dropInner ? 0.75 : dropPrev ? 0.55 : 0) : 1
 
       let indicatorTop = -9999
       const distance = e.clientY - targetPosition.top
@@ -461,7 +477,7 @@ export default {
         indicatorTop = iconPosition.bottom - treePosition.top
       }
       dropIndicator.style.top = indicatorTop + 'px'
-      dropIndicator.style.left = (iconPosition.right - treePosition.left) + 'px'
+      dropIndicator.style.left = iconPosition.right - treePosition.left + 'px'
 
       if (dropType === 'inner') {
         addClass(dropNode.$el, 'is-drop-inner')

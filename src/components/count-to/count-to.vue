@@ -133,7 +133,9 @@ export default {
       state.remaining = state.localDuration - progress
       if (useEasing) {
         if (unref(getCountDown)) {
-          state.printVal = state.localStartVal - easingFn(progress, 0, state.localStartVal - endVal, state.localDuration)
+          state.printVal =
+            state.localStartVal -
+            easingFn(progress, 0, state.localStartVal - endVal, state.localDuration)
         } else {
           state.printVal = easingFn(
             progress,
@@ -144,9 +146,11 @@ export default {
         }
       } else {
         if (unref(getCountDown)) {
-          state.printVal = state.localStartVal - (state.localStartVal - endVal) * (progress / state.localDuration)
+          state.printVal =
+            state.localStartVal - (state.localStartVal - endVal) * (progress / state.localDuration)
         } else {
-          state.printVal = state.localStartVal + (endVal - state.localStartVal) * (progress / state.localDuration)
+          state.printVal =
+            state.localStartVal + (endVal - state.localStartVal) * (progress / state.localDuration)
         }
       }
       if (unref(getCountDown)) {

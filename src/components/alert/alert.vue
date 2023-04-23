@@ -3,7 +3,7 @@
     <div v-if="!closed" :class="wrapClasses">
       <span class="bin-alert-icon" v-if="showIcon">
         <slot name="icon">
-            <i :class="`b-iconfont b-icon-${iconType}`"></i>
+          <i :class="`b-iconfont b-icon-${iconType}`"></i>
         </slot>
       </span>
       <span class="bin-alert-message"><slot></slot></span>
@@ -23,10 +23,10 @@ import { computed, onMounted, ref } from 'vue'
 const prefixCls = 'bin-alert'
 
 const TYPE_CLASSES_MAP = {
-  'info': 'info-circle',
-  'success': 'check-circle',
-  'warning': 'warning-circle',
-  'error': 'error',
+  info: 'info-circle',
+  success: 'check-circle',
+  warning: 'warning-circle',
+  error: 'error',
 }
 
 export default {
@@ -56,7 +56,7 @@ export default {
         },
       ]
     })
-    const close = (e) => {
+    const close = e => {
       closed.value = true
       emit('close', e)
     }

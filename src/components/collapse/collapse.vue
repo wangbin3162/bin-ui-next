@@ -1,11 +1,11 @@
 <template>
-  <div :class="['bin-collapse',{'bin-collapse-simple': simple}]">
+  <div :class="['bin-collapse', { 'bin-collapse-simple': simple }]">
     <slot></slot>
   </div>
 </template>
 
 <script>
-import {  onUnmounted, provide, ref, watch} from 'vue'
+import { onUnmounted, provide, ref, watch } from 'vue'
 
 import mitt from 'mitt'
 import { UPDATE_MODEL_EVENT, CHANGE_EVENT } from '../../utils/constants'
@@ -35,8 +35,10 @@ export default {
     const handleItemClick = name => {
       if (props.accordion) {
         setActiveNames(
-          (activeNames.value[0] || activeNames.value[0] === 0) &&
-          activeNames.value[0] === name ? '' : name)
+          (activeNames.value[0] || activeNames.value[0] === 0) && activeNames.value[0] === name
+            ? ''
+            : name,
+        )
       } else {
         let _activeNames = activeNames.value.slice(0)
         const index = _activeNames.indexOf(name)

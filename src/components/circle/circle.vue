@@ -1,10 +1,21 @@
 <template>
   <div :style="circleSize" :class="wrapClasses">
     <svg viewBox="0 0 100 100">
-      <path :d="pathString" :stroke="trailColor" :stroke-width="trailWidth" :fill-opacity="0"
-            :style="trailStyle"></path>
-      <path :d="pathString" :stroke-linecap="strokeLinecap" :stroke="strokeColor" :stroke-width="computedStrokeWidth"
-            fill-opacity="0" :style="pathStyle"></path>
+      <path
+        :d="pathString"
+        :stroke="trailColor"
+        :stroke-width="trailWidth"
+        :fill-opacity="0"
+        :style="trailStyle"
+      ></path>
+      <path
+        :d="pathString"
+        :stroke-linecap="strokeLinecap"
+        :stroke="strokeColor"
+        :stroke-width="computedStrokeWidth"
+        fill-opacity="0"
+        :style="pathStyle"
+      ></path>
     </svg>
     <div :class="innerClasses">
       <slot></slot>
@@ -12,7 +23,6 @@
   </div>
 </template>
 <script>
-
 const prefixCls = 'bin-circle'
 
 export default {
@@ -35,7 +45,7 @@ export default {
       default: '#1089ff',
     },
     strokeLinecap: {
-      validator: (value) => ['square', 'round'].includes(value),
+      validator: value => ['square', 'round'].includes(value),
       default: 'round',
     },
     trailWidth: {
@@ -84,7 +94,7 @@ export default {
         style = {
           'stroke-dasharray': `${this.len - 75}px ${this.len}px`,
           'stroke-dashoffset': `-${75 / 2}px`,
-          'transition': 'stroke-dashoffset .3s ease 0s, stroke-dasharray .3s ease 0s, stroke .3s',
+          transition: 'stroke-dashoffset .3s ease 0s, stroke-dasharray .3s ease 0s, stroke .3s',
         }
       }
       return style
@@ -95,13 +105,14 @@ export default {
         style = {
           'stroke-dasharray': `${(this.percent / 100) * (this.len - 75)}px ${this.len}px`,
           'stroke-dashoffset': `-${75 / 2}px`,
-          'transition': 'stroke-dashoffset .3s ease 0s, stroke-dasharray .6s ease 0s, stroke .6s, stroke-width .06s ease .6s',
+          transition:
+            'stroke-dashoffset .3s ease 0s, stroke-dasharray .6s ease 0s, stroke .6s, stroke-width .06s ease .6s',
         }
       } else {
         style = {
           'stroke-dasharray': `${this.len}px ${this.len}px`,
-          'stroke-dashoffset': `${((100 - this.percent) / 100 * this.len)}px`,
-          'transition': 'stroke-dashoffset 0.6s ease 0s, stroke 0.6s ease',
+          'stroke-dashoffset': `${((100 - this.percent) / 100) * this.len}px`,
+          transition: 'stroke-dashoffset 0.6s ease 0s, stroke 0.6s ease',
         }
       }
       return style

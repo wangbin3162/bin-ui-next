@@ -1,5 +1,5 @@
 <template>
-  <div :class="[ 'bin-collapse-item',{ 'bin-collapse-item-active': isActive } ]">
+  <div :class="['bin-collapse-item', { 'bin-collapse-item-active': isActive }]">
     <div class="bin-collapse-header" @click="handleHeaderClick">
       <b-icon name="right" v-if="!hideArrow"></b-icon>
       <slot name="title">

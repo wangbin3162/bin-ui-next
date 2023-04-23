@@ -5,11 +5,10 @@
         v-for="(item, index) in rgbaColors"
         :key="colors[index]"
         class="bin-color-predefine__color-selector"
-        :class="{selected: item.selected, 'is-alpha': item._alpha < 100}"
+        :class="{ selected: item.selected, 'is-alpha': item._alpha < 100 }"
         @click="handleSelect(index)"
       >
-        <div :style="{'background-color': item.value}">
-        </div>
+        <div :style="{ 'background-color': item.value }"></div>
       </div>
     </div>
   </div>
@@ -33,14 +32,17 @@ export default {
     const rgbaColors = ref(parseColors(props.colors, props.color))
 
     //watch
-    watch(() => currentColor.value, val => {
-      const color = new Color()
-      color.fromString(val)
+    watch(
+      () => currentColor.value,
+      val => {
+        const color = new Color()
+        color.fromString(val)
 
-      rgbaColors.value.forEach(item => {
-        item.selected = color.compare(item)
-      })
-    })
+        rgbaColors.value.forEach(item => {
+          item.selected = color.compare(item)
+        })
+      },
+    )
     watchEffect(() => {
       rgbaColors.value = parseColors(props.colors, props.color)
     })

@@ -8,10 +8,7 @@
     <div class="bin-carousel__container" :style="{ height: height }">
       <transition v-if="arrowDisplay" name="carousel-arrow-left">
         <button
-          v-show="
-            (arrow === 'always' || data.hover) &&
-              (props.loop || data.activeIndex > 0)
-          "
+          v-show="(arrow === 'always' || data.hover) && (props.loop || data.activeIndex > 0)"
           type="button"
           class="bin-carousel__arrow bin-carousel__arrow--left"
           @mouseenter="handleButtonEnter('left')"
@@ -25,7 +22,7 @@
         <button
           v-show="
             (arrow === 'always' || data.hover) &&
-              (props.loop || data.activeIndex < items.length - 1)
+            (props.loop || data.activeIndex < items.length - 1)
           "
           type="button"
           class="bin-carousel__arrow bin-carousel__arrow--right"
@@ -59,20 +56,8 @@
 </template>
 
 <script>
-import {
-  reactive,
-  computed,
-  ref,
-  provide,
-  onMounted,
-  onBeforeUnmount,
-  watch,
-  nextTick,
-} from 'vue'
-import {
-  addResizeListener,
-  removeResizeListener,
-} from '../../utils/resize-event'
+import { reactive, computed, ref, provide, onMounted, onBeforeUnmount, watch, nextTick } from 'vue'
+import { addResizeListener, removeResizeListener } from '../../utils/resize-event'
 import { throttle } from '../../utils/util'
 
 export default {
@@ -137,9 +122,7 @@ export default {
     const offsetHeight = ref(0)
 
     // computed
-    const arrowDisplay = computed(
-      () => props.arrow !== 'never' && props.direction !== 'vertical',
-    )
+    const arrowDisplay = computed(() => props.arrow !== 'never' && props.direction !== 'vertical')
 
     const hasLabel = computed(() => {
       return items.value.some(item => item.label.toString().length > 0)
@@ -154,10 +137,7 @@ export default {
     })
 
     const indicatorsClasses = computed(() => {
-      const classes = [
-        'bin-carousel__indicators',
-        'bin-carousel__indicators--' + props.direction,
-      ]
+      const classes = ['bin-carousel__indicators', 'bin-carousel__indicators--' + props.direction]
       if (hasLabel.value) {
         classes.push('bin-carousel__indicators--labels')
       }
@@ -240,16 +220,12 @@ export default {
       const length = items.value.length
       if (
         (index === length - 1 && item.inStage && items.value[0].active) ||
-        (item.inStage &&
-          items.value[index + 1] &&
-          items.value[index + 1].active)
+        (item.inStage && items.value[index + 1] && items.value[index + 1].active)
       ) {
         return 'left'
       } else if (
         (index === 0 && item.inStage && items.value[length - 1].active) ||
-        (item.inStage &&
-          items.value[index - 1] &&
-          items.value[index - 1].active)
+        (item.inStage && items.value[index - 1] && items.value[index - 1].active)
       ) {
         return 'right'
       }
@@ -331,10 +307,7 @@ export default {
           offsetWidth.value = root.value.offsetWidth
           offsetHeight.value = root.value.offsetHeight
         }
-        if (
-          props.initialIndex < items.value.length &&
-          props.initialIndex >= 0
-        ) {
+        if (props.initialIndex < items.value.length && props.initialIndex >= 0) {
           data.activeIndex = props.initialIndex
         }
         startTimer()

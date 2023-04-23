@@ -1,5 +1,5 @@
 <template>
-  <div class="bin-calendar" :class="{'card':mini}">
+  <div class="bin-calendar" :class="{ card: mini }">
     <div class="bin-calendar-header">
       <template v-if="mini">
         <span>{{ headerTitle }}</span>
@@ -21,18 +21,30 @@
       </template>
     </div>
     <ul class="bin-calendar-week">
-      <li v-for="(item, index) in ['一', '二', '三', '四', '五', '六', '日']" :key="index" class="bin-calendar-week-item">
+      <li
+        v-for="(item, index) in ['一', '二', '三', '四', '五', '六', '日']"
+        :key="index"
+        class="bin-calendar-week-item"
+      >
         {{ item }}
       </li>
     </ul>
     <ul class="bin-calendar-body" :style="bodyStyle">
-      <li v-for="(item, index) in visibleCalendar" :key="index"
-          class="bin-calendar-date-view" :style="dateViewStyle"
-          :class="[item.monthFlag,{'is-current-day': item.isCurrentDay},{'is-selected': item.selected}]"
-          @click="handleSelectDay(item)">
-          <span>
-              {{ item.day }}
-          </span>
+      <li
+        v-for="(item, index) in visibleCalendar"
+        :key="index"
+        class="bin-calendar-date-view"
+        :style="dateViewStyle"
+        :class="[
+          item.monthFlag,
+          { 'is-current-day': item.isCurrentDay },
+          { 'is-selected': item.selected },
+        ]"
+        @click="handleSelectDay(item)"
+      >
+        <span>
+          {{ item.day }}
+        </span>
       </li>
     </ul>
   </div>
@@ -93,7 +105,6 @@ export default {
     let time = ref({ year, month, day })
     let visibleCalendar = ref([])
 
-
     const initVisibleCalendar = () => {
       let calendarArr = []
       let { year, month } = getNewDate(getDate(time.value.year, time.value.month, 1))
@@ -115,7 +126,7 @@ export default {
         let monthFlag = isPrevOrNextMonth(tempDate, time.value)
         let isCurrentDay = isCurrent(tempDate)
         let yearTemp = year
-        let monthTemp = monthFlag === 'prev' ? month : (monthFlag === 'next') ? month + 2 : month + 1
+        let monthTemp = monthFlag === 'prev' ? month : monthFlag === 'next' ? month + 2 : month + 1
         if (monthTemp === 0) {
           monthTemp = 12
           yearTemp -= 1
@@ -164,7 +175,7 @@ export default {
       emit('today')
     }
     // 点击某一天
-    const handleSelectDay = (item) => {
+    const handleSelectDay = item => {
       if (!item.monthFlag) {
         setSelected(item)
         return
@@ -186,8 +197,8 @@ export default {
         select && setSelected(select)
       }
     }
-    const setSelected = (day) => {
-      visibleCalendar.value.map(x => x.selected = false)
+    const setSelected = day => {
+      visibleCalendar.value.map(x => (x.selected = false))
       day.selected = true
       emit('selected', day)
     }

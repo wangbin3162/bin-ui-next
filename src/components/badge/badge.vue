@@ -7,13 +7,13 @@
         v-text="content"
         class="bin-badge__content"
         :class="[
-          {['bin-badge-is-' + type]:type},
+          { ['bin-badge-is-' + type]: type },
           {
             'is-fixed': $slots.default,
-            'is-dot': isDot
-          }
-        ]">
-      </sup>
+            'is-dot': isDot,
+          },
+        ]"
+      ></sup>
     </transition>
   </div>
 </template>
@@ -28,7 +28,7 @@ export default {
     hidden: Boolean,
     type: {
       type: String,
-      validator: (val) => {
+      validator: val => {
         return ['primary', 'success', 'warning', 'info', 'danger'].includes(val)
       },
     },

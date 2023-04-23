@@ -37,7 +37,10 @@
             @mouseleave="inputHovering = false"
           >
             <template #suffix>
-              <i v-show="!showClose" :class="['bin-select__caret', 'b-iconfont', 'b-icon-'+iconClass]"></i>
+              <i
+                v-show="!showClose"
+                :class="['bin-select__caret', 'b-iconfont', 'b-icon-' + iconClass]"
+              ></i>
               <i
                 v-if="showClose"
                 :class="`bin-select__caret is-show-close b-iconfont b-icon-close-circle-fill`"
@@ -48,11 +51,7 @@
         </div>
       </template>
       <template #default>
-        <b-scrollbar
-          v-show="visible"
-          ref="scrollbar"
-          wrap-class="bin-tree-select-panel__wrap"
-        >
+        <b-scrollbar v-show="visible" ref="scrollbar" wrap-class="bin-tree-select-panel__wrap">
           <div class="bin-tree-select-inner" :style="{ minWidth: minWidth }">
             <b-tree
               :data="data"
@@ -69,8 +68,7 @@
               :title-key="titleKey"
               ref="treeRef"
               @select-change="handleSelect"
-            >
-            </b-tree>
+            ></b-tree>
           </div>
         </b-scrollbar>
       </template>
@@ -108,7 +106,7 @@ export default {
     },
     size: {
       type: String,
-      validator: (value) => {
+      validator: value => {
         return ['small', 'large', 'default', 'mini'].includes(value)
       },
       default: 'default',
@@ -156,7 +154,15 @@ export default {
     defaultExpand: Boolean,
     filterNodeMethod: Function,
   },
-  emits: [UPDATE_MODEL_EVENT, CHANGE_EVENT, 'clear', 'visible-change', 'focus', 'blur', 'update:checked'],
+  emits: [
+    UPDATE_MODEL_EVENT,
+    CHANGE_EVENT,
+    'clear',
+    'visible-change',
+    'focus',
+    'blur',
+    'update:checked',
+  ],
   setup(props, { emit }) {
     const popper = ref(null)
     const selectWrapper = ref(null)
@@ -176,22 +182,28 @@ export default {
     const { BForm, formEmit } = useForm()
 
     function handleSelect(selected, node, flatState) {
-      node.selected = true
-      changeValue(node)
+      // node.selected = true
       visible.value = false
+      changeValue(node)
     }
 
     function toggleMenu() {
       visible.value = !visible.value
       if (visible.value === false) {
-        emit('update:checked', treeRef.value.getCheckedNodes().map(v => v[props.valueKey]))
+        emit(
+          'update:checked',
+          treeRef.value.getCheckedNodes().map(v => v[props.valueKey]),
+        )
       }
     }
 
     function handleClose() {
       visible.value = false
       query.value = ''
-      emit('update:checked', treeRef.value.getCheckedNodes().map(v => v[props.valueKey]))
+      emit(
+        'update:checked',
+        treeRef.value.getCheckedNodes().map(v => v[props.valueKey]),
+      )
     }
 
     function handleClearClick() {
@@ -218,40 +230,56 @@ export default {
       formEmit('change', value)
     }
 
-    watch(() => props.modelValue, (val) => {
-      if (val) {
-        nextTick(() => {
-          // 获取全部拍平节点
-          const flatState = treeRef.value.getFlatState()
-          const matchItem = flatState.find(item => item.node[props.valueKey] === val)
-          if (matchItem) {
-            treeRef.value.setSelected([matchItem.nodeKey])
-            // changeValue(matchItem.node)
-          } else {
-            throwWarn('BTreeSelect', ' There is no such data in the tree structure!')
-          }
-        })
-      } else {
-        nextTick(() => {
-          handleClearClick()
-        })
-      }
-    }, { deep: true, immediate: true })
-
-    watch(() => props.checked, (val) => {
+    // 设置默认行为
+    function setNormalSelected(showError = true) {
       nextTick(() => {
-        const checkedKeys = []
+        // 获取全部拍平节点
         const flatState = treeRef.value.getFlatState()
-        val.forEach(id => {
-          const matchItem = flatState.find(v => v.node[props.valueKey] === id)
-          if (matchItem) {
-            checkedKeys.push(matchItem.nodeKey)
-          }
-        })
-        treeRef.value.uncheckAll()
-        treeRef.value.setChecked(checkedKeys)
+        const matchItem = flatState.find(item => item.node[props.valueKey] === props.modelValue)
+        if (matchItem) {
+          treeRef.value.setSelected([matchItem.nodeKey])
+          // changeValue(matchItem.node)
+        } else {
+          if (showError) console.error(' There is no such data in the tree structure!')
+        }
       })
-    }, { deep: true, immediate: true })
+    }
+
+    // 默认执行一次初始化数据
+    setNormalSelected(false)
+
+    watch(
+      () => props.modelValue,
+      val => {
+        if (val) {
+          setNormalSelected()
+        } else {
+          nextTick(() => {
+            handleClearClick()
+          })
+        }
+      },
+      { deep: true },
+    )
+
+    watch(
+      () => props.checked,
+      val => {
+        nextTick(() => {
+          const checkedKeys = []
+          const flatState = treeRef.value.getFlatState()
+          val.forEach(id => {
+            const matchItem = flatState.find(v => v.node[props.valueKey] === id)
+            if (matchItem) {
+              checkedKeys.push(matchItem.nodeKey)
+            }
+          })
+          treeRef.value.uncheckAll()
+          treeRef.value.setChecked(checkedKeys)
+        })
+      },
+      { deep: true, immediate: true },
+    )
 
     function updateMinWidth() {
       minWidth.value = selectWrapper.value?.getBoundingClientRect().width + 'px'

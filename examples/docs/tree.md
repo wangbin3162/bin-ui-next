@@ -1038,7 +1038,7 @@ expand、selected、checked 和 disabled 可以设置展开，选中，勾选和
       <b-button @click="defaultSelect">设置默认选中前端组</b-button>
     </div>
     <div flex class="ml-16">
-      <b-tree-select
+      <!-- <b-tree-select
         style="width: 300px;"
         :data="data"
         v-model="currentId"
@@ -1046,7 +1046,7 @@ expand、selected、checked 和 disabled 可以设置展开，选中，勾选和
         titleKey="text"
         show-checkbox
         @change="handleChange"
-      ></b-tree-select>
+      ></b-tree-select> -->
       <b-button @click="setChecked">设置默认勾选项目部</b-button>
     </div>
   </div>
@@ -1054,9 +1054,9 @@ expand、selected、checked 和 disabled 可以设置展开，选中，勾选和
   <div class="pt-8 pb-8">
     <b-button @click="clear">清空选择</b-button>
   </div>
-  <div>{{ currentId }}</div>
-  <div>{{ currentNode }}</div>
-  <div>{{ checked }}</div>
+  <div>currentId：{{ currentId }}</div>
+  <div>currentNode：{{ currentNode }}</div>
+  <div>checked：{{ checked }}</div>
 </template>
 <script>
   export default {
@@ -1140,7 +1140,7 @@ expand、selected、checked 和 disabled 可以设置展开，选中，勾选和
             ],
           },
         ],
-        currentId: '',
+        currentId: '00102',
         currentNode: {},
         checked: [],
       }
@@ -1150,7 +1150,6 @@ expand、selected、checked 和 disabled 可以设置展开，选中，勾选和
         this.currentId = '00102'
       },
       handleChange(val, node) {
-        console.log(val, node)
         this.currentNode = node ? { id: node.id, text: node.text } : {}
       },
       setChecked() {
@@ -1161,6 +1160,151 @@ expand、selected、checked 和 disabled 可以设置展开，选中，勾选和
         this.currentNode = {}
         this.checked = []
       },
+    },
+  }
+</script>
+```
+
+:::
+
+### 树校验
+
+可以结合form表单进行校验提示。
+
+::: demo
+
+```html
+<template>
+  <div flex>
+      <b-form :model="obj" ref="ruleForm"  label-width="85px" :rules="ruleValidate">
+          <b-form-item prop="currentId" label="树结构">
+            <b-tree-select
+              style="width: 300px;"
+              :data="data"
+              v-model="obj.currentId"
+              titleKey="text"
+              clearable
+              @change="handleChange"
+            ></b-tree-select>
+          </b-form-item>
+          <b-form-item>
+            <b-button type="primary" @click="submitForm('ruleForm')">提交</b-button>
+            <b-button @click="resetForm('ruleForm')">重置</b-button>
+          </b-form-item>
+    </b-form>
+  </div>  
+  <div>currentId：{{ obj.currentId }}</div>
+  <div>currentNode：{{ currentNode }}</div>
+</template>
+<script>
+  export default {
+    data() {
+      return {
+        data: [
+          {
+            id: '001',
+            text: '研发部',
+            deptCode: 'yfb',
+            status: '1',
+            desc: '研发中心',
+            parentId: null,
+            children: [
+              {
+                id: '00101',
+                text: '后端组',
+                deptCode: 'hd',
+                status: '1',
+                desc: '后端研发中心',
+                parentId: '001',
+              },
+              {
+                id: '00102',
+                text: '前端组',
+                deptCode: 'qd',
+                status: '1',
+                desc: '前端研发中心',
+                parentId: '001',
+              },
+              {
+                id: '00103',
+                text: 'UI设计',
+                deptCode: 'sj',
+                status: '1',
+                desc: '交互、ui设计中心',
+                parentId: '001',
+              },
+              {
+                id: '00104',
+                text: '测试组',
+                deptCode: 'cs',
+                status: '1',
+                desc: '测试组',
+                parentId: '001',
+              },
+              {
+                id: '00105',
+                text: '运维组',
+                deptCode: 'yw',
+                status: '1',
+                desc: '运维、服务、巡检',
+                parentId: '001',
+              },
+            ],
+          },
+          {
+            id: '002',
+            text: '项目部',
+            deptCode: 'xmb',
+            status: '1',
+            desc: '项目服务部',
+            parentId: null,
+            children: [
+              {
+                id: '00201',
+                text: '开发组',
+                deptCode: 'kf',
+                status: '1',
+                desc: '后端项目开发',
+                parentId: '002',
+              },
+              {
+                id: '00202',
+                text: '交付服务组',
+                deptCode: 'jf',
+                status: '1',
+                desc: '交付项目，技术服务支持',
+                parentId: '002',
+              },
+            ],
+          },
+        ],
+        obj: {
+          currentId: '00102',
+        },
+        currentNode: {},
+        ruleValidate: {
+          currentId: [{ required: true, message: '树不能为空', trigger: 'change' }],
+        }
+      }
+    },
+    methods: {
+      handleChange(val, node) {
+        // console.log(val, node)
+        this.currentNode = node ? { id: node.id, text: node.text } : {}
+      },
+      submitForm(formName) {
+        this.$refs[formName].validate((valid) => {
+          if (valid) {
+            alert('submit!');
+          } else {
+            console.log('error submit!!');
+            return false;
+          }
+        });
+      },
+      resetForm(formName) {
+        this.$refs[formName].resetFields();
+      }
     },
   }
 </script>
@@ -1248,27 +1392,27 @@ expand、selected、checked 和 disabled 可以设置展开，选中，勾选和
 
 ### Props
 
-| 参数               | 说明                                                                                                                                                                                               | 类型                                   | 可选值 | 默认值   |
-| ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------- | ------ | -------- |
-| data               | 可嵌套的节点属性的数组，生成 tree 的数据                                                                                                                                                           | Array                                  | —      | []       |
-| multiple           | 是否支持多选                                                                                                                                                                                       | Boolean                                | —      | false    |
-| show-checkbox      | 是否显示多选框                                                                                                                                                                                     | Boolean                                | —      | false    |
-| empty-text         | 没有数据时的提示                                                                                                                                                                                   | String                                 | —      | 暂无数据 |
-| load-data          | 异步加载数据的方法，见示例                                                                                                                                                                         | Function                               | —      | —        |
-| title-key          | 定义 title 键,默认 title                                                                                                                                                                           | String                                 | —      | title    |
-| children-key       | 定义子节点键,默认 children 为子节点 key                                                                                                                                                            | String                                 | —      | children |
-| check-strictly     | 复选框的情况下，是否严格的遵循父子不互相关联的做法                                                                                                                                                 | Boolean                                | —      | false    |
-| check-directly     | 开启后，在 show-checkbox 模式下，select 的交互也将转为 check                                                                                                                                       | Boolean                                | —      | false    |
-| lock-select        | 锁定树选择，再部分业务中常用，比如开启弹窗后禁用树的选中操作                                                                                                                                       | Boolean                                | —      | false    |
-| title-ellipsis     | 是否开启标题超长省略                                                                                                                                                                               | Boolean                                | —      | true     |
-| draggable          | 是否开启拖拽节点功能                                                                                                                                                                               | Boolean                                | —      | true     |
-| allow-drag         | 判断节点能否被拖拽 如果返回 false ，节点不能被拖动                                                                                                                                                 | Function(node)                         | —      | —        |
-| allow-drop         | 拖拽时判定目标节点能否成为拖动目标位置。 如果返回 false ，拖动节点不能被拖放到目标节点。type 参数有三种情况：'prev'、'inner' 和 'next'，分别表示放置在目标节点前、插入至目标节点和放置在目标节点后 | Function(draggingNode, dropNode, type) | —      | —        |
-| filter-node-method | 筛选过滤树节点函数                                                                                                                                                                                 | Function                               | —      | —        |
-| highlight-filter   | 高亮搜索条件文字                                                                                                                                                                                   | Boolean                                | —      | true     |
-| timeout            | 刷新频率（`<b-big-tree>`扩展组件可用）                                                                                                                                                             | Number                                 | —      | 17       |
-| itemHeight         | 节点高度 （`<b-big-tree>`扩展组件可用）                                                                                                                                                            | Number                                 | —      | 28       |
-| visibleCount       | 显示区域个数（`<b-big-tree>`扩展组件可用）                                                                                                                                                         | Number                                 | —      | 15       |
+| 参数               | 说明  | 类型     | 可选值 | 默认值   |
+| ------------------ | ------------------------------------ | -------------------------------------- | ------ | -------- |
+| data               | 可嵌套的节点属性的数组，生成 tree 的数据       | Array                                  | —      | []       |
+| multiple           | 是否支持多选     | Boolean                                | —      | false    |
+| show-checkbox      | 是否显示多选框       | Boolean                                | —      | false    |
+| empty-text         | 没有数据时的提示                 | String                                 | —      | 暂无数据 |
+| load-data          | 异步加载数据的方法，见示例            | Function                               | —      | —        |
+| title-key          | 定义 title 键,默认 title                 | String                                 | —      | title    |
+| children-key       | 定义子节点键,默认 children 为子节点 key     | String                                 | —      | children |
+| check-strictly     | 复选框的情况下，是否严格的遵循父子不互相关联的做法       | Boolean                                | —      | false    |
+| check-directly     | 开启后，在 show-checkbox 模式下，select 的交互也将转为 check      | Boolean                                | —      | false    |
+| lock-select        | 锁定树选择，再部分业务中常用，比如开启弹窗后禁用树的选中操作     | Boolean                                | —      | false    |
+| title-ellipsis     | 是否开启标题超长省略        | Boolean                                | —      | true     |
+| draggable          | 是否开启拖拽节点功能        | Boolean                                | —      | true     |
+| allow-drag         | 判断节点能否被拖拽 如果返回 false ，节点不能被拖动      | Function(node)                         | —      | —        |
+| allow-drop         | 拖拽时判定目标节点能否成为拖动目标位置。 返回false拖动节点不能被拖放到目标节点。type 参数有三种情况：'prev'、'inner'和 'next'，表示放置在目标节点前、插入目标节点和放置在目标节点后 | Function(draggingNode, dropNode, type) | —      | —        |
+| filter-node-method | 筛选过滤树节点函数  | Function                               | —      | —        |
+| highlight-filter   | 高亮搜索条件文字     | Boolean                                | —      | true     |
+| timeout            | 刷新频率（`<b-big-tree>`扩展组件可用） | Number                                 | —      | 17       |
+| itemHeight         | 节点高度 （`<b-big-tree>`扩展组件可用）   | Number                                 | —      | 28       |
+| visibleCount       | 显示区域个数（`<b-big-tree>`扩展组件可用）  | Number                                 | —      | 15       |
 
 ### Events
 

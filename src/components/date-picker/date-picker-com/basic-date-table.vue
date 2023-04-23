@@ -8,28 +8,24 @@
     @mousemove="handleMouseMove"
   >
     <tbody>
-    <tr>
-      <th v-if="showWeekNumber">周次</th>
-      <th v-for="(week, key) in WEEKS" :key="key">{{ weeksMap[week] }}</th>
-    </tr>
-    <tr
-      v-for="(row, key) in rows"
-      :key="key"
-      class="bin-date-table__row"
-      :class="{ current: isWeekActive(row[1]) }"
-    >
-      <td
-        v-for="(cell, key_) in row"
-        :key="key_"
-        :class="getCellClasses(cell)"
+      <tr>
+        <th v-if="showWeekNumber">周次</th>
+        <th v-for="(week, key) in WEEKS" :key="key">{{ weeksMap[week] }}</th>
+      </tr>
+      <tr
+        v-for="(row, key) in rows"
+        :key="key"
+        class="bin-date-table__row"
+        :class="{ current: isWeekActive(row[1]) }"
       >
-        <div>
+        <td v-for="(cell, key_) in row" :key="key_" :class="getCellClasses(cell)">
+          <div>
             <span>
               {{ cell.text }}
             </span>
-        </div>
-      </td>
-    </tr>
+          </div>
+        </td>
+      </tr>
     </tbody>
   </table>
 </template>
@@ -84,8 +80,12 @@ export default {
     const tableRows = ref([[], [], [], [], [], []])
 
     // todo better way to get Day.js locale object
-    const firstDayOfWeek =  1
-    const WEEKS_CONSTANT = props.date.locale('en').localeData().weekdaysShort().map(_ => _.toLowerCase())
+    const firstDayOfWeek = 1
+    const WEEKS_CONSTANT = props.date
+      .locale('en')
+      .localeData()
+      .weekdaysShort()
+      .map(_ => _.toLowerCase())
 
     const offsetDay = computed(() => {
       // Sunday 7(0), cal the left and right offset days, 3217654, such as Monday is -1, the is to adjust the position of the first two rows of dates
@@ -123,7 +123,8 @@ export default {
       const rows_ = tableRows.value
       let count = 1
 
-      const selectedDate = props.selectionMode === 'dates' ? coerceTruthyValueToArray(props.parsedValue) : []
+      const selectedDate =
+        props.selectionMode === 'dates' ? coerceTruthyValueToArray(props.parsedValue) : []
 
       const calNow = dayjs().startOf('day')
 
@@ -155,20 +156,20 @@ export default {
           const calTime = startDate.value.add(index - offset, 'day')
           cell.type = 'normal'
 
-          const calEndDate = props.rangeState.endDate || props.maxDate
-            || props.rangeState.selecting && props.minDate
+          const calEndDate =
+            props.rangeState.endDate ||
+            props.maxDate ||
+            (props.rangeState.selecting && props.minDate)
 
-          cell.inRange = (
-            props.minDate &&
-            calTime.isSameOrAfter(props.minDate, 'day')
-          ) && (calEndDate &&
-            calTime.isSameOrBefore(calEndDate, 'day')
-          ) || (
-            props.minDate &&
-            calTime.isSameOrBefore(props.minDate, 'day')
-          ) && (calEndDate &&
-            calTime.isSameOrAfter(calEndDate, 'day')
-          )
+          cell.inRange =
+            (props.minDate &&
+              calTime.isSameOrAfter(props.minDate, 'day') &&
+              calEndDate &&
+              calTime.isSameOrBefore(calEndDate, 'day')) ||
+            (props.minDate &&
+              calTime.isSameOrBefore(props.minDate, 'day') &&
+              calEndDate &&
+              calTime.isSameOrAfter(calEndDate, 'day'))
 
           if (props.minDate?.isSameOrAfter(calEndDate)) {
             cell.start = calEndDate && calTime.isSame(calEndDate, 'day')
@@ -185,12 +186,14 @@ export default {
           }
 
           if (i >= 0 && i <= 1) {
-            const numberOfDaysFromPreviousMonth = startOfMonthDay + offset < 0 ? 7 + startOfMonthDay + offset : startOfMonthDay + offset
+            const numberOfDaysFromPreviousMonth =
+              startOfMonthDay + offset < 0 ? 7 + startOfMonthDay + offset : startOfMonthDay + offset
 
             if (j + i * 7 >= numberOfDaysFromPreviousMonth) {
               cell.text = count++
             } else {
-              cell.text = dateCountOfLastMonth - (numberOfDaysFromPreviousMonth - j % 7) + 1 + i * 7
+              cell.text =
+                dateCountOfLastMonth - (numberOfDaysFromPreviousMonth - (j % 7)) + 1 + i * 7
               cell.type = 'prev-month'
             }
           } else {
@@ -224,11 +227,7 @@ export default {
 
     const cellMatchesDate = (cell, date) => {
       if (!date) return false
-      return dayjs(date)
-        .isSame(
-          props.date.date(Number(cell.text))
-          , 'day',
-        )
+      return dayjs(date).isSame(props.date.date(Number(cell.text)), 'day')
     }
 
     const getCellClasses = cell => {
@@ -242,11 +241,18 @@ export default {
         classes.push(cell.type)
       }
 
-      if (props.selectionMode === 'day' && (cell.type === 'normal' || cell.type === 'today') && cellMatchesDate(cell, props.parsedValue)) {
+      if (
+        props.selectionMode === 'day' &&
+        (cell.type === 'normal' || cell.type === 'today') &&
+        cellMatchesDate(cell, props.parsedValue)
+      ) {
         classes.push('current')
       }
 
-      if (cell.inRange && ((cell.type === 'normal' || cell.type === 'today') || props.selectionMode === 'week')) {
+      if (
+        cell.inRange &&
+        (cell.type === 'normal' || cell.type === 'today' || props.selectionMode === 'week')
+      ) {
         classes.push('in-range')
 
         if (cell.start) {
@@ -352,7 +358,9 @@ export default {
         })
       } else if (props.selectionMode === 'dates') {
         const newValue = cell.selected
-          ? coerceTruthyValueToArray(props.parsedValue).filter(_ => _.valueOf() !== newDate.valueOf())
+          ? coerceTruthyValueToArray(props.parsedValue).filter(
+              _ => _.valueOf() !== newDate.valueOf(),
+            )
           : coerceTruthyValueToArray(props.parsedValue).concat([newDate])
         ctx.emit('pick', newValue)
       }
@@ -373,7 +381,7 @@ export default {
       newDate = newDate.date(parseInt(cell.text, 10))
 
       if (props.parsedValue && !Array.isArray(props.parsedValue)) {
-        const dayOffset = (props.parsedValue.day() - firstDayOfWeek + 7) % 7 - 1
+        const dayOffset = ((props.parsedValue.day() - firstDayOfWeek + 7) % 7) - 1
         const weekDate = props.parsedValue.subtract(dayOffset, 'day')
         return weekDate.isSame(newDate, 'day')
       }

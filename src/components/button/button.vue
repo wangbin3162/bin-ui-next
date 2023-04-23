@@ -11,12 +11,16 @@
     <span :style="textStyle">
       <i
         class="bin-button-loading icon-is-rotating"
-        :class="['b-iconfont', `b-icon-${loadingIcon||'loading'}`,{'has-text':$slots.default}]"
+        :class="[
+          'b-iconfont',
+          `b-icon-${loadingIcon || 'loading'}`,
+          { 'has-text': $slots.default },
+        ]"
         v-if="loading"
         :style="iconStyles"
       ></i>
       <i
-        :class="['b-iconfont', 'b-icon-' + icon,{'has-text':$slots.default}]"
+        :class="['b-iconfont', 'b-icon-' + icon, { 'has-text': $slots.default }]"
         v-if="icon && !loading"
         :style="iconStyles"
       ></i>
@@ -28,21 +32,23 @@
     :disabled="disabled || loading"
     :type="nativeType"
     class="bin-button"
-    :class="[{
+    :class="[
+      {
         [`bin-button--${type}`]: type,
         'is-disabled': disabled,
-        'is-loading': loading
-      }]"
+        'is-loading': loading,
+      },
+    ]"
     @click="handleClick"
   >
     <i
       class="bin-button-loading icon-is-rotating"
-      :class="['b-iconfont', `b-icon-${loadingIcon||'loading'}`,{'has-text':$slots.default}]"
+      :class="['b-iconfont', `b-icon-${loadingIcon || 'loading'}`, { 'has-text': $slots.default }]"
       v-if="loading"
       :style="iconStyles"
     ></i>
     <i
-      :class="['b-iconfont', 'b-icon-' + icon,{'has-text':$slots.default}]"
+      :class="['b-iconfont', 'b-icon-' + icon, { 'has-text': $slots.default }]"
       v-if="icon && !loading"
       :style="iconStyles"
     ></i>
@@ -61,16 +67,8 @@ export default {
   props: {
     type: {
       type: String,
-      validator: (val) =>
-        [
-          'default',
-          'primary',
-          'success',
-          'warning',
-          'info',
-          'danger',
-          'text',
-        ].includes(val),
+      validator: val =>
+        ['default', 'primary', 'success', 'warning', 'info', 'danger', 'text'].includes(val),
     },
     size: {
       type: String,
@@ -88,21 +86,22 @@ export default {
     background: Boolean,
     animationType: {
       type: String,
-      validator: (val) => ['click', 'waves'].includes(val),
+      validator: val => ['click', 'waves'].includes(val),
       default: 'click',
     },
     textColor: String,
     nativeType: {
       type: String,
       default: 'button',
-      validator: (val) => ['button', 'submit', 'reset'].includes(val),
+      validator: val => ['button', 'submit', 'reset'].includes(val),
     },
   },
   emits: ['click'],
   computed: {
     waveColor() {
-      return (!this.type || this.type === 'default' || this.plain || this.transparent || this.dashed)
-        ? 'rgba(0, 0, 0, 0.25)' : 'rgba(255, 255, 255, 0.3)'
+      return !this.type || this.type === 'default' || this.plain || this.transparent || this.dashed
+        ? 'rgba(0, 0, 0, 0.25)'
+        : 'rgba(255, 255, 255, 0.3)'
     },
     textStyle() {
       const colorMap = {
@@ -112,7 +111,11 @@ export default {
         warning: '#fa8c16',
         danger: '#f5222d',
       }
-      let color = this.textColor ? (colorMap[this.textColor] ? colorMap[this.textColor] : this.textColor) : null
+      let color = this.textColor
+        ? colorMap[this.textColor]
+          ? colorMap[this.textColor]
+          : this.textColor
+        : null
       return color ? { color } : null
     },
     iconStyles() {

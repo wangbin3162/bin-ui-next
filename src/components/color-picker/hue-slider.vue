@@ -6,15 +6,14 @@
       class="bin-color-hue-slider__thumb"
       :style="{
         left: thumbLeft + 'px',
-        top: thumbTop + 'px'
+        top: thumbTop + 'px',
       }"
-    >
-    </div>
+    ></div>
   </div>
 </template>
 
 <script>
-import { ref, computed, watch,onMounted, getCurrentInstance } from 'vue'
+import { ref, computed, watch, onMounted, getCurrentInstance } from 'vue'
 import draggable from './draggable'
 
 export default {
@@ -39,9 +38,12 @@ export default {
       return props.color.get('hue')
     })
     // watch
-    watch(() => hueValue.value, () => {
-      update()
-    })
+    watch(
+      () => hueValue.value,
+      () => {
+        update()
+      },
+    )
     // methods
     function handleClick(event) {
       const target = event.target
@@ -60,13 +62,17 @@ export default {
         left = Math.min(left, rect.width - thumb.value.offsetWidth / 2)
         left = Math.max(thumb.value.offsetWidth / 2, left)
 
-        hue = Math.round((left - thumb.value.offsetWidth / 2) / (rect.width - thumb.value.offsetWidth) * 360)
+        hue = Math.round(
+          ((left - thumb.value.offsetWidth / 2) / (rect.width - thumb.value.offsetWidth)) * 360,
+        )
       } else {
         let top = event.clientY - rect.top
 
         top = Math.min(top, rect.height - thumb.value.offsetHeight / 2)
         top = Math.max(thumb.value.offsetHeight / 2, top)
-        hue = Math.round((top - thumb.value.offsetHeight / 2) / (rect.height - thumb.value.offsetHeight) * 360)
+        hue = Math.round(
+          ((top - thumb.value.offsetHeight / 2) / (rect.height - thumb.value.offsetHeight)) * 360,
+        )
       }
       props.color.set('hue', hue)
     }
@@ -77,7 +83,7 @@ export default {
       const hue = props.color.get('hue')
 
       if (!el) return 0
-      return Math.round(hue * (el.offsetWidth - thumb.value.offsetWidth / 2) / 360)
+      return Math.round((hue * (el.offsetWidth - thumb.value.offsetWidth / 2)) / 360)
     }
 
     function getThumbTop() {
@@ -86,7 +92,7 @@ export default {
       const hue = props.color.get('hue')
 
       if (!el) return 0
-      return Math.round(hue * (el.offsetHeight - thumb.value.offsetHeight / 2) / 360)
+      return Math.round((hue * (el.offsetHeight - thumb.value.offsetHeight / 2)) / 360)
     }
     function update() {
       thumbLeft.value = getThumbLeft()

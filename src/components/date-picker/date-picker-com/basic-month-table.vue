@@ -1,13 +1,13 @@
 <template>
   <table class="bin-month-table" @click="handleMonthTableClick" @mousemove="handleMouseMove">
     <tbody>
-    <tr v-for="(row, key) in rows" :key="key">
-      <td v-for="(cell, key_) in row" :key="key_" :class="getCellStyle(cell)">
-        <div>
-          <a class="cell">{{ monthMap[months[cell.text]] }}</a>
-        </div>
-      </td>
-    </tr>
+      <tr v-for="(row, key) in rows" :key="key">
+        <td v-for="(cell, key_) in row" :key="key_" :class="getCellStyle(cell)">
+          <div>
+            <a class="cell">{{ monthMap[months[cell.text]] }}</a>
+          </div>
+        </td>
+      </tr>
     </tbody>
   </table>
 </template>
@@ -70,7 +70,13 @@ export default {
       nov: '十一月',
       dec: '十二月',
     })
-    const months = ref(props.date.locale('en').localeData().monthsShort().map(_ => _.toLowerCase()))
+    const months = ref(
+      props.date
+        .locale('en')
+        .localeData()
+        .monthsShort()
+        .map(_ => _.toLowerCase()),
+    )
     const tableRows = ref([[], [], []])
     const lastRow = ref(null)
     const lastColumn = ref(null)
@@ -98,22 +104,20 @@ export default {
           const index = i * 4 + j
           const calTime = props.date.startOf('year').month(index)
 
-          const calEndDate = props.rangeState.endDate || props.maxDate
-            || props.rangeState.selecting && props.minDate
+          const calEndDate =
+            props.rangeState.endDate ||
+            props.maxDate ||
+            (props.rangeState.selecting && props.minDate)
 
-          cell.inRange = (
-            props.minDate &&
-            calTime.isSameOrAfter(props.minDate, 'month')
-            && (
+          cell.inRange =
+            (props.minDate &&
+              calTime.isSameOrAfter(props.minDate, 'month') &&
               calEndDate &&
-              calTime.isSameOrBefore(calEndDate, 'month')
-            )) || (
-            props.minDate &&
-            calTime.isSameOrBefore(props.minDate, 'month')
-            && (
+              calTime.isSameOrBefore(calEndDate, 'month')) ||
+            (props.minDate &&
+              calTime.isSameOrBefore(props.minDate, 'month') &&
               calEndDate &&
-              calTime.isSameOrAfter(calEndDate, 'month')
-            ))
+              calTime.isSameOrAfter(calEndDate, 'month'))
 
           if (props.minDate?.isSameOrAfter(calEndDate)) {
             cell.start = calEndDate && calTime.isSame(calEndDate, 'month')
@@ -145,7 +149,10 @@ export default {
       style.disabled = props.disabledDate
         ? datesInMonth(year, month).every(props.disabledDate)
         : false
-      style.current = coerceTruthyValueToArray(props.parsedValue).findIndex(date => date.year() === year && date.month() === month) >= 0
+      style.current =
+        coerceTruthyValueToArray(props.parsedValue).findIndex(
+          date => date.year() === year && date.month() === month,
+        ) >= 0
       style.today = today.getFullYear() === year && today.getMonth() === month
 
       if (cell.inRange) {

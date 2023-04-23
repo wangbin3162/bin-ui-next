@@ -1,18 +1,22 @@
 <template>
-  <div :class="['bin-collapse-wrap', {'bin-collapse-wrap-active': isActive, }]" :style="wrapStyle">
-    <div class="header" :class="{'is-collapse':collapse&&!$slots.right}" :style="headerStyle" @click="toggle">
+  <div :class="['bin-collapse-wrap', { 'bin-collapse-wrap-active': isActive }]" :style="wrapStyle">
+    <div
+      class="header"
+      :class="{ 'is-collapse': collapse && !$slots.right }"
+      :style="headerStyle"
+      @click="toggle"
+    >
       <slot name="title">
         <div class="label">
           {{ title }}
         </div>
       </slot>
-      <div class="right" :class="{'can-collapse':collapse}" v-if="$slots.right">
+      <div class="right" :class="{ 'can-collapse': collapse }" v-if="$slots.right">
         <slot name="right">
           {{ title }}
         </slot>
       </div>
-      <div class="arrow" :style="{cursor:$slots.right?'pointer':null}"
-           @click="arrowToggle">
+      <div class="arrow" :style="{ cursor: $slots.right ? 'pointer' : null }" @click="arrowToggle">
         <b-icon :name="arrowIcon" v-if="collapse"></b-icon>
       </div>
     </div>
@@ -77,9 +81,12 @@ export default {
         emit('update:modelValue', data.isActive)
       }
     }
-    watch(() => props.modelValue, (val) => {
-      data.isActive = val
-    })
+    watch(
+      () => props.modelValue,
+      val => {
+        data.isActive = val
+      },
+    )
     onMounted(() => {
       data.mounted = true
     })

@@ -12,7 +12,7 @@
       inExpandingPath && 'in-active-path',
       inCheckedPath && 'in-checked-path',
       node.checked && 'is-active',
-      !expandable && 'is-disabled'
+      !expandable && 'is-disabled',
     ]"
     @mouseenter="handleHoverExpand"
     @focus="handleHoverExpand"
@@ -37,14 +37,20 @@
     >
       <span></span>
     </b-radio>
-    <i v-else-if="isLeaf && node.checked" class="b-iconfont b-icon-check bin-cascader-node__prefix"></i>
+    <i
+      v-else-if="isLeaf && node.checked"
+      class="b-iconfont b-icon-check bin-cascader-node__prefix"
+    ></i>
 
     <!-- content -->
     <node-content />
 
     <!-- postfix -->
     <template v-if="!isLeaf">
-      <i v-if="node.loading" class="b-iconfont b-icon-loading icon-is-rotating bin-cascader-node__postfix"></i>
+      <i
+        v-if="node.loading"
+        class="b-iconfont b-icon-loading icon-is-rotating bin-cascader-node__postfix"
+      ></i>
       <i v-else class="b-iconfont b-icon-right bin-cascader-node__postfix"></i>
     </template>
   </li>
@@ -91,12 +97,12 @@ export default {
     const checkedNodeId = computed(() => panel.checkedNodes[0]?.uid)
     const isDisabled = computed(() => props.node.isDisabled)
     const isLeaf = computed(() => props.node.isLeaf)
-    const expandable = computed(() => checkStrictly.value && !isLeaf.value || !isDisabled.value)
+    const expandable = computed(() => (checkStrictly.value && !isLeaf.value) || !isDisabled.value)
     const inExpandingPath = computed(() => isInPath(panel.expandingNode))
     // only useful in check-strictly mode
     const inCheckedPath = computed(() => checkStrictly.value && panel.checkedNodes.some(isInPath))
 
-    const isInPath = (node) => {
+    const isInPath = node => {
       const { level, uid } = props.node
       return node?.pathNodes[level - 1]?.uid === uid
     }
@@ -106,7 +112,7 @@ export default {
       panel.expandNode(props.node)
     }
 
-    const doCheck = (checked) => {
+    const doCheck = checked => {
       const { node } = props
       if (checked === node.checked) return
       panel.handleCheckChange(node, checked)
@@ -118,7 +124,7 @@ export default {
       })
     }
 
-    const handleHoverExpand = (e) => {
+    const handleHoverExpand = e => {
       if (!isHoverMenu.value) return
       handleExpand()
       !isLeaf.value && emit('expand', e)
@@ -144,7 +150,7 @@ export default {
       }
     }
 
-    const handleCheck = (checked) => {
+    const handleCheck = checked => {
       if (!props.node.loaded) {
         doLoad()
       } else {

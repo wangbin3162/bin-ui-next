@@ -12,23 +12,12 @@
     :style="itemStyle"
     @click="handleItemClick"
   >
-    <div
-      v-if="type === 'card'"
-      v-show="!data.active"
-      class="bin-carousel__mask"
-    ></div>
+    <div v-if="type === 'card'" v-show="!data.active" class="bin-carousel__mask"></div>
     <slot></slot>
   </div>
 </template>
 <script>
-import {
-  reactive,
-  onMounted,
-  inject,
-  computed,
-  toRefs,
-  getCurrentInstance,
-} from 'vue'
+import { reactive, onMounted, inject, computed, toRefs, getCurrentInstance } from 'vue'
 import { autoprefixer } from '../../utils/util-helper'
 
 const CARD_SCALE = 0.83
@@ -58,9 +47,7 @@ export default {
     })
 
     // inject
-    const injectCarouselScope = inject(
-      'injectCarouselScope',
-    )
+    const injectCarouselScope = inject('injectCarouselScope')
 
     // computed
     const parentDirection = computed(() => {
@@ -68,8 +55,7 @@ export default {
     })
 
     const itemStyle = computed(() => {
-      const translateType =
-        parentDirection.value === 'vertical' ? 'translateY' : 'translateX'
+      const translateType = parentDirection.value === 'vertical' ? 'translateY' : 'translateX'
       const value = `${translateType}(${data.translate}px) scale(${data.scale})`
       const style = {
         transform: value,
@@ -95,9 +81,7 @@ export default {
     function calcCardTranslate(index, activeIndex) {
       const parentWidth = injectCarouselScope.offsetWidth.value
       if (data.inStage) {
-        return (
-          (parentWidth * ((2 - CARD_SCALE) * (index - activeIndex) + 1)) / 4
-        )
+        return (parentWidth * ((2 - CARD_SCALE) * (index - activeIndex) + 1)) / 4
       } else if (index < activeIndex) {
         return (-(1 + CARD_SCALE) * parentWidth) / 4
       } else {
@@ -106,8 +90,7 @@ export default {
     }
 
     function calcTranslate(index, activeIndex, isVertical) {
-      const distance =
-        injectCarouselScope[isVertical ? 'offsetHeight' : 'offsetWidth'].value
+      const distance = injectCarouselScope[isVertical ? 'offsetHeight' : 'offsetWidth'].value
       return distance * (index - activeIndex)
     }
 
@@ -122,9 +105,7 @@ export default {
       }
       if (parentType === 'card') {
         if (parentDirection.value === 'vertical') {
-          console.warn(
-            '[Element Warn][Carousel]vertical direction is not supported in card mode',
-          )
+          console.warn('[Element Warn][Carousel]vertical direction is not supported in card mode')
         }
         data.inStage = Math.round(Math.abs(index - activeIndex)) <= 1
         data.active = index === activeIndex
@@ -140,9 +121,7 @@ export default {
 
     function handleItemClick() {
       if (injectCarouselScope && injectCarouselScope.type === 'card') {
-        const index = injectCarouselScope.items.value
-          .map(d => d.uid)
-          .indexOf(instance.uid)
+        const index = injectCarouselScope.items.value.map(d => d.uid).indexOf(instance.uid)
         injectCarouselScope.setActiveItem(index)
       }
     }

@@ -2,7 +2,7 @@
   <div
     class="bin-color-svpanel"
     :style="{
-      backgroundColor: background
+      backgroundColor: background,
     }"
   >
     <div class="bin-color-svpanel__white"></div>
@@ -11,7 +11,7 @@
       class="bin-color-svpanel__cursor"
       :style="{
         top: cursorTop + 'px',
-        left: cursorLeft + 'px'
+        left: cursorLeft + 'px',
       }"
     >
       <div></div>
@@ -52,8 +52,8 @@ export default {
       const el = instance.vnode.el
       let { clientWidth: width, clientHeight: height } = el
 
-      cursorLeft.value = saturation * width / 100
-      cursorTop.value = (100 - value) * height / 100
+      cursorLeft.value = (saturation * width) / 100
+      cursorTop.value = ((100 - value) * height) / 100
 
       background.value = 'hsl(' + props.color.get('hue') + ', 100%, 50%)'
     }
@@ -73,15 +73,18 @@ export default {
       cursorLeft.value = left
       cursorTop.value = top
       props.color.set({
-        saturation: left / rect.width * 100,
-        value: 100 - top / rect.height * 100,
+        saturation: (left / rect.width) * 100,
+        value: 100 - (top / rect.height) * 100,
       })
     }
 
     // watch
-    watch(() => colorValue.value, () => {
-      update()
-    })
+    watch(
+      () => colorValue.value,
+      () => {
+        update()
+      },
+    )
     // mounted
     onMounted(() => {
       draggable(instance.vnode.el, {

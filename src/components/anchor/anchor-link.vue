@@ -1,7 +1,15 @@
 <template>
   <div :class="anchorLinkClasses">
-    <a class="bin-anchor-link-title" :href="href" :data-href="href" :style="activeColor"
-       @click.prevent="goAnchor" :title="title">{{ title }}</a>
+    <a
+      class="bin-anchor-link-title"
+      :href="href"
+      :data-href="href"
+      :style="activeColor"
+      @click.prevent="goAnchor"
+      :title="title"
+    >
+      {{ title }}
+    </a>
     <slot></slot>
   </div>
 </template>
@@ -25,10 +33,7 @@ export default {
     const selectLink = inject('chooseLink')
 
     const anchorLinkClasses = computed(() => {
-      return [
-        prefix,
-        parent.data.currentLink === props.href ? `${prefix}-active` : '',
-      ]
+      return [prefix, parent.data.currentLink === props.href ? `${prefix}-active` : '']
     })
 
     const activeColor = computed(() => {

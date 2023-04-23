@@ -20,7 +20,7 @@
         :class="[
           'bin-cascader',
           realSize && `bin-cascader--${realSize}`,
-          { 'is-disabled': isDisabled }
+          { 'is-disabled': isDisabled },
         ]"
         @click="() => togglePopperVisible(readonly ? undefined : true)"
         @keydown="handleKeyDown"
@@ -50,11 +50,7 @@
             <i
               v-else
               key="arrow-down"
-              :class="[
-                'b-iconfont',
-                'b-icon-down',
-                popperVisible && 'is-reverse'
-              ]"
+              :class="['b-iconfont', 'b-icon-down', popperVisible && 'is-reverse']"
               @click.stop="togglePopperVisible()"
             ></i>
           </template>
@@ -82,7 +78,7 @@
             @input="e => handleInput(searchInputValue, e)"
             @click.stop="togglePopperVisible(true)"
             @keydown.delete="handleDelete"
-          >
+          />
         </div>
       </div>
     </template>
@@ -111,10 +107,7 @@
           <li
             v-for="item in suggestions"
             :key="item.uid"
-            :class="[
-              'bin-cascader__suggestion-item',
-              item.checked && 'is-checked'
-            ]"
+            :class="['bin-cascader__suggestion-item', item.checked && 'is-checked']"
             :tabindex="-1"
             @click="handleSuggestionClick(item)"
           >
@@ -164,7 +157,8 @@ const popperOptions = {
       fn: ({ state }) => {
         const { modifiersData, elements } = state
         const { reference, arrow } = elements
-        modifiersData.arrow.x = modifiersData.arrow.x - (reference.clientWidth - arrow.clientWidth) / 2 + 35
+        modifiersData.arrow.x =
+          modifiersData.arrow.x - (reference.clientWidth - arrow.clientWidth) / 2 + 35
       },
       requires: ['arrow'],
     },
@@ -260,18 +254,15 @@ export default {
 
     const isDisabled = computed(() => props.disabled || BForm.disabled)
     const realSize = computed(() => props.size || BFormItem.size)
-    const tagSize = computed(() => ['small', 'mini'].includes(realSize.value) ? 'mini' : 'small')
+    const tagSize = computed(() => (['small', 'mini'].includes(realSize.value) ? 'mini' : 'small'))
     const multiple = computed(() => !!props.props.multiple)
     const readonly = computed(() => !props.filterable || multiple.value)
-    const searchKeyword = computed(() => multiple.value ? searchInputValue.value : inputValue.value)
+    const searchKeyword = computed(() =>
+      multiple.value ? searchInputValue.value : inputValue.value,
+    )
     const checkedNodes = computed(() => panel.value?.checkedNodes || [])
     const clearBtnVisible = computed(() => {
-      if (
-        !props.clearable ||
-        isDisabled.value ||
-        filtering.value ||
-        !inputHover.value
-      ) return false
+      if (!props.clearable || isDisabled.value || filtering.value || !inputHover.value) return false
 
       return !!checkedNodes.value.length
     })
@@ -279,7 +270,9 @@ export default {
       const { showAllLevels, separator } = props
       const nodes = checkedNodes.value
       return nodes.length
-        ? multiple.value ? ' ' : nodes[0].calcText(showAllLevels, separator)
+        ? multiple.value
+          ? ' '
+          : nodes[0].calcText(showAllLevels, separator)
         : ''
     })
 
@@ -298,7 +291,7 @@ export default {
       return popper.value?.popperRef
     })
 
-    const togglePopperVisible = (visible) => {
+    const togglePopperVisible = visible => {
       if (isDisabled.value) return
 
       visible = visible ?? !popperVisible.value
@@ -328,7 +321,7 @@ export default {
       filtering.value = false
     }
 
-    const genTag = (node) => {
+    const genTag = node => {
       const { showAllLevels, separator } = props
       return {
         node,
@@ -339,7 +332,7 @@ export default {
       }
     }
 
-    const deleteTag = (tag) => {
+    const deleteTag = tag => {
       const { node } = tag
       node.doCheck(false)
       panel.value.calculateCheckedValue()
@@ -376,12 +369,11 @@ export default {
 
     const calculateSuggestions = () => {
       const { filterMethod, showAllLevels, separator } = props
-      const res = panel.value.getFlattedNodes(!props.props.checkStrictly)
-        .filter(node => {
-          if (node.isDisabled) return false
-          node.calcText(showAllLevels, separator)
-          return filterMethod(node, searchKeyword.value)
-        })
+      const res = panel.value.getFlattedNodes(!props.props.checkStrictly).filter(node => {
+        if (node.isDisabled) return false
+        node.calcText(showAllLevels, separator)
+        return filterMethod(node, searchKeyword.value)
+      })
 
       if (multiple.value) {
         presentTags.value.forEach(tag => {
@@ -428,16 +420,16 @@ export default {
       }
     }
 
-    const getCheckedNodes = (leafOnly) => {
+    const getCheckedNodes = leafOnly => {
       return panel.value.getCheckedNodes(leafOnly)
     }
 
-    const handleExpandChange = (value) => {
+    const handleExpandChange = value => {
       updatePopperPosition()
       emit('expand-change', value)
     }
 
-    const handleKeyDown = (e) => {
+    const handleKeyDown = e => {
       switch (e.code) {
         case EVENT_CODE.enter:
           togglePopperVisible()
@@ -459,7 +451,7 @@ export default {
       togglePopperVisible(false)
     }
 
-    const handleSuggestionClick = (node) => {
+    const handleSuggestionClick = node => {
       const { checked } = node
 
       if (multiple.value) {
@@ -492,9 +484,9 @@ export default {
       const passed = props.beforeFilter(value)
 
       if (isPromise(passed)) {
-        passed.then(calculateSuggestions)
-          .catch(() => { /* prevent log error */
-          })
+        passed.then(calculateSuggestions).catch(() => {
+          /* prevent log error */
+        })
       } else if (passed !== false) {
         calculateSuggestions()
       } else {
@@ -516,15 +508,12 @@ export default {
 
     watch(presentTags, () => nextTick(updateStyle))
 
-    watch(
-      presentText,
-      val => inputValue.value = val,
-      { immediate: true },
-    )
+    watch(presentText, val => (inputValue.value = val), { immediate: true })
 
     onMounted(() => {
       const inputEl = input.value.$el
-      inputInitialHeight = inputEl?.offsetHeight || INPUT_HEIGHT_MAP[realSize.value] || DEFAULT_INPUT_HEIGHT
+      inputInitialHeight =
+        inputEl?.offsetHeight || INPUT_HEIGHT_MAP[realSize.value] || DEFAULT_INPUT_HEIGHT
       addResizeListener(inputEl, updateStyle)
     })
 

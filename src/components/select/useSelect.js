@@ -678,6 +678,7 @@ export const useSelect = (props, states, ctx) => {
         states.visible = !states.visible
       }
       if (states.visible) {
+        // eslint-disable-next-line no-extra-semi
         ;(input.value || reference.value).focus()
       }
     }

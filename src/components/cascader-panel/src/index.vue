@@ -3,7 +3,7 @@
     <b-cascader-menu
       v-for="(menu, index) in menus"
       :key="index"
-      :ref="(item) => (menuList[index] = item)"
+      :ref="item => (menuList[index] = item)"
       :index="index"
       :nodes="menu"
     />
@@ -101,7 +101,7 @@ export default {
       node = node || new Node({}, cfg, null, true)
       node.loading = true
 
-      const resolve = (dataList) => {
+      const resolve = dataList => {
         const parent = node.root ? null : node
         dataList && store.value.appendNodes(dataList, parent)
         node.loading = false
@@ -142,16 +142,16 @@ export default {
       emitClose && !multiple && !checkStrictly && emit('close')
     }
 
-    const getFlattedNodes = (leafOnly) => {
+    const getFlattedNodes = leafOnly => {
       return store.value.getFlattedNodes(leafOnly)
     }
 
-    const getCheckedNodes = (leafOnly) => {
-      return getFlattedNodes(leafOnly).filter((node) => node.checked !== false)
+    const getCheckedNodes = leafOnly => {
+      return getFlattedNodes(leafOnly).filter(node => node.checked !== false)
     }
 
     const clearCheckedNodes = () => {
-      checkedNodes.value.forEach((node) => node.doCheck(false))
+      checkedNodes.value.forEach(node => node.doCheck(false))
       calculateCheckedValue()
     }
 
@@ -161,7 +161,7 @@ export default {
       const newNodes = getCheckedNodes(!checkStrictly)
       // ensure the original order
       const nodes = sortByOriginalOrder(oldNodes, newNodes)
-      const values = nodes.map((node) => node.valueByOption)
+      const values = nodes.map(node => node.valueByOption)
       checkedNodes.value = nodes
       checkedValue.value = multiple ? values : values[0] ?? null
     }
@@ -176,11 +176,11 @@ export default {
       if (lazy && !loaded) {
         const values = deduplicate(arrayFlat(coerceTruthyValueToArray(modelValue)))
         const nodes = values
-          .map((val) => store.value.getNodeByValue(val))
-          .filter((node) => !!node && !node.loaded && !node.loading)
+          .map(val => store.value.getNodeByValue(val))
+          .filter(node => !!node && !node.loaded && !node.loading)
 
         if (nodes.length) {
-          nodes.forEach((node) => {
+          nodes.forEach(node => {
             lazyLoad(node, () => syncCheckedValue(false, forced))
           })
         } else {
@@ -188,7 +188,7 @@ export default {
         }
       } else {
         const values = multiple ? coerceTruthyValueToArray(modelValue) : [modelValue]
-        const nodes = deduplicate(values.map((val) => store.value.getNodeByValue(val, leafOnly)))
+        const nodes = deduplicate(values.map(val => store.value.getNodeByValue(val, leafOnly)))
         syncMenuState(nodes, false)
         checkedValue.value = modelValue
       }
@@ -197,18 +197,18 @@ export default {
     const syncMenuState = (newCheckedNodes, reserveExpandingState = true) => {
       const { checkStrictly } = config.value
       const oldNodes = checkedNodes.value
-      const newNodes = newCheckedNodes.filter((node) => !!node && (checkStrictly || node.isLeaf))
+      const newNodes = newCheckedNodes.filter(node => !!node && (checkStrictly || node.isLeaf))
       const oldExpandingNode = store.value.getSameNode(expandingNode.value)
       const newExpandingNode = (reserveExpandingState && oldExpandingNode) || newNodes[0]
 
       if (newExpandingNode) {
-        newExpandingNode.pathNodes.forEach((node) => expandNode(node, true))
+        newExpandingNode.pathNodes.forEach(node => expandNode(node, true))
       } else {
         expandingNode.value = null
       }
 
-      oldNodes.forEach((node) => node.doCheck(false))
-      newNodes.forEach((node) => node.doCheck(true))
+      oldNodes.forEach(node => node.doCheck(false))
+      newNodes.forEach(node => node.doCheck(true))
 
       checkedNodes.value = newNodes
       nextTick(scrollToExpandingNode)
@@ -217,7 +217,7 @@ export default {
     const scrollToExpandingNode = () => {
       if (isServer) return
 
-      menuList.value.forEach((menu) => {
+      menuList.value.forEach(menu => {
         const menuElement = menu?.$el
         if (menuElement) {
           const container = menuElement.querySelector('.bin-scrollbar__wrap')
@@ -229,7 +229,7 @@ export default {
       })
     }
 
-    const handleKeyDown = (e) => {
+    const handleKeyDown = e => {
       const target = e.target
       const { code } = e
 
@@ -298,7 +298,7 @@ export default {
       },
     )
 
-    watch(checkedValue, (val) => {
+    watch(checkedValue, val => {
       if (!isEqual(val, props.modelValue)) {
         emit(UPDATE_MODEL_EVENT, val)
         emit(CHANGE_EVENT, val)

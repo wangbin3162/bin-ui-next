@@ -5,6 +5,12 @@
 <div class="doc-update">
     <b-timeline>
       <b-timeline-item>
+        <p class="version">1.3.1</p>
+        <p class="time">2023-04-23</p>
+        <p class="content"><i>🍀</i>修复tree-select 树形选择在表单校验时会默认触发change事件的问题。</p>
+        <p class="content"><i>🍀</i>更新部分导出文件</p>
+      </b-timeline-item>
+      <b-timeline-item>
         <p class="version">1.3.0</p>
         <p class="time">2023-04-12</p>
         <p class="content"><i>🍀</i>升级vue依赖</p>

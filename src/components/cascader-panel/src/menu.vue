@@ -5,10 +5,7 @@
     role="menu"
     class="bin-cascader-menu"
     wrap-class="bin-cascader-menu__wrap"
-    :view-class="[
-      'bin-cascader-menu__list',
-      isEmpty && 'is-empty'
-    ]"
+    :view-class="['bin-cascader-menu__list', isEmpty && 'is-empty']"
     @mousemove="handleMouseMove"
     @mouseleave="clearHoverZone"
   >
@@ -19,17 +16,8 @@
       :menu-id="menuId"
       @expand="handleExpand"
     />
-    <div
-      v-if="isEmpty"
-      class="bin-cascader-menu__empty-text"
-    >
-      暂无数据
-    </div>
-    <svg
-      v-else-if="panel.isHoverMenu"
-      ref="hoverZone"
-      class="bin-cascader-menu__hover-zone"
-    />
+    <div v-if="isEmpty" class="bin-cascader-menu__empty-text">暂无数据</div>
+    <svg v-else-if="panel.isHoverMenu" ref="hoverZone" class="bin-cascader-menu__hover-zone" />
   </b-scrollbar>
 </template>
 
@@ -70,11 +58,11 @@ export default {
     const isEmpty = computed(() => !props.nodes.length)
     const menuId = computed(() => `cascader-menu-${id}-${props.index}`)
 
-    const handleExpand = (e) => {
+    const handleExpand = e => {
       activeNode = e.target
     }
 
-    const handleMouseMove = (e) => {
+    const handleMouseMove = e => {
       if (!panel.isHoverMenu || !activeNode || !hoverZone.value) return
 
       if (activeNode.contains(e.target)) {
@@ -120,4 +108,3 @@ export default {
   },
 }
 </script>
-

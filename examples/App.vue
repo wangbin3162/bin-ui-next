@@ -1,23 +1,24 @@
 <template>
   <div ref="scrollBox">
-    <main-header/>
+    <main-header />
     <div class="main-cnt">
-      <side-nav class="nav" :show-menu="showMenu" @toggle="toggleMenu"/>
-      <div class="page-container" :style="{marginLeft:showMenu?'256px':'0'}" ref="containerRef">
+      <side-nav class="nav" :show-menu="showMenu" @toggle="toggleMenu" />
+      <div
+        class="page-container"
+        :style="{ marginLeft: showMenu ? '256px' : '0' }"
+        ref="containerRef"
+      >
         <div class="global-anchor" v-if="anchors.length">
           <b-scrollbar>
             <b-anchor :scroll-offset="100" ref="anchorRef">
               <template v-for="item in anchors" :key="item.id">
-                <b-anchor-link
-                  :href="`#${item.id}`"
-                  :title="item.text"
-                ></b-anchor-link>
+                <b-anchor-link :href="`#${item.id}`" :title="item.text"></b-anchor-link>
               </template>
             </b-anchor>
           </b-scrollbar>
         </div>
-        <router-view/>
-        <main-footer/>
+        <router-view />
+        <main-footer />
       </div>
       <b-back-top></b-back-top>
     </div>
@@ -57,16 +58,19 @@ export default {
       })
     }
 
-    watch(() => route.path, () => {
-      anchors.value = []
-      if (route.meta.desc) {
-        document.title = route.meta.desc + ' | ' + cfg.name.toUpperCase()
-        document.scrollingElement.scrollTop = 0
-      }
-      nextTick(() => {
-        fetchAnchors()
-      })
-    })
+    watch(
+      () => route.path,
+      () => {
+        anchors.value = []
+        if (route.meta.desc) {
+          document.title = route.meta.desc + ' | ' + cfg.name.toUpperCase()
+          document.scrollingElement.scrollTop = 0
+        }
+        nextTick(() => {
+          fetchAnchors()
+        })
+      },
+    )
     onMounted(() => {
       if (route.meta.desc) {
         document.title = route.meta.desc + ' | ' + cfg.name.toUpperCase()

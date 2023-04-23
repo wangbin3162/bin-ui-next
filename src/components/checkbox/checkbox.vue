@@ -2,10 +2,7 @@
   <label
     :id="id"
     class="bin-checkbox"
-    :class="[
-      { 'is-disabled': isDisabled },
-      { 'is-checked': isChecked }
-    ]"
+    :class="[{ 'is-disabled': isDisabled }, { 'is-checked': isChecked }]"
     :aria-controls="indeterminate ? controls : null"
   >
     <span
@@ -14,7 +11,7 @@
         'is-disabled': isDisabled,
         'is-checked': isChecked,
         'is-indeterminate': indeterminate,
-        'is-focus': focus
+        'is-focus': focus,
       }"
       :tabindex="indeterminate ? 0 : false"
       :role="indeterminate ? 'checkbox' : false"
@@ -35,7 +32,7 @@
         @change="handleChange"
         @focus="focus = true"
         @blur="focus = false"
-      >
+      />
       <input
         v-else
         v-model="model"
@@ -48,7 +45,7 @@
         @change="handleChange"
         @focus="focus = true"
         @blur="focus = false"
-      >
+      />
     </span>
     <span v-if="$slots.default || label" class="bin-checkbox__label">
       <slot></slot>

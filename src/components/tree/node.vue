@@ -39,7 +39,8 @@
             @click="handleSelect"
           ></span>
           <span v-else :class="titleClasses" :title="data[titleKey]" @click="handleSelect">
-            <i v-if="data.icon" :class="`b-iconfont b-icon-${data.icon}`"></i>{{ data[titleKey] }}
+            <i v-if="data.icon" :class="`b-iconfont b-icon-${data.icon}`"></i>
+            {{ data[titleKey] }}
           </span>
         </template>
       </div>
@@ -52,8 +53,7 @@
             :multiple="multiple"
             :show-checkbox="showCheckbox"
             :children-key="childrenKey"
-          >
-          </tree-node>
+          ></tree-node>
         </div>
       </collapse-transition>
     </li>
@@ -94,7 +94,7 @@ export default {
     const titleKey = computed(() => TreeInstance.titleKey || 'title')
     const node = computed(() => [
       TreeInstance.states.flatState,
-      TreeInstance.states.flatState.find((item) => item.nodeKey === props.data.nodeKey),
+      TreeInstance.states.flatState.find(item => item.nodeKey === props.data.nodeKey),
     ])
     const handleExpand = () => {
       const item = props.data
@@ -104,7 +104,7 @@ export default {
         const tree = TreeInstance
         if (tree && tree.loadData) {
           props.data.loading = true
-          tree.loadData(item, (children) => {
+          tree.loadData(item, children => {
             props.data.loading = false
             if (children.length) {
               props.data[props.childrenKey] = children
@@ -138,22 +138,22 @@ export default {
       TreeInstance.handleCheck(changes)
     }
 
-    const handleDragStart = (e) => {
+    const handleDragStart = e => {
       if (!TreeInstance.draggable) return
       TreeInstance.handleTreeNodeDragStart({ e, treeNode: { $el: node$.value, node: props.data } })
     }
 
-    const handleDragOver = (e) => {
+    const handleDragOver = e => {
       if (!TreeInstance.draggable) return
       TreeInstance.handleTreeNodeDragOver({ e, treeNode: { $el: node$.value, node: props.data } })
       e.preventDefault()
     }
 
-    const handleDrop = (e) => {
+    const handleDrop = e => {
       e.preventDefault()
     }
 
-    const handleDragEnd = (e) => {
+    const handleDragEnd = e => {
       if (!TreeInstance.draggable) return
       TreeInstance.handleTreeNodeDragEnd({ e, treeNode: { $el: node$.value, node: props.data } })
     }

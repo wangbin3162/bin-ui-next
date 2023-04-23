@@ -16,21 +16,11 @@
     <template #default>
       <div v-click-outside="hide">
         <div class="bin-color-dropdown__main-wrapper">
-          <hue-slider
-            ref="hue"
-            class="hue-slider"
-            :color="color"
-            vertical
-          />
+          <hue-slider ref="hue" class="hue-slider" :color="color" vertical />
           <sv-panel ref="svPanel" :color="color" />
         </div>
         <alpha-slider v-if="showAlpha" ref="alpha" :color="color" />
-        <predefine
-          v-if="colors"
-          ref="predefine"
-          :color="color"
-          :colors="colors"
-        />
+        <predefine v-if="colors" ref="predefine" :color="color" :colors="colors" />
         <div class="bin-color-dropdown__btns">
           <span class="bin-color-dropdown__value">
             <b-input
@@ -41,12 +31,7 @@
               @blur="handleConfirm"
             />
           </span>
-          <b-button
-            size="mini"
-            type="text"
-            class="bin-color-dropdown__link-btn"
-            @click="clear"
-          >
+          <b-button size="mini" type="text" class="bin-color-dropdown__link-btn" @click="clear">
             清空
           </b-button>
           <b-button
@@ -64,9 +49,9 @@
       <div
         :class="[
           'bin-color-picker',
-          {'show-label': showLabel},
+          { 'show-label': showLabel },
           colorDisabled ? 'is-disabled' : '',
-          colorSize ? `bin-color-picker--${ colorSize }` : ''
+          colorSize ? `bin-color-picker--${colorSize}` : '',
         ]"
       >
         <div v-if="colorDisabled" class="bin-color-picker__mask"></div>
@@ -75,7 +60,7 @@
             <span
               class="bin-color-picker__color-inner"
               :style="{
-                backgroundColor: displayedColor
+                backgroundColor: displayedColor,
               }"
             ></span>
           </span>
@@ -144,10 +129,12 @@ export default {
     const alpha = ref(null)
     const popper = ref(null)
     // data
-    const color = reactive(new Color({
-      enableAlpha: props.showAlpha,
-      format: props.colorFormat,
-    }))
+    const color = reactive(
+      new Color({
+        enableAlpha: props.showAlpha,
+        format: props.colorFormat,
+      }),
+    )
     const showPicker = ref(false)
     const showPanelColor = ref(false)
     const customInput = ref('')
@@ -160,26 +147,37 @@ export default {
     })
     const colorSize = computed(() => props.size || BFormItem.size)
     const colorDisabled = computed(() => props.disabled || BForm.disabled)
-    const currentColor = computed(() => !props.modelValue && !showPanelColor.value ? '' : color.value)
+    const currentColor = computed(() =>
+      !props.modelValue && !showPanelColor.value ? '' : color.value,
+    )
     // watch
-    watch(() => props.modelValue, newVal => {
-      if (!newVal) {
-        showPanelColor.value = false
-      } else if (newVal && newVal !== color.value) {
-        color.fromString(newVal)
-      }
-    })
-    watch(() => currentColor.value, val => {
-      customInput.value = val
-      emit('active-change', val)
-      // showPanelColor.value = true
-    })
+    watch(
+      () => props.modelValue,
+      newVal => {
+        if (!newVal) {
+          showPanelColor.value = false
+        } else if (newVal && newVal !== color.value) {
+          color.fromString(newVal)
+        }
+      },
+    )
+    watch(
+      () => currentColor.value,
+      val => {
+        customInput.value = val
+        emit('active-change', val)
+        // showPanelColor.value = true
+      },
+    )
 
-    watch(() => color.value, () => {
-      if (!props.modelValue && !showPanelColor.value) {
-        showPanelColor.value = true
-      }
-    })
+    watch(
+      () => color.value,
+      () => {
+        if (!props.modelValue && !showPanelColor.value) {
+          showPanelColor.value = true
+        }
+      },
+    )
 
     // methods
     function displayedRgb(color, showAlpha) {
@@ -258,13 +256,16 @@ export default {
         customInput.value = currentColor.value
       }
     })
-    watch(() => showPicker.value, () => {
-      nextTick(() => {
-        hue.value?.update()
-        svPanel.value?.update()
-        alpha.value?.update()
-      })
-    })
+    watch(
+      () => showPicker.value,
+      () => {
+        nextTick(() => {
+          hue.value?.update()
+          svPanel.value?.update()
+          alpha.value?.update()
+        })
+      },
+    )
 
     provide('ColorPicker', {
       currentColor,
