@@ -13,7 +13,7 @@
     <b-popover trigger="hover" title="Title" content="这是一段内容这是一段内容这是一段内容">
       <b-button>Hover</b-button>
     </b-popover>
-    <b-popover trigger="click" title="Title" content="这是一段内容这是一段内容这是一段内容">
+    <b-popover trigger="click" title="Title" content="这是一段内容这是一段内容这是一段内容" :z-index="1000">
       <b-button>Click</b-button>
     </b-popover>
     <b-popover trigger="focus" title="Title" content="这是一段内容这是一段内容这是一段内容">
@@ -217,6 +217,7 @@
 | offset    | 出现位置的偏移量   |  Number |  — |    0     |
 | appendToBody    | 是否将弹层放置于 body 内   | Boolean  |  —   |   true   |
 | options    | 自定义 popper.js 的配置项具体参考popper.js   | Object  |  —   |   —    |
+| z-index    | 层级 | Number，默认为2000，弹窗会自增，如设置了此值，则会追加当前值后进行自增进行自增  |      —      |  0  |
 
 ### Slot
 

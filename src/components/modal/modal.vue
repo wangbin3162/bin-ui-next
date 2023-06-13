@@ -10,7 +10,7 @@
         v-show="visible"
         :mask="mask"
         :overlay-class="maskClass"
-        :z-index="modalIndex + zIndex"
+        :z-index="modalIndex"
         @click="onModalClick"
       >
         <transition :name="transitionName || 'dialog-fade'">
@@ -68,7 +68,6 @@ import {
 import BMask from './mask.vue'
 import { useModalDrag } from '../../hooks'
 import { addEventListenerWrap } from './addListener'
-import { transferIncrease } from '../../utils/config'
 
 let mousePosition = null
 const getClickPosition = e => {
@@ -204,7 +203,6 @@ export default {
   emits: [OPEN_EVENT, OPENED_EVENT, CLOSE_EVENT, CLOSED_EVENT, UPDATE_MODEL_EVENT],
   setup(props, ctx) {
     const modalRef = ref(null)
-    const modalIndex = ref(transferIncrease())
 
     const { modelValue, draggable, destroyOnClose } = toRefs(props)
     useModalDrag({
@@ -238,9 +236,6 @@ export default {
     watch(
       () => props.modelValue,
       val => {
-        if (val) {
-          modalIndex.value = transferIncrease()
-        }
         nextTick(() => {
           updateCallback(!val)
         })
@@ -254,7 +249,6 @@ export default {
     return {
       ...useDialog(props, ctx, modalRef),
       modalRef,
-      modalIndex,
     }
   },
 }

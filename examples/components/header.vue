@@ -3,9 +3,9 @@
     <div class="header-container">
       <div class="left" style="width: 580px" flex="main:justify cross:center">
         <div class="logo">
-          <img src="../assets/images/logo/bin-ui-next-02.svg" class="icon" alt="icon"/>
+          <img src="../assets/images/logo/bin-ui-next-02.svg" class="icon" alt="icon" />
           <div class="text">
-            <img src="../assets/images/text.svg" alt="text"/>
+            <img src="../assets/images/text.svg" alt="text" />
           </div>
         </div>
       </div>
@@ -15,7 +15,8 @@
         </b-tooltip>
         <router-link :to="{ name: 'guide' }" class="active">指南</router-link>
         <b-dropdown @command="handleCommand">
-          <a href="#" class="active" @click.prevent>生态系统
+          <a href="#" class="active" @click.prevent>
+            生态系统
             <i class="b-iconfont b-icon-down"></i>
           </a>
           <template #dropdown>
@@ -31,21 +32,19 @@
               <b-dropdown-item name="bin-tree-org">bin-tree-org</b-dropdown-item>
               <div class="drop-down-menu-group">动画库</div>
               <b-dropdown-item name="bin-animation">bin-animation</b-dropdown-item>
-              <b-dropdown-item name="bin-keyframe-animation">bin-keyframe-animation</b-dropdown-item>
+              <b-dropdown-item name="bin-keyframe-animation">
+                bin-keyframe-animation
+              </b-dropdown-item>
             </b-dropdown-menu>
           </template>
         </b-dropdown>
         <router-link :to="{ name: 'color' }" class="active">色彩设计</router-link>
-        <a
-          href="https://gitee.com/wangbin3162/bin-ui-next"
-          class="github"
-          target="_blank"
-        >国内镜像</a>
-        <a
-          href="https://github.com/wangbin3162/bin-ui-next"
-          class="github"
-          target="_blank"
-        >GitHub</a>
+        <a href="https://gitee.com/wangbin3162/bin-ui-next" class="github" target="_blank">
+          国内镜像
+        </a>
+        <a href="https://github.com/wangbin3162/bin-ui-next" class="github" target="_blank">
+          GitHub
+        </a>
       </div>
       <search ref="searchRef"></search>
     </div>
@@ -70,7 +69,9 @@ export default {
       this.$log.primary(`github：  ${githubUrl}`)
       this.$log.primary(`gitee：  ${giteeUrl}`)
       this.$log.primary(`preview：${preview}`)
-      this.$log.primary('----------------------------------------------------------------------------')
+      this.$log.primary(
+        '----------------------------------------------------------------------------',
+      )
       this.$open(preview, true)
     },
   },
@@ -85,9 +86,7 @@ export default {
   top: 0;
   left: 0;
   right: 0;
-  width: 100%;
   height: 80px;
-  transition: all 0.3s;
   z-index: 100;
   .header-container {
     display: flex;

@@ -6,10 +6,10 @@ function transferIncrease() {
   return ++transferIndex + $ELEMENT.zIndex
 }
 
-const setConfig = (option) => {
+const setConfig = option => {
   $ELEMENT = option
 }
-const getConfig = (key) => {
+const getConfig = key => {
   return $ELEMENT[key]
 }
 

@@ -1,14 +1,14 @@
 import { computed, watch } from 'vue'
 import { isString } from '@vue/shared'
 import { usePopper } from '../popper'
-import { transferIncrease } from '../../utils/config'
 
 export const SHOW_EVENT = 'show'
 export const HIDE_EVENT = 'hide'
 
 export default function usePopover(props, ctx) {
-  const popperStyle = computed(() => {
+  const popperProps = usePopper(props, ctx)
 
+  const popperStyle = computed(() => {
     let _width
 
     if (isString(props.width)) {
@@ -19,11 +19,9 @@ export default function usePopover(props, ctx) {
 
     return {
       width: _width,
-      zIndex: transferIncrease(),
+      zIndex: popperProps.popperStyle.value.zIndex,
     }
   })
-
-  const popperProps = usePopper(props, ctx)
 
   watch(popperProps.visibility, val => {
     ctx.emit(val ? SHOW_EVENT : HIDE_EVENT)

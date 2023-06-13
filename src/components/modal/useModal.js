@@ -13,14 +13,14 @@ export const CLOSED_EVENT = 'closed'
 export const OPENED_EVENT = 'opened'
 export { UPDATE_MODEL_EVENT }
 
-export default function(props, ctx, targetRef) {
+export default function (props, ctx, targetRef) {
   const visible = ref(false)
   const closed = ref(false)
   const dialogRef = ref(null)
   const openTimer = ref(null)
   const closeTimer = ref(null)
   const rendered = ref(false) // when desctroyOnClose is true, we initialize it as false vise versa
-  const zIndex = ref(props.zIndex || transferIncrease())
+  const modalIndex = ref(props.zIndex || transferIncrease())
   const modalRef = ref(null)
 
   const style = computed(() => {
@@ -118,33 +118,37 @@ export default function(props, ctx, targetRef) {
   }
 
   if (props.escClosable) {
-    useModal({
-      handleClose,
-    }, visible)
+    useModal(
+      {
+        handleClose,
+      },
+      visible,
+    )
   }
 
   useRestoreActive(visible)
 
-  watch(() => props.modelValue, val => {
-    if (val) {
-      closed.value = false
-      open()
-      rendered.value = true // enables lazy rendering
-      ctx.emit(OPEN_EVENT)
-      zIndex.value = props.zIndex ? zIndex.value++ : transferIncrease()
-      // this.$el.addEventListener('scroll', this.updatePopper)
-      nextTick(() => {
-        if (targetRef.value) {
-          targetRef.value.scrollTop = 0
+  watch(
+    () => props.modelValue,
+    val => {
+      if (val) {
+        closed.value = false
+        open()
+        rendered.value = true // enables lazy rendering
+        ctx.emit(OPEN_EVENT)
+        modalIndex.value = props.zIndex > 0 ? ++modalIndex.value : transferIncrease()
+        nextTick(() => {
+          if (targetRef.value) {
+            targetRef.value.scrollTop = 0
+          }
+        })
+      } else {
+        if (visible.value) {
+          close()
         }
-      })
-    } else {
-      // this.$el.removeEventListener('scroll', this.updatePopper
-      if (visible.value) {
-        close()
       }
-    }
-  })
+    },
+  )
 
   onMounted(() => {
     if (props.modelValue) {
@@ -166,6 +170,6 @@ export default function(props, ctx, targetRef) {
     rendered,
     modalRef,
     visible,
-    zIndex,
+    modalIndex,
   }
 }

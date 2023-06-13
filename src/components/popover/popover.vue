@@ -43,6 +43,10 @@ export default {
       type: [String, Number],
       default: 150,
     },
+    zIndex: {
+      type: Number,
+      default: 0,
+    },
   },
   emits: ['update:visible', 'after-enter', 'after-leave', SHOW_EVENT, HIDE_EVENT],
   setup(props, ctx) {
@@ -57,8 +61,10 @@ export default {
 
     const title = renderIf(this.title, 'div', _hoist, toDisplayString(this.title), PatchFlags.TEXT)
 
-    const content = $slots.content ? renderSlot($slots, 'content', {},
-        () => [createTextVNode(toDisplayString(this.content), PatchFlags.TEXT)])
+    const content = $slots.content
+      ? renderSlot($slots, 'content', {}, () => [
+          createTextVNode(toDisplayString(this.content), PatchFlags.TEXT),
+        ])
       : renderIf(this.content, 'div', _content, toDisplayString(this.content), PatchFlags.TEXT)
     const {
       events,
@@ -74,13 +80,10 @@ export default {
       visibility,
     } = this
 
-    const kls = [
-      this.content ? 'bin-popover--plain' : '',
-      'bin-popover',
-      popperClass,
-    ].join(' ')
+    const kls = [this.content ? 'bin-popover--plain' : '', 'bin-popover', popperClass].join(' ')
 
-    let popover = renderPopper({
+    let popover = renderPopper(
+      {
         theme: Theme.LIGHT,
         name: transition,
         popperClass: kls,
@@ -92,29 +95,30 @@ export default {
         onAfterEnter,
         onAfterLeave,
         stopPopperMouseEvent: false,
-      }, [
-        title,
-        content,
-        renderArrow(showArrow),
-      ],
+      },
+      [title, content, renderArrow(showArrow)],
     )
 
     // when user uses popover directively, trigger will be null so that we only
     // render a popper.md window for displaying contents
-    const _trigger = trigger ? renderTrigger(trigger, {
-      ariaDescribedby: popperId,
-      ref: 'triggerRef',
-      ...events,
-    }) : createCommentVNode('v-if', true)
+    const _trigger = trigger
+      ? renderTrigger(trigger, {
+          ariaDescribedby: popperId,
+          ref: 'triggerRef',
+          ...events,
+        })
+      : createCommentVNode('v-if', true)
 
     return h(Fragment, null, [
-      this.trigger === 'click'
-        ? withDirectives(_trigger, [[ClickOutside, this.hide]])
-        : _trigger,
-      h(Teleport, {
-        disabled: !this.appendToBody,
-        to: 'body',
-      }, [popover]),
+      this.trigger === 'click' ? withDirectives(_trigger, [[ClickOutside, this.hide]]) : _trigger,
+      h(
+        Teleport,
+        {
+          disabled: !this.appendToBody,
+          to: 'body',
+        },
+        [popover],
+      ),
     ])
   },
 }

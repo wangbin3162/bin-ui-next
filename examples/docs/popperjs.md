@@ -11,7 +11,7 @@ popper借助了第三方插件<a href="https://popper.js.org/" target="_blank">p
 <template>
   <div flex>
     <div style="width: 200px;">
-      <b-popper trigger="click" theme="light">
+      <b-popper trigger="click" theme="light" :z-index="1000">
         <template #default>
           这是一段内容这是一段内容这是一段内容
         </template>
@@ -145,6 +145,7 @@ icon-select
 | class   | 触发器class   |  string |  — |     —     |
 | popper-class   | 弹层的额外class   |  string |  — |     —     |
 | popper-options   | 弹层的额外options，可参考官网，一般不需要额外设置  |  Object |  — |     —     |
+| z-index    | 层级 | Number，默认为2000，弹窗会自增，如设置了此值，则会追加当前值后进行自增进行自增  |      —      |  0  |
 | style   | 弹层的style  |  Object |  — |     —     |
 
 ### Slot

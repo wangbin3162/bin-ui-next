@@ -4,18 +4,21 @@
       <div class="search-modal" @click.stop v-if="visible">
         <div class="search-modal-content" v-click-outside="handleClose">
           <div class="search-modal-input__wrapper">
-            <b-input ref="inputRef" size="large" v-model="query" placeholder="搜索" class="input-item" clearable>
+            <b-input
+              ref="inputRef"
+              size="large"
+              v-model="query"
+              placeholder="搜索"
+              class="input-item"
+              clearable
+            >
               <template #prefix>
                 <b-icon name="search" size="22"></b-icon>
               </template>
             </b-input>
           </div>
-          <ul class="search-modal-list" v-no-data:[dataText]="filterList.length===0">
-            <li
-              v-for="item in filterList"
-              :key="item.path"
-              class="list-item"
-            >
+          <ul class="search-modal-list" v-no-data:[dataText]="filterList.length === 0">
+            <li v-for="item in filterList" :key="item.path" class="list-item">
               <a @click="handleClick(item.path)">
                 <i :class="`b-iconfont b-icon-${item.icon}`"></i>
                 <span>{{ item.label }}</span>
@@ -34,6 +37,7 @@ import { computed, nextTick, onBeforeUnmount, onMounted, ref } from 'vue'
 import navConf from '../nav.config.json'
 import { useRoute, useRouter } from 'vue-router'
 import { on, off } from '../../src/utils/dom'
+import { addClass, removeClass } from '../../src/utils/dom'
 
 export default {
   name: 'Search',
@@ -53,18 +57,20 @@ export default {
 
     function getComponentsOptions() {
       let routes = []
-      Object.keys(navConf).forEach((header) => {
+      Object.keys(navConf).forEach(header => {
         routes = routes.concat(navConf[header])
       })
 
-      let addComponent = (router) => {
-        router.forEach((route) => {
+      let addComponent = router => {
+        router.forEach(route => {
           if (route.items) {
             addComponent(route.items)
             routes = routes.concat(route.items)
           } else {
             // 如果是组件路由
-            if (['guide', 'install', 'start', 'theme', 'color', 'logs'].indexOf(route.name) === -1) {
+            if (
+              ['guide', 'install', 'start', 'theme', 'color', 'logs'].indexOf(route.name) === -1
+            ) {
               compList.value.push({
                 path: route.path,
                 label: route.desc,
@@ -99,17 +105,19 @@ export default {
     }
 
     function hideScroll() {
-      document.body.classList.add('bin-popup-parent--hidden')
+      addClass(document.body, 'bin-popup-parent--hidden')
+      addClass(document.body, 'with-scrollbar')
     }
 
     function showScroll() {
       query.value = ''
-      document.body.classList.remove('bin-popup-parent--hidden')
+
+      removeClass(document.body, 'bin-popup-parent--hidden')
+      removeClass(document.body, 'with-scrollbar')
     }
 
-
     // ctrl + f 全局呼出搜索面板
-    const keydownEvent = (e) => {
+    const keydownEvent = e => {
       const { ctrlKey, code } = e
       // 面板打开
       if (visible.value) {

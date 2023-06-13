@@ -110,4 +110,8 @@ export default {
     type: Boolean,
     default: true,
   },
+  zIndex: {
+    type: Number,
+    default: 0,
+  },
 }
