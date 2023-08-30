@@ -7,7 +7,7 @@
     :class="{
       'is-active': active,
       'is-disabled': disabled,
-      'is-tooltip':  parentMenu.type.name === 'BMenu' && rootMenu.props.collapse && slots.title
+      'is-tooltip': parentMenu.type.name === 'BMenu' && rootMenu.props.collapse && slots.title,
     }"
     @click="handleClick"
     @mouseenter="onMouseEnter"
@@ -16,11 +16,7 @@
     @mouseleave="onMouseLeave"
   >
     <b-tooltip
-      v-if="
-        parentMenu.type.name === 'BMenu' &&
-        rootMenu.props.collapse &&
-        slots.title
-      "
+      v-if="parentMenu.type.name === 'BMenu' && rootMenu.props.collapse && slots.title"
       theme="dark"
       placement="right"
     >
@@ -49,13 +45,7 @@
   </li>
 </template>
 <script>
-import {
-  computed,
-  onMounted,
-  onBeforeUnmount,
-  inject,
-  getCurrentInstance,
-} from 'vue'
+import { computed, onMounted, onBeforeUnmount, inject, getCurrentInstance } from 'vue'
 import useMenu from './useMenu'
 import BTooltip from '../tooltip'
 
@@ -66,7 +56,7 @@ export default {
   props: {
     index: {
       default: null,
-      validator: (val) => typeof val === 'string' || val === null,
+      validator: val => typeof val === 'string' || val === null,
     },
     route: [String, Object],
     disabled: Boolean,
@@ -75,13 +65,8 @@ export default {
   setup(props, { emit, slots }) {
     const instance = getCurrentInstance()
     const rootMenu = inject('rootMenu')
-    const { parentMenu, paddingStyle, indexPath } = useMenu(
-      instance,
-      props.index,
-    )
-    const { addSubMenu, removeSubMenu } = inject(
-      `subMenu:${parentMenu.value.uid}`,
-    )
+    const { parentMenu, paddingStyle, indexPath } = useMenu(instance, props.index)
+    const { addSubMenu, removeSubMenu } = inject(`subMenu:${parentMenu.value.uid}`)
 
     const active = computed(() => {
       return props.index === rootMenu.activeIndex.value
@@ -156,7 +141,6 @@ export default {
       parentMenu,
       rootMenu,
       slots,
-
       paddingStyle,
       itemStyle,
       backgroundColor,

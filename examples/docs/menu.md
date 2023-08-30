@@ -202,9 +202,18 @@
   <b-button :type="isCollapse?'default':'primary'" @click="isCollapse = false">展开</b-button>
   <b-button :type="isCollapse?'primary':'default'" @click="isCollapse = true">收起</b-button>
 </b-button-group>
-<b-menu default-active="1-4-1" class="b-menu-vertical-demo border"
-        @open="handleOpen" @close="handleClose"
-        :collapse="isCollapse">
+
+<b-menu 
+style="width: 240px"
+default-active="1-4-1"
+@open="handleOpen" 
+@close="handleClose"
+:collapse="isCollapse"
+background-color="#232324"
+text-color="#fff"
+active-text-color="#ffd04b"
+class="b-menu-vertical-demo border"
+>
   <b-submenu index="1">
     <template #title>
       <b-icon name="location-fill"></b-icon>
@@ -272,7 +281,6 @@
 | unique-opened       | 是否只保持一个子菜单的展开      | boolean | —      | false    |
 | menu-trigger        | 子菜单打开的触发方式(只在 mode 为 horizontal 时有效)    | string  | hover / click     | hover    |
 | router              | 是否使用 vue-router 的模式，启用该模式会在激活导航时以 index 作为 path 进行路由跳转 | boolean | —                     | false    |
-| collapse-transition | 是否开启折叠动画        | boolean | —     | true     |
 
 ### Menu Methods
 

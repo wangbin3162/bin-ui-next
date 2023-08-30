@@ -2,25 +2,31 @@
   // button
   .demo-button {
     margin-bottom: 10px;
+
     &:last-child {
       margin-bottom: 0;
     }
+
     .bin-button-group + .bin-button-group {
       margin-left: 8px;
     }
   }
+
   .demo-tooltip, .demo-popover {
     .top, .bottom {
       text-align: center;
     }
+
     .center {
       width: 300px;
       margin: 10px auto;
       overflow: hidden;
     }
+
     .center-left {
       float: left;
     }
+
     .center-right {
       float: right;
     }
@@ -32,6 +38,7 @@
       font-weight: bold;
       margin: 0;
     }
+
     .content {
       padding-left: 5px;
       margin: 0;
@@ -42,33 +49,40 @@
     .code-row-bg {
       background: #eeeeee;
     }
+
     .bin-col {
       color: #fff;
       padding: 10px 0;
       text-align: center;
-      background: rgba(0, 153, 229, .8);
+      background: rgba(0, 153, 229, 0.8);
+
       &:nth-child(odd) {
-        background: rgba(0, 153, 229, .5);
+        background: rgba(0, 153, 229, 0.5);
       }
     }
+
     .gutter {
       .bin-col {
         background: transparent !important;
+
         > div {
           color: #fff;
           padding: 10px 0;
           text-align: center;
-          background: rgba(0, 153, 229, .8);
+          background: rgba(0, 153, 229, 0.8);
         }
       }
     }
   }
+
   .demo-form .bin-form {
     width: 520px;
   }
+
   .demo-form .demo-form-inline {
     width: auto;
   }
+
   .demo-transition .transition-box {
     margin-bottom: 10px;
     width: 200px;
@@ -87,6 +101,7 @@
     margin-bottom: 15px;
     width: 350px;
   }
+
   .demo-block .demo-loading {
     position: relative;
     overflow: hidden;
@@ -97,6 +112,7 @@
     border-radius: 4px;
     border: 1px solid #cecece;
   }
+
   .demo-badge .item {
     margin-right: 40px;
   }
@@ -105,6 +121,7 @@
     width: 300px;
     margin-right: 20px;
   }
+
   .demo-rate .block {
     padding: 30px 0;
     text-align: center;
@@ -113,6 +130,7 @@
     width: 49%;
     box-sizing: border-box;
   }
+
   .demo-rate .block:last-child {
     border-right: none;
   }
@@ -123,6 +141,7 @@
     font-size: 14px;
     margin-bottom: 20px;
   }
+
   .demo-carousel-panel {
     height: 200px;
     line-height: 200px;
@@ -136,14 +155,12 @@
     overflow-x: hidden;
   }
 
-  .demo-menu .b-menu-vertical-demo:not(.bin-menu--collapse) {
+  .b-menu-vertical-demo {
     width: 240px;
-    min-height: 400px;
   }
 
   .b-menu-vertical-demo.border {
+    width: 240px;
     border-right: 1px solid #f0f0f0;
   }
 }
-
-

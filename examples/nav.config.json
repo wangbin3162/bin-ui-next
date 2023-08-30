@@ -49,6 +49,12 @@
           "path": "/button"
         },
         {
+          "desc": "ConfigProvider 全局配置",
+          "icon": "setting",
+          "name": "config-provider",
+          "path": "/config-provider"
+        },
+        {
           "desc": "Directive 指令",
           "icon": "bulb",
           "name": "directive",
@@ -101,8 +107,14 @@
       "desc": "布局",
       "items": [
         {
-          "desc": "Grid 栅格",
+          "desc": "Layout 布局组件",
           "icon": "layout",
+          "name": "layout",
+          "path": "/layout"
+        },
+        {
+          "desc": "Grid 栅格",
+          "icon": "appstore",
           "name": "grid",
           "path": "/grid"
         },

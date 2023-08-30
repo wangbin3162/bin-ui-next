@@ -49,12 +49,14 @@
       <div
         :class="[
           'bin-color-picker',
-          { 'show-label': showLabel },
           colorDisabled ? 'is-disabled' : '',
           colorSize ? `bin-color-picker--${colorSize}` : '',
         ]"
       >
         <div v-if="colorDisabled" class="bin-color-picker__mask"></div>
+        <div class="bin-color-picker__label" @click="handleTrigger">
+          <input class="label-input" :value="modelValue" readonly />
+        </div>
         <div class="bin-color-picker__trigger" @click="handleTrigger">
           <span class="bin-color-picker__color" :class="{ 'is-alpha': showAlpha }">
             <span
@@ -64,9 +66,6 @@
               }"
             ></span>
           </span>
-        </div>
-        <div class="bin-color-picker__label" v-if="showLabel" @click="handleTrigger">
-          {{ modelValue }}
         </div>
       </div>
     </template>
@@ -88,6 +87,7 @@ import { UPDATE_MODEL_EVENT } from '../../utils/constants'
 import { validSize } from '../../utils/validator-size'
 import useForm from '../../hooks/useForm'
 import { debounce } from '../../utils/util'
+import { toHex } from '../../utils/color'
 
 export const useOptions = () => {
   return inject('ColorPicker', {})
@@ -108,7 +108,10 @@ export default {
   props: {
     modelValue: String,
     showAlpha: Boolean,
-    colorFormat: String,
+    colorFormat: {
+      type: String,
+      default: 'hex',
+    },
     disabled: Boolean,
     size: {
       type: String,
@@ -116,9 +119,6 @@ export default {
     },
     popperClass: String,
     colors: Array,
-    showLabel: {
-      type: Boolean,
-    },
   },
   emits: ['change', 'active-change', UPDATE_MODEL_EVENT],
   setup(props, { emit }) {
@@ -166,7 +166,6 @@ export default {
       val => {
         customInput.value = val
         emit('active-change', val)
-        // showPanelColor.value = true
       },
     )
 
@@ -222,7 +221,18 @@ export default {
     }
 
     function confirmValue() {
-      const value = color.value
+      let value = color.value
+
+      const tmpColor = new Color({
+        enableAlpha: props.showAlpha,
+        format: props.colorFormat,
+      })
+      tmpColor.fromString(value)
+      if (tmpColor._alpha === 100) {
+        // 表示当前没有透明度，这时需要判断转换colorFormat，如果是hex，则进行转换
+        if (props.colorFormat === 'hex') value = toHex(value, false)
+      }
+
       emit(UPDATE_MODEL_EVENT, value)
       emit('change', value)
       formEmit('change', value)

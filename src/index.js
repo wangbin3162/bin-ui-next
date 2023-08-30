@@ -81,9 +81,12 @@ import LoadingBar from './components/loading-bar'
 import Message from './components/message'
 import MessageBox from './components/message-box'
 import Notice from './components/notice'
+import BConfigProvider from './components/config-provider'
+import BLayout from './components/layout'
 
 import * as util from './utils/util'
 import * as helper from './utils/util-helper'
+import * as configUtil from './utils/config-util'
 import * as resize from './utils/resize-event'
 import * as dom from './utils/dom'
 import { setConfig } from './utils/config'
@@ -124,6 +127,7 @@ const Utils = {
   color,
   dom,
   log,
+  configUtil,
 }
 
 const components = [
@@ -206,6 +210,8 @@ const components = [
   BDatePicker,
   BTable,
   BCountTo,
+  BConfigProvider,
+  BLayout,
 ]
 const plugins = [LoadingBar, Message, MessageBox, Notice]
 

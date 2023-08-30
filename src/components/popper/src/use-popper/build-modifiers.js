@@ -47,6 +47,6 @@ export default function buildModifier(props, externalModifiers = []) {
     })
   }
 
-  modifiers.push(...(externalModifiers))
+  modifiers.push(...externalModifiers)
   return modifiers
 }

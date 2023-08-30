@@ -570,7 +570,7 @@ export default {
           bodyEl.offsetWidth <
           bodyContentEl.offsetWidth + (showVerticalScrollBar.value ? scrollBarWidth.value : 0))
         showVerticalScrollBar.value = bodyHeight.value
-          ? offsetHeight - (showHBar ? scrollBarWidth.value : 0) < bodyContentHeight
+          ? offsetHeight - (showHBar ? scrollBarWidth.value : 0) <= bodyContentHeight
           : false
 
         if (showVerticalScrollBar.value) {

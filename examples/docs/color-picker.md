@@ -12,15 +12,11 @@
   <div flex>
     <div class="block" style="width: 200px;margin-right: 20px;">
       <div class="demonstration mb-5">有默认值</div>
-      <b-color-picker v-model="color1"></b-color-picker>
+      <b-color-picker v-model="color1" show-alpha color-format="hex"></b-color-picker>
     </div>
     <div class="block" style="width: 200px;margin-right: 20px;">
       <div class="demonstration mb-5">无默认值</div>
-      <b-color-picker v-model="color2"></b-color-picker>
-    </div>
-    <div class="block" style="width: 200px;margin-right: 20px;">
-      <div class="demonstration mb-5">显示label文字</div>
-      <b-color-picker v-model="color3" show-label></b-color-picker>
+      <b-color-picker v-model="color2" show-alpha></b-color-picker>
     </div>
   </div>
 </template>
@@ -150,7 +146,6 @@
 <template>
   <div flex>
     <b-color-picker v-model="color" disabled></b-color-picker>&nbsp;&nbsp;
-    <b-color-picker v-model="color" show-label disabled></b-color-picker>&nbsp;&nbsp;
   </div>
 </template>
 <script>
@@ -176,14 +171,18 @@
 
 <template>
   <div flex="cross:center">
-    <b-color-picker v-model="color" size="large"></b-color-picker>&nbsp;&nbsp;
-    <b-color-picker v-model="color"></b-color-picker>&nbsp;&nbsp;
-    <b-color-picker v-model="color" size="small"></b-color-picker>&nbsp;&nbsp;
-    <b-color-picker v-model="color" size="mini"></b-color-picker>&nbsp;&nbsp;
-    <b-color-picker v-model="color" size="large" show-label></b-color-picker>&nbsp;&nbsp;
-    <b-color-picker v-model="color" show-label></b-color-picker>&nbsp;&nbsp;
-    <b-color-picker v-model="color" size="small" show-label></b-color-picker>&nbsp;&nbsp;
-    <b-color-picker v-model="color" size="mini" show-label></b-color-picker>&nbsp;&nbsp;
+    <div class="mr-16"> 
+      <b-color-picker v-model="color" size="large"></b-color-picker>
+    </div>
+    <div class="mr-16">
+      <b-color-picker v-model="color"></b-color-picker>
+    </div>
+    <div class="mr-16">
+      <b-color-picker v-model="color" size="small"></b-color-picker>
+    </div>
+    <div>
+      <b-color-picker v-model="color" size="mini"></b-color-picker>
+    </div>
   </div>
 </template>
 <script>
@@ -210,7 +209,6 @@
 | color-format | 写入 v-model 的颜色的格式 | string | hsl / hsv / hex / rgb | hex（show-alpha 为 false）/ rgb（show-alpha 为 true） |
 | popper-class | ColorPicker 下拉框的类名 | string | — | — |
 | colors | 预定义颜色 | array | — | — |
-| show-label | 显示label文字 | boolean | — | false |
 
 ### Events
 | 事件名称      | 说明    | 回调参数      |

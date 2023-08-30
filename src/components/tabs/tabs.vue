@@ -1,24 +1,35 @@
 <template>
-  <div class="bin-tabs-wrapper" :class="[type,{'closable':closable}]" ref="rootRef">
+  <div class="bin-tabs-wrapper" :class="[type, { closable: closable }]" ref="rootRef">
     <scroll-pane class="nav-wrapper" ref="scrollPaneRef">
       <div class="tab-list">
         <!--下标-->
-        <div v-if="type==='default'" class="tabs-active-bar" :style="activeBarStyle"></div>
-        <span v-for="(tab,index) in data" :key="tab.key || 'tab-'+index"
-              class="tab-item" :id="tab.key"
-              :class="[{'width-icon':tab.icon},{'no-close':tab.noClose},{'active':tab.key===modelValue}]"
-              @click.stop="handleSelectTab(tab)"
-              @contextmenu.stop.prevent="openMenu(tab,$event)">
-        <i v-if="tab.icon" class="custom-icon" :class="['b-iconfont',`b-icon-${tab.icon}`]"></i>
-        {{ tab.title }}
-        <i v-if="type!=='default'&& closable && !tab.noClose" class="b-iconfont b-icon-close"
-           @click.prevent.stop="closeSelectedTab(tab)"></i>
-      </span>
+        <div v-if="type === 'default'" class="tabs-active-bar" :style="activeBarStyle"></div>
+        <span
+          v-for="(tab, index) in data"
+          :key="tab.key || 'tab-' + index"
+          class="tab-item"
+          :id="tab.key"
+          :class="[
+            { 'width-icon': tab.icon },
+            { 'no-close': tab.noClose },
+            { active: tab.key === modelValue },
+          ]"
+          @click.stop="handleSelectTab(tab)"
+          @contextmenu.stop.prevent="openMenu(tab, $event)"
+        >
+          <i v-if="tab.icon" class="custom-icon" :class="['b-iconfont', `b-icon-${tab.icon}`]"></i>
+          {{ tab.title }}
+          <i
+            v-if="type !== 'default' && closable && !tab.noClose"
+            class="b-iconfont b-icon-close"
+            @click.prevent.stop="closeSelectedTab(tab)"
+          ></i>
+        </span>
       </div>
     </scroll-pane>
     <template v-if="contextMenu">
       <transition name="zoom-in-top">
-        <ul class="contextmenu" v-show="visible" :style="{left:left+'px',top:top+'px'}">
+        <ul class="contextmenu" v-show="visible" :style="{ left: left + 'px', top: top + 'px' }">
           <slot name="menu">
             <li>自定义插入li标签</li>
           </slot>
@@ -45,7 +56,7 @@ export default {
       required: true,
     },
     type: {
-      validator: (value) => {
+      validator: value => {
         return ['default', 'card', 'tag'].includes(value)
       },
       default: 'default',
@@ -78,7 +89,7 @@ export default {
       let offset = 0
       // 获取选中的el的宽度
       props.data.every(tab => {
-        let $el = rootRef?.value.querySelector(`#${tab.key}`)
+        let $el = rootRef.value?.querySelector(`#${tab.key}`)
         if (!$el) return false
         let isActive = $el.classList.contains('active')
         if (!isActive) {
@@ -98,8 +109,9 @@ export default {
     }
     // 计算滚动宽度
     const calcScrollWidth = () => {
-      scrollPaneRef?.value.calcWidth()
-      if (props.type === 'default') {     // 计算bar位置
+      scrollPaneRef.value?.calcWidth()
+      if (props.type === 'default') {
+        // 计算bar位置
         nextTick(() => {
           calcBar()
         })
@@ -110,8 +122,8 @@ export default {
     const moveToCurrentTab = () => {
       nextTick(() => {
         if (props.data.length === 0) return
-        let $target = rootRef?.value.querySelector(`#${props.modelValue}`)
-        scrollPaneRef?.value.moveToTarget($target)
+        let $target = rootRef.value?.querySelector(`#${props.modelValue}`)
+        scrollPaneRef.value?.moveToTarget($target)
       })
     }
     // 更新选中active
@@ -120,10 +132,11 @@ export default {
       emit('change', data.selectedTag)
     }
     // 选择当前tab
-    const handleSelectTab = (tab) => {
+    const handleSelectTab = tab => {
       data.selectedTag = { ...tab }
       emitInput()
-      if (props.type === 'default') {     // 计算bar位置
+      if (props.type === 'default') {
+        // 计算bar位置
         nextTick(() => {
           calcBar()
         })
@@ -149,14 +162,14 @@ export default {
       emitInput()
     }
     // 关闭当前的tab页签
-    const closeSelectedTab = (tab) => {
+    const closeSelectedTab = tab => {
       // 缓存tabs
       let visitedViews = deepCopy(props.data)
       if (tab.key === props.modelValue) {
         toLastView(visitedViews, tab)
       }
       emit('tab-close', tab)
-    }   // 打开右键菜单选择
+    } // 打开右键菜单选择
     const openMenu = (tab, e) => {
       if (props.contextMenu) {
         data.visible = true
@@ -180,10 +193,7 @@ export default {
       off(window, 'resize', calcEvent)
     })
     watch(
-      [
-        () => props.data,
-        () => props.modelValue,
-      ],
+      [() => props.data, () => props.modelValue],
       () => {
         nextTick(() => {
           calcScrollWidth()
@@ -193,7 +203,7 @@ export default {
     )
     watch(
       () => data.visible,
-      (val) => {
+      val => {
         if (val) {
           document.body.addEventListener('click', closeMenu)
         } else {

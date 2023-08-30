@@ -5,6 +5,13 @@
 <div class="doc-update">
     <b-timeline>
       <b-timeline-item>
+        <p class="version">1.4.0</p>
+        <p class="time">2023-08-30</p>
+        <p class="content"><i>🍀</i>修改menu，popper，color-picker样式，重新定义属性变量</p>
+        <p class="content"><i>🍀</i>新增全局配置组件和layout组件</p>
+        <p class="content"><i>🐞</i>修复modal样式，switch样式，修复table动态高度的滚动条bug</p>
+      </b-timeline-item>
+      <b-timeline-item>
         <p class="version">1.3.3</p>
         <p class="time">2023-06-14</p>
         <p class="content"><i>🐞</i>修复modal框弹出层级每次自增2的问题，修改z-index属性说明</p>

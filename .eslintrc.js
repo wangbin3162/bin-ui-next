@@ -9,6 +9,7 @@ module.exports = {
     defineEmits: 'readonly',
     defineProps: 'readonly',
     defineExpose: 'readonly',
+    defineOptions: 'readonly',
   },
   extends: ['eslint:recommended', 'plugin:vue/vue3-essential'],
   parserOptions: {

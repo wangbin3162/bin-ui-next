@@ -1,25 +1,8 @@
-// 这块是为了覆盖文档的样式，后期文档整理再删除
 .bin-table {
-  table {
-    width: auto;
-    border-collapse: separate;
-    overflow: auto;
-    border: none;
-    color: var(--bin-color-text-default);
-    font-size: var(--bin-base-font-size);
-    thead, tbody {
-      width: auto;
-    }
-  }
-  th, td {
-    padding: 0;
-    max-width: unset;
-    border: none;
-  }
-  th {
-    background-color: var(--bin-color-bg-fa);
-  }
+  --b-table-header-bg: var(--bin-table-header-bg);
+  --b-table-header-text: var(--bin-table-header-text);
 }
+
 .bin-table {
   user-select: text;
   color: var(--bin-color-text-default);
@@ -30,15 +13,18 @@
   overflow: hidden;
   background-color: var(--bin-color-white);
   box-sizing: border-box;
+
   &-wrapper {
     position: relative;
     border-bottom: 0;
     border-right: 0;
     overflow: hidden; // 开启 max-height 时，没有 overflow: hidden，则底部多出 1px，早期没有 overflow 是因为有些控件没有加 transfer
   }
+
   &-hide {
     opacity: 0;
   }
+
   &:before {
     content: '';
     display: none;
@@ -62,38 +48,48 @@
     background-color: var(--bin-border-table-color);
     z-index: 3;
   }
+
   &-title, &-footer {
     height: 48px;
     line-height: 48px;
     border-bottom: var(--bin-border-table);
   }
+
   &-footer {
     border-bottom: none;
   }
+
   &-header {
     overflow: hidden;
   }
+
   &-overflowX {
     overflow-x: scroll;
   }
+
   &-overflowY {
     overflow-y: scroll;
   }
+
   &-tip {
     overflow-x: auto;
     overflow-y: hidden;
   }
+
   &-with-fixed-top:before {
     display: block;
   }
+
   &-with-fixed-top&-with-footer {
     .bin-table-footer {
       border-top: var(--bin-border-table);
     }
+
     tbody tr:last-child td {
       border-bottom: none;
     }
   }
+
   th, td {
     min-width: 0;
     height: 50px;
@@ -108,29 +104,39 @@
     height: 50px;
     white-space: nowrap;
     overflow: hidden;
-    background-color: var(--bin-color-bg-fa);
+    background-color: var(--b-table-header-bg);
     color: var(--bin-color-text-primary);
     font-weight: 500;
+
+    .bin-table-cell {
+      color: var(--b-table-header-text);
+    }
   }
+
   td {
     word-break: break-all;
     background-color: #fff;
     transition: background-color var(--bin-animation-duration-base) ease-in-out;
   }
+
   th&-column, td&-column {
     &-left {
       text-align: left;
     }
+
     &-center {
       text-align: center;
     }
+
     &-right {
       text-align: right;
     }
   }
+
   & table {
     table-layout: fixed;
   }
+
   &-wrapper-with-border {
     &:before, &:after {
       content: '';
@@ -139,23 +145,28 @@
       top: 0;
       background-color: var(--bin-border-table-color);
     }
+
     &:before {
       height: 100%;
       width: 1px;
     }
+
     &:after {
       height: 1px;
       width: 100%;
     }
   }
+
   &-border {
     &:before, &:after {
       display: block;
     }
+
     th, td {
       border-right: var(--bin-border-table);
     }
   }
+
   &-cell {
     padding: 0 16px;
     box-sizing: border-box;
@@ -175,6 +186,7 @@
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
+
       &-content {
         word-break: break-all;
         display: block;
@@ -195,13 +207,16 @@
     &-expand {
       cursor: pointer;
       transition: transform var(--bin-animation-duration-base) ease-in-out;
+
       i {
         font-size: var(--bin-base-font-size);
       }
+
       &-expanded {
         transform: rotate(90deg);
       }
     }
+
     &-sort {
       cursor: pointer;
       user-select: none;
@@ -214,23 +229,28 @@
       }
     }
   }
+
   &-hidden {
     visibility: hidden;
   }
+
   th .bin-table-cell {
     display: inline-block;
     word-wrap: normal;
     vertical-align: middle;
   }
+
   td&-expanded-cell {
     padding: 20px 50px;
   }
+
   &-stripe &-body, &-stripe &-fixed-body {
     tr:nth-child(2n) {
       td {
         background-color: var(--bin-color-bg-fa);
       }
     }
+
     // #1380
     tr.bin-table-row-hover {
       td {
@@ -247,16 +267,20 @@
 
   &-large {
     font-size: var(--bin-base-font-size);
+
     td {
       height: 55px;
     }
+
     &-title, &-footer {
       height: 55px;
       line-height: 55px;
     }
+
     .bin-table-cell-with-expand {
       height: 55px;
       line-height: 55px;
+
       i {
         font-size: 16px;
       }
@@ -267,13 +291,16 @@
     th {
       height: 40px;
     }
+
     td {
       height: 40px;
     }
+
     &-title, &-footer {
       height: 40px;
       line-height: 40px;
     }
+
     .bin-table-cell-with-expand {
       height: 39px;
       line-height: 39px;
@@ -310,6 +337,7 @@
     right: 0;
     box-shadow: -2px 0 6px -2px rgba(0, 0, 0, 0.2);
   }
+
   &-fixed-right-header {
     position: absolute;
     top: -1px;
@@ -318,24 +346,28 @@
     border-top: var(--bin-border-table);
     border-bottom: var(--bin-border-table);
   }
+
   &-fixed-header {
     overflow: hidden;
   }
+
   &-fixed-body {
     overflow: hidden;
     position: relative;
     z-index: 3;
   }
+
   &-fixed-shadow {
     width: 1px;
     height: 100%;
     position: absolute;
     top: 0;
     right: 0;
-    box-shadow: 1px 0 6px rgba(0, 0, 0, .2);
+    box-shadow: 1px 0 6px rgba(0, 0, 0, 0.2);
     overflow: hidden;
     z-index: 1;
   }
+
   &-sort {
     display: inline-block;
     width: 14px;
@@ -346,6 +378,7 @@
     cursor: pointer;
     position: relative;
     margin-left: 4px;
+
     i {
       display: block;
       height: 6px;
@@ -355,28 +388,35 @@
       color: var(--bin-color-text-disabled);
       transition: color var(--bin-animation-duration-base) ease-in-out;
       font-size: 12px;
+
       &:hover {
         color: inherit;
       }
+
       &.on {
         color: var(--bin-color-primary);
       }
+
       &:first-child {
         top: 0;
       }
+
       &:last-child {
         bottom: 0;
       }
     }
   }
+
   &-tip {
     table {
       width: 100%;
+
       td {
         text-align: center;
       }
     }
   }
+
   &-expanded-hidden {
     visibility: hidden;
   }

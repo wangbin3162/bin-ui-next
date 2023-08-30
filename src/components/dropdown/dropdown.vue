@@ -10,7 +10,7 @@
     popper-class="bin-dropdown__popper"
     :append-to-body="appendToBody"
     transition="zoom-in-top"
-    :offset="5"
+    :offset="8"
     :stop-popper-mouse-event="false"
     :gpu-acceleration="false"
     :show-arrow="false"
@@ -26,14 +26,7 @@
   </b-popper>
 </template>
 <script>
-import {
-  provide,
-  getCurrentInstance,
-  ref,
-  computed,
-  watch,
-  onMounted,
-} from 'vue'
+import { provide, getCurrentInstance, ref, computed, watch, onMounted } from 'vue'
 import { on, addClass, removeClass } from '../../utils/dom'
 import BPopper from '../popper'
 
@@ -103,7 +96,7 @@ export default {
 
     const triggerVNode = ref(null)
     const triggerElm = computed(() => {
-      return (triggerVNode.value?.$refs.triggerRef)?.children[0] ?? {}
+      return triggerVNode.value?.$refs.triggerRef?.children[0] ?? {}
     })
 
     function handleClick() {

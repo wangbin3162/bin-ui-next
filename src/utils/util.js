@@ -87,7 +87,8 @@ export function parseTime(time, cFormat = '{y}-{m}-{d} {h}:{i}:{s}', weekArray) 
       }
       return ['日', '一', '二', '三', '四', '五', '六'][value]
     }
-    if (result.length > 0 && value < 10) { // 补0
+    if (result.length > 0 && value < 10) {
+      // 补0
       value = '0' + value
     }
     return value || 0
@@ -203,9 +204,9 @@ export function getRandomInt(min, max) {
  * @return {number}
  */
 export function shuffle(arr) {
-  let newArr = arr.slice()// 复制一个新数组
+  let newArr = arr.slice() // 复制一个新数组
   for (let i = 0; i < newArr.length; i++) {
-    let j = getRandomInt(0, i)// 在0-当前循环的位置随机一个位置做交换
+    let j = getRandomInt(0, i) // 在0-当前循环的位置随机一个位置做交换
     swap(arr, i, j)
   }
   return newArr
@@ -260,7 +261,10 @@ export function throttle(func, wait, immediate) {
     if (immediate === undefined && elapsed > wait) {
       exec()
     } else {
-      timeoutID = setTimeout(immediate ? clear : exec, immediate === undefined ? wait - elapsed : wait)
+      timeoutID = setTimeout(
+        immediate ? clear : exec,
+        immediate === undefined ? wait - elapsed : wait,
+      )
     }
   }
 
@@ -331,10 +335,12 @@ export function isEqual(obj1, obj2) {
  * @param hasHyphen 是否有连接符
  */
 export function uuid(hasHyphen) {
-  const str = hasHyphen ? 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx' : 'xxxxxxxxxxxx4xxxyxxxxxxxxxxxxxxx'
+  const str = hasHyphen
+    ? 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'
+    : 'xxxxxxxxxxxx4xxxyxxxxxxxxxxxxxxx'
   return str.replace(/[xy]/g, c => {
-    const r = Math.random() * 16 | 0
-    const v = c === 'x' ? r : (r & 0x3 | 0x8)
+    const r = (Math.random() * 16) | 0
+    const v = c === 'x' ? r : (r & 0x3) | 0x8
     return v.toString(16)
   })
 }

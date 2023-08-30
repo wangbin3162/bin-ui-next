@@ -19,29 +19,40 @@ active() {
   align-items: center;
   line-height: normal;
   height: var(--bin-default-height);
-  width: var(--bin-default-height);
+  width: 100%;
+  border: var(--bin-border-base);
+  border-radius: var(--bin-border-base-radius);
+
   &__trigger {
+    width: 64px;
     display: inline-block;
     box-sizing: border-box;
     height: var(--bin-default-height);
-    width: 100%;
-    padding: 3px;
-    border: var(--bin-border-base);
+    padding: 4px;
     border-radius: var(--bin-border-base-radius);
     font-size: 0;
-    position: relative;
     cursor: pointer;
   }
+
   &__label {
+    width: calc(100% - 64px);
     height: 100%;
     cursor: pointer;
-    border: var(--bin-border-base);
-    border-radius: var(--bin-border-base-radius);
-    border-left: none;
     padding: 0 8px;
-    min-width: 85px;
     line-height: var(--bin-default-height-2);
+    overflow: visible;
+    white-space: nowrap;
+
+    .label-input {
+      width: 100%;
+      font-size: var(--bin-base-font-size);
+      border: none;
+      outline: none;
+      cursor: pointer;
+      font-weight: normal;
+    }
   }
+
   &__color {
     position: relative;
     display: block;
@@ -49,9 +60,11 @@ active() {
     width: 100%;
     height: 100%;
     text-align: center;
+
     &.is-alpha {
       background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAIAAADZF8uwAAAAGUlEQVQYV2M4gwH+YwCGIasIUwhT25BVBADtzYNYrHvv4gAAAABJRU5ErkJggg==');
     }
+
     &-inner {
       position: absolute;
       left: 0;
@@ -62,67 +75,62 @@ active() {
       box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.15);
     }
   }
+
   &--large {
     height: var(--bin-large-height);
-    width: var(--bin-large-height);
+
     .bin-color-picker__trigger {
       height: var(--bin-large-height);
     }
+
     .bin-color-picker__label {
       line-height: var(--bin-large-height-2);
     }
   }
+
   &--small {
     height: var(--bin-small-height);
-    width: var(--bin-small-height);
+
     .bin-color-picker__trigger {
       height: var(--bin-small-height);
     }
+
     .bin-color-picker__icon, .bin-color-picker__empty {
       transform: translate3d(-50%, -50%, 0) scale(0.8);
     }
+
     .bin-color-picker__label {
       line-height: var(--bin-small-height-2);
     }
   }
+
   &--mini {
     height: var(--bin-mini-height);
-    width: var(--bin-mini-height);
+
     .bin-color-picker__trigger {
       height: var(--bin-mini-height);
     }
+
     .bin-color-picker__icon, .bin-color-picker__empty {
       transform: translate3d(-50%, -50%, 0) scale(0.8);
     }
+
     .bin-color-picker__label {
       line-height: var(--bin-mini-height-2);
     }
   }
+
   &__mask {
     border-radius: var(--bin-border-base-radius);
     position: absolute;
-    top: 1px;
-    left: 1px;
-    bottom: 1px;
-    right: 1px;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
     z-index: 1;
+    border-radius: var(--bin-border-base-radius);
     cursor: not-allowed;
-    background-color: rgba(255, 255, 255, .7);
-  }
-  &.show-label {
-    width: auto;
-    .bin-color-picker__trigger {
-      width: var(--bin-default-height);
-    }
-    &.bin-color-picker--large .bin-color-picker__trigger {
-      width: var(--bin-large-height);
-    }
-    &.bin-color-picker--small .bin-color-picker__trigger {
-      width: var(--bin-small-height);
-    }
-    &.bin-color-picker--mini .bin-color-picker__trigger {
-      width: var(--bin-mini-height);
-    }
+    background-color: rgba(203, 203, 203, 0.7);
   }
 }
 
@@ -135,23 +143,27 @@ active() {
   background-color: var(--bin-color-white);
   border-radius: var(--bin-border-base-radius);
   box-shadow: var(--bin-shadow-down);
+
   &.bin-popper {
     &.is-light {
       border: none;
     }
   }
+
   &.bin-color-dropdown {
     width: 300px;
   }
 
   .bin-color-dropdown__main-wrapper {
     margin-bottom: 6px;
+
     &::after {
-      content: "";
+      content: '';
       display: table;
       clear: both;
     }
   }
+
   // 色彩条
   .bin-color-hue-slider {
     position: relative;
@@ -161,15 +173,22 @@ active() {
     background-color: #f00;
     padding: 0 2px;
     float: right;
+
     &__bar {
       position: relative;
       background: linear-gradient(
-              to right, #f00 0%,
-              #ff0 17%, #0f0 33%,
-              #0ff 50%, #00f 67%,
-              #f0f 83%, #f00 100%);
+        to right,
+        #f00 0%,
+        #ff0 17%,
+        #0f0 33%,
+        #0ff 50%,
+        #00f 67%,
+        #f0f 83%,
+        #f00 100%
+      );
       height: 100%;
     }
+
     &__thumb {
       position: absolute;
       cursor: pointer;
@@ -184,17 +203,25 @@ active() {
       box-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
       z-index: 1;
     }
+
     &.is-vertical {
       width: 12px;
       height: 180px;
       padding: 2px 0;
+
       .bin-color-hue-slider__bar {
         background: linear-gradient(
-                to bottom, #f00 0%,
-                #ff0 17%, #0f0 33%,
-                #0ff 50%, #00f 67%,
-                #f0f 83%, #f00 100%);
+          to bottom,
+          #f00 0%,
+          #ff0 17%,
+          #0f0 33%,
+          #0ff 50%,
+          #00f 67%,
+          #f0f 83%,
+          #f00 100%
+        );
       }
+
       .bin-color-hue-slider__thumb {
         left: 0;
         top: 0;
@@ -211,13 +238,17 @@ active() {
     width: 280px;
     height: 12px;
     background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAIAAADZF8uwAAAAGUlEQVQYV2M4gwH+YwCGIasIUwhT25BVBADtzYNYrHvv4gAAAABJRU5ErkJggg==');
+
     &__bar {
       position: relative;
       background: linear-gradient(
-              to right, rgba(255, 255, 255, 0) 0%,
-              rgba(255, 255, 255, 1) 100%);
+        to right,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 1) 100%
+      );
       height: 100%;
     }
+
     &__thumb {
       position: absolute;
       cursor: pointer;
@@ -232,12 +263,15 @@ active() {
       box-shadow: 0 0 2px rgba(0, 0, 0, 0.6);
       z-index: 1;
     }
+
     &.is-vertical {
       width: 20px;
       height: 180px;
+
       .bin-color-alpha-slider__bar {
         background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
       }
+
       .bin-color-alpha-slider__thumb {
         left: 0;
         top: 0;
@@ -253,10 +287,12 @@ active() {
     font-size: 12px;
     margin-top: 8px;
     width: 280px;
+
     &__colors {
       display: flex;
       flex: 1;
       flex-wrap: wrap;
+
       .bin-color-predefine__color-selector {
         display: inline;
         width: 16px;
@@ -264,6 +300,7 @@ active() {
         margin: 2px;
         float: left;
         position: relative;
+
         > div {
           outline: 0;
           display: block;
@@ -274,6 +311,7 @@ active() {
           border-radius: 2px;
           box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.15);
         }
+
         &.selected {
           > div::after {
             content: '';
@@ -284,46 +322,56 @@ active() {
             cursor: pointer;
           }
         }
+
         &.is-alpha {
           background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAIAAADZF8uwAAAAGUlEQVQYV2M4gwH+YwCGIasIUwhT25BVBADtzYNYrHvv4gAAAABJRU5ErkJggg==');
         }
       }
     }
   }
+
   // 色彩面板
   .bin-color-svpanel {
     position: relative;
     width: 280px;
     height: 180px;
+
     &__black, &__white {
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
-      bottom: 0
+      bottom: 0;
     }
+
     &__white {
-      background: linear-gradient(to right, #fff, rgba(255, 255, 255, 0))
+      background: linear-gradient(to right, #fff, rgba(255, 255, 255, 0));
     }
+
     &__black {
-      background: linear-gradient(to top, #000, rgba(0, 0, 0, 0))
+      background: linear-gradient(to top, #000, rgba(0, 0, 0, 0));
     }
+
     &__cursor {
       position: absolute;
+
       > div {
-        circle-dot()
+        circle-dot();
       }
     }
   }
+
   .bin-color-dropdown__btns {
     margin-top: 6px;
     text-align: right;
   }
+
   .bin-color-dropdown__value {
     float: left;
     line-height: 24px;
     color: #000;
     width: 200px;
+
     .bin-input {
       font-size: 12px;
       padding: 0 10px;

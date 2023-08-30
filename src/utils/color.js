@@ -1,6 +1,6 @@
 /**
  * 依赖color插件，在此基础上封装部分转换函数
- * 参考文档说明：https://www.npmjs.com/package/color
+ * 参考文档说明：https://www.npmjs.com/packauge/color
  */
 import Color from 'color'
 

@@ -1,8 +1,16 @@
 .bin-page {
+  --b-page-border-color: var(--bin-page-border-color);
+  --b-page-bg: var(--bin-page-bg);
+  --b-page-hover-bg: var(--bin-page-hover-bg);
+  --b-page-active-bg: var(--bin-page-active-bg);
+}
+
+.bin-page {
   color: var(--bin-color-text-default);
   font-size: var(--bin-base-font-size);
   font-variant: tabular-nums;
   line-height: 1.5715;
+
   &:after {
     content: '';
     display: block;
@@ -11,6 +19,7 @@
     overflow: hidden;
     visibility: hidden;
   }
+
   &-item {
     display: inline-block;
     box-sizing: border-box;
@@ -25,44 +34,55 @@
     user-select: none;
     cursor: pointer;
     font-family: Arial;
-    border: var(--bin-border-base);
     border-radius: var(--bin-border-base-radius);
     transition: border var(--bin-animation-duration-base) ease-in-out, color var(--bin-animation-duration-base) ease-in-out;
+    border: 1px solid var(--b-page-border-color);
+    background-color: var(--b-page-bg);
+
     a {
       font-family: Monospaced Number;
       margin: 0 6px;
       text-decoration: none;
       color: var(--bin-color-text-default);
     }
+
     &:hover {
-      border-color: var(--bin-color-primary);
+      --b-page-bg: var(--b-page-hover-bg);
+
       a {
         color: var(--bin-color-primary);
       }
     }
+
     &-active {
-      border-color: var(--bin-color-primary);
+      --b-page-bg: var(--b-page-hover-bg);
+
       a, &:hover a {
         color: var(--bin-color-primary);
       }
     }
   }
+
   &-item-jump-prev, &-item-jump-next {
     margin-right: 4px;
+
     &:after {
-      content: "•••";
+      content: '•••';
       display: block;
       letter-spacing: 1px;
       color: var(--bin-color-text-disabled);
       text-align: center;
     }
+
     i {
       display: none;
     }
+
     &:hover {
       &:after {
         display: none;
       }
+
       i {
         display: inline;
         color: var(--bin-color-text-disabled);
@@ -73,6 +93,7 @@
   &-prev {
     margin-right: 4px;
   }
+
   &-prev, &-next, &-item-jump-prev, &-item-jump-next {
     display: inline-block;
     vertical-align: middle;
@@ -85,33 +106,39 @@
     cursor: pointer;
     color: #666;
     font-family: Arial;
-    border: var(--bin-border-base);
+    border: 1px solid var(--b-page-border-color);
     border-radius: var(--bin-border-base-radius);
     transition: all var(--bin-animation-duration-base) ease-in-out;
+    background-color: var(--b-page-bg);
   }
 
   &-item-jump-prev, &-item-jump-next {
     border-color: transparent;
   }
+
   &-item-jump-prev:hover a, &-item-jump-next:hover a {
     color: var(--bin-color-primary);
+    --b-page-bg: var(--b-page-hover-bg);
   }
 
   &-prev, &-next {
-    background-color: var(--bin-color-white);
     padding: 0 5px;
+
     a {
       color: var(--bin-color-text-secondary);
       font-size: var(--bin-base-font-size);
       display: inline-flex;
       align-items: center;
       height: 100%;
+
       .b-iconfont {
         font-size: var(--bin-base-font-size);
       }
     }
+
     &:hover {
-      border-color: var(--bin-color-primary);
+      --b-page-bg: var(--b-page-hover-bg);
+
       a {
         color: var(--bin-color-primary);
       }
@@ -120,32 +147,39 @@
 
   &-disabled {
     cursor: not-allowed;
+
     a {
       color: var(--bin-color-text-disabled);
     }
+
     &:hover {
       border-color: #dcdee2;
+
       a {
         color: var(--bin-color-text-disabled);
         cursor: not-allowed;
       }
     }
   }
+
   &-options {
     display: inline-block;
     vertical-align: middle;
     margin-left: 15px;
+
     &-sizer {
       display: inline-block;
       margin-right: 10px;
       min-width: 100px;
       width: 100px;
     }
+
     &-elevator {
       display: inline-block;
       vertical-align: middle;
       height: 32px;
       line-height: 30px;
+
       input {
         display: inline-block;
         margin: 0 8px;
@@ -162,10 +196,12 @@
         position: relative;
         cursor: text;
         transition: border var(--bin-animation-duration-base) ease-in-out, background var(--bin-animation-duration-base) ease-in-out, box-shadow var(--bin-animation-duration-base) ease;
-        placeholder()
+        placeholder();
+
         &:focus, &:hover {
           border-color: var(--bin-color-primary);
         }
+
         &:focus {
           outline: 0;
           box-shadow: 0 0 0 2px var(--bin-color-input-shadow);
@@ -173,6 +209,7 @@
       }
     }
   }
+
   &-total {
     display: inline-block;
     height: 32px;
@@ -180,6 +217,7 @@
     margin-right: 10px;
     font-size: var(--bin-base-font-size);
   }
+
   &-simple &-prev, &-simple &-next {
     margin: 0;
     border: 0;
@@ -192,6 +230,7 @@
     display: inline-block;
     margin-right: 8px;
     vertical-align: middle;
+
     input {
       width: 30px;
       height: 24px;
@@ -204,22 +243,25 @@
       border: var(--bin-border-base);
       border-radius: var(--bin-border-base-radius);
       transition: border var(--bin-animation-duration-base) ease-in-out, background var(--bin-animation-duration-base) ease-in-out, box-shadow var(--bin-animation-duration-base) ease;
+
       &:hover {
         border-color: var(--bin-color-primary);
       }
     }
+
     span {
       padding: 0 8px 0 2px;
     }
   }
 }
 
-//  mini模式
+// mini模式
 .bin-page {
   &.mini &-total {
     height: 24px;
     line-height: 24px;
   }
+
   &.mini &-item {
     border-color: transparent;
     margin: 0;
@@ -227,33 +269,36 @@
     height: 24px;
     line-height: 23px;
     border-radius: var(--bin-border-base-radius);
-    &-active {
-      border-color: var(--bin-color-primary);
-    }
   }
+
   &.mini &-prev, &.mini &-next {
     margin: 0;
     min-width: 24px;
     height: 24px;
     line-height: 22px;
     border: 0;
+
     a {
       i {
         vertical-align: middle;
       }
     }
   }
+
   &.mini &-item-jump-prev, &.mini &-item-jump-next {
     height: 24px;
     line-height: 24px;
     border: none;
     margin-right: 0;
   }
+
   &.mini &-options {
     margin-left: 8px;
+
     &-elevator {
       height: 24px;
       line-height: 24px;
+
       input {
         height: 24px;
         width: 44px;
