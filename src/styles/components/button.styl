@@ -5,7 +5,7 @@
   line-height: var(--bin-base-line-height);
   white-space: nowrap;
   cursor: pointer;
-  background: var(--bin-color-white);
+  background: var(--bin-white-color);
   border: var(--bin-border-base);
   color: var(--bin-color-text-default);
   -webkit-appearance: none;
@@ -16,8 +16,8 @@
   transition: var(--bin-animation-duration-base);
   user-select: none;
   padding: 0 16px;
-  font-size: var(--bin-base-font-size);
-  border-radius: var(--bin-border-base-radius);
+  font-size: var(--bin-font-size-default);
+  border-radius: var(--bin-border-radius-default);
   letter-spacing: 0.02857em;
 
   .b-iconfont {
@@ -109,7 +109,7 @@
 .bin-button--large {
   height: var(--bin-large-height);
   padding: 0 14px;
-  font-size: var(--bin-header-font-size);
+  font-size: var(--bin-font-size-large);
 
   &.is-round {
     padding: 0 14px;
@@ -145,7 +145,7 @@
 }
 
 .bin-button--primary {
-  color: var(--bin-color-white);
+  color: var(--bin-white-color);
   background-color: var(--bin-color-primary);
   border-color: var(--bin-color-primary);
   background-image: none;
@@ -205,7 +205,7 @@
   }
 
   &.is-dashed {
-    background: var(--bin-color-white);
+    background: var(--bin-white-color);
     color: var(--bin-color-primary);
 
     &:hover {
@@ -221,14 +221,14 @@
 
     &.is-disabled, &.is-disabled:focus, &.is-disabled:hover, &.is-loading {
       cursor: not-allowed;
-      background: var(--bin-color-white);
+      background: var(--bin-white-color);
       color: var(--bin-color-primary-light2);
     }
   }
 
   &.is-disabled, &.is-disabled:focus, &.is-disabled:hover, &.is-loading {
     cursor: not-allowed;
-    color: var(--bin-color-white);
+    color: var(--bin-white-color);
     background-color: var(--bin-color-primary-light2);
     border-color: var(--bin-color-primary-light2);
   }
@@ -295,7 +295,7 @@
   }
 
   &.is-dashed {
-    background: var(--bin-color-white);
+    background: var(--bin-white-color);
     color: var(--bin-color-success);
 
     &:hover {
@@ -311,14 +311,14 @@
 
     &.is-disabled, &.is-disabled:focus, &.is-disabled:hover, &.is-loading {
       cursor: not-allowed;
-      background: var(--bin-color-white);
+      background: var(--bin-white-color);
       color: var(--bin-color-success-light2);
     }
   }
 
   &.is-disabled, &.is-disabled:focus, &.is-disabled:hover, &.is-loading {
     cursor: not-allowed;
-    color: var(--bin-color-white);
+    color: var(--bin-white-color);
     background-color: var(--bin-color-success-light2);
     border-color: var(--bin-color-success-light2);
   }
@@ -385,7 +385,7 @@
   }
 
   &.is-dashed {
-    background: var(--bin-color-white);
+    background: var(--bin-white-color);
     color: var(--bin-color-info);
 
     &:hover {
@@ -401,14 +401,14 @@
 
     &.is-disabled, &.is-disabled:focus, &.is-disabled:hover, &.is-loading {
       cursor: not-allowed;
-      background: var(--bin-color-white);
+      background: var(--bin-white-color);
       color: var(--bin-color-info-light2);
     }
   }
 
   &.is-disabled, &.is-disabled:focus, &.is-disabled:hover, &.is-loading {
     cursor: not-allowed;
-    color: var(--bin-color-white);
+    color: var(--bin-white-color);
     background-color: var(--bin-color-info-light2);
     border-color: var(--bin-color-info-light2);
   }
@@ -475,7 +475,7 @@
   }
 
   &.is-dashed {
-    background: var(--bin-color-white);
+    background: var(--bin-white-color);
     color: var(--bin-color-warning);
 
     &:hover {
@@ -491,14 +491,14 @@
 
     &.is-disabled, &.is-disabled:focus, &.is-disabled:hover, &.is-loading {
       cursor: not-allowed;
-      background: var(--bin-color-white);
+      background: var(--bin-white-color);
       color: var(--bin-color-warning-light2);
     }
   }
 
   &.is-disabled, &.is-disabled:focus, &.is-disabled:hover, &.is-loading {
     cursor: not-allowed;
-    color: var(--bin-color-white);
+    color: var(--bin-white-color);
     background-color: var(--bin-color-warning-light2);
     border-color: var(--bin-color-warning-light2);
   }
@@ -565,7 +565,7 @@
   }
 
   &.is-dashed {
-    background: var(--bin-color-white);
+    background: var(--bin-white-color);
     color: var(--bin-color-danger);
 
     &:hover {
@@ -581,14 +581,14 @@
 
     &.is-disabled, &.is-disabled:focus, &.is-disabled:hover, &.is-loading {
       cursor: not-allowed;
-      background: var(--bin-color-white);
+      background: var(--bin-white-color);
       color: var(--bin-color-danger-light2);
     }
   }
 
   &.is-disabled, &.is-disabled:focus, &.is-disabled:hover, &.is-loading {
     cursor: not-allowed;
-    color: var(--bin-color-white);
+    color: var(--bin-white-color);
     background-color: var(--bin-color-danger-light2);
     border-color: var(--bin-color-danger-light2);
   }

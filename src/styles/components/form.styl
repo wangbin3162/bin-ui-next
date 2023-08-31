@@ -2,19 +2,23 @@
   &--label-left .bin-form-item__label {
     text-align: left;
   }
+
   &--label-top .bin-form-item__label {
     float: none;
     text-align: left;
     line-height: var(--bin-base-line-height);
   }
+
   &--inline {
     .bin-form-item {
       display: inline-flex;
-      //margin-right: 8px;
+
+      // margin-right: 8px;
       + .bin-form-item {
         margin-left: 8px;
       }
     }
+
     .bin-form--label-top, .bin-form--item__content {
       display: block;
     }
@@ -23,157 +27,193 @@
 
 .bin-form-item {
   margin-bottom: 20px;
+
   &__label {
     text-align: right;
     float: left;
-    font-size: var(--bin-base-font-size);
+    font-size: var(--bin-font-size-default);
     color: var(--bin-color-text-primary);
     line-height: var(--bin-default-height);
     min-height: var(--bin-default-height);
     box-sizing: border-box;
+
     .item-suffix {
       position: relative;
       top: -0.5px;
       margin: 0 8px 0 2px;
     }
   }
+
   &__content {
     position: relative;
-    font-size: var(--bin-base-font-size);
+    font-size: var(--bin-font-size-default);
     min-height: var(--bin-default-height);
+
     .bin-checkbox-group, .bin-radio-group {
       padding-top: 4px;
       line-height: var(--bin-base-line-height);
     }
+
     .bin-radio-group.bin-radio-group-button {
       padding-top: 0;
     }
+
     .bin-rate {
       padding-top: 0;
       line-height: var(--bin-default-height);
     }
+
     .bin-switch {
       margin-top: 6px;
     }
+
     .bin-slider-wrapper {
       line-height: normal;
       padding: 1px 0 0 8px;
     }
+
     > label, > span {
       line-height: var(--bin-default-height);
     }
   }
+
   &--large {
     .bin-form-item__label {
       line-height: var(--bin-large-height);
       min-height: var(--bin-large-height);
     }
+
     .bin-form-item__content {
       min-height: var(--bin-large-height);
+
       .bin-checkbox-group, .bin-radio-group {
         padding-top: 6px;
       }
+
       .bin-radio-group.bin-radio-group-button {
         padding-top: 0;
       }
+
       .bin-rate {
         padding-top: 2px;
         line-height: var(--bin-large-height);
       }
+
       .bin-switch {
         margin-top: 8px;
       }
+
       .bin-slider-wrapper {
         line-height: normal;
         padding: 2px 0 0 8px;
       }
+
       > label, > span {
         line-height: var(--bin-large-height);
       }
     }
   }
+
   &--small {
     .bin-form-item__label {
       line-height: var(--bin-small-height);
       min-height: var(--bin-small-height);
     }
+
     .bin-form-item__content {
       min-height: var(--bin-small-height);
+
       .bin-checkbox-group, .bin-radio-group {
         padding-top: 2px;
       }
+
       .bin-radio-group.bin-radio-group-button {
         padding-top: 0;
       }
+
       .bin-rate {
         padding-top: 2px;
         line-height: var(--bin-small-height);
       }
+
       .bin-switch {
         margin-top: 4px;
       }
+
       .bin-slider-wrapper {
         line-height: normal;
         padding: 1px 0 0 8px;
+
         .bin-slider__runway {
           margin: 11px 0;
         }
       }
+
       > label, > span {
         line-height: var(--bin-small-height);
       }
     }
   }
+
   &--mini {
     .bin-form-item__label {
       line-height: var(--bin-mini-height);
       min-height: var(--bin-mini-height);
     }
+
     .bin-form-item__content {
       min-height: var(--bin-mini-height);
+
       .bin-checkbox-group, .bin-radio-group {
         padding-top: 0;
       }
+
       .bin-radio-group.bin-radio-group-button {
         padding-top: 0;
       }
+
       .bin-rate {
         padding-top: 0;
         line-height: var(--bin-mini-height);
       }
+
       .bin-switch {
         margin-top: 2px;
       }
+
       .bin-slider-wrapper {
         line-height: normal;
         padding: 1px 0 0 8px;
+
         .bin-slider__runway {
           margin: 10px 0;
         }
       }
+
       > label {
         line-height: var(--bin-mini-height);
       }
     }
   }
+
   &.is-required {
-    & > .bin-form-item__label:before,
-    & .bin-form-item__label-wrap > .bin-form-item__label:before {
+    & > .bin-form-item__label:before, & .bin-form-item__label-wrap > .bin-form-item__label:before {
       content: '*';
       display: inline-block;
       margin-right: 4px;
       line-height: var(--bin-base-line-height);
       font-family: SimSun;
-      font-size: var(--bin-base-font-size);
+      font-size: var(--bin-font-size-default);
       color: var(--bin-color-danger);
     }
+
     &.is-no-asterisk {
-      & > .bin-form-item__label:before,
-      & .bin-form-item__label-wrap > .bin-form-item__label:before {
+      & > .bin-form-item__label:before, & .bin-form-item__label-wrap > .bin-form-item__label:before {
         display: none;
       }
     }
   }
+
   &__error {
     position: absolute;
     top: 100%;
@@ -183,43 +223,48 @@
     padding-top: 4px;
     color: var(--bin-color-danger);
   }
+
   &__error--inline {
     position: relative;
     top: auto;
     left: auto;
     display: inline-block;
-    margin-left: 10px
+    margin-left: 10px;
   }
+
   // 校验状态icon
   .bin-input__validateIcon {
     display: none;
     height: 14px;
     line-height: 1;
     background-color: #fff;
+
     &.b-icon-loading {
       color: var(--bin-color-primary);
     }
+
     &.b-icon-check-circle {
       color: var(--bin-color-success);
     }
+
     &.b-icon-close-circle {
       color: var(--bin-color-danger);
     }
   }
+
   .bin-date-editor {
     .b-icon-close-circle-fill {
       z-index: 1;
     }
   }
-  .bin-input-wrapper .bin-input__validateIcon,
-  .bin-date-editor .bin-input__validateIcon,
-  .bin-select .bin-input__validateIcon,
-  .bin-cascader .bin-input__validateIcon {
+
+  .bin-input-wrapper .bin-input__validateIcon, .bin-date-editor .bin-input__validateIcon, .bin-select .bin-input__validateIcon, .bin-cascader .bin-input__validateIcon {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate3d(-50%, -50%, 0);
   }
+
   &.bin-form-item--feedback {
     .bin-input__validateIcon {
       display: block;
@@ -231,6 +276,7 @@
 .bin-form-item.is-error {
   .bin-input {
     border: 1px solid var(--bin-color-danger);
+
     &:focus {
       outline: 0;
       box-shadow: 0 0 0 2px var(--bin-color-input-error-shadow);
@@ -239,12 +285,14 @@
 
   .bin-input-number {
     border: 1px solid var(--bin-color-danger);
+
     &-focused {
       border: 1px solid var(--bin-color-danger);
       outline: 0;
       box-shadow: 0 0 0 2px var(--bin-color-input-error-shadow);
     }
   }
+
   .bin-range-editor.bin-input.is-active {
     box-shadow: 0 0 0 2px var(--bin-color-input-error-shadow);
   }

@@ -6,12 +6,12 @@
 .bin-table {
   user-select: text;
   color: var(--bin-color-text-default);
-  font-size: var(--bin-base-font-size);
+  font-size: var(--bin-font-size-default);
   width: inherit;
   height: 100%;
   max-width: 100%;
   overflow: hidden;
-  background-color: var(--bin-color-white);
+  background-color: var(--bin-white-color);
   box-sizing: border-box;
 
   &-wrapper {
@@ -209,7 +209,7 @@
       transition: transform var(--bin-animation-duration-base) ease-in-out;
 
       i {
-        font-size: var(--bin-base-font-size);
+        font-size: var(--bin-font-size-default);
       }
 
       &-expanded {
@@ -247,7 +247,7 @@
   &-stripe &-body, &-stripe &-fixed-body {
     tr:nth-child(2n) {
       td {
-        background-color: var(--bin-color-bg-fa);
+        background-color: var(--b-table-header-bg);
       }
     }
 
@@ -266,7 +266,7 @@
   }
 
   &-large {
-    font-size: var(--bin-base-font-size);
+    font-size: var(--bin-font-size-default);
 
     td {
       height: 55px;
@@ -342,7 +342,7 @@
     position: absolute;
     top: -1px;
     right: 0;
-    background-color: var(--bin-color-bg-fa);
+    background-color: var(--b-table-header-bg);
     border-top: var(--bin-border-table);
     border-bottom: var(--bin-border-table);
   }

@@ -21,7 +21,7 @@ active() {
   height: var(--bin-default-height);
   width: 100%;
   border: var(--bin-border-base);
-  border-radius: var(--bin-border-base-radius);
+  border-radius: var(--bin-border-radius-default);
 
   &__trigger {
     width: 64px;
@@ -29,7 +29,7 @@ active() {
     box-sizing: border-box;
     height: var(--bin-default-height);
     padding: 4px;
-    border-radius: var(--bin-border-base-radius);
+    border-radius: var(--bin-border-radius-default);
     font-size: 0;
     cursor: pointer;
   }
@@ -42,10 +42,11 @@ active() {
     line-height: var(--bin-default-height-2);
     overflow: visible;
     white-space: nowrap;
+    border-right: 1px solid var(--bin-border-color-base);
 
     .label-input {
       width: 100%;
-      font-size: var(--bin-base-font-size);
+      font-size: var(--bin-font-size-default);
       border: none;
       outline: none;
       cursor: pointer;
@@ -71,7 +72,7 @@ active() {
       top: 0;
       right: 0;
       bottom: 0;
-      border-radius: var(--bin-border-base-radius);
+      border-radius: var(--bin-border-radius-default);
       box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.15);
     }
   }
@@ -121,14 +122,14 @@ active() {
   }
 
   &__mask {
-    border-radius: var(--bin-border-base-radius);
+    border-radius: var(--bin-border-radius-default);
     position: absolute;
     top: 0;
     left: 0;
     bottom: 0;
     right: 0;
     z-index: 1;
-    border-radius: var(--bin-border-base-radius);
+    border-radius: var(--bin-border-radius-default);
     cursor: not-allowed;
     background-color: rgba(203, 203, 203, 0.7);
   }
@@ -140,8 +141,8 @@ active() {
   z-index: 10;
   padding: 6px;
   box-sizing: content-box;
-  background-color: var(--bin-color-white);
-  border-radius: var(--bin-border-base-radius);
+  background-color: var(--bin-white-color);
+  border-radius: var(--bin-border-radius-default);
   box-shadow: var(--bin-shadow-down);
 
   &.bin-popper {

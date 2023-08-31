@@ -2,20 +2,20 @@
 // ==============scrollbar==========
 // =================================
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: var(--bin-scrollbar-width);
+  height: var(--bin-scrollbar-width);
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.05);
+  background: var(--bin-scrollbar-track);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.2);
-  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 1.2s;
+  background: var(--bin-scrollbar-color);
+  border-radius: var(--bin-scrollbar-radius);
+  transition: 0.2s;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.25);
+  background: var(--bin-scrollbar-color-hover);
 }

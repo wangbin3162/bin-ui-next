@@ -1,7 +1,8 @@
 .bin-desc {
   box-sizing: border-box;
-  font-size: var(--bin-base-font-size);
+  font-size: var(--bin-font-size-default);
   color: var(--bin-color-text-primary);
+
   &__header {
     display: flex;
     justify-content: space-between;
@@ -9,20 +10,25 @@
     margin-bottom: 16px;
     font-weight: 500;
   }
+
   &__title {
     font-weight: 500;
   }
+
   &__body {
     color: var(--bin-color-text-default);
     background-color: #fff;
+
     table {
       border-collapse: collapse;
       border-spacing: 0;
       width: 100%;
       border: none;
+
       tr {
         vertical-align: top;
       }
+
       td, th {
         background-color: #fff;
         text-align: left;
@@ -30,26 +36,32 @@
         line-height: var(--bin-base-line-height);
       }
     }
+
     :not(.is-bordered) td, :not(.is-bordered) th {
       padding: 0 0 16px 0;
       border: none;
     }
   }
+
   &__label {
     color: var(--bin-color-text-primary);
+
     &:not(.is-bordered-label) {
       font-weight: 500;
+
       &::after {
         content: ':';
         position: relative;
-        top: -.5px;
+        top: -0.5px;
         margin: 0 8px 0 2px;
       }
     }
+
     &.is-bordered-label {
       background: #fafafa;
     }
   }
+
   .is-bordered {
     th, td {
       border: 1px solid var(--bin-border-table-color);
@@ -59,37 +71,45 @@
 
   .bin-desc--large {
     font-size: 14px;
+
     &.is-bordered {
       th, td {
         padding: 12px 10px;
       }
     }
+
     &:not(.is-bordered) {
       th, td {
         padding-bottom: 12px;
       }
     }
   }
+
   .bin-desc--small {
     font-size: 13px;
+
     &.is-bordered {
       th, td {
         padding: 8px 10px;
       }
     }
+
     &:not(.is-bordered) {
       th, td {
         padding-bottom: 8px;
       }
     }
   }
+
   .bin-desc--mini {
     font-size: 12px;
+
     &.is-bordered {
       th, td {
         padding: 6px 10px;
       }
     }
+
     &:not(.is-bordered) {
       th, td {
         padding-bottom: 6px;

@@ -3,12 +3,13 @@
     width: 485px;
     overflow: auto;
     padding: 5px 5px;
-    background-color: var(--bin-color-white);
+    background-color: var(--bin-white-color);
     box-sizing: border-box;
-    border-radius: var(--bin-border-base-radius);
+    border-radius: var(--bin-border-radius-default);
     box-shadow: var(--bin-shadow-down);
     position: absolute;
     z-index: 900;
+
     &.is-light {
       border: none;
     }
@@ -17,14 +18,17 @@
       width: 100%;
       padding: 5px 5px 0;
     }
+
     .bin-icon-select-panel__wrap {
       height: 280px;
     }
+
     ul.icon-list {
       position: relative;
       overflow: hidden;
       list-style: none;
       padding: 0;
+
       li {
         display: inline-block;
         width: 40px;
@@ -38,12 +42,14 @@
         margin-left: 0;
         padding: 0;
         cursor: pointer;
+
         i {
           display: block;
           font-size: 24px;
           margin-bottom: 15px;
-          transition: .15s linear;
+          transition: 0.15s linear;
         }
+
         &:hover i {
           color: var(--bin-color-primary-light1);
         }

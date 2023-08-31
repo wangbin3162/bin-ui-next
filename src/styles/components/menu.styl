@@ -33,7 +33,7 @@
   align-items: center;
   height: var(--b-menu-item-height);
   line-height: var(--b-menu-item-height);
-  font-size: var(--bin-base-font-size);
+  font-size: var(--bin-font-size-default);
   border-radius: var(--b-menu-item-border-radius);
   color: var(--b-menu-text-color);
   list-style: none;
@@ -110,7 +110,7 @@
     align-items: center;
     height: var(--b-menu-item-height);
     line-height: var(--b-menu-item-height);
-    font-size: var(--bin-base-font-size);
+    font-size: var(--bin-font-size-default);
     color: var(--b-menu-text-color);
     padding: 0 10px;
     cursor: pointer;
@@ -297,13 +297,13 @@
   min-width: 180px;
   border: none;
   padding: 5px 0;
-  border-radius: var(--bin-border-base-radius);
+  border-radius: var(--bin-border-radius-default);
   box-shadow: var(--bin-shadow-down);
   background: var(--b-menu-bg-color);
 
   .bin-menu-item, .bin-submenu__title {
-    height: 40px;
-    line-height: 40px;
+    height: var(--b-menu-item-height);
+    line-height: var(--b-menu-item-height);
     padding: 0 10px;
 
     &:hover {

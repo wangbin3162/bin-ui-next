@@ -13,6 +13,7 @@ import DraggableDemo from './components/draggable-demo'
 import BinUI from 'bin-ui-next'
 import * as BinUINext from 'bin-ui-next'
 import '../src/styles/normalize.styl'
+import '../src/styles/scrollbar.styl'
 import '../src/styles/index.styl'
 import './assets/styles/index.styl'
 

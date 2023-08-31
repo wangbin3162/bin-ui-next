@@ -5,22 +5,26 @@
   box-sizing: border-box;
   vertical-align: middle;
   color: var(--bin-color-text-default);
-  font-size: var(--bin-base-font-size);
+  font-size: var(--bin-font-size-default);
   line-height: var(--bin-base-line-height);
+
   &:not(.is-disabled):hover .bin-input__inner {
     cursor: pointer;
     border-color: var(--bin-color-text-placeholder);
   }
+
   .bin-input-wrapper {
     .b-icon-down {
-      transition: transform .3s;
+      transition: transform 0.3s;
       font-size: 14px;
       color: var(--bin-color-text-secondary);
+
       &.is-reverse {
         -webkit-transform: rotateZ(180deg);
-        transform: rotateZ(180deg)
+        transform: rotateZ(180deg);
       }
     }
+
     .b-icon-close-circle-fill {
       color: var(--bin-color-text-secondary);
       cursor: pointer;
@@ -42,21 +46,23 @@
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     z-index: 10;
+
     .bin-tag {
       display: inline-flex;
       align-items: center;
       max-width: 100%;
       margin: 2px 0 2px 6px;
       text-overflow: ellipsis;
-      background: #f0f2f5
+      background: #f0f2f5;
       box-sizing: border-box;
       border-color: transparent;
     }
   }
 
   &__suggestion-panel {
-    border-radius: var(--bin-border-base-radius);
+    border-radius: var(--bin-border-radius-default);
   }
+
   &__suggestion-list {
     max-height: 204px;
     margin: 0;
@@ -65,6 +71,7 @@
     color: #606266;
     text-align: center;
   }
+
   &__suggestion-item {
     position: relative;
     display: flex;
@@ -77,12 +84,15 @@
     color: var(--bin-color-text-default);
     transition: background var(--bin-animation-duration-base) ease-in-out;
     cursor: pointer;
+
     &:hover {
       background: var(--bin-color-select-hover);
     }
+
     &.is-checked {
       color: var(--bin-color-primary);
-      font-weight: 500
+      font-weight: 500;
+
       i {
         font-size: 14px;
       }
@@ -93,6 +103,7 @@
     margin: 10px 0;
     color: var(--bin-color-text-placeholder);
   }
+
   &__search-input {
     flex: 1;
     height: 24px;
@@ -103,7 +114,8 @@
     border: none;
     outline: 0;
     -webkit-box-sizing: border-box;
-    box-sizing: border-box
+    box-sizing: border-box;
+
     &::placeholder {
       color: var(--bin-color-text-placeholder);
     }
@@ -112,13 +124,15 @@
 
 // 下拉框样式
 .bin-cascader__dropdown {
-  border-radius: var(--bin-border-base-radius);
+  border-radius: var(--bin-border-radius-default);
+
   &.bin-popper {
-    background-color: var(--bin-color-white);
+    background-color: var(--bin-white-color);
     box-sizing: border-box;
-    border-radius: var(--bin-border-base-radius);
+    border-radius: var(--bin-border-radius-default);
     box-shadow: var(--bin-shadow-down);
     z-index: 900;
+
     &.is-light {
       border: none;
     }

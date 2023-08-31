@@ -57,10 +57,7 @@ export default {
 
     // instance
     const instance = getCurrentInstance()
-    const { paddingStyle, indexPath, parentMenu } = useMenu(
-      instance,
-      props.index,
-    )
+    const { paddingStyle, indexPath, parentMenu } = useMenu(instance, props.index)
 
     // inject
     const {
@@ -83,7 +80,7 @@ export default {
     // computed
     const submenuTitleIcon = computed(() => {
       return (mode.value === 'horizontal' && isFirstLevel.value) ||
-      (mode.value === 'vertical' && !rootProps.collapse)
+        (mode.value === 'vertical' && !rootProps.collapse)
         ? 'b-icon-down'
         : 'b-icon-right'
     })
@@ -116,13 +113,13 @@ export default {
       const submenus = data.submenus
       const items = data.items
 
-      Object.keys(items).forEach((index) => {
+      Object.keys(items).forEach(index => {
         if (items[index].active) {
           isActive = true
         }
       })
 
-      Object.keys(submenus).forEach((index) => {
+      Object.keys(submenus).forEach(index => {
         if (submenus[index].active) {
           isActive = true
         }
@@ -168,30 +165,29 @@ export default {
 
     // methods
 
-    const handleCollapseToggle = (value) => {
+    const handleCollapseToggle = value => {
       if (value) {
         updatePlacement()
       } else {
         doDestroy()
       }
     }
-    const addItem = (item) => {
+    const addItem = item => {
       data.items[item.index] = item
     }
-    const removeItem = (item) => {
+    const removeItem = item => {
       delete data.items[item.index]
     }
-    const addSubMenu = (item) => {
+    const addSubMenu = item => {
       data.submenus[item.index] = item
     }
-    const removeSubMenu = (item) => {
+    const removeSubMenu = item => {
       delete data.submenus[item.index]
     }
     const handleClick = () => {
       const disabled = props.disabled
       if (
-        (rootProps.menuTrigger === 'hover' &&
-          rootProps.mode === 'horizontal') ||
+        (rootProps.menuTrigger === 'hover' && rootProps.mode === 'horizontal') ||
         (rootProps.collapse && rootProps.mode === 'vertical') ||
         disabled
       ) {
@@ -200,17 +196,12 @@ export default {
       rootMenuEmit('submenu:submenu-click', { index: props.index, indexPath })
     }
     const handleMouseenter = (event, showTimeout = props.showTimeout) => {
-      if (
-        !('ActiveXObject' in window) &&
-        event.type === 'focus' &&
-        !event.relatedTarget
-      ) {
+      if (!('ActiveXObject' in window) && event.type === 'focus' && !event.relatedTarget) {
         return
       }
       const disabled = props.disabled
       if (
-        (rootProps.menuTrigger === 'click' &&
-          rootProps.mode === 'horizontal') ||
+        (rootProps.menuTrigger === 'click' && rootProps.mode === 'horizontal') ||
         (!rootProps.collapse && rootProps.mode === 'vertical') ||
         disabled
       ) {
@@ -228,8 +219,7 @@ export default {
     }
     const handleMouseleave = (deepDispatch = false) => {
       if (
-        (rootProps.menuTrigger === 'click' &&
-          rootProps.mode === 'horizontal') ||
+        (rootProps.menuTrigger === 'click' && rootProps.mode === 'horizontal') ||
         (!rootProps.collapse && rootProps.mode === 'vertical')
       ) {
         return
@@ -258,9 +248,7 @@ export default {
     }
     const updatePlacement = () => {
       data.currentPlacement =
-        mode.value === 'horizontal' && isFirstLevel.value
-          ? 'bottom-start'
-          : 'right-start'
+        mode.value === 'horizontal' && isFirstLevel.value ? 'bottom-start' : 'right-start'
     }
 
     // provide
@@ -272,7 +260,7 @@ export default {
 
     // lifecycle
     onBeforeMount(() => {
-      rootMenuOn('rootMenu:toggle-collapse', (val) => {
+      rootMenuOn('rootMenu:toggle-collapse', val => {
         handleCollapseToggle(val)
       })
       subMenuEmitter.on('submenu:mouse-enter-child', () => {
@@ -347,7 +335,7 @@ export default {
       h(
         'i',
         {
-          class: ['bin-submenu__icon-arrow','b-iconfont', this.submenuTitleIcon],
+          class: ['bin-submenu__icon-arrow', 'b-iconfont', this.submenuTitleIcon],
         },
         null,
       ),
@@ -357,115 +345,113 @@ export default {
     }
     const child = this.isMenuPopup
       ? h(
-        BPopper,
-        {
-          ref: 'popperVNode',
-          manualMode: true,
-          visible: this.opened,
-          'onUpdate:visible': (val) => (this.opened = val),
-          theme: 'light',
-          pure: true,
-          offset: 6,
-          boundariesPadding: 0,
-          showArrow: false,
-          popperClass: 'bin-submenu-popper',
-          placement: this.data.currentPlacement,
-          appendToBody: this.appendToBody,
-        },
-        {
-          default: () =>
-            h(
-              Transition,
-              {
-                name: this.menuTransitionName,
-              },
-              {
-                default: () =>
-                  withDirectives(
-                    h(
-                      'div',
-                      {
-                        ref: 'menu',
-                        class: [`bin-menu--${this.mode}`, 'bin-submenu-popper'],
-                        onMouseenter: ($event) =>
-                          this.handleMouseenter($event, 100),
-                        onMouseleave: () => this.handleMouseleave(true),
-                        onFocus: ($event) =>
-                          this.handleMouseenter($event, 100),
-                      },
-                      [
-                        h(
-                          'ul',
-                          {
-                            class: [
-                              'bin-menu bin-menu--popup',
-                              `bin-menu--popup-${this.data.currentPlacement}`,
-                            ],
-                            style: ulStyle,
-                          },
-                          [this.$slots.default?.()],
-                        ),
-                      ],
-                    ),
-                    [[vShow, this.opened]],
-                  ),
-              },
-            ),
-          trigger: () =>
-            h(
-              'div',
-              {
-                class: 'bin-submenu__title',
-                style: [
-                  this.paddingStyle,
-                  this.titleStyle,
-                  { backgroundColor: this.backgroundColor },
-                ],
-                onClick: this.handleClick,
-                onMouseenter: this.handleTitleMouseenter,
-                onMouseleave: this.handleTitleMouseleave,
-              },
-              titleTag,
-            ),
-        },
-      )
-      : h(Fragment, {}, [
-        h(
-          'div',
+          BPopper,
           {
-            class: 'bin-submenu__title',
-            style: [
-              this.paddingStyle,
-              this.titleStyle,
-              { backgroundColor: this.backgroundColor },
-            ],
-            ref: 'verticalTitleRef',
-            onClick: this.handleClick,
-            onMouseenter: this.handleTitleMouseenter,
-            onMouseleave: this.handleTitleMouseleave,
+            ref: 'popperVNode',
+            manualMode: true,
+            visible: this.opened,
+            'onUpdate:visible': val => (this.opened = val),
+            theme: 'light',
+            pure: true,
+            offset: 8,
+            boundariesPadding: 0,
+            showArrow: false,
+            popperClass: 'bin-submenu-popper',
+            placement: this.data.currentPlacement,
+            appendToBody: this.appendToBody,
           },
-          titleTag,
-        ),
-        h(
-          BCollapseTransition,
-          {},
           {
             default: () =>
-              withDirectives(
-                h(
-                  'ul',
-                  {
-                    role: 'menu',
-                    class: 'bin-menu bin-menu--inline',
-                    style: ulStyle,
-                  },
-                  [this.$slots.default?.()],
-                ),
-                [[vShow, this.opened]],
+              h(
+                Transition,
+                {
+                  name: this.menuTransitionName,
+                },
+                {
+                  default: () =>
+                    withDirectives(
+                      h(
+                        'div',
+                        {
+                          ref: 'menu',
+                          class: [`bin-menu--${this.mode}`, 'bin-submenu-popper'],
+                          onMouseenter: $event => this.handleMouseenter($event, 100),
+                          onMouseleave: () => this.handleMouseleave(true),
+                          onFocus: $event => this.handleMouseenter($event, 100),
+                        },
+                        [
+                          h(
+                            'ul',
+                            {
+                              class: [
+                                'bin-menu bin-menu--popup',
+                                `bin-menu--popup-${this.data.currentPlacement}`,
+                              ],
+                              style: ulStyle,
+                            },
+                            [this.$slots.default?.()],
+                          ),
+                        ],
+                      ),
+                      [[vShow, this.opened]],
+                    ),
+                },
+              ),
+            trigger: () =>
+              h(
+                'div',
+                {
+                  class: 'bin-submenu__title',
+                  style: [
+                    this.paddingStyle,
+                    this.titleStyle,
+                    { backgroundColor: this.backgroundColor },
+                  ],
+                  onClick: this.handleClick,
+                  onMouseenter: this.handleTitleMouseenter,
+                  onMouseleave: this.handleTitleMouseleave,
+                },
+                titleTag,
               ),
           },
-        ),
-      ])
+        )
+      : h(Fragment, {}, [
+          h(
+            'div',
+            {
+              class: 'bin-submenu__title',
+              style: [
+                this.paddingStyle,
+                this.titleStyle,
+                { backgroundColor: this.backgroundColor },
+              ],
+              ref: 'verticalTitleRef',
+              onClick: this.handleClick,
+              onMouseenter: this.handleTitleMouseenter,
+              onMouseleave: this.handleTitleMouseleave,
+            },
+            titleTag,
+          ),
+          h(
+            BCollapseTransition,
+            {},
+            {
+              default: () =>
+                withDirectives(
+                  h(
+                    'ul',
+                    {
+                      role: 'menu',
+                      class: 'bin-menu bin-menu--inline',
+                      style: ulStyle,
+                    },
+                    [this.$slots.default?.()],
+                  ),
+                  [[vShow, this.opened]],
+                ),
+            },
+          ),
+        ])
 
     return h(
       'li',

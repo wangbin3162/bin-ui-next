@@ -4,61 +4,75 @@ placeholder() {
     color: var(--bin-color-text-placeholder);
     opacity: 1; // Override Firefox's unusual default opacity; see https://github.com/twbs/bootstrap/pull/11526
   }
+
   // Internet Explorer 10+
   &:-ms-input-placeholder {
-    color: var(--bin-color-text-placeholder)
+    color: var(--bin-color-text-placeholder);
   }
+
   // Safari and Chrome
   &::-webkit-input-placeholder {
-    color: var(--bin-color-text-placeholder)
+    color: var(--bin-color-text-placeholder);
   }
 }
+
 .bin-input-wrapper {
   display: inline-block;
   vertical-align: middle;
   width: 100%;
   position: relative;
   line-height: var(--bin-base-line-height);
+
   label {
     display: inline-block;
     width: 100%;
     height: auto;
   }
+
   &:hover {
     .bin-input-icon-clear {
       display: flex;
+
       i {
         background-color: #fff;
       }
     }
   }
+
   .bin-input-icon-clear .b-icon-close-circle-fill {
     vertical-align: baseline;
     cursor: pointer;
     color: var(--bin-color-text-secondary);
   }
+
   &.bin-input-group-with-prepend, &.bin-input-group-with-append {
     display: inline-flex;
+
     > .bin-input {
       &:hover, &:focus {
         z-index: 1;
       }
     }
+
     > .bin-input-suffix, > .bin-input-prefix {
       z-index: 2;
     }
   }
+
   &.bin-input-group-with-append {
     .bin-input-icon-clear {
       right: 80px;
     }
   }
+
   &.bin-input-group-with-append {
     display: inline-flex;
   }
+
   .bin-input-group-prepend, .bin-input-group-append {
-    position relative;
+    position: relative;
   }
+
   .bin-input-group-prepend {
     right: -1px;
     z-index: 1;
@@ -68,27 +82,33 @@ placeholder() {
     left: -1px;
   }
 }
+
 // 大小设置
 .bin-input-wrapper-large {
   .bin-input-with-prefix {
     padding-left: var(--bin-large-height);
   }
+
   .bin-input-prefix, .bin-input-suffix {
     width: var(--bin-large-height);
   }
 }
+
 .bin-input-wrapper-small {
   .bin-input-with-prefix {
     padding-left: var(--bin-small-height);
   }
+
   .bin-input-prefix, .bin-input-suffix {
     width: var(--bin-small-height);
   }
 }
+
 .bin-input-wrapper-mini {
   .bin-input-with-prefix {
     padding-left: var(--bin-mini-height);
   }
+
   .bin-input-prefix, .bin-input-suffix {
     width: var(--bin-mini-height);
   }
@@ -100,31 +120,36 @@ placeholder() {
   height: var(--bin-default-height);
   line-height: var(--bin-base-line-height);
   padding: 0 12px;
-  font-size: var(--bin-base-font-size);
+  font-size: var(--bin-font-size-default);
   border: var(--bin-border-base);
-  border-radius: var(--bin-border-base-radius);
+  border-radius: var(--bin-border-radius-default);
   color: var(--bin-color-text-default);
-  background-color: var(--bin-color-white);
+  background-color: var(--bin-white-color);
   background-image: none;
   position: relative;
   cursor: text;
   font-weight: normal;
   transition: border var(--bin-animation-duration-base) ease-in-out, background var(--bin-animation-duration-base) ease-in-out, box-shadow var(--bin-animation-duration-base) ease;
-  placeholder()
+  placeholder();
+
   &:focus, &:hover {
     border-color: var(--bin-color-primary);
   }
+
   &:focus {
     outline: 0;
     box-shadow: 0 0 0 2px var(--bin-color-input-shadow);
   }
+
   &.bin-input-with-suffix {
     padding-right: 28px;
   }
+
   &.bin-input-with-prefix {
     padding-left: 28px;
   }
 }
+
 // 大小设置
 .bin-input-large {
   height: var(--bin-large-height);
@@ -137,10 +162,12 @@ placeholder() {
 .bin-input-mini {
   height: var(--bin-mini-height);
 }
-//  图标部分
+
+// 图标部分
 .bin-input-hide-icon .bin-input-icon, .bin-input-icon-clear, .bin-input-icon-validate {
   display: none;
 }
+
 .bin-input-icon {
   position: absolute;
   right: 0;
@@ -153,17 +180,19 @@ placeholder() {
   color: var(--bin-color-text-secondary);
   justify-content: center;
   align-items: center;
+
   &-normal {
     display: flex;
   }
+
   &-clear {
     z-index: 1;
   }
 }
+
 .bin-input-icon-normal + .bin-input {
   padding-right: 36px;
 }
-
 
 .bin-input-prefix, .bin-input-suffix {
   width: 32px;
@@ -176,30 +205,37 @@ placeholder() {
   display: flex;
   justify-content: center;
   align-items: center;
+
   i {
     vertical-align: middle;
     font-size: 14px;
     color: var(--bin-color-text-secondary);
+
     &.b-icon-close-circle-fill {
       cursor: pointer;
     }
   }
 }
+
 .bin-input-suffix {
   left: auto;
   right: 0;
 }
-//  搜索
+
+// 搜索
 .bin-input-search-icon, .bin-input-view-icon {
   cursor: pointer;
   transition: color var(--bin-animation-duration-base) ease-in-out;
+
   &:hover {
     color: var(--bin-color-text-default);
   }
+
   &:active {
     color: var(--bin-color-text-secondary);
   }
 }
+
 .bin-input-search {
   cursor: pointer;
   padding: 0 16px !important;
@@ -210,15 +246,17 @@ placeholder() {
   position: relative;
   z-index: 0;
 }
+
 textarea.bin-input {
   max-width: 100%;
   height: auto;
   min-height: 32px;
   vertical-align: bottom;
-  font-size: var(--bin-base-font-size);
+  font-size: var(--bin-font-size-default);
   padding: 4px 7px;
   resize: vertical;
 }
+
 .bin-input[disabled], fieldset[disabled] .bin-input {
   opacity: 1;
   cursor: not-allowed;
@@ -244,9 +282,11 @@ textarea.bin-input {
 .bin-input-type-text.bin-input-with-word-count .bin-input {
   padding-right: 40px;
 }
+
 .bin-input-type-textarea.bin-input-with-word-count .bin-input {
   padding-bottom: 16px;
 }
+
 .bin-input-type-textarea .bin-input-word-count {
   -webkit-box-align: end;
   -ms-flex-align: end;
@@ -254,4 +294,3 @@ textarea.bin-input {
   top: auto;
   right: 17px;
 }
-

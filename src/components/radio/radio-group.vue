@@ -17,20 +17,20 @@ export default {
   props: {
     modelValue: {
       type: [Boolean, String, Number],
-      default: ''
+      default: '',
     },
     type: {
       validator(value) {
-        return ['button'].includes(value)
-      }
+        return ['button', 'capsule'].includes(value)
+      },
     },
     size: {
       validator(value) {
         return ['small', 'large', 'default', 'mini'].includes(value)
       },
-      default: 'default'
+      default: 'default',
     },
-    disabled: Boolean
+    disabled: Boolean,
   },
   computed: {
     classes() {
@@ -39,9 +39,9 @@ export default {
         {
           [`${prefixCls}-${this.type}`]: !!this.type,
           [`${prefixCls}-${this.radioSize}`]: !!this.radioSize,
-        }
+        },
       ]
-    }
+    },
   },
   emits: [UPDATE_MODEL_EVENT, 'change'],
 
@@ -52,7 +52,7 @@ export default {
     const radioSize = computed(() => props.size || BForm.size || BFormItem.size)
 
     // methods
-    const changeEvent = (value) => {
+    const changeEvent = value => {
       ctx.emit(UPDATE_MODEL_EVENT, value)
       nextTick(() => {
         ctx.emit('change', value)
@@ -64,15 +64,18 @@ export default {
       reactive({
         name: 'BRadioGroup',
         ...toRefs(props),
-        changeEvent: changeEvent
-      })
+        changeEvent: changeEvent,
+      }),
     )
 
-    watch(() => props.modelValue, val => {
-      formEmit('change', [val])
-    })
+    watch(
+      () => props.modelValue,
+      val => {
+        formEmit('change', [val])
+      },
+    )
 
-    const handleKeydown = (e) => {
+    const handleKeydown = e => {
       // 左右上下按键 可以在radio组内切换不同选项
       const target = e.target
       const className = target.nodeName === 'INPUT' ? '[type=radio]' : '[role=radio]'
@@ -105,16 +108,15 @@ export default {
     onMounted(() => {
       const radios = radioGroup.value.querySelectorAll('[type=radio]')
       const firstLabel = radios[0]
-      if (!Array.from(radios).some((radio) => radio.checked) && firstLabel) {
+      if (!Array.from(radios).some(radio => radio.checked) && firstLabel) {
         firstLabel.tabIndex = 0
       }
     })
     return {
       handleKeydown,
       radioGroup,
-      radioSize
+      radioSize,
     }
-  }
+  },
 }
 </script>
-

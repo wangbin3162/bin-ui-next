@@ -1,18 +1,22 @@
 .bin-tree {
   position: relative;
-  font-size: var(--bin-base-font-size);
+  font-size: var(--bin-font-size-default);
   color: var(--bin-color-text-default);
+
   &-wrapper {
     margin-right: 4px;
     margin-left: 4px;
   }
+
   ul {
     list-style: none;
     margin: 0;
     padding: 0;
+
     &.bin-dropdown-menu {
       padding: 0;
     }
+
     li {
       display: flex;
       flex-direction: column;
@@ -20,6 +24,7 @@
       padding: 0;
       outline: none;
       margin: 0;
+
       &.bin-dropdown-item {
         margin: 0;
         padding: 7px 16px;
@@ -27,6 +32,7 @@
       }
     }
   }
+
   .bin-tree-node-children {
     padding-left: 16px;
   }
@@ -36,18 +42,21 @@
     align-items: flex-start;
     padding: 0 0 4px 0;
     white-space: nowrap;
+
     &.is-drop-inner {
       > .bin-tree-title, > .bin-tree-render-title {
         background-color: var(--bin-color-primary);
-        color: #fff
+        color: #fff;
       }
     }
   }
+
   &.is-dragging {
     .bin-tree-title, .bin-tree-render-title {
       transition: none;
     }
   }
+
   &-title {
     width: auto;
     min-width: calc(100% - 24px);
@@ -56,26 +65,33 @@
     line-height: 24px;
     cursor: pointer;
     transition: background-color var(--bin-animation-duration-base) ease-in-out;
+
     span {
       color: var(--bin-color-danger);
     }
+
     &:hover {
       background-color: var(--bin-color-info-light6);
     }
+
     &.is-selected, &.is-selected:hover {
       background-color: var(--bin-color-primary-light4);
     }
+
     &.is-ellipsis {
       min-width: calc(100% - 24px);
       width: calc(100% - 24px);
+
       &.has-checkbox {
         min-width: calc(100% - 44px);
         width: calc(100% - 44px);
       }
+
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
+
     > i:first-child {
       margin-right: 4px;
     }
@@ -89,30 +105,37 @@
     line-height: 24px;
     cursor: pointer;
     transition: background-color var(--bin-animation-duration-base) ease-in-out;
+
     &:hover {
       background-color: var(--bin-color-info-light6);
     }
+
     &.is-selected, &.is-selected:hover {
       background-color: var(--bin-color-primary-light4);
     }
+
     &.is-ellipsis {
       min-width: calc(100% - 24px);
       width: calc(100% - 24px);
+
       &.has-checkbox {
         min-width: calc(100% - 44px);
         width: calc(100% - 44px);
       }
+
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
   }
+
   &-arrow {
     flex-shrink: 0;
     width: 24px;
     height: 24px;
     line-height: 24px;
     text-align: center;
+
     .b-icon-caret-right {
       cursor: pointer;
       position: relative;
@@ -122,6 +145,7 @@
       font-size: 12px;
       vertical-align: middle;
     }
+
     .b-icon-loading {
       position: relative;
       top: -1px;
@@ -130,23 +154,28 @@
       vertical-align: middle;
       color: var(--bin-color-primary);
     }
+
     &-open {
       .b-icon-caret-right {
         transform: rotateZ(90deg) translateZ(0);
       }
     }
+
     &-disabled {
       cursor: not-allowed;
     }
+
     &-noop {
       cursor: default;
     }
   }
+
   .bin-checkbox {
     margin-right: 4px;
     line-height: var(--bin-base-line-height);
     vertical-align: baseline;
   }
+
   &-phantom {
     position: absolute;
     left: 0;
@@ -164,7 +193,6 @@
   }
 }
 
-
 .bin-tree__drop-indicator {
   position: absolute;
   left: 0;
@@ -172,6 +200,7 @@
   height: 2px;
   background-color: var(--bin-color-primary);
 }
+
 .b-icon-loading {
   animation: rotating 2s linear infinite;
 }
@@ -180,6 +209,7 @@
   0% {
     transform: rotateZ(0deg);
   }
+
   100% {
     transform: rotateZ(360deg);
   }
@@ -192,23 +222,27 @@
     min-width: 10px;
     overflow: auto;
     padding: 5px 0 2px;
-    background-color: var(--bin-color-white);
+    background-color: var(--bin-white-color);
     box-sizing: border-box;
-    border-radius: var(--bin-border-base-radius);
+    border-radius: var(--bin-border-radius-default);
     box-shadow: var(--bin-shadow-down);
     position: absolute;
     z-index: 900;
+
     &.is-light {
       border: none;
     }
+
     .bin-tree-title {
       display: inline-block;
       width: 100%;
     }
+
     .bin-tree-select-inner {
       padding: 0 4px;
     }
   }
+
   .bin-tree-select-panel__wrap {
     max-height: 220px;
   }

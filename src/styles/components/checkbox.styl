@@ -5,14 +5,17 @@
   white-space: nowrap;
   margin-right: 8px;
   user-select: none;
-  font-size: var(--bin-base-font-size);
+  font-size: var(--bin-font-size-default);
+
   &-group {
     font-size: 0;
   }
+
   &__label {
     padding: 0 8px;
     vertical-align: middle;
   }
+
   &__inner {
     display: inline-block;
     width: 16px;
@@ -21,11 +24,12 @@
     top: 0;
     left: 0;
     border: var(--bin-border-base);
-    border-radius: var(--bin-border-base-radius);
-    background-color: var(--bin-color-white);
+    border-radius: var(--bin-border-radius-default);
+    background-color: var(--bin-white-color);
     transition: border-color var(--bin-animation-duration-base) ease-in-out, background-color var(--bin-animation-duration-base) ease-in-out;
+
     &:after {
-      content: "";
+      content: '';
       position: absolute;
       display: table;
       width: 4.714px;
@@ -41,6 +45,7 @@
       border-left: 0;
     }
   }
+
   &__input {
     position: relative;
     display: inline-block;
@@ -51,11 +56,13 @@
     line-height: 1;
     width: 16px;
     height: 16px;
+
     &.is-checked {
       .bin-checkbox__inner {
         border-color: var(--bin-color-primary);
         background-color: var(--bin-color-primary);
       }
+
       &:after {
         position: absolute;
         top: 0;
@@ -63,25 +70,30 @@
         width: 100%;
         height: 100%;
         border: 1px solid var(--bin-color-primary);
-        border-radius: var(--bin-border-base-radius);
+        border-radius: var(--bin-border-radius-default);
         animation: checkEffect var(--bin-animation-duration-slow) ease-in-out;
         animation-fill-mode: backwards;
         content: '';
       }
     }
+
     &.is-disabled {
       cursor: not-allowed;
+
       .bin-checkbox__inner {
         background-color: #f3f3f3;
         border-color: #dcdee2;
+
         &:after {
           border-color: #f3f3f3;
         }
       }
+
       &.is-checked {
         &:after {
           border-color: #dcdee2;
         }
+
         .bin-checkbox__inner:after {
           -webkit-animation-name: none;
           animation-name: none;
@@ -89,13 +101,15 @@
         }
       }
     }
+
     &.is-indeterminate {
       .bin-checkbox__inner {
         border: var(--bin-border-base);
-        background-color: var(--bin-color-white);
+        background-color: var(--bin-white-color);
       }
+
       .bin-checkbox__inner:after {
-        content: "";
+        content: '';
         width: 8px;
         height: 8px;
         transform: scale(1) translate(-50%, -50%);
@@ -107,6 +121,7 @@
       }
     }
   }
+
   &__original {
     position: absolute;
     opacity: 0;
@@ -115,6 +130,7 @@
     width: 0;
     height: 0;
     z-index: -1;
+
     &[disabled] {
       cursor: not-allowed;
     }
@@ -125,6 +141,7 @@
       border-color: var(--bin-color-primary-light1);
     }
   }
+
   &.is-disabled {
     .bin-checkbox__label {
       color: #ccc;
@@ -138,6 +155,7 @@
     transform: scale(1);
     opacity: 0.5;
   }
+
   100% {
     transform: scale(1.4);
     opacity: 0;

@@ -1,14 +1,17 @@
 .bin-date-picker {
   width: 280px;
+
   &.has-sidebar {
     width: 390px;
   }
+
   &__header {
     height: 32px;
     line-height: 32px;
     text-align: center;
     padding: 0 10px;
     border-bottom: var(--bin-border-table);
+
     &-label {
       font-weight: 500;
       padding: 0 5px;
@@ -16,11 +19,13 @@
       text-align: center;
       cursor: pointer;
       color: var(--bin-color-text-default);
+
       &:hover {
         color: var(--bin-color-primary);
       }
     }
   }
+
   &__prev-btn, &__next-btn {
     i {
       width: 20px;
@@ -33,19 +38,24 @@
       transition: color 0.2s ease-in-out;
       font-size: 14px;
     }
+
     &:hover i {
       color: var(--bin-color-primary);
     }
   }
+
   &__prev-btn {
     float: left;
   }
+
   &__next-btn {
     float: right;
   }
+
   .bin-picker-panel__content {
     padding: 6px;
   }
+
   &__time-header {
     position: relative;
     border-bottom: var(--bin-border-table);
@@ -54,11 +64,13 @@
     width: 100%;
     box-sizing: border-box;
   }
+
   &__editor-wrap {
     position: relative;
     display: table-cell;
     padding: 0 5px;
   }
+
   .bin-time-panel {
     position: absolute;
   }
@@ -73,6 +85,7 @@
     cursor: pointer;
     outline: none;
   }
+
   &__sidebar, [slot=slidebar] {
     position: absolute;
     top: 0;
@@ -83,27 +96,31 @@
     padding-top: 6px;
     background-color: #fff;
     overflow: auto;
+
     + .bin-picker-panel__body {
       margin-left: 110px;
     }
   }
+
   &__shortcut {
     display: block;
     width: 100%;
     border: 0;
     background-color: transparent;
     line-height: var(--bin-default-height);
-    font-size: var(--bin-base-font-size);
+    font-size: var(--bin-font-size-default);
     color: var(--bin-color-text-default);
     padding-left: 12px;
     text-align: left;
     outline: none;
     cursor: pointer;
+
     &:hover {
       background: var(--bin-color-select-hover);
       color: var(--bin-color-primary);
     }
   }
+
   &__footer {
     border-top: var(--bin-border-base);
     padding: 4px;
@@ -111,18 +128,21 @@
     line-height: 1;
     text-align: right;
     box-sizing: border-box;
+
     .bin-button {
       line-height: 20px;
       height: 22px;
       font-size: 12px;
     }
   }
+
   .bin-time-panel {
     margin: 5px 0;
     background-color: #fff;
     box-shadow: var(--bin-shadow-down);
   }
 }
+
 // range
 .bin-date-range-picker {
   .bin-picker-panel__body {
@@ -130,15 +150,18 @@
     flex-wrap: wrap;
     width: 540px;
   }
+
   &.has-sidebar {
     width: 650px;
   }
+
   &__header {
     height: 32px;
     line-height: 32px;
     text-align: center;
     padding: 0 10px;
     border-bottom: var(--bin-border-table);
+
     div {
       font-weight: 500;
       padding: 0 5px;
@@ -147,17 +170,21 @@
       margin-right: 50px;
     }
   }
+
   &__content {
     width: 50%;
     box-sizing: border-box;
     margin: 0;
+
     &.is-left {
       border-right: var(--bin-border-table);
     }
   }
+
   .bin-date-range-picker-table__content {
     padding: 6px;
   }
+
   &__time-header {
     position: relative;
     border-bottom: var(--bin-border-table);
@@ -166,27 +193,33 @@
     width: 100%;
     box-sizing: border-box;
   }
+
   &__editors-wrap {
     box-sizing: border-box;
     display: table-cell;
   }
+
   &__time-picker-wrap {
     position: relative;
     display: table-cell;
     padding: 0 5px;
+
     .bin-input {
       padding: 0 8px;
     }
   }
+
   .bin-time-panel {
     position: absolute;
   }
 }
+
 // date-table
 .bin-date-table {
   font-size: 14px;
   width: 100%;
   user-select: none;
+
   td {
     width: 32px;
     height: 30px;
@@ -195,11 +228,13 @@
     text-align: center;
     cursor: pointer;
     position: relative;
+
     div {
       height: 30px;
       padding: 3px 0;
       box-sizing: border-box;
     }
+
     span {
       width: 24px;
       height: 24px;
@@ -209,27 +244,32 @@
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
-      border-radius: var(--bin-border-base-radius);
-      transition: all .2s;
+      border-radius: var(--bin-border-radius-default);
+      transition: all 0.2s;
     }
-    &.prev-month,
-    &.next-month {
+
+    &.prev-month, &.next-month {
       color: var(--bin-color-text-placeholder);
     }
+
     &.today {
       color: var(--bin-color-primary);
     }
+
     &:not(.disabled):hover {
       color: var(--bin-color-primary);
+
       span {
         background-color: var(--bin-color-info-light4);
       }
     }
+
     &.current {
       span {
         background-color: var(--bin-color-primary);
         color: #fff;
       }
+
       &:hover {
         span {
           background-color: var(--bin-color-primary);
@@ -237,38 +277,45 @@
         }
       }
     }
+
     &.start-date, &.end-date {
       span {
         background-color: var(--bin-color-primary);
         color: #fff;
       }
     }
+
     &.start-date div {
       margin-left: 2px;
-      border-top-left-radius: var(--bin-border-base-radius);
-      border-bottom-left-radius: var(--bin-border-base-radius);
+      border-top-left-radius: var(--bin-border-radius-default);
+      border-bottom-left-radius: var(--bin-border-radius-default);
     }
+
     &.end-date div {
       margin-right: 2px;
-      border-top-right-radius: var(--bin-border-base-radius);
-      border-bottom-right-radius: var(--bin-border-base-radius);
+      border-top-right-radius: var(--bin-border-radius-default);
+      border-bottom-right-radius: var(--bin-border-radius-default);
     }
+
     &.in-range div, &.in-range div:hover {
       background: var(--bin-color-primary-light5);
     }
+
     &.selected {
       div {
         margin-left: 3px;
         margin-right: 3px;
         background-color: var(--bin-color-primary-light5);
-        border-radius: var(--bin-border-base-radius);
+        border-radius: var(--bin-border-radius-default);
       }
+
       span {
         background-color: var(--bin-color-primary);
         color: #fff;
-        border-radius: var(--bin-border-base-radius);
+        border-radius: var(--bin-border-radius-default);
       }
     }
+
     &.disabled {
       div {
         background-color: #f5f7fa;
@@ -278,32 +325,38 @@
       }
     }
   }
+
   th {
     padding: 0 5px;
     color: var(--bin-color-text-default);
     font-weight: 500;
     text-align: center;
   }
+
   &.is-week-mode {
     .bin-date-table__row {
       &.current div {
         background: var(--bin-color-primary-light5);
       }
+
       &:hover {
         div {
           background: var(--bin-color-primary-light5);
         }
+
         span {
           color: var(--bin-color-text-default);
           background-color: transparent;
         }
+
         td:first-child div {
-          border-top-left-radius: var(--bin-border-base-radius);
-          border-bottom-left-radius: var(--bin-border-base-radius);
+          border-top-left-radius: var(--bin-border-radius-default);
+          border-bottom-left-radius: var(--bin-border-radius-default);
         }
+
         td:last-child div {
-          border-top-right-radius: var(--bin-border-base-radius);
-          border-bottom-right-radius: var(--bin-border-base-radius);
+          border-top-right-radius: var(--bin-border-radius-default);
+          border-bottom-right-radius: var(--bin-border-radius-default);
         }
       }
     }
@@ -315,40 +368,47 @@
   margin: -1px;
   border-collapse: collapse;
   width: 100%;
+
   td {
     text-align: center;
     padding: 10px 3px;
     cursor: pointer;
+
     .cell {
       width: 48px;
       height: 32px;
       display: block;
       line-height: 32px;
-      border-radius: var(--bin-border-base-radius);
+      border-radius: var(--bin-border-radius-default);
       color: var(--bin-color-text-default);
       margin: 0 auto;
-      transition: .2s;
+      transition: 0.2s;
     }
+
     &:not(.disabled) .cell:hover {
       background: var(--bin-color-primary);
       color: #fff;
     }
+
     &.current {
       &:not(.disabled) .cell {
         background: var(--bin-color-primary);
         color: #fff;
       }
     }
+
     &.today {
       .cell {
         font-weight: 700;
         color: var(--bin-color-primary);
+
         &:hover {
           background: var(--bin-color-primary);
           color: #fff;
         }
       }
     }
+
     &.disabled {
       a {
         background-color: #f5f7fa;
@@ -359,66 +419,79 @@
     }
   }
 }
+
 // month-table
 .bin-month-table {
   margin: -1px;
   border-collapse: collapse;
   width: 100%;
+
   td {
     text-align: center;
     padding: 8px 0;
     cursor: pointer;
+
     div {
       height: 40px;
       padding: 6px 0;
     }
+
     .cell {
       width: 48px;
       height: 28px;
       display: block;
       line-height: 28px;
-      border-radius: var(--bin-border-base-radius);
+      border-radius: var(--bin-border-radius-default);
       color: var(--bin-color-text-default);
       margin: 0 auto;
-      transition: .2s;
+      transition: 0.2s;
     }
+
     &:not(.disabled) .cell:hover {
       background: var(--bin-color-primary);
       color: #fff;
     }
+
     &.current {
       &:not(.disabled) .cell {
         background: var(--bin-color-primary);
         color: #fff;
       }
     }
+
     &.today {
       .cell {
         font-weight: 700;
         color: var(--bin-color-primary);
+
         &:hover {
           background: var(--bin-color-primary);
           color: #fff;
         }
       }
     }
+
     &.start-date, &.end-date {
       .cell {
         background-color: var(--bin-color-primary);
         color: #fff;
       }
     }
+
     &.start-date div {
-      border-top-left-radius: var(--bin-border-base-radius);
-      border-bottom-left-radius: var(--bin-border-base-radius);
+      border-top-left-radius: var(--bin-border-radius-default);
+      border-bottom-left-radius: var(--bin-border-radius-default);
     }
+
     &.end-date div {
-      border-top-right-radius: var(--bin-border-base-radius);
-      border-bottom-right-radius: var(--bin-border-base-radius);
+      border-top-right-radius: var(--bin-border-radius-default);
+      border-bottom-right-radius: var(--bin-border-radius-default);
     }
+
     &.in-range div, &.in-range div:hover {
       background: var(--bin-color-primary-light5);
     }
+
     &.disabled {
       a {
         background-color: #f5f7fa;

@@ -4,16 +4,19 @@
   display: inline-block;
   margin-right: 8px;
   user-select: none;
-  font-size: var(--bin-base-font-size);
+  font-size: var(--bin-font-size-default);
   line-height: var(--bin-base-line-height);
   outline: none;
+
   &-group {
     font-size: 0;
   }
+
   &__label {
     padding: 0 8px;
     vertical-align: middle;
   }
+
   &__input {
     white-space: nowrap;
     cursor: pointer;
@@ -24,14 +27,17 @@
     vertical-align: middle;
     width: 16px;
     height: 16px;
+
     &:hover {
       .bin-radio__inner {
         border-color: var(--bin-color-primary-light1);
       }
     }
+
     &.is-checked {
       .bin-radio__inner {
         border-color: var(--bin-color-primary);
+
         &:after {
           opacity: 1;
           -webkit-transform: scale(1);
@@ -39,6 +45,7 @@
           transition: all var(--bin-animation-duration-base) ease-in-out;
         }
       }
+
       &:after {
         position: absolute;
         top: 0;
@@ -52,17 +59,20 @@
         content: '';
       }
     }
+
     &.is-disabled {
       .bin-radio__inner {
         cursor: not-allowed;
         border-color: #dcdee2;
         background-color: #f3f3f3;
+
         &:after {
           background-color: #ccc;
         }
       }
     }
   }
+
   &__inner {
     position: relative;
     top: 0;
@@ -74,6 +84,7 @@
     border: var(--bin-border-base);
     border-radius: 50%;
     transition: all var(--bin-animation-duration-base) ease-in-out;
+
     &:after {
       position: absolute;
       width: 8px;
@@ -84,7 +95,7 @@
       display: table;
       border-top: 0;
       border-left: 0;
-      content: " ";
+      content: ' ';
       background-color: var(--bin-color-primary);
       opacity: 0;
       transition: all var(--bin-animation-duration-base) ease-in-out;
@@ -92,6 +103,7 @@
       transform: scale(0);
     }
   }
+
   &__original {
     position: absolute;
     opacity: 0;
@@ -100,10 +112,12 @@
     width: 0;
     height: 0;
     z-index: -1;
+
     &[disabled] {
       cursor: not-allowed;
     }
   }
+
   &.is-disabled {
     .bin-radio__label {
       color: #ccc;
@@ -114,6 +128,7 @@
 
 .bin-radio-group-button {
   font-size: 0;
+
   .bin-radio {
     position: relative;
     margin: 0;
@@ -122,76 +137,175 @@
     border: 1px solid #dcdee2;
     background: #fff;
     height: var(--bin-default-height);
-    line-height: var(--bin-default-height);
+    line-height: var(--bin-default-height-2);
     transition: background-color var(--bin-animation-duration-base), color var(--bin-animation-duration-base);
+
     &:hover {
       color: var(--bin-color-primary);
       border-color: var(--bin-color-primary);
       z-index: 1;
     }
+
     > span {
       margin-left: 0;
       padding: 0;
       vertical-align: baseline;
     }
+
     .bin-radio__input, input {
       opacity: 0;
       width: 0;
       height: 0;
     }
+
     &:first-child {
-      border-radius: var(--bin-border-base-radius) 0 0 var(--bin-border-base-radius);
+      border-radius: var(--bin-border-radius-default) 0 0 var(--bin-border-radius-default);
     }
+
     &:last-child {
-      border-radius: 0 var(--bin-border-base-radius) var(--bin-border-base-radius) 0;
+      border-radius: 0 var(--bin-border-radius-default) var(--bin-border-radius-default) 0;
     }
+
     + .bin-radio {
       margin-left: -1px;
     }
+
     &__input {
       display: none;
     }
   }
+
   &.bin-radio-group-large .bin-radio {
     height: var(--bin-large-height);
     line-height: var(--bin-large-height-2);
     padding: 0 16px;
   }
+
   &.bin-radio-group-small .bin-radio {
     height: var(--bin-small-height);
     line-height: var(--bin-small-height-2);
     padding: 0 12px;
   }
+
   &.bin-radio-group-mini .bin-radio {
     height: var(--bin-mini-height);
     line-height: var(--bin-mini-height-2);
     padding: 0 8px;
   }
+
   .bin-radio.is-checked {
-    background: var(--bin-color-primary);
     border-color: var(--bin-color-primary);
-    color: #fff;
+    color: var(--bin-color-primary);
     z-index: 1;
+
     &:hover {
-      color: #fff;
+      color: var(--bin-color-primary);
       border-color: var(--bin-color-primary);
       z-index: 1;
     }
   }
+
   .bin-radio.is-disabled {
     cursor: not-allowed;
     border-color: #dcdee2;
     background-color: #f7f7f7;
     color: #ccc;
+
     &:first-child, &:hover {
       border-color: #dcdee2;
       background-color: #f7f7f7;
       color: #ccc;
     }
+
     &.is-checked {
       color: #fff;
       background-color: #e6e6e6;
       border-color: #dcdee2;
+    }
+  }
+}
+
+.bin-radio-group-capsule {
+  display: inline-flex;
+  padding: 1.5px;
+  height: var(--bin-default-height);
+  background-color: var(--bin-fill-color-2);
+  border-radius: var(--bin-border-radius-default);
+
+  &.bin-radio-group-large {
+    height: var(--bin-large-height);
+
+    .bin-radio {
+      line-height: calc(var(--bin-large-height) - 8px);
+    }
+  }
+
+  &.bin-radio-group-small {
+    height: var(--bin-small-height);
+
+    .bin-radio {
+      line-height: calc(var(--bin-small-height) - 8px);
+    }
+  }
+
+  &.bin-radio-group-mini {
+    height: var(--bin-mini-height);
+
+    .bin-radio {
+      font-size: 12px;
+      line-height: calc(var(--bin-mini-height) - 8px);
+    }
+  }
+
+  .bin-radio {
+    position: relative;
+    display: inline-block;
+    margin: 1.5px;
+    color: var(--color-text-2);
+    line-height: calc(var(--bin-default-height) - 8px);
+    font-size: 14px;
+    background-color: transparent;
+    border-radius: var(--bin-border-radius-default);
+    cursor: pointer;
+    transition: all 0.1s cubic-bezier(0, 0, 1, 1);
+
+    &__input {
+      display: none;
+    }
+
+    .bin-radio__label {
+      padding: 0 12px;
+    }
+
+    &:not(.is-disabled):hover {
+      color: var(--bin-color-text-primary);
+      background-color: var(--bin-white-color);
+    }
+
+    &.is-checked {
+      color: var(--bin-color-primary);
+      background-color: var(--bin-white-color);
+
+      &:hover {
+        color: var(--bin-color-primary);
+      }
+    }
+
+    &.is-checked:before, &.is-checked + .bin-radio:before {
+      opacity: 0;
+    }
+
+    &:not(:first-of-type):before {
+      position: absolute;
+      top: 50%;
+      left: -2px;
+      display: block;
+      width: 1px;
+      height: 14px;
+      background-color: var(--bin-fill-color-3);
+      transform: translateY(-50%);
+      transition: all 0.1s cubic-bezier(0, 0, 1, 1);
+      content: '';
     }
   }
 }
@@ -201,6 +315,7 @@
     transform: scale(1);
     opacity: 0.5;
   }
+
   100% {
     transform: scale(1.6);
     opacity: 0;

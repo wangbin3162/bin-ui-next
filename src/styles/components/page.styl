@@ -7,7 +7,7 @@
 
 .bin-page {
   color: var(--bin-color-text-default);
-  font-size: var(--bin-base-font-size);
+  font-size: var(--bin-font-size-default);
   font-variant: tabular-nums;
   line-height: 1.5715;
 
@@ -30,11 +30,11 @@
     margin-right: 4px;
     text-align: center;
     list-style: none;
-    background-color: var(--bin-color-white);
+    background-color: var(--bin-white-color);
     user-select: none;
     cursor: pointer;
     font-family: Arial;
-    border-radius: var(--bin-border-base-radius);
+    border-radius: var(--bin-border-radius-default);
     transition: border var(--bin-animation-duration-base) ease-in-out, color var(--bin-animation-duration-base) ease-in-out;
     border: 1px solid var(--b-page-border-color);
     background-color: var(--b-page-bg);
@@ -107,7 +107,7 @@
     color: #666;
     font-family: Arial;
     border: 1px solid var(--b-page-border-color);
-    border-radius: var(--bin-border-base-radius);
+    border-radius: var(--bin-border-radius-default);
     transition: all var(--bin-animation-duration-base) ease-in-out;
     background-color: var(--b-page-bg);
   }
@@ -126,13 +126,13 @@
 
     a {
       color: var(--bin-color-text-secondary);
-      font-size: var(--bin-base-font-size);
+      font-size: var(--bin-font-size-default);
       display: inline-flex;
       align-items: center;
       height: 100%;
 
       .b-iconfont {
-        font-size: var(--bin-base-font-size);
+        font-size: var(--bin-font-size-default);
       }
     }
 
@@ -187,11 +187,11 @@
         height: 32px;
         line-height: 1.5;
         padding: 0 11px;
-        font-size: var(--bin-base-font-size);
+        font-size: var(--bin-font-size-default);
         border: var(--bin-border-base);
-        border-radius: var(--bin-border-base-radius);
+        border-radius: var(--bin-border-radius-default);
         color: var(--bin-color-text-default);
-        background-color: var(--bin-color-white);
+        background-color: var(--bin-white-color);
         background-image: none;
         position: relative;
         cursor: text;
@@ -215,7 +215,7 @@
     height: 32px;
     line-height: 32px;
     margin-right: 10px;
-    font-size: var(--bin-base-font-size);
+    font-size: var(--bin-font-size-default);
   }
 
   &-simple &-prev, &-simple &-next {
@@ -238,10 +238,10 @@
       padding: 5px 8px;
       text-align: center;
       box-sizing: border-box;
-      background-color: var(--bin-color-white);
+      background-color: var(--bin-white-color);
       outline: none;
       border: var(--bin-border-base);
-      border-radius: var(--bin-border-base-radius);
+      border-radius: var(--bin-border-radius-default);
       transition: border var(--bin-animation-duration-base) ease-in-out, background var(--bin-animation-duration-base) ease-in-out, box-shadow var(--bin-animation-duration-base) ease;
 
       &:hover {
@@ -268,7 +268,7 @@
     min-width: 24px;
     height: 24px;
     line-height: 23px;
-    border-radius: var(--bin-border-base-radius);
+    border-radius: var(--bin-border-radius-default);
   }
 
   &.mini &-prev, &.mini &-next {

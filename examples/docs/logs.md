@@ -5,6 +5,13 @@
 <div class="doc-update">
     <b-timeline>
       <b-timeline-item>
+        <p class="version">1.4.1</p>
+        <p class="time">2023-08-31</p>
+        <p class="content"><i>🍀</i>新增radio的胶囊模式</p>
+        <p class="content"><i>🍀</i>重构组件部分覆盖样式变量</p>
+        <p class="content"><i>🐞</i>修复color-picker的bug，样式</p>
+      </b-timeline-item>
+      <b-timeline-item>
         <p class="version">1.4.0</p>
         <p class="time">2023-08-30</p>
         <p class="content"><i>🍀</i>修改menu，popper，color-picker样式，重新定义属性变量</p>

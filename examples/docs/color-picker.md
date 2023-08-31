@@ -10,13 +10,15 @@
 
 <template>
   <div flex>
-    <div class="block" style="width: 200px;margin-right: 20px;">
+    <div class="block" style="width: 240px;margin-right: 20px;">
       <div class="demonstration mb-5">有默认值</div>
       <b-color-picker v-model="color1" show-alpha color-format="hex"></b-color-picker>
+      <div class="demonstration mb-5">{{color1}}</div>
     </div>
-    <div class="block" style="width: 200px;margin-right: 20px;">
+    <div class="block" style="width: 240px;margin-right: 20px;">
       <div class="demonstration mb-5">无默认值</div>
       <b-color-picker v-model="color2" show-alpha></b-color-picker>
+      <div class="demonstration mb-5">{{color2}}</div>
     </div>
   </div>
 </template>
@@ -26,7 +28,6 @@
       return {
         color1: '#409EFF',
         color2: null,
-        color3: '#1089ff'
       }
     }
   };

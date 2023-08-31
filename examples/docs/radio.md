@@ -96,7 +96,7 @@
 
 :::
 
-### 按钮模式
+### 其他类型的单选
 
 ::: demo
 
@@ -110,13 +110,13 @@
         <b-radio label="苹果"></b-radio>
         <b-radio label="西瓜"></b-radio>
       </b-radio-group>
-      <br>
+      <div class="p10"/>
       <b-radio-group v-model="fruit" type="button" size="small">
         <b-radio label="香蕉"></b-radio>
         <b-radio label="苹果"></b-radio>
         <b-radio label="西瓜"></b-radio>
       </b-radio-group>
-      <br>
+      <div class="p10"/>
       <b-radio-group v-model="fruit" type="button" size="mini">
         <b-radio label="香蕉"></b-radio>
         <b-radio label="苹果"></b-radio>
@@ -133,6 +133,44 @@
       <b-radio-group v-model="fruit" type="button" disabled>
         <b-radio label="香蕉" disabled></b-radio>
         <b-radio label="苹果"></b-radio>
+        <b-radio label="西瓜"></b-radio>
+      </b-radio-group>
+    </div>
+    <div style="margin-left: 24px;">
+      <b-radio-group v-model="fruit" type="capsule">
+        <b-radio label="香蕉"></b-radio>
+        <b-radio label="苹果"></b-radio>
+        <b-radio label="桃子"></b-radio>
+        <b-radio label="西瓜"></b-radio>
+      </b-radio-group>
+      <div class="p10"/>
+      <b-radio-group v-model="fruit" type="capsule" size="small">
+        <b-radio label="香蕉"></b-radio>
+        <b-radio label="苹果"></b-radio>
+        <b-radio label="桃子"></b-radio>
+        <b-radio label="西瓜"></b-radio>
+      </b-radio-group>
+      <div class="p10"/>
+      <b-radio-group v-model="fruit" type="capsule" size="mini">
+        <b-radio label="香蕉"></b-radio>
+        <b-radio label="苹果"></b-radio>
+        <b-radio label="桃子"></b-radio>
+        <b-radio label="西瓜"></b-radio>
+      </b-radio-group>
+    </div>
+    
+    <div style="margin-left: 24px;">
+      <b-radio-group v-model="fruit" type="capsule">
+        <b-radio label="香蕉" disabled></b-radio>
+        <b-radio label="苹果"></b-radio>
+        <b-radio label="桃子"></b-radio>
+        <b-radio label="西瓜"></b-radio>
+      </b-radio-group>
+      <div class="p10"/>
+      <b-radio-group v-model="fruit" type="capsule" disabled>
+        <b-radio label="香蕉" disabled></b-radio>
+        <b-radio label="苹果"></b-radio>
+        <b-radio label="桃子"></b-radio>
         <b-radio label="西瓜"></b-radio>
       </b-radio-group>
     </div>
@@ -174,7 +212,7 @@
 |---------- |-------- |---------- |-------------  |-------- |
 | value   | 指定选中项目的集合，可以使用 v-model 双向绑定数据  | String/ Number  |  —   |   ''  |
 | disabled     | 是否禁用所有选项  | Boolean  |  —   |  false  |
-| type     | 是否开启button模式  | String  |  button   |   false  |
+| type     | 是否开启button模式  | String  |  button /capsule  |   — |
 | size   | 按钮模式单选组的尺寸  |String  | large、small、default | — |
 
 ### RadioGroup  events

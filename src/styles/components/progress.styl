@@ -2,6 +2,7 @@
   position: relative;
   line-height: 1;
 }
+
 .bin-progress-bar {
   padding-right: 60px;
   display: inline-block;
@@ -9,6 +10,7 @@
   width: 100%;
   margin-right: -60px;
   box-sizing: border-box;
+
   &.is-active {
     .bin-progress-bar__inner::before {
       content: '';
@@ -21,10 +23,11 @@
       border-radius: 10px;
       opacity: 0;
       background-size: 400% 100%;
-      animation: progress-bar-stripes 1.5s cubic-bezier(.23, 1, .32, 1) infinite
+      animation: progress-bar-stripes 1.5s cubic-bezier(0.23, 1, 0.32, 1) infinite;
     }
   }
 }
+
 .bin-progress-bar__outer {
   height: 8px;
   border-radius: 100px;
@@ -33,6 +36,7 @@
   position: relative;
   vertical-align: middle;
 }
+
 .bin-progress-bar__inner {
   position: absolute;
   left: 0;
@@ -43,20 +47,23 @@
   border-radius: 100px;
   line-height: 1;
   white-space: nowrap;
-  transition: width .6s ease;
+  transition: width 0.6s ease;
 }
+
 .bin-progress-text-inside .bin-progress-bar {
   padding-right: 0;
   margin-right: 0;
 }
+
 .bin-progress__text {
-  font-size: var(--bin-base-font-size);
+  font-size: var(--bin-font-size-default);
   color: var(--bin-color-text-default);
   display: inline-block;
   vertical-align: middle;
   margin-left: 10px;
   line-height: 1;
 }
+
 .bin-progress-bar__innerText {
   display: inline-block;
   vertical-align: middle;
@@ -64,9 +71,10 @@
   font-size: 12px;
   margin: 0 5px;
 }
+
 .bin-progress-bar__inner:after {
   display: inline-block;
-  content: "";
+  content: '';
   height: 100%;
   vertical-align: middle;
 }
@@ -74,12 +82,15 @@
 .bin-progress.progress-success .bin-progress__text {
   color: var(--bin-color-success);
 }
+
 .bin-progress.progress-success .bin-progress-bar__inner {
   background-color: var(--bin-color-success);
 }
+
 .bin-progress.progress-exception .bin-progress__text {
   color: var(--bin-color-danger);
 }
+
 .bin-progress.progress-exception .bin-progress-bar__inner {
   background-color: var(--bin-color-danger);
 }
@@ -88,8 +99,9 @@
 @keyframes progress-bar-stripes {
   0% {
     width: 0;
-    opacity: .6;
+    opacity: 0.6;
   }
+
   100% {
     width: 100%;
     opacity: 0;

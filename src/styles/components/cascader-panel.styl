@@ -1,13 +1,15 @@
 .bin-cascader {
   &-panel {
     display: flex;
-    border-radius: var(--bin-border-base-radius);
-    font-size: var(--bin-base-font-size);
+    border-radius: var(--bin-border-radius-default);
+    font-size: var(--bin-font-size-default);
+
     &.is-bordered {
       border: var(--bin-border-base);
-      border-radius: var(--bin-border-base-radius);
+      border-radius: var(--bin-border-radius-default);
     }
   }
+
   &-node {
     position: relative;
     display: flex;
@@ -18,28 +20,35 @@
     outline: 0;
     color: var(--bin-color-text-default);
     transition: background var(--bin-animation-duration-base) ease-in-out;
+
     &.is-disabled {
       color: #C0C4CC;
-      cursor: not-allowed
+      cursor: not-allowed;
     }
+
     &:not(.is-disabled) {
       cursor: pointer;
     }
+
     &:not(.is-disabled):hover {
       background: var(--bin-color-select-hover);
     }
+
     &.is-selectable.in-active-path {
-      color: #606266
+      color: #606266;
     }
+
     &.in-active-path, &.is-active, &.is-selectable.in-checked-path {
       color: var(--bin-color-primary);
       font-weight: 500;
     }
+
     &__prefix {
       position: absolute;
-      left: 8px
+      left: 8px;
       font-weight: normal;
     }
+
     &__postfix {
       position: absolute;
       right: 10px;
@@ -47,6 +56,7 @@
       font-weight: normal;
       color: var(--bin-color-text-placeholder);
     }
+
     &__label {
       -webkit-box-flex: 1;
       -ms-flex: 1;
@@ -55,12 +65,14 @@
       padding: 0 10px;
       white-space: nowrap;
       overflow: hidden;
-      text-overflow: ellipsis
+      text-overflow: ellipsis;
     }
+
     > .bin-radio .bin-radio__label {
       padding: 0;
     }
   }
+
   &-menu {
     display: inline-block;
     min-width: 150px;
@@ -68,32 +80,38 @@
     vertical-align: top;
     box-sizing: border-box;
     border-right: var(--bin-border-base);
+
     &:last-child {
       border-right-color: transparent;
       margin-right: -1px;
+
       .bin-cascader-node {
-        padding-right: 20px
+        padding-right: 20px;
       }
     }
+
     &__wrap {
-      height: 204px
+      height: 204px;
     }
+
     &__list {
       position: relative;
       min-height: 100%;
       margin: 0;
       padding: 5px 0;
       list-style: none;
-      box-sizing: border-box
+      box-sizing: border-box;
     }
+
     &__hover-zone {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      pointer-events: none
+      pointer-events: none;
     }
+
     &__empty-text {
       position: absolute;
       top: 50%;
