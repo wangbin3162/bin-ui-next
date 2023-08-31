@@ -4,12 +4,15 @@
 
 <div class="doc-update">
     <b-timeline>
-      <b-timeline-item>
-        <p class="version">1.4.1</p>
+      <b-timeline-item color="success" dot-top="10px">
+        <template #dot>
+         <b-icon name="trophy-fill" size="24"></b-icon>
+        </template>
+        <p class="version">2.0.0</p>
         <p class="time">2023-08-31</p>
+        <p class="content"><i>🍀</i>注意：新版重构组件覆盖样式变量，如发现样式有明显问题，请参考配置css变量予以更新。</p>
         <p class="content"><i>🍀</i>新增radio的胶囊模式</p>
-        <p class="content"><i>🍀</i>重构组件部分覆盖样式变量</p>
-        <p class="content"><i>🐞</i>修复color-picker的bug，样式</p>
+        <p class="content"><i>🐞</i>修复color-picker的bug，重写color-picker的组件样式</p>
       </b-timeline-item>
       <b-timeline-item>
         <p class="version">1.4.0</p>

@@ -353,7 +353,7 @@ export default {
             'onUpdate:visible': val => (this.opened = val),
             theme: 'light',
             pure: true,
-            offset: 8,
+            offset: 6,
             boundariesPadding: 0,
             showArrow: false,
             popperClass: 'bin-submenu-popper',
