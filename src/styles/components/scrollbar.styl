@@ -1,11 +1,14 @@
 .bin-scrollbar {
+  --b-scrollbar-margin: 2px;
+  --b-scrollbar-index: 2;
   position: relative;
   overflow: hidden;
   height: 100%;
+
   &:active, &:focus, &:hover {
     > .bin-scrollbar__bar {
       opacity: 1;
-      transition: opacity .3s ease-out;
+      transition: opacity 0.3s ease-out;
     }
   }
 }
@@ -17,32 +20,39 @@
 
 // 默认隐藏原生滚动条宽度
 .bin-scrollbar__wrap--hidden-default {
-  scrollbar-width: none
+  scrollbar-width: none;
 }
+
 .bin-scrollbar__wrap--hidden-default::-webkit-scrollbar {
-  display: none
+  display: none;
 }
+
 .bin-scrollbar__bar {
   position: absolute;
-  right: 0;
-  bottom: 0;
-  z-index: 1;
+  z-index: var(--b-scrollbar-index);
+  right: var(--b-scrollbar-margin);
+  bottom: var(--b-scrollbar-margin);
   opacity: 0;
-  transition: opacity .12s ease-out;
+  transition: opacity 0.12s ease-out;
+
   &.is-horizontal {
     height: var(--bin-scrollbar-width);
-    left: 0;
+    left: var(--b-scrollbar-margin);
+
     > div {
       height: 100%;
     }
   }
+
   &.is-vertical {
     width: var(--bin-scrollbar-width);
-    top: 0;
+    top: var(--b-scrollbar-margin);
+
     > div {
       width: 100%;
     }
   }
+
   &.always {
     opacity: 1;
   }
@@ -55,9 +65,10 @@
   height: 0;
   cursor: pointer;
   border-radius: var(--bin-scrollbar-radius);
-  background: rgba(0, 0, 0, 0.2);
-  transition: box-shadow var(--bin-animation-duration-base);
+  background: var(--bin-scrollbar-color);
+  transition: background var(--bin-animation-duration-base);
+
   &:hover {
-    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3);
+    background: var(--bin-scrollbar-color-hover);
   }
 }

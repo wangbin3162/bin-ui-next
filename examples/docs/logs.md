@@ -4,6 +4,14 @@
 
 <div class="doc-update">
     <b-timeline>
+      <b-timeline-item >
+        <p class="version">2.0.1</p>
+        <p class="time">2023-09-05</p>
+        <p class="content"><i>🐞</i>修复table组件高度正好为行数时，也会出现纵向滚动条 问题</p>
+        <p class="content"><i>🐞</i>修复menu 组件样式</p>
+        <p class="content"><i>🐞</i>修复page 组件样式</p>
+        <p class="content"><i>🐞</i>调整scrollbar 组件样式</p>
+      </b-timeline-item>
       <b-timeline-item color="success" dot-top="10px">
         <template #dot>
          <b-icon name="trophy-fill" size="24"></b-icon>

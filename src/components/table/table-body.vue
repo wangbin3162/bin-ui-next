@@ -16,10 +16,10 @@
           :prefix-cls="prefixCls"
           :row-key="row._rowKey"
           :class="rowExpanded(row._index) ? { [prefixCls + '-expanded-hidden']: fixed } : null"
-          @mouseenter.native.stop="handleMouseIn(row._index)"
-          @mouseleave.native.stop="handleMouseOut(row._index)"
-          @click.native="clickCurrentRow(row._index)"
-          @dblclick.native.stop="dblclickCurrentRow(row._index)"
+          @mouseenter.stop="handleMouseIn(row._index)"
+          @mouseleave.stop="handleMouseOut(row._index)"
+          @click="clickCurrentRow(row._index)"
+          @dblclick.stop="dblclickCurrentRow(row._index)"
         >
           <template v-for="(column, colIndex) in columns">
             <td
@@ -51,10 +51,10 @@
         <table-tr
           :row="row"
           :prefix-cls="prefixCls"
-          @mouseenter.native.stop="handleMouseIn(row._index)"
-          @mouseleave.native.stop="handleMouseOut(row._index)"
-          @click.native="clickCurrentRow(row._index)"
-          @dblclick.native.stop="dblclickCurrentRow(row._index)"
+          @mouseenter.stop="handleMouseIn(row._index)"
+          @mouseleave.stop="handleMouseOut(row._index)"
+          @click="clickCurrentRow(row._index)"
+          @dblclick.stop="dblclickCurrentRow(row._index)"
         >
           <template v-for="(column, colIndex) in columns">
             <td

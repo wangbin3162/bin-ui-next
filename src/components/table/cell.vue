@@ -1,22 +1,22 @@
 <template>
   <div :class="classes" ref="cell">
     <template v-if="renderType === 'index'">
-      <span>{{ column.indexMethod ? column.indexMethod(row) : (naturalIndex + 1) }}</span>
+      <span>{{ column.indexMethod ? column.indexMethod(row) : naturalIndex + 1 }}</span>
     </template>
     <template v-if="renderType === 'selection'">
-      <b-checkbox :model-value="checked" @click.native.stop @change="toggleSelect"
-                  :disabled="disabled"></b-checkbox>
+      <b-checkbox
+        :model-value="checked"
+        @click.stop
+        @change="toggleSelect"
+        :disabled="disabled"
+      ></b-checkbox>
     </template>
     <template v-if="renderType === 'html'">
       <span v-html="row[column.key]"></span>
     </template>
     <template v-if="renderType === 'normal'">
-      <template v-if="column.tooltip &&tooltipTheme">
-        <b-tooltip
-          class="bin-table-cell-tooltip-content"
-          append-to-body
-          :theme="tooltipTheme"
-        >
+      <template v-if="column.tooltip && tooltipTheme">
+        <b-tooltip class="bin-table-cell-tooltip-content" append-to-body :theme="tooltipTheme">
           <span>{{ row[column.key] }}</span>
           <template #content>
             <div>{{ row[column.key] }}</div>
@@ -27,7 +27,8 @@
         v-else-if="column.tooltip && !tooltipTheme"
         class="bin-table-cell-tooltip-content"
         :title="row[column.key]"
-      >{{ row[column.key] }}
+      >
+        {{ row[column.key] }}
       </span>
       <span v-else>{{ row[column.key] }}</span>
     </template>
@@ -41,12 +42,14 @@
       :row="row"
       :column="column"
       :index="index"
-      :render="column.render"></table-expand>
+      :render="column.render"
+    ></table-expand>
     <table-slot
       v-if="renderType === 'slot'"
       :row="row"
       :column="column"
-      :index="index"></table-slot>
+      :index="index"
+    ></table-slot>
   </div>
 </template>
 
@@ -79,7 +82,10 @@ export default {
       return [
         `${this.prefixCls}-cell`,
         {
-          [`${this.prefixCls}-hidden`]: !this.fixed && this.column.fixed && (this.column.fixed === 'left' || this.column.fixed === 'right'),
+          [`${this.prefixCls}-hidden`]:
+            !this.fixed &&
+            this.column.fixed &&
+            (this.column.fixed === 'left' || this.column.fixed === 'right'),
           [`${this.prefixCls}-cell-ellipsis`]: this.column.ellipsis || false,
           [`${this.prefixCls}-cell-tooltip`]: this.column.tooltip || false,
           [`${this.prefixCls}-cell-with-expand`]: this.renderType === 'expand',
