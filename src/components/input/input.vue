@@ -6,7 +6,7 @@
       </span>
       <input
         :id="elementId"
-        :autocomplete="type==='password'?'new-password':autocomplete"
+        :autocomplete="type === 'password' ? 'new-password' : autocomplete"
         ref="inputRef"
         :type="inputType"
         :class="inputClasses"
@@ -50,14 +50,17 @@
         ></i>
         <i
           class="b-iconfont bin-input-icon bin-input-icon-normal bin-input-view-icon"
-          :class="showPassword?'b-icon-eye':'b-icon-eye-close'"
+          :class="showPassword ? 'b-icon-eye' : 'b-icon-eye-close'"
           v-if="showPasswordToggle"
           @click.stop="handleTogglePass"
         ></i>
         <slot name="suffix">
           <i class="b-iconfont" :class="['b-icon-' + suffix]" v-if="suffix"></i>
         </slot>
-        <i v-if="BForm.statusIcon&&validateState" :class="['b-iconfont','bin-input__validateIcon', validateIcon]"></i>
+        <i
+          v-if="BForm.statusIcon && validateState"
+          :class="['b-iconfont', 'bin-input__validateIcon', validateIcon]"
+        ></i>
       </span>
       <span class="bin-input-word-count" v-if="showWordCount">{{ wordCount }}</span>
       <!--清空按钮-->
@@ -114,7 +117,7 @@ export default {
   name: 'BInput',
   props: {
     type: {
-      validator: (value) => {
+      validator: value => {
         return ['text', 'textarea', 'password', 'url', 'email', 'date', 'number', 'tel'].includes(
           value,
         )
@@ -127,9 +130,7 @@ export default {
     },
     size: {
       type: String,
-      validator: (value) => {
-        return ['small', 'large', 'default', 'mini', ''].includes(value)
-      },
+      validator: value => ['small', 'large', 'default', 'mini', ''].includes(value),
     },
     placeholder: {
       type: String,
@@ -159,7 +160,7 @@ export default {
     number: Boolean,
     autofocus: Boolean,
     autocomplete: {
-      validator: (value) => {
+      validator: value => {
         return ['on', 'off'].includes(value)
       },
       default: 'off',
@@ -167,7 +168,7 @@ export default {
     clearable: Boolean,
     elementId: String,
     wrap: {
-      validator: (value) => {
+      validator: value => {
         return ['hard', 'soft'].includes(value)
       },
       default: 'soft',
@@ -217,7 +218,7 @@ export default {
     // watch
     watch(
       () => props.modelValue,
-      (val) => {
+      val => {
         setCurrentValue(val)
       },
     )
@@ -238,13 +239,20 @@ export default {
     })
     const showPrefix = computed(() => props.prefix !== '' || ctx.slots.prefix !== undefined)
     const showSuffix = computed(() => {
-        return props.suffix !== '' || props.icon !== '' || props.search || props.showPasswordToggle ||
-          (BForm.statusIcon && validateState.value !== '') || ctx.slots.suffix !== undefined
-      },
-    )
+      return (
+        props.suffix !== '' ||
+        props.icon !== '' ||
+        props.search ||
+        props.showPasswordToggle ||
+        (BForm.statusIcon && validateState.value !== '') ||
+        ctx.slots.suffix !== undefined
+      )
+    })
     const inputDisabled = computed(() => props.disabled || BForm.disabled)
     const inputSize = computed(() => props.size || BFormItem.size)
-    const inputType = computed(() => props.type !== 'password' ? props.type : `${showPassword.value ? 'text' : 'password'}`)
+    const inputType = computed(() =>
+      props.type !== 'password' ? props.type : `${showPassword.value ? 'text' : 'password'}`,
+    )
     const inputClasses = computed(() => {
       return [
         `${prefixCls}`,
@@ -256,10 +264,7 @@ export default {
         },
       ]
     })
-    const closeClasses = computed(() => [
-      prefixCls + '-icon',
-      prefixCls + '-icon-clear',
-    ])
+    const closeClasses = computed(() => [prefixCls + '-icon', prefixCls + '-icon-clear'])
     const textareaStyle = computed(() => {
       return {
         resize: props.noResize ? 'none' : null,
@@ -278,9 +283,8 @@ export default {
       return data.currentValue.toString().length + (props.maxlength ? `/${props.maxlength}` : '')
     })
 
-
     // self methods
-    const setCurrentValue = (value) => {
+    const setCurrentValue = value => {
       if (value === data.currentValue) return
       nextTick(() => {
         resizeTextarea()
@@ -302,33 +306,33 @@ export default {
       data.textareaStyles = calcTextareaHeight(textareaRef.value, minRows, maxRows)
     }
     // handle methods
-    const handleEnter = (e) => {
+    const handleEnter = e => {
       ctx.emit('enter', e)
       if (props.search) ctx.emit('search', data.currentValue)
     }
-    const handleKeydown = (e) => {
+    const handleKeydown = e => {
       ctx.emit('keydown', e)
     }
-    const handleKeypress = (e) => {
+    const handleKeypress = e => {
       ctx.emit('keypress', e)
     }
-    const handleKeyup = (e) => {
+    const handleKeyup = e => {
       ctx.emit('keyup', e)
     }
-    const handleIconClick = (e) => {
+    const handleIconClick = e => {
       ctx.emit('click', e)
     }
-    const handleFocus = (e) => {
+    const handleFocus = e => {
       ctx.emit('focus', e)
     }
-    const handleBlur = (e) => {
+    const handleBlur = e => {
       ctx.emit('blur', e)
       if (props.validateEvent) {
         formEmit('blur', [props.modelValue])
       }
     }
 
-    const handleComposition = (e) => {
+    const handleComposition = e => {
       if (e.type === 'compositionstart') {
         data.isOnComposition = true
       }
@@ -337,7 +341,7 @@ export default {
         handleInput(e)
       }
     }
-    const handleInput = (e) => {
+    const handleInput = e => {
       if (data.isOnComposition) return
       let value = e.target.value
       if (props.number && value !== '') value = Number.isNaN(Number(value)) ? value : Number(value)
@@ -345,7 +349,7 @@ export default {
       ctx.emit(UPDATE_MODEL_EVENT, value)
       ctx.emit('input', value)
     }
-    const handleChange = (e) => {
+    const handleChange = e => {
       ctx.emit(CHANGE_EVENT, e.target.value)
     }
     const handleTogglePass = () => {

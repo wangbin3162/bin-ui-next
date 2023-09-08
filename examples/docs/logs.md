@@ -5,6 +5,12 @@
 <div class="doc-update">
     <b-timeline>
       <b-timeline-item >
+        <p class="version">2.0.3</p>
+        <p class="time">2023-09-08</p>
+        <p class="content"><i>🐞</i>重构统一了表单控件的样式内容，禁用和placeholder样式。以及表单的布局采用flex布局</p>
+        <p class="content"><i>🐞</i>修复部分组件默认大小的问题，以及继承form表单大小值的问题。</p>
+      </b-timeline-item>
+      <b-timeline-item >
         <p class="version">2.0.2</p>
         <p class="time">2023-09-08</p>
         <p class="content"><i>🐞</i>修复table 滚动条问题</p>

@@ -134,7 +134,7 @@
 <template>
   <div flex>
     <p>对齐方式：
-      <b-radio-group v-model="labelPosition" type="button">
+      <b-radio-group v-model="labelPosition" type="capsule">
         <b-radio label="left">左对齐</b-radio>
         <b-radio label="right">右对齐</b-radio>
         <b-radio label="top">顶部对齐</b-radio>
@@ -142,7 +142,7 @@
     </p>
     &nbsp;
     <p>尺寸大小：
-      <b-radio-group v-model="size" type="button">
+      <b-radio-group v-model="size" type="capsule">
         <b-radio label="large">large</b-radio>
         <b-radio label="default">default</b-radio>
         <b-radio label="small">small</b-radio>
@@ -163,17 +163,26 @@
       <label v-else>{{ form.name }}</label>
     </b-form-item>
     <b-form-item label="年龄">
-      <b-input-number v-if="!onlyText" v-model="form.age" :size="size"></b-input-number>
+      <b-input-number v-if="!onlyText" v-model="form.age"></b-input-number>
       <label v-else>{{ form.age }}</label>
     </b-form-item>
     <b-form-item label="户籍地">
-      <b-select v-if="!onlyText" v-model="form.city" placeholder="请选择户籍地" :size="size">
+      <b-select v-if="!onlyText" v-model="form.city" placeholder="请选择户籍地">
         <b-option label="上海" value="shanghai"></b-option>
         <b-option label="北京" value="beijing"></b-option>
         <b-option label="南京" value="nanjing"></b-option>
         <b-option label="徐州" value="xuzhou"></b-option>
       </b-select>
       <label v-else>{{ form.city }}</label>
+    </b-form-item>
+    <b-form-item label="学历">
+      <b-radio-group v-if="!onlyText" v-model="form.edu" type="capsule">
+        <b-radio label="高中"></b-radio>
+        <b-radio label="大专"></b-radio>
+        <b-radio label="本科"></b-radio>
+        <b-radio label="硕士"></b-radio>
+      </b-radio-group>
+      <span v-else>{{ form.edu }}</span>
     </b-form-item>
     <b-form-item label="学历">
       <b-radio-group v-if="!onlyText" v-model="form.edu">

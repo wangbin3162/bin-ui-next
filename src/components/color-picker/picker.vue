@@ -54,7 +54,7 @@
           showLabel ? 'with-label' : '',
         ]"
       >
-        <div v-if="colorDisabled" class="bin-color-picker__mask"></div>
+        <div v-if="colorDisabled" class="bin-color-picker__disabled-mask"></div>
         <div class="bin-color-picker__label" @click="handleTrigger" v-if="showLabel">
           <input class="label-input" :value="modelValue" readonly />
         </div>

@@ -143,6 +143,13 @@
   }
 }
 
+.bin-range-editor {
+  &.is-disabled {
+    background-color: var(--bin-color-bg-disabled);
+    color: var(--bin-color-text-disabled);
+  }
+}
+
 // range
 .bin-date-range-picker {
   .bin-picker-panel__body {
@@ -318,10 +325,10 @@
 
     &.disabled {
       div {
-        background-color: #f5f7fa;
+        background-color: var(--bin-color-bg-disabled);
+        color: var(--bin-color-text-disabled);
         opacity: 1;
         cursor: not-allowed;
-        color: var(--bin-color-text-placeholder);
       }
     }
   }
@@ -411,10 +418,10 @@
 
     &.disabled {
       a {
-        background-color: #f5f7fa;
         opacity: 1;
         cursor: not-allowed;
-        color: var(--bin-color-text-placeholder);
+        background-color: var(--bin-color-bg-disabled);
+        color: var(--bin-color-text-disabled);
       }
     }
   }
@@ -494,10 +501,10 @@
 
     &.disabled {
       a {
-        background-color: #f5f7fa;
         opacity: 1;
         cursor: not-allowed;
-        color: var(--bin-color-text-placeholder);
+        background-color: var(--bin-color-bg-disabled);
+        color: var(--bin-color-text-disabled);
       }
     }
   }

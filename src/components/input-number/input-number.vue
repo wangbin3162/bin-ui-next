@@ -96,8 +96,7 @@ export default {
     },
     size: {
       type: String,
-      validator: val => ['', 'large', 'default', 'small', 'mini'].includes(val),
-      default: 'default',
+      validator: value => ['small', 'large', 'default', 'mini', ''].includes(value),
     },
     disabled: {
       type: Boolean,
@@ -150,6 +149,7 @@ export default {
   setup(props, ctx) {
     const { BForm, BFormItem, formEmit } = useForm()
     const inputDisabled = computed(() => props.disabled || BForm.disabled)
+
     const inputSize = computed(() => props.size || BForm.size || BFormItem.size)
 
     const data = reactive({

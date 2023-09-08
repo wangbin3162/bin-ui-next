@@ -55,6 +55,35 @@
 
 :::
 
+
+### 禁用和只读
+
+设置 `disabled` 可以禁用，设置 `readonly` 可以只读
+
+::: demo
+
+```html
+
+<template>
+  <div>
+    <b-input v-model="value" placeholder="disabled" disabled class="input-item"></b-input>
+    <b-input v-model="value1" placeholder="readonly" readonly class="input-item"></b-input>
+  </div>
+</template>
+<script>
+  export default {
+    data() {
+      return {
+        value: '',
+        value1: '',
+      }
+    }
+  }
+</script>
+```
+
+:::
+
 ### 组合使用
 
 提供两种方式来进行插入图标

@@ -54,7 +54,7 @@
         height: 100%;
         border: 1px solid var(--bin-color-primary);
         border-radius: 50%;
-        animation: radioEffect var(--bin-animation-duration-slow) ease-in-out;
+        animation: radioEffect var(--bin-animation-duration-base) ease-in-out;
         animation-fill-mode: both;
         content: '';
       }
@@ -120,7 +120,7 @@
 
   &.is-disabled {
     .bin-radio__label {
-      color: #ccc;
+      color: var(--bin-color-text-disabled);
       cursor: not-allowed;
     }
   }
@@ -133,9 +133,9 @@
     position: relative;
     margin: 0;
     padding: 0 15px;
-    color: #515a6e;
-    border: 1px solid #dcdee2;
-    background: #fff;
+    color: var(--bin-color-text-default);
+    border: 1px solid var(--bin-border-color-base);
+    background: var(--bin-white-color);
     height: var(--bin-default-height);
     line-height: var(--bin-default-height-2);
     transition: background-color var(--bin-animation-duration-base), color var(--bin-animation-duration-base);
@@ -207,9 +207,8 @@
 
   .bin-radio.is-disabled {
     cursor: not-allowed;
-    border-color: #dcdee2;
-    background-color: #f7f7f7;
-    color: #ccc;
+    background-color: var(--bin-color-bg-disabled);
+    color: var(--bin-color-text-disabled);
 
     &:first-child, &:hover {
       border-color: #dcdee2;

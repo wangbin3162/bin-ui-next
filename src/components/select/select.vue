@@ -223,10 +223,7 @@ export default {
     automaticDropdown: Boolean,
     size: {
       type: String,
-      validator: value => {
-        return ['small', 'large', 'default', 'mini'].includes(value)
-      },
-      default: 'default',
+      validator: value => ['small', 'large', 'default', 'mini', ''].includes(value),
     },
     disabled: Boolean,
     clearable: Boolean,

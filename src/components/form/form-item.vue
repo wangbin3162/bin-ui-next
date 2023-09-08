@@ -1,37 +1,23 @@
 <template>
-  <div
-      class="bin-form-item"
-      :class="formItemClass"
-  >
+  <div class="bin-form-item" :class="formItemClass">
     <LabelWrap
-        :is-auto-width="labelStyle.width === 'auto'"
-        :update-all="BForm.labelWidth === 'auto'"
+      :is-auto-width="labelStyle.width === 'auto'"
+      :update-all="BForm.labelWidth === 'auto'"
     >
-      <label
-          v-if="label || $slots.label"
-          :for="labelFor"
-          class="bin-form-item__label"
-          :style="labelStyle"
-      >
+      <label :for="labelFor" class="bin-form-item__label" :style="labelStyle">
         <slot name="label">{{ label }}</slot>
-        <span class="item-suffix">{{ BForm.labelSuffix }}</span>
+        <span class="item-suffix" v-if="label || $slots.label">{{ BForm.labelSuffix }}</span>
       </label>
     </LabelWrap>
     <div class="bin-form-item__content" :style="contentStyle">
       <slot></slot>
       <transition name="zoom-in-top">
-        <slot
-            v-if="shouldShowError"
-            name="error"
-            :error="validateMessage"
-        >
+        <slot v-if="shouldShowError" name="error" :error="validateMessage">
           <div
-              class="bin-form-item__error"
-              :class="{
+            class="bin-form-item__error"
+            :class="{
               'bin-form-item__error--inline':
-                typeof inlineMessage === 'boolean'
-                  ? inlineMessage
-                  : BForm.inlineMessage || false
+                typeof inlineMessage === 'boolean' ? inlineMessage : BForm.inlineMessage || false,
             }"
           >
             {{ validateMessage }}
@@ -56,18 +42,18 @@ import {
   toRefs,
   reactive,
 } from 'vue'
-import {NOOP} from '@vue/shared'
+import { NOOP } from '@vue/shared'
 import AsyncValidator from 'async-validator'
 import LabelWrap from './label-wrap'
-import {getPropByPath} from '../../utils/util-helper'
-import {validSize} from '../../utils/validator-size'
+import { getPropByPath } from '../../utils/util-helper'
+import { validSize } from '../../utils/validator-size'
 import mitt from 'mitt'
-import {FormKey, FormItemKey, FormEvents} from './token'
+import { FormKey, FormItemKey, FormEvents } from './token'
 
 export default {
   name: 'BFormItem',
   componentName: 'BFormItem',
-  components: {LabelWrap},
+  components: { LabelWrap },
   props: {
     label: String,
     labelWidth: String,
@@ -115,23 +101,23 @@ export default {
       return false
     })
 
-
     let initialValue = undefined
 
     watch(
-        () => props.error,
-        val => {
-          validateMessage.value = val
-          validateState.value = val ? 'error' : ''
-        }, {
-          immediate: true,
-        },
+      () => props.error,
+      val => {
+        validateMessage.value = val
+        validateState.value = val ? 'error' : ''
+      },
+      {
+        immediate: true,
+      },
     )
     watch(
-        () => props.validateStatus,
-        val => {
-          validateState.value = val
-        },
+      () => props.validateStatus,
+      val => {
+        validateState.value = val
+      },
     )
 
     const labelFor = computed(() => props.for || props.prop)
@@ -156,12 +142,12 @@ export default {
       const ret = {}
       if (labelWidth === 'auto') {
         if (props.labelWidth === 'auto') {
-          ret.marginLeft = computedLabelWidth.value
+          ret.width = `calc(100% - ${computedLabelWidth.value})`
         } else if (BForm.labelWidth === 'auto') {
-          ret.marginLeft = BForm.autoLabelWidth
+          ret.width = `calc(100% - ${BForm.autoLabelWidth})`
         }
       } else {
-        ret.marginLeft = labelWidth
+        ret.width = `calc(100% - ${labelWidth})`
       }
       return ret
     })
@@ -216,21 +202,12 @@ export default {
       const validator = new AsyncValidator(descriptor)
       const model = {}
       model[props.prop] = fieldValue.value
-      validator.validate(
-          model,
-          {firstFields: true},
-          (errors, invalidFields) => {
-            validateState.value = !errors ? 'success' : 'error'
-            validateMessage.value = errors ? errors[0].message : ''
-            callback(validateMessage.value, invalidFields)
-            BForm.emit?.(
-                'validate',
-                props.prop,
-                !errors,
-                validateMessage.value || null,
-            )
-          },
-      )
+      validator.validate(model, { firstFields: true }, (errors, invalidFields) => {
+        validateState.value = !errors ? 'success' : 'error'
+        validateMessage.value = errors ? errors[0].message : ''
+        callback(validateMessage.value, invalidFields)
+        BForm.emit?.('validate', props.prop, !errors, validateMessage.value || null)
+      })
     }
 
     const clearValidate = () => {
@@ -263,13 +240,10 @@ export default {
     const getRules = () => {
       const formRules = BForm.rules
       const selfRules = props.rules
-      const requiredRule =
-          props.required !== undefined ? {required: !!props.required} : []
+      const requiredRule = props.required !== undefined ? { required: !!props.required } : []
 
       const prop = getPropByPath(formRules, props.prop || '', false)
-      const normalizedRule = formRules
-          ? (prop.o[props.prop || ''] || prop.v)
-          : []
+      const normalizedRule = formRules ? prop.o[props.prop || ''] || prop.v : []
 
       return [].concat(selfRules || normalizedRule || []).concat(requiredRule)
     }
@@ -277,15 +251,15 @@ export default {
       const rules = getRules()
 
       return rules
-          .filter(rule => {
-            if (!rule.trigger || trigger === '') return true
-            if (Array.isArray(rule.trigger)) {
-              return rule.trigger.indexOf(trigger) > -1
-            } else {
-              return rule.trigger === trigger
-            }
-          })
-          .map(rule => ({...rule}))
+        .filter(rule => {
+          if (!rule.trigger || trigger === '') return true
+          if (Array.isArray(rule.trigger)) {
+            return rule.trigger.indexOf(trigger) > -1
+          } else {
+            return rule.trigger === trigger
+          }
+        })
+        .map(rule => ({ ...rule }))
     }
 
     const onFieldBlur = () => {
@@ -335,8 +309,7 @@ export default {
         BForm.formMitt?.emit(FormEvents.addField, BFormItem)
 
         let value = fieldValue.value
-        initialValue = Array.isArray(value)
-            ? [...value] : value
+        initialValue = Array.isArray(value) ? [...value] : value
 
         addValidateEvents()
       }

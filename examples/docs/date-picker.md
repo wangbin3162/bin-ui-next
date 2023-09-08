@@ -317,6 +317,53 @@
 
 :::
 
+
+### 禁用状态
+
+
+::: demo
+
+```html
+
+<template>
+  <div flex="box:mean" style="width: 600px;">
+    <div style="padding:0 10px;">
+      <div class="demonstration">date</div>
+      <b-date-picker
+        v-model="value1"
+        type="date"
+        placeholder="Pick a date"
+        disabled
+        :default-value="new Date(2020, 4, 27)">
+      </b-date-picker>
+    </div>
+    <div style="padding:0 10px;">
+      <div class="demonstration">daterange</div>
+      <b-date-picker
+        v-model="value2"
+        type="daterange"
+        start-placeholder="Start Date"
+        end-placeholder="End Date"
+        disabled
+        :default-value="[new Date(2020, 1, 1), new Date(2020, 10, 1)]">
+      </b-date-picker>
+    </div>
+  </div>
+</template>
+<script>
+  export default {
+    data() {
+      return {
+        value1: '',
+        value2: []
+      };
+    }
+  };
+</script>
+```
+
+:::
+
 ### 日期格式
 
 使用format指定输入框的格式。 默认情况下，组件接受并返回Date对象。可以参考dayjs支持的format参数

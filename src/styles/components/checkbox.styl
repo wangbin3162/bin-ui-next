@@ -71,7 +71,7 @@
         height: 100%;
         border: 1px solid var(--bin-color-primary);
         border-radius: var(--bin-border-radius-default);
-        animation: checkEffect var(--bin-animation-duration-slow) ease-in-out;
+        animation: checkEffect var(--bin-animation-duration-base) ease-in-out;
         animation-fill-mode: backwards;
         content: '';
       }
@@ -81,23 +81,29 @@
       cursor: not-allowed;
 
       .bin-checkbox__inner {
-        background-color: #f3f3f3;
-        border-color: #dcdee2;
+        background-color: var(--bin-color-bg-disabled);
+        color: var(--bin-color-text-disabled);
 
         &:after {
-          border-color: #f3f3f3;
+          border-color: var(--bin-color-bg-disabled);
         }
       }
 
       &.is-checked {
         &:after {
-          border-color: #dcdee2;
+          border-color: var(--bin-border-color-base);
         }
 
-        .bin-checkbox__inner:after {
-          -webkit-animation-name: none;
-          animation-name: none;
-          border-color: #ccc;
+        .bin-checkbox__inner {
+          background-color: var(--bin-color-bg-disabled);
+          color: var(--bin-color-text-disabled);
+          border-color: var(--bin-border-color-base);
+
+          &:after {
+            -webkit-animation-name: none;
+            animation-name: none;
+            border-color: var(--bin-color-text-disabled);
+          }
         }
       }
     }

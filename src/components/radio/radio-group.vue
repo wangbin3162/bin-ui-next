@@ -20,15 +20,14 @@ export default {
       default: '',
     },
     type: {
+      type: String,
       validator(value) {
         return ['button', 'capsule'].includes(value)
       },
     },
     size: {
-      validator(value) {
-        return ['small', 'large', 'default', 'mini'].includes(value)
-      },
-      default: 'default',
+      type: String,
+      validator: value => ['small', 'large', 'default', 'mini', ''].includes(value),
     },
     disabled: Boolean,
   },

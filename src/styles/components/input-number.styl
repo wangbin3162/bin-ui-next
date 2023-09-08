@@ -43,8 +43,8 @@
       height: var(--bin-default-height);
       line-height: var(--bin-default-height-2);
       text-align: center;
-      background: #f5f7fa;
-      color: #606266;
+      background: var(--bin-fill-color-1);
+      color: var(--bin-text-color-3);
       cursor: pointer;
 
       .b-iconfont {
@@ -64,20 +64,8 @@
       border-right: var(--bin-border-base);
 
       &-disabled {
-        color: #c0c4cc;
+        color: var(--bin-color-text-disabled);
         cursor: not-allowed;
-
-        &:hover {
-          .iconfont {
-            color: #c0c4cc;
-          }
-        }
-      }
-
-      &:hover {
-        .iconfont {
-          color: var(--bin-color-primary);
-        }
       }
     }
 
@@ -88,22 +76,14 @@
       border-left: var(--bin-border-base);
 
       &-disabled {
-        color: #c0c4cc;
+        color: var(--bin-color-text-disabled);
         cursor: not-allowed;
-
-        &:hover {
-          .iconfont {
-            color: #c0c4cc;
-          }
-        }
-      }
-
-      &:hover {
-        .iconfont {
-          color: var(--bin-color-primary);
-        }
       }
     }
+  }
+
+  .bin-input-number-handler {
+    height: 16px;
   }
 }
 
@@ -199,46 +179,41 @@
   transition: all var(--bin-animation-duration-base) linear;
 }
 
-.bin-input-number-disabled .bin-input-number-handler-down-inner, .bin-input-number-disabled .bin-input-number-handler-up-inner, .bin-input-number-handler-down-disabled .bin-input-number-handler-down-inner, .bin-input-number-handler-down-disabled .bin-input-number-handler-up-inner, .bin-input-number-handler-up-disabled .bin-input-number-handler-down-inner, .bin-input-number-handler-up-disabled .bin-input-number-handler-up-inner {
-  opacity: 0.72;
-  color: var(--bin-color-text-disabled) !important;
-  cursor: not-allowed;
+.bin-input-number-disabled {
+  .bin-input-number-handler, .bin-input-number-handler-down-inner, .bin-input-number-handler-up-inner, .bin-input-number-handler-down-disabled .bin-input-number-handler-down-inner, .bin-input-number-handler-down-disabled .bin-input-number-handler-up-inner, .bin-input-number-handler-up-disabled .bin-input-number-handler-down-inner, .bin-input-number-handler-up-disabled .bin-input-number-handler-up-inner {
+    cursor: not-allowed;
+    color: var(--bin-color-text-disabled);
+    background-color: var(--bin-color-bg-disabled);
+  }
 }
 
 // 禁用状态
 .bin-input-number-disabled .bin-input-number-input {
-  opacity: 0.72;
   cursor: not-allowed;
-  background-color: #f3f3f3;
+  background-color: var(--bin-color-bg-disabled);
+  color: var(--bin-color-text-disabled);
 }
 
 .bin-input-number-input[disabled] {
-  background-color: #f3f3f3;
-  opacity: 1;
   cursor: not-allowed;
+  background-color: var(--bin-color-bg-disabled);
   color: var(--bin-color-text-disabled);
 }
 
 .bin-input-number-disabled.bin-input-number-always {
   .bin-input-number-handler-minus {
-    color: #c0c4cc;
+    color: var(--bin-color-text-disabled);
     cursor: not-allowed;
-
-    &:hover {
-      .iconfont {
-        color: #c0c4cc;
-      }
-    }
   }
 
   .bin-input-number-handler-plus {
-    color: #c0c4cc;
+    color: var(--bin-color-text-disabled);
     cursor: not-allowed;
+  }
 
-    &:hover {
-      .iconfont {
-        color: #c0c4cc;
-      }
+  .bin-input-number-handler-minus, .bin-input-number-handler-plus {
+    &:hover .b-iconfont {
+      color: var(--bin-color-text-disabled);
     }
   }
 }
@@ -311,12 +286,6 @@
       height: var(--bin-small-height);
       line-height: var(--bin-small-height-2);
     }
-  }
-}
-
-.bin-input-number-default {
-  .bin-input-number-handler {
-    height: 16px;
   }
 }
 
