@@ -51,10 +51,11 @@
           'bin-color-picker',
           colorDisabled ? 'is-disabled' : '',
           colorSize ? `bin-color-picker--${colorSize}` : '',
+          showLabel ? 'with-label' : '',
         ]"
       >
         <div v-if="colorDisabled" class="bin-color-picker__mask"></div>
-        <div class="bin-color-picker__label" @click="handleTrigger">
+        <div class="bin-color-picker__label" @click="handleTrigger" v-if="showLabel">
           <input class="label-input" :value="modelValue" readonly />
         </div>
         <div class="bin-color-picker__trigger" @click="handleTrigger">
@@ -119,6 +120,10 @@ export default {
     },
     popperClass: String,
     colors: Array,
+    showLabel: {
+      type: Boolean,
+      default: true,
+    },
   },
   emits: ['change', 'active-change', UPDATE_MODEL_EVENT],
   setup(props, { emit }) {

@@ -20,6 +20,11 @@
       <b-color-picker v-model="color2" show-alpha></b-color-picker>
       <div class="demonstration mb-5">{{color2}}</div>
     </div>
+    <div class="block" style="width: 240px;margin-right: 20px;">
+      <div class="demonstration mb-5">不显示label</div>
+      <b-color-picker v-model="color3" show-alpha :show-label="false"></b-color-picker>
+      <div class="demonstration mb-5">{{color3}}</div>
+    </div>
   </div>
 </template>
 <script>
@@ -28,6 +33,7 @@
       return {
         color1: '#409EFF',
         color2: null,
+        color3: null,
       }
     }
   };
@@ -146,7 +152,9 @@
 
 <template>
   <div flex>
-    <b-color-picker v-model="color" disabled></b-color-picker>&nbsp;&nbsp;
+    <div class="block" style="width: 200px;margin-right: 20px;">
+      <b-color-picker v-model="color" disabled></b-color-picker>&nbsp;&nbsp;
+    </div>
   </div>
 </template>
 <script>
@@ -171,7 +179,7 @@
 ```html
 
 <template>
-  <div flex="cross:center">
+  <div flex="cross:center" class="mb-16">
     <div class="mr-16"> 
       <b-color-picker v-model="color" size="large"></b-color-picker>
     </div>
@@ -183,6 +191,20 @@
     </div>
     <div>
       <b-color-picker v-model="color" size="mini"></b-color-picker>
+    </div>
+  </div>
+  <div flex="cross:center">
+    <div class="mr-16"> 
+      <b-color-picker v-model="color" size="large" :show-label="false"></b-color-picker>
+    </div>
+    <div class="mr-16">
+      <b-color-picker v-model="color" :show-label="false"></b-color-picker>
+    </div>
+    <div class="mr-16">
+      <b-color-picker v-model="color" size="small" :show-label="false"></b-color-picker>
+    </div>
+    <div>
+      <b-color-picker v-model="color" size="mini" :show-label="false"></b-color-picker>
     </div>
   </div>
 </template>

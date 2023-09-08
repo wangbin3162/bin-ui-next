@@ -5,6 +5,12 @@
 <div class="doc-update">
     <b-timeline>
       <b-timeline-item >
+        <p class="version">2.0.2</p>
+        <p class="time">2023-09-08</p>
+        <p class="content"><i>🐞</i>修复table 滚动条问题</p>
+        <p class="content"><i>🐞</i>调整 color-picker 组件样式，默认show-label="true" 调整颜色块样式</p>
+      </b-timeline-item>
+      <b-timeline-item >
         <p class="version">2.0.1</p>
         <p class="time">2023-09-05</p>
         <p class="content"><i>🐞</i>修复table组件高度正好为行数时，也会出现纵向滚动条 问题</p>

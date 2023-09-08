@@ -570,6 +570,7 @@ export default {
         const showHBar = (showHorizontalScrollBar.value =
           bodyEl.offsetWidth <
           bodyContentEl.offsetWidth + (showVerticalScrollBar.value ? scrollBarWidth.value : 0))
+
         showVerticalScrollBar.value = bodyHeight.value
           ? offsetHeight - (showHBar ? scrollBarWidth.value : 0) < bodyContentHeight
           : false
@@ -1001,9 +1002,16 @@ export default {
     )
 
     watch(
-      () => [props.height, props.maxHeight, showHorizontalScrollBar, showVerticalScrollBar],
+      () => [
+        props.height,
+        props.maxHeight,
+        showHorizontalScrollBar.value,
+        showVerticalScrollBar.value,
+      ],
       () => {
-        handleResize()
+        nextTick(() => {
+          handleResize()
+        })
       },
     )
 
