@@ -5,6 +5,14 @@
 <div class="doc-update">
     <b-timeline>
       <b-timeline-item >
+        <p class="version">2.0.4</p>
+        <p class="time">2023-09-11</p>
+        <p class="content"><i>🐞</i>统一了下拉菜单,select,cascader的选项圆角和边距问题</p>
+        <p class="content"><i>🐞</i>修复了form表单,增加空label显示问题.</p>
+        <p class="content"><i>🐞</i>table单元格内,tag的边距问题</p>
+        <p class="content"><i>🐞</i>调整日期选择框的部分样式间距</p>
+      </b-timeline-item>
+      <b-timeline-item >
         <p class="version">2.0.3</p>
         <p class="time">2023-09-08</p>
         <p class="content"><i>🐞</i>重构统一了表单控件的样式内容，禁用和placeholder样式。以及表单的布局采用flex布局</p>

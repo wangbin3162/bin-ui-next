@@ -73,10 +73,13 @@
     cursor: pointer;
     transition: background var(--bin-animation-duration-base) ease-in-out;
     border-radius: var(--b-popper-radius);
-    margin-bottom: var(--b-popper-item-margin-bottom);
 
-    &:last-child {
-      margin-bottom: 0;
+    + .bin-dropdown-item {
+      margin-top: var(--b-popper-item-margin);
+    }
+
+    + .bin-dropdown-item-divided {
+      margin-top: calc(var(--b-popper-item-margin) + 4px);
     }
 
     &:hover, &:focus {
@@ -103,7 +106,7 @@
       &:before {
         content: '';
         position: absolute;
-        top: -2px;
+        top: -4px;
         left: 0;
         right: 0;
         border-top: 1px solid var(--bin-border-color-light);

@@ -4,9 +4,16 @@
       :is-auto-width="labelStyle.width === 'auto'"
       :update-all="BForm.labelWidth === 'auto'"
     >
-      <label :for="labelFor" class="bin-form-item__label" :style="labelStyle">
+      <label
+        :for="labelFor"
+        class="bin-form-item__label"
+        v-if="label || $slots.label || noLabel"
+        :style="labelStyle"
+      >
         <slot name="label">{{ label }}</slot>
-        <span class="item-suffix" v-if="label || $slots.label">{{ BForm.labelSuffix }}</span>
+        <span class="item-suffix" v-if="label || $slots.label">
+          {{ BForm.labelSuffix }}
+        </span>
       </label>
     </LabelWrap>
     <div class="bin-form-item__content" :style="contentStyle">
@@ -73,6 +80,10 @@ export default {
     showMessage: {
       type: Boolean,
       default: true,
+    },
+    noLabel: {
+      type: Boolean,
+      default: false,
     },
     size: {
       types: String,

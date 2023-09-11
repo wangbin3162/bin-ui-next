@@ -1,3 +1,13 @@
+.bin-cascader-panel {
+  --b-popper-padding: var(--bin-popper-padding);
+  --b-popper-tooltip-padding: var(--bin-popper-tooltip-padding);
+  --b-popper-radius: var(--bin-popper-radius);
+  --b-popper-item-height: var(--bin-popper-item-height);
+  --b-popper-item-margin: var(--bin-popper-item-margin);
+  --b-popper-bg-light: var(--bin-popper-bg-light);
+  --b-popper-bg-dark: var(--bin-popper-bg-dark);
+}
+
 .bin-cascader {
   &-panel {
     display: flex;
@@ -15,10 +25,10 @@
     display: flex;
     align-items: center;
     padding: 0 24px 0 16px;
-    height: 34px;
-    line-height: 34px;
+    line-height: var(--b-popper-item-height);
     outline: 0;
     color: var(--bin-color-text-default);
+    border-radius: var(--bin-popper-radius);
     transition: background var(--bin-animation-duration-base) ease-in-out;
 
     &.is-disabled {
@@ -71,6 +81,14 @@
     > .bin-radio .bin-radio__label {
       padding: 0;
     }
+
+    .bin-checkbox, .bin-radio {
+      margin-right: 0;
+    }
+
+    + .bin-cascader-node {
+      margin-top: var(--b-popper-item-margin);
+    }
   }
 
   &-menu {
@@ -91,14 +109,15 @@
     }
 
     &__wrap {
-      height: 204px;
+      height: 208px;
+      padding: var(--b-popper-padding) 0;
     }
 
     &__list {
       position: relative;
       min-height: 100%;
       margin: 0;
-      padding: 5px 0;
+      padding: 0 var(--b-popper-padding);
       list-style: none;
       box-sizing: border-box;
     }

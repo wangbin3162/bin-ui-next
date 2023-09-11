@@ -11,7 +11,11 @@
 ```html
 
 <template>
-  <b-table :columns="columns" :data="data"></b-table>
+  <b-table :columns="columns" :data="data">
+    <template #age="{row}">
+      <b-tag>{{row.age}}</b-tag>
+    </template>
+  </b-table>
 </template>
 
 <script>
@@ -25,7 +29,7 @@
           },
           {
             title: '年龄',
-            key: 'age'
+            slot: 'age'
           },
           {
             title: '出生日期',
