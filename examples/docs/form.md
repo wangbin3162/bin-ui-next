@@ -45,7 +45,7 @@
     <b-form-item label="住址">
       <b-input type="textarea" v-model="form.desc" placeholder="请输入住址..."></b-input>
     </b-form-item>
-    <b-form-item  no-label>
+    <b-form-item >
       <b-button type="primary" @click="onSubmit">提交</b-button>
       <b-button>取消</b-button>
     </b-form-item>
@@ -97,7 +97,7 @@
         <b-option label="徐州" value="xuzhou"></b-option>
       </b-select>
     </b-form-item>
-    <b-form-item  no-label>
+    <b-form-item >
       <b-button type="primary" @click="onSubmit">提交</b-button>
     </b-form-item>
   </b-form>
@@ -206,7 +206,25 @@
       <b-input v-if="!onlyText" type="textarea" v-model="form.address" placeholder="请输入住址..."></b-input>
       <span v-else>{{ form.address }}</span>
     </b-form-item>
-    <b-form-item v-if="!onlyText"  no-label>
+    <b-form-item label="进度">
+      <b-slider></b-slider>
+    </b-form-item>
+    <b-form-item label="颜色">
+      <b-color-picker ></b-color-picker>
+    </b-form-item>
+    <b-form-item label="评分">
+      <b-rate></b-rate>
+    </b-form-item>
+    <b-form-item label="日期选择器">
+      <b-date-picker></b-date-picker>
+    </b-form-item>
+    <b-form-item label="时间选择器">
+      <b-time-picker></b-time-picker>
+    </b-form-item>
+    <b-form-item label="开关">
+      <b-switch></b-switch>
+    </b-form-item>
+    <b-form-item v-if="!onlyText" >
       <b-button type="primary">提交</b-button>
       <b-button>取消</b-button>
     </b-form-item>
@@ -291,7 +309,7 @@
         <template #close><span>禁用</span></template>
       </b-switch>
     </b-form-item>
-    <b-form-item  no-label>
+    <b-form-item >
       <b-button type="primary" @click="submitForm('ruleForm')">提交</b-button>
       <b-button @click="resetForm('ruleForm')">重置</b-button>
     </b-form-item>
@@ -371,7 +389,7 @@
     <b-form-item label="年龄" prop="age">
       <b-input v-model.number="ruleForm.age" type="number"></b-input>
     </b-form-item>
-    <b-form-item  no-label>
+    <b-form-item>
       <b-button type="primary" @click="submitForm('ruleForm')">提交</b-button>
       <b-button @click="resetForm('ruleForm')">重置</b-button>
     </b-form-item>
@@ -473,7 +491,7 @@
         <b-button @click="removeDomain(domain)">删除</b-button>
       </div>
     </b-form-item>
-    <b-form-item  no-label>
+    <b-form-item>
       <b-button type="primary" @click="submitForm('dynamicValidateForm')">提交</b-button>
       <b-button @click="addDomain">新增域名</b-button>
       <b-button @click="resetForm('dynamicValidateForm')">重置</b-button>
@@ -569,7 +587,7 @@
 | error | 表单域验证错误信息, 设置该值会使表单验证状态变为error，并显示该错误信息 | string  |   —      |    —    |
 | show-message | 是否显示校验错误信息 | boolean  |   —      |   true |
 | inline-message | 以行内形式展示校验信息 | boolean  |   —      |   false |
-| no-label | 是否空出label的空间,主要配合没设置label的时候提交按钮需要错开显示 | boolean  |   —     |  false  |
+| show-label | 是否显示label,主要配合没设置label的时候提交按钮需要错开显示 | boolean  |   —     |  false  |
 | size | 用于控制该表单域下组件的尺寸 | string  |  large,default,small,mini    |   —   |
 
 ### FormItem Slot

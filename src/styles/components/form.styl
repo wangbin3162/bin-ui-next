@@ -3,25 +3,6 @@
     text-align: left;
   }
 
-  &--label-top {
-    // .bin-form-item {
-    // display: inline-flex;
-    // flex-wrap: wrap;
-    // }
-    .bin-form-item__label {
-      display: flex;
-      text-align: left;
-      line-height: var(--bin-base-line-height);
-      height: auto;
-      width: 100%;
-      margin-bottom: 8px;
-    }
-
-    .bin-form-item__content {
-      width: 100%;
-    }
-  }
-
   &--inline {
     display: flex;
     align-items: center;
@@ -44,6 +25,8 @@
 .bin-form-item {
   display: flex;
   flex-flow: row wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
   width: 100%;
   margin-bottom: 20px;
 
@@ -64,19 +47,30 @@
   &__content {
     position: relative;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
     font-size: var(--bin-font-size-default);
     min-height: var(--bin-default-height);
-
-    .bin-slider-wrapper {
-      width: 100%;
-      line-height: normal;
-      padding: 1px 0 0 8px;
-    }
 
     > label, > span {
       line-height: var(--bin-default-height);
     }
+  }
+
+  &__content-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+  }
+
+  &__content-flex {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex: 1;
+    max-width: 100%;
+    min-height: var(--bin-default-height);
   }
 
   &--large {
@@ -87,9 +81,13 @@
 
     .bin-form-item__content {
       min-height: var(--bin-large-height);
+    }
+
+    .bin-form-item__content-flex {
+      min-height: var(--bin-large-height);
 
       > label, > span {
-        line-height: var(--bin-large-height);
+        min-height: var(--bin-large-height);
       }
     }
   }
@@ -101,6 +99,10 @@
     }
 
     .bin-form-item__content {
+      min-height: var(--bin-small-height);
+    }
+
+    .bin-form-item__content-flex {
       min-height: var(--bin-small-height);
 
       > label, > span {
@@ -116,6 +118,10 @@
     }
 
     .bin-form-item__content {
+      min-height: var(--bin-mini-height);
+    }
+
+    .bin-form-item__content-flex {
       min-height: var(--bin-mini-height);
 
       > label, > span {
@@ -197,6 +203,21 @@
     .bin-input__validateIcon {
       display: block;
     }
+  }
+}
+
+.bin-form--label-top {
+  .bin-form-item__label {
+    display: flex;
+    text-align: left;
+    width: 100%;
+    line-height: var(--bin-base-line-height);
+    min-height: auto;
+    margin-bottom: 8px;
+  }
+
+  .bin-form-item__content {
+    width: 100%;
   }
 }
 

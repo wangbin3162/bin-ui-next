@@ -4,6 +4,12 @@
 
 <div class="doc-update">
     <b-timeline>
+      <b-timeline-item>
+        <p class="version">2.0.5</p>
+        <p class="time">2023-09-12</p>
+        <p class="content"><i>🐞</i>更新默认的数字输入框样式</p>
+        <p class="content"><i>🐞</i>修复了form表单,内容显示撑满的问题.</p>
+      </b-timeline-item>
       <b-timeline-item >
         <p class="version">2.0.4</p>
         <p class="time">2023-09-11</p>
@@ -12,7 +18,7 @@
         <p class="content"><i>🐞</i>table单元格内,tag的边距问题</p>
         <p class="content"><i>🐞</i>调整日期选择框的部分样式间距</p>
       </b-timeline-item>
-      <b-timeline-item >
+      <b-timeline-item>
         <p class="version">2.0.3</p>
         <p class="time">2023-09-08</p>
         <p class="content"><i>🐞</i>重构统一了表单控件的样式内容，禁用和placeholder样式。以及表单的布局采用flex布局</p>
@@ -24,7 +30,7 @@
         <p class="content"><i>🐞</i>修复table 滚动条问题</p>
         <p class="content"><i>🐞</i>调整 color-picker 组件样式，默认show-label="true" 调整颜色块样式</p>
       </b-timeline-item>
-      <b-timeline-item >
+      <b-timeline-item>
         <p class="version">2.0.1</p>
         <p class="time">2023-09-05</p>
         <p class="content"><i>🐞</i>修复table组件高度正好为行数时，也会出现纵向滚动条 问题</p>

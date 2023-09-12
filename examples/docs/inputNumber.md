@@ -9,9 +9,14 @@
 ```html
 
 <template>
-  <b-input-number :max="10" :min="1" v-model="value1" arrow-up-icon="plus" arrow-down-icon="minus"></b-input-number>
-  &nbsp;
-  <b-input-number :max="10" :min="1" v-model="value1" always></b-input-number>
+  <b-row :gutter="16">
+    <b-col span="6">
+      <b-input-number :max="10" :min="1" v-model="value1" arrow-up-icon="plus" arrow-down-icon="minus"></b-input-number>
+    </b-col>
+    <b-col span="6">
+      <b-input-number :max="10" :min="1" v-model="value1" always></b-input-number>
+    </b-col>
+  </b-row>
 </template>
 <script>
   export default {
@@ -37,13 +42,20 @@
 ```html
 
 <template>
-  <b-space>
-    初始化值为null(绑定属性存在）<b-input-number v-model="obj.num1"></b-input-number>
-    <b-divider type="vertical"/>
-    初始化值为字符串<b-input-number :min="1" :max="10" v-model="obj.num2"></b-input-number>
-    <b-divider type="vertical"/>
-    初始化值为undefined(绑定属性不存在）<b-input-number v-model="obj.num3"></b-input-number>
-  </b-space>
+  <b-row :gutter="16">
+    <b-col span="6">
+      <b-input-number v-model="obj.num1"></b-input-number>
+      初始化值为null(绑定属性存在）
+    </b-col>
+    <b-col span="6">
+      <b-input-number :min="1" :max="10" v-model="obj.num2"></b-input-number>
+       初始化值为字符串
+    </b-col>
+    <b-col span="6">
+      <b-input-number v-model="obj.num3"></b-input-number>
+       初始化值为undefined(绑定属性不存在）
+    </b-col>
+  </b-row>
   <p>{{obj}}</p>
 </template>
 <script>
@@ -69,10 +81,16 @@
 ```html
 
 <template>
-  小数步长：
-  <b-input-number :max="10" :min="1" v-model="value2" :step="0.2"></b-input-number>
-  精度范围：
-  <b-input-number v-model="value3" :precision="2"></b-input-number>
+  <b-row :gutter="16">
+    <b-col span="6">
+      <b-input-number :max="10" :min="1" v-model="value2" :step="0.2"></b-input-number>
+      小数步长
+    </b-col>
+    <b-col span="6">
+      <b-input-number v-model="value3" :precision="2"></b-input-number>
+      精度范围：
+    </b-col>
+  </b-row>
 </template>
 <script>
   export default {
@@ -95,18 +113,24 @@
 ```html
 
 <template>
-  <div>
-    <b-input-number
-      :max="10000"
-      v-model="value3"
-      :formatter="value => `$ ${value}`.replace(/B(?=(d{3})+(?!d))/g, ',')"
-      :parser="value => value.replace(/$s?|(,*)/g, '')"></b-input-number>&nbsp;&nbsp;
+  <b-row :gutter="16">
+    <b-col span="6">
+      <b-input-number
+        :max="10000"
+        v-model="value3"
+        :formatter="value => `$ ${value}`.replace(/B(?=(d{3})+(?!d))/g, ',')"
+        :parser="value => value.replace(/$s?|(,*)/g, '')">
+      </b-input-number>
+    </b-col>
+    <b-col span="6">
     <b-input-number
       :max="100"
       v-model="value4"
       :formatter="value => `${value}%`"
-      :parser="value => value.replace('%', '')"></b-input-number>
-  </div>
+      :parser="value => value.replace('%', '')">
+    </b-input-number>
+    </b-col>
+  </b-row>
 </template>
 <script>
   export default {
@@ -131,12 +155,20 @@
 ```html
 
 <template>
-  <div>
-    <b-input-number v-model="value5" size="mini"></b-input-number>&nbsp;
-    <b-input-number v-model="value5" size="small"></b-input-number>&nbsp;&nbsp;
-    <b-input-number v-model="value5"></b-input-number>&nbsp;&nbsp;
-    <b-input-number v-model="value5" size="large"></b-input-number>
-  </div>
+  <b-row :gutter="16">
+    <b-col span="6">
+      <b-input-number v-model="value5" size="mini"></b-input-number>
+    </b-col>
+    <b-col span="6">
+      <b-input-number v-model="value5" size="small"></b-input-number>
+    </b-col>
+    <b-col span="6">
+      <b-input-number v-model="value5"></b-input-number>
+    </b-col>
+    <b-col span="6">
+      <b-input-number v-model="value5" size="large"></b-input-number>
+    </b-col>
+  </b-row>
 </template>
 <script>
   export default {
@@ -160,17 +192,29 @@
 ```html
 
 <template>
-  <div>
-    <b-input-number v-model="value6" disabled></b-input-number>&nbsp;&nbsp;
-    <b-input-number v-model="value6" readonly></b-input-number>&nbsp;&nbsp;
-    <b-input-number v-model="value6" :editable="false"></b-input-number>
-  </div>
-  <b-divider></b-divider>
-  <div>
-    <b-input-number v-model="value6" disabled always></b-input-number>&nbsp;&nbsp;
-    <b-input-number v-model="value6" readonly always></b-input-number>&nbsp;&nbsp;
-    <b-input-number v-model="value6" :editable="false" always></b-input-number>
-  </div>
+  <b-row :gutter="16">
+    <b-col span="6">
+      <b-input-number v-model="value6" disabled></b-input-number>
+    </b-col>
+    <b-col span="6">
+      <b-input-number v-model="value6" readonly></b-input-number>
+    </b-col>
+    <b-col span="6">
+      <b-input-number v-model="value6" :editable="false"></b-input-number>
+    </b-col>
+  </b-row>
+  <br/>
+  <b-row :gutter="16">
+    <b-col span="6">
+      <b-input-number v-model="value6" disabled always></b-input-number>
+    </b-col>
+    <b-col span="6">
+      <b-input-number v-model="value6" readonly always></b-input-number>
+    </b-col>
+    <b-col span="6">
+      <b-input-number v-model="value6" :editable="false" always></b-input-number>
+    </b-col>
+  </b-row>
 </template>
 <script>
   export default {
