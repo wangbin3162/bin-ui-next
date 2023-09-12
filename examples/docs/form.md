@@ -253,6 +253,43 @@
 
 :::
 
+
+### 没有label显示
+
+
+::: demo
+
+```html
+
+<template>
+  <b-form :model="form" >
+    <b-form-item :showLabel="false">
+      <b-input v-model="form.username" placeholder="输入用户名"></b-input>
+    </b-form-item>
+    <b-form-item :showLabel="false">
+      <b-input v-model="form.password" placeholder="输入用户名" type="password"></b-input>
+    </b-form-item>
+    <b-form-item :showLabel="false">
+      <b-button type="primary" style="width: 100%">登录</b-button>
+    </b-form-item>
+  </b-form>
+</template>
+<script>
+  export default {
+    data() {
+      return {
+        form: {
+          username: '',
+          password: '',
+        },
+      }
+    }
+  }
+</script>
+```
+
+:::
+
 ### 表单校验
 
 提供基础的校验规则，校验规则参考 [async-validator](https://github.com/yiminghe/async-validator)

@@ -46,31 +46,20 @@
 
   &__content {
     position: relative;
+    width: 100%;
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
+    justify-content: flex-start;
     font-size: var(--bin-font-size-default);
     min-height: var(--bin-default-height);
 
     > label, > span {
       line-height: var(--bin-default-height);
     }
-  }
 
-  &__content-wrapper {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    width: 100%;
-  }
-
-  &__content-flex {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    flex: 1;
-    max-width: 100%;
-    min-height: var(--bin-default-height);
+    > div {
+      width: 100%;
+    }
   }
 
   &--large {
@@ -80,10 +69,6 @@
     }
 
     .bin-form-item__content {
-      min-height: var(--bin-large-height);
-    }
-
-    .bin-form-item__content-flex {
       min-height: var(--bin-large-height);
 
       > label, > span {
@@ -100,10 +85,6 @@
 
     .bin-form-item__content {
       min-height: var(--bin-small-height);
-    }
-
-    .bin-form-item__content-flex {
-      min-height: var(--bin-small-height);
 
       > label, > span {
         line-height: var(--bin-small-height);
@@ -118,10 +99,6 @@
     }
 
     .bin-form-item__content {
-      min-height: var(--bin-mini-height);
-    }
-
-    .bin-form-item__content-flex {
       min-height: var(--bin-mini-height);
 
       > label, > span {

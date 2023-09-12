@@ -7,7 +7,7 @@
       <label
         :for="labelFor"
         class="bin-form-item__label"
-        v-if="showLabel || label || $slots.label"
+        v-if="label || $slots.label || showLabel"
         :style="labelStyle"
       >
         <slot name="label">{{ label }}</slot>
@@ -17,11 +17,7 @@
       </label>
     </LabelWrap>
     <div class="bin-form-item__content" :style="contentStyle">
-      <div class="bin-form-item__content-wrapper">
-        <div class="bin-form-item__content-flex">
-          <slot></slot>
-        </div>
-      </div>
+      <slot></slot>
       <transition name="zoom-in-top">
         <slot v-if="shouldShowError" name="error" :error="validateMessage">
           <div
