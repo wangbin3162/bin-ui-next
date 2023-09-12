@@ -612,7 +612,6 @@
 | error | 表单域验证错误信息, 设置该值会使表单验证状态变为error，并显示该错误信息 | string  |   —      |    —    |
 | show-message | 是否显示校验错误信息 | boolean  |   —      |   true |
 | inline-message | 以行内形式展示校验信息 | boolean  |   —      |   false |
-| show-label | 是否显示label,主要配合没设置label的时候提交按钮需要错开显示 | boolean  |   —     |  false  |
 | size | 用于控制该表单域下组件的尺寸 | string  |  large,default,small,mini    |   —   |
 
 ### FormItem Slot

@@ -81,10 +81,6 @@ export default {
       type: Boolean,
       default: true,
     },
-    showLabel: {
-      type: Boolean,
-      default: true,
-    },
     size: {
       types: String,
       validator: validSize,

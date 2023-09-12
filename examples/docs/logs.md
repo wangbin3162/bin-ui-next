@@ -5,7 +5,7 @@
 <div class="doc-update">
     <b-timeline>
       <b-timeline-item>
-        <p class="version">2.0.6</p>
+        <p class="version">2.0.7</p>
         <p class="time">2023-09-12</p>
         <p class="content"><i>🐞</i>更新默认的数字输入框样式</p>
         <p class="content"><i>🐞</i>修复了form表单,内容显示撑满的问题.</p>
