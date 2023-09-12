@@ -7,7 +7,7 @@
       <label
         :for="labelFor"
         class="bin-form-item__label"
-        v-if="label || $slots.label || showLabel"
+        v-if="label || $slots.label"
         :style="labelStyle"
       >
         <slot name="label">{{ label }}</slot>
@@ -90,7 +90,7 @@ export default {
       validator: validSize,
     },
   },
-  setup(props) {
+  setup(props, { slots }) {
     const formItemMitt = mitt()
 
     const BForm = inject(FormKey, {})
@@ -159,6 +159,7 @@ export default {
         }
       } else {
         ret.width = `calc(100% - ${labelWidth})`
+        if (!(props.label || slots.label)) ret.paddingLeft = labelWidth
       }
       return ret
     })

@@ -132,32 +132,29 @@
 ```html
 
 <template>
-  <div flex>
-    <p>对齐方式：
-      <b-radio-group v-model="labelPosition" type="capsule">
-        <b-radio label="left">左对齐</b-radio>
-        <b-radio label="right">右对齐</b-radio>
-        <b-radio label="top">顶部对齐</b-radio>
-      </b-radio-group>
-    </p>
-    &nbsp;
-    <p>尺寸大小：
-      <b-radio-group v-model="size" type="capsule">
-        <b-radio label="large">large</b-radio>
-        <b-radio label="default">default</b-radio>
-        <b-radio label="small">small</b-radio>
-        <b-radio label="mini">mini</b-radio>
-      </b-radio-group>
-    </p>
-    &nbsp;
-    <p>纯文字：
-    <div>
+  <b-form :label-position="labelPosition" label-width="100px" :model="form" :size="size">
+    <b-form-item label="对齐方式">
+      <div>
+        <b-radio-group v-model="labelPosition" type="capsule">
+          <b-radio label="left">左对齐</b-radio>
+          <b-radio label="right">右对齐</b-radio>
+          <b-radio label="top">顶部对齐</b-radio>
+        </b-radio-group>
+      </div>
+    </b-form-item>
+    <b-form-item label="尺寸大小">
+      <div>
+        <b-radio-group v-model="size" type="capsule">
+          <b-radio label="large">large</b-radio>
+          <b-radio label="default">default</b-radio>
+          <b-radio label="small">small</b-radio>
+          <b-radio label="mini">mini</b-radio>
+        </b-radio-group>
+      </div>
+    </b-form-item>
+    <b-form-item label="文字显示">
       <b-switch v-model="onlyText"></b-switch>
-    </div>
-    </p>
-  </div>
-  <div style="margin: 20px;"></div>
-  <b-form :label-position="labelPosition" label-width="100px" :model="form" :size="size" label-suffix=":">
+    </b-form-item>
     <b-form-item label="姓名">
       <b-input v-if="!onlyText" v-model="form.name" placeholder="输入姓名"></b-input>
       <label v-else>{{ form.name }}</label>
@@ -174,15 +171,6 @@
         <b-option label="徐州" value="xuzhou"></b-option>
       </b-select>
       <label v-else>{{ form.city }}</label>
-    </b-form-item>
-    <b-form-item label="学历">
-      <b-radio-group v-if="!onlyText" v-model="form.edu" type="capsule">
-        <b-radio label="高中"></b-radio>
-        <b-radio label="大专"></b-radio>
-        <b-radio label="本科"></b-radio>
-        <b-radio label="硕士"></b-radio>
-      </b-radio-group>
-      <span v-else>{{ form.edu }}</span>
     </b-form-item>
     <b-form-item label="学历">
       <b-radio-group v-if="!onlyText" v-model="form.edu">
@@ -206,7 +194,7 @@
       <b-input v-if="!onlyText" type="textarea" v-model="form.address" placeholder="请输入住址..."></b-input>
       <span v-else>{{ form.address }}</span>
     </b-form-item>
-    <b-form-item label="进度">
+    <!-- <b-form-item label="进度">
       <b-slider></b-slider>
     </b-form-item>
     <b-form-item label="颜色">
@@ -223,7 +211,7 @@
     </b-form-item>
     <b-form-item label="开关">
       <b-switch></b-switch>
-    </b-form-item>
+    </b-form-item> -->
     <b-form-item v-if="!onlyText" >
       <b-button type="primary">提交</b-button>
       <b-button>取消</b-button>
@@ -263,13 +251,13 @@
 
 <template>
   <b-form :model="form" >
-    <b-form-item :showLabel="false">
+    <b-form-item>
       <b-input v-model="form.username" placeholder="输入用户名"></b-input>
     </b-form-item>
-    <b-form-item :showLabel="false">
+    <b-form-item>
       <b-input v-model="form.password" placeholder="输入用户名" type="password"></b-input>
     </b-form-item>
-    <b-form-item :showLabel="false">
+    <b-form-item>
       <b-button type="primary" style="width: 100%">登录</b-button>
     </b-form-item>
   </b-form>
@@ -587,7 +575,7 @@
 | rules     | 表单验证规则   | object  |    —       |    —    |
 | inline     | 行内表单模式   | boolean  |    —       |  false    |
 | label-position     | 标签的位置，如果值为 left 或者 right 时，则需要设置 label-width   | right/left/top  |    —     |  right    |
-| label-width     | 表单域标签的宽度，例如 '50px'。作为 Form 直接子元素的 form-item 会继承该值。支持 auto。   | —   |    —     |  right    |
+| label-width     | 表单域标签的宽度，例如 '50px'。作为 Form 直接子元素的 form-item 会继承该值。支持 auto。   | —   |    —     |  —    |
 | label-suffix     | 表单域标签的后缀   | string  |    —       | —     |
 | hide-required-asterisk     | 是否隐藏必填字段的标签旁边的红色*   | boolean  |    —       | false     |
 | show-message     | 是否显示校验错误信息   | boolean  |    —       | true     |
