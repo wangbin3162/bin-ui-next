@@ -8,7 +8,7 @@ vue3版本的draggable，参考
 相关链接
 
 <a href="https://www.itxst.com/sortablejs/neuinffi.html" target="_blank">中文文档</a> |
-<a href="https://wangbin3162.gitee.io/sortable" target="_blank">[Sortable Demo]</a>
+<a href="https://wangbin3162.github.io/sortable" target="_blank">[Sortable Demo]</a>
 
 ### 安装
 

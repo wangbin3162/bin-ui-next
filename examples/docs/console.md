@@ -31,7 +31,7 @@
     <b-button @click="$log.pretty('title','pretty print','danger')">pretty - danger</b-button>
   </div>
   <div class="demo-button">
-    <b-button @click="$log.printVersion('bin-ui-next','1.0.0','https://wangbin3162.gitee.io/bin-ui-next/')">
+    <b-button @click="$log.printVersion('bin-ui-next','1.0.0','https://wangbin3162.github.io/bin-ui-next/')">
       打印版本号连接
     </b-button>
   </div>

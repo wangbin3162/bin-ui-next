@@ -24,9 +24,7 @@ bin-ui-next 是bin-ui的vue3升级版，目前组件库已经基本完成重构�
 
 ### 相关链接
 
-[element-plus](https://element-plus.gitee.io/#/zh-CN/component/installation)
-
-[bin-ui](https://wangbin3162.gitee.io/bin-ui/)
+[bin-ui](https://wangbin3162.github.io/bin-ui/)
 
 ### 安装
 

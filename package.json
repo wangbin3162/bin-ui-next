@@ -19,7 +19,7 @@
   "module": "lib/bin-ui-next.esm.js",
   "unpkg": "lib/bin-ui-next.js",
   "style": "lib/styles/index.css",
-  "homepage": "https://wangbin3162.gitee.io/bin-ui-next/",
+  "homepage": "https://wangbin3162.github.io/bin-ui-next/",
   "private": false,
   "license": "MIT",
   "scripts": {

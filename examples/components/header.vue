@@ -39,7 +39,7 @@
           </template>
         </b-dropdown>
         <router-link :to="{ name: 'color' }" class="active">色彩设计</router-link>
-        <a href="https://gitee.com/wangbin3162/bin-ui-next" class="github" target="_blank">
+        <a href="https://github.com/wangbin3162/bin-ui-next" class="github" target="_blank">
           国内镜像
         </a>
         <a href="https://github.com/wangbin3162/bin-ui-next" class="github" target="_blank">
@@ -63,8 +63,8 @@ export default {
     },
     handleCommand(name) {
       const githubUrl = `https://github.com/wangbin3162/${name}/`
-      const giteeUrl = `https://gitee.com/wangbin3162/${name}/`
-      const preview = `https://wangbin3162.gitee.io/${name}/`
+      const giteeUrl = `https://github.com/wangbin3162/${name}/`
+      const preview = `https://wangbin3162.github.io/${name}/`
       this.$log.primary(`------------------------------[${name}]-------------------------------`)
       this.$log.primary(`github：  ${githubUrl}`)
       this.$log.primary(`gitee：  ${giteeUrl}`)

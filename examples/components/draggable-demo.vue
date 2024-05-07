@@ -1,27 +1,34 @@
 <template>
   <div class="draggable-wrap">
     <div flex="box:mean">
-      <div style="margin-right: 20px; width: 50%;">normal
+      <div style="margin-right: 20px; width: 50%">
+        normal
         <div ref="list1Ref" class="list-group col">
-          <div v-for="(item,index) in list1" :key="index" class="list-group-item">
+          <div v-for="(item, index) in list1" :key="index" class="list-group-item">
             {{ item.name }}
           </div>
         </div>
       </div>
-      <div style="margin-right: 20px; width: 50%;">handle
+      <div style="margin-right: 20px; width: 50%">
+        handle
         <div ref="list2Ref" class="list-group col">
-          <div v-for="(item,index) in list2" :key="index" class="list-group-item">
-            <i class="b-iconfont b-icon-drag drag"></i> {{ item.name }}
+          <div v-for="(item, index) in list2" :key="index" class="list-group-item">
+            <i class="b-iconfont b-icon-drag drag"></i>
+            {{ item.name }}
           </div>
         </div>
       </div>
     </div>
     <p>list1: {{ list1.map(i => i.id) }}</p>
     <p>list2: {{ list2.map(i => i.id) }}</p>
-    <br/>
+    <br />
     <div>
-      <a href="https://gitee.com/wangbin3162/bin-ui/blob/master/examples/components/draggable-demo.vue"
-         target="_blank">示例代码</a>
+      <a
+        href="https://github.com/wangbin3162/bin-ui/blob/master/examples/components/draggable-demo.vue"
+        target="_blank"
+      >
+        示例代码
+      </a>
     </div>
   </div>
 </template>
@@ -39,7 +46,7 @@ export default {
       { name: 'Item 3', id: 3 },
       { name: 'Item 4', id: 4 },
       { name: 'Item 5', id: 5 },
-      { name: 'Item 6', id: 6 }
+      { name: 'Item 6', id: 6 },
     ])
     const list2 = ref([
       { name: 'Item 1', id: 1 },
@@ -47,7 +54,7 @@ export default {
       { name: 'Item 3', id: 3 },
       { name: 'Item 4', id: 4 },
       { name: 'Item 5', id: 5 },
-      { name: 'Item 6', id: 6 }
+      { name: 'Item 6', id: 6 },
     ])
     const { listRef: list1Ref } = useSortable(list1, null, { handle: '.list-group-item' })
     const { listRef: list2Ref } = useSortable(list2)
@@ -56,9 +63,9 @@ export default {
       list1,
       list2,
       list1Ref,
-      list2Ref
+      list2Ref,
     }
-  }
+  },
 }
 </script>
 
